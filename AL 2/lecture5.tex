@@ -1,0 +1,209 @@
+\begin{example}
+On reprend l'exemple \ref{exsem2} et on le reecrit comme un produit des matrices
+$$
+\gcd(f_{0},f_{1})=\begin{pmatrix}
+0 & 1 \\
+1 & -q_{3}
+\end{pmatrix}\begin{pmatrix}
+0 & 1 \\
+1 & -q_{2}
+\end{pmatrix}\begin{pmatrix}
+0 & 1 \\
+1 & -q_{1}
+\end{pmatrix}\begin{pmatrix}
+f_{0} \\
+f_{1}
+\end{pmatrix}
+$$
+donc
+$$
+(x^{2}+2)=\gcd(f_{0},f_{1})=(x+1)f_{0}+(2x^{3}+3x^{2}+4x)f_{1}
+$$
+qui est la premiere composante du produit matriciel.
+\end{example}
+
+\section{Factorisation en irreductibles}
+\begin{definition}[Polynome irreductible]
+Un polynome $p(x)\in K[x]$ est irreductible si :
+\begin{enumerate}
+\item $\deg p \geq 1$.
+\item Si pour $f,g\in K[x]$ on a que $fg=p$, alors $\deg f = \deg p$ ou $\deg g =\deg p$.
+\end{enumerate}
+\end{definition}
+\begin{example}
+Tout polynome $ax+b\in K[x]$ tel que $a\neq 0$ est irreductible car si $ax+b=fg$ on a que
+$$
+\deg (ax+b)=1=\deg f+\deg g
+$$
+alors $f\in K$ ou $g\in K$.
+\end{example}
+\begin{example}
+Le polynome $x^{2}+x+1\in \mathbf{Z}_{2}[x]$ est irreductible. Sinon ils existent $a,b\in \mathbf{Z}_{2}$ tels que
+$$
+x^{2}+x+1=(x-a)(x-b)
+$$
+mais ce polynome n'a pas de racines dans $\mathbf{Z}_{2}$ donc cet factorisation n'est pas possible.
+\end{example}
+\begin{theorem}
+Soit $f(x)\in K[x]$ de $\deg f=\{ 2,3 \}$ alors $f$ est irreductible si et seulement si $f$ ne possede pas de racines dans $K$. 
+\end{theorem}
+\begin{proof}
+\begin{itemize}
+\item Sens $\Rightarrow$: Soit $\alpha \in K$ une racine de $f$ alors $(x-a)\mid f$ qui pose une contradiction avec l'irreductibilite.
+\item Sens $\Leftarrow$: Comme $\deg f=\{ 2,3 \}$ si ils existent $a,b\in K[x]$ tels que $f=ab$ alors $\deg a+\deg b=\{ 2,3 \}$. Sans perte de generalite on pose que $\deg a=1$ et $a(x)=\beta(x-\alpha)$ avec $\alpha,\beta \in K$ alors $f(\alpha)=a(\alpha)b(\alpha)=0b(\alpha)=0$ qui fera de $\alpha$ une racine de $f$ posant une contradiction.
+\end{itemize}
+\end{proof}
+
+Soit $f(x)\in K[x]$ et $\deg f \ge 1$ si $f$ n'est pas irreductible alors $f=p_{1}p_{2}$ avec $\deg p_{1},\deg p_{2} \ge 1$ et $\deg p_{1}+\deg p_{2}=\deg f$. On peut continuer a factoriser les polynomes $p_{i}$ pour obtenir:
+\begin{equation}
+f=a\prod_{i=1}^{\ell} p_{i} \label{decomp}
+\end{equation}
+ou $p_{i}\in K[x]$ sont irreductibles et unitaires et $a\in K$. Cette factorisation est unique.
+
+\begin{lemma}\label{lem1}
+Soit $p \in K[x]$ irreductible et $f_{1},\dots,f_{\ell}\in K[x]$. Si 
+$$
+p\mid f_{1}f_{2}\dots f_{\ell}
+$$
+il existe $i\in \{ 1,\dots,\ell \}$ tels que $p\mid f_{i}$.
+\end{lemma}
+\begin{proof}
+Il suffit de montrer l'assertion pour $\ell=2$ car soit $p\mid f_{1}$ soit $p\mid f_{2}\dots f_{\ell}$. 
+
+Soit $\ell=2$ et $p\mid f_{1}f_{2}$. Supposons que $p\nmid f_{1}$ alors $\gcd(p,f_{1})=1$ et ils existent $u,v\in K[x]$ tels que $1=up+vf_{1}$. Si on multiplie de deux cotes par $f_{2}$ on obtient
+$$
+f_{2}=upf_{2}+vf_{1}f_{2}
+$$
+et comme $p\mid f_{1}f_{2}$ alors il existe $g\in K[x]$ tel que $pg=f_{1}f_{2}$ :
+$$
+f_{2}=p(uf_{2}+vg)
+$$
+et $p\mid f_{2}$.
+\end{proof}
+\begin{theorem}
+La decomposition \ref{decomp} est unique a l'ordre des $p_{i}$ pres.
+\end{theorem}
+\begin{proof}
+Soient
+$$
+a\prod_{i=1}^{\ell} p_{i}=b\prod_{j=1}^{k} q_{j}
+$$
+deux factorisations possibles de $f$. Le fait que $p_{i}$ et $q_{j}$ sont unitaires implique que $a=b$. On peut utiliser \ref{lem1} pour avoir que $p_1\mid q_{j}$ pour un $j\in \{ 1,\dots ,k \}$ mais comme $p_{i}$ et $q_{j}$ sont unitaires et irreductibles alors $p_{i}=q_{j}$.
+$$
+\prod_{i=2}^{\ell} p_{i}=\prod_{\mu=1,\mu\neq j}^{k} q_{\mu}
+$$
+et on conclut par recurrence.
+\end{proof}
+
+\section{Le polynome minimal de \texorpdfstring{$A\in K^{n\times n}$}{A}}
+
+\begin{definition}
+Soit $A\in K^{n\times n}$ et $p(x)\in K[x]$. L'evaluation de $p(x)$ en $A$ est la matrice 
+$$
+p(A)=a_{0}\mathrm{Id}+a_{1}A+a_{2}A^{2}+\dots+a_{n}A^{n}\in K^{n\times n}
+$$
+\end{definition}
+\begin{exercise}
+Pour tous $f,g\in K[x]$ on a :
+\begin{enumerate}
+\item $(f+g)(A)=f(A)+g(A)$
+\item $(fg)(A)=f(A)g(A)$
+\item $1(A)=\mathrm{Id}_{n}$
+\end{enumerate}
+En autres mots l'application $\phi:K[x]\to K^{n\times n},p(x)\mapsto p(A)$ est un morphisme d'anneaux. 
+\end{exercise}
+\begin{proof}[Solution]
+\begin{enumerate}
+\item On a que 
+$$
+f(x)=a_{0}+a_{1}x+\dots +a_{n}x^{n}
+$$
+et
+$$
+g(x)=b_{0}+\dots b_{n}x^{n}
+$$
+donc 
+$$
+(f+g)(x)=(a_{0}+b_{0})+\dots +(a_{n}+b_{n})x^{n}
+$$
+alors
+
+\begin{align*}
+(f+g)(A) & =(a_{0}+b_{0})\mathrm{Id}_{n}+\dots +(a_{n}+b_{n})A^{n} \\
+ & =a_{0}\mathrm{Id}_{n}+\dots +a_{n}A^{n}+b_{0}\mathrm{Id}_{n} +\dots +b_{n}A^{n} \\
+ & =f(A)+g(A)
+\end{align*}
+
+\end{enumerate}
+\end{proof}
+
+\begin{definition}
+Un polynome $p(x)\in K[x]$ annule $A\in K^{n\times n}$ si $p(A)=0_{n}\in K^{n\times n}$.
+\end{definition}
+\begin{theorem}\label{thm2}
+Soit $p(x)\in K[x]\setminus \{ 0 \}$ un polynome de degre minimal parmi les polynomes qui annulent $A\in K^{n\times n}$. Alors $p(x)\mid h(x)$ pour tout $h(x)\in K[x]$ qui annule $A$. $p(x)$ est unique a une multiplication par un scalaire pres. Si $p(x)$ est unitaire alors $p(x)$ est unique.  
+\end{theorem}
+\begin{proof}
+Soit $h(x)\in K[x]$ tel que $h(A)=0$. On divise $h(x)$ avec rest pour obtenir $h(x)=q(x)p(x)+r(x)$ avec $\deg r<\deg p$. Si on evalue en $A$ on obtient $h(A)=q(A)p(A)+r(A)=0$ donc $r(A)=0$ et $p(x)\mid h(x)$.
+\end{proof}
+\begin{exercise}[Exo etoile serie 2]
+Soit $K$ un corps et $A\in K^{n\times n}$ une matrice inversible. Posons $\tilde{A}:=(\mathrm{com}A)^{T}$ la transposee de la comatrice de $A$.
+\begin{enumerate}
+\item Montrer que $\det(A)\neq 0$.
+\item Montrer que $A^{-1}=\det(A)^{-1}\tilde{A}$.
+\item Montrer que pour toute matrice $A\in \mathbf{Z}^{n\times n}$, il existe $B\in \mathbf{Z}^{n\times n}$ telle que $AB=I$ si et seulement si $\det(A)=\pm1$.
+\end{enumerate}
+\begin{reminder}
+$\mathrm{com}(A)_{ij}=(-1)^{i+j}\det(A_{ij})$ ou $A_{ij}$ est la matrice dont on a enlevee la $i$-eme ligne et $j$-eme colonne.
+\end{reminder}
+\end{exercise}
+\begin{proof}[Solution]
+\begin{enumerate}
+\item Comme $A$ est inversible on a que $AA^{-1}=I_{n}$ alors $\det(AA^{-1})=1$ donc par proprietes du determinant on a $\det(A)\det (A^{-1})=1$ et $\det(A)\neq 0$.
+\item Pour conclure, il suffit de montrer que $A\tilde{A}=\det(A)I_{n}$ (par unicite de l'inverse d'une matrice)( Pour etre precis, il faut aussi demontrer que $\tilde{A}A=\det(A)I_{n}$). Considerons les coefficients diagonaux de $A\tilde{A}$, pour tout $i\in \{ 1,\dots ,n \}$ on a 
+
+\begin{align*}
+(A\tilde{A})_{ii} & =\sum_{j=1}^{n} a_{ij}\tilde{a}_{ji} \\
+ & =\sum_{j=1}^{n} a_{ij}(\mathrm{com}A)_{ij} \\
+ & =\sum_{j=1}^{n} a_{ij}(-1)^{i+j}\det(A_{ij}) \\
+ & =\det A.
+\end{align*}
+
+Considerons les coefficients hors diagonal. Pour $i\neq j\in \{ 1,\dots,n \}$ on a
+
+\begin{align*}
+(A\tilde{A})_{ij} & =\sum_{k=1}^{n} a_{ik}\tilde{a}_{kj} \\
+ & =\sum_{k=1}^{n} a_{ik}(\mathrm{com}A)_{jk} \\
+ & =\sum_{k=1}^{n} a_{ik}(-1)^{j+k}\det(A_{jk}) \\
+ & =\text{le determinant de la matrice }A\text{ dont on remplace la }j\text{-eme ligne par une copie de la }i\text{-eme ligne} \\
+ & =0
+\end{align*}
+car $\det$ est une forme alternee.
+\item Pour montrer le sens $\Rightarrow$, on suppose qu'il existe $B\in \mathbf{Z}^{n\times n}$ tel que $AB=I_{n}$ donc $\det(AB)=1$ et comme dans $\mathbf{Z}$ les seuls diviseurs de 1 sont 1 et $-1$ alors on observe que $\det(A)=\pm1$.
+
+On montre l'autre sens $\Leftarrow$, on suppose que $\det(A)=\pm1$. Par les memes techniques que dans 2 on voit que $A\tilde{A}=\det(A)I_{n}$ avec $\tilde{A}=(\mathrm{com}A)^{T}\in \mathbf{Z}^{n\times n}$. Comme $\det(A)=\pm 1$ on conclut que $B=\det(A)^{-1}\tilde{A}\in \mathbf{Z}^{n\times n}$.
+\end{enumerate}
+\end{proof}
+\begin{exercise}[Exo plus serie 3]
+Soit $V$ un espace vectoriel reel et soit $B=\{ v_{1},\dots,v_{4} \}$ une base de $V$.
+\begin{enumerate}
+\item Soit $f$ l'endomorphsime defini par
+$$
+f(v_{1})=v_{1}-v_{2},~f(v_{2})=2v_{2}-6v_{3},~f(v_{3})=-2v_{1}+2v_{2},~f(v_{4})=v_{2}-3v_{3}+v_{4}
+$$
+Ecrivez la matrice $A_{B}$ de l'application $f$ dans la base $B$. Est-ce que $f$ est inversible? Si oui, ecrivez la matrice $A^{-1}_{B}$ de l'application inverse $f^{-1}:V\to V$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}[Solution]
+On construit la matrice $A_{B}$:
+$$
+A_{B}=\begin{pmatrix}
+1 & 0 & -2 & 0 \\
+-1 & 2 & 2 & 1 \\
+0 & -6 & 0 & -3 \\
+0 & 0 & 0 & 1
+\end{pmatrix}
+$$
+on peut observer que il y a une relation de dependence entre la troisieme et premiere colonne donc $A_{B}$ n'est pas inversible.
+\end{proof}
+

@@ -1,0 +1,245 @@
+\begin{example}
+Soient deux polynomes $f(x)=x^{2}+x \in \mathbf{Z}_{2}[x]$ et $g(x)=x^{3}+x \in \mathbf{Z}_{2}[x]$ on a que $f_{g}=f_{f}=0$ mais $f(x)\neq g(x)$.
+\end{example}
+\section{L'interpolation}
+
+\begin{theorem}
+Soit $K$ un corps et $r_{0},\dots,r_{n}\in K$ distincts (c-a-d $r_{i}\neq r_{j}$ pour $i\neq j$) et $y_{0},\dots,y_{n}\in K$. Il existe un unique polynome $f(x)=a_{0}+a_{1}x+\dots+a_{n}x^{n}$ de degre au plus $n$ tel que :
+$$
+\forall i=0,\dots,n:f(r_{i})=y_{i}
+$$
+
+\end{theorem}
+\begin{proof}
+On commence par observer que pour tout $i$ on a que $f(r_{i})=y_{i}$ si et seulement si 
+$$
+\begin{pmatrix}
+1 & r_{0} & r_{0}^{2} & \dots & r_{0}^{n} \\
+1 & r_{1} & r_{1}^{2} & \dots & r_{1}^{n} \\
+ &  & \vdots &  &  \\
+1 & r_{n} & r_{n}^{2} & \dots & r_{n}^{n}
+\end{pmatrix}
+\begin{bmatrix}
+a_{0} \\
+\vdots \\
+a_{n}
+\end{bmatrix}=\begin{pmatrix}
+y_{0} \\
+\vdots \\
+y_{n}
+\end{pmatrix}
+$$
+on appelle la matrice de gauche une matrice de Van der Monde $V(r_{0},\dots,r_{n})\in K^{(n+1)\times(n+1)}$. Il nous reste a montrer que $V(r_{0},\dots,r_{n})\in K^{(n+1)\times (n+1)}$ est inversible (c-a-d $\det(V(r_{0},\dots,r_{n}))\neq 0$). 
+
+On le montre par recurrence sur $n$. On commence par etablir la validité de l'hypothese de recurrence pour $n=0$ qui donne la matrice $V(r_{0})=\begin{pmatrix}1\end{pmatrix}$ alors $\det(V(r_{0}))=1\neq 0$. On admet l'hypothese valide pour $n-1$, on veut calculer
+$$
+\det \begin{pmatrix}
+1 & r_{0} & r_{0}^{2} & \dots & r_{0}^{n-1} & r_{0}^{n} \\
+\vdots & \vdots & \vdots & \vdots & \vdots & \vdots  \\
+1 & r_{n} & r^{2}_{n} & \dots & r_{n}^{n-1} & r_{n}^{n}
+\end{pmatrix}
+$$
+ou on peut appliquer des operations elementaires sur les colonnes pour obtenir
+$$
+\det \begin{pmatrix}
+1 & 0 & \dots & 0 & 0 \\
+1 & (r_{1}-r_{0}) & \dots & (r_{2}-r_{0})r_{1}^{n-2} & (r_{1}-r_{0})r_{1}^{n-1} \\
+\vdots &\vdots  &  \vdots &\vdots  &\vdots  \\
+1 & (r_{n}-r_{0}) & \dots & (r_{n}-r_{0})r_{n}^{n-2} & (r_{n}-r_{0})r^{n-1}_{n}
+\end{pmatrix}
+$$
+qui est egal a
+$$
+\det \left[\begin{pmatrix}
+(r_{1}-r_{0}) &   &   &  \\
+ & (r_2-r_{0})    & &  \\
+ & &  \ddots \\
+
+ &  &   &  (r_{n}-r_{0})
+\end{pmatrix}\cdot V(r_{1},\dots,r_{n})\right]\neq 0
+$$
+\end{proof}
+\begin{example}
+On cherche $f(x)\in \mathbf{Z}_{5}[x]$ de $\deg f\leq3$ tel que 
+\begin{align*}
+f(0) & =2 \\
+f(1) & =2 \\
+f(2) & =2 \\
+f(3) & =3
+\end{align*}
+on a 
+$$
+\begin{pmatrix}
+1 & 0 & 0 & 0 \\
+1 & 1 & 1 & 1 \\
+1 & 2 & 4 & 3 \\
+1 & 3 & 4 & 2
+\end{pmatrix}\begin{pmatrix}
+a_{0} \\
+a_{1} \\
+a_{2} \\
+a_{3}
+\end{pmatrix}=\begin{pmatrix}
+2 \\
+2 \\
+2 \\
+3
+\end{pmatrix}
+$$
+qui donne une solution unique
+$$
+f(x)=2+2x+2x^{2}+x^{3}
+$$
+\end{example}
+\begin{corollary}
+Soit $K$ un corps infini. Deux polynomes $h(x)$ et $g(x)$ dans $K[x]$ sont egaux si et seulement si les applications $f_{g}$ et $f_{h}$ sont les memes.
+\end{corollary}
+
+\section{Division avec reste}
+
+\begin{example}
+Dans $\mathbf{Z}_{3}$ on divise $p(x)=x^{5}+2x^{2}+1$ par $q(x)=2x^{3}+x+1$ qui nous donne $s(x)=2x^{2}+2$ avec une reste $r(x)=x+2$ ainsi on a que $p(x)=q(x)s(x)+r(x)$ et $\deg r<\deg g$.
+\end{example}
+\begin{theorem}
+Soit $R$ un anneau et $f,g\in \mathbf{R}[x]$ tel que $g(x)\neq 0$ et le coefficient dominant de $g(x)$ est inversible ($\in \mathbf{R}^{*}$). Alors ils existent $q,r\in\mathbf{R}[x]$ tels que 
+\begin{itemize}
+\item $f(x)=q(x)g(x)+r(x)$
+\item $\deg r(x) < \deg g(x)$
+\end{itemize}
+\end{theorem}
+\begin{proof}
+Si $\deg f <\deg g$ alors $q(x)=0$ et $r(x)=f(x)$.
+
+Sinon on a que $\deg f \geq \deg g$. Soient $f(x)=a_{0}+\dots+a_nx^{n}$ et $g(x)=b_{0}+\dots+b_{n}x^{n}$ avec $b_{m}\in \mathbf{R}^{*}$ et $a_{n}\neq 0$. On a que $\deg(\underbrace{ f(x)-a_{n}b_{m}^{-1}x^{n-m}g(x) }_{ h(x) })<\deg f$ donc on peut exprimer $h(x)=q'(x)g(x)+r(x)$
+ou $\deg r<\deg g$. Alors
+$$
+f(x)-a_{n}b_{m}^{-1}x^{n-m}g(x)=q'(x)g(x)+r(x)
+$$
+alors $f(x)=q(x)g(x)+r(x)$ ou $q(x)=a_{n}b_{m}^{-1}x^{n-m}+q'(x)$ et $\deg r<\deg g$. 
+
+On peut montrer que cette representation est unique. Soit $f(x)=\tilde{q}(x)g(x)+\tilde{r}(x)$ une autre representation de $f(x)$ ou $\deg \tilde{r}<\deg g$ et $q(x)\neq \tilde{q}(x)$. Alors on a 
+$$
+(q(x)-\tilde{q}(x))g(x)=\tilde{r}(x)-r(x)
+$$
+mais comme $q(x)-\tilde{q}(x)$ est un polynome non-nul et le coefficient dominant de $g(x)$ n'est pas un diviseur de zero on a que $\deg((q(x)-\tilde{q}(x))g(x))\geq \deg g$ mais $\deg(\tilde{r}(x)-r(x))<\deg g$ qui pose une contradiction. 
+\end{proof}
+\begin{theorem}
+Soit $R$ un anneau et $f,g\in \mathbf{R}[x]$ tel que $g(x)\neq 0$ et le coefficient dominant de $g(x)$ est inversible ($\in \mathbf{R}^{*}$). Alors ils existent $q,r\in\mathbf{R}[x]$ tels que 
+\begin{itemize}
+\item $f(x)=g(x)q(x)+r(x)$
+\item $\deg r(x) < \deg g(x)$
+\end{itemize}
+\end{theorem}
+\begin{proof}
+On reprend la preuve du theoreme precedent mais on inverse l'ordre pour obtenir $h(x)=f(x)-g(x)b_{m}^{-1}a_{n}x^{n-m}$
+\end{proof}
+\begin{example}
+Soit $R=\mathbf{Z}^{2\times2}$ on a 
+$$
+f(x)=\begin{pmatrix}
+1 & 0 \\
+0 & 1 
+\end{pmatrix}x^{4}+\begin{pmatrix}
+1 & 0 \\
+0 & 1
+\end{pmatrix}
+$$
+et
+$$
+g(x)=\begin{pmatrix}
+1 & 1 \\
+0 & 1
+\end{pmatrix}x^{2}+\begin{pmatrix}
+1 & 0 \\
+0 & 1
+\end{pmatrix}
+$$
+Selon si on multiplie a gauche ou a droite on a deux variations:
+\begin{enumerate}
+\item $f(x)=q(x)g(x)+r(x)$
+$$
+q(x)=\begin{pmatrix}
+1 & -1 \\
+0 & 0 
+\end{pmatrix}x^{2}+\begin{pmatrix}
+-1 & 2 \\
+0 & 0
+\end{pmatrix},\quad r(x)=\begin{pmatrix}
+2 & -2 \\
+0 & 1
+\end{pmatrix}
+$$
+\item $f(x)=g(x)q(x)+r(x)$
+$$
+q(x)=\begin{pmatrix}
+1 & 0 \\
+0 & 0
+\end{pmatrix}x^{2}+\begin{pmatrix}
+-1 & 0 \\
+0 & 0
+\end{pmatrix},\quad r(x)=\begin{pmatrix}
+2 & 0 \\
+0 & 1
+\end{pmatrix}
+$$
+\end{enumerate}
+\end{example}
+\begin{exercise}[Exo etoile serie 1]
+Soit $R$ un anneau.
+\begin{enumerate}
+\item Montrer que l'element $1$ est unique.
+\item Montrer qu'un element inversible $r\in R^{*}$ n'est pas un diviseur de zero.
+\item Montrer que deux polynomes 
+$$
+p(x)=a_{0}+a_{1}x+\dots+a_{n}x^{n}\quad\text{et}\quad q(x)=b_{0}+b_{1}x+\dots+b_{m}x^{m}\in R[x]
+$$
+sont egaux si et seulement si $a_{i}=b_{i}$ pour tous $i$.
+\item Soit $R^{n\times n}$ l'anneau des matrices $n\times n$ sur $R$. Montrer que le centre de $R^{n\times n}$ est $Z(R^{n\times n})=\{ aI_{n}:a\in Z(R) \}$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}[Solution]
+\begin{enumerate}
+\item Supposons qu'il existe $1'\in R$ tel que $\forall a\in R$ on a : $1'a=a1'=a$. Prenons $a=1$ alors $1=11'=1'1=1'$ car $1$ est l'unite de $R$.
+\item Prenons $r\in R^{*}$ et supposons qu'il existe $a\in R$ tel que $ra=0$ alors:
+\begin{align*}
+r^{-1}ra & =r^{-1}0 \\
+a & =0
+\end{align*}
+donc $r$ ne peut pas etre un diviseur de zero.
+\item Le sens $\Leftarrow$ est trivial car si deux polynomes ont les memes coefficients alors ce sont les memes polynomes.
+
+Pour le sens $\Rightarrow$ on utilise \ref{thm22} qui nous dit que le seul polynome egal a 0 est le polynome dont tous les coefficients valent 0. Comme $p(x)-q(x)=0$ on a que $a_{i}-b_{i}=0$ pour tous $i$ donc $a_{i}=b_{i}$.
+\item On procede par double inclusion: prenons $aI_{n}\in Z(R^{n\times n})$ alors $\forall A\in R^{n\times n}$ on a $aI_{n}A=aA$ et comme $a\in Z(R)$ on a l'equivalence $aA=Aa$ que montre que $aI_{n}A=A(aI_{n})$ pour montrer l'inclusion $\supseteq$.
+
+Pour montrer l'inclusion $\subseteq$ on va utiliser les matrices elementaires $E^{ij}$. 
+\begin{reminder}
+\begin{itemize}
+\item Pour $A\in R^{n\times n}$, la matrice $AE^{ij}$ est une matrice nulle sauf la $j$-eme colonne qui est egale a la $i$-eme colonne de $A$.
+\item Pour $E^{ij}A$ la matrice est nulle sauf la $i$-eme ligne de qui est egale a la $j$-eme ligne de $A$.
+\end{itemize}
+\end{reminder}
+Prenons $C\in Z(R^{n\times n})$. On considere les matrices $CE^{ii}$ et $E^{ii}C$ qui sont egales car $C\in Z(R^{n\times n})$ donc $C$ est une matrice diagonale qu'on note $C=\mathrm{diag}(c_{11},\dots,c_{nn})$. On compare les coefficients sur la diagonale qu'on denote par $(CE^{ij})_{ij}=c_{ii}$ et $(E^{ij}C)_{ij}=c_{jj}$ et comme ces matrices sont egales on a que $c_{ii}=c_{jj}$. On sait alors que $C=cI_{n}$ pour $c\in R$. Donc on a
+\begin{align*}
+(ac)I_{n} & =(aI_{n})(cI_{n}) \\
+ & =(cI_{n})(aI_{n}) \\
+ & =(ca)I_{n} 
+\end{align*}
+
+donc on a montre que $c\in Z(R)$.
+\end{enumerate}
+\end{proof}
+\begin{exercise}[Exo plus serie 2]
+Soit $K$ un corps et $f(x)\in K[x]$ un polynome de degre 3. Montrer que $f(x)$ est irreductible si et seulement si $f(x)$ n'a pas de racines dans $K$.
+\end{exercise}
+\begin{proof}[Solution]
+\begin{definition}
+Un polynome $g(x)\in K[x]$ est irreductible si
+\begin{enumerate}
+\item $\deg g\ge 1$
+\item Si $g(x)=p(x)q(x)$ avec $p(x),q(x)\in K[x]$ alors $\deg p=0$ ou $\deg q=0$.
+\end{enumerate}
+\end{definition}
+On montre le sens $\Rightarrow$ par contraposition. Supposons que $f(x)$ admet une racine $\alpha \in K$ (c-a-d $f(\alpha)=0$), alors $(x-\alpha)\mid f(x)$ qui implique que $\exists q(x)\in K[x]$ tel que $(x-\alpha)q(x)=f(x)$ donc $f(x)$ n'est pas irreductible.
+
+Pour montrer le sens $\Leftarrow$ on suppose que $f(x)$ est reductible et de degre 3 alors il existe $\beta,\gamma \in K$ avec $\beta\neq 0$ tel que $(\beta x+\gamma)\mid f(x)$ alors $-\frac{\gamma}{\beta}$ est une racine de $f(x)$ qui pose une contradiction.
+\end{proof}

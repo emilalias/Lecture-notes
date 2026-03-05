@@ -1,0 +1,275 @@
+\chapter{Rappels et notation}
+
+Soit $V$ un espace vectoriel sur un corps de dimension finie $K$.
+
+\begin{notation}[Dimension d'un espace vectoriel]
+$$
+\dim(V)=n<\infty
+$$
+\end{notation}
+
+\begin{definition}[Base de $V$]
+On la note $\mathscr{B}=\{ v_{1},\dots,v_{n} \}$
+\begin{itemize}
+\item Une famille libre
+\item Tout $v\in V$ est une combinaison lineaire qu'on exprime:
+$$
+v=v_{1}\alpha_{1}+\dots+\alpha _{n}v_{n}
+$$
+$$
+[v]_{\mathscr{B}}=\begin{pmatrix}
+\alpha_{1} \\
+\vdots \\
+\alpha _{n} 
+\end{pmatrix}\in K^{n}
+$$
+\end{itemize}
+\end{definition}
+\begin{notation}[Isomorphisme]
+\begin{align*}
+\psi: V & \to K^{n} \\
+v & \mapsto[v]_{\mathscr{B}}
+\end{align*}
+\end{notation}
+
+\begin{definition}[Changement de base]
+Soit $\mathscr{B}'=\{ v_{1},\dots,v_{n} \}$ une (autre) base de $V$. Il existe une unique matrice $P_{\mathscr{B}\mathscr{B}'}\in K^{n\times n}$ inversible telle que  pour tout $v\in V$:
+$$
+[v]_{\mathscr{B'}}=P_{\mathscr{B}\mathscr{B}'}[v]_{\mathscr{B}}
+$$
+\end{definition}
+\begin{example}
+Soit $V$ de $\dim(V)=3$ avec une base $\mathscr{B}=\{ v_{1},v_{2},v_{3} \}$ et une autre base $\mathscr{B}'=\{ w_{1},w_{2},w_{3} \}$. On a les relations
+\begin{align*}
+w_{1} & =2v_{1}+v_{2}-v_{3} \\
+w_{2} & =v_{1}+3v_{2}+v_{3} \\
+w_{3} & =v_{1}+v_{2}-v_{3}
+\end{align*}
+donc la matrice de changement:
+$$
+P_{\mathscr{B}'\mathscr{B}}=\begin{pmatrix}
+2 & 1 & 1 \\
+1 & 3 & 1 \\
+-1 & 1 & -1 
+\end{pmatrix}
+$$
+\end{example}
+\begin{notation}
+$$
+\ell_{1}=\begin{pmatrix}
+1 \\ 0\\0
+\end{pmatrix}
+$$
+\end{notation}
+\begin{remark}
+$P_{\mathscr{B}\mathscr{B}'}=P_{\mathscr{B}'\mathscr{B}}^{-1}$
+\end{remark}
+\section{Applications lineaires}
+Soient $V,W$ deux espaces vectoriels sur $K$. $f:V\to W$ est une application lineaire si pour tout $u,v\in V$ et $\alpha \in K$ :
+\begin{itemize}
+\item $f(u+v)=f(u)+f(v)$
+\item $f(\alpha u)=\alpha f(u)$
+\end{itemize}
+Soient $\dim(V)=n$, $\dim(W)=m$ et $\mathscr{B}_{V}=\{ v_{1}$,$\dots,v_{n} \}$, $\mathscr{B}_{W}=\{ w_{1},\dots,w_{m} \}$ les bases de $V$ et $W$ respectivement. $f$ est decrite par les images $$f(v_{j})=a_{1j}w_{1}+\dots+a_{mj}w_{m}$$ ou les coefficients $a_{ij}$ donne les coordones de $f(v_{i})$ dans $\mathscr{B}_{W}$.
+\begin{example}
+$$
+f(2v_{1}+3v_{2})=2f(v_{1})+3f(v_{2})
+$$
+\end{example}
+
+On peut construire ainsi la matrice associe a $f$
+$$
+\begin{pmatrix}
+a_{11} & \dots & a_{1n} \\
+\vdots &  & \vdots \\
+a_{m1} & \dots & a_{mn}
+\end{pmatrix}[v]_{\mathscr{B}_{V}}=[f(v)]_{\mathscr{B}_{W}}
+$$
+\begin{example}
+Soien $V,W$ des espaces vectoriel sur $\mathbf{Z}_{3}$ des bases $\mathscr{B}_{V}=\{ v_{1},v_{2},\dots,v_{5} \}$ et $\mathscr{B}_{W}=\{ w_{1},w_{2},w_{3},w_{4}\}$. On a les images:
+\begin{align*}
+f(v_{1}) & =1w_{1}+2w_{2}+2w_{3}+2w_{4} \\
+f(v_{2}) & =2w_{1}+w_{2}+w_{3}+w_{4} \\
+f(v_{3}) & =2w_{2}+2w_{4}\\
+f(v_{4}) & =w_{1}+2w_{2}+2w_{3}+2w_{4} \\
+f(v_{5}) & =2w_{1}+2w_{2}+w_{3}+2w_{4}
+\end{align*}
+donc on obtient la matrice
+$$
+A=\begin{pmatrix}
+1 & 2 & 0 & 1 & 2 \\
+2 & 1 & 2 & 2 & 2 \\
+2 & 1 & 0 & 2 & 1 \\
+2 & 1 & 2 & 2 & 2
+\end{pmatrix}\in \mathbf{Z}_{3}^{4\times 5}
+$$
+on a que $\forall v\in V$ : $[f(v)]_{\mathscr{B}_{W}}=A[v]_{\mathscr{B}_{V}}$.
+
+Pour obtenir de bases de $\ker(f)$ et $\mathrm{Im}(f)$ on cherche une matrice $Q$ telle que $QA$ echelonne $A$ :
+$$
+QA=\begin{pmatrix}
+1 & 2 & 0 & 1 & 2 \\
+0 & 0 & 2 & 0 & 1 \\
+0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0
+\end{pmatrix}
+$$
+donc on voit que $\mathrm{Im}(f)=\{ f(v_{1}),f(v_{3}) \}$ (les colonnes de pivots). Pour trouver la base de $\ker(f)$ on cherche les combinaisons lineaires des colonnes egales a 0 et on trouve $(e_{1}+e_{3}+e_{5},e_{4}+2e_{1},e_{2}+e_{1})$ ou $e_{i}$ est une colonne qu'on associe a $v_{i}$ pour avoir $\ker(f)=\{ v_{1}+v_{3}+v_{5},v_{4}+2v_{1},v_{2}+v_{1} \}$. 
+\end{example}
+\begin{definition}[Image]
+$\mathrm{Im}(f)=\{ f(v):v\in V \}\subseteq W$
+\end{definition}
+\begin{definition}[Noyau]
+$\ker(f)=\{ v\in V:f(v)=0\}\subseteq V$
+\end{definition}
+\begin{theorem}[Noyau-Image]
+$$
+\dim(\mathrm{Im}(f))+\dim(\ker(f))=\dim(V)
+$$
+\end{theorem}
+
+\subsection{Comment trouver des bases de l'image et noyau}
+
+\begin{definition}[Algorithme de Gauss]
+Soit $A\in K^{m\times n}$, on cherche une matrice $Q\in K^{m\times m}$ inversible construit comme un produit des matrices des transformations elementaires telle que $QA$ soit une matrice échelonne qui aura $k$ pivots qu'on note $p_{i},1\leq i\leq k$. 
+\end{definition}
+
+\section{Endomorphismes et matrices semblables}
+
+\begin{definition}[Endomorphisme]
+Un endomorphisme est une application lineaire $f:V\to V$ de $V$ un espace vectoriel de $\dim(V)=n$ et base $\mathscr{B}=\{ v_{1},\dots,v_{n} \}$. 
+\end{definition}
+\begin{notation}
+Pour tout $v\in V$ et $f$ une application lineaire on a:
+$$
+[f(v)]_{\mathscr{B}}=A_{\mathscr{B}}^{f}[v]_{\mathscr{B}}
+$$
+\end{notation}
+
+Soit $\mathscr{B}'$ une autre de base de $V$ et $P_{\mathscr{B}'\mathscr{B}}$ une matrice de changement on a
+$$
+A^{f}_{\mathscr{B}'}=P_{\mathscr{B}'\mathscr{B}}^{-1}A_{\mathscr{B}}^{f}P_{\mathscr{B}'\mathscr{B}}
+$$
+
+\begin{definition}[Matrices semblables]
+Soient $A,B\in K^{n\times n}$ on dit que ces matrices sont semblables $A\sim B$ s'il existe $P\in K^{n\times n}$ inversible telle que 
+$$
+A=P^{-1}BP
+$$
+\end{definition}
+
+Une matrice $A\in K^{n\times n}$ est diagonalisable si
+$$
+A\sim \begin{pmatrix}\lambda_{1} &  &   \\  & \ddots &  \\0  &  & \lambda _{n}\end{pmatrix}\in K^{n\times n}
+$$
+ 
+\begin{question}
+    Quand $A$ est diagonalisable?
+\end{question}
+\begin{answer}
+    Si et seulement si le polynome minimale $p(x)\in K[X]$ de $A$ se factorise comme $p(x)=(x-\lambda_{1})\dots(x-\lambda _{k})$ avec les $\lambda _{i}$ distincts.  
+\end{answer}
+
+\begin{exercise}[Serie 1 exo plus]
+Soit $R$ un anneau et $\alpha \in Z(R)$ un element du centre de $R$. Montrer que l'application
+
+\begin{align}
+\phi : R[x] & \to R \\
+f(x) & \mapsto f(\alpha)
+\end{align}
+
+est un morphisme d'anneuax surjectif.
+
+Soit $R=\mathbf{Z}^{2\times 2}$, trouver $\alpha \in R$ (qui n'appartient donc pas a $Z(R)$) et deux polynomes $g,h\in R[x]$ tel que
+$$
+g(\alpha)h(\alpha)\neq (gh)(\alpha)
+$$
+\end{exercise}
+\begin{proof}[Solution]
+Pour montrer que $\phi$ est un homomorphisme d'anneaux on verifie ces trois conditions $\forall f,g\in R[x]$
+\begin{enumerate}
+\item $\phi(1)=1$
+\item $\phi(g+f)=\phi(g)+\phi(f)$
+\item $\phi(fg)=\phi(f)\phi(g)$
+\end{enumerate}
+on verifie:
+\begin{enumerate}
+\item $\phi(1)=1$ car le polynome constant est envoye sur lui meme par $\phi$
+\item \label{exo1} On prend $f,g\in R[x]$ et on ecrit $f(x)=\sum_{i=0}^{\deg f}a_{i}x^{i}$ et $g(x)=\sum_{j=0}^{\deg g}b_{j}x^{j}$ ou $a_{i},b_{j}\in R$. 
+\begin{align}
+\phi(f(x)+g(x)) & =\phi\left( \sum_{i=0}^{\deg f} a_{i}x^{i}+\sum_{j=0}^{\deg g} b_{j}x^{j}  \right) \\
+ & =\phi\left( \sum_{k=0}^{\max\{ \deg f,\deg g \}} (a_{k}+b_{k})x^{k} \right) \\
+ & =\sum_{k=0}^{\max\{ \deg f,\deg g \}}(a_{k}+b_{k})\alpha^{k} \\
+ & =\sum_{i=0}^{\deg f} a_{i}\alpha^{i}+\sum_{j=0}^{\deg g} b_{j}\alpha^{j}  \\
+ & =\phi(f(x))+\phi(g(x)) \\
+\end{align}
+\item On reprend $f,g$ comme avant et on calcule 
+\begin{align}
+\phi(f(x)g(x)) & =\phi\left( \sum_{i=0}^{\deg f} a_{i}x^{i} \sum_{j=0}^{\deg g} b_{j}x^{j} \right) \\
+ & =\phi\left( \sum_{i=0}^{\deg f} \sum_{j=0}^{\deg g} a_{i}b_{j}x^{i+j} \right) \\
+ & =\sum_{i=0}^{\deg f} \sum_{j=0}^{\deg g} a_{i}b_{j}\alpha^{i+j} \label{exo2}\\
+ & =\left( \sum_{i=0}^{\deg f } a_{i}\alpha^{i} \right)\left( \sum_{j=0}^{\deg g } b_{j}\alpha^{j} \right) \\
+ & =\phi(f(x))\phi(g(x))
+\end{align}
+\end{enumerate}
+ou \ref{exo2} est obtenu car $\alpha \in Z(R)$. Donc $\phi$ est un morphisme d'anneaux qui est surjectif a cause de \ref{exo1}.
+
+Soit $R=\mathbf{Z}^{2\times2}$, on prend $\alpha=\begin{pmatrix}1 & 1 \\ 0 & 1\end{pmatrix}$, $g(x)=\begin{pmatrix}1 & 1  \\ 0 & 1 \end{pmatrix}x$ et $h(x)=\begin{pmatrix} 1 & 0 \\ 1 & 1\end{pmatrix}x$ on a
+$$
+\begin{pmatrix}
+1 & 1 \\
+0 & 1
+\end{pmatrix}\begin{pmatrix}
+1 & 0 \\
+1 & 1
+\end{pmatrix}=\begin{pmatrix}
+2 & 1 \\
+1 & 1
+\end{pmatrix}
+$$
+et 
+$$
+\begin{pmatrix}
+1 & 0 \\
+1 & 1
+\end{pmatrix}\begin{pmatrix}
+1 & 1 \\
+0 & 1
+\end{pmatrix}=\begin{pmatrix}
+1 & 1 \\
+1 & 2
+\end{pmatrix}
+$$
+Donc ces matrices ne commutent pas. On obtient
+$$
+g(\alpha)=\begin{pmatrix}
+1 & 2 \\
+0 & 1
+\end{pmatrix}\quad f(\alpha)=\begin{pmatrix}
+1 & 1 \\
+1 & 2
+\end{pmatrix}
+$$
+donc
+$$
+g(\alpha)f(\alpha)=\begin{pmatrix}
+3 & 5 \\
+1 & 2
+\end{pmatrix}
+$$
+mais
+$$
+g(x)h(x)=\begin{pmatrix}
+2 & 1 \\
+1 & 1 
+\end{pmatrix}x^{2}
+$$
+que si on evalue en $\alpha$
+$$
+(gh)(\alpha)=\begin{pmatrix}
+2 & 5 \\
+1 & 3
+\end{pmatrix}
+$$
+qui est different de $g(\alpha)f(\alpha)$
+\end{proof}

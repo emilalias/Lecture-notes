@@ -1,0 +1,91 @@
+Ou le cote a gauche est
+
+\begin{align}
+ & =\frac{d}{dt}\lim_{ n \to \infty } \sum_{i=1}^{n} \rho(\boldsymbol{r}_{i},t)\Delta V_{i} \\
+ & =\lim_{ n \to \infty } \sum_{i=1}^{n} \frac{ \partial \rho }{ \partial t } (\boldsymbol{r}_{i},t)\Delta V_{i} =\iiint _{V}\frac{ \partial \rho }{ \partial t } ~dV 
+\end{align}
+
+et a droite
+
+\begin{align}
+ & =-\iint _{S}\rho \boldsymbol{v}~d\boldsymbol{S} \\
+ & =-\iiint _{V}\boldsymbol{\nabla}(\rho \boldsymbol{v})~dV \\
+ & \Rightarrow \iiint _{V}\left( \frac{ \partial \rho }{ \partial t } +\boldsymbol{\nabla}(\rho \boldsymbol{v}) \right)~dV=0
+\end{align}
+pour n'importe quelle valuer $V$ donc
+$$
+\frac{ \partial \rho }{ \partial t } +\boldsymbol{\nabla}(\rho \boldsymbol{v})
+$$
+Ou de maniere equivalent 
+$$
+\frac{D\rho}{Dt}+\rho(\boldsymbol{\nabla v})=0
+$$
+\subsection{Equation de continuite (description Lagrangienne)}
+
+Derivation differente avec le meme resultat (voir serie 4.6!!!!).
+\begin{remark}
+\begin{itemize}
+\item Il y a un terme "produit de $\rho$ et $\boldsymbol{v}$" donc l'equation de continuite est non-lineaire.
+\item On appelle un fluide incompressible si $\rho$ est constante. Dans ce cas, l'equation de continuite devient:
+$$
+\boldsymbol{\nabla v}=0
+$$
+\end{itemize}
+\end{remark}
+
+\subsection{Equation d'Euler}
+On considere un fluide parfait (pas de frottement interne, donc pas de viscosite, ni de conduction de chaleur). On utilise la description Lagrangienne du fluide (on suit le volume $V$): 
+
+On considere la trajectoire d'elements de fluide d'un instant $t$ a $t+\Delta t$. La quantite de mouvement dans $V(t)$ est
+$$
+\boldsymbol{P}=\iiint _{V(t)} \rho \boldsymbol{v}~dV\quad
+$$
+Donc par Newton on a
+$$
+\frac{d\boldsymbol{P}}{dt}=\sum \boldsymbol{F}^{\mathrm{ext}}
+$$
+la somme des forces externes agissant sur la partie du fluide dans $V(t)$ qu'on peut calculer
+
+\begin{align}
+\frac{d\boldsymbol{P}}{dt} & =\iiint _{V(t)} \frac{D}{Dt}(\rho \boldsymbol{v})+\rho \boldsymbol{v}(\boldsymbol{\nabla v})~dV \\
+ & =\underbrace{ \iiint _{V(t)} \rho \boldsymbol{g}~dV }_{ \text{force de gravite} } -\underbrace{ \iint _{S(t)}p~d\boldsymbol{S} }_{ \text{force de pression} }\\
+ & \Rightarrow \underbrace{ \frac{D}{Dt}(\rho \boldsymbol{v})+\rho \boldsymbol{v}(\boldsymbol{\nabla v}) }_{ \frac{\rho D\boldsymbol{v}}{Dt}+\underbrace{ \boldsymbol{v}\left( \frac{D\rho}{Dt} +\rho(\boldsymbol{\nabla v})  \right) }_{ =0 }}=\rho \boldsymbol{g}-\boldsymbol{\nabla}p \\
+ & \Rightarrow \frac{\rho D\boldsymbol{v}}{Dt}=\rho \boldsymbol{g}-\boldsymbol{\nabla}p
+\end{align}
+
+\begin{remark}
+Valable strictement si la viscosite est 0. 
+\end{remark}
+\begin{remark}
+L'equation d'Euler n'est pas lineaire donc la resolution en generale est extrêmement complique.
+\end{remark}
+
+\subsection{Equation d'etat}
+
+Pour un fluide parfait on a les fonctions $\rho,p,\boldsymbol{v}$ (a cinq composantes) et les equations de continuite et d'Euler. Il nous manque une equation: l'equation d'etat qui depend du type de fluide.
+
+\begin{itemize}
+\item Gaz parfait sans echange de chaleur entre elements fluides: 
+$$
+p\Delta V^{\gamma}=\text{constante le long de la trajectoire}
+$$
+ou $\gamma=\frac{c_{p}}{c_{v}}$ est l'indice d'adiabicite (le rapport des chaleurs specifiques). Comme $\rho \propto \frac{1}{\Delta V}$ alors 
+$$
+\frac{D}{Dt}(p\rho^{-\gamma})=0
+$$
+\item Liquide parfait: Souvent on use l'approximation du fluide incompressible donc $\rho$ est constante et par l'equation de continuite $\boldsymbol{\nabla v}=0$.
+\end{itemize}
+
+On a donc un systeme d'equations pour decrire un fluide parfait:
+$$
+\begin{cases}
+\frac{ \partial p }{ \partial t } +\boldsymbol{\nabla}(\rho \boldsymbol{v})=0 \\
+\frac{\rho D\boldsymbol{v}}{Dt}-\rho \boldsymbol{g}+\boldsymbol{\nabla}p=0 \\
+\text{Equation d'etat}
+\end{cases}
+$$
+
+Conditions aux limites:
+\begin{example}
+Si on a des parois immobiles alors $\boldsymbol{v}~d\boldsymbol{S}=0$
+\end{example}

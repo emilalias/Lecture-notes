@@ -1,0 +1,133 @@
+\section{Divisibilite et racines}
+
+\begin{notation}
+$R$ est un anneau commutatif et $K$ est un corps.
+\end{notation}
+\begin{definition}[Divisibilite]
+Un polynome $q(x)\in R[x]$ divise $f(x)\in R[x]$ s'il existe un polynome $h(x)\in R[x]$ tel que 
+$$
+q(x)h(x)=f(x)
+$$
+\end{definition}
+\begin{example}
+Soit $q(x)=x^{2}+1\in \mathbf{Z}_{2}[x]$ et $f(x)=x^{3}+x^{2}-x+1 \in \mathbf{Z}_{2}[x]$. On a que $q(x)\mid f(x)$ parce qu'il existe $h(x)=x+1$ qui satisfait $q(x)h(x)=f(x)$. 
+\end{example}
+\begin{definition}[Racine d'un polynome]
+Soit $p(x)\in R[x]\setminus \{ 0 \}$ et $\alpha \in R$. On dit que $\alpha$ est une racine de $p(x)$ si $p(\alpha)=0$. 
+\end{definition}
+\begin{example}
+Soit $f(x)=x^{3}+x^{2}+x+1\in \mathbf{Z}_{2}[x]$, $\alpha=1$ est une racine de $f(x)$.
+\end{example}
+\begin{theorem}
+Soit $f(x)\in R[x]\setminus \{ 0 \}$ et $\alpha \in R$. $\alpha$ est une racine de $f(x)$ si et seulement si $(x-\alpha)\mid f(x)$.
+\end{theorem}
+\begin{proof}
+$\Rightarrow$: Soit $\alpha$ une racine, on fait une division avec reste sur $f(x)$ par $(x-\alpha)$ pour obtenir $f(x)=q(x)(x-\alpha)+r(x)$ et comme $\deg(x-\alpha)=1>\deg r$ alors $r(x)=a\in R$. Si $r(x)\neq 0$ alors $f(\alpha)=q(\alpha)(\alpha-\alpha)+a\neq0$ qui pose une contradiction. Si $r(x)=0$ alors $f(x)=q(x)(x-\alpha)$ et $(x-\alpha)\mid f(x)$.
+
+$\Leftarrow$: Si $(x-\alpha)\mid f(x)$ il existe $g(x)\in R[x]$ tel que $f(x)=(x-\alpha)g(x)$. Alors $f(\alpha)=(\alpha-\alpha)g(\alpha)=0$.
+\end{proof}
+\subsection{Plus Grand Diviseur Commun}
+
+\begin{theorem}\label{thm1}
+Soit $g(x),f(x)\in K[x]$ non tous deux nuls. L'ensemble
+$$
+I :=  \{uf+vg:u,v\in K[x] \}\subseteq K[x]
+$$
+est genere par un seul polynome $d\in K[x]$, c-a-d il existe $d(x)\in K[x]$ tel que
+$$
+I=\{ hd:h\in K[x] \}
+$$
+\end{theorem}
+\begin{proof}
+Vu que $I\supsetneq\{ 0 \}$, on peut choisir un polynome $d(x)\in I\setminus \{ 0 \}$ de degre minimal. On veut montrer que 
+$$
+I=\{ hd:h\in K[x] \}
+$$
+qui est equivalent a 
+$$
+d\mid uf+vg,\quad\forall u,v\in K[x].
+$$
+Supposons que $d\nmid uf+vg$ pour $u,v\in K[x]$ alors on peut effectuer une division avec reste qui donne
+$$
+uf+vg=qd+r
+$$
+comme $d\in I$ alors ils existent $u',v'\in K[x]$ tels que $d=u'f+v'g$ qui nous permet de reecire
+$$
+r=(u-qu')f+(v-qv')g\in I\setminus \{ 0 \}
+$$
+qui pose une contradiction avec la minimalite de $d\in I\setminus \{ 0 \}$.
+\end{proof}
+\begin{definition}[Polynome unitaire]
+Un polynome $f(x)\in R[x]\setminus \{ 0 \}$ est appelle unitaire si le coefficient dominant de $f$ est 1.
+\end{definition}
+\begin{theorem}
+Soient $f,g,d\in K[x]$ comme dans \ref{thm1} :
+\begin{enumerate}
+\item $d\mid f$ et $d\mid g$
+\item Si pour $h\in K[x]$ on a $h\mid f$ et $h\mid g$ alors $h\mid d$.
+\item Si $d$ est unitaire alors $d$ est unique.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+\begin{enumerate}
+\item $f,g\in I$ alors $d\mid f$ et $d\mid g$.
+\item Parce que $d\in I$, il existe $u,v\in K[x]$ tels que $d=uf+vg$. Comme $h\mid f$ et $h\mid g$ on a $f',g'\in K[x]$ tels que $f=f'h$ et $g=g'h$ donc $d=uf'h+vg'h=(uf'+vg')h$ et donc $h\mid d$.
+\item Soit $d'\in K[x]$ un polynome satisfaisant 1 et 2 alors $d\mid d'$ et $d'\mid d$. Ca signifie que $d=\alpha d'$ ou $\alpha \in K$ et si $d\mid d'\Rightarrow\deg d<\deg d'$ et si $d'\mid d\Rightarrow\deg d'<\deg d$ alors $\deg d=\deg d'$. Comme $d\mid d'$ il existe $q(x)\in K[x]$ tel que $dq=d'$ alors $\deg d+\deg q =\deg d'$ qui implique que $\deg q=0$ et $q\in K$. Donc si le coefficient dominant de $d=1$ alors il existe exactement un unique polynome $d$.  
+\end{enumerate}
+\end{proof}
+\subsection{L'algorithme d'Euclide}
+
+\begin{definition}
+Soitent $f(x),g(x)\in K[x]$ non tous deux nuls. Le polynome unique $d\in K[x]$ unitaire du ~\ref{thm1} est appelle le plus grand diviseur commun de $f$ et $g$. On ecrit $\gcd(f,g)=d=uv+fg$.
+\end{definition}
+
+Etant donne $f_{0}\neq0,f_{1}$ avec $\deg f_{0}\ge \deg f_{1}$ on veut calculer $\gcd(f_{0},f_{1})$. On peut observer que:
+\begin{itemize}
+\item Si $f_{1}=0$ alors $\gcd(f_{0},0)=f_{0}/\mathrm{coeffdom}(f_1)$
+\item Si $f_{1}\neq0$ via une division avec reste on obtient $f_{0}=q_{1}f_{1}+f_{2}$ ou $q_{1},f_{2}\in K[x]$ et $\deg f_{2}<\deg f_{1}$. On a que $\gcd(f_{0},f_{1})=\gcd(f_{1},f_{2})$.
+\end{itemize}
+On calcule succesivement $f_{0},f_{1},f_{2},\dots,f_{r}$ jusqu'a que $f_{r}=0$ et $f_{j}\neq0$ $\forall j\in \{ 0,\dots,r-1 \}$.
+\begin{example}\label{exsem2}
+On a $f_{0}=4x^{6}+x^{4}+2x^{2}+2\in \mathbf{Z}_{5}[x]$ et $f_{1}=3x^{4}+x^{3}+2x^{2}+2x+2\in \mathbf{Z}_{5}[x]$. Apres une premiere division on obtient 
+$$
+q_{1}(x)=3x^{2}+4x+2,\quad f_{2}(x)=4x^{3}+4x^{2}+3x+3
+$$
+puis
+$$
+q_{2}(x)=2x+2,\quad f_{3}(x)=3x^{2}+1
+$$
+apres
+$$
+q_{3}(x)=3x+3,\quad f_{4}=0
+$$
+alors $\gcd(f_{0},f_{1})=f_{3}\cdot3^{-1}=x^{2}+2$.
+\end{example}
+On a 
+$$
+\begin{pmatrix}
+f_{i} \\
+f_{i+1}
+\end{pmatrix}=\begin{pmatrix}
+0 & 1 \\
+1 & -q_{i}
+\end{pmatrix}\begin{pmatrix}
+f_{i-1} \\
+f_{i}
+\end{pmatrix}
+$$
+qui nous montre que
+$$
+\begin{pmatrix}
+f_{r-1} \\
+f_{r}
+\end{pmatrix}=\underbrace{\begin{pmatrix}
+0 & 1 \\
+1 & -q_{r-1}
+\end{pmatrix}\dots \begin{pmatrix}
+0 & 1 \\
+1 & -q_{1}
+\end{pmatrix}}_{\in K[x]^{2\times 2}}\begin{pmatrix}
+f_{0} \\
+f_{1}
+\end{pmatrix}
+$$

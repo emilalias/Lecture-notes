@@ -1,0 +1,142 @@
+\section{Inclusion-exclusion principle}
+\begin{theorem}[Exclusion-inclusion]\label{excinc}
+Let $A_{1},\dots,A_{n}$ be finite sets. Then the following holds:
+$$
+\left|\bigcup _{i=1}^{n}A_{i}\right|=\sum_{1\le i\le n} |A_{i}|-\sum _{1\le i <j\le n}|A_{i}\cap A_{j}|+\sum _{1\le i<j<k\le n}|A_{i}\cap A_{j}\cap A_{k}|-\dots+(-1)^{n-1}|A_{1}\cap\dots \cap A_{n}|  
+$$
+\end{theorem}
+\begin{lemma}
+Let $B_{1},\dots,B_m$ be finite sets and $w_{1},\dots,w_{m}\in \mathbf{R}$ be some real weights. Then
+$$
+\sum_{i=1}^{m} w_{i}|B_{i}|=\sum_{i=1}^{m} \sum _{b\in B_{i}}w_{i}=\sum _{b\in \bigcup _{i}B_{i}}\sum _{i:b\in B_{i}}w_{i}
+$$
+\end{lemma}
+\begin{proof}[Proof of the theorem \ref{excinc}]
+Our goal is to show that every element of $\bigcup _{i}A_{i}$ is counted in the inclusion-exlcusion formula exactly once.
+
+Suppose that $a\in A_{1}\cup A_{2}\cup\dots \cup A_{n}$ is such that it belongs to precisely $k$ different sets $A_{j},j=1,\dots,n$. This element is counted 
+$$
+\binom{k}{1}-\binom{k}{2}+\binom{k}{3}+\dots+(-1)^{n-1}\binom{k}{n}=\binom{k}{1}-\binom{k}{2}+\binom{k}{3}+\dots+(-1)^{k-1}\binom{k}{k}=1
+$$
+time.
+\end{proof}
+\begin{exercise}[Old exam question]
+Consider a $3\times3$ grid with each square colored either blue or red. Compute the total number of colorings which do not contain a $2\times 2$ red square.
+\end{exercise}
+\begin{proof}[Solution]
+We denote $S_{1},S_{2},S_{3},S_{4}$ the sets of colorings that contain a red square. For $j=1,\dots,4$, let $A_{j}$ be the set of colorings that contain the square $S_{j}$. Therefore we can find the number of colorings without square by substracting from the total possible colorings the number of colorings with some squares which gives
+$$
+\text{\# of colorings without squares }=2^{9}-\bigcup _{j=1}^{4}A_{j}
+$$
+we then conclude by using \ref{excinc}.
+\end{proof}
+\section{Applications of the formula}
+\begin{question}
+A hat-check girl completely loses track of which of $n$ hats belong to which owners, and
+hands them back at random to their $n$ owners as the latter leave. What is the
+probability $p_{n}$ that nobody receives their own hat back?
+
+Reformulation: Find the number of permutations of the set $[n]$ without fixed points.
+\end{question}
+\begin{answer}
+Let $A$ be the set of all permutations and $A_{i}$ be the set of permutations of the set $[n]$ for which $i$ is a fixed point. The number of permutations with no fixed points is
+$$
+|A|-\left|\bigcup _{i=1}^{n}A_{i}\right|.
+$$
+This way $A_{i}\cap A_{j}$ is the set of permutations for which $i$ and $j$ are fixed points and so on:
+
+\begin{align*}
+|A| & =n! \\
+|A_{i}| & =(n-1)! \\
+|A_{j}\cap A_{i}| & =(n-2)! \\
+ & \dots
+\end{align*}
+
+This gives 
+
+\begin{align*}
+|A|-\left|\bigcup _{i=1}^{n}A_{i}\right| & =n!-\binom{n}{1}(n-1)!+\binom{n}{2}(n-2)! \\
+ & =n!-\frac{n!(n-1)!}{1!(n-1)!}+\frac{n!(n-2)!}{2!(n-2)!} \\
+ & =n!\left( \frac{1}{0!}-\frac{1}{1!}+\frac{1}{2!}-\dots+(-1)^{n} \frac{1}{n!} \right) \\
+ & \simeq n!(\exp(-1)).
+\end{align*}
+
+Thus we see that the probability $p_{n}$ that nobody receives their own hat back is
+$$
+p_{n}=\frac{1}{0!}-\frac{1}{1!}+\frac{1}{2!}-\dots+(-1)^{n} \frac{1}{n!}
+$$
+which as $n$ approaches infinity converges to $\frac{1}{e}$.
+\end{answer}
+
+\begin{definition}
+In number theory, Euler's totient function $\phi(n)$ counts the positive integers up to a given integer $n$ that are relatively prime to $n$.
+\end{definition}
+\begin{example}
+Among the number $\{ 1,2,3,4,5,6 \}$ only 1 and 5 are coprimes to 6 therefore $\phi(6)=2$.
+\end{example}
+\begin{example}
+If $p$ is a prime number then $\phi(p)=p-1$ and $\phi(p^{k})=p^{k}-p^{k-1}$. 
+\end{example}
+
+\begin{proposition}
+Suppose that a number $n$ has the prime factorisation $n=p^{k_{1}}_{1}\dots p_{m}^{k_{m}}$ then:
+$$
+\phi(n)=n\prod_{i=1}^{m} \left( 1-\frac{1}{p_{i}} \right).
+$$
+\end{proposition}
+\begin{proof}
+\begin{itemize}
+\item Let $A$ be the set of all numbers in $[n]$ not coprime with $n$. 
+\item Let $A_{i}$ be the set of all numbers in $[n]$ divisible by $p_{i}$.
+\end{itemize}
+Then $A=\bigcup _{i=1}^{m}A_{i}$ and $|A_{i}|=\frac{n}{p_{i}}$, $|A_{i}\cap A_{j}|=\frac{n}{p_{i}p_{j}}$ and so on. By \ref{excinc} we find:
+
+\begin{align*}
+\phi(n) & =n-|A| \\
+ & =n-\sum _{1\le i \le n} \frac{n}{p_{i}}+\sum _{1\le i<j\le m} \frac{n}{p_{i}p_{j}}-\sum _{1\le i<j<k\le m} \frac{n}{p_{i}p_{j}p_{k}}+\dots=n\prod_{i=1}^{m} \left( 1-\frac{1}{p_{i}} \right)
+\end{align*}
+
+\end{proof}
+
+\subsection{Bonferroni's inequalities}
+\begin{theorem}
+Let $A_{1},\dots,A_{n}$ be finite sets. Let $k\in \{ 1,\dots,n \}$ be an odd integer. Then 
+$$
+\left|\bigcup _{i=1}^{n}A_{i}\right|\le \sum_{s=1}^{k} \sum _{J\subset \{ 1,\dots,n \}}(-1)^{s-1}\cdot\left|\bigcap _{i\in J}A_{j}\right|
+$$
+Let $\ell \in \{ 1,\dots,n \}$ be an even integer. Then
+$$\left|\bigcup _{i=1}^{n}A_{i}\right|\ge \sum _{s=1}^{\ell}\sum _{J\subset \{ 1,\dots,n \}} (-1)^{s-1}\cdot\left|\bigcap j\in J A_{j}\right|$$
+\end{theorem}
+\begin{proof}
+By induction on $n$ we verify the cases $n=1$ and $n=2$ because $|A_{1}|=|A_{1}|$ and $|A_{2}\cup A_{2}|\le |A_{1}|+|A_{2}|$. Therefore we assume the property correct for $n-1$ sets.
+
+Let $k$ be an odd/even integer i $\{ 1,\dots,n-1 \}$:
+
+\begin{align*}
+\sum_{s=1}^{k} \sum _{J\subset \{ 1,\dots,n \}}(-1)^{s-1}\left\lvert \bigcup _{j\in J}A_{j}  \right\rvert  & = \\
+ & =\sum_{s=1}^{k} \left( \sum _{J\subset \{ 1,\dots,n-1 \}}(-1)^{s-1}\left\lvert  \bigcap _{j\in J}A_{j}  \right\rvert+\sum _{J}(-1)^{s-1}\left\lvert  \bigcap _{j\in J}(A_{j}\cap A_{n})  \right\rvert   \right) \\
+ & =\sum_{s=1}^{k} \sum _{J}(-1)^{s-1} \left\lvert  \bigcap _{j\in J}A_{j}  \right\rvert +|A_{n}|-\sum_{s=1}^{k-1} \sum _{J}(-1)^{s}\left\lvert  \bigcap _{j\in J}(A_{j}\cap A_{n})  \right\rvert 
+\end{align*}
+
+
+By the induction hypothesis :
+$$
+\sum_{s=1}^{k} \sum _{J}(-1)^{s-1}\left\lvert  \bigcap _{j\in J}A_{j}  \right\rvert \le/\ge \left\lvert  \bigcup _{j=1}^{n-1}A_{j}  \right\rvert 
+$$
+and
+$$
+\sum_{s=1}^{k-1} \sum _{J}(-1)^{s}\left\lvert  \bigcap _{j\in J}(A_{j}\cap A_{n})  \right\rvert \ge/\le \left\lvert  \bigcup _{j=1}^{n-1}(A_{j}\cap A_{n})  \right\rvert 
+$$
+Therefore we arrive at
+$$
+\sum_{s=1}^{k} \sum _{J}(-1)^{s-1}\left\lvert  \bigcap _{j\in J}A_{j}  \right\rvert=\sum_{s=1}^{k} \sum _{J}(-1)^{s-1}\left\lvert  \bigcap _{j\in J}A_{j}  \right\rvert +|A_{n}|-\sum_{s=1}^{k-1} \sum _{J}(-1)^{s}\left\lvert  \bigcap _{j\in J}(A_{j}\cap A_{n})  \right\rvert 
+$$
+We use the induction hypothesis
+$$
+\le /\ge \left\lvert  \bigcup _{j=1}^{n-1}A_{j}  \right\rvert +|A_{n}|-\left\lvert  \left( \bigcup _{j=1}^{n-1} \right)\cap A_{n}  \right\rvert .
+$$
+By \ref{excinc} this number equals:
+$$
+\left\lvert  \left( \bigcup _{j=1}^{n} \right) \cup A_{n} \right\rvert=\left\lvert  \bigcup _{j=1}^{n}A_{j}  \right\rvert
+$$
+\end{proof}

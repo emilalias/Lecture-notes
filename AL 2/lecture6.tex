@@ -1,0 +1,100 @@
+
+\begin{theorem}[Cayley-Hamilton]
+Soit $f(x)\in K[x]$ un polynome et $A\in K^{n\times n}$ une matrice. On peut ecrire le polynome evalue en $A$ comme 
+$$
+f_{A}(x)=\det(A-xI)\in K[x]
+$$
+donc 
+$$
+f_{A}(A)=0\in K^{n\times n}
+$$
+\end{theorem}
+Soit $p(x)\in K[x]\setminus \{ 0 \}$ un polynome de degre minimal tel que $p(A)=0\in K^{n\times n}$ qu'on appelle le polynome minimal de $A$. Si $g(x)\in K[x]$ annule $A$ alors  $p(x)\mid g(x)$, en particulier $p(x)\mid f_{A}(x)$.
+
+\begin{question}
+Comment calculer $p(x)$ le polynome minimal de $A$?
+\end{question}
+\begin{answer}
+Soit $a_{0}I+a_{1}A+\dots +a_{d}A^{d}=0_{n}$ on cherche $d\ge 1$ minimal tel que ils existent $a_{0},a_{1},\dots,a_{d}\in K$ qui verifient ce condition.
+\begin{example}
+On veut trouver le polynome minimal de $A=\begin{pmatrix}1 & 2 \\ 3 & 4\end{pmatrix}$. On a
+$$
+p(A)=a_{0}\begin{pmatrix}
+1 & 0 \\
+0 & 1
+\end{pmatrix}+a_{1}\begin{pmatrix}
+1 & 2 \\
+ 3 & 4
+\end{pmatrix}+a_{2}\begin{pmatrix}
+7 & 10 \\
+15 & 22
+\end{pmatrix}
+$$
+et on peut extraire les composantes des matrices pour obtenir:
+$$B=
+\begin{pmatrix}
+1 & 1 &  7 \\
+0 & 3 & 15 \\
+0 & 2 & 10 \\
+1 & 4 & 22
+\end{pmatrix}\in K^{n^{2}\times(n+1)}
+$$
+et on cherche $\ker(B)$ pour trouver $a_{0},a_{1},a_{2}\in K$. $B=(C_{0},C_{1},\dots,C_{n})$ ou $C_{k}(n(i-1)+j)=(A^{k})_{ij}$ pour $1\le i,j\le n$. On echellonne $B$ pour obtenir le premier vecteur ($j$-minimal) dans la liste de vecteurs de la base de $\ker B$ comme decrit dans la 1ere semaine du cours, nous donne $d$ et $a_{0},a_{1},\dots,a_{d}$ decrivant $p(x)$.
+\end{example}
+\end{answer}
+\begin{question}
+Bonne methode?
+\end{question}
+\begin{answer}
+On compte le nombre d'operations elementaires du corps $K$ effectue par ce algorithme de Gauss. Pour eliminer une colonne dans une matrice dans $K^{m\times n}$ on effectue $\Theta(mn)$ operations qu'on doit appliquer sur toutes les sous-matrices donc $\Theta(mn^{2})$. Dans une matrice carre ca donne alors $\Theta(n^{4})$ operations pour trouver le polynome minimal.
+\end{answer}
+
+On veut decrire une methode de calcul de $p(x)\in K[x]$ de $A\in K^{n\times n}$ dans $\Theta(n^{3})$ operations du corps $K$.
+\begin{definition}
+Soit $\boldsymbol{v}\in K^{n}$ et $f(x)\in K[x]$ un polynome. On dit que $f(x)$ $A$-annule $\boldsymbol{v}$ si 
+$$
+f(A)\cdot \boldsymbol{v}=0
+$$
+\end{definition}
+\begin{theorem}
+Soit $p(x)\in K[x]\setminus \{ 0 \}$ un $A$-annulateur de $\boldsymbol{v}$ de degre minimal. $p(x)$ divise chaque $f(x)$ qui $A$-annule $\boldsymbol{v}$. $p(x)$ est unique a multiplication par un scalaire pres. Si $p(x)$ est unitaire alors $p(x)$ est unique. 
+\end{theorem}
+
+\begin{proof}
+Soit $f(A)\boldsymbol{v}=0$. On divise avec reste pour obtenir $f(x)=q(x)p(x)+r(x)$. Alors $r(A)=f(A)-p(A)q(A)$ alors $r(A)\boldsymbol{v}=(f(A)-p(A)q(A))\boldsymbol{v}=0$ alors $r(x)=0$ et $p(x)\mid f(x)$.
+
+L'unicite est demontre comme dans \ref{thm2}.
+\end{proof}
+
+\begin{notation}
+On note $p_{\boldsymbol{v}}(x)$ le $A$-annulateur de $\boldsymbol{v}$.
+\end{notation}
+\begin{remark}
+On peut calculer $p_{\boldsymbol{v}}(x)$ avec $(I\boldsymbol{v},A\boldsymbol{v},\dots,A^{n}\boldsymbol{v})\in K^{n\times(n+1)}$ qui est dans $\Theta(n^{3})$.
+\end{remark}
+
+Soit $p(x)$ le polynome minimal de $A$ et $p_{\boldsymbol{v}}(x)$ celui de $\boldsymbol{v}$ alors $p_{\boldsymbol{v}}(x)\mid p(x)$ pour tout $\boldsymbol{v}\in K^{n}$. 
+\begin{theorem}
+La probabilite de l'evenement $E:p_{\boldsymbol{v}}(x)\neq p(x)$ est au plus $\frac{n}{|S|}$ avec $S\subseteq K$
+\end{theorem}
+\begin{proof}
+Soit $p(x)=\ell_{1}^{\ell_{1}}(x)\dots \ell _{k}^{\ell _{k}}(x)$ une factorisation de $p(x)$ en irreductibles unitaires distincts. Si $i\neq j$ alors $\ell _{i}(x)\neq \ell _{j}(x)$. Si pour $\boldsymbol{v}\in K^{n}$, $p_{\boldsymbol{v}}(x)\neq p(x)$ parce que $p_{\boldsymbol{v}}(x)\mid p(x)$ on a que $p_{\boldsymbol{v}}(x)=\ell_{1}(x)^{\mu_{1}}\dots \ell _{k}^{\mu _{k}}(x)$ ou $0\le \mu _{i}\le \ell _{i}$ pour tout $i\in \{ 1,\dots,k \}$ et parmi ces $i$ il existe $\mu _{i}\neq \ell _{i}$.
+
+Quelle est la probabilite que $p_{\boldsymbol{v}}(x):\mu _{1}\le \ell_{1}-1$? On pose un polynome $g(x)=\ell_{1}^{\ell_{1}-1}(x)\dots \ell _{k}^{\ell _{k}}(x)$ dans ce cas alors $p_{\boldsymbol{v}}(x)\mid g(x)$. On sait que $g(A)\in K^{n\times n}\setminus \{ 0_{n} \}$ et $\overline{E}:g(A)\boldsymbol{v}=0$ alors on a choisi $\boldsymbol{v}\in S^{n}$ qui a une probabilite $P(\overline{E})\le\frac{1}{|S|}$. On peut ajouter ces probabilites pour chaque facteur de $p_{\boldsymbol{v}}(x)$ qui sont au plus $n$ pour obtenir $P(p_{\boldsymbol{v}}(x)\neq p(x))\le \frac{n}{|S|}$ qu'on appelle l'union bound. 
+\end{proof}
+\begin{corollary}
+Si $|S|=2n$ alors $P(p_{\boldsymbol{v}}(x)\neq p(x))\le 1/2$.
+\end{corollary}
+
+Pour calculer $p_{\boldsymbol{v}}(x)=a_{0}+\dots+a_{d}x^{d}\setminus \{ 0 \}$ tel que $p_{\boldsymbol{v}}(x)$ soit minimal on cherche $\ker(I\boldsymbol{v},\dots,A^{n}\boldsymbol{v})\in K^{n\times(n+1)}$.
+
+\begin{proposition}[Algorithme] \(\) \newline
+\noindent Entree: $A\in K^{n\times n}$, $S\subseteq K$, $|S|=2n$
+
+\noindent Sortie: $p(x)\in K[x]$ le polynome minimal de $A$.
+
+On repete 100 fois le processus: choisir $\boldsymbol{v}\in S^{n}$ aleatoirement et calculer $p_{\boldsymbol{v}}(x)$. A la fin on obtient parmis les $p_{\boldsymbol{v}}(x)$ un polynome de degre maximal.
+\end{proposition}
+\begin{theorem}
+La probabilite que l'evenement que le polynome obtenue par l'algorithme ne soit pas egal a $p(x)$ est borne par $\left( \frac{1}{2} \right)^{100}$.
+\end{theorem}

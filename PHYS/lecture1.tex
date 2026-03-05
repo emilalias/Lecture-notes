@@ -1,0 +1,168 @@
+\chapter{Notation du cours et maths necessaires}
+
+\section{Scalaires et vecteurs}
+
+Quantites scalaires (pression, masse, charge electrique...) et quantites vectorielles (vitesse, force,....) dans un repere 3D avec vecteurs de base $\boldsymbol{e}_{x},\boldsymbol{e}_{y},\boldsymbol{e}_{z}$ donc un vecteur $\boldsymbol{u}$ s'ecrit
+$$
+\boldsymbol{u}=u_{x}\boldsymbol{e}_{x}+u_{y}\boldsymbol{e}_{y}+u_{z}\boldsymbol{e}_{z}
+$$
+ou alternativement 
+$$
+\boldsymbol{u}=(u_{x},u_{y},u_{z})
+$$
+\begin{definition}[Norme d'un vecteur]
+$$
+\lVert \boldsymbol{u} \rVert =\sqrt{ u^{2}_{x}+u^{2}_{y}+u^{2}_{z} }
+$$
+\end{definition}
+\begin{example}
+La pression $p(\boldsymbol{r},t)$ est un champ scalaire et la vitesse de l'air $\boldsymbol{v}(\boldsymbol{r},t)$ est un champ vectorielle.
+\end{example}
+
+\section{Operateur nabla, gradient, divergence et rotationel}
+
+\begin{definition}[Operateur $\boldsymbol{\nabla}$]
+Dans coordonees cartesiennes on a
+$$
+\boldsymbol{\nabla }=\left( \frac{ \partial  }{ \partial x } ,\frac{ \partial }{ \partial y },\frac{ \partial  }{ \partial z }   \right)
+$$
+\end{definition}
+\begin{remark}
+$\frac{ \partial  }{ \partial x }$ veut dire une derivee partielle par rapport a $x$. On peut la definir par
+$$
+\frac{ \partial p }{ \partial x } (\boldsymbol{r},t)=\lim_{ h \to 0 } \frac{p(x+h,y,z,t)-p(x,y,z,t)}{h} 
+$$
+\end{remark}
+\begin{example}
+$$
+\frac{ \partial  }{ \partial x } \left( \frac{2x^{2}}{y}t+xt+zt \right)=\frac{4x}{y}t+t+0
+$$
+\end{example}
+\begin{example}
+$$\frac{ \partial  }{ \partial t }\left( \frac{x}{t} \right)=-\frac{x}{t^{2}}$$
+\end{example}
+
+\begin{definition}[Gradient]
+Le gradient $\boldsymbol{\nabla}f$ d'un champ scalaire $f(\boldsymbol{r},t)$ est un champ vectoriel:
+$$
+\boldsymbol{\nabla}f(\boldsymbol{r},t)=\boldsymbol{e}_{x}\frac{ \partial f }{ \partial x } +\boldsymbol{e}_{y}\frac{ \partial f }{ \partial y } +\boldsymbol{e}_{z}\frac{ \partial f }{ \partial z } 
+$$
+Interpretation : le gradient est perpendiculaire aux isosurfaces (3D)/ courbes de niveau (2D) de $f$ et est dirige dans la direction d'augmentation de $f$.
+\end{definition}
+\begin{example}[Cas 3D]
+Soit $f(x,y,z)=x^{2}+y^{2}+z^{2}=\lVert \boldsymbol{r} \rVert^{2}$, si $f$ est constante alors les isosurfaces sont des spsheres. Et le gradient est donne par $\boldsymbol{\nabla}f=2\boldsymbol{r}$
+\end{example}
+\begin{example}[Cas 2D: carte geographique]
+Soit $f(x,y)$ qui decrit des metres au dessus de la mer. voir poly 
+\end{example}
+\begin{definition}[Divergence]
+La divergence est un champ scalaire obtenu par le gradient d'un champ vectoriel:
+$$
+\boldsymbol{\nabla}\boldsymbol{u}(\boldsymbol{r},t)=\frac{ \partial u_{x} }{ \partial x } +\frac{ \partial u_{y} }{ \partial y } +\frac{ \partial u_{z} }{ \partial z }
+$$
+Interpretation: soit $\boldsymbol{u}$ est le champ vitesse d'un gaz, dans ce cas si on evalue $\boldsymbol{\nabla u}$ et si $\boldsymbol{\nabla u}>0$ alors on a un gaz en expansion ou si $\boldsymbol{\nabla u}<0$ alors on a un gaz en compression. 
+\end{definition}
+\begin{example}
+Soit $\boldsymbol{u}(x,y,z)=(x,0,0)$, si on calcule $\boldsymbol{\nabla u}=1>0$ .
+\end{example}
+\begin{example}
+Soit $\boldsymbol{u}(x,y,z)=(0,x,0)$, si on calcule $\boldsymbol{\nabla u}=0$.
+\end{example}
+\begin{definition}[Rotationel]
+Le rotationel $\boldsymbol{\nabla \times u}$ d'un champ vectoriel $\boldsymbol{u}(\boldsymbol{r},t)$ est un champ vectoriel:
+\begin{align*}
+    \boldsymbol{\nabla \times u}(\boldsymbol{r},t) &=\begin{pmatrix}
+    \frac{ \partial  }{ \partial x }  \\
+    \frac{ \partial  }{ \partial y }  \\
+    \frac{ \partial  }{ \partial z }  
+    \end{pmatrix}\times \begin{pmatrix}
+    u_{x} \\
+    u_{y} \\
+    u_{z}
+    \end{pmatrix}\\
+    &=\boldsymbol{e}_{x}\left( \frac{ \partial u_{z} }{ \partial y }-\frac{ \partial u_{y} }{ \partial z }   \right)+\boldsymbol{e}_{y}\left( \frac{ \partial u_{x} }{ \partial z } -\frac{ \partial u_{z} }{ \partial x }  \right)+\boldsymbol{e}_{z}\left( \frac{ \partial u_{y} }{ \partial x } -\frac{ \partial u_{x} }{ \partial y }  \right)
+\end{align*}
+Interpretation: Si $\boldsymbol{u}$ est la vitesse d'un fluide et on imagine un grain de riz entrainee par le fluide alors $\boldsymbol{\nabla \times u}$ est proportionelle a la vitesse angulaire de rotation du grain.
+\end{definition}
+\begin{example}[Rotation rigide autour de l'axe $\boldsymbol{\omega}$]
+On a que $\boldsymbol{u}=\boldsymbol{\omega\times r}$ donc $\boldsymbol{\nabla \times u}=2\boldsymbol{\omega}$
+\end{example}
+\begin{example}
+Soit $\boldsymbol{u}(x,y,z)=(0,x,0)$ alors $\boldsymbol{\nabla \times u}=\begin{pmatrix}0 \\ 0 \\ 1 \end{pmatrix}$ donc le fluide n'est pas en rotation mais le grain oui!
+\end{example}
+\begin{remark}
+On peut utiliser l'operateur $\boldsymbol{\nabla}$ comme un vecteur mais il faut faire attention que les operations ont un ordre.
+\end{remark}
+\begin{remark}
+Souvent on ecrit $\partial x$ pour $\frac{ \partial  }{ \partial x }$.
+\end{remark}
+\begin{remark}
+$\boldsymbol{\nabla }f,\boldsymbol{\nabla u},\boldsymbol{\nabla}\times \boldsymbol{u}$ sont independents du systeme de coordonnes. 
+\end{remark}
+
+\section{Formules avec les integrales}
+
+\begin{theorem}[Theoreme du gradient]
+Soit $S$ une surface fermee limitant un volume $V$ (on peut ecrire "$S=\partial V$"). On a $d\boldsymbol{S}$ le vecteur element de surface (perpendiculaire a $S$ vers l'exterieur avec $\lVert d\boldsymbol{S} \rVert=dS$). Soit $f$ un champ scalaire lisse sur $V$ alors
+$$
+\iint _{S}f~d\boldsymbol{S}=\iiint _{V}\boldsymbol{\nabla}f~dV
+$$
+\end{theorem}
+\begin{remark}
+$$
+\bullet\iint _{S}f~d\boldsymbol{S}=\lim_{ n \to \infty } \sum_{i=1}^{n} f(\boldsymbol{r}_{i})\Delta \boldsymbol{S}_{i}\quad \bullet\iiint _{V}\boldsymbol{\nabla}f~dV=\lim_{ n \to \infty } \sum_{i=i}^{n}\boldsymbol{\nabla}f(\boldsymbol{r}_{i})\Delta V_{i} 
+$$
+\end{remark}
+
+\begin{theorem}[Theoreme de la divergence (de Gauss)]
+Soit $\boldsymbol{A}$ un champ vectoriel, le flux a travers d'une surface $S$ est donne par:
+$$
+\phi=\iint _{S}\boldsymbol{A}~d\boldsymbol{S}
+$$
+Si on a une surface fermee $S=\partial V$ et $d\boldsymbol{S}$ vers l'exterieur de $V$
+$$
+\iint _{S}\boldsymbol{A}~d\boldsymbol{S}=\iiint _{V}(\boldsymbol{\nabla}\boldsymbol{A})~dV
+$$
+\end{theorem}
+\begin{example}
+Soit $\boldsymbol{A}=\rho \boldsymbol{u}$ la densite du flux de masse donc $\phi$ est la masse/unite de temps a travers $S$.
+\end{example}
+\begin{theorem}[Theoreme de Stokes]
+Soit $\Gamma$ une courbe fermee et $d\boldsymbol{l}$ le vecteur elelement de longueur $dl$, on definit la circulation de $\boldsymbol{A}$ le long de $\Gamma$:
+$$
+\Sigma=\oint _{\Gamma}\boldsymbol{A}~d\boldsymbol{l}=\iint _{S}(\boldsymbol{\nabla \times A})~d\boldsymbol{S}
+$$
+On peut definir l'orientation relative de $d\boldsymbol{l}$ et $d\boldsymbol{S}$ selon la regle du vis. 
+\end{theorem}
+
+\chapter{Fluide au repos}
+
+\section{Introduction}
+
+\begin{definition}
+Un fluide est un corps a l'etat liquide, gaz ou plasma.
+\begin{itemize}
+\item C'est un systeme d'un grand nombre de particules qui est susceptible de s'ecouler facilement.
+\item Deformable, pas de forme propre.
+\end{itemize}
+\end{definition}
+\begin{remark}
+Pour beaucoup d'applications un fluide est decrit par une densite (de masse) $\rho(\boldsymbol{r},t)$, la position $p(\boldsymbol{r},t)$ et la vitesse $\boldsymbol{v}(\boldsymbol{r},t)$.
+\end{remark}
+
+Dans ce chapitre : $\boldsymbol{v}(\boldsymbol{r},t)=\boldsymbol{0}$, $\rho(\boldsymbol{r},t)=\rho(\boldsymbol{r})$ et $p(\boldsymbol{r},t)=p(\boldsymbol{r})$.
+
+\subsection{Densite de fluide}
+
+La densite $\rho$ peut etre definie comme "masse/volume". 
+\begin{definition}[Densite moyenne]
+Soit $\Delta M$ l'element de masse d'un fluide et $\Delta V$ l'element de masse du meme fluide:
+$$
+\bar{\rho}_{\Delta V}=\frac{\Delta M}{\Delta V}
+$$
+on la mesure en $[\mathrm{kg}\cdot \mathrm{m}^{-3}]$.
+\end{definition}
+\begin{definition}[Densite au point $\boldsymbol{r}$]
+$$\rho(\boldsymbol{r},t)=\lim_{ \Delta V \to dV }\bar{\rho}_{\Delta V}|_{\boldsymbol{r}}$$
+ou $dV=dxdydz$ 
+\end{definition}

@@ -1,0 +1,140 @@
+\begin{definition}[Big O]
+Let $f,g:\mathbf{Z}_{\geq 0}\to \mathbf{R}$, we say that $f$ is big $\mathcal{O}$ of $g$ and write $f(x)=\mathcal{O}(g(x))$ if there exists $n_{0}\in \mathbf{Z}_{\geq0}$ and $c\in \mathbf{R}$ such that for all $n>n_{0}$:
+$$
+|f(n)|<c|g(n)|
+$$
+\end{definition}
+\begin{definition}[Little o]
+Let $f,g:\mathbf{Z}_{\geq 0}\to \mathbf{R}$, we say that $f$ is little $o$ of $g$ and write $f(x)=o(g(x))$ if there exists $n_{0}\in \mathbf{Z}_{\geq0}$ and $c\in \mathbf{R}$ such that for all $n>n_{0}$:
+$$
+\lim_{ n \to \infty } \frac{f(n)}{g(n)}=0
+$$
+\end{definition}
+\begin{notation}
+Let $f,g:\mathbf{Z}_{\ge 0}\to \mathbf{R}$, we say that $f\sim g$ if $\lim_{ n \to \infty } \frac{f(n)}{g(n)}=1$.
+\end{notation}
+\begin{example}
+As $n$ approaches $\infty$:
+\begin{itemize}
+\item $n=\mathcal{O}(n^{2})$
+\item $n=o(n^{2})$
+\item $\sin(n)=\mathcal{O}(1)$
+\item $n^{2}\sim n^{2}+2n+3$
+\end{itemize}
+\end{example}
+
+\section{Stirling's approximation}
+We want to approximate the function $\log(n!)=\log(1)+\dots+\log(n)$. We can attempt to do so by calculating $\int_{1}^{n} \log x \, dx=n\log n-n+1$. 
+\begin{theorem}[Stirling's approximation]
+\begin{equation}
+  n!\sim \sqrt{ 2\pi n }\left( \frac{n}{e} \right)^{n}\label{stirling}  
+\end{equation}
+\end{theorem}
+\begin{proof}[Idea of the proof]
+For $n\in \mathbf{Z}$ we want to prove that  $$n! = \int_{0}^{\infty} x^{n}e^{-x} \, dx$$
+to do so we can integrate the right-hand expression through the variable change $x=ny$
+\begin{align*}
+n! & =\int_{0}^{\infty} e^{n\log(x)-x} \, dx \\
+  & =e^{n\log(n)}n\int_{0}^{\infty} e^{n(\ln y-y)} \, dy \tag{\star}\label{stir}
+\end{align*} 
+to integrate ~\ref{stir} we can use Laplace's method to approximate integrals of the form
+$$
+\int_{a}^{b} e^{nf(x)} \, dx\text{ as }n\to \infty 
+$$
+we apply a variable change $y=1+t$ so that
+\begin{align*}
+\int_{0}^{\infty} e^{n(\log y-y)} \, dy  & =\int_{-1}^{\infty} e^{n(\log(1+t)-t-1)} \, dt \\
+  & =e^{-n}\int_{-1}^{\infty}e^{n(-t^{2}/2+t^{2}\varphi(t))}   \, dt & |u=\sqrt{ n }t \\
+ & =e^{-n} \int_{-\sqrt{ n }}^{\infty} e^{-u^{2}/2}e^{u^{2}\varphi(u/\sqrt{ n })} \frac{1}{\sqrt{ n }} \, du \\
+ & =\frac{e^{n}}{\sqrt{ n }}\int_{-\infty}^{\infty} e^{-u^{2}/2} \, du  \\
+ & =\frac{\sqrt{ 2\pi }}{\sqrt{ n }e^{n}}
+\end{align*}
+\end{proof}
+
+
+\section{Birthday paradox}
+\begin{question}
+Suppose that there are 25 students in a math class. What are the chances that there is a pair of students who share the same birthday?
+\end{question}
+\begin{answer}
+We imagine a list of student's birthdays
+\begin{itemize}
+\item Alice born on 29\.02
+\item Bob born on 1\.08
+\item Charlotte born on 1\.01
+\end{itemize}
+The number of possible lists is given by $366^{25}$ and the number of lists without coincidences by $366\cdot 365\cdot\dots\cdot 342$.
+
+We assume that all birthdays are uniformly distributed over all 366 days and that each person's birthday can be interpreted as an independent event which means that all birthday lists are equally likely. Therefore we come up with the probability formula:
+$$
+p=1-\frac{366\cdot365\cdot\dots\cdot342}{366^{25}}
+$$
+\end{answer}
+
+More generally to estimate the probability of a coincidence we have the following theorem:
+\begin{theorem}
+	Suppose that $k\leq n$ are positive integers and each of $k$ different people chooses 1 element from the set $[n]$. Their choices are uniformly random and independent. Then the probability $P=\frac{n!}{(n-k)!n^{k}}$ that they have chosen $k$ different elements can be estimated as
+
+\begin{equation}  
+    e^{(-k(k-1))/(2(n-k+1))}\leq P\leq e^{(-k(k-1))/(2n)}\label{prob1}
+\end{equation}
+\end{theorem}
+\begin{lemma}
+For $x>0$:
+$$
+\frac{x-1}{x}\leq \log(x)\leq x-1
+$$
+\end{lemma}
+\begin{proof}
+We estimate
+\begin{align*}
+ & \log\left( \frac{n^{k}}{n(n-1)\dots(n-k+1)} \right) \\
+ & =\log\left( \frac{n}{n-1} \right)+\log\left( \frac{n}{n-2} \right)+\dots+\log\left( \frac{n}{n-k+1} \right) \\
+ & \leq \left( \frac{n}{n-1}-1 \right)+\left( \frac{n}{n-2}-1 \right)+\dots+\left( \frac{n}{n-k+1}-1 \right) \\
+ & =\frac{1}{n-1}+\frac{2}{n-2}+\dots+\frac{k+1}{n-k+1} \\
+ & \leq \frac{1}{n-k+1}+\frac{2}{n-k+1}+\dots+\frac{k-1}{n-k+1} \\
+ & =\frac{1}{n-k+1}(1+2+\dots+(k-1))=\frac{k(k-1)}{2(n_-k+1)}
+\end{align*}
+we can then apply the exponential function to both sides of our estimates to get
+\begin{equation}
+  e^{(-k(k-1)/(2(n-k+1))}\le \frac{n(n-1)\dots(n-k+1)}{n^{k}}\le e^{(-k(k-1))/(2n)} \label{logineq}
+\end{equation}\end{proof}
+
+
+\section{Approximating binomial coefficients; and the bell curve}
+By looking at Pascal's triangle, we can observe that the middle binomial coefficients $\binom{n}{\lceil n/ 2\rceil}$ and $\binom{n}{\lfloor n/2 \rfloor}$ are the biggest. Furthermore, by looking at the ratio between the growth of this coefficient and $2^{n}$ we can see that their ratio plot resembles a function of that of a logarithim function.
+
+We can estimate this middle binomial coefficient
+$$
+\binom{2m}{m}=\frac{(2m)!}{(m!)^{2}}
+$$
+by using ~\ref{logineq}, we set $k=n$ to get 
+$$
+e^{\frac{-n(n-1)}{2}}n^n\le n! \le e^{-(n-1)/2}n^{n}.
+$$
+
+However we can get a much better estimate by using Stirling's formula ~\ref{stirling} which implies that
+$$
+\binom{n}{n/2}\sim \sqrt{ \frac{2}{\pi n}}2^{n}
+$$
+
+\begin{proposition}
+Let $m,t$ be positive integers and $t\leq m$. Then
+$$
+e^{-t^{2}/(m-t+1)}\leq \frac{{2m\choose m-t}}{{2m\choose m}} \leq  e^{-t^{2}/(m+t)}
+$$
+\end{proposition}
+\begin{proof}
+We prove the lower bound. We have
+$$
+\frac{\binom{2m}{m}}{\binom{2m}{m-t}}=\frac{(m+t)(m+t-1)\dots(m+1)}{m(m-1)\dots (m-t+1)}
+$$
+which we can estimate
+\begin{align*}
+ & \log\left( \frac{(m+t)(m+t-1)\dots(m+1)}{m(m-1)\dots (m-t+1)} \right) \\
+ & =\log\left( \frac{m+t}{m} \right)+\log\left( \frac{m+t-1}{m-1} \right)+\dots+\log\left( \frac{m+1}{m-t+1} \right) \\
+ & \le \left( \frac{m+t}{m}-1 \right)+\left( \frac{m+t-1}{m-1}-1 \right)+\dots+\left( \frac{m+1}{m-t+1}-1 \right) \\
+ & =\frac{t}{m}+\frac{t}{m-1}+\dots+\frac{t}{m-t+1} \\
+ & \le \frac{t}{m-t+1}+\frac{t}{m-t+1}+\dots+\frac{t}{m-t+1}=\frac{t^{2}}{m-t+1}
+\end{align*}
+\end{proof}

@@ -1,0 +1,221 @@
+\chapter{Basics of counting}
+\begin{notation}
+Let $A$ be a finite set. We denote $|A|$ the cardinality of $A$, i.e. the number of elements in the set.
+\end{notation}
+\begin{definition}
+Denote by $[n]$ the set of first $n$ natural numbers $[n]:=\{ 1,2,\dots,n \}$
+\end{definition}
+
+\section{Bijections}
+\begin{theorem}
+If there exists a bijection between sets $A$ and $B$ then $|A|=|B|$.
+\end{theorem}
+\section{Operations with finite Sets}
+\begin{exercise}
+Suppose that you know $|A|$ and $|B|$. What can you say about $|A\cap B|$, $|A\cup B|$ and $|A\setminus B|$?
+\end{exercise}
+\begin{definition}[Addition Rule]
+If $A\cap B=\varnothing$ then $|A\cup B|=|A|+|B|$
+\end{definition}
+\begin{definition}[Cartesian Product]
+$$
+A\times B=\{ (a,b):a\in A,b\in B \}
+$$
+\end{definition}
+\begin{definition}
+$$
+|A\times B|=|A|\cdot |B|
+$$
+\end{definition}
+\begin{definition}[Disjoint Union]
+$$
+A\sqcup B=A\times \{ 0 \}\cup B\times \{ 1 \}
+$$
+\end{definition}
+\begin{theorem}
+$$
+|A\sqcup B|=|A|+|B|
+$$
+\end{theorem}
+\begin{definition}[Exponential object]
+$$
+A^{B}:= \{ f:f\text{ is a function from }B \text{ to }A \}
+$$
+\end{definition}
+\begin{theorem}
+$$
+|A^{B}|=|A|^{|B|}
+$$
+\end{theorem}
+\begin{exercise}
+What is the number of $n$-letter words in an $m$-letter alphabet?
+\end{exercise}
+\begin{remark}
+All subsets of $A$ are bijective to the number of functions from $A$ to $\{ 0,1 \}$.
+
+Let $B\subset A$ then the function
+
+\begin{align*}
+B & \to \mathbb{1_{B}} \\
+a & \mapsto \begin{cases}
+0 & \text{if } a\not\in B \\
+1  & \text{if }a\in B
+\end{cases}
+\end{align*}
+
+is called the indicative function of $B$.
+\end{remark}
+\begin{definition}
+A permutation $\pi$ of a set $A$ is a bijection $\pi:A\to A$.
+\end{definition}
+\begin{notation}
+The set of permutations of $[n]$ is denoted by $S_{n}$.
+\end{notation}
+\begin{theorem}
+$$
+|S_{n}|=n!
+$$
+\end{theorem}
+\begin{exercise}
+Construct a bijection between $S_{n}$ and $[1]\times[2]\times\dots \times [n]$.
+\end{exercise}
+\section{Probabilistic method}
+\begin{definition}
+A finite probability space is a pair $(\Omega,P)$ where $\Omega$ is a finite set and $P:2^{\Omega}\to[0,1]$ is a function assigning a number from the interval $[0,1]$ to every subset of $\Omega$ such that:
+\begin{itemize}[1]
+\item $P(\varnothing)=0$
+\item $P(\Omega)=1$
+\item $P(A\cup B)=P(A)+P(B)$ for any two disjoint sets $A,B\subseteq \Omega$
+\end{itemize}
+\end{definition}
+\subsection{Probability theory to set theory dictionary}
+
+The set $\Omega$ can be thought as the set of all possible outcomes of some random experiment.
+\begin{definition}
+Elements of $\Omega$ are called elementary events.
+\end{definition}
+\begin{definition}
+Subsets of $\Omega$ are called events.
+\end{definition}
+\begin{remark}
+Elementary events are not events.
+\end{remark}
+\begin{definition}
+Let $w\in \Omega$, $A,B\subseteq \Omega$
+\begin{itemize}
+\item $w\in A\Leftrightarrow$ event A ocurred
+\end{itemize}
+\end{definition}
+\begin{example}[A random sequence of 0s and 1s]
+$\Omega=\{ 0,1 \}^{n}=$ all $n$-term sequences of 0s and 1s with $|\Omega|=2^{n}$.
+
+For $A\subseteq \Omega$ : $P(A):=\frac{|A|}{|\Omega|}=\frac{|A|}{2^{n}}$.
+
+Consider a set $A\subseteq \Omega$ defined as $A:=\{ (w_{1},\dots,w_{n}):w_{1}=1 \}$. $A$ is the event : "the first element of a random sequence is 1".
+\begin{problem}
+What is the probability of $A$?
+\end{problem}
+\end{example}
+
+\section{Binomial coefficients}
+\begin{definition}
+A binomial coefficient $n\choose k$ is the number of ways in which one can choose $k$ objects out of $n$ distinct objects, assuming the order of the elements does not matter.
+\end{definition}
+\begin{remark}
+This is the same as the number of subsets of $k$ elements of an $n$-element set.
+\end{remark}
+\begin{proposition}
+$$
+{n\choose k}=\frac{n!}{(n-k)!k!}
+$$
+\end{proposition}
+\begin{notation}
+Let $A$ be a finite set and $k$ be a non-negative integer. Then $A\choose k$ is the set of $k$-elements of $A$:
+$$
+|{A\choose k}|={|A|\choose k}
+$$
+\end{notation}
+
+\begin{proposition}
+The following identities hold:
+\begin{itemize}
+\item ${n\choose k}+{n \choose k+1}={n+1 \choose k+1}$
+\item $n \choose k$ is the $k$-th element in the $n$-th line of Pascal's triangle.
+\end{itemize}
+\end{proposition}
+\begin{proof}
+Each subset of the set $[n+1]$ either contains element $n+1$ or not. 
+
+Number of $(k+1)$-element subsets of $[n+1]$ containing $n+1$ is $n\choose k$.
+
+Number of $(k+1)$-elements subsets of $[n+1]$ not containing $n+1$ is $n \choose k+1$.
+\end{proof}
+\begin{proposition}
+The number of subsets of an $n$-element set is $2^{n}$, since we have
+$$
+2^{n}={n\choose 0}+{n\choose 1}+\dots+{n\choose n}
+$$
+The number of subsets of an $n$-element set having odd cardinality is $2^{n-1}$. The number of subsets of an $n$-element set having even cardinality is $2^{n-1}$.
+\end{proposition}
+\begin{proof}
+Consider the map $\phi:2^{[n]}\to 2^{[n]}$ defined by
+$$
+\phi(A)=A\Delta \{ 1 \}=\begin{cases}
+A\setminus \{ 1 \} & \text{if }1\in A \\
+A\cup \{ 1 \} & \text{otherwise}
+\end{cases}
+$$
+Cardinalities of subsets $A$ and $\phi(A)$ always have different parity.
+
+Since $\phi \circ\phi=\mathrm{Id}$ we deduce that $\phi$ is a bijection between the set of "odd" subsets and the set of "even" subsets.
+\end{proof}
+
+\begin{theorem}[Binomial theorem]
+$$
+(1+x)^{n}={n\choose 0}+{n\choose 1}x+\dots+{n\choose n}x^{n}=\sum_{i=0}^{n} {n\choose i}x^{i}
+$$
+\end{theorem}
+\begin{proposition}
+Assume we have $k$ identical objects and $n$ different persons. Then, the number of ways in which one can distribute this $k$ objects among the $n$ persons equals
+$$
+{n+k-1\choose n-1}={n+k-1\choose k}
+$$
+\end{proposition}
+\begin{remark}
+Equivalently, it is a number of solutions to te equation $x_{1}+\dots+x_{n}=k$ in non-negative integers.
+\end{remark}
+\begin{proof}
+Let $A$ be the set of all solutions of equation $x_{1}+\dots+x_{n}=k$ such that $x_{i}\in \mathbf{Z}_{\geq 0}$.
+
+Let $B$ be the set of all subsets of cardinality $n-1$ in $[n+n-1]$.
+
+We construct the bijection $\psi:A\to B$ in the following way
+$$
+A:= (x_{1},\dots,x_{n})\mapsto B:= \{ x_{1}+1,x_{1}+x_{2}+2,\dots,x_{1}+\dots+x_{n-1}+n-1 \}
+$$
+We have $x_{1}+x_{2}+\dots+x_{n}=k$. Consider the following string
+$$
+\underbrace{ \bullet\dots \bullet }_{ x_{1}\text{ bullets} }+\underbrace{ \bullet\dots \bullet }_{ x_{2}\text{ bullets} }+\dots+\underbrace{ \bullet\dots \bullet }_{ x_{n}\text{ bullets} }
+$$
+This string consists of $k+n-1$ symbols : $k$ "$\bullet$" and $n-1$ "$+$".
+$$
+\text{Set } B=\{ \text{positions of "+" in the string} \}
+$$
+We show that $\psi$ is a bijection by computing its inverse map. Let $\mathbf{b}$ be an element of $B$. Suppose that
+$$
+1\leq b_{1}<b_{2}<\dots<b_{n-1}\leq k+n-1
+$$
+are the elements of $\mathbf{b}$ written in the increasing order. Then the preimage $\psi ^{-1}(\mathbf{b})$ is an $n$-tuple of integers $(x_{1},\dots,x_{n})$ defined by
+\begin{align*}
+x_{1} & =b_{1}-1 \\
+x_{i} & =b_{i}-b_{i-1},\quad i=2,\dots,n-1 \\
+x_{n} & =k+n-1-b_{n-1}
+\end{align*}
+It is easy to see from these equations that the numbers $x_{i},i=1,\dots,n$ are non-negative integeres and $x_{1}+\dots+x_{n}=k$.
+
+Since there is a bijection between sets $A$ and $B$, their cardinalities are equal adn
+$$
+|A|=|B|={k+n-1\choose n-1}
+$$
+\end{proof}
+

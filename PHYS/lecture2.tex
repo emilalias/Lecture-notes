@@ -1,0 +1,52 @@
+\begin{definition}[Masse volumique]
+La masse volumique d'un volume de fluide compressible est definie par 
+$$
+m(t)=\iiint _{\boldsymbol{r}}\rho(\boldsymbol{r},t)~dV
+$$
+Si le volume de fluide est incompressible alors on pose
+$$
+m(t)=\rho(t)V
+$$
+\end{definition}
+
+\subsection{Pression dans un fluide}
+\begin{definition}
+La pression $p(\boldsymbol{r},t)$ est la force par unite de surface exercee par un fluide sur une paroi ou une autre fluide. C'est une force perpendiculaire a la surface on ecrit alors
+$$
+d\boldsymbol{F}=pd\boldsymbol{S}
+$$
+ou $d\boldsymbol{S}$ est le vecteur element de $S$ une surface. On mesure la pression en $\mathrm{Pa}=\mathrm{Nm}^{-2}=\mathrm{Jm}^{-3}$ qu'on appelle des pascales.
+\end{definition}
+La pression a ces proprietes:
+\begin{itemize}
+\item La pression est perpendiculaire a la surface.
+\item $p(\boldsymbol{r},t)\in \mathbf{R}$ est un grandeur scalaire 
+\item La pression est isotrope en absence de cisaillement. 
+\end{itemize}
+
+\subsection{Pression hydrostatique}
+\begin{question}
+Quel est le champ scalaire associe a $p(\boldsymbol{r},t)$ pour un fluide au repos?
+\end{question}
+\begin{answer}
+On suppose un fluide incompressible de $\rho$ constant. On considere ensuite un volume du fluide immobile c-a-d $\sum _{i}\boldsymbol{F}_{i}=\boldsymbol{0}$. En particulier les forces qui agissent sur le volume sont le poids $\boldsymbol{P}$ et les pousses du fluide par haut et bas du volume $\boldsymbol{F}_{1},\boldsymbol{F}_{2}$ respectivement. On note $h=z_{2}-z_{1}$ ou $z_{2},z_{1}$ décrivent la position par rapport a $\boldsymbol{e}_{z}$ du bas et haut du volume. ... voir poly
+\end{answer}
+\begin{theorem}
+Pour un fluide incompressible et $\rho=\mathrm{cste}$ on definit la presion
+$$
+p(h)=p_{0}+\rho gh
+$$
+ou $p_{0}$ est la pression inicial a la surface du fluide et $h$ l'hauteur du volume de fluide.
+\end{theorem}
+\begin{remark}
+Si on interprete $h=z+\Delta z$ alors
+\begin{itemize}
+\item $\lim_{ \Delta \to 0 }\to \frac{df}{dz}=\rho g\Rightarrow \boldsymbol{\nabla}p=\rho \boldsymbol{g}$
+\item Si $\Delta=0\to p=\mathrm{cste}$ 
+\item Si $p(z)$ change alors $p(z+\Delta z)$ change aussi.
+\end{itemize}
+\end{remark}
+
+\begin{proposition}[Principe de Pascal]
+Un changement de $p$ applique sur un fluide incompressible et au repos est transmis sans changement a chaque partie du fluide.
+\end{proposition}

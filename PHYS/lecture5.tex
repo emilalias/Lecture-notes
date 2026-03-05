@@ -1,0 +1,117 @@
+\begin{example}[Bulle de savon - deux interfaces]
+Dans une bulle de savon on a un rayon interieur $R_{1}$ et un rayon extérieur $R_{2}$ a cause du couche d'eau savonneuse qui amene a une difference de pressions entre la couche $p_{0}$, l'interieur $p_{1}$ et l'exterieur $p_{2}$. En appliquant la loi de Laplace on obtient 
+$$
+p_{0}=p_{2}+\frac{2\gamma}{R_{2}},\quad p_{1}=p_{0}+\frac{2\gamma}{R_{1}}\Rightarrow p_{1}=p_{2}+\frac{2\gamma}{R_{1}}+\frac{2\gamma}{R_{2}}
+$$
+\end{example}
+\begin{example}[Capillarite]
+poly p.27
+\end{example}
+
+\begin{theorem}[Loi de Jurin]
+$$
+h=\frac{2\gamma}{\rho gR}=\frac{2\gamma \cos \theta}{\rho gr}\propto \frac{1}{r}
+$$
+ou $r$ est la demi-longueur du tube, $R$ le rayon de la sphere obtenue en approximant la interface liquide/gaz et $\theta$ l'angle entre le point le plus haut du liquide avec le centre de la sphere.
+\end{theorem}
+
+\chapter{Dynamique des fluides}
+
+\section{Introduction}
+
+Fluides en mouvement decrits par 
+$$
+\rho(\boldsymbol{r},t),\quad p(\boldsymbol{r},t),\quad \boldsymbol{v}(\boldsymbol{r},t)
+$$
+ou $\boldsymbol{v}$ est la vitesse d'un element fluide infinitesimal a $\boldsymbol{r}$ en $t$ (vitesse moyenne de toutes les particules dans cet element) donc pas la vitesse aleatoire/thermique des atomes/molecules du fluide.
+\begin{example}[Atmosphere]
+$\boldsymbol{v}$ est la vitesse du vent. Cependant, la vitesse thermique des molecules d'oxygene et d'azote est d'environ $500\mathrm{m}\mathrm{s}^{-1}$ meme si il y a pas de vent. 
+\begin{remark}
+Les lignes de courant sont decrits par $d\boldsymbol{\ell}\times \boldsymbol{v}$ et le mouvement du fluide est decrit par $\frac{d\boldsymbol{r}_{f}}{dt}=\boldsymbol{v}(\boldsymbol{r}_{f},t)$ donc si $\frac{ \partial \boldsymbol{v} }{ \partial t }\neq 0$ alors les lignes de courant et le mouvement du fluide sont differents.
+\end{remark}
+\end{example}
+
+Different types d'ecoulements:
+\begin{itemize}
+\item Ecoulement statique: $\boldsymbol{v}(\boldsymbol{r},t)=0$ pour tous $\boldsymbol{r},t$.
+\item Ecoulement stationnaire: $\frac{ \partial \boldsymbol{v} }{ \partial t }(\boldsymbol{r},t)=0$, $\frac{ \partial \rho }{ \partial t }(\boldsymbol{r},t)=0$ et $\frac{ \partial p }{ \partial t }(\boldsymbol{r},t)=0$. 
+\item Ecoulement laminaire: "couches succesives du fluide se deplacent doucement l'une a cote de l'autre. ("a basse vitesse")". Un ecoulement stationnaire implique un ecoulement laminaire.
+\item Ecoulement turbulant: Si non-laminaire. Un mouvement irreguliere et chaotique ("a haute vitesse").
+\begin{remark}
+La turbulence dans des gaz, liquides et plasmas est un sujet important de la recherche! Mais dans le cours on va étudier l'ecoulement laminaire.
+\end{remark}
+\end{itemize}
+
+\section{Derivee convective}
+
+Attention: 
+\begin{itemize}
+\item $\frac{ \partial \boldsymbol{v} }{ \partial t }$ donne la variation de $\boldsymbol{v}$ par unite de temps a un endroit fixe mais n'est donne pas l'acceleration de l'element fluide a $(\boldsymbol{r},t)$.
+\item $\frac{ \partial p }{ \partial t }$ donne la variation de $p$ par unite de temps a la position $\boldsymbol{r}$ mais pas la variation de $p$ vue par un observateur entraine par l'ecoulement.
+\end{itemize}
+\begin{question}
+Quelle est la variation de $p$ le long d'une trajectorie $\Gamma$?
+\end{question}
+\begin{answer}
+\begin{itemize}
+\item A temp $t$: la position est $\boldsymbol{r}$ et la pression $p(\boldsymbol{r},t)$.
+\item A temp $t+dt$: la position est $\boldsymbol{r}+\boldsymbol{v}(\boldsymbol{r},t)~dt$  et la pression $p(\boldsymbol{r}+\boldsymbol{v}(\boldsymbol{r},t)~dt,t+dt)$ donc
+
+\begin{align*}
+p(\boldsymbol{r}+\boldsymbol{v}(\boldsymbol{r},t)~dt,t+dt) & =p(x+v_{x}dt,y+v_{y}dt,z+u_{z}dt,t+dt ) \\
+ & =p(x,y,z,t)+\frac{ \partial p }{ \partial x } u_{x}~dt+\frac{ \partial p }{ \partial y } u_{y}~dt+\frac{ \partial p }{ \partial z } u_{z}~dt +\frac{ \partial p }{ \partial t } dt \tag{\star}\label{pressiondt} \\
+ & = p(\boldsymbol{r},t)+\frac{ \partial p }{ \partial t } dt+(\boldsymbol{v}\boldsymbol{\nabla})p~dt
+\end{align*}
+
+\end{itemize}
+donc la variation temporelle de $p$ le long de $\Gamma$ est donne par 
+
+\begin{align*}
+\frac{p(\boldsymbol{r},t)+\frac{ \partial p }{ \partial t } dt+(\boldsymbol{v}\boldsymbol{\nabla})p~dt-p(\boldsymbol{r,t})}{dt} & =\frac{ \partial p }{ \partial t } +(\boldsymbol{v}\boldsymbol{\nabla})p  \\
+ & =\left( \frac{ \partial  }{ \partial t } +\boldsymbol{v\nabla} \right)p=: \frac{D}{Dt}p
+\end{align*}
+
+qu'on appele la derivee convective.
+\begin{reminder}
+Pour \ref{pressiondt} on a utilise que pour $f$ une fonction d'une variable $x$ on a:
+$$
+f(x+\Delta x)=f(x)+\frac{df}{dx}\Delta x+\mathcal{O}(\Delta x^{2})
+$$
+et 
+$$
+f(x+dx)=f(x)+\frac{df}{dx}dx.
+$$
+De facon analogue dans deux variables on a :
+$$
+f(x+dx,y+dy)=f(x,y)+\frac{ \partial f }{ \partial x } dx+\frac{ \partial f }{ \partial y } dy
+$$
+\end{reminder}
+
+\end{answer}
+
+De meme la variation temporelle de $\boldsymbol{v}$ le long de $\Gamma$ (l'acceleration) est donne par :
+$$
+\boldsymbol{a}=\frac{D\boldsymbol{v}}{Dt}=\left( \frac{ \partial  }{ \partial t } +\boldsymbol{v\nabla} \right)\boldsymbol{v}.
+$$
+
+Maniere pour decire un ecoulement: 
+\begin{definition}[Description Lagrangienne d'un fluide]
+Mesures des quantites pression, densite, vitesse en des endroits qui se deplacent avec le fluide.
+\end{definition}
+\begin{definition}[Description Eulerienne d'un fluide]
+On mesure $\rho,p,\boldsymbol{v}$ au cours du temps en des endroits fixes.
+\end{definition}
+
+\section{Equations fluides}
+
+Pour determiner l'evolution des cinq fonctions $\rho,p,\boldsymbol{v}$ ($\boldsymbol{v}$ a trois composantes) il nous faut cinq equations.
+
+\subsection{Equation de continuite (description Eulerienne)}
+
+Principe de conservation de masse en absence des sources/pertes:
+
+On observe que dans un volume fixe $V$ avec surface $S$ de vitesse $\boldsymbol{v}(\boldsymbol{r,}t)$, la variation de masse dans $V$ est egal au flux de masse a travers $S$:
+$$
+\frac{d}{dt}\iiint _{V}\rho(\boldsymbol{r},t)~dV=-\iint _{S}\rho(\boldsymbol{r},t)\boldsymbol{v}(\boldsymbol{r},t)~d\boldsymbol{S}
+$$
+ou $d\boldsymbol{S}$ est oriente vers l'exterieur de $V$. 
