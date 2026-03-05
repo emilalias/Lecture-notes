@@ -1,0 +1,115 @@
+\chapter{Intégrales generalisees}
+\section{Integrale au sens de Riemann}
+Soit $f:[a,b]\to \mathbf{R}$ bornee avec $-\infty<a<b<+\infty$.
+\begin{definition}[Partition]
+ On note une partition de $[a,b]$
+$$
+P=\{ (x_{0},x_{1}),\dots,(x_{n-1},x_{n}) \}
+$$
+\end{definition}
+\begin{definition}[Sommes de Darboux]
+\begin{itemize}
+\item Somme de Darboux superieure
+$$
+\overline{S}(f,P)=\sum_{i=1}^{n} \sup_{x \in [x_{i-1},x_{i}]}f(x)\cdot(x_{i}-x_{i-1}1)
+$$
+\item Somme de Darboux inferieure
+$$
+\underline{S}(f,P)=\sum_{i=1}^{n} \inf_{x \in [x_{i-1},x_{i}]}f(x)\cdot(x_{i}-x_{i-1}1)
+$$
+\end{itemize}
+On note $\overline{S}(f)=\inf\{ \overline{S}(f,P)\}$ et $\underline{S}(f)=\sup \{ \underline{S}(f,P) \}$.
+\end{definition}
+
+Si $\overline{S}(f)=\underline{S}(f)$ alors $f$ est integrable au sens de Riemann.
+\begin{notation}
+$$
+\int_{a}^{b} f(x) \, dx=\overline{S}(f)=\underline{S}(f) 
+$$
+\end{notation}
+\begin{proposition}
+Si $f:[a,b]\to \mathbf{R}$ est continue (par morceaux) alors elle est integrable au sens de Riemann. 
+\end{proposition}
+
+On peut generaliser cette notion dans un intervalle qui n'est pas ferme/borne quand $f$ est integrable (au sens de Riemann) sur tout sous intervalle ferme et borne.
+\begin{example}
+\begin{itemize}
+\item $\int_{0}^{1} \ln(x) \, dx$
+\item $\int_{0}^{1} \frac{1}{x} \, dx$
+\item $\int_{0}^{1} \sin\left( \frac{1}{x} \right) \, dx$
+\item $\int_{0}^{\infty}\sin x  \, dx$
+\item $\int_{0}^{\infty}e^{ -x }  \, dx$
+\item $\int_{1}^{\infty} \frac{1}{x} \, dx$
+\item $\int_{-\infty}^{\infty} \frac{1}{1+x^{2}} \, dx$
+\end{itemize}
+\end{example}
+\section{Integrale generalisee sur un intervalle demi-ouvert  borne}
+\begin{definition}
+Pour $a<b$, soit $f:[a,b)\to \mathbf{R}$ integrable sur tout sous-intervalle ferme et borne de $[a,b)$. Soit
+$$
+F(t)=\int_{a}^{t} f(x) \, dx, \quad t\in [a,b)
+$$
+Si $\lim_{ t \to b^{-} }F(t)$ existe alors on dit que $\int_{a}^{b} f(x) \, dx$ existe (converge) et on pose 
+$$
+\int_{a}^{b} f(x) \, dx=\lim_{ t \to b^{-} } F(t)
+$$
+Si $\lim_{ t \to b^{-} }F(t)$ n'existe pas (finie) on dit que l'integrale generalisee diverge.
+\end{definition}
+\begin{remark}
+Pour un intervalle $(a,b]$ on prend $\lim_{ t \to a^{+} }F(t)$.
+\end{remark}
+\begin{example}[Important!]
+$\int_{0}^{1} \frac{1}{x^{\alpha}}  \, dx$ avec $\alpha>0$.
+
+Si $\alpha\neq 1$ alors $$F(t)=\int_{t}^{1} \frac{1}{x^{\alpha}} \, dx=\left[ \frac{x^{-\alpha+1}}{1-\alpha} \right]^{1}_{t}=\frac{1}{1-\alpha}(1-t^{-\alpha+1})$$
+qu'on evalue quand $t\to0$
+$$
+\lim_{ t \to 0^{+} } F(t)=\lim_{ t \to 0^{+} } \frac{1}{1-\alpha}(1-t^{-\alpha+1})=\begin{cases}
+\frac{1}{1-\alpha}\left( 1-\frac{1}{t^{\alpha-1}} \right)\to \infty & \text{si }\alpha>1 \\
+\frac{1}{1-\alpha} & \text{si } \alpha \in(0,1)
+\end{cases}
+$$
+\end{example}
+\begin{exercise}
+Est-ce que $\int_{0}^{1} \ln x \, dx$ converge?
+\end{exercise}
+\begin{remark}
+Si $f:[a,b)\to \mathbf{R}$ est continue et $\lim_{ t \to b^{-} }f(x)$ existe c-a-d $f$ peut etre prolongee par continuite sur $[a,b]$ alors $\int_{a}^{b} f(x) \, dx$ converge et concide a $\int_{a}^{b} \tilde{f}(x) \, dx$ avec $\tilde{f}$ la fonction prolongee par continuite.
+\end{remark}
+
+\section{Integrale generalisee sur un intervalle ouvert borne}
+\begin{definition}
+
+Soit $f:(a,b)\to \mathbf{R}$ integrable sur tout sous-intervalle ferme et borne de $(a,b)$. Pour $c\in(a,b)$ si $\int_{a}^{c} f(x) \, dx$ et $\int_{c}^{b} f(x) \, dx$ convergent alors on dit que $\int_{a}^{b} f(x) \, dx$ converge et on pose
+$$
+\int_{a}^{b} f(x) \, dx =\int_{a}^{c} f(x) \, dx +\int_{c}^{b} f(x) \, dx 
+$$
+sinon $\int_{a}^{b} f(x) \, dx$ diverge.
+\end{definition}
+\begin{remark}
+Cette definition ne depend pas du choix de $c$. Si $\int_{a}^{b} f(x) \, dx$ converge pour $c\in(a,b)$ alors si on prend $\tilde{c}\in(a,b)$ alors
+$$
+\int_{a}^{\tilde{c}} f(x) \, dx=\int_{a}^{c} f(x) \, dx +\int_{c}^{\tilde{c}} f(x) \, dx
+$$
+\end{remark}
+
+\begin{lemma}[Critere de comparaison]
+Soient $f,g\in[a,b)\to \mathbf{R}$ deux fonctions integrables sur tous sous-intervalles fermes et bornes de $[a,b)$. S'il existe $c\in[a,b)$ tel que $\forall x \in [c,b)$ on a $0\leq f(x)\leq g(x)$ et $\int_{a}^{b} g(x) \, dx$ converge alors $\int_{a}^{b}f(x)  \, dx$ converge aussi.
+
+Si $\int_{a}^{b} f(x) \, dx$ diverge alors $\int_{a}^{b}g(x)  \, dx$ diverge aussi.
+\end{lemma}
+\begin{proof}
+Soit $F(t)=\int_{a}^{t} f(x) \, dx$ croissante et bornee supérieurement alors $\lim_{ t \to b^{-} }F(t)$ existe et est finie.
+\end{proof}
+\begin{definition}
+Soit $I$ un intervalle de la forme $[a,b),(a,b),(a,b]$ et $f:I\to \mathbf{R}$ integrable sur tout sous-intervalles ferme et borne.
+
+On dit que l'integrale generalisee converge absolument si
+$$
+\int_{a}^{b} |f(x)| \, dx
+$$
+converge.
+\end{definition}
+\begin{remark}
+Si $\int_{a}^{b} f(x) \, dx$ converge absolument alors elle converge. 
+\end{remark}

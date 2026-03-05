@@ -1,0 +1,139 @@
+\begin{definition}[Norme equivalente]
+Soit $N_{1}$ et $N_{2}$ deux normes sur $V$. On dit qu'elles sont equivalents s'ils existent $0<c_{1}<c_{2}<\infty$ tels que :
+$$
+c_{1}N_{1}(\boldsymbol{x})\le N_{2}(\boldsymbol{x})\leq c_{2}N_{1}(\boldsymbol{x}),\quad\forall \boldsymbol{x}\in V
+$$\end{definition}
+\begin{remark}
+On a que les normes "max", euclidienne et $p$ sont equivalents car 
+$$
+\forall p,q\in [1,\infty)~\exists  \underline{c}_{p,q}, \bar{c}_{p,q}: \underline{c}_{p,q}\lVert \boldsymbol{x} \rVert _{p}\le\lVert \boldsymbol{x} \rVert _{q}\le \bar{c}_{p,q}\lVert \boldsymbol{x} \rVert _{p},\quad\forall \boldsymbol{x}\in \mathbf{R}^{n}
+$$
+\end{remark}
+\begin{proposition}
+\emph{Toutes} les normes sur $\mathbf{R}^{n}$ sont équivalentes.
+\end{proposition}
+
+\begin{definition}[Distance]
+Soit $X$ un ensemble, on definit une distance symetrique sur $X$ comme une application $d:X\times X \to\mathbf{R}$ tel que :
+\begin{enumerate}
+\item $\forall x,y\in X$ on a $d(x,y)\ge0$ et $d(x,y)=0$ si $x=y$.
+\item $\forall x,y\in X$ on a $d(x,y)=d(y,x)$.
+\item $\forall x,y,z\in X$ on a $d(x,y)\le d(x,z)+d(z,y)$.
+\end{enumerate}
+\end{definition}
+
+Etant donne un espace vectoriel reel norme $(V,\lVert \bullet \rVert_{N})$, la norme induit une distance qu'on definit par 
+$$
+d(\boldsymbol{x},\boldsymbol{y})=\lVert \boldsymbol{y}-\boldsymbol{x} \rVert _{N}
+$$
+
+\begin{definition}[Espace metrique]
+Un ensemble $X$ avec une distance $d$ est appelle \emph{espace metrique} qu'on note $(X,d)$.
+\end{definition}
+\begin{remark}
+Un espace vectoriel avec produit scalaire implique un espace vectoriel norme qui implique un espace metrique.
+\end{remark}
+\begin{definition}[Produit scalaire euclidien]
+Pour tous $\boldsymbol{x}$,$\boldsymbol{y}$ dans $\mathbf{R}^{n}$ on peut definir:
+$$
+\langle \boldsymbol{x},\boldsymbol{y} \rangle =\boldsymbol{x}^{\top}\boldsymbol{y}=\boldsymbol{y}^{\top}\boldsymbol{x}=\sum_{i=1}^{n} x_{i}y_{i}
+$$
+\end{definition}
+\begin{definition}
+Un produit scalaire sur un espace vectoriel reel $V$ est une application $b:V\times V\to \mathbf{R}$ qui:
+\begin{enumerate}
+\item $\forall \boldsymbol{x},\boldsymbol{y}\in V$ on a $b(\boldsymbol{x},\boldsymbol{y})=b(\boldsymbol{y},\boldsymbol{x})$.
+\item $\forall \boldsymbol{x},\boldsymbol{y},\boldsymbol{z}\in V$ et $\alpha,\beta \in \mathbf{R}$ on a $b(\alpha \boldsymbol{x}+\beta \boldsymbol{y},\boldsymbol{z})=\alpha b(\boldsymbol{x},\boldsymbol{z})+\beta b(\boldsymbol{y},\boldsymbol{z})$.
+\item \label{prop3} $\forall \boldsymbol{x}\in V$ on a $b(\boldsymbol{x},\boldsymbol{x})\ge 0$ et $b(\boldsymbol{x},\boldsymbol{x})=0$ si $\boldsymbol{x}=\boldsymbol{0}$.
+\end{enumerate}
+\end{definition}
+
+\begin{lemma}[Inégalité de Cauchy-Schwarz]
+Soit $(V,b)$ un espace vectoriel avec produit scalaire $b$, alors $\forall \boldsymbol{x},\boldsymbol{y}\in V$ on a :
+$$
+|b(\boldsymbol{x},\boldsymbol{y})|\le\sqrt{ b(\boldsymbol{x},\boldsymbol{x}) }\sqrt{ b(\boldsymbol{y},\boldsymbol{y}) }=\lVert \boldsymbol{x} \rVert _{E}\lVert \boldsymbol{y} \rVert_{E} 
+$$
+\end{lemma}
+\begin{proof}
+Pour tous $\boldsymbol{x},\boldsymbol{y}\in V$ et $\alpha \in \mathbf{R}$ on a que 
+\begin{align*}
+0&\le b(\alpha \boldsymbol{x}+\boldsymbol{y},\alpha \boldsymbol{x}+\boldsymbol{y})=\alpha b(\boldsymbol{x},\alpha \boldsymbol{x}+\boldsymbol{y})+b(\boldsymbol{y},\alpha \boldsymbol{x}+\boldsymbol{y})\\
+&=\alpha^{2}b(\boldsymbol{x},\boldsymbol{x})+2\alpha b(\boldsymbol{x},\boldsymbol{y})+b(\boldsymbol{y},\boldsymbol{y}) \\
+\Rightarrow\Delta & =4b(\boldsymbol{x},\boldsymbol{y})^{2}-4b(\boldsymbol{x},\boldsymbol{x})b(\boldsymbol{y},\boldsymbol{y})\le 0
+\end{align*}
+
+\end{proof}
+\begin{lemma}
+Soit $(V,b)$ un espace vectoriel reel avec produit scalaire. Alors l'application $\lVert \bullet \rVert_{b}:V\to \mathbf{R}$ donne par 
+$$
+\lVert \boldsymbol{x} \rVert _{b}=\sqrt{ b(\boldsymbol{x},\boldsymbol{x}) }
+$$
+est une norme sur $V$.
+\end{lemma}
+\begin{proof}
+On veut demontrer la propriete ~\ref{propiete3}
+
+\begin{align*}
+\lVert \boldsymbol{x}+\boldsymbol{y} \rVert ^{2}_{b} & =b(\boldsymbol{x}+\boldsymbol{y},\boldsymbol{x}+\boldsymbol{y}) \\
+ & =b(\boldsymbol{x},\boldsymbol{x})+2b(\boldsymbol{x},\boldsymbol{y})+b(\boldsymbol{\boldsymbol{y},\boldsymbol{y}}) \\
+ & \leq b(\boldsymbol{x},\boldsymbol{x})+2\sqrt{ b(\boldsymbol{x},\boldsymbol{x}) }\sqrt{ b(\boldsymbol{y},\boldsymbol{y}) }+b(\boldsymbol{y},\boldsymbol{y}) \\
+ &\le \left(\sqrt{ b(\boldsymbol{x},\boldsymbol{x}) }+\sqrt{ b(\boldsymbol{y},\boldsymbol{y}) }\right)^{2}=(\lVert \boldsymbol{x} \rVert _{b}+\lVert \boldsymbol{y} \rVert _{b})^{2}
+\end{align*}
+
+\end{proof}
+
+\section{Suites dans \texorpdfstring{$\mathbf{R}^{n}$}{Rn}}
+\begin{definition}
+Soit $\{ \boldsymbol{x}^{(k)} \}_{k\in \mathbf{N}}$ une suite dans $\mathbf{R}^{n}$ qu'on note
+$$
+\boldsymbol{x}^{(k)}=(x_{1}^{(k)},\dots,x_{n}^{(k)})\in \mathbf{R}^{n}
+$$
+on dit que $\{ \boldsymbol{x}^{(k)} \}_{k\in \mathbf{N}}$ converge a $\boldsymbol{x}\in \mathbf{R}^{n}$ si
+$$
+\lim_{ k \to \infty } \lVert \boldsymbol{x}^{(k)}-\boldsymbol{x} \rVert=0
+$$
+qu'on peut definir par epsilon-delta comme:
+$$
+\forall\varepsilon>0\exists N_{\varepsilon}>0\forall k\ge N_{\varepsilon}:\lVert \boldsymbol{x}^{(k)}-\boldsymbol{x} \rVert <{\varepsilon}
+$$
+\end{definition}
+\begin{remark}
+Cette notion de convergence ne depend pas de la norme choisie. En particulier on peut choisir $\lVert \bullet \rVert_{\infty}$ car si $\lim_{ k \to \infty }\lVert \boldsymbol{x}^{(k)}-\boldsymbol{x} \rVert=0$ alors
+$$
+\forall\varepsilon>0\exists N_{\varepsilon}>0\forall k\geq N_{\varepsilon}:\max_{i=1,\dots,n}|x^{(k)}_{i}-x_{i}|<\varepsilon
+$$
+alors si pour tout $i$
+$$ 
+|x^{(k)}_{i}-x_{i}|<\varepsilon \Rightarrow \lim_{ k \to \infty }x^{(k)}_{i}=x_{i}
+$$
+
+Reciproquement: supposons que 
+$$
+\forall\varepsilon>0\exists N_{\varepsilon}>0\forall k\ge N_{\varepsilon}:|x_{i}^{(k)}-x_{i}|<\varepsilon
+$$
+Soit $N_{\varepsilon}=\max_{i}N_{\varepsilon}^{(i)}$ alors $\forall k\ge N_{\varepsilon}$ on a que $\max_{i}|x^{(k)}_{i}-x_{i}|<\varepsilon$ donc $\lim_{ k \to \infty }\lVert \boldsymbol{x}^{(k)}-\boldsymbol{x} \rVert=0$
+\end{remark}
+\begin{definition}[Suite de Cauchy]
+On dit qu'une suite $\{ \boldsymbol{x}^{(k)} \}_{k\in \mathbf{N}}\subset \mathbf{R}^{n}$ est de Cauchy si 
+$$
+\forall\varepsilon>0\exists N_{\varepsilon}>0\forall k,\ell\geq N_{\varepsilon}:\lVert \boldsymbol{x}^{(k)}-\boldsymbol{x}^{(\ell)} \rVert <\varepsilon
+$$
+\end{definition}
+\begin{theorem}
+Une suite $\{ \boldsymbol{x}^{(k)} \}_{k\in \mathbf{N}}\subset \mathbf{R}^{n}$ est convergente si et seulement si elle est de Cauchy.
+\end{theorem}
+\begin{proof}
+Une suite $\{ \boldsymbol{x}^{(k)} \}$ converge a $\boldsymbol{x}$ si et seulement si $x_{i}^{(k)}\to x_{i}$ pour tout $i$ si et seulement si $\{ \boldsymbol{x}_{i}^{(k)} \}$ est de Cauchy si et seulement si $\{ \boldsymbol{x}^{(k)} \}$ est de Cauchy.
+\end{proof}
+\begin{definition}
+Une suite $\{ \boldsymbol{x}^{(k)} \}_{k\in \mathbf{N}}\subset \mathbf{R}^{n}$ est bornee s'il existe $M>0$ tel que
+$$
+\lVert \boldsymbol{x}^{(k)} \rVert\leq M\quad\forall k
+$$
+\end{definition}
+\begin{theorem}[Bolzano-Weierstrass sur $\mathbf{R}^n$]\label{BW}
+Etant donnee une suite $\{ \boldsymbol{x}^{(k)} \}_{k\in \mathbf{N}}\subset \mathbf{R}^{n}$ bornee, on peut toujours extraire une sous-suite $\{ \boldsymbol{x}^{(k_{i})} \}_{i\in \mathbf{N}}$ convergente.
+\end{theorem}
+\begin{proof}
+Soit une suite $\{ \boldsymbol{x}^{(k)} \}_{k\in \mathbf{N}}\subset \mathbf{R}^{n}$. Pour tout $\boldsymbol{x}^{(k)}$ on peut regarder la $i$-eme composante et extraire une sous-suite convergente pour ce sous-indice $x^{(k)}_{i}$. On procede en parcourant toutes les elements de la suite en prenant compte a chaque tour de seulement compter le sous-suites que sont convergentes avec la suite du element precedent pour a la fin avoir un indice de sous-suites $(k_{i})_{i\in \mathbf{N}}$ tel que toutes les $x^{(k)}_{i}$ convergent.
+\end{proof}

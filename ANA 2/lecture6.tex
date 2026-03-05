@@ -1,0 +1,125 @@
+\subsection*{Proprietes de l'operation de limite}
+Soit $E\subset \mathbf{R}^{m}$ et $\boldsymbol{x}_{0}\in E$ un point d'accumulation de $E$. Soient $f,g:E\to \mathbf{R}$, supposons que $\lim_{ \boldsymbol{x} \to \boldsymbol{x}_{0} }f(\boldsymbol{x})=\ell_{1}$ et $\lim_{ \boldsymbol{x} \to \boldsymbol{x}_{0} }g(\boldsymbol{x})=\ell_{2}$:
+\begin{enumerate}
+\item $\forall\alpha,\beta \in R$ on a que $\lim_{ \boldsymbol{x} \to \boldsymbol{x}_{0} }\alpha f(\boldsymbol{x})+\beta g(\boldsymbol{x})=\alpha \ell_{1}+\beta \ell_{2}$.
+\item $\lim_{ \boldsymbol{x} \to \boldsymbol{x}_{0} }f(\boldsymbol{x})g(\boldsymbol{x})=\lim_{ \boldsymbol{x} \to \boldsymbol{x}_{0} }f(\boldsymbol{x})\lim_{ \boldsymbol{x} \to \boldsymbol{x}_{0} }g(\boldsymbol{x})=\ell_{1}\ell_{2}$.
+\item Si $\ell_{2}\neq 0$ alors $\lim_{ \boldsymbol{x} \to \boldsymbol{x}_{0} } \frac{f(\boldsymbol{x})}{g(\boldsymbol{x})}=\frac{\ell_{1}}{\ell_{2}}$.
+\end{enumerate}
+\section{Fonctions continues}
+Soit $E\subset \mathbf{R}^{n}$ non-vide et $f:E\to \mathbf{R}$.
+\begin{definition}[Continuite]
+Soit $\boldsymbol{x}_{0}\in E$. On dit que $f$ est continue en $\boldsymbol{x}_{0}$ si $\lim_{ \boldsymbol{x} \to \boldsymbol{x}_{0} }f(\boldsymbol{x})=f(\boldsymbol{x}_{0})$. Par definition on dit que $f$ est continue en $\boldsymbol{x}_{0}$ si ce point est isole. Par definition epsilon-delta:
+$$
+\Leftrightarrow \forall\varepsilon>0\exists\delta_{\varepsilon} \forall \boldsymbol{x}\in E:\lVert \boldsymbol{x}-\boldsymbol{x}_{0} \rVert <\delta_{\varepsilon} \Rightarrow |f(\boldsymbol{x})-f(\boldsymbol{x}_{0})|<\varepsilon
+$$
+ou par la caracterisation de fonctions par suites: si pour toute suite $\{ \boldsymbol{x}^{(k)} \}_{k\in \mathbf{N}}\subset E$ qui converge a $\boldsymbol{x}_{0}$ on a que $\lim_{ k \to \infty }f(\boldsymbol{x}^{(k)})=f(\boldsymbol{x}_{0})$.
+\end{definition}
+\begin{definition}
+Une fonction $f:E\to \mathbf{R}$ est continue sur un $E$ si elle est continue en tout point $\boldsymbol{x}\in E$ et on note $f\in C^{0}(E,\mathbf{R})$. Par definition epsilon-delta:
+$$
+\Leftrightarrow\forall\varepsilon>0\forall \boldsymbol{x}\in E\exists\delta _{\varepsilon,\boldsymbol{x}}\forall \boldsymbol{y}\in E:\lVert \boldsymbol{y}-\boldsymbol{x} \rVert <\delta _{\varepsilon,\boldsymbol{x}} \Rightarrow |f(\boldsymbol{x})-f(\boldsymbol{y})|<\varepsilon
+$$\end{definition}
+\begin{definition}[Continuite uniforme]
+On dit que $f:E\to \mathbf{R}$ est uniformement continue si :
+$$
+\forall\varepsilon>0~\exists\delta _{\varepsilon}>0~\forall \boldsymbol{x},\boldsymbol{y}\in E:\lVert \boldsymbol{x}-\boldsymbol{y} \rVert <\delta_{\varepsilon} \Rightarrow |f(\boldsymbol{x})-f(\boldsymbol{y})|<\varepsilon
+$$
+\end{definition}
+\begin{remark}
+On peut generaliser ces definitions en enchangeant la valeur absolue par une norme de $\mathbf{R}^{m}$.
+\end{remark}
+
+\subsection{Proprietes des fonctions continues}
+Soit $E\subset \mathbf{R}^{n}$ et $f,g\in C^{0}(E,\mathbf{R})$:
+\begin{enumerate}
+\item $\forall\alpha,\beta \in \mathbf{R}$ on a que $\alpha f+\beta g\in C^{0}(E,\mathbf{R})$.
+\item $fg\in C^{0}(E,\mathbf{R})$.
+\item Si $g\neq 0$ pour tout $\boldsymbol{x}\in E$ alors $\frac{f}{g}\in C^{0}(E,\mathbf{R})$. 
+\item Si $f\in C^{0}(E,\mathbf{R})$ alors $|f|\in C^{0}(E,\mathbf{R})$. $f^{+}(\boldsymbol{x}):=\max\{ f(\boldsymbol{x}),0 \}\in C^{0}(E,\mathbf{R})$ 
+\item Si $\boldsymbol{f}\in C^{0}(E,\mathbf{R}^{m})$ alors si $N$ est une norme sur $\mathbf{R}^{m}$ alors $N(f)\in C^{0}(E,\mathbf{R}_{+})$.
+\end{enumerate}
+\subsection{Composition de fonctions continues}
+
+Soit $E\subset \mathbf{R}^{n}$ et $f:E\to \mathbf{R}^{m}$, $A\subset \mathbf{R}^{p}$ et $g:A\to \mathbf{R}^{n}$ et $B:=\{ \boldsymbol{y}\in A:g(\boldsymbol{y})\in E \}\subset A$. On peut definir une fonction $h:B\to \mathbf{R}^{m},\boldsymbol{y}\mapsto f(g(\boldsymbol{y}))$. Si $f\in C^{0}(E,\mathbf{R}^{m})$ et $g\in C^{0}(B,E)$ alors $h\in C^{0}(B,\mathbf{R}^{m})$.
+\begin{proof}
+Soit $\{ \boldsymbol{y}^{(k)} \}_{k\in \mathbf{N}}\subset B$ qui converge vers $\boldsymbol{y}_{0}\in B$, on a par hypothese que $g\in C^{0}(B,E)$ donc $\lim_{ k \to \infty }g(\boldsymbol{y}^{(k)})=g(\boldsymbol{y}_{0})=\boldsymbol{x}_{0}\in E$. On pose $g(\boldsymbol{y}^{(k)})=\boldsymbol{x}^{(k)}\in E$ donc la suite $\{ \boldsymbol{x}^{(k)} \}_{k\in \mathbf{N}}\subset E$ converge si $\boldsymbol{x}_{0}\in E$ mais $f\in C^{0}(E,\mathbf{R}^{m})$ alors $\lim_{ k \to \infty }f(\boldsymbol{x}^{(k)})=f(\boldsymbol{x}_{0})$. Donc
+$$
+\lim_{ k \to \infty } h(\boldsymbol{y}^{(k)})=\lim_{ k \to \infty } f(g(\boldsymbol{y}^{(k)}))=f(\boldsymbol{x_{0}})=f(g(\boldsymbol{y}_{0}))=h(\boldsymbol{y}_{0})
+$$
+donc $h\in C^{0}(B,\mathbf{R}^{m})$.
+\end{proof}
+\subsection{Prolongement par continuite}
+
+Soit $E\subset \mathbf{R}^{n}$ non-vide et $f:E\to \mathbf{R}^{m}$ avec $\boldsymbol{x_{0}}\in \overline{E}\setminus E$. Si $\lim_{ \boldsymbol{x} \to \boldsymbol{x}_{0} }\boldsymbol{f}(\boldsymbol{x})=\boldsymbol{\ell}\in \mathbf{R}^{m}$ existe alors on peut definir 
+\begin{align*}
+\boldsymbol{\tilde{f}}:E\cup \{ \boldsymbol{x}_{0} \} & \to \mathbf{R}^{m} \\
+\boldsymbol{x} & \mapsto \begin{cases}
+\boldsymbol{f}(\boldsymbol{x}) & \text{si }\boldsymbol{x}\in E \\
+\boldsymbol{\ell} & \text{si }\boldsymbol{x}=\boldsymbol{x}_{0}
+\end{cases}
+\end{align*}
+
+on appele $\boldsymbol{\tilde{f}}$ le prolongement par continuite de $\boldsymbol{f}$ en $\boldsymbol{x}_{0}$.
+
+\begin{lemma}
+Soit $E\subset \mathbf{R}^{n}$ (non-ferme) et $\boldsymbol{f}\in C^{0}(E,\mathbf{R}^{m})$. Supposons que $\lim_{ \boldsymbol{x} \to \boldsymbol{x}_{0} }\boldsymbol{f}(\boldsymbol{x})$ existe $\forall \boldsymbol{x}\in \overline{E}\setminus E$ et soit $\boldsymbol{\tilde{f}}:\overline{E}\to \mathbf{R}^{m}$ le prolongement par continuite de $\boldsymbol{f}$ sur $\overline{E}$:
+$$
+\boldsymbol{\tilde{f}}(\boldsymbol{x})=\begin{cases}
+\boldsymbol{f}(\boldsymbol{x}) & \text{si }\boldsymbol{x}\in E \\
+\lim_{ \boldsymbol{y} \to \boldsymbol{x} } \boldsymbol{f}(\boldsymbol{y}) & \text{si }\boldsymbol{x}\in \overline{E}\setminus E
+\end{cases}
+$$
+Alors $\boldsymbol{\tilde{f}}\in C^{0}(\overline{E},\mathbf{R}^{m})$ 
+\end{lemma}
+\begin{theorem}
+Soit $E\subset \mathbf{R}^{n}$ non-vide et $f:E\to \mathbf{R}^{m}$ uniformement continue. Alors $\forall \boldsymbol{x}\in \overline{E}\setminus E$ la limite $\lim_{ \boldsymbol{y} \to \boldsymbol{x} }f(\boldsymbol{y})$ existe (c-a-d $f$ est prolongeable par continuite sur $\overline{E}$) et $\tilde{f}:\overline{E}\to \mathbf{R}^{m}$ est uniformement continue.
+\end{theorem}
+\begin{proof}
+\begin{enumerate}
+\item Existence de $\boldsymbol{\tilde{f}}$: Soit $\boldsymbol{a}\in \overline{E}\setminus E$ alors il existe $\{ \boldsymbol{a}^{(k)} \}_{k\in \mathbf{N}}\subset E$ tel que $\lim_{ k \to \infty }\boldsymbol{a}^{(k)}=\boldsymbol{a}$, en particulier $\{ \boldsymbol{a}^{(k)} \}$ est de Cauchy c-a-d
+$$
+\forall\delta>0~\exists N_{\delta}~\forall j,k>N_{\delta}:\lVert \boldsymbol{a}^{(j)}-\boldsymbol{a}^{(k)} \rVert <\delta
+$$
+donc on peut poser $\varepsilon>0$ tel que $\delta=\delta _{\varepsilon}$ donc $N_{\delta}=N_{\delta _{\varepsilon}}$et appliquer la definition de continuite uniforme de $f$ pour obtenir que
+$$
+\lVert \boldsymbol{f}(\boldsymbol{a}^{(j)})-\boldsymbol{f}(\boldsymbol{a}^{(k)}) \rVert <\varepsilon
+$$
+donc $\{ \boldsymbol{f}(\boldsymbol{a}^{(k)}) \}_{k\in \mathbf{N}}$ est de Cauchy et donc convergente. Alors il existe $\boldsymbol{\ell}\in \mathbf{R}^{m}$ tel que $\lim_{ k \to \infty }\boldsymbol{f}(\boldsymbol{a}^{(k)})=\boldsymbol{\ell}$.
+
+On veut montrer l'unicite de cette limite. Soit $\{ \boldsymbol{b}^{(k)} \}_{k\in \mathbf{N}}$ une autre suite convergente vers $\boldsymbol{a}$ alors
+$$
+\forall\delta~\exists N_{\delta}~\forall k>N_{\delta}:\lVert \boldsymbol{b}^{(k)}-\boldsymbol{a} \rVert <\delta /2,\quad \lVert \boldsymbol{a}^{(k)}-\boldsymbol{a} \rVert<\delta /2
+$$
+donc
+$$
+\lVert \boldsymbol{a}^{(k)}-\boldsymbol{b}^{(k)} \rVert\le \lVert \boldsymbol{a}^{(k)}-\boldsymbol{a} \rVert +\lVert \boldsymbol{b}^{(k)}-\boldsymbol{a} \rVert <\delta
+$$
+On chosissons $\delta=\delta _{\varepsilon}$ alors $\lVert \boldsymbol{a}^{(k)}-\boldsymbol{b}^{(k)} \rVert<\delta _{\varepsilon}\Rightarrow \lVert \boldsymbol{f}(\boldsymbol{a}^{(k)})-\boldsymbol{f}(\boldsymbol{b}^{(k)}) \rVert<\varepsilon$. Supposons que $\lim_{ k \to \infty } \boldsymbol{f}(\boldsymbol{b}^{(k)})=\boldsymbol{m}$ alors
+$$
+\exists N_{\varepsilon}>0~\forall k>N_{\varepsilon}:\lVert \boldsymbol{f}(\boldsymbol{a}^{(k)})-\boldsymbol{\ell} \rVert <\varepsilon, \quad \lVert \boldsymbol{f}(\boldsymbol{b}^{(k)})-\boldsymbol{m} \rVert <\varepsilon
+$$
+pour tout $k>\max\{ N_{\varepsilon},N_{_{\delta _{\varepsilon}}} \}$ on a 
+
+\begin{align*}
+\lVert\boldsymbol{\ell}-\boldsymbol{m} \rVert  & =\lVert \boldsymbol{\ell}-\boldsymbol{f}(\boldsymbol{a}^{(k)})+\boldsymbol{f}(\boldsymbol{a}^{(k)})-\boldsymbol{f}(\boldsymbol{b}^{(k)})+\boldsymbol{f}(\boldsymbol{b}^{(k)})-\boldsymbol{m} \rVert  \\
+ & \le \underbrace{ \lVert \boldsymbol{\ell}-\boldsymbol{f}(\boldsymbol{a}^{(k)}) \rVert }_{ <\varepsilon } +\underbrace{ \lVert \boldsymbol{f}(\boldsymbol{a}^{(k)})-\boldsymbol{f}(\boldsymbol{b}^{(k)}) \rVert }_{ <\varepsilon } +\underbrace{ \lVert \boldsymbol{f}(\boldsymbol{b}^{(k)})-\boldsymbol{m} \rVert }_{ <\varepsilon } <3\varepsilon \\
+ & \Rightarrow \boldsymbol{m}=\boldsymbol{\ell}
+\end{align*}
+
+Ceci montre que $\lim_{ \boldsymbol{x} \to \boldsymbol{a} }\boldsymbol{f}(\boldsymbol{x})$ existe pour tou $\boldsymbol{a}\in \overline{E}\setminus E$ et on peut construire le prolongement par continuite $\boldsymbol{\tilde{f}}$ sur $E$.
+\item Continuite uniforme de $\boldsymbol{\tilde{f}}$: Soit $\boldsymbol{x},\boldsymbol{y}\in \overline{E}$ tels que $\lVert \boldsymbol{x}-\boldsymbol{y} \rVert<\delta _{\varepsilon /3}$. Soient deux suites $\{ \boldsymbol{x}^{(k)} \}_{k\in \mathbf{N}}\subset E$ et $\{ \boldsymbol{y}^{(k)} \}_{k\in \mathbf{N}}\subset E$ qui convergent vers $\boldsymbol{x}$ et $\boldsymbol{y}$ respectivement alors
+$$
+\exists N_{\delta _{\varepsilon}}~\forall k>N_{\delta _{\varepsilon}}:\lVert \boldsymbol{x}^{(k)}-\boldsymbol{x} \rVert<:\delta /2,\quad\lVert \boldsymbol{y}^{(k)}-\boldsymbol{y} \rVert <\delta /2
+$$
+donc $\lVert \boldsymbol{x}^{(k)}-\boldsymbol{y}^{(k)} \rVert<\delta$ et $\lVert \boldsymbol{f}(\boldsymbol{x}^{(k)})-\boldsymbol{\boldsymbol{f}(\boldsymbol{y})^{(k)}} \rVert<\varepsilon$.
+
+On sait que $\lim_{ k \to \infty }\boldsymbol{f}(\boldsymbol{x}^{(k)})=\boldsymbol{\tilde{f}}(\boldsymbol{x})$ et $\lim_{ k \to \infty }\boldsymbol{f}(\boldsymbol{y}^{(k)})=\boldsymbol{\tilde{f}}(\boldsymbol{y})$ donc 
+$$
+	\exists N_{\varepsilon}~\forall k>N_{\varepsilon}:\lVert \boldsymbol{f}(\boldsymbol{x}^{(k)})-\boldsymbol{\tilde{f}}(\boldsymbol{x}) \rVert <\varepsilon,\quad \lVert \boldsymbol{f}(\boldsymbol{y}^{(k)})-\boldsymbol{\tilde{f}}(\boldsymbol{y}) \rVert <\varepsilon
+$$
+et on pose $\forall k>\max\{ N_{\varepsilon},N_{\delta _{\varepsilon}} \}$:
+$$
+\lVert \boldsymbol{\tilde{f}}(\boldsymbol{x})-\boldsymbol{\tilde{f}}(\boldsymbol{y}) \rVert \le \lVert \boldsymbol{\tilde{f}}(\boldsymbol{x})-\boldsymbol{f}(\boldsymbol{x}^{(k)}) \rVert +\lVert \boldsymbol{f}(\boldsymbol{x})^{(k)}-\boldsymbol{f}(\boldsymbol{y}^{(k)}) \rVert +\lVert \boldsymbol{f}(\boldsymbol{y}^{(k)})-\boldsymbol{\tilde{f}}(\boldsymbol{y}) \rVert <3\varepsilon 
+$$
+\end{enumerate}
+\end{proof}

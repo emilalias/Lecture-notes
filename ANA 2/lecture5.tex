@@ -1,0 +1,101 @@
+\begin{theorem}[Heine-Borel]
+Un ensemble non-vide $E\subset \mathbf{R}^{n}$ est compact dans le sens de \ref{compact} si et seulement si de toute famille de sous-ensembles ouverts de $\mathbf{R}^{n}$ constituant un recouvrement de $E$ on peut extraire une sous-famille finie qui est encore un recouvrement de $E$. 
+\end{theorem}
+
+Soit $\{ U_{\alpha} \}$ des ensembles de $\mathbf{R}^{n}$ ouverts, on a que c'est un recouvrement de $E$ si $E\subset\bigcup _{\alpha}U_{\alpha}$.
+\begin{example}
+$\mathbf{R}^{n}$ n'est pas compact. Soit $U_{k}=B(\boldsymbol{0},k)$ alors $\mathbf{R}^{n}\not\subseteq\bigcup _{k_{i}}U_{k_{i}}$: il ne contient pas un recouvrement fini.
+\end{example}
+\begin{example}
+Soit $E=\overline{B}(\boldsymbol{0},1)\setminus \{ \boldsymbol{0} \}$ et $U_{n}=\overline{B}\left( \boldsymbol{0}, \frac{1}{n} \right)^{C}$ alors $E\subset \bigcup _{n}U_{n}$ mais ce recouvrement ne contient pas un sous-recouvrement fini.
+\end{example}
+\begin{example}
+Soit $E\subset \mathbf{R}^{n}$ non-vide et compact. On peut prendre le recouvrement $E\subset \bigcup _{\boldsymbol{x}}B(\boldsymbol{x},\varepsilon)$ ou $\boldsymbol{x}\in E$ alors comme $E$ est compact alors il existe $\boldsymbol{x}_{1},\dots,\boldsymbol{x}_{n}$ tels que $\bigcup _{i=1}^{n}B(\boldsymbol{x}_{i},\varepsilon)\supset E$.
+\end{example}
+
+\section{Ensembles connexes}
+\begin{definition}[Connexite]
+On dit que $E\subset \mathbf{R}^{n}$ est connexe si ils n'existent pas deux ouverts $A,B\subset \mathbf{R}^{n}$ disjoints ($A\cap B= \varnothing$) tels que $E\subset A\cup B$, $A\cap E\neq \varnothing$ et $B\cap E\neq \varnothing$.
+\end{definition}
+\begin{remark}
+Par definition $\varnothing$ est connexe.
+\end{remark}
+\begin{definition}[Connexite par arcs]
+Un ensemble non-vide $E\subset \mathbf{R}^{n}$ est connexe par arcs si $\forall \boldsymbol{x},\boldsymbol{y}\in E$ il existe un chemin continu $\boldsymbol{\gamma}:[0,1]\to E$ tel que $\boldsymbol{\gamma}(1)=\boldsymbol{x}$ et $\boldsymbol{\gamma}(1)=\boldsymbol{y}$. Le chemin est continu si chaque $\boldsymbol{\gamma}_{i}(t)\in \mathbf{R}$ est continu.
+\end{definition}
+\begin{remark}
+La connexite par arcs implique la connexite.
+\end{remark}
+\begin{definition}[Convexite]
+Un ensemble $E\subset \mathbf{R}^{n}$ non-vide est convexe s'il est connexe par arcs par des "chemins droits" c-a-d
+$$
+\forall t\in[0,1]:\boldsymbol{x}+t(\boldsymbol{y}-\boldsymbol{x})\in E.
+$$
+\end{definition}
+
+\chapter{Fonctions de plusieures variables reelles}
+\begin{example}
+\begin{itemize}
+\item Fonctions a valeurs dans $\mathbf{R}$: Soit $E\subset \mathbf{R}^{n}$ et $\boldsymbol{x}\in E$. On peut definir une fonction 
+\begin{align*}
+f:E & \to \mathbf{R} \\
+\boldsymbol{x} & \mapsto f(\boldsymbol{x})
+\end{align*}
+
+\item Fonctions a valeuers dans $\mathbf{R}^{m}$:
+
+\begin{align*}
+\boldsymbol{f}:E & \to \mathbf{R}^{m} \\
+\boldsymbol{x} & \mapsto \boldsymbol{f}(\boldsymbol{x})=(f_{1}(\boldsymbol{x}),\dots,f_{m}(\boldsymbol{x}))
+\end{align*}
+
+\end{itemize}
+\end{example}
+\begin{definition}[Limite]
+Soit $\boldsymbol{x}_{0}\in \mathbf{R}^{n}$ un point d'accumulation de $E\subset \mathbf{R}^{n}$ et $f:E\to \mathbf{R}$. On dit que $\lim_{ \boldsymbol{x} \to \boldsymbol{x}_{0}}f(\boldsymbol{x})=\ell \in \mathbf{R}$ si:
+$$
+\forall\varepsilon>0\exists\delta>0\forall \boldsymbol{x}:\lVert \boldsymbol{x}-\boldsymbol{x}_{0} \rVert <\delta \Rightarrow |f(\boldsymbol{x})-\ell|<\varepsilon
+$$
+Pour $\boldsymbol{f}:E\to \mathbf{R}^{m}$ on dit que $\lim_{ \boldsymbol{x} \to \boldsymbol{x}_{0} }\boldsymbol{f}(\boldsymbol{x})=\boldsymbol{\ell}\in \mathbf{R}^{m}$ si:
+$$
+\forall\varepsilon>0\exists\delta>0\forall \boldsymbol{x}:\lVert \boldsymbol{x}-\boldsymbol{x}_{0} \rVert<\delta \Rightarrow \lVert \boldsymbol{f}(\boldsymbol{x})-\boldsymbol{\ell} \rVert <\varepsilon
+$$
+\end{definition}
+\begin{theorem}\label{thm1}
+Soit $\boldsymbol{f}:E\subset \mathbf{R}^{n}\to \mathbf{R}^{m}$ et $\boldsymbol{x}_{0}\in \mathbf{R}^{n}$ un point d'accumulation de $E$. Alors $\boldsymbol{f}$ admet pour limite $\boldsymbol{\ell}\in \mathbf{R}^{m}$ lorsque $\boldsymbol{x}\to \boldsymbol{x}_{0}$ si et seulement si pour toute suite $\{ \boldsymbol{x}^{(k)} \}_{k\in \mathbf{N}}\subset E\setminus \{ \boldsymbol{x}_{0} \}$ convergente a $\boldsymbol{x}_{0}$ on a que:
+$$
+\lim_{ k \to \infty } \boldsymbol{f}(\boldsymbol{x}^{(k)})=\boldsymbol{\ell}
+$$
+\end{theorem}
+\begin{example}
+Soit $E=\mathbf{R}^{2}\setminus \{ \boldsymbol{0} \}$ et $f(x,y)=\frac{x}{\sqrt{ x^{2}+y^{2} }}$. Est-ce que $\lim_{ (x,y) \to (0,0) }f(x,y)$ existe? 
+
+Non, par exemple on peut prendre deux suite $\{ \boldsymbol{x}^{k} \}=\left\{  \left( \frac{1}{k},0 \right)  \right\}$ et $\{ \boldsymbol{y}^{(k)} \}=\left\{  \left( 0, \frac{1}{k} \right)  \right\}$. On a que $\lim_{ k \to \infty }f(\boldsymbol{x}^{(k)})=1\neq 0=\lim_{ k \to \infty }f(\boldsymbol{y}^{k})$ donc la limite n'existe pas.
+\end{example}
+\begin{example}
+Soit $E=\mathbf{R}^{2}\setminus \{ \boldsymbol{0} \}$ et $f(x,y)=\frac{xy^{2}}{ x^{2}+y^{4} }$. Soit $\{ \boldsymbol{x}^{(k)} \}=\left\{  \left( \frac{\alpha}{k}, \frac{\beta}{k} \right)  \right\}\overset{k\to \infty}\to \boldsymbol{0}$ alors $$\lim_{ k \to \infty }f(\boldsymbol{x}^{(k)})=\frac{\alpha\beta^{2}k}{\alpha^{2}k^{2}+\beta^{4}}=0$$
+mais si on prend une autre suite $\{ \boldsymbol{y}^{(k)} \}=\left\{  \left( \frac{1}{k^{2}}, \frac{1}{k} \right)  \right\}\overset{k\to \infty}\to \boldsymbol{0}$ et
+$$
+\lim_{ k \to \infty } f(\boldsymbol{y}^{(k)})=\frac{1}{2}
+$$
+donc comme les limites sont differentes $\lim_{ (x,y) \to (0,0) }f(x,y)$ n'existe pas.
+\end{example}
+
+\begin{theorem}[Deux-gendarmes]
+Soient $f,g,h:E\subset \mathbf{R}^{n}\to \mathbf{R}$ et $\boldsymbol{x}_{0}$ un point d'accumulation de $\mathbf{R}^{n}$. Si
+$$
+\lim_{ \boldsymbol{x} \to \boldsymbol{x}_{0} }h(\boldsymbol{x})=\lim_{ \boldsymbol{x} \to \boldsymbol{x}_{0} } g(\boldsymbol{x})=\ell \in R 
+$$
+et $\exists\alpha>0$ tel que 
+$$
+h(x)\leq f(x)\le g(x)\quad\forall \boldsymbol{x}\in E
+$$
+alors $\lim_{ \boldsymbol{x} \to \boldsymbol{x}_{0} }f(\boldsymbol{x})=\ell$.
+\end{theorem}
+\begin{remark}
+Dans la pratique, si on veut montrer que $\lim_{ \boldsymbol{x} \to \boldsymbol{x}_{0} }f(\boldsymbol{x})=\ell$ on peut essayer de trouver une fonction $g$ telle que
+$$
+|f(\boldsymbol{x})-\ell |\le g(\lVert \boldsymbol{x}-\boldsymbol{x}_{0} \rVert )
+$$
+et $\lim_{ \boldsymbol{x} \to \boldsymbol{x}_{0} }g(\lVert \boldsymbol{x}-\boldsymbol{x}_{0} \rVert)=0$.
+\end{remark}

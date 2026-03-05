@@ -1,0 +1,172 @@
+\section{Intégrale generalisee sur un intervalle non borne}
+
+Soit $I=[a,\infty),(-\infty,a],(a,\infty),\dots$. 
+\begin{definition}
+Soit $I=[a,\infty)$ et $f:I\to \mathbf{R}$ integrable sur tout sous-intervalle ferme et borne. Soit $F(t)=\int_{a}^{t} f(x) \, dx$, si $\lim_{ t \to \infty }F(t)$ existe alors on dit que $\int_{a}^{\infty} f(x) \, dx$ converge et on note
+$$
+\int_{a}^{\infty} f(x) \, dx =\lim_{ t \to \infty } F(t)
+$$
+\end{definition}
+\begin{remark}
+On dit que $\int_{a}^{\infty}f(x)  \, dx$ converge absolument si $\int_{a}^{\infty} |f(x)| \, dx$ converge. (convergence absolue implique convergence).
+\end{remark}
+\begin{definition}
+Si $I=(a,\infty)$ on dit que $\int_{a}^{\infty} f(x) \, dx$ converge s'il existe $c\in(a,\infty)$ tel que $\int_{a}^{c} f(x) \, dx$ et $\int_{c}^{\infty} f(x) \, dx$ convergent. Dans ce cas on note
+$$
+\int_{a}^{\infty} f(x) \, dx =\int_{a}^{c} f(x) \, dx +\int_{c}^{\infty} f(x) \, dx
+$$
+\end{definition}
+\begin{example}[Important!]
+Soit $f(x)=\frac{1}{x^{\alpha}}$:
+\begin{itemize}
+\item Si $\alpha\leq 0$ alors $\int_{1}^{\infty} f(x) \, dx$ diverge.
+\item Si $\alpha>0$ alors $$F(t)=\int_{1}^{t} \frac{1}{x^{\alpha}} \, dx=\left[ \frac{x^{-\alpha+1}}{1-\alpha} \right]^{t}_{1}=\frac{1}{1-\alpha}(t^{1-\alpha}-1)\overset{t\to \infty }\to \begin{cases}
+\frac{1}{\alpha-1} & \text{si }\alpha>1 \\
+\infty & \text{si }\alpha \leq 1
+\end{cases}$$
+\end{itemize}
+\end{example}
+
+\begin{lemma}[Critère de comparaison dans le cas $f$ non negative]
+Soit $f,b:[a,\infty)\to \mathbf{R}$ intégrables sur tout sous-intervalle compact et supposons qu'il existe $c\in(a,\infty)$ tel que 
+$$
+0\leq f(x)\leq g(x),\quad\forall x \in[c,\infty)
+$$
+\begin{itemize}
+\item Si $\int_{c}^{\infty} g(x) \, dx$ converge alors $\int_{a}^{\infty} f(x) \, dx$ converge aussi.
+\item Si $\int_{c}^{\infty} f(x) \, dx$ diverge alors $\int_{a}^{\infty} g(x) \, dx$ diverge aussi.
+\end{itemize}
+\end{lemma}
+\begin{corollary}
+\begin{itemize}
+	\item Si $\lim_{ x \to \infty } \frac{f(x)}{g(x)}=\ell \in\mathbf{R}$ existe et $\int_{c}^{\infty} g(x) \, dx$ converge alors $\int_{a}^{\infty} f(x) \, dx$ converge aussi.
+	\item Si $\lim_{ x \to \infty } \frac{g(x)}{f(x)}=\ell\neq0$ et $\int_{c}^{\infty} f(x) \, dx$ diverge alors $\int_{a}^{\infty} g(x) \, dx$ diverge aussi.
+\end{itemize}
+\end{corollary}
+\begin{remark}
+Typiquement on prend $g(x)=1/x^{\alpha}$ avec $\alpha>1$.
+\end{remark}
+\begin{proof}
+Car la limite converge on a
+$$
+\forall\varepsilon>0\exists M_{\varepsilon}: \ell -\varepsilon\leq \frac{f(x)}{g(x)}\leq \ell+\varepsilon,\quad\forall x\geq M_{\varepsilon}
+$$
+donc $f(x)\leq g(x)(\ell+\varepsilon)$ pour tout $x \in [\max\{ M_{\varepsilon},c \},\infty]$ et on applique le critère de comparaison.
+\end{proof}
+\begin{example}
+Etudier la convergence de $\int_{1}^{\infty} x^{\beta}e^{-x} \, dx$ avec $\beta>0$.
+
+On pose $1/g(x)=x^{\alpha}$ donc
+$$
+\lim_{ x \to \infty } \frac{f(x)}{g(x)}=\lim_{ x \to \infty } x^{\alpha}x^{\beta}e^{ -x }=\lim_{ x \to \infty } x^{\alpha+\beta}e^{ -x }=0
+$$
+alors $\int_{1}^{\infty} x^{\beta}e^{ -x } \, dx$ converge par la corollaire. 
+\end{example}
+\begin{example}
+Etudier la convergence de $\int_{1}^{\infty} \frac{1}{\sqrt{ x }}\log\left( 1+\frac{1}{x} \right) \, dx$.
+
+Quand $x$ tend vers $\infty$ on a
+$$
+\frac{1}{\sqrt{ x }}\log\left( 1+\frac{1}{x} \right)\overset{x\to \infty}\sim \frac{1}{\sqrt{ x }}\cdot \frac{1}{x}=\frac{1}{x^{3/2}}=g(x)
+$$
+et on a que 
+$$
+\lim_{ x \to \infty } x^{3/2}f(x)=1
+$$
+donc $\int_{1}^{\infty} \frac{1}{\sqrt{ x }}\log\left( 1+\frac{1}{x} \right) \, dx$ converge par la corollaire.
+\end{example}
+\begin{example}[Une fonction dont l'integrale converge mais par absolument]
+Soit $f(x)=\frac{\sin x}{x}$ on veut evaluer $\int_{\pi}^{\infty} f(x) \, dx$
+$$
+F(t)=\int_{\pi}^{t} \frac{\sin x}{x} \, dx=\left[ \frac{-\cos x}{x}\right]_{\pi}^{t}-\int_{\pi}^{t} \frac{\cos x}{x^{2}} \, dx=\dots 
+$$
+qui converge mais par contre $\int_{\pi}^{\infty} \frac{|\sin x|}{x} \, dx$ diverge.
+\end{example}
+
+\section{Bornes des series numeriques}
+
+Considerons $\sum_{n=1}^{\infty}a_{n}$ avec $a_{n}\in \mathbf{R}$. On pose une fonction $f(x)=a_{n}$ avec $x \in [n,n+1)$ pour calculer
+$$
+\sum_{n=1}^{\infty} a_{n}=\int_{1}^{\infty} f(x) \, dx 
+$$
+\begin{example}
+Calculer $\sum_{n=1}^{\infty} \frac{1}{n^{2}}$.
+
+On definit la fonction $\underline{f}(x)=\frac{1}{x^{2}}\leq \frac{1}{n^{2}}=f(x)$ ou $x \in[n,n+1)$ et une autre fonction $\tilde{f}(x)=\frac{1}{(x-1)^{2}}>f(x)$ donc on a
+$$
+\int_{1}^{\infty} \underline{f}(x) \, dx \leq \sum_{n=1}^{\infty}  \frac{1}{n^2} =\int_{1}^{\infty} f(x) \, dx \leq \int_{2}^{\infty} \tilde{f}(x) \, dx+1 
+$$
+qui converge par le critere de comparaison.
+\end{example}
+
+\chapter{L'espace \texorpdfstring{$\mathbf{R}^{n}$}{Rn}}
+
+\begin{definition}[Vecteur]
+L'ensemble de $n$-uplets $\boldsymbol{x}=(x_{1},\dots,x_{n})$ ou $x_{i}\in \mathbf{R}$ est un vecteur dans $\mathbf{R}^{n}=\underbrace{ \mathbf{R}\times \mathbf{R}\times\dots \times \mathbf{R} }_{ n\text{ fois} }$.
+\end{definition}
+\begin{definition}[Operations dans $\mathbf{R}^n$]
+\begin{itemize}
+\item Somme: Soient $\boldsymbol{x},\boldsymbol{y}\in \mathbf{R}^{n}$ on a $\boldsymbol{z}=\boldsymbol{x}+\boldsymbol{y}=(x_{1}+y_{1},\dots,x_{n}+y_{n})$
+\item Produit externe par un scalaire: Soient $\boldsymbol{x}\in \mathbf{R}^{n}$ et $\lambda \in R$ on a $\boldsymbol{z}=\lambda \boldsymbol{x}=(\lambda x_{1},\dots,\lambda x_{n})$
+\end{itemize}
+\end{definition}
+
+\section{Espace vectoriel reel}
+
+Un ensemble $V$ est un espace vectoriel reel si on peut definir les operations somme et produit externe.
+\begin{definition}[Operation somme]
+On definit l'operation $+:V\times V\to V, (\boldsymbol{x},\boldsymbol{y})\mapsto \boldsymbol{x}+\boldsymbol{y}$ qui a les proprietes
+\begin{itemize}
+\item $\boldsymbol{x}+\boldsymbol{y}=\boldsymbol{y}+\boldsymbol{x}$
+\item $(\boldsymbol{x}+\boldsymbol{z})+\boldsymbol{y}=\boldsymbol{x}+(\boldsymbol{z}+\boldsymbol{y})$
+\item Il existe $\boldsymbol{0}\in V$ tel que $\boldsymbol{x}+\boldsymbol{0}=\boldsymbol{x}$
+\item Pour tout $\boldsymbol{x}\in V$, il existe $-\boldsymbol{x}$ tel que $\boldsymbol{x}+(-\boldsymbol{x})=\boldsymbol{0}$
+\end{itemize}
+\end{definition}
+\begin{definition}[Operation produit externe]
+On definit l'operation $\cdot:V\times \mathbf{R}\to V,(\boldsymbol{x},\lambda)\mapsto\lambda \boldsymbol{x}$ qui a les proprietes
+\begin{itemize}
+\item Pour tout $\lambda,\mu \in R,\boldsymbol{x}\in V$ on a que $\lambda(\mu \boldsymbol{x})=(\lambda \mu)\boldsymbol{x}$
+\item Pour tout $\boldsymbol{x}\in V$ on a que $1\boldsymbol{x}=\boldsymbol{x}$
+\item Pour tout $\lambda,\mu \in \mathbf{R},\boldsymbol{x}\in V$ on a que $(\lambda+\mu)\boldsymbol{x}=\lambda \boldsymbol{x}+\mu \boldsymbol{x}$
+\item Pour tout $\lambda \in \mathbf{R},\boldsymbol{x},\boldsymbol{y}\in V$ on a que $\lambda(\boldsymbol{x}+\boldsymbol{y})=\lambda \boldsymbol{x}+\lambda \boldsymbol{y}$ 
+\end{itemize}
+\end{definition}
+\begin{definition}[Norme]
+On definit une application $N:V\to \mathbf{R}$ qui est une norme sur l'espace vectoriel $V$ si elle satisfaite les proprietes suivantes:
+\begin{enumerate}
+\item \label{propiete3} Pour tout $\boldsymbol{x}\in V$ tel que $N(\boldsymbol{x})\geq0$ on a que $N(\boldsymbol{x})=0\Leftrightarrow \boldsymbol{x}=\boldsymbol{0}$
+\item Pour tout $\lambda \in \mathbf{R},\boldsymbol{x}\in V$ on a que $N(\lambda \boldsymbol{x})=|\lambda|N(\boldsymbol{x})$
+\item Pour toutes $\boldsymbol{x},\boldsymbol{y}\in V$ on a que $N(\boldsymbol{x}+\boldsymbol{y})\leq N(\boldsymbol{x})+N(\boldsymbol{y})$
+\end{enumerate}
+\end{definition}
+\begin{definition}
+Un espace vectoriel reel avec une norme est appelle EVR norme qu'on note $(V,N(\bullet))$. 
+\end{definition}
+\begin{notation}
+Souvent on note $N(\bullet)$ comme $\lVert \bullet \rVert$.
+\end{notation}
+\begin{definition}[Norme euclidienne]
+Soit un vecteur $\boldsymbol{x}=(x_{1},\dots,x_{n})$ sur $\mathbf{R}^{n}$ on a 
+$$
+\lVert \boldsymbol{x} \rVert_{E} =\sqrt{ x_{1}^{2} +x_{2}^{2}+\dots+x_{n}^{2}}
+$$
+\end{definition}
+\begin{definition}[Norme "max" (norme infini)]
+$$
+\lVert \boldsymbol{x} \rVert _{\infty}=\max\{ |x_{1}|,\dots,|x_{n}| \}
+$$
+\end{definition}
+\begin{definition}[Norme "$p$"]
+$$
+\lVert \boldsymbol{x} \rVert _{p}=\left( \sum _{i=1}^{n}|x_{i}|^{p} \right)^{1/p}\quad p\ge 1
+$$
+\end{definition}
+\begin{remark}
+	On peut interpreter la norme $p$ comme une forme generale en prenant les cas particulier $p=2$ et $p=\infty$.
+\end{remark}
+
+\begin{definition}[Boules de $\mathbf{R}^n$]
+	On definit l'ensemble $$B(\boldsymbol{0},r)=\{ \boldsymbol{x}\in \mathbf{R}^{n}:\lVert \boldsymbol{x} \rVert\leq r \}.$$
+	Dans $\mathbf{R}^2$, si on prend $\lVert  \rVert_{E}$ on a un cercle, pour $\lVert  \rVert_{p}$ on a un rhombus et pour $\lVert  \rVert_{\infty}$ on a un carre.
+\end{definition}	
