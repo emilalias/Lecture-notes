@@ -53,7 +53,7 @@ On veut decrire une methode de calcul de $p(x)\in K[x]$ de $A\in K^{n\times n}$ 
 \begin{definition}
 Soit $\boldsymbol{v}\in K^{n}$ et $f(x)\in K[x]$ un polynome. On dit que $f(x)$ $A$-annule $\boldsymbol{v}$ si 
 $$
-f(A)\cdot \boldsymbol{v}=0
+f(A)\cdot \boldsymbol{v}=\boldsymbol{0}
 $$
 \end{definition}
 \begin{theorem}
@@ -80,7 +80,9 @@ La probabilite de l'evenement $E:p_{\boldsymbol{v}}(x)\neq p(x)$ est au plus $\f
 \begin{proof}
 Soit $p(x)=\ell_{1}^{\ell_{1}}(x)\dots \ell _{k}^{\ell _{k}}(x)$ une factorisation de $p(x)$ en irreductibles unitaires distincts. Si $i\neq j$ alors $\ell _{i}(x)\neq \ell _{j}(x)$. Si pour $\boldsymbol{v}\in K^{n}$, $p_{\boldsymbol{v}}(x)\neq p(x)$ parce que $p_{\boldsymbol{v}}(x)\mid p(x)$ on a que $p_{\boldsymbol{v}}(x)=\ell_{1}(x)^{\mu_{1}}\dots \ell _{k}^{\mu _{k}}(x)$ ou $0\le \mu _{i}\le \ell _{i}$ pour tout $i\in \{ 1,\dots,k \}$ et parmi ces $i$ il existe $\mu _{i}\neq \ell _{i}$.
 
-Quelle est la probabilite que $p_{\boldsymbol{v}}(x):\mu _{1}\le \ell_{1}-1$? On pose un polynome $g(x)=\ell_{1}^{\ell_{1}-1}(x)\dots \ell _{k}^{\ell _{k}}(x)$ dans ce cas alors $p_{\boldsymbol{v}}(x)\mid g(x)$. On sait que $g(A)\in K^{n\times n}\setminus \{ 0_{n} \}$ et $\overline{E}:g(A)\boldsymbol{v}=0$ alors on a choisi $\boldsymbol{v}\in S^{n}$ qui a une probabilite $P(\overline{E})\le\frac{1}{|S|}$. On peut ajouter ces probabilites pour chaque facteur de $p_{\boldsymbol{v}}(x)$ qui sont au plus $n$ pour obtenir $P(p_{\boldsymbol{v}}(x)\neq p(x))\le \frac{n}{|S|}$ qu'on appelle l'union bound. 
+Quelle est la probabilite que $p_{\boldsymbol{v}}(x):\mu _{1}\le \ell_{1}-1$?
+
+On pose un polynome $g(x)=\ell_{1}^{\ell_{1}-1}(x)\dots \ell _{k}^{\ell _{k}}(x)$ dans ce cas alors $p_{\boldsymbol{v}}(x)\mid g(x)$. On sait que $g(A)\in K^{n\times n}\setminus \{ 0_{n} \}$ et $\overline{E}:g(A)\boldsymbol{v}=0$ alors on a choisi $\boldsymbol{v}\in S^{n}$ qui a une probabilite $P(\overline{E})\le\frac{1}{|S|}$. On peut ajouter ces probabilites pour chaque facteur de $p_{\boldsymbol{v}}(x)$ qui sont au plus $n$ pour obtenir $$P(p_{\boldsymbol{v}}(x)\neq p(x))\le \frac{n}{|S|}$$ qu'on appelle l'union bound. 
 \end{proof}
 \begin{corollary}
 Si $|S|=2n$ alors $P(p_{\boldsymbol{v}}(x)\neq p(x))\le 1/2$.
