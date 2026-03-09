@@ -55,8 +55,8 @@ This way $A_{i}\cap A_{j}$ is the set of permutations for which $i$ and $j$ are 
 This gives 
 
 \begin{align*}
-|A|-\left|\bigcup _{i=1}^{n}A_{i}\right| & =n!-\binom{n}{1}(n-1)!+\binom{n}{2}(n-2)! \\
- & =n!-\frac{n!(n-1)!}{1!(n-1)!}+\frac{n!(n-2)!}{2!(n-2)!} \\
+|A|-\left|\bigcup _{i=1}^{n}A_{i}\right| & =n!-\binom{n}{1}(n-1)!+\binom{n}{2}(n-2)!-\dots \\
+ & =n!-\frac{n!(n-1)!}{1!(n-1)!}+\frac{n!(n-2)!}{2!(n-2)!}-\dots \\
  & =n!\left( \frac{1}{0!}-\frac{1}{1!}+\frac{1}{2!}-\dots+(-1)^{n} \frac{1}{n!} \right) \\
  & \simeq n!(\exp(-1)).
 \end{align*}
@@ -105,7 +105,7 @@ $$
 \left|\bigcup _{i=1}^{n}A_{i}\right|\le \sum_{s=1}^{k} \sum _{J\subset \{ 1,\dots,n \}}(-1)^{s-1}\cdot\left|\bigcap _{i\in J}A_{j}\right|
 $$
 Let $\ell \in \{ 1,\dots,n \}$ be an even integer. Then
-$$\left|\bigcup _{i=1}^{n}A_{i}\right|\ge \sum _{s=1}^{\ell}\sum _{J\subset \{ 1,\dots,n \}} (-1)^{s-1}\cdot\left|\bigcap j\in J A_{j}\right|$$
+$$\left|\bigcup _{i=1}^{n}A_{i}\right|\ge \sum _{s=1}^{\ell}\sum _{J\subset \{ 1,\dots,n \}} (-1)^{s-1}\cdot\left|\bigcap_{j\in J} A_{j}\right|$$
 \end{theorem}
 \begin{proof}
 By induction on $n$ we verify the cases $n=1$ and $n=2$ because $|A_{1}|=|A_{1}|$ and $|A_{2}\cup A_{2}|\le |A_{1}|+|A_{2}|$. Therefore we assume the property correct for $n-1$ sets.

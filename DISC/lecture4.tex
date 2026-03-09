@@ -1,0 +1,234 @@
+
+\section{Generating functions: combinatorial applications of polynomials}
+
+\begin{example}
+How \footnote{Lecture 4} many ways are there to pay the amount of 21 CHF with :
+\begin{itemize}
+\item 6 1CHF coins
+\item 5 2CHF coins
+\item 4 5CHF coins
+\end{itemize}
+
+The number in question is the numbers of solutions of:
+\begin{equation}
+x_{1}+x_{2}+x_{3}=21 \label{solutions}
+\end{equation}
+Where
+$$
+x_{1}=\{ 0,1,\dots,6 \},\quad x_{2}=\{ 0,2,\dots,10 \},\quad x_{3}=\{ 0,5,\dots,20 \}
+$$
+Consider the following polynomials
+\begin{align*}
+p_{1}(x) & =1+x+x^{2}+x^{3}+x^{4}+x^{5}+x^{6 } \\
+p_{2}(x) & =1+x^{2}+x^{4}+x^{6}+x^{8} +x^{10}\\
+p_{3}(x) & =1+x^{5}+x^{10}+x^{15}+x^{20}
+\end{align*}
+The number of solutions of \ref{solutions} is the coefficient of $x^{21}$ in the product $p_{1}p_{2}p_{3}$.
+\end{example}
+
+\subsection*{Operations with polynomials}
+
+Let $p(x)=\sum_{k=0}^{n}a_{k}x^{k}$ and $q(x)=\sum_{k=0}^{n}b_{k}x^{k}$ two polynomials.
+\begin{itemize}
+\item Addition: $(p+q)(x)=\sum_{k=1}^{n}(a_{k}+b_{k})x^{k}$
+\item Multiplication: $p(x)q(x)=\sum_{k=1}^{2n}(a_{0}b_{k}+a_{1}b_{k-1}+\dots +a_{k}b_{0})x^{k}$
+\item Substitution: $p(q(x))=a_{0}+a_{1}q(x)+a_{2}q(x)^{2}+\dots +a_{n}q(x)^{n}$
+\item Differentiation: $\frac{d}{dx}p(x)=\sum_{k=1}^{n}a_{k}kx^{k-1}=\sum_{k=0}^{n-1}(k+1)a_{k+1}x^{k}$
+\item Integration: $\int_{0}^{x} p(y)  \, dy=\sum_{k=0}^{n}a_{k} \frac{x^{k+1}}{k+1}=\sum_{k=1}^{n+1} \frac{a_{k-1}}{k}x^{k}$
+\end{itemize}
+
+\subsection*{Identities with binomial coefficients}
+
+\begin{example}
+Prove the identity
+$$
+\sum_{i=0}^{n} \binom{ n}  {i } ^{2}=\binom{ 2n}  {n }
+$$
+
+We consider the identity
+$$
+(1+x)^{n}(1+x)^{n}=(1+x)^{2n}
+$$
+and we can compute the coefficient of $x^{n}$ on the left and right hand side of this equality.
+
+On the left:
+$$
+(1+x)^{n}(1+x)^{n}=(\binom{ n}  {0 } +\binom{ n}  {1 } x+\dots +\binom{ n}  {n}x^{n} )(\binom{ n}  {0 } +\binom{ n}  {1 } x+\dots +\binom{ n}  {n } x^{n})
+$$
+which gives the coefficient of $x^{n}$
+$$
+\binom{ n}  {0 } \binom{ n}  {n } +\binom{ n}  {1 } \binom{ n}  {n-1 } +\dots +\binom{ n}  {n } \binom{ n}  {0 } =\binom{ n}  {0 } ^{2}+\binom{ n}  {1 } ^{2}+\dots +\binom{ n}  {n } ^{2}
+$$
+On the right hand side
+$$
+(1+x)^{2n}=\binom{ 2n}  {0 } +\binom{ 2n}  {1 } x+\dots +\binom{ 2n}  {2n } x^{2n}
+$$
+\end{example}
+\begin{example}
+Compute
+$$
+\sum_{k=0}^{n} k\binom{ n}  {k } 
+$$
+
+Consider the polynomial $$p(x)=(1+x)^{n}=\sum_{k=0}^{n} \binom{ n}  {k }x^{k}$$
+We diffrentiate $p(x)$:
+$$
+\frac{d}{dx}p(x)=\frac{d}{dx}[(1+x)^{n}]=n(1+x)^{n-1}
+$$
+On the other hand
+$$
+\frac{d}{dx}p(x)=\frac{d}{dx}\left[ \sum_{k=0}^{n} \binom{ n}  {k } x^{k} \right]=\sum_{k=1}^{n} k\binom{ n}  {k } x^{k-1}
+$$
+Thus 
+$$
+\sum_{k=1}^{n} k\binom{ n}  {k } x^{k-1}=n(1+x)^{n-1}
+$$
+and we replace $x=1$ to obtain the desired computation
+$$
+\sum_{k=1}^{n} k\binom{ n}  {k } =2^{n-1}n
+$$
+\end{example}
+
+\begin{theorem}[Multinomial theorem]
+The following holds
+$$
+(x_{1}+x_{2}+\dots +x_{n})^{k}=\sum _{\underset{i_{1}+i_{2}+\dots +1_{n}=k}{i_{1},i_{2},\dots,i_{n}\ge 0}} \frac{k!}{i_{1}!i_{2}!\dots i_{n}!} x_{1}^{i_{1}}x_{2}^{i_{2}}\dots x_{n}^{i_{n}}
+$$
+\end{theorem}
+\begin{proof}
+$$
+\frac{k!}{i_{1}!\dots i_{n!}}
+$$
+is the number of sequences of length $k$ from letters $x_{1},x_{2},\dots,x_{n}$ such that each letter $x_{j}$ is used $i_{j}$-times.
+
+We prove by induction: We pose the basis of induction as the case $n=2$, which is the binomial theorem, and assume the property holds for $n$. So for $n+1$:
+\begin{align*}
+((x_{1}+\dots +x_{n})+x_{n+1})^{k} & =\sum_{i=0}^{k} \binom{ k}  {i } (x_{1}+\dots +x_{n})^{k-i}x_{n+1}^{i} \\
+ & =\sum_{i=0}^{k} \left( \sum_{\underset{i_{1}+i_{2}+\dots +1_{n}=k-i}{i_{1},\dots ,i_{n}\ge 0}} \frac{(k-1)!}{i_{1}!\dots i_{n!}}x_{1}^{i_{1}}\dots x_{n}^{i_{n}} \right)\binom{ k}  {i } x_{n+1}^{i} \\
+ & =\sum _{\underset{i_{1}+\dots i_{n+1}=k}{i_{1},\dots,i_{n+1}\ge 0}} \frac{k!}{i_{1}!\dots i_{n}!i_{n+1}!} x_{1}^{i_{1}}\dots x_{n}^{i_{n}}x_{n+1}^{i_{n+1}}
+\end{align*}
+
+\end{proof}
+\begin{example}
+\begin{proof}[Another proof of \ref{excinc}]
+Let $A_{1},\dots,A_{n}$ be finite sets and $U_{i}=\bigcup _{i=1}^{n}A_{i}$. Let $A\subset U$ be a subset, the indicator function of $A$ is
+\begin{align*}
+\mathbb{1}_{A}:U & \to \{ 0, 1\} \\
+u & \mapsto \begin{cases}
+1 & \text{if }u\in A \\
+0 & \text{if }u\not\in A,u\in U
+\end{cases}
+\end{align*}
+we use the properties:
+\begin{enumerate}
+\item $|A|=\sum _{u\in U}\mathbb{1}_{A}(u)$
+\item $\mathbb{1}_{U\setminus A}(u)=1-\mathbb{1}_{A}(u)$
+\item $\mathbb{1}_{A\cap B}(u)=\mathbb{1}_{A}(u)-\mathbb{1}_{B}(u)$
+\end{enumerate}
+Let
+$$
+\bigcup _{i=1}^{n}A_{i}=U\setminus\left( \bigcap _{i=1}^{n}(U\setminus A_{i}) \right)
+$$
+We calculate the cardinality
+\begin{align*}
+\left\lvert  \bigcup _{i=1}^{n}A_{i}  \right\rvert  & \overset{1} = \sum _{u\in U} \mathbb{1}_{\bigcup _{i=1}^{n}A_{i}}(u) \\
+ & \overset{2}= \sum _{u\in U}\left( 1-\mathbb{1}_{\bigcap _{i=1}^{n}(U\setminus A_{i})}(u) \right) \\
+ & \overset{3}=\sum _{u\in U}\left( 1-\prod_{i=1}^{n} (\mathbb{1}_{U\setminus A_{i}}(u)) \right) \\
+ & \overset{2}=\sum _{u\in U}\left( 1-\prod _{i=1}^{n}(1-\mathbb{1}_{A_{i} }(u)) \right) \\
+ & =\sum _{u\in U}\left( 1-\sum _{k=0}^{n}(-1)^{k}\sum _{\{ i_{1},\dots,i_{k} \}}\mathbb{1}_{A_{i_{1}}\cap\dots \cap A_{i_{k}}}(u) \right) \\
+ & \overset{1}=\sum _{u\in U}\sum_{k=0}^{n} (-1)^{k+1}\sum _{I\subset \{ 1,\dots,n \}:|I|=k} \mathbb{1}_{\bigcap _{i\in I}A_{i} }(u) \\ \\
+ & = \sum _{k=1}^{n}(-1)^{k+1}\sum _{I}\left\lvert  \bigcap _{i\in I}A_{i}  \right\rvert 
+\end{align*}
+for $u\in U$ we have 
+\begin{align*}
+\prod_{i=1}^{n} (1-\mathbb{1}_{A_{i}}(u)) & \overset{}=\sum_{k=0}^{n} (-1)^{k}\sum _{\{ i_{1},\dots,i_{k} \}\subset \{ 1,\dots,n \}}\prod _{s=1}^{k}\mathbb{1}_{A_{i_{s}}}(u) \\
+	 & \overset{3}= \sum_{k=0}^{n} (-1)^{k}\sum _{\{ i_{1},\dots,i_{k}\}} \mathbb{1}_{A_{i_{1}}\cap\dots \cap A_{i_{k}}}(u)
+\end{align*}
+
+\end{proof}
+\end{example}
+
+\section{Generating functions: calculations with power series}
+
+Suppose that $a_{0},\dots,a_{n}$ is an interesting sequence of numbers. Then $a(x)=a_{n}x^{n}+\dots +a_{0}$ is an interesting power series. We can see this $a(x)$ as 
+\begin{itemize}
+\item A formal power series if $x$ is considered as a formal variable.
+\item A power series converging for $|x|<r_{0}$ then $a(x)$ can be viewed as a functionn $(-r_{0},r_{0})$ or on a disk $\{ z\in \mathbf{C}:|z|<r_{0} \}$
+\end{itemize}
+
+\begin{definition}
+Let $\{ a_{n} \}_{n=0}^{\infty}$ be a sequence of complex numbers. Then the generating series of this sequence is the power series
+$$
+a(x):= \sum_{n=0}^{\infty} a_{n}x^{n}
+$$
+\end{definition}
+\begin{example}[Geometric series]
+Consider the sequence $a_{n}=1$ for $n=0,\dots,\infty$. The generating series of this sequence is $a(x)=1+x+\dots +x^{n}$ which converges to $\frac{1}{1-x}$ if $|x|<1$.
+\end{example}
+
+\begin{definition}[Formal power series]
+A formal power series is an infinite sum 
+$$
+a(x)=\sum_{n=0}^{\infty} a_{n}x^{n}
+$$
+where $\{ a_{n} \}_{n=0}^{\infty}$ is a sequence of complex numbers and $x$ is a formal variable.
+\end{definition}
+\begin{proposition}
+Let $a(x)=\sum_{n=0}^{\infty}a_{n}x^{n}$ be a formal power series. Suppose that there exists a positive real number $K$ such that $|a_{n}|<K^{n}$ for all $n\in \mathbf{Z}_{\ge 0}$. Then the series $a(x)$ converges absolutely when $x$ is substituted by a real number in the interval $\left( -\frac{1}{k}, \frac{1}{k} \right)$.
+
+Moreover, the function $a:\left( -\frac{1}{k}, \frac{1}{k} \right)\to \mathbf{C}$ has derivatives of all orders at 0 and $a_{n}=\frac{a^{(n)}(0)}{n!}$.
+\end{proposition}
+
+\subsection*{Operations with sequences and their generating functions}
+
+\begin{enumerate}
+\item Addition: 
+$$
+\sum_{n=0}^{\infty}a_{n}x^{n}+\sum_{n=0}^{\infty} b_{n}x^{n}=\sum_{n=0}^{\infty}(a_{n}+b_{n})x^{n}  
+$$
+\item Multiplication: 
+$$
+\left( \sum_{n=0}^{\infty} a_{n}x^{n} \right)\left( \sum_{n=0}^{\infty} b_{n}x^{n} \right)=\sum_{n=0}^{\infty} \left( \sum_{k=0}^{n} a_{k}b_{n-k} \right)x^{n}
+$$
+\item Substitution: 
+$$
+a(b(x))=\sum_{n=0}^{\infty} a_{n}b(x)^{n}=\sum_{n=0}^{\infty} a_{n}\left( \sum_{m=0}^{\infty} b_{m}x^{m} \right)^{n}
+$$
+\item Differentiation: 
+$$
+\frac{d}{dx}\left( \sum_{n=0}^{\infty} a_{n}x^{n} \right)=\sum_{n=1}^{\infty}na_{n}x^{n-1}=\sum_{n=0}^{\infty} (n+1)a_{n+1}x^{n} 
+$$
+\item Integration:
+$$
+\int_{0}^{x} \left( \sum_{n=0}^{\infty} a_{n}y^{n} \right) \, dy=\sum_{n=0}^{\infty}  \frac{a_{n}}{n+1}x^{n+1} 
+$$
+\end{enumerate}
+\begin{example}
+What is the generating function for $a_{n}=n+1$.
+
+$$
+1+2x+\dots+nx^{n-1}=\frac{d}{dx}(x+x^{2}+\dots+x^{n})=\frac{d}{dx}\left( \frac{x}{1-x} \right)=\frac{1}{(1-x)^{2}}
+$$
+\end{example}
+\begin{example}
+Compute the sum $\sum_{k=0}^{m}(-1)^{k}\binom{ n}  {k }$.
+
+\begin{align*}
+\sum_{m=0}^{\infty} \left( \sum_{k=0}^{m} (-1)^{k}\binom{ n}  {k }  \right)x^{k} & =\sum_{k=0}^{\infty} (-1)^{k}\binom{ n}  {k } \left( \sum_{m=k}^{\infty} x^{m} \right) \\
+ & =\sum_{k=0}^{\infty} (-1)^{k}\binom{ n}  {k } \frac{x^{k}}{1-x} \\
+ & = \frac{(x-1)^{n}}{1-x}=-(x-1)^{n-1}
+\end{align*}
+Thus $\sum_{k=0}^{m}(-1)^{k}\binom{ n}  {k }=-\binom{ n-1}  {m }$.
+\end{example}
+
+\begin{theorem}[Generalized binomial theorem]
+For every $r\in \mathbf{R}$ and every integer $k\ge 0$, let
+$$
+\binom{ r}  {k } = \frac{r(r-1)\dots(r-k+1)}{k!}
+$$
+then the following holds 
+$$
+(1+x)^{r}=\binom{ r}  {0 } +\binom{ r}  {1 } x+\dots
+$$
+for all $x$ with $|x|<1$.
+\end{theorem}

@@ -58,19 +58,19 @@
  \usepackage{marginnote}
 
 \theoremstyle{plain}
-\newtheorem{theorem}{Théorème}[chapter]
-\newtheorem{lemma}[theorem]{Lemme}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{claim}[theorem]{Claim}
-\newtheorem{corollary}[theorem]{Corollaire}
+\newtheorem{corollary}[theorem]{Corollary}
 
 \theoremstyle{definition}
-\newtheorem{definition}{Définition}[chapter]
+\newtheorem{definition}{Definition}[chapter]
 \newtheorem*{notation}{Notation}
 \newtheorem*{question}{Question}
 \newtheorem*{answer}{Answer}
 \newtheorem*{reminder}{Reminder}
-\newtheorem{example}{Exemple}[chapter]
-\newtheorem{remark}[theorem]{Remarque}
-\newtheorem{problem}{Problème}[chapter]
-\newtheorem{exercise}{Exercice}[chapter]
+\newtheorem{example}{Example}[chapter]
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{problem}{Problem}[chapter]
+\newtheorem{exercise}{Exercise}[chapter]

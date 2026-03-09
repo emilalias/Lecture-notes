@@ -1,0 +1,146 @@
+\section{Fonctions continues sur un compact}
+
+\begin{theorem}
+Soit \footnote{Lecture 7} $E\subset \mathbf{R}^{n}$ compact non-vide et $f:E\to \mathbf{R}$ continue. Alors $f$ est bornee et atteint ses bornes, c-a-d il exists $\boldsymbol{x}_{M}\in E$ tel que $f(\boldsymbol{x}_{M})=\max_{\boldsymbol{x}\in E}f(\boldsymbol{x})$ et $\boldsymbol{x}_{m}\in E$ tel que $f(\boldsymbol{x}_{m})=\min_{\boldsymbol{x}\in E}f(\boldsymbol{x})$.
+\end{theorem}
+\begin{proof}
+\begin{itemize}
+\item $f$ est bornee: Si par l'absurde $f$ n'est pas bornee, il existe une suite $\{ \boldsymbol{x}^{(k)} \}_{k\in \mathbf{N}}\subset E$ tel que $|f(\boldsymbol{x}^{(k)})|>k$. Mais il existe une sous-suite $\{ \boldsymbol{x}^{(k_{j})} \}_{j\in \mathbf{N}}\subset E$ convergente a $\boldsymbol{x}\in E$. Alors $j<k_{j}<|f(\boldsymbol{x}^{(k_{j})})|\to \infty$. Mais $f$ est continue donc $\lim_{ j \to \infty }f(\boldsymbol{x}^{(k_{j})})=f(\boldsymbol{x})<\infty$. Contradiction!
+\item $f$ atteint ses bornes: Puisque $f$ este bornee $M:=\sup_{\boldsymbol{x}\in E}f(\boldsymbol{x})<\infty$ tel que $\forall\varepsilon~\exists \boldsymbol{x}_{\varepsilon}\in E$ tel que $M<f(\boldsymbol{x}_{\varepsilon})+\varepsilon$. On pose $\varepsilon=\frac{1}{k}$ tel qu'il existe un suite $\{ \boldsymbol{x}^{(k)} \}_{k\in \mathbf{N}}\subset E$ et $M<f(\boldsymbol{x}^{(k)})+ \frac{1}{k}$.
+
+De la suite $\{ \boldsymbol{x}^{(k)} \}$ on peut extraire une sous-suite convergente $\{ \boldsymbol{x}^{(k_{j})} \}_{j\in \mathbf{N}}\subset E$ qui converge a $\boldsymbol{x}_{M}\in E$. Par continuite de $f$ on a que $\lim_{ j \to \infty } f(\boldsymbol{x}^{(k_{j})})=f(\boldsymbol{x}_{M})$ donc 
+$$
+M\le \lim_{ j \to \infty } f\left( \boldsymbol{x}^{(k_{j})}+\frac{1}{k_{j}} \right)=f(\boldsymbol{x}_{M}) \leadsto M=f(\boldsymbol{x}_{M})
+$$
+\end{itemize}
+\end{proof}
+
+\begin{theorem}
+Soit $E\subset \mathbf{R}^{n}$ compact et non vide et connexe par arcs et $f:E\to \mathbf{R}$ continue. Alors $f$ atteint toutes les valeurs entre $m=\min_{\boldsymbol{x}\in E} f(x)$ et $M=\max_{\boldsymbol{x}\in E} f(x)$. On définit l'ensemble image de $f$ : $\mathrm{Im}(f)=[m,M]$.
+\end{theorem}
+\begin{proof}
+Comme $f$ estcontinue sur $E$ compact alors il existe $\boldsymbol{x}_{m},\boldsymbol{x}_{M}\in E$ tel que $f(\boldsymbol{x}_{m})=m$ et $f(\boldsymbol{x}_{M})=M$. Puisque $E$ est connexe par arcs, il existe $\boldsymbol{\gamma}:[0,1]\to E$ continue tel que $\boldsymbol{\gamma}(0)=\boldsymbol{x}_{m}$ et $\boldsymbol{\gamma}(1)=\boldsymbol{x}_{M}$. Soit $g:[0,1]\to \mathbf{R}, t\mapsto f(\boldsymbol{\gamma}(t))$ continue alors $$[m,M]\supset \mathrm{Im}(f)\supset\mathrm{Im}(g)=[m,M]\Rightarrow \mathrm{Im}(f)=[m,M]$$
+\end{proof}
+\begin{theorem}
+Soit $E\subset \mathbf{R}^{n}$ compact et non vide et $\boldsymbol{f}:E\to \mathbf{R}^{m}$ continue. Alors elle est uniformement continue.
+\end{theorem}
+
+
+\chapter{Dérivabilité de fonctions de plusieurs variables}
+
+\begin{definition}[Derivee directionelle]
+Soit $E\subset \mathbf{R}^{n}$ non vide, $f:E\to \mathbf{R}$ et $\boldsymbol{x}_{0}\in \mathring{E}$. On dit que $f$ est derivable dans la direction $\boldsymbol{v}\in \mathbf{R}^{n}$ en $\boldsymbol{x}_{0}$ si 
+$$
+\lim_{ t \to 0 } \frac{f(\boldsymbol{x}_{0}-t\boldsymbol{v})-f(\boldsymbol{x}_{0})}{t}
+$$
+existe. On note $D_{\boldsymbol{v}}f(\boldsymbol{x}_{0})$ la derivee directionelle lorsque $\lVert \boldsymbol{v} \rVert=1$.
+\end{definition}
+\begin{remark}
+Soit $g(t)=f(\boldsymbol{x}_{0}+t\boldsymbol{v})$ alors $D_{\boldsymbol{v}}f(\boldsymbol{x}_{0})=g'(0)$.
+\end{remark}
+
+\begin{definition}[Derivee partielle]
+En particulier on peut choisir $\boldsymbol{v}$ comme $\boldsymbol{e}_{i}$ un vecteur de la base canonique de $\mathbf{R}^{n}$. On peut donc reecrire 
+$$
+\frac{ \partial f }{ \partial x_{i} }(\boldsymbol{x}_{0})=D_{\boldsymbol{e}_{i}}f(\boldsymbol{x}_{0})
+$$
+et comme seulement la $x_{i}$-eme composante change on derive seulement par rapport a cette composante.
+\end{definition}
+\begin{example}
+Soit $f(x,y)=x^{2}\cos y$. On a $\forall (x,y)\in \mathbf{R}^{2}$ la derivee partielle par rapport a $x$:
+$$
+\frac{ \partial f }{ \partial x } (x,y)=2x\cos y
+$$
+et par rapport a $y$:
+$$
+\frac{ \partial f }{ \partial y } (x,y)=-x^{2}\sin y
+$$\end{example}
+
+\begin{definition}[Matrice Jacobienne]
+On appelle matrice Jacobienne 
+$$
+Df(\boldsymbol{x}_{0})=\begin{pmatrix}
+\frac{ \partial f }{ \partial x_{i} }(\boldsymbol{x}_{0}) & \dots & \frac{ \partial f }{ \partial x_{n} } (\boldsymbol{x}_{0}) 
+\end{pmatrix}\in \mathbf{R}^{1\times n}
+$$
+\end{definition}
+\begin{definition}[Vecteur gradient]
+On appelle vecteur gradient
+$$
+\boldsymbol{\nabla} f(\boldsymbol{x}_{0})=Df(\boldsymbol{x}_{0})^{T}\in \mathbf{R}^{n\times1}
+$$
+\end{definition}
+\begin{example}
+Soit 
+$$
+f(x,y)=\begin{cases}
+\frac{xy}{x^{2}+y^{2}} & \text{si }(x,y)\neq(0,0) \\
+0 & \text{si }(x,y)=(0,0)
+\end{cases}
+$$
+on calcule les derivees partielles
+$$
+\frac{ \partial f }{ \partial x } (0,0)=\lim_{ t \to 0 }  \frac{f(t,0)-f(0,0)}{t}=0
+$$
+et
+$$
+\frac{ \partial f }{ \partial y } (0,0)=\lim_{ t \to 0 } \frac{f(0,t)-f(0,0)}{t}=0.
+$$
+On calcule les derivees directionelles pour $\boldsymbol{v}=(v_{1},v_{2})\in \mathbf{R}^{2}$ tel que $\lVert \boldsymbol{v} \rVert=1$
+
+\begin{align*}
+D_{\boldsymbol{v}}(f)(0,0) & =\lim_{ t \to 0 } \frac{f(tv_{1},tv_{2})-f(0,0)}{t} \\
+ & =\lim_{ t \to 0 }  \frac{1}{t} \frac{t^{2}v_{1}v_{2}}{t^{2}v_{1}^{2}+t^{2}v_{2}^{2}}= \lim_{ t \to 0 } \frac{v_{1}v_{2}}{t} \\
+ & =\begin{cases}
+0 & \text{si }v_{1}=0\text{ ou }v_{2}=0  \\
+\infty & \text{si } v_{1}v_{2}\neq 0
+\end{cases}
+\end{align*}
+
+\end{example}
+\begin{example}
+Soit
+$$
+f(x,y)=\begin{cases}
+\frac{xy^{2}}{x^{2}+y^{4}} & \text{si }(x,y)\neq(0,0) \\
+0 & \text{si }(x,y)(0,0)
+\end{cases}
+$$
+on calcule la derivee partielle
+$$
+D_{\boldsymbol{v}}f(0,0)=\lim_{ t \to 0 } \frac{1}{t} \frac{t^{3}v_{1}v_{2}^{2}}{t^{2}v_{1}^{2}+t^{4}v_{2}^{4}}=\begin{cases}
+\frac{v^{2}_{2}}{v_{1}} & \text{si }v_{1}\neq0 \\
+0 &  \text{si }v_{1}=0
+\end{cases}
+$$
+\end{example}
+
+\begin{definition}
+Soit $E\subset \mathbf{R}^{n}$, $\boldsymbol{x}_{0}\in\mathring{E}$, $f:E\to \mathbf{R}$. On dit que $f$ est differentiable en $\boldsymbol{x}_{0}$ s'il existe une application $L:\mathbf{R}^{n}\to \mathbf{R}$ lineiare et une fonction $g:E\to \mathbf{R}$ telle que
+$$
+\forall \boldsymbol{x}\in E:f(\boldsymbol{x})=f(\boldsymbol{x}_{0})+L(\boldsymbol{x}-\boldsymbol{x}_{0})+g(\boldsymbol{x}_{0})
+$$
+ou $\lim_{ \boldsymbol{x} \to \boldsymbol{x}_{0} } \frac{g(\boldsymbol{x})}{\lVert \boldsymbol{x}-\boldsymbol{x}_{0} \rVert}=0$.
+
+On appelle $L$ la differentielle de $f$ en $\boldsymbol{x}_{0}$.
+\end{definition}
+\begin{reminder}
+Soit $\boldsymbol{y},\boldsymbol{x}\in \mathbf{R}^{n}$ et $\alpha,\beta \in \mathbf{R}$ et $L$ une application lineaire. On a
+$$
+L(\alpha \boldsymbol{x}+\beta \boldsymbol{y})=\alpha L(\boldsymbol{x})+\beta L(\boldsymbol{y})
+$$
+Soit $\boldsymbol{g}=\sum _{i}g_{i}\boldsymbol{e}_{i}\in \mathbf{R}^{n}$ alors $L(\boldsymbol{g})=L\left( \sum _{i}g_{i}\boldsymbol{e}_{i} \right)=\sum _{i} g_{i}L(\boldsymbol{e}_{i})$. 
+\end{reminder}
+
+\begin{theorem}
+Soit $f:E\to \mathbf{R}$ differentiable en $\boldsymbol{x}_{0}\in\mathring{E}$ avec differentielle $L$. Alors
+\begin{itemize}
+\item Toutes les derivees partielles et directionelles existent.
+\item La differentielle est unique et donnee par 
+$$
+L(\boldsymbol{x}-\boldsymbol{x}_{0})=Df(\boldsymbol{x}_{0})(\boldsymbol{x}-\boldsymbol{x}_{0})=\boldsymbol{\nabla}f(\boldsymbol{x}_{0})^{T}(\boldsymbol{x}-\boldsymbol{x}_{0})
+$$
+\item $D_{\boldsymbol{v}}f(\boldsymbol{x}_{0})=L\boldsymbol{v}=\boldsymbol{\nabla}f(\boldsymbol{x}_{0})^{T}\boldsymbol{v}$.
+\item $f$ est continue en $\boldsymbol{x}_{0}$.
+\end{itemize}
+\end{theorem}
