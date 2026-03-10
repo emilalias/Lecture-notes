@@ -1,12 +1,18 @@
 \input{header.txt}
 \title{Physique}
 \author{Molly Bloom}
+\setuptodonotes{noline, color=green!20, size=\tiny}
+\makeatletter
+\@todonotes@SetTodoListName{Lecture index}
+\makeatother
 
 \begin{document}
 
 \maketitle
 
-\tableofcontents  
+\tableofcontents 
+\listoftodos
+\todototoc
 
 \input{lecture1}
 \input{lecture2}
@@ -14,6 +20,8 @@
 \input{lecture4}
 \input{lecture5}
 \input{lecture6}
+\input{lecture7}
 \end{document}
+
 
 

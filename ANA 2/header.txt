@@ -8,7 +8,7 @@
 \usepackage{amsthm}
 \usepackage{svg}
 \usepackage{amscd}
-% \usepackage{todonotes}
+\usepackage{todonotes}
 \usepackage{hyperref}
 \usepackage{enumerate}
 \usepackage{tikz}

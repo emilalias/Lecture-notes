@@ -1,0 +1,59 @@
+\subsection{Theoreme de Bernoulli} \todo{Lecture 7}
+
+On considere un fluide parfait (pas de viscosite ni conduction de chaleur) incompressible ($\rho=\mathrm{cste}$) en ecoulement stationnaire ($\frac{ \partial  }{ \partial t}=0$) dans un champ de pesanteur $\boldsymbol{g}$ constant. 
+
+Regardons un tube de courant a $t=t_{0}:ABCD$ et a $t_{0}+\Delta t:A'B'C'D'$. On note $S_{A}$ la surface entre $AB$ et $v_{A}\Delta t$ la distance approximative entre $AB$ et $A'B'$ et pareil pour $CD$, $S_{C}$ et $v_{C}\Delta t$. On a que la masse du volume $ABCD$ est egal a celle de $A'B'C'D'$ donc 
+$$
+m_{A'B'C'D'}=m_{ABCD}-\underbrace{ S_{A}v_{A}\Delta t }_{ \text{perte de masse} }+\underbrace{ S_{C}v_{C}\Delta t }_{\text{gain de masse}}
+$$
+donc
+$$
+S_{A}v_{A}=S_{C}v_{C} \leadsto\text{conservation du flux}
+$$
+Les volumes aux deux instants sont egaux
+$$
+\Delta V:= V_{CDC'D'}=S_{C}v_{C}\Delta t=S_{A}v_{A}\Delta t=V_{ABA'B'}
+$$
+
+Sans friction (dissipation) pour notre tube de courant on a
+$$
+\Delta E_{\mathrm{cin}}+\Delta E_{\mathrm{pot}}=\Delta W
+$$
+avec 
+$$
+\Delta E_{\mathrm{cin}}=\frac{1}{2}\rho v_{C}^{2}\Delta V-\frac{1}{2}\rho v_{A}^{2}\Delta V,\quad\Delta E_{\mathrm{pot}}=\rho\Delta Vgz_{C}-\rho\Delta Vgz_{A}
+$$
+
+Le travial $\Delta W$ est du au travail des forces de pression ($\Delta W=\boldsymbol{F}\Delta \boldsymbol{x}$):
+$$
+\Delta W=p_{A}S_{A}v_{A}\Delta t-p_{C}S_{C}v_{C}\Delta t=(p_{A}-p_{C})\Delta t
+$$
+Donc
+$$
+\frac{1}{2}\rho v_{C}^{2}-\frac{1}{2}\rho v_{A}^{2}+\rho gz_{C}-\rho gz_{A}=p_{A}-p_{C}
+$$
+qui donne
+$$
+\frac{1}{2} \rho v_{A}^{2}+\rho gz_{A}+p_{A}=\frac{1}{2}\rho v_{C}+\rho gz_{C}+p_{C}
+$$
+
+\begin{theorem}[Theoreme de Bernoulli]
+$$
+\frac{1}{2}\rho v^{2}+\rho gz+p=\text{constante le long d'une ligne de courant}
+$$
+ou $\frac{1}{2}\rho v^{2}$ est la pression dynamique et $p$ la pression statique que si on les somme donne la pression totale.
+\end{theorem}
+\begin{remark}
+\begin{itemize}
+\item Seulement is $v \to 0$ on trouve que $p=\mathrm{const}-\rho gz$ ("$=p_{0}+\rho gh$" la pression hydrostatique)
+\item Bernoulli peut etre derivee a partir de l'equation de continuité et d'Euler.
+\end{itemize}
+\end{remark}
+
+\subsection{Applications de Bernoulli}
+
+Poly p38.
+
+\section{Ecoulement d'un fluide visqueux}
+
+Nous nous restreindrons dans cet section au cas des fluides incompressibles.
