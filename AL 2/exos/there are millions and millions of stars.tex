@@ -30,6 +30,17 @@
 \begin{document}
 \maketitle
 \tableofcontents
+\chapter{References, references, refreneces}
+\begin{theorem}\label{thm22}
+Soit $R$ un anneau alors il existe un anneau $R'\supseteq R$ tel que $R$ est un sous-anneau de $R'$ et $1_{R'}=1_{R}$ et ces conditions sont satisfaites:
+
+Il existe $x \in R\setminus R$ tel que
+\begin{enumerate} 
+\item  $\forall a\in R:ax=xa$
+\item Si pour $a_{0},\dots,a_{n}\in R:a_{0}+a_{1}x+\dots+a_{n}x^{n}=0$ alors tous les $a_{i}$ sont egaux a 0.
+\end{enumerate}
+On appele $x$ une variable ou indeterminee de $R$. 
+\end{theorem}
 \chapter{Serie 1}
 \begin{exercise}[Exo plus]
 Soit $R$ un anneau et $\alpha \in Z(R)$ un element du centre de $R$. Montrer que l'application
@@ -158,7 +169,7 @@ a & =0
 donc $r$ ne peut pas etre un diviseur de zero.
 \item Le sens $\Leftarrow$ est trivial car si deux polynomes ont les memes coefficients alors ce sont les memes polynomes.
 
-Pour le sens $\Rightarrow$ on utilise le theoreme qui nous dit que le seul polynome egal a 0 est le polynome dont tous les coefficients valent 0. Comme $p(x)-q(x)=0$ on a que $a_{i}-b_{i}=0$ pour tous $i$ donc $a_{i}=b_{i}$.
+Pour le sens $\Rightarrow$ on utilise \ref{thm22} qui nous dit que le seul polynome egal a 0 est le polynome dont tous les coefficients valent 0. Comme $p(x)-q(x)=0$ on a que $a_{i}-b_{i}=0$ pour tous $i$ donc $a_{i}=b_{i}$.
 \item On procede par double inclusion: prenons $aI_{n}\in Z(R^{n\times n})$ alors $\forall A\in R^{n\times n}$ on a $aI_{n}A=aA$ et comme $a\in Z(R)$ on a l'equivalence $aA=Aa$ que montre que $aI_{n}A=A(aI_{n})$ pour montrer l'inclusion $\supseteq$.
 
 Pour montrer l'inclusion $\subseteq$ on va utiliser les matrices elementaires $E^{ij}$. 
@@ -259,7 +270,7 @@ $$
 on peut observer que il y a une relation de dependence entre la troisieme et premiere colonne donc $A_{B}$ n'est pas inversible.
 \end{proof}
 
-\begin{exercise}[Exo etoile serie 3]
+\begin{exercise}[Exo etoile]
 Soit $K$ un corps et $f,g\in K[x]$ deux polynomes pas tous les deux nuls. Considerons l'ensemble des diviseurs communs a $f$ et $g$:
 $$
 D_{f,g}=\{ d\in K[x]:d\mid f , d\mid g\}
@@ -288,7 +299,7 @@ Pour monter l'unicite, on prend $\tilde{d}\in D_{f,g}$ de degre maximal et unita
 
 \chapter{Serie 4}
 
-\begin{exercise}[Exo plus serie 4]
+\begin{exercise}[Exo plus]
 Soit $V$ un espace vectoriel sur un corps $K$ de dimension finie et $f:V\to V$ un endomorphisme. Soit $p:V\to V$ un automorphisme (c-a-d un endomorphisme inversible). Montrer que $\lambda \in K$ est une valeur propre de $f$ si et seulement si $\lambda$ est une valeur propre de l'endomorphisme $p ^{-1}\circ f \circ p$.
 \end{exercise}
 \begin{proof}[Solution]
