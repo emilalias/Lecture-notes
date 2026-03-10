@@ -2,12 +2,17 @@
 
 \title{Discrete Mathematics}
 \author{Aureliano Buendia}
-
+\setuptodonotes{noline, color=green!20, size=\tiny}
+\makeatletter
+\@todonotes@SetTodoListName{Lecture index}
+\makeatother
 \begin{document}
 
 \maketitle
-\newpage
+
 \tableofcontents  
+\listoftodos
+\todototoc  
 \input{lecture1}
 \input{lecture2}
 \input{lecture3.tex}

@@ -1,0 +1,316 @@
+\documentclass[a4paper,11pt,french]{report} 
+\usepackage{mathrsfs}
+\usepackage{amsmath}% includes amsmath
+\usepackage{amsthm}
+\usepackage{hyperref}
+\usepackage[tmargin=2cm,rmargin=1in,lmargin=1in,margin=0.85in,bmargin=2cm,footskip=.2in]{geometry}
+
+\usepackage[default]{fontsetup}
+\usepackage{fontawesome}
+\renewcommand{\qedsymbol}{\faSmileO}
+\theoremstyle{plain}
+\newtheorem{theorem}{Théorème}[chapter]
+\newtheorem{lemma}[theorem]{Lemme}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{corollary}[theorem]{Corollaire}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Définition}[chapter]
+\newtheorem*{notation}{Notation}
+\newtheorem*{question}{Question}
+\newtheorem*{answer}{Answer}
+\newtheorem*{reminder}{Rappel}
+\newtheorem{example}{Exemple}[chapter]
+\newtheorem{remark}[theorem]{Remarque}
+\newtheorem{problem}{Problème}[chapter]
+\newtheorem{exercise}{Exercice}[chapter]
+\title{Exos etoile}
+\author{Nathalie Sarraute}
+\begin{document}
+\maketitle
+\tableofcontents
+\chapter{Serie 1}
+\begin{exercise}[Exo plus]
+Soit $R$ un anneau et $\alpha \in Z(R)$ un element du centre de $R$. Montrer que l'application
+
+\begin{align}
+\phi : R[x] & \to R \\
+f(x) & \mapsto f(\alpha)
+\end{align}
+
+est un morphisme d'anneuax surjectif.
+
+Soit $R=\mathbf{Z}^{2\times 2}$, trouver $\alpha \in R$ (qui n'appartient donc pas a $Z(R)$) et deux polynomes $g,h\in R[x]$ tel que
+$$
+g(\alpha)h(\alpha)\neq (gh)(\alpha)
+$$
+\end{exercise}
+\begin{proof}[Solution]
+Pour montrer que $\phi$ est un homomorphisme d'anneaux on verifie ces trois conditions $\forall f,g\in R[x]$
+\begin{enumerate}
+\item $\phi(1)=1$
+\item $\phi(g+f)=\phi(g)+\phi(f)$
+\item $\phi(fg)=\phi(f)\phi(g)$
+\end{enumerate}
+on verifie:
+\begin{enumerate}
+\item $\phi(1)=1$ car le polynome constant est envoye sur lui meme par $\phi$
+\item \label{exo1} On prend $f,g\in R[x]$ et on ecrit $f(x)=\sum_{i=0}^{\deg f}a_{i}x^{i}$ et $g(x)=\sum_{j=0}^{\deg g}b_{j}x^{j}$ ou $a_{i},b_{j}\in R$. 
+\begin{align}
+\phi(f(x)+g(x)) & =\phi\left( \sum_{i=0}^{\deg f} a_{i}x^{i}+\sum_{j=0}^{\deg g} b_{j}x^{j}  \right) \\
+ & =\phi\left( \sum_{k=0}^{\max\{ \deg f,\deg g \}} (a_{k}+b_{k})x^{k} \right) \\
+ & =\sum_{k=0}^{\max\{ \deg f,\deg g \}}(a_{k}+b_{k})\alpha^{k} \\
+ & =\sum_{i=0}^{\deg f} a_{i}\alpha^{i}+\sum_{j=0}^{\deg g} b_{j}\alpha^{j}  \\
+ & =\phi(f(x))+\phi(g(x)) \\
+\end{align}
+\item On reprend $f,g$ comme avant et on calcule 
+\begin{align}
+\phi(f(x)g(x)) & =\phi\left( \sum_{i=0}^{\deg f} a_{i}x^{i} \sum_{j=0}^{\deg g} b_{j}x^{j} \right) \\
+ & =\phi\left( \sum_{i=0}^{\deg f} \sum_{j=0}^{\deg g} a_{i}b_{j}x^{i+j} \right) \\
+ & =\sum_{i=0}^{\deg f} \sum_{j=0}^{\deg g} a_{i}b_{j}\alpha^{i+j} \label{exo2}\\
+ & =\left( \sum_{i=0}^{\deg f } a_{i}\alpha^{i} \right)\left( \sum_{j=0}^{\deg g } b_{j}\alpha^{j} \right) \\
+ & =\phi(f(x))\phi(g(x))
+\end{align}
+\end{enumerate}
+ou \ref{exo2} est obtenu car $\alpha \in Z(R)$. Donc $\phi$ est un morphisme d'anneaux qui est surjectif a cause de \ref{exo1}.
+
+Soit $R=\mathbf{Z}^{2\times2}$, on prend $\alpha=\begin{pmatrix}1 & 1 \\ 0 & 1\end{pmatrix}$, $g(x)=\begin{pmatrix}1 & 1  \\ 0 & 1 \end{pmatrix}x$ et $h(x)=\begin{pmatrix} 1 & 0 \\ 1 & 1\end{pmatrix}x$ on a
+$$
+\begin{pmatrix}
+1 & 1 \\
+0 & 1
+\end{pmatrix}\begin{pmatrix}
+1 & 0 \\
+1 & 1
+\end{pmatrix}=\begin{pmatrix}
+2 & 1 \\
+1 & 1
+\end{pmatrix}
+$$
+et 
+$$
+\begin{pmatrix}
+1 & 0 \\
+1 & 1
+\end{pmatrix}\begin{pmatrix}
+1 & 1 \\
+0 & 1
+\end{pmatrix}=\begin{pmatrix}
+1 & 1 \\
+1 & 2
+\end{pmatrix}
+$$
+Donc ces matrices ne commutent pas. On obtient
+$$
+g(\alpha)=\begin{pmatrix}
+1 & 2 \\
+0 & 1
+\end{pmatrix}\quad f(\alpha)=\begin{pmatrix}
+1 & 1 \\
+1 & 2
+\end{pmatrix}
+$$
+donc
+$$
+g(\alpha)f(\alpha)=\begin{pmatrix}
+3 & 5 \\
+1 & 2
+\end{pmatrix}
+$$
+mais
+$$
+g(x)h(x)=\begin{pmatrix}
+2 & 1 \\
+1 & 1 
+\end{pmatrix}x^{2}
+$$
+que si on evalue en $\alpha$
+$$
+(gh)(\alpha)=\begin{pmatrix}
+2 & 5 \\
+1 & 3
+\end{pmatrix}
+$$
+qui est different de $g(\alpha)f(\alpha)$
+\end{proof}
+\begin{exercise}[Exo etoile]
+Soit $R$ un anneau.
+\begin{enumerate}
+\item Montrer que l'element $1$ est unique.
+\item Montrer qu'un element inversible $r\in R^{*}$ n'est pas un diviseur de zero.
+\item Montrer que deux polynomes 
+$$
+p(x)=a_{0}+a_{1}x+\dots+a_{n}x^{n}\quad\text{et}\quad q(x)=b_{0}+b_{1}x+\dots+b_{m}x^{m}\in R[x]
+$$
+sont egaux si et seulement si $a_{i}=b_{i}$ pour tous $i$.
+\item Soit $R^{n\times n}$ l'anneau des matrices $n\times n$ sur $R$. Montrer que le centre de $R^{n\times n}$ est $Z(R^{n\times n})=\{ aI_{n}:a\in Z(R) \}$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}[Solution]
+\begin{enumerate}
+\item Supposons qu'il existe $1'\in R$ tel que $\forall a\in R$ on a : $1'a=a1'=a$. Prenons $a=1$ alors $1=11'=1'1=1'$ car $1$ est l'unite de $R$.
+\item Prenons $r\in R^{*}$ et supposons qu'il existe $a\in R$ tel que $ra=0$ alors:
+\begin{align*}
+r^{-1}ra & =r^{-1}0 \\
+a & =0
+\end{align*}
+donc $r$ ne peut pas etre un diviseur de zero.
+\item Le sens $\Leftarrow$ est trivial car si deux polynomes ont les memes coefficients alors ce sont les memes polynomes.
+
+Pour le sens $\Rightarrow$ on utilise \ref{thm22} qui nous dit que le seul polynome egal a 0 est le polynome dont tous les coefficients valent 0. Comme $p(x)-q(x)=0$ on a que $a_{i}-b_{i}=0$ pour tous $i$ donc $a_{i}=b_{i}$.
+\item On procede par double inclusion: prenons $aI_{n}\in Z(R^{n\times n})$ alors $\forall A\in R^{n\times n}$ on a $aI_{n}A=aA$ et comme $a\in Z(R)$ on a l'equivalence $aA=Aa$ que montre que $aI_{n}A=A(aI_{n})$ pour montrer l'inclusion $\supseteq$.
+
+Pour montrer l'inclusion $\subseteq$ on va utiliser les matrices elementaires $E^{ij}$. 
+\begin{reminder}
+\begin{itemize}
+\item Pour $A\in R^{n\times n}$, la matrice $AE^{ij}$ est une matrice nulle sauf la $j$-eme colonne qui est egale a la $i$-eme colonne de $A$.
+\item Pour $E^{ij}A$ la matrice est nulle sauf la $i$-eme ligne de qui est egale a la $j$-eme ligne de $A$.
+\end{itemize}
+\end{reminder}
+Prenons $C\in Z(R^{n\times n})$. On considere les matrices $CE^{ii}$ et $E^{ii}C$ qui sont egales car $C\in Z(R^{n\times n})$ donc $C$ est une matrice diagonale qu'on note $C=\mathrm{diag}(c_{11},\dots,c_{nn})$. On compare les coefficients sur la diagonale qu'on denote par $(CE^{ij})_{ij}=c_{ii}$ et $(E^{ij}C)_{ij}=c_{jj}$ et comme ces matrices sont egales on a que $c_{ii}=c_{jj}$. On sait alors que $C=cI_{n}$ pour $c\in R$. Donc on a
+\begin{align*}
+(ac)I_{n} & =(aI_{n})(cI_{n}) \\
+ & =(cI_{n})(aI_{n}) \\
+ & =(ca)I_{n} 
+\end{align*}
+
+donc on a montre que $c\in Z(R)$.
+\end{enumerate}
+\end{proof}
+
+\chapter{Serie 2}
+\begin{exercise}[Exo plus]
+Soit $K$ un corps et $f(x)\in K[x]$ un polynome de degre 3. Montrer que $f(x)$ est irreductible si et seulement si $f(x)$ n'a pas de racines dans $K$.
+\end{exercise}
+\begin{proof}[Solution]
+\begin{definition}
+Un polynome $g(x)\in K[x]$ est irreductible si
+\begin{enumerate}
+\item $\deg g\ge 1$
+\item Si $g(x)=p(x)q(x)$ avec $p(x),q(x)\in K[x]$ alors $\deg p=0$ ou $\deg q=0$.
+\end{enumerate}
+\end{definition}
+On montre le sens $\Rightarrow$ par contraposition. Supposons que $f(x)$ admet une racine $\alpha \in K$ (c-a-d $f(\alpha)=0$), alors $(x-\alpha)\mid f(x)$ qui implique que $\exists q(x)\in K[x]$ tel que $(x-\alpha)q(x)=f(x)$ donc $f(x)$ n'est pas irreductible.
+
+Pour montrer le sens $\Leftarrow$ on suppose que $f(x)$ est reductible et de degre 3 alors il existe $\beta,\gamma \in K$ avec $\beta\neq 0$ tel que $(\beta x+\gamma)\mid f(x)$ alors $-\frac{\gamma}{\beta}$ est une racine de $f(x)$ qui pose une contradiction.
+\end{proof}
+\begin{exercise}[Exo etoile]
+Soit $K$ un corps et $A\in K^{n\times n}$ une matrice inversible. Posons $\tilde{A}:=(\mathrm{com}A)^{T}$ la transposee de la comatrice de $A$.
+\begin{enumerate}
+\item Montrer que $\det(A)\neq 0$.
+\item Montrer que $A^{-1}=\det(A)^{-1}\tilde{A}$.
+\item Montrer que pour toute matrice $A\in \mathbf{Z}^{n\times n}$, il existe $B\in \mathbf{Z}^{n\times n}$ telle que $AB=I$ si et seulement si $\det(A)=\pm1$.
+\end{enumerate}
+\begin{reminder}
+$\mathrm{com}(A)_{ij}=(-1)^{i+j}\det(A_{ij})$ ou $A_{ij}$ est la matrice dont on a enlevee la $i$-eme ligne et $j$-eme colonne.
+\end{reminder}
+\end{exercise}
+\begin{proof}[Solution]
+\begin{enumerate}
+\item Comme $A$ est inversible on a que $AA^{-1}=I_{n}$ alors $\det(AA^{-1})=1$ donc par proprietes du determinant on a $\det(A)\det (A^{-1})=1$ et $\det(A)\neq 0$.
+\item Pour conclure, il suffit de montrer que $A\tilde{A}=\det(A)I_{n}$ (par unicite de l'inverse d'une matrice)( Pour etre precis, il faut aussi demontrer que $\tilde{A}A=\det(A)I_{n}$). Considerons les coefficients diagonaux de $A\tilde{A}$, pour tout $i\in \{ 1,\dots ,n \}$ on a 
+
+\begin{align*}
+(A\tilde{A})_{ii} & =\sum_{j=1}^{n} a_{ij}\tilde{a}_{ji} \\
+ & =\sum_{j=1}^{n} a_{ij}(\mathrm{com}A)_{ij} \\
+ & =\sum_{j=1}^{n} a_{ij}(-1)^{i+j}\det(A_{ij}) \\
+ & =\det A.
+\end{align*}
+
+Considerons les coefficients hors diagonal. Pour $i\neq j\in \{ 1,\dots,n \}$ on a
+
+\begin{align*}
+(A\tilde{A})_{ij} & =\sum_{k=1}^{n} a_{ik}\tilde{a}_{kj} \\
+ & =\sum_{k=1}^{n} a_{ik}(\mathrm{com}A)_{jk} \\
+ & =\sum_{k=1}^{n} a_{ik}(-1)^{j+k}\det(A_{jk}) \\
+ & =\text{le determinant de la matrice }A\text{ dont on remplace la }\\&j\text{-eme ligne par une copie de la }i\text{-eme ligne} \\
+ & =0
+\end{align*}
+car $\det$ est une forme alternee.
+\item Pour montrer le sens $\Rightarrow$, on suppose qu'il existe $B\in \mathbf{Z}^{n\times n}$ tel que $AB=I_{n}$ donc $\det(AB)=1$ et comme dans $\mathbf{Z}$ les seuls diviseurs de 1 sont 1 et $-1$ alors on observe que $\det(A)=\pm1$.
+
+On montre l'autre sens $\Leftarrow$, on suppose que $\det(A)=\pm1$. Par les memes techniques que dans 2 on voit que $A\tilde{A}=\det(A)I_{n}$ avec $\tilde{A}=(\mathrm{com}A)^{T}\in \mathbf{Z}^{n\times n}$. Comme $\det(A)=\pm 1$ on conclut que $B=\det(A)^{-1}\tilde{A}\in \mathbf{Z}^{n\times n}$.
+\end{enumerate}
+\end{proof}
+
+\chapter{Serie 3}
+
+\begin{exercise}[Exo plus]
+Soit $V$ un espace vectoriel reel et soit $B=\{ v_{1},\dots,v_{4} \}$ une base de $V$.
+\begin{enumerate}
+\item Soit $f$ l'endomorphsime defini par
+$$
+f(v_{1})=v_{1}-v_{2},~f(v_{2})=2v_{2}-6v_{3},~f(v_{3})=-2v_{1}+2v_{2},~f(v_{4})=v_{2}-3v_{3}+v_{4}
+$$
+Ecrivez la matrice $A_{B}$ de l'application $f$ dans la base $B$. Est-ce que $f$ est inversible? Si oui, ecrivez la matrice $A^{-1}_{B}$ de l'application inverse $f^{-1}:V\to V$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}[Solution]
+On construit la matrice $A_{B}$:
+$$
+A_{B}=\begin{pmatrix}
+1 & 0 & -2 & 0 \\
+-1 & 2 & 2 & 1 \\
+0 & -6 & 0 & -3 \\
+0 & 0 & 0 & 1
+\end{pmatrix}
+$$
+on peut observer que il y a une relation de dependence entre la troisieme et premiere colonne donc $A_{B}$ n'est pas inversible.
+\end{proof}
+
+\begin{exercise}[Exo etoile serie 3]
+Soit $K$ un corps et $f,g\in K[x]$ deux polynomes pas tous les deux nuls. Considerons l'ensemble des diviseurs communs a $f$ et $g$:
+$$
+D_{f,g}=\{ d\in K[x]:d\mid f , d\mid g\}
+$$
+\begin{enumerate}
+\item Montrer qu'il existe un unique polynome $d\in D_{f,g}$ unitaire et de degre maximal.
+\item Montrer que $d=\gcd(f,g)$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}[Solution]
+\begin{enumerate}
+\item Sans perte de generalite, on suppose que $g\neq 0$. Grace a la division euclidienne on peut ecrire $f=qg+r$ avec $q,r\in K[x]$ et $\deg r< \deg g$, on remarqiue ainsi que $D_{f,g}=D_{g,r}$, pourquoi? En effet soit $h\in K[x]$ alors $h \mid f$ et $h \mid g$ puis $h \mid g$ et $h \mid r$. En continuant ainsi (par des divisions euclidiennes succesives), on arrive a l'existence de $r^{*}\in K[x]$ tel que $D_{f,g}=D_{r^{*},0}$. Cette procedure se termine car la somme de degres de polynomes est strictement decroissante. On a
+$$
+D_{f,g}=D_{r^{*},0}=\{ d\in K[x]:d\mid r^{*} \}
+$$
+et le degre des polynomes dans $D_{f,g}$ est borne par $\deg r^{*}$. Soit $a_{n}\in K$ le coefficient dominant de $r^{*}$, on pose
+$$
+d^{*}:= \frac{1}{a_{n}}r^{*}
+$$
+et on observe que $d^{*}$ est unitaire et de degre maximal par construction.
+
+Pour monter l'unicite, on prend $\tilde{d}\in D_{f,g}$ de degre maximal et unitaire alors $\tilde{d}\in D_{r^{*},0}=D_{d^{*},0}$ qui implique qu'il existe $\lambda \in K$ tel que $\lambda \tilde{d}=d^{*}$ (car $\deg \tilde{d} = \deg d^{*}$). En comparant les coefficients dominants de $\lambda \tilde{d}$ et $d^{*}$ on conclut que $\lambda=1$ et donc $\tilde{d}=d^{*}$ qui demontre l'unicite de $d^{*}$.
+\item Il suffit de montrer que tout diviseur commun de $f$ et $g$ divise $d^{*}$, car $D_{f,g}=D_{d^{*},0}$, et que $d^{*}$ divise $f$ et $g$ car $d^{*}\in D_{f,g}$. On conclut par l'unicite de $d^{*}$.
+\end{enumerate}
+\end{proof}
+
+\chapter{Serie 4}
+
+\begin{exercise}[Exo plus serie 4]
+Soit $V$ un espace vectoriel sur un corps $K$ de dimension finie et $f:V\to V$ un endomorphisme. Soit $p:V\to V$ un automorphisme (c-a-d un endomorphisme inversible). Montrer que $\lambda \in K$ est une valeur propre de $f$ si et seulement si $\lambda$ est une valeur propre de l'endomorphisme $p ^{-1}\circ f \circ p$.
+\end{exercise}
+\begin{proof}[Solution]
+\begin{itemize}
+\item $\Rightarrow$: Supposons que $\lambda \in K$ est une valeur propre de $f$ avec $\boldsymbol{v}\in V\setminus \{ \boldsymbol{0} \}$ un vectuer propre associe. Posons $\boldsymbol{w}:=p ^{-1}(\boldsymbol{v})\neq \boldsymbol{0}$ (non nul car $p$ est un automorphisme). Si on applique la composition
+\begin{align*}
+(p ^{-1} \circ f \circ p)(\boldsymbol{w}) & =(p ^{-1} \circ f \circ p)(p ^{-1}(\boldsymbol{v})) \\
+ & =p ^{-1} (f(\boldsymbol{v})) \\
+ & = p ^{-1} (\lambda \boldsymbol{v}) \\
+ & =\lambda p ^{-1} (\boldsymbol{v}) \\
+ & =\lambda \boldsymbol{w}
+\end{align*}
+
+\item $\Leftarrow$: Supposons que $\lambda \in K$ est un valeur propre de $p ^{-1} \circ f \circ p$ et $\boldsymbol{w}\in V\setminus \{ \boldsymbol{0} \}$ est un vecteur propre associe. Posons $\boldsymbol{v}=p(\boldsymbol{w})\neq 0$ donc
+\begin{align*}
+f(\boldsymbol{v}) & =f(p(\boldsymbol{w})) \\
+ & =(p \circ p ^{-1})(f(p(\boldsymbol{w}))) \\
+ & =p(p ^{-1} \circ f \circ p)(\boldsymbol{w}) \\
+ & = p(\lambda \boldsymbol{w}) \\  & =\lambda p(\boldsymbol{w})\\
+ & = \lambda \boldsymbol{v}
+\end{align*}
+\end{itemize}
+\end{proof}
+
+\end{document}
