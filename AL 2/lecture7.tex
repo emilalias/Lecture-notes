@@ -82,7 +82,7 @@ mais $A\boldsymbol{e}_{2}\neq \boldsymbol{e}_{2}$.
 Soit $A=\begin{pmatrix}\lambda & 1 \\ 0 & \lambda \end{pmatrix}$. $\lambda$ est le seul valeur propre de $A$. S'il existe une base de vecteurs propres de $A$ alors $\forall \boldsymbol{x}\in K^{2}:A\boldsymbol{x}=\boldsymbol{x}\boldsymbol{x}$ mais $A\boldsymbol{e}_{2}=\begin{pmatrix}1 \\ \lambda\end{pmatrix}\neq \lambda \begin{pmatrix}0 \\ 1\end{pmatrix}$
 \end{example}
 
-\begin{theorem}
+\begin{theorem} \label{thmhier}
 Soit $f:V\to V$ un endomorphisme et $\lambda_{1},\dots,\lambda _{k}\in K$ les valeurs propres distincts de $f$. Soit $g_{i}=\dim E_{\lambda _{i}}$ pour $i=1,\dots ,k$, $f$ est diagonalisable si et seulement si $\sum_{i=1}^{k}g_{i}=n$.
 \end{theorem}
 \begin{proof}
@@ -123,54 +123,3 @@ alors par double inclusion $g_{1}+\dots g_{k}=n$.
 \item Calculer $g_{i}=\dim(\ker(f-\lambda _{i}\mathrm{Id}))$ par Gauss.
 \item Si $\sum_{i=1}^{k}g_{i}=n$ alors $f$ est diagonalisable sinon non.
 \end{enumerate}
-
-\begin{exercise}[Exo etoile serie 3]
-Soit $K$ un corps et $f,g\in K[x]$ deux polynomes pas tous les deux nuls. Considerons l'ensemble des diviseurs communs a $f$ et $g$:
-$$
-D_{f,g}=\{ d\in K[x]:d\mid f , d\mid g\}
-$$
-\begin{enumerate}
-\item Montrer qu'il existe un unique polynome $d\in D_{f,g}$ unitaire et de degre maximal.
-\item Montrer que $d=\gcd(f,g)$.
-\end{enumerate}
-\end{exercise}
-\begin{proof}[Solution]
-\begin{enumerate}
-\item Sans perte de generalite, on suppose que $g\neq 0$. Grace a la division euclidienne on peut ecrire $f=qg+r$ avec $q,r\in K[x]$ et $\deg r< \deg g$, on remarqiue ainsi que $D_{f,g}=D_{g,r}$, pourquoi? En effet soit $h\in K[x]$ alors $h \mid f$ et $h \mid g$ puis $h \mid g$ et $h \mid r$. En continuant ainsi (par des divisions euclidiennes succesives), on arrive a l'existence de $r^{*}\in K[x]$ tel que $D_{f,g}=D_{r^{*},0}$. Cette procedure se termine car la somme de degres de polynomes est strictement decroissante. On a
-$$
-D_{f,g}=D_{r^{*},0}=\{ d\in K[x]:d\mid r^{*} \}
-$$
-et le degre des polynomes dans $D_{f,g}$ est borne par $\deg r^{*}$. Soit $a_{n}\in K$ le coefficient dominant de $r^{*}$, on pose
-$$
-d^{*}:= \frac{1}{a_{n}}r^{*}
-$$
-et on observe que $d^{*}$ est unitaire et de degre maximal par construction.
-
-Pour monter l'unicite, on prend $\tilde{d}\in D_{f,g}$ de degre maximal et unitaire alors $\tilde{d}\in D_{r^{*},0}=D_{d^{*},0}$ qui implique qu'il existe $\lambda \in K$ tel que $\lambda \tilde{d}=d^{*}$ (car $\deg \tilde{d} = \deg d^{*}$). En comparant les coefficients dominants de $\lambda \tilde{d}$ et $d^{*}$ on conclut que $\lambda=1$ et donc $\tilde{d}=d^{*}$ qui demontre l'unicite de $d^{*}$.
-\item Il suffit de montrer que tout diviseur commun de $f$ et $g$ divise $d^{*}$, car $D_{f,g}=D_{d^{*},0}$, et que $d^{*}$ divise $f$ et $g$ car $d^{*}\in D_{f,g}$. On conclut par l'unicite de $d^{*}$.
-\end{enumerate}
-\end{proof}
-\begin{exercise}[Exo plus serie 4]
-Soit $V$ un espace vectoriel sur un corps $K$ de dimension finie et $f:V\to V$ un endomorphisme. Soit $p:V\to V$ un automorphisme (c-a-d un endomorphisme inversible). Montrer que $\lambda \in K$ est une valeur propre de $f$ si et seulement si $\lambda$ est une valeur propre de l'endomorphisme $p ^{-1}\circ f \circ p$.
-\end{exercise}
-\begin{proof}[Solution]
-\begin{itemize}
-\item $\Rightarrow$: Supposons que $\lambda \in K$ est une valeur propre de $f$ avec $\boldsymbol{v}\in V\setminus \{ \boldsymbol{0} \}$ un vectuer propre associe. Posons $\boldsymbol{w}:=p ^{-1}(\boldsymbol{v})\neq \boldsymbol{0}$ (non nul car $p$ est un automorphisme). Si on applique la composition
-\begin{align*}
-(p ^{-1} \circ f \circ p)(\boldsymbol{w}) & =(p ^{-1} \circ f \circ p)(p ^{-1}(\boldsymbol{v})) \\
- & =p ^{-1} (f(\boldsymbol{v})) \\
- & = p ^{-1} (\lambda \boldsymbol{v}) \\
- & =\lambda p ^{-1} (\boldsymbol{v}) \\
- & =\lambda \boldsymbol{w}
-\end{align*}
-
-\item $\Leftarrow$: Supposons que $\lambda \in K$ est un valeur propre de $p ^{-1} \circ f \circ p$ et $\boldsymbol{w}\in V\setminus \{ \boldsymbol{0} \}$ est un vecteur propre associe. Posons $\boldsymbol{v}=p(\boldsymbol{w})\neq 0$ donc
-\begin{align*}
-f(\boldsymbol{v}) & =f(p(\boldsymbol{w})) \\
- & =(p \circ p ^{-1})(f(p(\boldsymbol{w}))) \\
- & =p(p ^{-1} \circ f \circ p)(\boldsymbol{w}) \\
- & = p(\lambda \boldsymbol{w}) \\  & =\lambda p(\boldsymbol{w})\\
- & = \lambda \boldsymbol{v}
-\end{align*}
-\end{itemize}
-\end{proof}

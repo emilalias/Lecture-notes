@@ -1,0 +1,138 @@
+Soit \todo{Lecture 8} $A\in K^{n\times n}$ alors $\lambda \in K$ est un valeur propre
+\begin{itemize}
+\item $\Leftrightarrow$ $\ker (A-\lambda \mathrm{Id})\supsetneq \{ 0 \}$
+\item $\Leftrightarrow$ $\mathrm{rang}(A-\lambda \mathrm{Id})<n$
+\item $\Leftrightarrow$ $\det(A-\lambda \mathrm{Id})=0$
+\end{itemize}
+
+Maintenant, soit $x$ une variable 
+\begin{definition}[Polynome caracteristique]
+On appelle
+$$
+f_{A}(x)=\det(A-x\mathrm{Id})\in K[x]
+$$
+le polynome caracteristique de $A\in K^{n\times n}$.
+\end{definition}
+
+Soit $V$ un espace vectoriel sur $K$ de $\dim(V)=n$ et base $\mathscr{B}=\{ b_{1},\dots,b_{n} \}$. Soit $\phi:V\to K^{n},u\mapsto[u]_{\mathscr{B}}$ et $\mathscr{B}'$ une autre base alors
+$$
+A_{\mathscr{B}'}^{f}=P'_{\mathscr{B}'\mathscr{B}}A_{\mathscr{B}}^{f}P_{\mathscr{B}\mathscr{B}'}
+$$
+Pour $P\in K^{n\times n}$ inversible on a:
+$$
+f_{P^{-1}AP}(x)=\det(P^{-1}AP-x\mathrm{Id})=\det(P^{-1}AP-xP^{-1}P)
+$$
+\begin{reminder}
+$$
+\det(P^{-1})=\frac{1}{\det P}
+$$
+\end{reminder}
+donc
+$$
+f\underbrace{ _{P^{-1}AP} }_{ \sim A }(x)=\det P^{-1}\det(A-xI)\det P=\det(A-x\mathrm{Id})=f_{A}(x)
+$$
+
+\begin{definition}
+Soit $f:V\to V$ un endomorphisme et $\mathscr{B}=\{ b_{1},\dots,b_{n} \}$ une base de $V$ et $A_{\mathscr{B}}^{f}$ la matrice de $f$ relatif a la base $\mathscr{B}$. Alors
+$$
+\det(A_{\mathscr{B}}^{f}-x\mathrm{Id})\in K[x]
+$$
+est appelle le polynome caractéristique de $f$.
+\end{definition}
+
+\subsection{Structure du polynome caracteristique}
+
+Le determinant peut etre calcule comme (formule de Leibniz)
+$$
+\det(A-x\mathrm{Id})=\sum _{\sigma \in S_{n}}\mathrm{sgn}(\sigma)\prod_{i=1}^{w} (A-x\mathrm{Id})_{i\sigma(i)}
+$$
+Le degre maximal est obtenue par $\prod_{i=1}^{n}(A-x\mathrm{Id})_{ii}$ (c-a-d $\sigma=\mathrm{Id}$) et on obtient le coefficient dominant $a_{n}=(-1)^{n}$, le coefficient de $a_{n-1}=\mathrm{Tr}(A)(-1)^{n-1}=(-1)^{n-1}\sum_{i=1}^{n}a_{ii}$ et $a_{0}=\det(A)$. Donc
+$$
+f_{A}(x)=(-1)^{n}x^{n}+(-1)^{n-1}\mathrm{Tr}(A)x^{n-1}+\dots+a_{1}x+\det(A)
+$$
+\begin{remark}
+$\lambda \in K$ est un valeur propre de $A\in K^{n\times n}$ si et seulement si $\lambda$ est racine de $f_{A}(x)\in K[x]$.
+\end{remark}
+\begin{definition}
+Soit $\lambda \in K$ une valeur propre de $A\in K^{n\times n}$. La multiplicite algebrique de $\lambda$ est $\max\{ i\in \mathbf{N}:(x-\lambda)^{i}\mid f_{A}(x) \}$.
+\end{definition}
+\begin{theorem}
+Laa multiplicite geometrique est plus petit ou egal a la multiplicite algebrique.
+\end{theorem}
+\begin{proof}
+Soit $\mathscr{B}=\{ b_{1},..,b_{k} \}$ une base de $E_{\lambda}$ qu'on peut completer avec $\{ b_{k+1},\dots,b_{n} \}$ pour former une base de $V$. Alors la matrice dans cette base complete $\mathscr{B}'$ est de la forme
+$$
+A_{\mathscr{B}'}=\begin{pmatrix}
+\lambda \mathrm{Id} & C \\
+ 0 & D
+\end{pmatrix}
+$$
+qui est obtenue via un changement de base via $P^{-1}AP$ pour $P\in K^{n\times n}$ donc
+$$
+\det (A_{\mathscr{B}}'-x\mathrm{Id})=\det(A-x\mathrm{Id})
+$$
+qui est egal a
+$$
+\det \begin{pmatrix}
+(\lambda-x)\mathrm{Id}_{k} & C \\
+0 & D-x\mathrm{Id}_{n-k}
+\end{pmatrix}=(\lambda-x)^{k}\det(D-x\mathrm{Id}_{n-k})
+$$
+donc la multiplicite algebrique est au moins $k$.
+\end{proof}
+
+\begin{example}
+Soit $A=\begin{pmatrix} 1 & 0 \\ 1 & 1\end{pmatrix}\in \mathbf{Q}(x)$. On a $f_{A}(x)=(1-x)^{2}$ donc la multiplicite algebrique de $\lambda=1$ est 2 et la multiplicite geometrique est 1.  
+\end{example}
+\begin{example}
+Soit $V=\mathbf{R}^{3}$ et $f:\mathbf{R}^{3}\to \mathbf{R}^{3},\boldsymbol{x}\mapsto A\boldsymbol{x}$ et 
+$$
+A=\begin{pmatrix}
+0 & -1 & 1 \\
+-3 & -2 & 3 \\
+-2 & -2 & 3
+\end{pmatrix}
+$$
+On trouve $f_{A}(x)=(x-1)^{2}(x+1)$ donc $\lambda_{1}=1$ et $\lambda_{2}=-1$ sont les valeurs propres de $A$. On trouve pour $\lambda_{1}$ une base de $E_{\lambda_{1}}$
+$$
+\{ \begin{pmatrix}
+1 \\
+0 \\
+1
+\end{pmatrix},\begin{pmatrix}0 \\
+1 \\
+1
+\end{pmatrix} \}
+$$
+et pour $E_{\lambda_{2}}$
+$$
+\{ \begin{pmatrix}
+1 \\
+3 \\
+2
+\end{pmatrix} \}
+$$
+et on trouve $P=\begin{pmatrix}1 & 0  & 1 \\ 0 & 1 & 3 \\ 1 & 1 & 2\end{pmatrix}$ donc $P^{-1}AP$ est diagonalisable.
+\end{example}
+
+\begin{theorem}[Theoreme de diagonalisation]
+Soit $A\in K^{n\times n}$ et $\lambda_{1},\dots,\lambda _{r}\in K$ des valeurs propres distinctes de $A$. $A$ est diagonalisable si et seulement si:
+\begin{enumerate}
+\item $f_{A}(x)=(-1)^{n}\prod_{i=1}^{r}(x-\lambda _{i})^{a_{i}}$
+\item $\dim E_{\lambda _{i}}=a_{i}$ pour tout $\lambda _{i}$ avec $i=1,\dots,r$.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+\begin{itemize}
+\item $\Leftarrow$: 1 implique que $\sum_{i=1}^{r}a_{i}=\deg(f_{A}(x))=n$ et en appliquant 1 et 2 ensemble on trouve que $\sum_{i=1}^{r}\dim E_{\lambda _{i}}=n$ donc par \ref{thmhier} $A$ est diagonalisable.
+
+\item $\Rightarrow$: Comme $A$ est diagonalisable par \ref{thmhier} on a que $\sum_{i=1}^{r}\dim E_{\lambda _{i}}=n$ et $n \ge  \sum_{i=1}^{r}a_{i}\ge n$ car 1 implique que $\deg f_{A}(x)\geq n$. 
+\end{itemize}
+\end{proof}
+
+\subsection*{Comment calculer le polynome caracteristique}
+
+Etant donne $A\in K^{n\times n}$, on veut calculer les coefficient $a_{0},\dots,a_{n}\in K$ du polynome $f_{A}(x)=a_{0}+\dots +a_{n}x^{n}\in K[x]$ avec $a_{0}=\det A$. On cacule avec l'algorithme de Gauss les determinants $\det (A-0\mathrm{Id}),\det(A-1\mathrm{Id}),\dots,\det(A-n\mathrm{Id})$ qui donne un nombre d'operations de $K$ de $\Theta(n^{4})$. 
+\begin{remark}
+Le corps $K$ doit avoir au moin $n$ elements!.
+\end{remark}

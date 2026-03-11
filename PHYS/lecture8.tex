@@ -1,0 +1,56 @@
+\subsection{Definition de la viscosite}
+\todo{Lecture 8}
+On peut imaginer un viscosimetre simple ("ecoulement de Couette plan") ou un fluide est en ecoulement stationnaire entre deux plaques. On peut observer que la magnitude $\boldsymbol{v}$ decroit de forme diagonale d'haut en bas. Pour deplacer la plaque superieure a une vitesse $\boldsymbol{v}_{0}$ il nous faut appliquer une force $\boldsymbol{F}^{\mathrm{ext}}$ de cisaillement tel que
+$$
+F^{\mathrm{ext}}\propto \frac{Sv_{0}}{h}\Rightarrow F^{\mathrm{ext}}=\eta S \frac{v_{0}}{h}
+$$
+avec $\eta$ le coefficient de viscosite dynamique qu'on mesure en $[\eta]=\mathrm{Pa}\cdot \mathrm{s}=\frac{\mathrm{N}}{\mathrm{m}^{2}}\mathrm{s}$. 
+
+Les resultats experimentales du viscosimetre demontrent que la variation de $\boldsymbol{v}$ selon $\boldsymbol{\hat{y}}$ est lineaire. De maniere plus generale on peut ecrire:
+$$
+\boldsymbol{F}^{\mathrm{ext}}=\eta S \frac{ \partial \boldsymbol{v} }{ \partial y } 
+$$
+Les fluides pour lesquelles $\eta$ est constante (independent de $\boldsymbol{v}_{0}$) sont appelles "fluides newtoniennes".
+
+Quelques valeurs de $\eta$ (mesurements par un viscosimetre de Couette):
+\begin{itemize}
+\item Eau ($20\textdegree$): $\eta=0.001~\mathrm{Nsm}^{-2}$
+\item Glycerine ($20\textdegree$): $\eta=1.53~\mathrm{Nsm}^{-2}$
+\item Air (1 bar): $\eta=1.7\cdot10^{-5}~\mathrm{Nsm}^{-2}$
+\end{itemize}
+
+\subsection{Force de viscosite par unite de volume et equation Navier-Stokes incompressible}
+
+Supposons $\boldsymbol{v}(\boldsymbol{r},t)=u_{x}(y)\boldsymbol{\hat{e}}_{x}$ dans le scenario suivant
+\begin{figure}[h!]
+\centering
+\includegraphics{element1.png}
+\end{figure}
+
+On a la force de viscosite nette sur l'element 1 
+\begin{align}
+\boldsymbol{F}_{\mathrm{visc}} & =-\eta S \frac{ \partial v_{x} }{ \partial y } (y)\boldsymbol{\hat{e}}_{x}+\eta S \frac{ \partial v_{x} }{ \partial y } (y+dy)\boldsymbol{\hat{e}}_{x} \\
+ & =\eta S~dy\frac{\left(  \frac{ \partial v_{x} }{ \partial y } (y+dy) -\frac{ \partial v_{x} }{ \partial y } (y)\right)~\boldsymbol{\hat{e}}_{x}}{dy} \\
+ & =dV~\underbrace{ \eta \frac{ \partial^{2} v_{x} }{ \partial y^{2} } \boldsymbol{\hat{e}}_{x} }_{ \label{forcevisc}\tag{\star} }
+\end{align}
+Ou \ref{forcevisc} est la force par unite de volume.
+
+Dans un cas general pour un fluide incompressible, la force de viscosite par unite de volume est donne par
+$$
+\boldsymbol{F}_{\mathrm{visc}}=\eta\underbrace{ \left( \frac{ \partial^{2} }{ \partial x^{2} } +\frac{ \partial^{2} }{ \partial y^{2} } +\frac{ \partial^{2} }{ \partial z^{2} }  \right) }_{ \boldsymbol{\nabla}^{2} =\Delta}\boldsymbol{v}
+$$
+Donc les equation pour un fluide incompressible et visqueux avec $\rho$ constante:
+$$
+\begin{cases}
+\boldsymbol{\nabla u}=0 \\
+\rho  \frac{D\boldsymbol{v}}{Dt}=\rho \boldsymbol{g}-\boldsymbol{\nabla}p+\eta\Delta \boldsymbol{v}\footnote{ce terme donne la equationde Navier-Stokes incompressible}
+\end{cases}
+$$
+
+Conditions aux limites: $\boldsymbol{v}=\boldsymbol{0}$ a l'interface avec une parois immobile.
+
+
+\subsection{Ecoulement de Poiseuille}
+
+
+

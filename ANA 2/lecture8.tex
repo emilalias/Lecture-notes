@@ -1,0 +1,95 @@
+\begin{proof} \todo{Lecture 8}
+Soit $B(\boldsymbol{x}_{0},\delta)$ et $\boldsymbol{x}^{n}=\boldsymbol{x}\in B(\boldsymbol{x}_{0},\delta)$. 
+
+On pose un point intermédiaire $\boldsymbol{x}^{k}=(x_{1},\dots,x_{k},x_{0_{k+1}},\dots,x_{0_{n}})$ alors
+$$
+f(\boldsymbol{x})-f(\boldsymbol{x}_{0})=f(\boldsymbol{x}^{n})-f(\boldsymbol{x}^{0})=\sum_{k=0}^{n-1} [f(\boldsymbol{x}^{k+1})-f(\boldsymbol{x}^{k})]
+$$
+On regarde le terme de la somme
+\begin{align*}
+f(\boldsymbol{x}^{k+1})-f(\boldsymbol{x}^{k}) & =f(x_{1},\dots,x_{k},x_{k+1},x_{0_{k+2}},\dots,x_{0_{n}})-f(x_{1},\dots,x_{k},x_{0_{k+1}},\dots,x_{0_{n}}) \\
+ & =\frac{ \partial f }{ \partial x_{k+1} } (x_{1},\dots,x_{k},x_{0_{k+1}}+\theta _{k+1}(x_{k+1}-x_{0_{k+1}}),x_{0_{k+2}},\dots,x_{0_{n}})(x_{k+1}-x_{0_{k+1}})   \\
+ & =\frac{ \partial f }{ \partial x_{k+1} } (\boldsymbol{x}^{k}+\theta _{k+1}(\boldsymbol{x}^{k+1}-\boldsymbol{x}^{k}))
+\end{align*}
+donc 
+\begin{align*}
+\frac{f(\boldsymbol{x})-f(\boldsymbol{x}_{0})-\sum \frac{ \partial f }{ \partial x_{k} } (\boldsymbol{x}_{0})(x_{k}-x_{0_{k}})}{\lVert \boldsymbol{x}-\boldsymbol{x}_{0} \rVert } & = \frac{1}{\lVert \boldsymbol{x}-\boldsymbol{x}_{0} \rVert } \sum_{k=0}^{n-1} \frac{ \partial f }{ \partial x_{k+1} } (\boldsymbol{x}^{k}+\theta _{k+1}(\boldsymbol{x}^{k+1}-\boldsymbol{x}^{k}))(x_{k+1}-x_{0_{k+1}}) \\
+  & \quad -\frac{1}{\lVert \boldsymbol{x}-\boldsymbol{x}_{0} \rVert }\sum_{k=0}^{n-1}  \frac{ \partial f }{ \partial x_{k+1} } (\boldsymbol{x}_{0})(\boldsymbol{x}_{k+1}-\boldsymbol{x}_{0_{k+1}}) \\
+ & = \frac{1}{\lVert \boldsymbol{x}-\boldsymbol{x}_{0} \rVert }\sum\left( \frac{ \partial f }{ \partial x_{k+1} } (\boldsymbol{x}^{k}+\theta _{k+1}(\boldsymbol{x}^{k+1}-\boldsymbol{x}^{k}) )-\frac{ \partial f }{ \partial x_{k+1}(\boldsymbol{x}_{0}) }  \right)
+ \\
+ & \quad  \cdot\frac{1}{\lVert \boldsymbol{x}-\boldsymbol{x}_{0} \rVert }(x_{k+1}-x_{0_{k+1}})\\
+ & \le \sqrt{ \sum\left( \frac{ \partial f }{ \partial x_{k+1} } \left( \boldsymbol{x}^{k}+\theta _{k+1}(\boldsymbol{x}^{k+1}-\boldsymbol{x}^{k})-\frac{ \partial f }{ \partial x_{k+1} } (\boldsymbol{x}_{0}) \right)  \right)^{2} }\\ & \quad \overset{\boldsymbol{x}\to \boldsymbol{x}_{0}} \to 0 
+\end{align*}
+\end{proof}
+
+\subsection*{Quelques applications de la differentiabilite}
+
+Soit $f$ differentiable en $\boldsymbol{x}_{0}$ :
+$$
+f(\boldsymbol{x})=f(\boldsymbol{x}_{0})+\nabla f(\boldsymbol{x}_{0})^{T}(\boldsymbol{x}-\boldsymbol{x}_{0})+g(\boldsymbol{x})
+$$
+Soit $y=f(\boldsymbol{x}_{0})+\nabla f(\boldsymbol{x}_{0})(\boldsymbol{x}-\boldsymbol{x}_{0})$ avec $f(\boldsymbol{x}_{0})=y_{0}$ on a 
+\begin{align*}
+\Pi_{\boldsymbol{x}_{0},y_{0}}(\mathcal{G}_{f}) & =\{ (\boldsymbol{x},y)\in \mathbf{R}^{n+1}:(y-y_{0})=\nabla f(\boldsymbol{x}_{0})^{T}(\boldsymbol{x}-\boldsymbol{x}_{0}) \}\subset \mathbf{R}^{n+1} \\
+ & = \left\{  (\boldsymbol{x},y)\in \mathbf{R}^{n+1}:y-y_{0}-\sum_{k=1}^{n}  \frac{ \partial f }{ \partial x_{k} } (\boldsymbol{x}_{0})(x_{k}-x_{0_{k}})=0  \right\} \\
+ & \Leftrightarrow \left\{  (\boldsymbol{x},y)\in \mathbf{R}^{n}: y -\sum \frac{ \partial f }{ \partial x_{k} } (\boldsymbol{x}_{0})x_{k}=y_{0}-\sum \frac{ \partial f }{ \partial x_{k} } (\boldsymbol{x}_{0})(x_{k}-x_{0_{k}})  \right\} 
+\end{align*}
+le hyperplan de $\mathbf{R}^{n+1}$. On a que 
+$$
+\mathcal{G}_{f}=\{ (\boldsymbol{x},y)\in \mathbf{R}^{n+1}:y=f(\boldsymbol{x}) \} \approx \{ (\boldsymbol{x},y)\in \mathbf{R}^{n+1}:y=f(\boldsymbol{x}_{0})+\nabla f(\boldsymbol{x}_{0})^{T}(\boldsymbol{x}-\boldsymbol{x}_{0}) \}
+$$
+
+Un vecteur normal
+$$
+\boldsymbol{n}=\left( -\frac{ \partial f }{ \partial x_{1} } (\boldsymbol{x}_{0}),\dots,-\frac{ \partial f }{ \partial x_{n} } (\boldsymbol{x}_{0}),1 \right)
+$$
+
+On a
+$$
+D_{\boldsymbol{v}}f(\boldsymbol{x}_{0})=\nabla f(\boldsymbol{x}_{0})^{T}\boldsymbol{v}=\sum_{i=1}^{n} \frac{ \partial f }{ \partial x_{i} } (\boldsymbol{x}_{0})v_{i}
+$$
+Les directions de croissance nulle $\boldsymbol{w}$ tels que $\nabla f(\boldsymbol{x}_{0})^{T}\boldsymbol{w}=0$ si et seulement si $\boldsymbol{w} \perp \nabla f(\boldsymbol{x}_{0})^{T}$.
+
+Les directions de croissance maximale 
+$$
+\boldsymbol{w}^{*}=\max_{\underset{\lVert \boldsymbol{v} \rVert =1}{\boldsymbol{v}\in \mathbf{R}^{n}}} D_{\boldsymbol{v}}f(\boldsymbol{x}_{0})=\frac{\nabla f(\boldsymbol{x}_{0})}{\lVert \nabla f(\boldsymbol{x}_{0}) \rVert }
+$$
+alors
+$$
+D_{\boldsymbol{w}^{*}}f(\boldsymbol{x}_{0})=\nabla f(\boldsymbol{x}_{0})^{T} \frac{\nabla f(\boldsymbol{x}_{0})}{\lVert \nabla f(\boldsymbol{x}_{0}) \rVert }=\lVert \nabla f(\boldsymbol{x}_{0}) \rVert
+$$
+et $\forall \boldsymbol{v}:D_{\boldsymbol{v}}f(\boldsymbol{x}_{0})=\nabla f(\boldsymbol{x}_{0})^{T}\boldsymbol{v}\le\lVert \nabla f(\boldsymbol{x}_{0}) \rVert$.
+
+\begin{definition}
+Soit $E\subset \mathbf{R}^{n}$ ouvert. On appelle $C^{1}(E)$ l'espace des fonctions $f:E\to \mathbf{R}$ avec derivees partielles continues. Alors si $f\in C^{1}(E)$, $f$ est differentiable en tout $\boldsymbol{x}\in E$ et pour tout $\boldsymbol{v}\in \mathbf{R}^{n}$ on a que $D_{\boldsymbol{v}}f:E\to \mathbf{R}$ existe et est continue et $C^{1}(E)\subset C^{0}(E)$.
+\end{definition}
+
+
+Pour des fonctions $\boldsymbol{f}:E\to \mathbf{R}^{m}$ on peut calculer la derivee partielle en $x_{k}$ de la $i$-eme composante de $\boldsymbol{f}$:
+$$
+\frac{ \partial f_{i} }{ \partial x_{k} }(\boldsymbol{x}_0)=\lim_{ t \to 0 }  \frac{f_{i}(\boldsymbol{x}-t\boldsymbol{e_{k}})-f_{i}(\boldsymbol{x}_{0})}{t}
+$$
+qui donne la matrice Jacobienne
+$$
+D\boldsymbol{f}(\boldsymbol{x}_{0})=\begin{pmatrix}
+\frac{ \partial f_{1} }{ \partial x_{1} }(\boldsymbol{x}_{0}) &  \dots &  \frac{ \partial f_{1} }{ \partial x_{n} }(\boldsymbol{x}_{0})  \\
+\vdots & \ddots & \vdots \\
+\frac{ \partial f_{m} }{ \partial x_{1} }(\boldsymbol{x}_{0}) & \dots & \frac{ \partial f_{m} }{ \partial x_{n} }  (\boldsymbol{x}_{0})
+\end{pmatrix}
+$$
+On dit que $\boldsymbol{f}$ est differentiable en $\boldsymbol{x}_{0}$ s'il existe $L:\mathbf{R}^{n}\to \mathbf{R}^{m}$ lineaire (une matrice $m\times n$) et une fonction $\boldsymbol{g}:E\to \mathbf{R}^{m}$ telle que
+$$
+\boldsymbol{f}(\boldsymbol{x})=\boldsymbol{f}(\boldsymbol{x}_{0})+L(\boldsymbol{x}-\boldsymbol{x}_{0})+\boldsymbol{g}(\boldsymbol{x}_{0}):\lim_{ \boldsymbol{x} \to \boldsymbol{x}_{0}} \left\lVert  \frac{\boldsymbol{g}(\boldsymbol{x})}{\lvert \boldsymbol{x}-\boldsymbol{x}_{0} \rvert }  \right\rVert =0
+$$
+Si $\boldsymbol{f}$ est differentiable en $\boldsymbol{x}_{0}$ alors :
+$$
+L=D\boldsymbol{f}(\boldsymbol{x}_{0}).
+$$
+\begin{proposition}
+Soit $\boldsymbol{f}:E\to \mathbf{R}^{m}$ et $\boldsymbol{g}:F\subset \mathbf{R}^{m}\to \mathbf{R}^{p}$ et $\boldsymbol{x}_{0}\in E$ et $\boldsymbol{y}_{0}=\boldsymbol{f}(\boldsymbol{x}_{0})\subset \mathring{F}$. Supposons que $\boldsymbol{f}$ est differentiable en $\boldsymbol{x}$ et $\boldsymbol{g}$ est differentiable en $\boldsymbol{y}_{0}$.
+
+Soit $\boldsymbol{\varphi}:E\to \mathbf{R}^{p}, \boldsymbol{x} \mapsto \boldsymbol{g}(\boldsymbol{f}(\boldsymbol{x}))$, alors $\boldsymbol{\varphi}$ est differentiable en $\boldsymbol{x}_{0}$ et 
+$$
+D\boldsymbol{\varphi}(\boldsymbol{x}_{0})=D\boldsymbol{g}(\boldsymbol{x}_{0})D\boldsymbol{f}(\boldsymbol{x}_{0})\in \mathbf{R}^{p\times n}
+$$
+\end{proposition}
