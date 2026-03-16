@@ -1,0 +1,205 @@
+\section{Binary trees and Catalan numbers}
+\todo{Lecture 5}
+\begin{theorem}
+Let $r\in \mathbf{R}$. Then the function $(1+x)^{r}$ has a Taylor expansion
+$$
+(1+x)^{r}=\sum_{k=0}^{\infty} \binom{ r}  {k } x^{k}
+$$
+for $x \in (-1,1)$.
+\end{theorem}
+
+\begin{question}
+Compute $\binom{1/3}  {2 }$.
+\end{question}
+\begin{answer}
+$\binom{ 1/3}  {2 }=-\frac{1}{9}$.
+\end{answer}
+
+\begin{definition}[Binary tree]
+An inductive definition of a binary tree is given as follows:
+
+A binary tree is either empty, or consists of one distinguished vertex called the root, plus an ordered pair of binary trees called the left subtree and the right subtree.
+\end{definition}
+
+Let $b_{n}$ denote the number of binary trees with $n$ vertices. Our goal is to find a formula for $b_{n}$.
+\begin{example}
+$$
+b_{0}=1\quad b_{1}=1\quad b_{2}=2
+$$
+\end{example}
+
+The inductive definition of a binary tree implies the following recursive formula for $b_{n}$:
+$$
+b_{n}=b_{0}b_{n-1}+b_{1}b_{n-2}+\dots +b_{n-1}b_{0}
+$$
+
+Consider the generating function
+
+$$
+b(x)=\sum_{k=0}^{\infty} b_{n}x^{n}
+$$
+The recursive formula 
+$$
+b_{n}=\sum_{k=0}^{n-1} b_{k}b_{n-k-1}
+$$
+implies 
+\begin{align*}
+b(x)b(x) & =\left( \sum_{n=0}^{\infty} b_{n}x^{n} \right)\left( \sum_{n=0}^{\infty} b_{n}x^{n} \right) \\
+ & =\sum_{k=0}^{\infty} \left( \sum_{m=0}^{k} b_{m}b_{k-m} \right)x^{k} \\
+ & =\sum_{k=0}^{\infty} b_{k+1}x^{k}  \\
+ & =\frac{1}{x}\left( \sum_{k=1}^{\infty} b_{k}x^{k} \right)=\frac{1}{x}(b(x)-b_{0})
+\end{align*}
+Thus $b(x)$ satisfies the identity
+$$
+xb^{2}(x)-b(x)+1=0
+$$
+which has two solutions
+$$
+b_{1,2}(x)= \frac{1\pm \sqrt{ 1-4x }}{2x}
+$$
+of which we will consider
+$$
+\tilde{b}(x)=\frac{1-\sqrt{ 1-4x }}{2x}=\frac{2}{1+\sqrt{ 1-4x }}
+$$
+that has a Taylor expansion around $x=0$
+$$
+\tilde{b}(x)=\sum_{n=0}^{\infty} \tilde{b}_{n}x^{n}
+$$
+and as $\tilde{b}(x)$ satisfies the equation 
+$$
+x\tilde{b}(x)^{2}-\tilde{b}(x)+1=0\Rightarrow \tilde{b}(0)=b_{0}=1
+$$
+which gives the sequence $\tilde{b}_{n}$:
+$$
+\tilde{b}_{n}=\tilde{b}_{0}\tilde{b}_{n-1}+\tilde{b}_{1}\tilde{b}_{n-2}+\dots +\tilde{b}_{n-1}\tilde{b}_{0}
+$$
+We have
+\begin{align*}
+b_{0}=1 &   =1 =\tilde{b}_{0} \\
+b_{1}=b_{0}^{2}  & =\tilde{b}_{0}^{2}=\tilde{b}_{2} \\
+b_{2}=b_{0}b_{1}+b_{1}b_{0} & =b_{0}b_{1}+b_{1}b_{0} =\tilde{b}_{2}  \\
+ & ~~\vdots \\
+\end{align*}
+Therefore $b_{n}=\tilde{b}_{n}$.
+
+To compute $\tilde{b}_{n}$ we use the generalized binomial theorem, which implies
+$$
+\sqrt{ 1-4x }=\sum_{n=0}^{\infty} (-4)^{n}\binom{ 1/2}  {n } x^{n}
+$$
+Thus
+$$
+\tilde{b}(x)=\sum_{n=1}^{\infty} -\frac{1}{2}(-4)^{n}\binom{ 1/2}  {n } x^{n-1} 
+$$
+therefore
+$$
+b_{n}=-\frac{1}{2}(-4)^{n+1}\binom{ 1/2}  {n+1 }
+$$.
+
+\begin{definition}
+The numbers $b_{n}$ are called Catalan numbers.
+\end{definition}
+\begin{exercise}
+Show that
+$$
+b_{n}=\frac{1}{n+1}\binom{ 2n}  {n }
+$$
+\end{exercise}
+
+\subsection{More Catalan numbers}
+
+\begin{definition}[Cutting polygons into triangles]
+A diagonal triangulation of a polygon is a partition of the polygon into triangles by non-intersecting diagonals.
+\end{definition}
+\begin{lemma}
+Let $n\ge3$. The number of diagonal triangulations a convex $n$-gon is the Catalan number $b_{n-2}$.
+\end{lemma}
+\begin{definition}[Parentheses]
+A regular bracket structure satisfies the following two conditions:
+\begin{enumerate}
+\item The number of left and right brackets is the same.
+\item The number of left brackets in any starting segment is not less than then number of right brackets.
+\end{enumerate}
+\end{definition}
+\begin{lemma}
+The number of regular bracket structures with $n$ pairs of brackets is the Catalan number $b_{n}$.
+\end{lemma}
+\begin{definition}[Ups and downs]
+A Dyck path is a continuous broken line consisting of vectors $(1,1)$ and $(1,-1)$ starting at the origin $A=(0,0)$ and ending at the $x$-axis and always staying in the upper half-plane.
+\end{definition}
+\begin{lemma}
+The number of Dyck paths consisting of $2n$ steps is the Catalan number $b_{n}$.
+\end{lemma}
+
+\section{Fibonnaci numbers and the Golden Ratio}
+
+\begin{definition}
+The Fibonnaci sequence $\{ F_{n} \}_{n=0}^{\infty}$ is defined by the following recursive formula:
+$$
+F_{0}=0,\quad F_{1}=1,\quad F_{n+1}=F_{n}+F_{n-1},~~ n \ge 1
+$$
+\end{definition}
+
+Another interpretation of Fibonnaci numbers: Let $S_{n}$ denote the number of ways one can climb $n$ stairs if allowed to jump 1 or 2 stairs at once. $S_{n}$ is the number of solutions to the equation $x_{1}+x_{2}+\dots +x_{k}=n$ where $x_{i}\in \{ 1, 2\}$ and $k$ is not fixed. Thus we observe that
+$$
+S_{1}=1,\quad S_{2}=2,\quad S_{n}=S_{n-1}+S_{n-2}
+$$
+and $S_{n}=F_{n+1}$.
+
+\begin{definition}[Golden ratio]
+The golden ration is the number
+$$
+\varphi=\frac{1+\sqrt{ 5 }}{2}\approx1.61083\dots
+$$
+\end{definition}
+\begin{proposition}
+$$
+\lim_{ n \to \infty } \frac{F_{n+1}}{F_{n}}=\varphi
+$$
+\end{proposition}
+
+\subsection{Explicit formula for Fibonnaci numbers}
+
+Consider the generating function of the Fibonnaci sequence :
+$$
+F(x)=F_{0}+F_{1}x+\dots +F_{n}x^{n}+\dots
+$$
+then
+$$
+x^{2}F(x)=\sum_{n=2}^{\infty} F_{n-2}x^{n},\quad xF(x)=\sum_{n=1}^{\infty} F_{n-1}x^{n} 
+$$
+thus
+\begin{align*}
+F(x)-xF(x)-x^{2}F(x) & =\sum_{n=0}^{\infty} F_{n}x^{n}-\sum_{n=1}^{\infty} F_{n-1}x^{n}-\sum_{n=2}^{\infty} F_{n-2}x^{n} \\
+  & =F_{0}+xF_{1}-xF_{0}+\sum_{n=2}^{\infty} (F_{n}-F_{n-1}-F_{n-2})x^{n} \\
+ & =x
+\end{align*}
+therefore
+$$
+F(x)(1-x-x^{2})=x
+$$
+thus
+$$
+F(x)=\frac{x}{1-x-x^{2}}
+$$
+as a formal power series.
+
+The function $\frac{x}{1-x-x^{2}}$ has derivatives of all orders at the point $x=0$. We will compute the Taylor expansion of this function at $x=0$. 
+
+The polynomial $1-x-x^{2}$ has two roots
+$$
+x_{1,2}=\frac{-1\pm \sqrt{ 5 }}{2}
+$$
+therefore
+\begin{align*}
+ \frac{x}{1-x-^{2}} & =-\frac{x}{(x-x_{1})(x-x_{2})} \\
+ &=\left( \frac{1}{x-x_{1}}-\frac{1}{x-x_{2}} \right) \frac{x}{x_{2}-x_{1}} \\
+ & =\frac{x}{\sqrt{ 5 }}\left( -\frac{1}{x_{1}}\cdot \frac{1}{1-\frac{x}{x_{1}}}+\frac{1}{x_{2}}\cdot \frac{1}{1-\frac{x}{x_{2}}}  \right) \\
+ & =\frac{x}{\sqrt{ 5 }}\left( \sum_{n=0}^{\infty}  -\frac{1}{x_{1}} \left( \frac{x}{x_{1}} \right)^{n}+\sum_{n=0}^{\infty}  \frac{1}{x_{2}}\left( \frac{x}{x_{2}} \right)^{n}\right) \\
+ & =\frac{1}{\sqrt{ 5 }}\sum_{n=0}^{\infty} (-x_{1}^{-n-1}+x_{2}^{-n_-1})x^{n+1} \\
+ & =\sum_{n=1}^{\infty}  \frac{1}{\sqrt{ 5 }}\left( \left( \frac{1+\sqrt{ 5 }}{2} \right)^{n}-\left( \frac{1-\sqrt{ 5 }}{2} \right)^{n} \right)x^{n}
+\end{align*}
+Therefore the Fibonnaci numbers satisfy
+$$
+F_{n}=\frac{1}{\sqrt{ 5 }}\left( \left( \frac{1+\sqrt{ 5 }}{2} \right)^{n}-\left( \frac{1-\sqrt{ 5 }}{2} \right)^{n} \right)=\frac{1}{\sqrt{ 5 }}(\varphi^{n}-(-\varphi)^{-n})
+$$
+for $n\ge 0$.

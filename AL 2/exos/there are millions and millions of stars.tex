@@ -30,7 +30,7 @@
 \begin{document}
 \maketitle
 \tableofcontents
-\chapter{References, references, references}
+\chapter*{References, references, references}
 \begin{theorem}\label{thm22}
 Soit $R$ un anneau alors il existe un anneau $R'\supseteq R$ tel que $R$ est un sous-anneau de $R'$ et $1_{R'}=1_{R}$ et ces conditions sont satisfaites:
 
@@ -207,7 +207,7 @@ On montre le sens $\Rightarrow$ par contraposition. Supposons que $f(x)$ admet u
 Pour montrer le sens $\Leftarrow$ on suppose que $f(x)$ est reductible et de degre 3 alors il existe $\beta,\gamma \in K$ avec $\beta\neq 0$ tel que $(\beta x+\gamma)\mid f(x)$ alors $-\frac{\gamma}{\beta}$ est une racine de $f(x)$ qui pose une contradiction.
 \end{proof}
 \begin{exercise}[Exo etoile]
-Soit $K$ un corps et $A\in K^{n\times n}$ une matrice inversible. Posons $\tilde{A}:=(\mathrm{com}A)^{T}$ la transposee de la comatrice de $A$.
+Soit $K$ un corps et $A\in K^{n\times n}$ une matrice inversible. Posons $\tilde{A}:=(\mathrm{com}A)^{\mathsf{T}}$ la transposee de la comatrice de $A$.
 \begin{enumerate}
 \item Montrer que $\det(A)\neq 0$.
 \item Montrer que $A^{-1}=\det(A)^{-1}\tilde{A}$.
@@ -241,7 +241,7 @@ Considerons les coefficients hors diagonal. Pour $i\neq j\in \{ 1,\dots,n \}$ on
 car $\det$ est une forme alternee.
 \item Pour montrer le sens $\Rightarrow$, on suppose qu'il existe $B\in \mathbf{Z}^{n\times n}$ tel que $AB=I_{n}$ donc $\det(AB)=1$ et comme dans $\mathbf{Z}$ les seuls diviseurs de 1 sont 1 et $-1$ alors on observe que $\det(A)=\pm1$.
 
-On montre l'autre sens $\Leftarrow$, on suppose que $\det(A)=\pm1$. Par les memes techniques que dans 2 on voit que $A\tilde{A}=\det(A)I_{n}$ avec $\tilde{A}=(\mathrm{com}A)^{T}\in \mathbf{Z}^{n\times n}$. Comme $\det(A)=\pm 1$ on conclut que $B=\det(A)^{-1}\tilde{A}\in \mathbf{Z}^{n\times n}$.
+On montre l'autre sens $\Leftarrow$, on suppose que $\det(A)=\pm1$. Par les memes techniques que dans 2 on voit que $A\tilde{A}=\det(A)I_{n}$ avec $\tilde{A}=(\mathrm{com}A)^{\mathsf{T}}\in \mathbf{Z}^{n\times n}$. Comme $\det(A)=\pm 1$ on conclut que $B=\det(A)^{-1}\tilde{A}\in \mathbf{Z}^{n\times n}$.
 \end{enumerate}
 \end{proof}
 
