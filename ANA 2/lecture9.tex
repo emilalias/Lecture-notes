@@ -1,0 +1,146 @@
+\todo{Lecture 9}
+
+\begin{reminder}
+Dans Analyse I: Soit $g:[a,b]\to \mathbf{R}$ continue et derivable sur $(a,b)$. Alors $g(b)=g(a)+g'(c)(b-a)$ pour $c\in(a,b)$. Si $g'$ est integrable sur $[a,b]$ alors $g(b)=g(a)+\int_{a}^{b} g'(t) \, dt$.
+\end{reminder}
+\begin{notation}
+$$[\boldsymbol{x},\boldsymbol{y}]=\{ \boldsymbol{z}\in \mathbf{R}^{n}:\boldsymbol{z}=\boldsymbol{x}+t(\boldsymbol{y}-\boldsymbol{x}),~t\in[0,1] \}$$.
+\end{notation}
+\begin{notation}
+$$(\boldsymbol{x},\boldsymbol{y})=\{ \boldsymbol{z}\in \mathbf{R}^{n}:\boldsymbol{z}=\boldsymbol{x}+t(\boldsymbol{y}-\boldsymbol{x}),~t\in(0,1) \}$$\end{notation}
+\begin{theorem}[Accroisements finis]
+Soit $E\subset \mathbf{R}^{n}$ ouvert non-vide et $f:E\to \mathbf{R}$ differentiable sur $E$. Pour toutes $\boldsymbol{x},\boldsymbol{y}\in E$ et $[\boldsymbol{x},\boldsymbol{y}]\subset E$, il existe $\boldsymbol{z}\in (\boldsymbol{x},\boldsymbol{y})$ tel que 
+\begin{align*}
+f(\boldsymbol{y}) & =f(\boldsymbol{x})+\boldsymbol{\nabla}f(\boldsymbol{z})^{\mathsf{T}}(\boldsymbol{y}-\boldsymbol{x}) \\
+ & =f(\boldsymbol{x})+Df(\boldsymbol{z})(\boldsymbol{y}-\boldsymbol{x}) \\
+ & =f(\boldsymbol{x})+\sum_{i=1}^{n}  \frac{ \partial f }{ \partial x_{i} } (\boldsymbol{z})(y_{i}-x_{i})
+\end{align*}
+\end{theorem}
+
+\begin{proof}
+Soit $g(t)=f(\boldsymbol{x}+t(\boldsymbol{y}-\boldsymbol{x}))$ avec $t\in[0,1]$ et $\boldsymbol{\varphi}(t)=\boldsymbol{x}+t(\boldsymbol{y}-\boldsymbol{x})$ donc $g=f\circ \boldsymbol{\varphi}$. Puisque $f$ est differentiable pour tout $\boldsymbol{x}\in E$, elle est continue sur $E$, donc $g$ est continue sur $[0,1]$. Alors $g$ est derivable sur $(0,1)$ c-a-d, il existe $\theta \in(0,1)$ tel que 
+$$
+g(1)=g(0)+g'(\theta)(1-0)
+$$
+ou 
+$$
+g(\theta)=Df(\boldsymbol{\varphi}(\theta))~D\boldsymbol{\varphi}(\theta)
+$$
+Soit $\boldsymbol{z}=\boldsymbol{\varphi}(\theta)=\boldsymbol{x}+\theta(\boldsymbol{y}-\boldsymbol{x})$. On a 
+$$
+D\boldsymbol{\varphi}(\theta)=\boldsymbol{y}-\boldsymbol{x}
+$$
+donc $g(\theta)\in \mathbf{R}^{n}$ et $f(\boldsymbol{y})=f(\boldsymbol{x})+Df(\boldsymbol{z})(\boldsymbol{y}-\boldsymbol{x})$.
+
+Si $f\in C^{1}(E)$, soit $g(t)=f(\boldsymbol{x}+t(\boldsymbol{y}-\boldsymbol{t}))$ avec $t\in(-\delta,1+\delta)$. Donc $g\in C^{1}((-\delta,1+\delta))$ et $g'$ est integrable sur $[0,1]$. Donc
+$$
+g(1)=g(0)+\int_{0}^{1} g'(t) \, dt
+$$
+et
+$$
+f(\boldsymbol{y})=f(\boldsymbol{x})+\int_{0}^{1} Df(\boldsymbol{x}+t(\boldsymbol{y}-\boldsymbol{x}))(\boldsymbol{y}-\boldsymbol{x}) \, dt=f(\boldsymbol{x})+\sum_{i=1}^{n} \int_{0}^{1} \frac{ \partial f }{ \partial x_{i} } (\boldsymbol{x}+t(\boldsymbol{y}-\boldsymbol{x}))(y_{i}-x_{i}) \, dt  
+$$
+\end{proof}
+
+\begin{theorem}[Accroisements finis: cas de fonctions vectorielles]
+Soit $E\subset \mathbf{R}^{n}$ ouver non-vide et $\boldsymbol{f}:E\to \mathbf{R}^{m}$ differentiable sur $E$. Pour toutes $\boldsymbol{x},\boldsymbol{y}\in E$ avec $[\boldsymbol{x},\boldsymbol{y}]\subset E$. 
+\begin{itemize}
+\item On peut utiliser le theoreme des accroisements finis sur chaque composante de $\boldsymbol{f}$ :
+$$
+f_{i}(\boldsymbol{y})=f_{i}(\boldsymbol{x})+Df_{i}(\boldsymbol{x}+\theta _{i}(\boldsymbol{y}-\boldsymbol{x}))(\boldsymbol{y}-\boldsymbol{x})
+$$
+pour tout $i=1,\dots,n$ et $\theta _{i}\in(0,1)$.
+
+\item En general il n'est pas vrai qu'il existe $\boldsymbol{z}\in(\boldsymbol{x},\boldsymbol{y})$ tel que 
+$$
+\boldsymbol{f}(\boldsymbol{y})=\boldsymbol{f}(\boldsymbol{x})+D\boldsymbol{f}(\boldsymbol{z})(\boldsymbol{y}-\boldsymbol{x})
+$$
+\item Par contre, on a toujours que
+\begin{align*}
+\boldsymbol{f}(\boldsymbol{y}) & =\boldsymbol{f}(\boldsymbol{x})+\int_{0}^{1} D\boldsymbol{f}(\boldsymbol{x}+t(\boldsymbol{y}-\boldsymbol{x}))(\boldsymbol{y}-\boldsymbol{x}) \, dt  \\
+ f_{i}(\boldsymbol{y}) & =f_{i}(\boldsymbol{x})+\int_{0}^{1} \sum_{k=1}^{n} (D\boldsymbol{f}(\boldsymbol{x}+t(\boldsymbol{y}-\boldsymbol{x})))_{ik}(y_{k}-x_{k}) \, dt 
+\end{align*}
+si $\boldsymbol{f}\in C^{1}(E,\mathbf{R}^{m})$.
+\end{itemize}
+\end{theorem}
+
+\subsection{Derivees partielles secondes}
+
+Soit $E\subset \mathbf{R}^{n}$ ouvert non-vide et $f:E\to \mathbf{R}$. Supposons $\frac{ \partial f }{ \partial x_{i} }$ soit definie pour tout $\boldsymbol{x}\in E$. On peut verifier si $\frac{ \partial f }{ \partial x_{i} }$ a des derivees partielles:
+$$
+\frac{ \partial  }{ \partial x_{j} } \left( \frac{ \partial f }{ \partial x_{i} } (\boldsymbol{x}) \right)=\lim_{ h \to 0 } \frac{\frac{ \partial f }{ \partial x_{i} } (\boldsymbol{x}+h\boldsymbol{e}_{j})-\frac{ \partial f }{ \partial x_{i} }(\boldsymbol{x})}{h}
+$$
+Si la limite existe on note
+$$
+\frac{ \partial  }{ \partial x_{j} } \left( \frac{ \partial f }{ \partial x_{i} } (\boldsymbol{x}) \right)=\frac{ \partial^{2}f }{ \partial x_{j}~\partial x_{i} }(\boldsymbol{x}) 
+$$
+la derivee seconde partielle en $x_{i}$ et $x_{j}$. Si $j=1$ on note $$\frac{ \partial^{2}f }{ \partial x_{i}^{2} }(\boldsymbol{x}).$$
+
+Si toutes les derivees secondes existent, on definie la matrice Hessiene:
+$$
+H_{f}(\boldsymbol{x})=\begin{pmatrix}
+\frac{ \partial^{2}f }{ \partial x_{1}^{2} }(\boldsymbol{x}) &\dots & \frac{ \partial^{2}f }{ \partial x_{1}~\partial x_{n} }(\boldsymbol{x})  \\
+\vdots & \ddots & \vdots \\
+\frac{ \partial^{2}f }{ \partial x_{n}~\partial x_{1} }(\boldsymbol{x}) &\dots & \frac{ \partial^{2}f }{ \partial x_{n}^{2} } (\boldsymbol{x})    
+\end{pmatrix}
+$$
+
+\begin{definition}
+Si toutes les derivees partielles secondes existent et sont continues sur $E$, on dit que $f\in C^{2}(E,\mathbf{R})$.
+\end{definition}
+\begin{definition}[Derivees secondes directionelles]
+Soient $\boldsymbol{v},\boldsymbol{w}\in \mathbf{R}^{n}$ deux directions. Si $f\in C^{2}$ alors $D_{\boldsymbol{v}}f:E\to \mathbf{R}$ est bien definie et $D_{\boldsymbol{v}}f\in C^{1}(E,\mathbf{R})$.
+\begin{align*}
+D_{\boldsymbol{w}}(D_{\boldsymbol{v}}f)(\boldsymbol{x}) & =\boldsymbol{\nabla}(D_{\boldsymbol{v}}f)^{\mathsf{T}}\boldsymbol{w} \\
+ & =\sum_{j=1}^{n}  \frac{ \partial D_{\boldsymbol{v}}f }{ \partial x_{j} } (\boldsymbol{x})w_{j} \\
+ & =\sum_{j=1}^{n} \frac{ \partial  }{ \partial x_{j} } \left( \sum_{i=1}^{n} \frac{ \partial f }{ \partial x_{i} } (\boldsymbol{x})v_{i} \right)w_{j} \\
+ & =\sum_{j=1}^{n} \sum_{i=1}^{n}  \frac{ \partial^{2}f }{ \partial x_{j}~\partial x_{i} }w_{j}v_{i}  \\
+ & = \boldsymbol{w}^{\mathsf{T}}H_{f}(\boldsymbol{x})\boldsymbol{v}
+\end{align*}
+\end{definition}
+\begin{example}
+Soit $f(x,y)=x^{2}y$ on a 
+$$
+\frac{ \partial f }{ \partial x } (x,y)=2xy,\quad \frac{ \partial f }{ \partial y } (x,y)=x^{2}
+$$
+donc on a la matrice Hessiene
+$$
+H_{f}(x,y)=\begin{pmatrix}
+2y & 2x \\
+2x & 0
+\end{pmatrix}
+$$
+\end{example}
+
+\begin{theorem}[Theoreme de Schwarz]
+Soit $E\subset \mathbf{R}^{n}$ ouvert non-vide et $f:E\to \mathbf{R}$. Pour $i,j\in \{ 1,\dots,n \}$ fixes, supposons que $\frac{ \partial f }{ \partial x_{i} },\frac{ \partial f }{ \partial x_{j} },\frac{ \partial^{2}f }{ \partial x_{i}~\partial x_{j} }$ et $\frac{ \partial^{2}f }{ \partial x_{j}~\partial x_{i} }$ existent sur $B(\boldsymbol{x},\delta)\subset E$ pour $\delta>0$ et continues en $\boldsymbol{x}$. Alors
+$$
+\frac{ \partial^{2}f }{ \partial x_{i}~\partial x_{j} }(\boldsymbol{x}) = \frac{ \partial^{2}f }{ \partial x_{j}~\partial x_{i} } (\boldsymbol{x})
+$$
+\end{theorem}
+\begin{proof}
+On pose
+\begin{align*}
+\Delta(s,t) & =\overbrace{\underbrace{  f(\boldsymbol{x}+s\boldsymbol{e}_{i}+t\boldsymbol{e}_{j})-f(\boldsymbol{x}+s\boldsymbol{e}_{i}) }_{ g(s) }-\underbrace{ (f(\boldsymbol{x}+t\boldsymbol{e}_{j})-f(\boldsymbol{x})) }_{ g(0) }  }^{ \frac{ \partial^{2}f }{ \partial x_{i}~\partial x_{j} }  }\\
+ & =\underbrace{ f(\boldsymbol{x}+s\boldsymbol{e}_{i}+t\boldsymbol{e}_{j})-f(\boldsymbol{x}+t\boldsymbol{e}_{j})-(f(\boldsymbol{x}+s\boldsymbol{e}_{i})-f(\boldsymbol{x})) }_{ \frac{ \partial^{2}f }{ \partial x_{j}~\partial x_{i} } st }
+\end{align*}
+Il existe $\tilde{s}\in(0,s)$ tel que 
+$$
+g'(\tilde{s})s=\left(\underbrace{  \frac{ \partial f }{ \partial x_{i} } (\boldsymbol{x}+\tilde{s}\boldsymbol{e}_{i}+t\boldsymbol{e}_{j}) }_{ \varphi(t) }-\underbrace{ \frac{ \partial f }{ \partial x_{i} } (\boldsymbol{x}-\tilde{s}\boldsymbol{e}_{i}) }_{ \varphi(0) } \right)s
+$$
+alors il existe $\tilde{t}\in(0,t)$ tel que 
+$$
+g'(\tilde{s})s=\varphi '(\tilde{t})ts=\frac{ \partial^{2}f }{ \partial x_{j}\partial x_{i} } (\boldsymbol{x}+\tilde{s}\boldsymbol{e}_{i}+t\boldsymbol{e}_{j})st
+$$
+soit $t=s$ alors
+$$
+\lim_{ s \to 0 } \frac{\Delta(s,t)}{s^{2}}=\lim_{ s \to 0 } \frac{ \partial^{2}f }{ \partial x_{j}~\partial x_{i} }(\boldsymbol{x}+\tilde{s}\boldsymbol{e}_{i}+\tilde{t}\boldsymbol{e}_{j})=\frac{ \partial^{2}f }{ \partial x_{j}~\partial x_{i} } (\boldsymbol{x}).
+$$
+Le cote droite se demontre de maniere similaire par symetrie et on obtient
+$$
+\frac{ \partial^{2}f }{ \partial x_{i}~\partial x_{j} }(\boldsymbol{x}+\hat{s}\boldsymbol{e}_{i}+\hat{t}\boldsymbol{e}_{j})st 
+$$
+\end{proof}
+\begin{corollary}
+Si $f\in C^{2}(E,\mathbf{R})$, alors $H_{f}(\boldsymbol{x})$ est symetrique en tout $\boldsymbol{x}\in E$.
+\end{corollary}
