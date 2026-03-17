@@ -324,4 +324,75 @@ f(\boldsymbol{v}) & =f(p(\boldsymbol{w})) \\
 \end{itemize}
 \end{proof}
 
+\begin{exercise}[Exo etoile]
+Soient $K$ un corps, et $\lambda_{1},\dots,\lambda _{r}\in K$ les valeurs propres d'une matrice $A\in K^{n\times n}$ et $m_{1},\dots,m_{r}$, leurs multiplicites algebriques. Soit
+\begin{equation}
+m_{1}+\dots +m_{r}=n \label{hyp51}
+\end{equation}
+
+Rappelez-vous que la trace de $A$ est definie par $\mathrm{Tr}(A):=\sum_{i=1}^{n}a_{ii}$.
+
+Demontrer les assertions suivantes:
+\begin{enumerate}
+\item $\det(A)=\prod_{i=1}^{r}\lambda _{i}^{m_{i}}$
+\item si $p_{A}(\lambda)=\alpha _{n}\lambda^{n}+\alpha _{n-1}\lambda^{n-1}+\dots +\alpha_{1}\lambda +\alpha_{0}$ alors $\alpha _{n-1}=(-1)^{n-1}\mathrm{Tr}(A)$
+\item $\mathrm{Tr}(A)=\sum_{i=1}^{r}m_{i}\lambda _{i}$
+\end{enumerate}
+\end{exercise}
+\begin{proof}[Solution]
+L'hypothese \ref{hyp51} implique que la factorisation en irreductibles du polynome caracteristique est donne par $(-1)^{n}\prod_{i=1}^{r}(x-\lambda _{i})^{m_{i}}=p_{A}(X)=\det(A-xI)$.  
+\begin{enumerate}
+\item 
+\begin{align}
+\det(A) & =\det(A-0I) \\
+ & =p_{A}(0) \\
+ & =(-1)^{n}\prod_{i=1}^{r} (0-\lambda _{i})^{m_{i}}=\prod_{i=1}^{r} \lambda _{i}^{m_{i}}
+\end{align}
+\item On se rappelle de la formmule de Leibniz (pour les determinants) :
+$$
+\det(A-xI)=\sum _{\sigma \in S_{n}}\mathrm{sgn}(\sigma)\prod_{j=1}^{n}(A-xI)_{j\sigma (j)} 
+$$
+comme on s'interese au coefficient $\alpha _{n-1}$, la seule permutation qui est interessante est l'identite. Si $\sigma\neq \mathrm{Id}$, on peut trouver $j\in \{ 1,\dots ,n\}$ tel que $\sigma(j)\neq j$. Pour ce $j$ on a que $(A-xI)_{j\sigma(j)}=A_{j\sigma(j)}$. En plus $\sigma(j)\neq\sigma^{2}(j)$ car $\sigma$ est bijective donc on a $(A-xI)_{\sigma(j)\sigma^{2}(j)}=A_{\sigma(j)\sigma^{2}(j)}$. Prenons donc $\sigma=\mathrm{Id}$ et considerons $$\mathrm{sgn}(\sigma)\prod_{j=1}^{n}(A-xI)_{jj}=\prod_{j=1}^{n} (A_{jj}-x)$$, le coefficient devant $x^{n-1}$ dans ce terme vaut $(-1)^{n-1}\sum_{j=1}^{n}A_{jj}=(-1)^{n-1}\mathrm{Tr}(A)$.
+\item On compare les coefficients $\alpha _{n-1}$ obtenu en 2 avec le coefficient de $x^{n-1}$ dans 
+$$
+(-1)^{n}\prod_{i=1}^{r}(x-\lambda _{i})^{m_{i}} 
+$$
+Le coefficient de $x^{n-1}$ dans cette formule est donne par
+$$
+(-1)^{n}\sum_{i=1}^{r} m_{i}(-\lambda _{i})=(-1)^{n+1}\sum_{i=1}^{r} m_{i}\lambda _{i}
+$$
+en comparant 
+$$
+(-1)^{n-1}\mathrm{Tr}(A)=(-1)^{n+1}\sum_{i=1}^{r} m_{i}\lambda _{i}\Leftrightarrow \mathrm{Tr}(A)=\sum_{i=1}^{r} m_{i}\lambda _{i}
+$$
+\end{enumerate}
+\end{proof}
+
+\begin{exercise}[Examen 2022]
+Quel est le polynome caracteristique de $A\in \mathbf{Q}^{5\times5}$ avec 
+$$
+A=\begin{pmatrix}
+3 & 1 & 2 & 2 & 0 \\
+1 & 3 & 0 & 0 & 0 \\
+1 & 1 & 1 & 1 & 1 \\
+1 & 1 & 2 & 0 & 0 \\
+2 & 2 & 2 & 2 & 1
+\end{pmatrix}
+$$
+\end{exercise}
+\begin{proof}[Solution]
+Regarder coefficients, deviner une valeur propre !
+\end{proof}
+\chapter{Serie 5}
+
+\begin{exercise}[Exo plus]
+Soit $V$ un espace vectoriel et soit $B=\{ v_{1},v_{2},v_{3} \}$ une base de $V$. Soit $f:V\times V\to K$ une forme bilineaire symetrique telle que 
+$$
+f(v_{1},v_{1})=2,~f(v_{2},v_{2})=3,~f(v_{3},v_{3})=-1,~f(v_{1},v_{2})=0,~f(v_{2},v_{3})=1,~f(v_{3},v_{1})=-2
+$$
+\begin{enumerate}
+\item Ecrire la matrice $A_{B}^{f}$ de la forme bilineaire $f$ pour la base $B$.
+\item Trouver une base orthogonale $C=\{ w_{1},w_{2},w_{3} \}$ pour $V$ par rapport a la forme bilineaire $f$.
+\end{enumerate}
+\end{exercise}
 \end{document}

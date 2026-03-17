@@ -1,0 +1,101 @@
+\todo{Lecture 9}
+
+\chapter{Formes bilineaires}
+
+\begin{question}
+Etant donne $A\in K^{n\times n}$ , quand existe-t-elle une matrice inversible $P\in K^{n\times n}$ telle que $P^{\mathsf{T}}AP=D$ soit une matrice diagonale?
+\end{question}
+\begin{answer}
+On a que $A=(P^{-1})^{\mathsf{T}}DP^{-1}$ donc $A^{\mathsf{T}}=(P^{-1})^{\mathsf{T}}DP^{-1}=A$ si une telle matrice $P$ existe. On dit alors que $A$ est symetrique.
+\end{answer}
+\begin{theorem}
+Soit $A\in K^{n\times n}$ une matrice symetrique et soit $K$ tel que $1_{K}+1_{K}\neq 0_{K}$. Alors, il existe une matrice $P\in K^{n\times n}$ inversible telle que $P^{\mathsf{T}}AP=D$ soit diagonale.
+\end{theorem}
+\begin{theorem}[Theoreme spectral]
+Si $A\in \mathbf{R}^{n\times n}$ et $A^{\mathsf{T}}=A$, alors il existe $P\in \mathbf{R}^{n\times n}$ inversible telle que $P^{\mathsf{T}}P=I_{n}$ et $P^{\mathsf{T}}AP=D$ soit diagonale.
+\end{theorem}
+
+\begin{example}
+Soit $K=\mathbf{Z}_{3}$ et $A=\begin{pmatrix}2 & 1 & 2 \\ 1 & 2 & 2 \\ 2 & 2 & 0\end{pmatrix}\in \mathbf{Z}_{3}^{3\times3}$ une matrice symetrique. Soit $P=\begin{pmatrix}1 & 1 & 2 \\ 0 & 1 & 0 \\ 0 & 0 & 1\end{pmatrix}$. Donc 
+$$
+AP=\begin{pmatrix}
+2 & 0 & 0 \\
+1 & 0 & 1 \\
+2 & 1 & 1
+\end{pmatrix}
+$$
+on a $P^{\mathsf{T}}=\begin{pmatrix}1 & 0 & 0 \\ 1 & 1 & 0 \\ 2 & 0 & 1\end{pmatrix}$ donc 
+$$
+P^{\mathsf{T}}AP=\begin{pmatrix}
+2 & 0 & 0 \\
+0 & 0 & 1 \\
+0 & 1 & 1
+\end{pmatrix}=A'
+$$
+et 
+$$
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 0 & 1 \\
+0 & 1 & 0
+\end{pmatrix}A'\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 0 & 1 \\
+0 & 1 & 0
+\end{pmatrix}=\begin{pmatrix}
+2 & 0 & 0 \\
+0 & 1 & 1 \\
+0 & 1 & 0
+\end{pmatrix}=A''
+$$
+On prend une nouvelle matrice $P''=\begin{pmatrix}1 & 0 & 0 \\ 0 & 1 & 2 \\ 0 & 0 & 1\end{pmatrix}$ donc
+$$
+(P'')^{\mathsf{T}}A''P''= \begin{pmatrix}
+2 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 2
+\end{pmatrix}
+$$
+\end{example}
+
+\begin{example}
+Dans $K=\mathbf{Z}_{3}$ on a $A=\begin{pmatrix}0 & 1  \\ 1 & 0\end{pmatrix}$ symetrique. On prend $P=\begin{pmatrix}1 & 0 \\ 1 & 1\end{pmatrix}$ donc
+$$
+P^{\mathsf{T}}AP=\begin{pmatrix}
+2 & 1  \\
+1 & 0
+\end{pmatrix}
+$$
+et apres on elimine avec pivot.
+
+Dans $K=\mathbf{Z}_{2}$ l'element pivot 2 est egal a 0 donc on peut rien faire.
+\end{example}
+
+\begin{theorem}
+Soit $K$ tel que $1+1\neq 0$ et $A\in K^{n\times n}$ symetrique. Il existe une matrice $P\in K^{n\times n}$ inversible telle que $P^{\mathsf{T}}AP=\mathrm{diag}(d_{1},..,d_{n})$ est une matrice diagonale ou $d_{i}\in K$.
+\end{theorem}
+\begin{proof}
+On procede par recurrence sur $n$. Si $n=1$ alors $p=1$ $\checkmark$. Pour le cas $n> 1$ on defini un algorithme:
+
+On prend en entree une matrice $A\in K^{n\times n}$ symetrique et on veut sortir une matrice $A'=\begin{pmatrix}d_{1} & 0 \\ 0 & B\end{pmatrix}$ ou $B$ est une matrice bloc de taille $n-1\times n-1$ et une matrice $P\in K^{n\times n}$ telle que $P^{\mathsf{T}}AP=A'$. 
+
+Une fois qu'on a reussi: par recurrence il existe une matrice $\tilde{P}\in K^{n-1\times n-1}$ inversible telle que $\tilde{P}^{\mathsf{T}}BP=\mathrm{diag}(d_{2},\dots,d_{n})$ alors
+$$
+\begin{pmatrix}
+1 & 0 \\
+0 & \tilde{P}^{\mathsf{T}} 
+\end{pmatrix}P^{\mathsf{T}}AP\begin{pmatrix}
+1 & 0 \\
+0 & \tilde{P} 
+\end{pmatrix}=\mathrm{diag}(d_{1},\dots,d_{n})
+$$
+
+Si $A=\mathrm{diag}(d_{1},\dots,d_{n})$ alors $A=A'$ et $P=I_{n}$. Si $A=\begin{pmatrix}0 & 0 \\ 0 & C\end{pmatrix}$ alors $A'=A$ et $P=I_{n}$ aussi. Maintenant, on cherche $P\in K^{n\times n}$ inversible telle que $P^{\mathsf{T}}AP=\begin{pmatrix}a_{1} & \dots \\ \vdots & C\end{pmatrix}$ avec $a_{1}\neq 0$.
+\begin{itemize}
+\item Cas 1: $A$ a une diagonale nulle. On fait des operations elementaires sur les lignes et colonnes pour inserer un element non-nul dans $a_{11}$.
+\item Cas 2: $A$ a un element non-nul dans sa diagonale. Pareil.
+\end{itemize}
+\begin{reminder}
+$A=P~\mathrm{diag}(\lambda_{1},\dots,\lambda _{n})P^{-1}$ ou $P=(p_{1},\dots,p_{n})\in K^{n\times n}$ ou $p_{i}$ est une base de $K^{n}$ de vecteurs propres
+\end{reminder}
+\end{proof}
