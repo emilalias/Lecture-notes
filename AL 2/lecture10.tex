@@ -1,0 +1,107 @@
+\todo{Lecture 10}
+
+\begin{example}
+Soit $A=\begin{pmatrix}0 & 1 & 2 \\ 1 & 1 & 0 \\ 2 & 0 & 0\end{pmatrix}\in \mathbf{Z}_{3}^{3\times 3}$. On a $\begin{pmatrix}1 & 1 & 0 \\ 1 & 0 & 2 \\ 0 & 2 & 0\end{pmatrix}$.
+\end{example}
+\begin{example}
+Soit $A=\begin{pmatrix}0 & 0 & 2 \\ 0 & 0 & 1 \\ 2 & 1 & 0\end{pmatrix}\in \mathbf{Z}_{3}^{3\times 3}$. On a $\begin{pmatrix}1 & 1 & 2 \\ 1 & 0 & 1 \\ 2 & 1 & 0\end{pmatrix}$
+\end{example}
+
+\begin{definition}[Matrices congruentes]
+Deux matrices $A,B\in K^{n\times n}$ sont congruentes s'il existe $P\in K^{n\times n}$ inversible telle que $P^{\mathsf{T}}AP=B$. On ecrit $A\cong B$.
+\end{definition}
+\begin{exercise}
+Montrer que $\cong ~\subseteq K^{n\times n}\times K^{n\times n}$ est une relation d'equivalence.
+\end{exercise}
+\begin{theorem}
+Tout $A\in K^{n\times n}$ symetrique est congruente a une matrice diagonale si $1+1\neq 0$ dans $K$.
+\end{theorem}
+
+\begin{definition}[Forme bilineaires]
+Soit $V$ un espace vectoriel sur $K$. Une forme bilineaire est une correspondence $\langle , \rangle:V\times V\to K,(u,v)\mapsto \langle u,v \rangle$ satisfaisant les criteres:
+\begin{enumerate}
+\item \label{BL1} Pour tous $u,v,w\in V$ et $\alpha \in K$ on a : 
+$$
+\langle u,v+w \rangle =\langle u,v \rangle +\langle u,w \rangle ,\quad \langle u,\alpha v \rangle =\alpha \langle u,v \rangle
+$$
+\item \label{BL2} Pour tous $u,v,w\in V$ et $\alpha \in K$ on a :
+$$
+\langle u+v,w \rangle =\langle u,w \rangle +\langle v,w \rangle ,\quad \langle \alpha u,v \rangle =\alpha \langle u,v \rangle 
+$$
+\end{enumerate}
+Si pour tous $u,v\in V$ on a que $\langle u,v \rangle=\langle v,u \rangle$ alors la forme est appelle symetrique.
+
+Si pour tout $v\neq 0$ il existe $w\in V$ tel que $\langle v,w \rangle\neq 0$ alors $\langle , \rangle$ est non-degeneree a gauche. Non-degeneree a droite si $\langle w,v \rangle\neq 0$.
+\end{definition}
+\begin{example}
+	Soit $V=K^{n}$. $\langle u,v\rangle=\sum_{i=1}^{n}u_{i}v_{i}$ est une forme bilineaire car elle verifie \ref{BL1} et \ref{BL2}.
+\end{example}
+\begin{example}
+Soit $V=K^{n}$ et $A\in K^{n\times n}$. $\langle u,v \rangle=u^{\mathsf{T}}Av$  est une forme bilineaire car elle verifie \ref{BL1} et \ref{BL2}.
+\end{example}
+
+Soit $B=\{ b_{1},\cdots,b_{n} \}$ une base de $V$ et $\langle , \rangle:V\times V\to K$ une forme bilineaire. Soient $u=\alpha_{1}b_{1}+\cdots +\alpha _{n}b_{n}$ et $v=\beta_{1}b_{1}+\cdots +\beta _{n}b_{n}$ dans $V$. On a
+\begin{align*}
+\langle u,v \rangle  & =\left\langle  \sum_{i=1}^{n} \alpha _{i}b_{i},\sum_{j=1}^{n} \beta _{j}b_{j}  \right\rangle   \\
+ & =\sum_{i=1}^{n} \alpha _{i}\left\langle  b_{i},\sum_{j=1}^{n} \beta _{j}b_{j}  \right\rangle   \\
+ & =\sum_{i=1}^{n} \sum_{j=1}^{n} \alpha _{i}\beta _{j}\langle b_{i},b_{j} \rangle  \\
+ & =\begin{pmatrix}
+\alpha_{1} & \cdots & \alpha _{n} 
+\end{pmatrix}\underbrace{ \begin{pmatrix}
+\langle b_{1},b_{1} \rangle  &  \cdots & \langle b_{1},b_{n} \rangle \\
+\vdots  &   & \vdots \\
+\langle b_{n},b_{1} \rangle  & \cdots  & \langle b_{n},b_{n} \rangle  
+\end{pmatrix} }_{ A_{B}^{\langle  \rangle }\in K^{n\times n} }\begin{pmatrix}
+\beta_{1} \\
+\vdots  \\
+b_{n}
+\end{pmatrix} \\
+ & =[u]_{B }^{\mathsf{T}}A_{B}^{\langle  \rangle}[v]_{B}=[u]_{B'}^{\mathsf{T}}A_{B'}^{\langle  \rangle }[v]_{B'}
+\end{align*}
+pour $B'$ une autre base de $V$. Mais $[u]_{B'}=P_{BB'}[u]_{B}$ et $[v]_{B'}=P_{BB'}[v]_{B}$ donc
+$$
+\langle u,v \rangle=[u]^{\mathsf{T}}_{B'}P^{\mathsf{T}}_{B'B}A_{B}^{\langle  \rangle }P_{B'B}[v]_{B'}
+$$
+alors $A_{B'}^{\langle  \rangle}=P_{B'B}^{\mathsf{T}}A_{B}^{\langle  \rangle}P_{B'B}$ donc $A_{B'}^{\langle  \rangle}\cong A_{B}^{\langle  \rangle}$. 
+\begin{example}
+Soit $A_{B}^{\langle  \rangle}=\begin{pmatrix}1 &  &  \\  & \ddots &  \\  &  & 1\end{pmatrix}$. Si $v\in V\setminus \{ 0 \}$, il existe $w$ tel que $\langle v,w \rangle\neq 0$ car $\langle v,b_{j} \rangle=\alpha _{j}\neq0$.
+\end{example}
+
+\begin{exercise}
+Soit $V$ un espace vectoriel sur $K$ de $\dim(V)=n$ et soit $B$ une base de $V$. Deux formes bilineaires $f,g:V\times V\to K$ sont egaux si et seulement si $A_{B}^{f}=A^{g}_{B}$.
+\end{exercise}
+
+\begin{theorem}
+La forme bilineaire $\langle  \rangle:V\times V\to K$ est non-degeneree a droite ou a gauche si et seulement si pour toute base $B$ de $V$, on a $\mathrm{rang}(A_{B}^{\langle  \rangle})=n$. Avec $\dim V=n$.
+\end{theorem}
+\begin{proof}
+Sens $\Rightarrow$ : Soit $B=\{ b_{1},\dots,b_{n} \}$ une base de $V$. Si $\mathrm{rang}(A_{B}^{\langle  \rangle})\neq n$ alors $\ker(A)\supsetneq \{ 0 \}$ et il existe $x \in K^{n}\setminus \{ 0 \}$ tel que $A_{B}^{\langle  \rangle}x=0$. Soit $v=x_{1}b_{1}+\dots +x_{n}b_{n}$ alors pour tout $u\in V$ on a que $\langle u,v \rangle=0$ qui pose une contradiction.
+
+Sens $\Leftarrow$ : Soit $v\in V\setminus \{ 0 \}$. Parce que $\ker(A_{B}^{\langle  \rangle})=\{ 0 \}$ et $[v]_{B}\neq 0$, alors $A_{B}^{\langle  \rangle}[v]_{B}=\boldsymbol{x}\neq 0$ . Alors pour $u=b_{i}$ on a que $\langle u,v \rangle=x_{i}\neq 0$ donc $\langle  \rangle$ n'est pas degeneree.
+\end{proof}
+\begin{example}
+Soit $V=\{ p(x)\in \mathbf{R}[x]:\deg p \le 2 \}$ un espace vectoriel sur $\mathbf{R}$ et $B=\{ 1,x,x^{2} \}$ une base de $V$ et la forme bilineaire $\langle f,g \rangle=\int_{0}^{1} f(x)g(x) \, dx$. On calcule la matrice $A_{B}^{\langle  \rangle}$ :
+\begin{align*}
+ \langle f,g \rangle  & =[f]_{B}^{\mathsf{T}}A_{B}^{\langle  \rangle }[g]_{B} \\
+ & =[f]_{B}^{\mathsf{T}}\begin{pmatrix}
+\langle 1 ,1 \rangle & \langle 1,x \rangle  & \langle 1,x^{2} \rangle \\
+\langle x,1 \rangle  & \langle x,x \rangle  & \langle x,x^{2} \rangle  \\
+\langle x^{2},1 \rangle  & \langle x^{2},x \rangle  & \langle x^{2},x^{2} \rangle  
+\end{pmatrix} [g]_{B} \\
+ & =[f]_{B}^{\mathsf{T}}\begin{pmatrix}
+1 & \frac{1}{2} & \frac{1}{3} \\
+\frac{1}{2} & \frac{1}{3} &  \frac{1}{4} \\
+\frac{1}{3} & \frac{1}{4} &  \frac{1}{5}
+\end{pmatrix}[g]_{B}
+\end{align*}
+Pour $p(x)=2+3x-5x^{2}$ et $q(x)=2x+3x^{2}$ on a que 
+$$
+\langle p,q \rangle =\begin{pmatrix}
+2 & 3 & -5
+\end{pmatrix}A_{B}^{\langle  \rangle }\begin{pmatrix}
+0 \\
+2 \\
+3
+\end{pmatrix}
+$$
+\end{example}

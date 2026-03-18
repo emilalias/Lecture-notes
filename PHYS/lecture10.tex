@@ -1,0 +1,76 @@
+\todo{Lecture 10}
+\section{Ondes stationnaires}
+
+On reprend la corde tendue aux points fixes $p_{1}$ et $p_{2}$. La solution $A\cos(\omega t-kx+\varphi)$ ne respecte pas les conditions aux bords car a $x=0$ on a $A\cos(\omega t+\varphi)\neq 0$. Comme l'onde est reflechit a $p_{1}$ et $p_{2}$, on cherche une solution de la forme 
+$$
+\tilde{y}_{0}(x,t)=\tilde{A}_{1}e^{i(\omega t-kx)}+\tilde{A}_{2}e^{i(\omega t+kx)}
+$$
+en $x=0$ on a
+$$
+\tilde{y}_{0}=(0,t)=\tilde{A}_{1}e^{i\omega t}+\tilde{A}_{2}e^{i\omega t}=0\Rightarrow \tilde{A}_{1}=-\tilde{A}_{2}
+$$
+donc 
+$$
+\tilde{y}_{0}(x,t)=\tilde{A}_{2}e^{i\omega t}(-e^{ikx}+e^{ikx})=\underbrace{ 2\tilde{A}_{2}ie^{i\omega t} }_{ de^{i(\omega t+\varphi)}:d,\varphi \in \mathbf{R} }\sin(kx)
+$$
+donc
+$$
+y_{0}(x,t)=\mathrm{Re}(\tilde{y}_{0}(x,t))=d\cos (\omega t+\varphi)\sin(kx)
+$$
+Finalement $y_{0}(p_{2},t)=0$ pour tout $t$. On definit $p_{1}-p_{2}=\ell$ alors
+$$
+d\cos(\omega t+\varphi)\sin(k\ell)=0,\quad \forall t 
+$$
+alors $k\ell=n\pi \Leftrightarrow k=\frac{n\pi}{\ell}$ et $\omega=ck=\frac{cn\pi}{\ell}$ avec $n\in \mathbf{Z}$. On a la solution
+$$
+y_{0}(x,t)=d\sin\left( \frac{\pi n}{\ell}x \right)\cos\left( \frac{\pi c}{\ell}nt+\varphi \right)
+$$
+qui est de la forme d'un oscillateur harmonique avec une amplitude qui depend de $x$.
+
+Pour une onde stationnaire il n'y a pas de propagation et $k=\frac{\pi n}{\ell }=\frac{2\pi}{\lambda}$ donc $\lambda=\frac{2\ell}{n}$.
+
+On a trouve les modes normaux de la corde (solutions a une frequence precise). Cette frequence peut etre definie comme $\nu=\frac{c}{\lambda}=\frac{cn}{2\ell}$ pour $n\in \mathbf{N}$. Ces frequences sont les frequences propres de la corde. 
+
+\begin{proposition}
+Le mouvement arbitraire de la corde (dans le regime lineaire) est une somme infinie des modes normaux.
+\end{proposition}
+
+
+\section{Ondes en 3D}
+
+En 3D, l'equation d'onde devient 
+$$
+\frac{ \partial^{2}y_{0} }{ \partial t^{2} } =c^{2}\Delta y_{0}
+$$
+Les ondes sinusoidales dans ce cas devient des ondes sinusoidales plans : 
+$$
+\tilde{y}_{0}(\boldsymbol{r},t)=\tilde{A}e^{i(\omega t-\boldsymbol{k}\boldsymbol{r})}
+$$
+ou $\boldsymbol{k}$ est un vecteur d'onde.
+\begin{definition}[Surface equiphase]
+Une surface equiphase est definie comme une surface de phase constante.
+\end{definition}
+Ici on a :
+$$
+\omega t-\boldsymbol{kr}=\varphi _{0}=\mathrm{const}
+$$
+On choisi $\boldsymbol{k} \parallel \boldsymbol{\hat{e}}_{x}$, donc
+$$
+\omega t-\begin{pmatrix}
+k \\
+0 \\
+0 
+\end{pmatrix}\begin{pmatrix}
+x \\
+y \\
+z
+\end{pmatrix}=\omega t-kx=\varphi_{0}\Rightarrow x=\frac{\omega}{k}t-\frac{\varphi_{0}}{k}
+$$
+donc les surfaces equiphases sont des plans. Elles (et donc l'onde) se deplacent le long de $\boldsymbol{k}$ a vitesse $\frac{\omega}{k}=c$ et $\lVert \boldsymbol{k} \rVert=\frac{2\pi}{\lambda}$.
+
+\section{Quelques consequences du principe de superposition}
+
+Superposition de deux ondes de frequence $f_{1}=\omega +\Delta \omega$ et $f_{2}=\omega-\Delta \omega$ de nombre d'onde $k+\Delta k$ et $k-\Delta k$ et de dephasage $\varphi_{1}$ et $\varphi_{2}$ de meme amplitude. On a
+$$
+\tilde{y}_{0}=Ae^{i((\omega t+\Delta \omega)t-(k+\Delta k)x+\varphi_{1})}+Ae^{i((\omega-\Delta \omega)t-(k-\Delta k)x+\varphi_{2})}
+$$
