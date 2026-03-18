@@ -1,0 +1,135 @@
+\todo{Lecture 10}
+
+\section{Dérivées d'ordres supérieurs}
+
+Soit $E\subset \mathbf{R}^{n}$ ouvert non-vide, $\boldsymbol{x}\in E$ et $f:E\to \mathbf{R}$. 
+\begin{notation}
+$$
+\frac{ \partial  }{ \partial x_{i_{p}} } \left( \frac{ \partial  }{ \partial x_{i_{p-1}} } \left( \dots\left( \frac{ \partial f }{ \partial x_{i_{1}} }  \right) \right) \right)(\boldsymbol{x})= \frac{ \partial^{p}f }{ \partial x_{i_{p}}\partial x_{i_{p-1}}\dots \partial x_{i_{1}} }(\boldsymbol{x}) 
+$$
+pour $i_{k}\in \{ 1,\dots ,n \}$
+\end{notation}
+
+\begin{definition}
+On appelle $C^{p}(E,\mathbf{R})$ l'espace de fonctions $f:E\to \mathbf{R}$ dont toutes les derivees partielles d'ordre plus petite ou egal $p$ sont continues sur $E$ ouvert.
+\end{definition}
+
+Si $f\in C^{p}(E)$ on a 
+$$
+\frac{ \partial  }{ \partial x_{i_{p}} } \left( \frac{ \partial  }{ \partial x_{i_{p-1}} } \left( \frac{ \partial^{p-2}f }{ \partial x_{i_{p-2}}\dots \partial x_{i_{1}} }  \right) \right)=\frac{ \partial  }{ \partial x_{i_{p-1}} } \left( \frac{ \partial  }{ \partial x_{i_{p}} } (\dots) \right)
+$$
+Soit $(\sigma(1),\dots,\sigma(p))$ une permutation quelconque de $(1,\dots,p)$ alors
+$$
+\frac{ \partial^{p}f }{ \partial x_{i_{p}}\dots \partial x_{i_{1}} } =\frac{ \partial^{p}f }{ \partial x_{i_{\sigma(p)}}\dots \partial x_{i_{\sigma(1)}} } 
+$$
+
+\begin{notation}[Multi-entier]
+Soit $\boldsymbol{\alpha}\in \mathbf{N}^{n}$. La composante $\alpha _{i}$ represente le nombre de fois qu'on derive par rapport a $x_{i}$. On a $|\boldsymbol{\alpha}|=\sum_{i=1}^{n}\alpha _{i}$ denote l'ordre de la derivee. Pour $\boldsymbol{x}\in \mathbf{R}^{n}$ on a $\boldsymbol{x}^{\boldsymbol{\alpha}}=\prod_{i=1}^{n}x_{i}^{\alpha _{i}}$. 
+
+Alors
+$$
+\frac{ \partial^{|\boldsymbol{\alpha}|}f }{ \partial x_{1}^{\alpha_{1}}\dots \partial x_{n}^{\alpha _{n}} }=\frac{ \partial^{|\boldsymbol{\alpha}|}f }{ \partial \boldsymbol{x}^{\boldsymbol{\alpha}} } 
+$$
+est la derivee partielle $\alpha_{1}$ fois en $x_{1}$, $\alpha _{2}$ fois en $x_{2}$, etc \dots.
+\end{notation}
+\begin{example}
+Soit $f(\boldsymbol{x})=x_{1}x_{2}^{2}x_{3}^{3}$ et $\boldsymbol{\alpha}=(1,1,1)$ alors 
+$$
+\frac{ \partial^{3} f}{ \partial x_{1}\partial x_{2}\partial x_{3} }=\frac{ \partial^{|\boldsymbol{\alpha}|}f }{ \partial \boldsymbol{x}^{\boldsymbol{\alpha}} }=\frac{ \partial^{3} f}{ \partial x_{2}\partial x_{1}\partial x_{3} }=\cdots
+$$
+avec $3!$ derivees egales. 
+\end{example}
+
+Soit $\boldsymbol{\alpha}=(\alpha_{1},\dots,\alpha _{n})$ alors $\frac{ \partial^{|\boldsymbol{\alpha}|f} }{ \partial \boldsymbol{x}^{\boldsymbol{\alpha}} }$ coincident avec 
+$$
+\frac{|\boldsymbol{\alpha}|!}{\alpha_{1}!\cdots\alpha _{n}!}=\frac{|\boldsymbol{\alpha}|!}{\boldsymbol{\alpha}!}
+$$
+derivees differentes.
+
+\section{Developpements limites et polynomes de Taylor}
+
+\begin{definition}[Polynome d'ordre $p$ en $\boldsymbol{x}$]
+$$
+q(\boldsymbol{x})=c_{(0,\dots,0)}+c_{(1,0,\dots,0)}x_{1}+c_{(0,1,\dots,0)}x_{2}+\dots +c_{(0,\dots,1)}x_{n}+c_{(2,0,\dots,0)}x_{1}^{2}+c_{(1,1,0,\dots,0)}x_{1}x_{2}+\dots
+$$
+ou de maniere generale
+$$
+q(\boldsymbol{x})=\sum _{\underset{|\boldsymbol{\alpha}|\le p}{\boldsymbol{\alpha}\in \mathbf{N}^{n}}}c_{\boldsymbol{\alpha}}x_{1}^{\alpha_{1}}\cdots x_{n}^{\alpha _{n}}
+$$
+\end{definition}
+
+\begin{definition}[Developpements limites d'ordre $p$]
+Soit $f:E\to \mathbf{R}$, $\boldsymbol{x}\in \mathring{E}$. S'il existe un polynome $q(\boldsymbol{y})$ de degre $p$ definit par
+$$
+q(\boldsymbol{y})=\sum _{\underset{|\boldsymbol{\alpha}|\le p}{\boldsymbol{\alpha}\in \mathbf{N}^{n}}} c_{\boldsymbol{\alpha}}(y_{1}-x_{1})^{\alpha_{1}}\cdots(y_{n}-x_{n})^{\alpha _{n}}=\sum _{|\boldsymbol{a}|\le p} c_{\boldsymbol{\alpha}}(\boldsymbol{y}-\boldsymbol{x})^{\boldsymbol{\alpha}}
+$$
+et une fonction $R:E\to \mathbf{R}$ telle que
+\begin{equation}
+f(\boldsymbol{y})=q(\boldsymbol{y})+R(\boldsymbol{y}),~\quad \forall \boldsymbol{y}\in E \label{devlim}
+\end{equation}
+et 
+$$
+\lim_{ \boldsymbol{y} \to \boldsymbol{x} } \frac{R(\boldsymbol{y})}{\lVert \boldsymbol{y}-\boldsymbol{x} \rVert^{p} }=0 
+$$
+alors \ref{devlim} est un developpement llimite d'ordre $p$.
+\end{definition}
+\begin{reminder}[Rappel d'Analyse I]
+Soit $f\in C^{p}((a,b))$, on sait que pour tout $x \in(a,b)$ un developpement limite d'ordre $p$ existe. I.e il existe $R:(0,b)\to \mathbf{R}$ telle que
+$$
+f(y)=\underbrace{ f(x)+f'(x)(y-x)+\dots +\frac{1}{p!}f^{(n)}(x)(y-x)^{p} }_{ \text{polynome de Taylor} }+R(y)
+$$
+avec $\lim_{ y\to x}\frac{R(y)}{|y-x|^{p}}=0$. Si $f^{(p+1)}$ existe sur $(0,b)$, alors il existe $\theta \in(0,1)$ tel que 
+$$
+R(y)=\frac{1}{(p+1)!}f^{(p+1)}(x+\theta(y-x))(y-x)^{p+1}
+$$
+qu'on appelle la reste de Lagrange. 
+
+Si $f^{(p+1)}$ est integrable sur $[x,y]$ alors 
+$$
+R(y)=\int_{0}^{1} (1-s)^{p} \frac{f^{(p+1)}(x+s(y-x))}{p!}(y-x)^{p+1} \, ds
+$$
+qu'on appelle la reste integrale.
+\end{reminder}
+
+Soit $f:E\subset \mathbf{R}^{n}\to \mathbf{R}$ une fonction $f\in C^{p}(E)$ avec $E$ ouvert et $[\boldsymbol{x},\boldsymbol{y}]\subset E$. On pose $g(t)=f(\boldsymbol{x}+t(\boldsymbol{y}-\boldsymbol{x}))$ pour $t\in(-\delta,1+\delta)$, on a que $g\in C^{p}((-\delta,1+\delta))$. On peut reecrire $g$ comme 
+$$
+g(t)=g(0)+g'(0)t+\frac{1}{2}g''(0)t^{2}+\dots +\frac{1}{p!}g^{(p)}(0)t^{p}+R(t)
+$$
+ou 
+\begin{align*}
+g'(t) & =Df(\boldsymbol{x}_{t})\cdot \frac{d}{dt}\boldsymbol{x}_{t}=Df(\boldsymbol{x}_{t})(\boldsymbol{y}-\boldsymbol{x}) \\
+ & =\sum_{i_{1}=1}^{n}  \frac{ \partial f }{ \partial x_{i_{1}} } (\boldsymbol{x}_{t})(y_{i_{1}}-x_{i_{1}}) \\
+ & =\sum _{\underset{|\boldsymbol{\alpha}|=1}{\boldsymbol{\alpha}\in \mathbf{N}^{n}}}  \frac{ \partial^{|\boldsymbol{\alpha}|}f }{ \partial \boldsymbol{x}^{\boldsymbol{\alpha}} } (\boldsymbol{x}_{t})(\boldsymbol{y}-\boldsymbol{x})^{\boldsymbol{\alpha}}
+\end{align*}
+puis
+\begin{align*}
+g''(t) & = \frac{d}{dt}g'(t)=\frac{d}{dt}\left( \sum_{i_{1}=1}^{n}  \frac{ \partial f }{ \partial x_{i_{1}} } (\boldsymbol{x}_{t})(y_{i_{1}}-x_{i_{1}}) \right) \\
+ & =\sum_{i_{1}=1}^{n} \frac{d}{dt} \frac{ \partial f }{ \partial x_{i_{1}} } (\boldsymbol{x}_{t})(y_{i_{1}}-x_{i_{1}}) \\
+ & =\sum _{i_{1},i_{2}} \frac{ \partial^{2}f }{ \partial x_{i_{2}}\partial x_{i_{1}} } (\boldsymbol{x}_{t})(y_{i_{1}}-x_{i_{1}})(y_{i_{2}}-x_{i_{2}}) \\
+ & =\sum _{\underset{|\boldsymbol{\alpha}|=2}{\boldsymbol{\alpha}\in \mathbf{N}^{n}}} \frac{ \partial^{2}f }{ \partial \boldsymbol{x}^{\boldsymbol{\alpha}} }(\boldsymbol{x}_{t})(\boldsymbol{y}-\boldsymbol{x})^{\boldsymbol{\alpha}} \cdot \frac{|\boldsymbol{\alpha}|}{\boldsymbol{\alpha}!} 
+\end{align*}
+Et de maniere similaire pour les autres derivees
+\begin{align*}
+g^{(p)}(t) & =\sum _{i_{1},\dots,i_{p}} \frac{ \partial^{p}f }{ \partial x_{i_{p}}\dots \partial x_{i_{1}} }(\boldsymbol{x}_{t})(y_{i_{1}}-x_{i_{1}})\cdots(y_{i_{p}}-x_{i_{p}})  \\
+ & =\sum _{\underset{|\boldsymbol{\alpha}|=p}{\boldsymbol{\alpha}\in \mathbf{N}^{n}}}  \frac{ \partial^{|\boldsymbol{\alpha}|}f }{ \partial \boldsymbol{x}^{\boldsymbol{\alpha}} }(\boldsymbol{x}_{t})(\boldsymbol{y}-\boldsymbol{x})^{\boldsymbol{\alpha}}\cdot \frac{|\boldsymbol{\alpha}|}{\boldsymbol{\alpha}!} 
+\end{align*}
+donc
+\begin{align*}
+f(\boldsymbol{y}) & = f(\boldsymbol{x})+\sum _{|\boldsymbol{\alpha}|=1}\frac{ \partial f }{ \partial \boldsymbol{x}^{\boldsymbol{\alpha}} } (\boldsymbol{x})(\boldsymbol{y}-\boldsymbol{x})^{\boldsymbol{\alpha}}+\dots +\frac{1}{p!}\sum _{|\boldsymbol{\alpha}|=p} \frac{ \partial^{p}f }{ \partial \boldsymbol{x}^{\boldsymbol{\alpha}} } (\boldsymbol{x})(\boldsymbol{y}-\boldsymbol{x})^{\alpha}\cdot \frac{|\boldsymbol{\alpha}|}{\boldsymbol{\alpha}!}+R(\boldsymbol{y}) \\
+ & = \underbrace{ \sum _{\underset{|\boldsymbol{\alpha}|\le p}{\boldsymbol{\alpha}\in \mathbf{N}^{n}}} \frac{1}{\boldsymbol{\alpha}!} \frac{ \partial^{|\boldsymbol{\alpha}|}f }{ \partial \boldsymbol{x}^{\boldsymbol{\alpha}} }(\boldsymbol{y}-\boldsymbol{x})^{\boldsymbol{\alpha}} }_{ \text{polynome de Taylor} }+R(\boldsymbol{y})=T_{\boldsymbol{x}}^{p}(\boldsymbol{y}) 
+\end{align*}
+
+Si $f\in C^{p+1}(E)$. Alors il existe $\theta \in(0,1)$ tel que 
+$$
+R(\boldsymbol{y})= \frac{1}{(p+1)!}g^{(p+1)}(\theta)=\sum _{|\boldsymbol{\alpha}|=p+1} \frac{ \partial^{p+1}f }{ \partial \boldsymbol{x}^{\boldsymbol{\alpha}} } (\boldsymbol{x}+\theta(\boldsymbol{y}-\boldsymbol{x}))(\boldsymbol{y}-\boldsymbol{x})^{\boldsymbol{\alpha}} \cdot \frac{1}{\boldsymbol{\alpha}!}
+$$
+est la reste de Lagrange. 
+
+\begin{align*}
+R(\boldsymbol{y}) & =\int_{0}^{1} (1-s)^{p} \frac{g^{(p+1)}(s)}{p!} \, ds \\
+ & = \sum _{|\boldsymbol{\alpha}|=p+1}\frac{1}{p!}\int_{0}^{1} (1-s)^{p} \frac{ \partial^{p+1}f }{ \partial \boldsymbol{x}^{\boldsymbol{\alpha}} } (\boldsymbol{x}+s(\boldsymbol{y}-\boldsymbol{x}))(\boldsymbol{y}-\boldsymbol{x})^{\boldsymbol{\alpha}}\cdot \frac{(p+1)!}{\boldsymbol{\alpha}!} \, ds \\
+ & =(p+1)\sum _{|\boldsymbol{\alpha}|=p+1} \int_{0}^{1} \frac{(1-s)^{p}}{\boldsymbol{\alpha}!} \frac{ \partial^{p+1}f }{ \partial \boldsymbol{x}^{\boldsymbol{\alpha}} } (\boldsymbol{x}+s(\boldsymbol{y}-\boldsymbol{x}))(\boldsymbol{y}-\boldsymbol{x})^{\boldsymbol{\alpha}}~ds 
+\end{align*}
+
+
+
