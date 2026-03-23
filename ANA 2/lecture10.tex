@@ -61,7 +61,7 @@ $$
 \begin{definition}[Developpements limites d'ordre $p$]
 Soit $f:E\to \mathbf{R}$, $\boldsymbol{x}\in \mathring{E}$. S'il existe un polynome $q(\boldsymbol{y})$ de degre $p$ definit par
 $$
-q(\boldsymbol{y})=\sum _{\underset{|\boldsymbol{\alpha}|\le p}{\boldsymbol{\alpha}\in \mathbf{N}^{n}}} c_{\boldsymbol{\alpha}}(y_{1}-x_{1})^{\alpha_{1}}\cdots(y_{n}-x_{n})^{\alpha _{n}}=\sum _{|\boldsymbol{a}|\le p} c_{\boldsymbol{\alpha}}(\boldsymbol{y}-\boldsymbol{x})^{\boldsymbol{\alpha}}
+q(\boldsymbol{y})=\sum _{\underset{|\boldsymbol{\alpha}|\le p}{\boldsymbol{\alpha}\in \mathbf{N}^{n}}} c_{\boldsymbol{\alpha}}(y_{1}-x_{1})^{\alpha_{1}}\cdots(y_{n}-x_{n})^{\alpha _{n}}=\sum _{|\boldsymbol{\alpha}|\le p} c_{\boldsymbol{\alpha}}(\boldsymbol{y}-\boldsymbol{x})^{\boldsymbol{\alpha}}
 $$
 et une fonction $R:E\to \mathbf{R}$ telle que
 \begin{equation}
@@ -71,7 +71,7 @@ et
 $$
 \lim_{ \boldsymbol{y} \to \boldsymbol{x} } \frac{R(\boldsymbol{y})}{\lVert \boldsymbol{y}-\boldsymbol{x} \rVert^{p} }=0 
 $$
-alors \ref{devlim} est un developpement llimite d'ordre $p$.
+alors \ref{devlim} est un developpement limite d'ordre $p$.
 \end{definition}
 \begin{reminder}[Rappel d'Analyse I]
 Soit $f\in C^{p}((a,b))$, on sait que pour tout $x \in(a,b)$ un developpement limite d'ordre $p$ existe. I.e il existe $R:(0,b)\to \mathbf{R}$ telle que
@@ -116,19 +116,20 @@ g^{(p)}(t) & =\sum _{i_{1},\dots,i_{p}} \frac{ \partial^{p}f }{ \partial x_{i_{p
 donc
 \begin{align*}
 f(\boldsymbol{y}) & = f(\boldsymbol{x})+\sum _{|\boldsymbol{\alpha}|=1}\frac{ \partial f }{ \partial \boldsymbol{x}^{\boldsymbol{\alpha}} } (\boldsymbol{x})(\boldsymbol{y}-\boldsymbol{x})^{\boldsymbol{\alpha}}+\dots +\frac{1}{p!}\sum _{|\boldsymbol{\alpha}|=p} \frac{ \partial^{p}f }{ \partial \boldsymbol{x}^{\boldsymbol{\alpha}} } (\boldsymbol{x})(\boldsymbol{y}-\boldsymbol{x})^{\alpha}\cdot \frac{|\boldsymbol{\alpha}|}{\boldsymbol{\alpha}!}+R(\boldsymbol{y}) \\
- & = \underbrace{ \sum _{\underset{|\boldsymbol{\alpha}|\le p}{\boldsymbol{\alpha}\in \mathbf{N}^{n}}} \frac{1}{\boldsymbol{\alpha}!} \frac{ \partial^{|\boldsymbol{\alpha}|}f }{ \partial \boldsymbol{x}^{\boldsymbol{\alpha}} }(\boldsymbol{y}-\boldsymbol{x})^{\boldsymbol{\alpha}} }_{ \text{polynome de Taylor} }+R(\boldsymbol{y})=T_{\boldsymbol{x}}^{p}(\boldsymbol{y}) 
+ & = \underbrace{ \sum _{\underset{|\boldsymbol{\alpha}|\le p}{\boldsymbol{\alpha}\in \mathbf{N}^{n}}} \frac{1}{\boldsymbol{\alpha}!} \frac{ \partial^{|\boldsymbol{\alpha}|}f }{ \partial \boldsymbol{x}^{\boldsymbol{\alpha}} }(\boldsymbol{x})(\boldsymbol{y}-\boldsymbol{x})^{\boldsymbol{\alpha}} }_{ \text{polynome de Taylor} }+R(\boldsymbol{y})=T_{\boldsymbol{x}}^{p}(\boldsymbol{y}) 
 \end{align*}
 
-Si $f\in C^{p+1}(E)$. Alors il existe $\theta \in(0,1)$ tel que 
-$$
-R(\boldsymbol{y})= \frac{1}{(p+1)!}g^{(p+1)}(\theta)=\sum _{|\boldsymbol{\alpha}|=p+1} \frac{ \partial^{p+1}f }{ \partial \boldsymbol{x}^{\boldsymbol{\alpha}} } (\boldsymbol{x}+\theta(\boldsymbol{y}-\boldsymbol{x}))(\boldsymbol{y}-\boldsymbol{x})^{\boldsymbol{\alpha}} \cdot \frac{1}{\boldsymbol{\alpha}!}
-$$
-est la reste de Lagrange. 
 
-\begin{align*}
-R(\boldsymbol{y}) & =\int_{0}^{1} (1-s)^{p} \frac{g^{(p+1)}(s)}{p!} \, ds \\
- & = \sum _{|\boldsymbol{\alpha}|=p+1}\frac{1}{p!}\int_{0}^{1} (1-s)^{p} \frac{ \partial^{p+1}f }{ \partial \boldsymbol{x}^{\boldsymbol{\alpha}} } (\boldsymbol{x}+s(\boldsymbol{y}-\boldsymbol{x}))(\boldsymbol{y}-\boldsymbol{x})^{\boldsymbol{\alpha}}\cdot \frac{(p+1)!}{\boldsymbol{\alpha}!} \, ds \\
- & =(p+1)\sum _{|\boldsymbol{\alpha}|=p+1} \int_{0}^{1} \frac{(1-s)^{p}}{\boldsymbol{\alpha}!} \frac{ \partial^{p+1}f }{ \partial \boldsymbol{x}^{\boldsymbol{\alpha}} } (\boldsymbol{x}+s(\boldsymbol{y}-\boldsymbol{x}))(\boldsymbol{y}-\boldsymbol{x})^{\boldsymbol{\alpha}}~ds 
-\end{align*}
-est la reste integrale.
+    Si $f\in C^{p+1}(E)$. Alors il existe $\theta \in(0,1)$ tel que 
+    $$
+    R(\boldsymbol{y})= \frac{1}{(p+1)!}g^{(p+1)}(\theta)=\sum _{|\boldsymbol{\alpha}|=p+1} \frac{ \partial^{p+1}f }{ \partial \boldsymbol{x}^{\boldsymbol{\alpha}} } (\boldsymbol{x}+\theta(\boldsymbol{y}-\boldsymbol{x}))(\boldsymbol{y}-\boldsymbol{x})^{\boldsymbol{\alpha}} \cdot \frac{1}{\boldsymbol{\alpha}!}
+    $$
+    est la reste de Lagrange.
 
+    On peut definir aussi la reste integrale.
+    \begin{align*}
+        R(\boldsymbol{y}) & =\int_{0}^{1} (1-s)^{p} \frac{g^{(p+1)}(s)}{p!} \, ds \\
+     & = \sum _{|\boldsymbol{\alpha}|=p+1}\frac{1}{p!}\int_{0}^{1} (1-s)^{p} \frac{ \partial^{p+1}f }{ \partial \boldsymbol{x}^{\boldsymbol{\alpha}} } (\boldsymbol{x}+s(\boldsymbol{y}-\boldsymbol{x}))(\boldsymbol{y}-\boldsymbol{x})^{\boldsymbol{\alpha}}\cdot \frac{(p+1)!}{\boldsymbol{\alpha}!} \, ds \\
+     & =(p+1)\sum _{|\boldsymbol{\alpha}|=p+1} \int_{0}^{1} \frac{(1-s)^{p}}{\boldsymbol{\alpha}!} \frac{ \partial^{p+1}f }{ \partial \boldsymbol{x}^{\boldsymbol{\alpha}} } (\boldsymbol{x}+s(\boldsymbol{y}-\boldsymbol{x}))(\boldsymbol{y}-\boldsymbol{x})^{\boldsymbol{\alpha}}~ds 
+    \end{align*}
+    

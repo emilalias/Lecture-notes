@@ -1,0 +1,330 @@
+\todo{Lecture 6}
+
+\section{Linear recurrence relations}
+
+\begin{definition}
+A sequence of complex numbers $\{ a_{n} \}_{n=0}^{\infty}$ satisfies a linear recurrence relation if there exist numbers $c_{0},c_{1},\dots,c_{k-1}$ such that
+$$
+a_{n+k}=c_{0}a_{n}+c_{1}a_{n+1}+\dots +c_{k-1}a_{n+k-1}
+$$
+\end{definition}
+\begin{example}
+The Fibonacci numbers satisfy a linear recurrence relation.
+\end{example}
+\begin{theorem}
+Suppose that a sequence $\{ a_{n} \}_{n=0}^{\infty}$ satisfies a linear recurrence relation. Let $\lambda_{1},\dots,\lambda _{s}$ be the complex roots of the polynomial
+$$
+x^{k}-c_{k-1}x^{k-1}-\dots-c_{1}x-c_{0}=0
+$$
+Then there exist polynomials $P_{1},\dots,P_{s}$, where each $P_{i}$ is a polynomial of degree $k_{i}-1$ and 
+$$
+a_{n}=\sum_{i=1}^{s} P_{i}(n)\lambda _{i}^{n}, \quad n\in \mathbf{Z}_{\ge 0}
+$$
+\end{theorem}
+\begin{proof}
+Suppose that a sequence $\{ a_{n} \}_{n=0}^{\infty}$ satisfies a linear recurrence relation:
+\begin{equation}
+a_{n+k}=c_{0}a_{n}+c_{1}a_{n+1}+\dots +c_{k-1}a_{n+k-1}    \label{recrel}
+\end{equation}
+Let $a(x)=\sum_{n=0}^{\infty}a_{n}x^{n}$ be the generating function for the sequence $\{ a_{n} \}_{n=0}^{\infty}$. The recurrence relation \ref{recrel} implies 
+\begin{align*}
+0 & =\sum_{n=0}^{\infty} (a_{n+k}-c_{k-1}a_{n+k-1}-\dots-c_{1}a_{n+1}-c_{0}a_{n})x^{n} \\
+ & =\sum_{n=k}^{\infty} a_{n}x^{n-k}-c_{k-1}\sum_{n=k-1}^{\infty} a_{n}x^{n-k+1}-\dots-c_{1}\sum_{n=1}^{\infty} a_{n}x^{n-1}-c_{0}\sum_{n=0}^{\infty} a_{x}x^{n} \\
+ & = x^{-k}\left( a(x)-\sum_{n=0}^{k-1} a_{n}x^{n} \right)-c_{k-1}x^{-k+1 }\left( a(x)-\sum_{n=0}^{k-2} a_{n}x^{n}  \right)-\dots-c_{1}x ^{-1}(a(x)-a_{0})-c_{0}a(x)
+\end{align*}
+Which implies
+$$
+a(x)(x^{-k}-c_{k-1}x^{-k+1}-\dots -c_{1}x ^{-1}-c_{0})=\sum_{n=1}^{k} b_{n}x^{-}
+$$
+so
+$$
+a(x)=\frac{b_{1}x ^{-1} +b_{2}x^{-2}+\dots +b_{k}x^{-k}}{x^{-k}-c_{k-1}x^{-k+1}-\dots -c_{1}x ^{-1}-c_{0}}
+$$
+\begin{lemma} \label{lemproof}
+Let $f(x)=\frac{p(x)}{q(x)}$ be a rational function, where $p(x)$ and $q(x)$ are polynomials and $\deg q > \deg p$.
+
+We suppose that $q(x)=(x-\mu_{1})^{\ell_{1}}\cdots(x-\mu_{t})^{\ell _{t}}$ for some $\mu_{1},\dots,\mu _{t}\in \mathbf{C}$ and $\ell_{1},\dots,\ell _{t}\in \mathbf{Z}_{\ge 0}$. Then there exist numbers $A_{j,m}$ where $j=1,\dots,t$ and $m=1,\dots,\ell _{j}$ such that
+$$
+f(x)=\sum_{j=1}^{t} \sum_{m=1}^{\ell _{j}}  \frac{A_{j,m}}{(x-\mu _{j})^{m}}
+$$
+\end{lemma}
+We assume that \ref{lemproof} is true, therefore $a(x)=\frac{p(x)}{q(x)}$ by the lemma. Suppose that $q(x)=(x-\mu_{1})^{\ell _{1}}\cdots(x-\mu _{t})^{\ell _{t}}$, by the lemma
+$$
+a(x)=\sum_{j=1}^{t} \sum_{m=1}^{\ell _{j}}  \frac{A_{j,m}}{(x-\mu _{j})^{m}}
+$$
+Each tern in this sum has the Taylor expansion around 0:
+$$
+\frac{1}{(x-\mu)^{m}}=\frac{(-1)^{m-1}}{(m-1)!} \frac{d^{m-1}}{dx^{m-1}}\left[ \frac{1}{(x-\mu)} \right]= \frac{(-1)^{m-1}}{(m-1)!} \frac{d^{m-1}}{dx^{m-1}}\left[ \mu ^{-1}\sum_{n=0}^{\infty} -\left( \frac{x}{\mu} \right)^{n}  \right]
+$$
+which gives
+$$
+\frac{1}{(x-\mu)^{m}}=\alpha _{m}\sum_{n=0}^{\infty} -n(n-1)\cdots(n-m+2)\mu^{-n-1}x^{n-m+1}
+$$
+
+Since $\lambda _{j}$ are the roots of 
+$$
+x^{k}-c_{k-1}x^{k-1}-\dots-c_{1}x-c_{0}=0
+$$
+and $\mu _{j}$ are the roots of
+$$
+x^{-k}-c_{k-1}x^{-k+1}-\cdots-c_{1}x ^{-1}-c_{0}=0
+$$
+therefore $\lambda _{j}=\mu _{j}^{-1}$.
+
+If $m$ is fixed and $n$ is considered as a variable then
+$$
+-n(n-1)\cdots(n-m+2)
+$$
+is a polynomial of degree $m-1$.
+
+We have
+\begin{align*}
+a(x) & =\sum_{j=1}^{t}\sum_{m=1}^{\ell _{t}} \frac{A_{j,m}}{(x-\mu _{j})^{m}} 
+\end{align*}
+where
+\begin{align*}
+\sum_{m=1}^{\ell} \frac{A_{m}}{(x-\mu )^{m} } & =\sum_{n=0}^{\infty} \left( \sum_{m=1}^{\ell} A_{m}\alpha _{m}(n+1)(n+2)\cdots (n+m-1)\lambda^{m}  \right) \lambda^{n}x^{n} \\
+ & =\sum_{n=0}^{\infty} P(n)\lambda^{n}x^{n}
+\end{align*}
+with $\deg P=\ell -1$.
+\end{proof}
+\begin{example}
+The Fibonacci numbers $\{ F_{n} \}_{n=0}^{\infty}$ satisfy $F_{n+2}=F_{n+1}+F_{n}$ for $n\in \mathbf{Z}_{\ge 0}$. The polynomial
+$$
+x^{2}-x-1-0
+$$
+has roots
+$$
+\lambda_{1}=\frac{1+\sqrt{ 5 }}{2},\quad \lambda_{2}=\frac{1-\sqrt{ 5 }}{2}
+$$
+Therefore, the theorem implies that there exist complex numbers $p_{1}$ and $p_{2}$ such that
+$$
+F_{n}=p_{1}\left( \frac{1+\sqrt{ 5 }}{2} \right)^{n}+p_{2}\left( \frac{1-\sqrt{ 5 }}{2} \right),\quad n\in \mathbf{Z}_{\ge 0}
+$$
+The conditions  $F_{0}=0$ and $F_{1}=1$ imply that
+$$
+p_{1}=\frac{1}{\sqrt{ 5 }},\quad p_{2}=-\frac{1}{\sqrt{ 5 }}
+$$
+\end{example}
+
+\begin{proof}[Proof of lemma \ref{lemproof}]
+We prove the lemma by induction on $t$. For the base of our induction : $t=1$ and $q(x)=(x-\mu)^{\ell}$ so the polynomial $p$ can be written as
+$$
+p(x)=\sum_{m=0}^{\ell -1}  \underbrace{ \frac{P^{(m)}(\mu)}{m!} }_{ := A_{m} } (x-\mu)^{m}
+$$
+so
+\begin{align*}
+\frac{p(x)}{q(x)} & =\frac{A_{0}+A_{1}(x-\mu)+\dots +A_{\ell -1}(x-\mu)^{\ell -1}}{(x-\mu)^{\ell}} \\
+ & =\frac{A_{0}}{(x-\mu)^{\ell}}+\frac{A_{1}}{(x-\mu)^{\ell -1}}+\dots+\frac{A_{\ell -1}}{(x-\mu)}\quad \checkmark
+\end{align*}
+
+We suppose the theorem holds for polynomials $q$ with at most $t-1$ distinct roots. Consider a polynomial $q(x)=(x-\mu_{1})^{\ell_{1}}\cdots(x-\mu _{t})^{\ell _{t}}$. Let $q_{1}(x)=(x-\mu_{1})^{\ell 1}\cdots(x-\mu _{t-1})^{\ell _{t-1}}$. We claim that there exist polynomials $p_{1},p_{2}$ such that $\deg p_{1} < \deg q_{1}$ and $\deg p_{2} < \ell _{t}$ and
+$$
+\frac{p(x)}{q(x)}=\frac{p(x)}{q_{1}(x)(x-\mu _{t})^{\ell _{t}}}=\frac{p_{1}(x)}{q_{1}(x)}+\frac{p_{2}(x)}{(x-\mu _{t})^{\ell _{t}}}.
+$$
+
+To prove this claim, we assume without loss of generality that $\mu _{t}=0$ and we define $\ell :=\ell _{t}$. Then our claim is equivalent to the following statement : 
+\begin{claim}
+Let $p(x),q_{1}(x)$ be polynomials such that $\deg p<\deg q_{1}+\ell$ and $q_{1}(0)\neq 0$. Then there exist polynomials $p_{1},p_{2}$ such that $\deg p_{1} < \deg q_{1}$ and $\deg p_{2}< \ell$ and 
+$$
+p(x)=x^{\ell}p_{1}(x)+q_{1}(x)p_{2}(x).
+$$
+\end{claim}
+\begin{proof}
+Our claim will follow from the division with reminder for polynomials in one variable.
+
+Let $n:=\deg q_{1}(x)$. We set 
+$$
+\tilde{p}(x)=x^{n+\ell -1}p\left( \frac{1}{x} \right),\quad \tilde{q_{1}}(x)=x^{n}q_{1}\left( \frac{1}{x} \right)
+$$
+where $\tilde{p}$ and $\tilde{q_{1}}$ are polynomials and $\deg \tilde{p} \le n+\ell -1$. Since $q_{1}(0)\neq 0$, we see that $\deg \tilde{q_{1}}=\deg q_{1}=n$. 
+
+The division with remainder for univariate polynomials implies that there exist polynomials $\tilde{s}$ and $\tilde{r}$ such that $\deg \tilde{s}=\deg \tilde{p} - \deg \tilde{q_{1}}$ and $\deg \tilde{r}<\deg \tilde{ q_{1}}$ and
+$$
+\tilde{p}(x)=\tilde{q_{1}}(x)\tilde{s}(x)+\tilde{r}(x)
+$$
+
+We set $y=\frac{1}{x}$ and obtain
+$$
+y^{n+\ell -1}\tilde{p}\left( \frac{1}{y} \right)=y^{n+\ell -1} \tilde{q_{1}}\left( \frac{1}{y} \right)\tilde{s}\left( \frac{1}{y} \right)+ y^{n+\ell -1}\tilde{r}\left( \frac{1}{y} \right)
+$$
+therefore
+$$
+p(y)=\underbrace{ y^{\ell -1}\tilde{s}\left( \frac{1}{y} \right) }_{ p_{2} }q_{1}(y)+y^{\ell}\underbrace{ y^{n-1}\tilde{r}\left( \frac{1}{y} \right) }_{ p_{1} }
+$$
+where $\deg p_{2}\le \ell -1$ and $\deg p_{1} \le n-1$. 
+\end{proof}
+The proof of the claim completes the inductions step in the lemma 
+$$
+\frac{p(x)}{q(x)}=\frac{p(x)}{q_{1}(x)(x-\lambda _{t})^{\ell _{t}}}=\frac{p_{1}(x)}{q_{1}(x)}+\frac{p_{2}(x)}{(x-\lambda _{t})^{\ell _{t}}}
+$$
+which by induction hypothesis equals
+$$
+\sum_{j=1}^{t-1} \sum_{m=1}^{\ell _{j}} \frac{A_{j,m}}{(x-\lambda _{j})^{m}}+\sum_{m=1}^{\ell _{t}} \frac{A_{t,m}}{(x-\lambda _{t})^{m}}  
+$$
+\end{proof}
+
+\subsection{Linear recurrences in the matrix form}
+
+Let $\{ a_{n} \}_{n=0}^{\infty}$ be a sequence satisfying a linear recurrence relation \ref{recrel}. For each $n\ge 0$ we consider the vector 
+$$
+\boldsymbol{a}_{n}=\begin{pmatrix}
+a_{n} \\
+a_{n+1} \\
+\vdots \\
+a_{n+k-1}
+\end{pmatrix}
+$$
+then the condition \ref{recrel} is equivalent to
+$$
+\begin{pmatrix}
+a_{n+1} \\
+a_{n+2} \\
+\vdots \\
+a_{n+k-1} 
+\end{pmatrix}=\begin{pmatrix}
+0 & 1 & 0 & \cdots & 0 \\
+0 & 0 & 1 & \cdots & 0 \\
+\vdots &  &  &  & \vdots \\
+c_{0} & c_{1} & c_{2} & \cdots & c_{k-1}
+\end{pmatrix}\begin{pmatrix}
+a_{n+1} \\
+a_{n+2} \\
+\vdots \\
+a_{n+k-1} 
+\end{pmatrix}
+$$
+
+\begin{example}
+Let $\{ a_{n} \}_{n=0}^{\infty}$ be a sequence. Suppose that $a_{0}=0$, $a_{1}=1$ and $a_{n}=3a_{n-1}+2a_{n-2}$. Find an explicit formula for $a_{n}$ for $n\in \mathbf{Z}$.
+
+We make the assumption that $a_{n}=\lambda^{n}$ for $\lambda\neq 0$. Therefore 
+\begin{align*}
+\lambda^{n}  & =3\lambda^{n-1}+2\lambda^{n-2} \\
+\Leftrightarrow0  & =\lambda^{2}-3\lambda +2 \\
+\end{align*}
+which has two roots $\lambda_{1}=1$ and $\lambda_{2}=2$. There exist $p_{1},p_{2}\in \mathbf{C}$ such that $a_{n}=p_{1}\lambda_{1}^{n}+p_{2}\lambda_{2}^{n}$. We have that
+$$
+\begin{cases}
+p_{1}+p_{2} & =0 \\
+p_{1}+2p_{2} & =1
+\end{cases}
+$$
+then $p_{1}=-1$ and $p_{2}=1$ so $a_{n}=-1+2^{n}$.
+\end{example}
+\begin{example}
+Let $\{ a_{n} \}_{n=0}^{\infty}$ be a sequence. Suppose that $a_{0}=0$, $a_{1}=1$ and $a_{n}=2a_{n-1}-a_{n-2}$. Find an explicit formula for $a_{n}$ for $n\in \mathbf{Z}$.
+
+We make the assumption that $a_{n}=\lambda^{n}$ for $\lambda\neq 0$. So $\lambda^{2}-2\lambda +1=0$ and $\lambda_{1,2}=1$. Then $a_{n}=p(n)1^{n}$ where $\deg p=1$. There exist $p_{0},p_{1}\in \mathbf{C}$ such that $a_{n}=p_{0}+np_{1}$ so 
+$$
+\begin{cases}
+p_{0}+0p_{1} &  =0 \\
+p_{0} +1p_{1} & =1
+\end{cases}
+$$
+therefore $p_{0}=0$ and $p_{1}=1$ so $a_{n}=n$.
+\end{example}
+
+\section{Mobius inversion formula}
+
+Let $f:\mathbf{Z}_{\ge 1}\to \mathbf{C}$ be a function. We define a new function $F:\mathbf{Z}_{\ge 1}\to \mathbf{C}$ by 
+$$
+F(n):= \sum _{d \mid n} f(d)
+$$
+\begin{question}
+Suppose that we know $F$. How do we recover $f$ ?
+\end{question}
+\begin{definition}
+The Mobius function $\mu :\mathbf{Z}_{\ge 1}\to \mathbf{Z}$ is defined as follows :
+
+Suppose that $n\in \mathbf{Z}_{\ge 1}$ has the prime factorisation
+$$
+n=p_{1}^{e_{1}}\cdots p_{r}^{e_{r}}
+$$
+then
+$$
+\mu(n):= \begin{cases}
+1 & \text{for }n=1 \\
+0 & \text{if some } e_{i}>1 \\
+(-1)^{r} & \text{if } e_{1}=e_{2}=\dots=e_{r}=1
+\end{cases}
+$$
+\end{definition}
+\begin{lemma}
+For $n\in \mathbf{Z}_{\ge 1}$ we have
+$$
+\sum _{d \mid n}\mu(d)=\begin{cases}
+1 & \text{if }n=1 \\
+0 & \text{if }n>1
+\end{cases}
+$$
+\end{lemma}
+\begin{proof}
+First, we check that the lemma is correct for $n=1$ :
+$$
+\sum _{d \mid 1}\mu(d)=\mu(1)=1
+$$
+Now suppose that $n\in \mathbf{Z}_{> 1}$ has the prime factorisation
+$$
+n=p_{1}^{e_{1}}\cdots p_{r}^{e_{r}}
+$$
+where $e_{1},\dots,e_{r}\ge 1$. We set $n^{*}=p_{1}\dots p_{r}$. If $d\mid n$ and $d \nmid n^{*}$ then $d$ has a prime divisor of multiplicty greater than 1. Then $\mu(d)=0$. Hence 
+$$
+\sum _{d\mid n}\mu(d)=\sum _{d\mid n^{*}}\mu (d)
+$$
+
+Now we can easily compute 
+\begin{align*}
+\sum _{d\mid n^{*}}\mu(d) & =\sum _{d\mid p_{1}\cdots p_{r}}\mu(d) \\
+ & =\sum _{I\subset \{ 1,\dots,r \}} \mu\left( \prod _{i\in I}p_{i} \right) \\
+ & =\sum _{I} (-1)^{|I|}=\sum_{k=0}^{r} (-1)^{k}\binom{ r}  {k } \\
+ & =(1-1)^{r}=0
+\end{align*}
+\end{proof}
+
+\begin{theorem}[Mobius inversion formula]
+Let $f,F:\mathbf{Z}_{\ge 1}\to \mathbf{C}$ be such that 
+\begin{equation}
+F(n)=\sum _{d\mid n}f(d) \label{flower}
+\end{equation}
+then
+\begin{equation}
+f(n)=\sum _{d\mid n}\mu (d)F(n/d)\label{flowertwo}
+\end{equation}
+Moreover, \ref{flowertwo} implies \ref{flower}.
+\end{theorem}
+\begin{proof}
+Let $d$ and $n$ be numbers in $\mathbf{Z}\ge 1$ such that $d$ divides $n$. Then $F(n/d)=\sum _{d'\mid (n/d)} f(d')$. Therefore
+$$
+\sum _{d\mid n}\mu(d)F(n/d)=\sum _{d\mid n}\mu(d)\sum _{d'\mid (n/d)}f(d')
+$$
+
+Consider the set $S_{n}$ of all pairs $(d,d')\in \mathbf{Z}_{\ge1}$ such that $d\mid n$ and $d' \mid (n/d)$. If $n$ and its divisor $d'$ are fixed, then $d$ runs over all divisors of $n/d'$.
+
+We can change the order of summation
+$$
+\sum _{d\mid n}\sum _{d'\mid (n/d)} \mu(d)f(d')=\sum _{(d,d')\in S_{n}}\mu(d)f(d')=\sum _{d'\mid n}\sum _{d\mid (n/d')}f(d')\mu(d)
+$$
+which gives
+$$
+\sum _{d'\mid n}\sum _{d \mid (n/d')}f(d')\mu (d)=f(n)
+$$
+which finished the proof of the inversion formula.
+
+Now we will prove the second statement of the theorem. 
+
+Let $F:\mathbf{Z}_{\ge 1}\to \mathbf{C}$ be any function. Set $f(n):=\sum _{d\mid n}\mu(d)F(n/d)$. Then for $n\in \mathbf{Z}_{\ge 1}$ :
+$$
+\sum _{d\mid n}f(d)=\sum _{d\mid n}\sum _{d'\mid d}\mu(d')F(d'/d)
+$$
+We make the change of variables in summation 
+\begin{align*}
+\{ (d,d'):d\mid n, d'\mid d \} & \simeq \{ (d'',d'):d''\mid n, d'\mid(n/d'') \} \\
+(d,d') & \mapsto(d/d',d')
+\end{align*}
+so
+\begin{align*}
+\sum _{d\mid n}\sum _{d'\mid d}\mu(d')F(d'/d) & =\sum _{d''\mid n}\sum _{d' \mid (n/d'')} \mu(d')F(d'') \\
+ & =\sum _{d''\mid n} F(d'')\sum _{d'\mid(n/d'')}\mu (d')=F(n)
+\end{align*}
+\end{proof}

@@ -1,0 +1,152 @@
+\todo{Lecture 11}
+
+\chapter{Integrales qui dependent d'un parametre}
+
+Soit $I\subset \mathbf{R}$ un intervalle non-vide et $E\subset \mathbf{R}^{n}$ un ensemble non-vide et une fonction $f(t,\boldsymbol{x})$ ou $t\in I$ et $\boldsymbol{x}\in E$. On peut definir l'integrale, avec $g:E\to \mathbf{R}$ : 
+$$
+g(\boldsymbol{x})=\int _{I}f(t,\boldsymbol{x})~dt
+$$
+Soit $\boldsymbol{x}_{0}\in E$ est-ce que $\lim_{ \boldsymbol{x} \to \boldsymbol{x}_{0} }g(\boldsymbol{x})\overset{?}=g(\boldsymbol{x}_{0})$ ?
+
+On suppose $f$ continue :
+$$
+\lim_{ \boldsymbol{x} \to \boldsymbol{x}_{0} } \int _{I}f(t,\boldsymbol{x})~dt \overset{?}=\int _{I}f(t,\boldsymbol{x}_{0})~dt=\int _{I}\lim_{ \boldsymbol{x} \to \boldsymbol{x}_{0} } f(t,\boldsymbol{x})~dt
+$$
+et
+$$
+\frac{ \partial g }{ \partial x_{i} } (\boldsymbol{x}_{0})=\frac{ \partial  }{ \partial x_{i} } \int _{I}f(t,\boldsymbol{x})~dt \overset{?}=\int _{I}\frac{ \partial  }{ \partial x_{i} } f(t,\boldsymbol{x}_{0})~dt
+$$.
+
+\begin{example}
+Soit $f:\mathbf{R}\times \mathbf{R}\to \mathbf{R},~(t,x)\mapsto x^{2}e^{-x^{2}t}$ et $I=[0,\infty)$. Alors on a
+$$
+g(x)=\int_{0}^{\infty}f(t,x)  \, dt=\begin{cases}
+0 & \text{si }x=0 \\
+1 & \text{si }x\neq 0
+\end{cases} 
+$$
+
+On calcule la limite
+$$
+\lim_{ x \to 0 } g(x)=\lim_{ x\to0 }\int_{0}^{\infty} x^{2}e^{-x^{2}t} \, dt=1\neq g(0)=\int_{0}^{\infty} \lim_{ x \to 0 } f(t,x) \, dt   
+$$
+\end{example}
+\begin{example}
+Soit $f:(0,1]\times[0,1]\to \mathbf{R}$ telle que
+$$
+f(t,x)=\begin{cases}
+\frac{1}{x}e^{-e/x} & \text{si }(t,x)\in(0,1]\times(0,1] \\
+0 & \text{si }t\in(0,1],~x=0
+\end{cases}
+$$
+\begin{exercise}
+Montrer que $f$ est continue.
+\end{exercise}
+
+On a 
+$$
+g(x)=\int_{0}^{1} f(t,x) \, dt =\begin{cases}
+0 & \text{si }x=0 \\
+1-e^{-1/x} & \text{si }x \in(0,1]
+\end{cases}
+$$
+On a que $\lim_{ x \to 0 }g(x)=1\neq g(0)$ donc $\lim_{ x \to 0 }\int_{0}^{1} f(t,x) \, dt\neq \int_{0}^{1} \lim_{ x \to 0 }f(t,x) \, dt$.
+\end{example}
+\begin{theorem}
+Soit $E\subset \mathbf{R}^{n}$ non-vide et $I\subset \mathbf{R}$ un intervalle borne et avec interieur non-vide. Si $f:I\times E\to \mathbf{R}$ est uniformement continue, alors la fonction
+$$
+g(\boldsymbol{x})=\int _{I}f(t,\boldsymbol{x})~dt
+$$
+est uniformement continue sur $E$.
+\end{theorem}
+\begin{proof}
+La continuite uniforme de $f$ nous dit que :
+$$
+\forall\varepsilon>0~\exists\delta _{\varepsilon}>0~\forall(t,\boldsymbol{x}),(s,\boldsymbol{y})\in I\times E:\lVert (t,\boldsymbol{x})-(s,\boldsymbol{y}) \rVert <\delta _{\varepsilon}\Rightarrow |f(t,\boldsymbol{x})-f(s,\boldsymbol{y})|<\varepsilon
+$$
+qui implique
+$$
+\forall\varepsilon>0~\exists\delta>0~\forall t\in I~\forall \boldsymbol{x},\boldsymbol{y}\in E:\lVert \boldsymbol{x}-\boldsymbol{y} \rVert <\delta \Rightarrow |f(t,\boldsymbol{x})-f(t,\boldsymbol{y})|<\varepsilon
+$$
+
+Alors 
+\begin{align*}
+|g(\boldsymbol{x})-g(\boldsymbol{y})| & =|\int _{I}f(t,\boldsymbol{x})~dt -\int _{I}f(t,\boldsymbol{y} )~dt| \\
+ & =|\int _{I}(f(t,\boldsymbol{x})-f(t,\boldsymbol{y}))~dt| \\
+ & \le \int _{I}|f(t,\boldsymbol{x})-f(t,\boldsymbol{y})|~dt \le \varepsilon |I|
+\end{align*}
+donc $g$ est uniformement continue.
+\end{proof}
+\begin{itemize}
+\item Si $I$ et $E$ sont compacts et $f:I\times E\to \mathbf{R}$ est continue alors $f$ est uniformement continue sur $I\times E$.
+\item Si $I$ est compact et $E$ est ouvert avec $\boldsymbol{x}_{0}\in E$. $f$ est continue sur $I\times E$ car
+$$
+\exists\delta>0:\overline{B}(\boldsymbol{x}_{0},\delta)\subset E 
+$$
+telle que $f|_{I\times \overline{B}(\boldsymbol{x}_{0},\delta)}$ est uniformement continue. Alors $g:\overline{B}(\boldsymbol{x}_{0},\delta)\to \mathbf{R}$ est continue, en particulier $g$ est continue en $\boldsymbol{x}_{0}$. Puisque $\boldsymbol{x}_{0}$ est arbitraire, $g$ est continue sur $E$.
+\end{itemize}
+\begin{theorem}
+Soit $I\subset \mathbf{R}$ un intervalle ferme et borne (compact), $E\subset \mathbf{R}^{n}$ non-vide et $f:I\times E\to \mathbf{R}$ une fonction continue. Alors
+$$
+g(\boldsymbol{x})=\int _{I}f(t,\boldsymbol{x})~dt
+$$
+est continue sur $E$.
+\end{theorem}
+\begin{theorem}
+Soit $I\subset \mathbf{R}$ compact, $E\subset \mathbf{R}^{n}$ ouvert non-vide et $f:I\times E\to \mathbf{R}$ une fonction continue telle que $\frac{ \partial f }{ \partial x_{i} }:I\times E\to \mathbf{R}$ existe et est continue. Alors $\frac{ \partial  }{ \partial x_{i} }g:E\to \mathbf{R}$ existe et est continue. Avec
+$$
+\frac{ \partial  }{ \partial x_{i} } g(\boldsymbol{x})=\int _{I} \frac{ \partial  }{ \partial x_{i} } f(t,\boldsymbol{x})~dt
+$$
+\end{theorem}
+\begin{proof}
+Soit $\boldsymbol{x}_{0}\in E$, il existe $\eta>0$ tel que $\overline{B}(\boldsymbol{x}_{0},\eta)\subset E$. Alors, $\frac{ \partial f }{ \partial x_{i} }\rvert_{I\times \overline{B}(\boldsymbol{x}_{0},\eta)}$ est uniformement continue c-a-d
+$$
+\forall\varepsilon>0~\exists 0<\delta\le \eta~\forall t\in I~\forall \boldsymbol{x},\boldsymbol{y}\in \overline{B}(\boldsymbol{x}_{0},\delta):\lVert \boldsymbol{x}-\boldsymbol{y} \rVert<\delta \Rightarrow |\frac{ \partial  }{ \partial x_{i} } f(t,\boldsymbol{x})-\frac{ \partial  }{ \partial x_{i} } f(t,\boldsymbol{y})|<\varepsilon 
+$$
+donc $\forall s \in \mathbf{R},|s|<\delta$
+\begin{align*}
+\left\lvert  \frac{g(\boldsymbol{x}_{0}+s\boldsymbol{e}_{i})-g(\boldsymbol{x}_{0})}{s}-\int _{I}\frac{ \partial f }{ \partial x_{i} } f(t,\boldsymbol{x}_{0})~dt  \right\rvert  & = \left\lvert  \frac{1}{s}\left[ \int _{I}f(t,\boldsymbol{x}_{0}+s\boldsymbol{e}_{i}) ~dt-\int _{I}f(t,\boldsymbol{x}_{0})~dt\right]-\int _{I}\frac{ \partial f }{ \partial x_{i} } (t,\boldsymbol{x}_{0})~dt \right\rvert  \\
+ & =\left\lvert  \int _{I} \frac{f(t,\boldsymbol{x}_{0}+s\boldsymbol{e}_{i})-f(t,\boldsymbol{x}_{0})}{s} -\frac{ \partial f }{ \partial x_{i} }(t,\boldsymbol{x}_{0})~dt  \right\rvert \\
+ & =\left\lvert  \int _{I} \left( \frac{ \partial  }{ \partial x_{i} } f(t,\boldsymbol{x}_{0}+\hat{s}_{t}\boldsymbol{e}_{i}) -\frac{ \partial f }{ \partial x_{i} } (t,\boldsymbol{x}_{0})\right) ~dt \right\rvert\footnotemark{}   \\
+ & \le \int _{I}\left\lvert  \frac{ \partial  }{ \partial x_{i} } f(t,\boldsymbol{x}_{0}+\hat{s}_{t}\boldsymbol{e}_{i}) -\frac{ \partial f }{ \partial x_{i} } (t,\boldsymbol{x}_{0}) \right\rvert ~dt \\
+ & \le \varepsilon |I|
+\end{align*}
+\footnotetext{$|\hat{s}_{t}|<|s|,~\forall t\in I$} donc 
+$$
+\lim_{ s \to 0 } \frac{g(\boldsymbol{x}_{0}+s\boldsymbol{e}_{i})-g(\boldsymbol{x}_{0})}{s}=\int _{I} \frac{ \partial f }{ \partial x_{i} } (t,\boldsymbol{x}_{0}) \, dt 
+$$
+\end{proof}
+
+
+\subsection{Integrale aevc des bornes variables}
+
+On a une integrale de la forme
+$$
+g(\boldsymbol{x})=\int_{a(\boldsymbol{x})}^{b(\boldsymbol{x})}f(t,\boldsymbol{x})  \, dt
+$$
+Dans $E\subset \mathbf{R}^{n}$ non-vide on a $a,b:E\to (\alpha,\beta)$ et $f:(\alpha,\beta)\times E\to \mathbf{R}$. On souhaite calculer $\frac{ \partial g }{ \partial x_{i} }(\boldsymbol{x})$.
+
+\begin{theorem}
+Soient $-\infty<\alpha<\beta<\infty$, $E\subset \mathbf{R}^{n}$ ouvert non-vide et $a,b$ fonctions de classe $C^{1}(E)$, $\frac{ \partial f }{ \partial x_{i} }:(\alpha,\beta)\times E\to \mathbf{R}$ existe et est continue $\forall i=1,\dots,n$. Alors $g\in C^{1}(E)$ et 
+$$
+\frac{ \partial g }{ \partial x_{i} } (\boldsymbol{x})=\int_{a(\boldsymbol{x})}^{b(\boldsymbol{x})}\frac{ \partial f }{ \partial x_{i} } (t,\boldsymbol{x})  \, dt+f(b(\boldsymbol{x}),\boldsymbol{x}) \frac{ \partial b }{ \partial x_{i} } (\boldsymbol{x})-f(a(\boldsymbol{x}),\boldsymbol{x})\frac{ \partial a }{ \partial x_{i} } (\boldsymbol{x})
+$$
+\end{theorem}
+\begin{proof}
+Soit $c\in(\alpha,\beta)$ et $G(s,\boldsymbol{x})=\int_{c}^{s} f(t,\boldsymbol{x}) \, dt$. On a
+\begin{align*}
+g(\boldsymbol{x}) & =\int_{a(\boldsymbol{x})}^{c} f(t,\boldsymbol{x}) \, dt+\int_{c}^{b(\boldsymbol{x})} f(t,\boldsymbol{x}) \, dt \\
+  & =G(c,\boldsymbol{x})-G(a(\boldsymbol{x}),\boldsymbol{x}) +G(b(\boldsymbol{x}),\boldsymbol{x})-G(c,\boldsymbol{x}) \\
+ & =G(b(\boldsymbol{x}),\boldsymbol{x})-G(a(\boldsymbol{x}),\boldsymbol{x}) \\
+\Rightarrow \frac{ \partial g }{ \partial x_{i} }  & =\frac{ \partial  }{ \partial x_{i} } ((G(b(\boldsymbol{x}),\boldsymbol{x}))-\frac{ \partial  }{ \partial x_{i} } (G(a(\boldsymbol{x}),\boldsymbol{x})) \\
+\end{align*}
+ou
+$$
+\frac{ \partial  }{ \partial x_{i} } (G(b(\boldsymbol{x}),\boldsymbol{x}))=\underbrace{ \frac{ \partial G }{ \partial s } (b(\boldsymbol{x}),\boldsymbol{x}) }_{ f(b(\boldsymbol{x}),\boldsymbol{x}) }\frac{ \partial b }{ \partial x_{i} } (\boldsymbol{x})+\int_{c}^{b(\boldsymbol{x})} \frac{ \partial f }{ \partial x_{i} } (t,\boldsymbol{x})  \, dt 
+$$
+donc
+\begin{align*}
+\frac{ \partial g }{ \partial x_{i} }  & =f(b(\boldsymbol{x}),\boldsymbol{x})\frac{ \partial b }{ \partial x_{i} } (\boldsymbol{x})+\int_{c}^{b(\boldsymbol{x})} \frac{ \partial f }{ \partial x_{i} } (t,\boldsymbol{x})  \, dt-f(a(\boldsymbol{x}),\boldsymbol{x})\frac{ \partial a }{ \partial x_{i} } (\boldsymbol{x})-\int_{c}^{a(\boldsymbol{x})} f(t,\boldsymbol{x}) \, dt \\
+ &= \int_{a(\boldsymbol{x})}^{b(\boldsymbol{x})} f(t,\boldsymbol{x}) \, dt+f(b(\boldsymbol{x}),\boldsymbol{x} )\frac{ \partial b }{ \partial x_{i} } (\boldsymbol{x})-f(a(\boldsymbol{x}),\boldsymbol{(x)})\frac{ \partial a }{ \partial x_{i} } (\boldsymbol{x}) 
+\end{align*}
+\end{proof}
