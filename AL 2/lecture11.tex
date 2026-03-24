@@ -1,0 +1,218 @@
+\todo{Lecture 11}
+
+
+\section{L'orthogonalite}
+
+Soit $V$ un espace vectoriel sur $K$ et $\langle  \rangle:V\times V\to K$ une forme bilineaire symetrique.
+\begin{definition}
+Deux elements $u,v\in V$ sont orthogonaux (ou perpendiculaires) si 
+$$
+\langle u,v \rangle =0=\langle v,u \rangle .
+$$
+on ecrit $u\perp v$.
+\end{definition}
+
+On a $\mathrm{span}~\{ u,v \}=\{ \lambda_{1}u+\lambda v:\lambda_{1},\lambda_{2}\in K \}$ et $\langle u,u \rangle\neq 0$. On veut trouver $v'\in V$ tel que 
+\begin{enumerate}
+\item $\mathrm{span}~\{ u,v' \}=\mathrm{span}~\{ u,v \}$
+\item $\langle u,v' \rangle=0$
+\end{enumerate}
+
+On pose $v'=v-\alpha u$ pour $\alpha \in K$ donc on verifie 1. Pour verifier 2 on a que $0=\langle u,v-\alpha u \rangle=\langle u,v \rangle-\alpha \langle u,u \rangle$ donc $\alpha=\frac{\langle u,v \rangle}{\langle u,u \rangle}$.
+
+\begin{proposition}
+Soit $E\subseteq V$ alors $E^{\perp}:=\{ v\in V:\langle v,e \rangle=0,~\forall e\in E \}$ est un sous-espace vectoriel de $V$.
+\end{proposition}
+\begin{proof}
+On veut montrer les proprietes suivantes d'un sous-espace vectoriel :
+\begin{enumerate}
+\item $\forall x,y\in E^{\perp}$ on a que $x-y\in E^{\perp}$
+\item $\forall\alpha \in K$ et $x \in E^{\perp}$ on a que $\alpha x \in E^{\perp}$
+\end{enumerate}
+
+\begin{enumerate}
+\item Soit $e\in E$. On veut montrer que $e \perp(x-y)$ mais $\langle e,(x-y) \rangle=\langle e,x \rangle-\langle e,y \rangle=0-0=0$ donc $\checkmark$.
+\item Egalement trivial.
+\end{enumerate}
+\end{proof}
+
+\begin{definition}[Caracteristique de $K$]
+La caracterisitique de $K$ est definit comme :
+$$
+\mathrm{char}~(K)=\min_{k\in \mathbf{N}_{+}}\underbrace{ (1+1+\dots +1)}_{ k~\text{fois} }=0
+$$
+Si ce $\min$ n'existe pas alors $\mathrm{char}~(K)=0$.
+\end{definition}
+\begin{definition}
+Une base $B=\{ b_{1},\dots,b_{n} \}$ est orthogonale si pour tout $i\neq j$ on a que $\langle b_{i},b_{j} \rangle=0$.
+\end{definition}
+\begin{lemma}
+$B$ est une base orthogonale si et seulement si $A_{B}^{\langle  \rangle}$ est diagonale.
+\end{lemma}
+\begin{proof}
+Sens $\Rightarrow$ : Supposons que $B$ est une base orthogonale. La composante $(A_{B}^{\langle  \rangle})_{ij}=0$ si $i\neq j$ donc $A_{B}^{\langle  \rangle}$ est une matrice diagonale.
+
+Sens $\Leftarrow$ : On a que $\langle b_{i},b_{j} \rangle=e_{i}^{\mathsf{T}}A_{B}^{\langle  \rangle}e_{j}=(A_{B}^{\langle  \rangle})_{ij}=0$ si $i\neq j$.
+\end{proof}
+\begin{theorem}
+Soit $\dim (V)=n<\infty$ et $\mathrm{char}(K)\neq 2$. Alors $V$ possede une base orthogonale. 
+\end{theorem}
+\begin{proof}
+Soit $B=\{ b_{1},\dots,b_{n} \}$ une base. La matrice $A_{B}^{\langle  \rangle}\in K^{n\times n}$ est symetrique. Il existe une matrice $P\in K^{n\times n}$ inversible telle que $P^{\mathsf{T}}A_{B}^{\langle  \rangle}P=D$ soit une matrice diagonale. On cherche une base $B'=\{ b_{1}',\dots,b_{n}' \}$ pour laquelle $P=P_{B'B}$ est une matrice de changement de base. On a 
+$$
+P=\begin{pmatrix}
+p_{11} & \cdots & p_{1n} \\
+\vdots &  & \vdots  \\
+p_{n_{1}} & \cdots & p_{nn} 
+\end{pmatrix}
+$$
+donc $P_{B'B}[b_{1}']_{B'}=[b_{1}']_{B}$. On a 
+\begin{align*}
+b_{1}' & =\alpha_{1}^{(1)}b_{1}+\dots +\alpha _{n}^{(1)}b_{n} \\
+ & ~~\vdots \\
+b_{n}' & =\alpha _{1}^{(n)}b_{1}+\dots +\alpha _{n}^{(n)}b_{n}
+\end{align*}
+donc on met 
+$$
+b_{i}'=p_{i1}b_{1}+\dots +p_{in}b_{n}
+$$
+alors $B'$ est une base orthogonale.
+\end{proof}
+\begin{example}
+Soit $V$ sur $\mathbf{Z}_{5}$, $B=\{ v_{1},v_{2},v_{3} \}$ une base de $V$ et $\langle  \rangle:V\times V\to K$ une forme bilineaire symetrique telle que 
+$$
+A_{B}^{\langle  \rangle }=\begin{pmatrix}
+0 & 2 & 1 \\
+2 & 0 & 4 \\
+1 & 4 & 0
+\end{pmatrix}
+$$
+
+On commence par trouver $P\in \mathbf{Z}_{5}^{3\times 3}$  inversible telle que $P^{\mathsf{T}}A_{B}^{\langle  \rangle}P$ soit diagonale. On a 
+$$
+P_{1}=\begin{pmatrix}
+1 & 0 & 0 \\
+1 & 1 & 0 \\
+0 & 0 & 1
+\end{pmatrix}
+$$
+donc 
+$$
+P_{1}^{\mathsf{T}}A_{B}^{\langle  \rangle }P_{1}=\begin{pmatrix}
+4 & 2 & 0 \\
+2 & 0 & 4 \\
+0 & 4 & 0
+\end{pmatrix}
+$$
+puis
+$$
+P_{2}=\begin{pmatrix}
+1 & 2 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{pmatrix}
+$$
+donc
+$$
+P_{2}^{\mathsf{T}}P_{1}^{\mathsf{T}}A_{B}^{\langle  \rangle }P_{1}P_{2}=\begin{pmatrix}
+4 & 0 & 0  \\
+0 & 4 & 4 \\
+0 & 4 & 0
+\end{pmatrix}
+$$
+puis
+$$
+P_{3}=\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 1 & 4 \\
+0 & 0 & 1
+\end{pmatrix}
+$$
+donc
+$$
+P_{3}^{\mathsf{T}}P_{2}^{\mathsf{T}}P_{1}^{\mathsf{T}}A_{B}^{\langle  \rangle }P_{1}P_{2}P_{3}=\begin{pmatrix}
+4 & 0 & 0 \\
+0 & 4 & 0 \\
+0 & 0 & 1
+\end{pmatrix}
+$$
+
+On veut maintenant calculer la matrice de changement de base
+$$
+P_{B'B}=P_{1}P_{2}P_{3}=\begin{pmatrix}
+1 & 2 & 3 \\
+1 & 3 & 2 \\
+0 & 0 & 1
+\end{pmatrix}
+$$
+donc $B'=\{ v_{1}+v_{2},2v_{1}+3v_{2},3v_{1}+2v_{2}+v_{3} \}$.
+\end{example}
+
+\section{Theorem de Sylvester}
+Soient $K=\mathbf{R}$ et $\langle  \rangle:V\times V\to \mathbf{R}$ une forme bilineaire symetrique, $A\in \mathbf{R}^{n\times n}$ une matrice symetrique. Alors il existe une matrice $P\in \mathbf{R}^{n\times n}$ inversible telle que $P^{\mathsf{T}}AP$ est une matrice diagonale.
+\begin{example}
+Soit $p=(p_{1},p_{2},p_{3})\in \mathbf{R}^{3\times 3}$  telle que 
+$$
+P^{\mathsf{T}}AP=\begin{pmatrix}
+-2 &  &  \\
+ & 3 &  \\
+ &  & 0
+\end{pmatrix}
+$$
+et
+$$
+P'^{\mathsf{T}}P^{\mathsf{T}}APP'=\begin{pmatrix}
+-1 &   &  \\
+ & 1 &  \\
+ &  & 0
+\end{pmatrix}
+$$
+alors 
+$$
+P'=\begin{pmatrix}
+1/\sqrt{ 2 } & 0 & 0 \\
+0 & 1/\sqrt{ 3 } & 0 \\
+0 &  0 & 1
+\end{pmatrix}
+$$
+\end{example}
+
+On peut observer que sur la matrice diagonale le nombre de zeros est invariante, car si deux matrices $A$ et $B$ sont congruentes alors leurs rangs sont egaux. Soit $x \in K^{n}$ alors $x \in \ker(B)$ si et seulement si $Px\in \ker(A)$.
+
+Alors, si $P_{1}^{\mathsf{T}}AP=\mathrm{diag}(d_{1},\dots,d_{n})$ et $P_{2}^{\mathsf{T}}AP=\mathrm{diag}(d_{1}',\dots,d'_{n})$ ou $P_{1}$,$P_{2}\in K^{n\times n}$ sont inversibles on a que
+$$
+|\{ i:d_{i}=0 \}|=|\{ i:d_{i}'=0 \}|
+$$
+
+\begin{theorem}[Theoreme de Sylvsester]
+Siot $\dim(V)=n$ et $B=\{ v_{1},\dots,v_{n} \}$, $B'=\{ v_{1}',\dots,v_{n}' \}$ deux bases orthogonales. Alors 
+$$
+|\{ i:\langle v_{i},v_{i} \rangle>0  \}|=|\{ i:\langle v_{i}',v_{i}' \rangle >0 \}|
+$$
+\end{theorem}
+\begin{proof}
+On veut ordonner les bases 
+$$
+B=\{ v_{1},\dots,v_{r},v_{r +1},\dots,v_{s},v_{s +1},\dots,v_{n} \}
+$$
+et 
+$$
+B'=\{ v'_{1},\dots,v_{r'}',v'_{r'+1},\dots,v'_{s'},v'_{s'+1},\dots,v'_{n} \}
+$$
+tel que jusqu'a $r,r'$ respectivement $\langle v_{i},v_{i} \rangle>0$ et $\langle v_{i}',v_{i}' \rangle>0$ entre $r+1,r'+1$ et $s,s'$ respectivement $\langle  \rangle<0$ et apres $\langle  \rangle=0$.
+
+Si $\{ v_{1},\dots,v_{r},v_{r'+1},\dots,v_{n} \}$ est linearement independante, alors $r+n-r'\geq n$ si et seulement si $r\leq r'$ et de maniere symetrique $r\geq r'$ donc $r=r'$.
+
+Si $\{ v_{1},\dots,v_{r},v_{r'+1},\dots,v_{n} \}$ est lineairement dependante, alors ils existent $\alpha_{1},\dots,\alpha _{r}$ et $\beta _{r'+1},\dots,\beta _{n}$ non tous nuls tels que 
+$$
+\alpha_{1}v_{1}+\dots +\alpha _{r}v_{r}=\beta _{r'+1}v_{r'+1}'+\dots +\beta _{n}v_{n}'
+$$
+
+On calcule
+\begin{align*}
+\langle \alpha_{1}v_{1}+\dots +\alpha _{r}v_{r},\alpha_{1}v_{1}+\dots +\alpha _{r}v_{r} \rangle  & =\underbrace{ \alpha_{1}^{2}\langle v_{1},v_{1} \rangle +\dots +\alpha _{r}^{2}\langle v_{r},v_{r} \rangle }_{ >0 }  \\
+	 & =\langle \beta _{r'+1}v_{r'+1}'+\dots +\beta _{n}v_{n}',\beta _{r'+1}v_{r'+1}'+\dots +\beta _{n}v_{n}' \rangle  \\
+	 & =\underbrace{ \beta _{r'+1}^{2}\langle v'_{r'+1},v_{r'+1}' \rangle +\dots +\beta _{n}^{2}\langle v'_{n},v'_{n} \rangle  }_{ <0 }
+\end{align*}
+qui pose une contradiction.
+\end{proof}

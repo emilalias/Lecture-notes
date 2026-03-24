@@ -14,6 +14,7 @@
 % \graphicspath{}
 \usepackage{tikz}
 \usepackage{framed}
+\usepackage{cancel}
 %\usepackage[colorlinks]{hyperref}
 
 %\usepackage{showlabels}  

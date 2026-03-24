@@ -395,4 +395,127 @@ $$
 \item Trouver une base orthogonale $C=\{ w_{1},w_{2},w_{3} \}$ pour $V$ par rapport a la forme bilineaire $f$.
 \end{enumerate}
 \end{exercise}
+\begin{exercise}[Exo etoile]
+Soit $K$ un corps de caracteristique differente de 2, et $V$ un $K$-espace vectoriel de dimension finie $n$. Considerons une forme bilineaire $f$ sur $V$ qui est \textbf{antisymetrique}, c'est a dire 
+$$
+f(x,y)=-f(y,x), \quad \forall x,y\in V
+$$
+
+Montrer que si $f$ est non-degeneree, alors $n$ est pair.
+
+L'implication inverse est-elle vraie?
+\end{exercise}
+\begin{proof}[Solution]
+Fixon $B=\{ b_{1},\dots ,b_{n} \}$ une base de $V$ et considerons la matrice $A_{B}^{f}\in K^{n\times n}$ de la forme bilineaire $f$ dans $B$. Comme $f$ est antisymetrique, on remarque que $A_{B}^{f}$ est aussi antisymetrique c-a-d $(A_{B}^{f})^{\mathsf{T}}=-A_{B}^{f}$. En plus comme $f$ est non-degeneree, par le cours on sait que $\mathrm{rang}(A_{B}^{f})=n$ donc $\det(A_{B}^{f})\neq 0$. On calculer
+\begin{align*}
+\det(A_{B}^{f}) & =\det((A_{B}^{f})^{\mathsf{T}}) \\
+ & = \det(-A_{B}^{f}) \\
+ & =(-1)^{n}\det(A_{B}^{f})
+\end{align*}
+donc comme $\det(A_{B}^{f})\neq0$ et $\mathrm{char}(K)\neq 2$ on a que $(-1)^{n}=1$ donc $n$ est pair.
+
+Si $n$ est pair et $f$ est antisymetrique, alors $f$ n'est pas forcement non-degeneree. Comme contre-exemple on prend la forme nulle $f:V\times V\to K, (v,w)\mapsto 0$.
+\end{proof}
+
+
+\chapter{Serie 6}
+
+\begin{exercise}[Exo plus]
+Transformez les matrices reeles suivantes en matrices diagonales dont les elements sont 0, 1 et $-1$. Combien de 0, 1 et $-1$ sont sur la diagonale ? (Ces quantites sont appellees l'indice de nullite, l'indice de positivite et l'indice de negativite.)
+$$
+\begin{pmatrix}
+1 & 2 \\
+2 & -1 
+\end{pmatrix},~~\begin{pmatrix}
+1 & 1 \\
+1 & 1
+\end{pmatrix},~~\begin{pmatrix}
+2 & 4 & 2 \\
+4 & 3 & 1 \\
+2 & 1 & 1
+\end{pmatrix}
+$$
+\end{exercise}
+\begin{proof}[Solution]
+\begin{itemize}
+\item Pour la premiere matrice on additione la premiere ligene fois $-2$ a la deuxieme ligne pour obtenir
+$$
+\begin{pmatrix}
+1 & 2 \\
+0 & -5
+\end{pmatrix}
+$$
+puis on fait le meme pour les colonnes 
+$$
+\begin{pmatrix}
+1 & 0 \\
+0 & -5
+\end{pmatrix}
+$$
+et on divise la deuxieme ligne et la deuxieme colonne par $5$
+$$
+\begin{pmatrix}
+ 1 & 0 \\
+0 & -1
+\end{pmatrix}
+$$
+donc l'indice de positivite est 1, l'indice de negativite est 1 et l'indice de nullite est 0.
+\item On soustrait a la deuxieme ligne une fois la premiere
+$$
+\begin{pmatrix}
+1 & 1 \\
+0 & 0
+\end{pmatrix}
+$$
+et de meme pour les colonnes
+$$
+\begin{pmatrix}
+1 & 0 \\
+0 & 0
+\end{pmatrix}
+$$
+donc on obtient l'indice de positivite 1, l'indice de negativite 0 et l'indice de nullite 1.
+\item On effectue des operations elementaires sur les lignes et colonnes 
+$$
+\begin{pmatrix}
+2 & 4 & 2 \\
+4 & 3 & 1 \\
+2 & 1 & 1
+\end{pmatrix} \underset{L_{2}-2L_{1}}\longrightarrow \begin{pmatrix}
+2 & 4 & 2 \\
+0 & -5 & -3 \\
+2 & 1 & 1
+\end{pmatrix} \underset{C_{2}-2C_{1}}\longrightarrow \begin{pmatrix}
+2 & 0 & 2 \\
+0 & -5 & -3 \\
+2 & -3 & 1
+\end{pmatrix}
+$$
+puis
+$$
+\underset{L_{3}-L_{1}}\longrightarrow \begin{pmatrix}
+2 & 0 & 2 \\
+0 & -5 & -3 \\
+0 & -3 & -1
+\end{pmatrix} \underset{C_{3}-C_{1}}\longrightarrow \begin{pmatrix}
+2 & 0 & 0 \\
+0 & -5 & -3 \\
+0 & -3 & -1
+\end{pmatrix}
+$$
+puis
+$$
+\underset{L_{3}-\frac{3}{5}L_{2}}\longrightarrow \begin{pmatrix}
+2 & 0 & 0 \\
+0 & -5 & -3 \\
+0 & 0 & \frac{4}{5}
+\end{pmatrix} \underset{C_{3}-\frac{3}{5}C_{2}}\longrightarrow \begin{pmatrix}
+2 & 0 & 0 \\
+0 & -5 & 0 \\
+0 & 0 & \frac{4}{5}
+\end{pmatrix}
+$$
+puis on divise les lignes par 2 , 5 et $\frac{5}{4}$ respectivement pour obtenir l'indice de positivite 2, l'indice de negativite 1 et l'indice de nullite 0.
+\end{itemize}
+\end{proof}
 \end{document}

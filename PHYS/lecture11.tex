@@ -1,0 +1,134 @@
+\todo{Lecture 11}
+\begin{align*}
+\tilde{y}_{0} & =Ae^{i((\omega t+\Delta \omega)t-(k+\Delta k)x+\varphi_{1})}+Ae^{i((\omega-\Delta \omega)t-(k-\Delta k)x+\varphi_{2})} \\
+ & =Ae^{i(\omega t-kx)}(e^{i(\varphi_{1}+\Delta \omega t-\Delta kx)}+e^{i(\varphi_{2}-\Delta \omega t+\Delta kx)}) \\
+ & =Ae^{i(\omega t-kx)}\left( e^{i\left( \varphi_{1}-\frac{\varphi_{1}+\varphi_{2}}{2}+\frac{\varphi_{1}+\varphi_{2}}{2}+\Delta \omega t-\Delta kx \right)}+e^{i\left( \varphi_{2}-\frac{\varphi_{1}+\varphi_{2}}{2}+\frac{\varphi_{1}+\varphi_{2}}{2}-\Delta \omega t+\Delta kx  \right)} \right) \\
+ & =2Ae^{i\left( \omega t-kx+\frac{\varphi_{1}+\varphi_{2}}{2} \right)}\underbrace{ \frac{\left( e^{i\left( \frac{\varphi_{1}-\varphi_{2} } {2} +\Delta \omega t-\Delta kx \right)}+e^{i\left( -\left( \frac{avr\phi_{1}-\varphi_{2}}{2} \right)-\Delta \omega t+\Delta kx \right)} \right)}{2} }_{ \cos \left( \frac{\varphi_{1}-\varphi_{2}}{2}+\Delta \omega t-\Delta kx  \right) }  \\
+\Rightarrow y_{0} & =\mathrm{Re}\{ \tilde{y} _{0}\} \\
+ & =2A\cos\left( \frac{\varphi_{1}-\varphi_{2}}{2}+\Delta \omega t-\Delta kx \right)\cos\left( \omega t-kx+\frac{\varphi_{1}+\varphi_{2}}{2} \right)
+\end{align*}
+
+\subsection{Interference constructive et destructive}
+
+Si $\Delta \omega=0$ alors $\Delta k=0$ donc
+$$
+y_{0}=2A\cos\left( \frac{\varphi_{1}-\varphi_{2}}{2} \right)\cos\left( \omega t-kx+\frac{\varphi_{1}+\varphi_{2}}{2} \right)
+$$
+ou le premier terme est une amplitude qui depende du dephasage et le deuxieme terme est une onde sinusoidale.
+
+\subsection{Le battement}
+
+On a $\Delta \omega\neq 0$ mais $\Delta \omega\ll \omega$ donc
+$$
+y_{0}=2A\cos\left( \frac{\varphi_{1}-\varphi_{2}}{2}+\Delta \omega t-\omega kx \right)\cos\left( \omega t-kx+\frac{\varphi_{2}+\varphi_{1}}{2} \right)
+$$
+ou le premier terme est une amiplitude qui varie lentement dans le temps et le deuxieme terme est une onde sinusoidale.
+
+\begin{remark}
+\begin{itemize}
+\item L'enveloppe propage avec la vitesse $\frac{\Delta \omega}{\Delta k}$ et l'onde avec $\frac{\omega}{k}$.
+\item Si l'equation d'onde s'applique on a $\omega =ck$ avec $c$ une constante. On parle d'une onde sans dispersion. Dans une situation plus generale, on peut avoir une dependance $\omega=\omega(k)$ qu'on appelle une relation de dispersion. Dans ce cas on parle d'une onde avec dispersion.
+\item On definit $\frac{\omega}{k}=c=v_{\mathrm{ph}}$ la vitesse de phase de l'onde et $\frac{\Delta \omega}{\Delta k}\approx \frac{dw}{dk}=v_{G}$ la vitesses de groupe. Si $\omega=ck$ alors $v_{\mathrm{ph}}=v_{G}$,\
+mais en generale $v_{\mathrm{ph}}\neq v_{G}$.
+\end{itemize}
+\end{remark}
+
+\chapter{Ondes dans les milieux fluides}
+
+\section{Ondes dans un fluide uniforme}
+
+On a les equations :
+\begin{enumerate}
+\item Equation de continuite : $\frac{ \partial \rho }{ \partial t }+\boldsymbol{\nabla}(\rho \boldsymbol{u})=0$
+\item Equation d'Euler : $\rho\left( \frac{ \partial \boldsymbol{u} }{ \partial t }+(\boldsymbol{u\nabla})\boldsymbol{u} \right)=-\boldsymbol{\nabla}p$
+\item Equation d'etat : $\frac{D}{Dt}\left( \frac{p}{\rho\gamma} \right)=0$
+\end{enumerate}
+
+En equilibre $\rho =\rho_{0}$ est constante, $\boldsymbol{u}=\boldsymbol{0}$ et $p=p_{0}$ est constante. On considere des "petites" perturbations $\rho_{1}$, $\boldsymbol{u}_{1}$ et $p_{1}$ avec $\rho_{1}\ll \rho_{0}$, $p_{1}\ll p_{0}$ et $\lVert \boldsymbol{u}_{1} \rVert< ~?$ (a voir plus tard pour $\boldsymbol{u}_{1}$). Cettes petites perturbations impliquent qu'on peut negliger les termes quadratiques (et d'ordre superieur) en $\rho_{1}$, $\boldsymbol{u}_{1}$ et $p_{1}$ et en ses derivees. On a $\rho=\rho_{0}+\rho_{1}$, $p=p_{0}+p_{1}$ et $\boldsymbol{u}=\boldsymbol{u}$. On linearise les equations :
+\begin{enumerate}
+\item \label{cont} Equation de continuite : 
+$$
+\frac{ \partial (\rho_{0}+\rho_{1}) }{ \partial t }+\boldsymbol{\nabla}(\rho \boldsymbol{u}_{1})=0 
+$$
+\item \label{euler} Equation d'Euler : 
+\begin{align*}
+(\rho_{0}+\rho_{1} )\left( \frac{ \partial \boldsymbol{u}_{1} }{ \partial t } +\cancel{ (\boldsymbol{u}_{1}\boldsymbol{\nabla}) } \right)\boldsymbol{u}_{1} & =-\boldsymbol{\nabla}(p_{0}+p_{1}) \\
+  \Rightarrow \rho_{0}\frac{ \partial \boldsymbol{u}_{1} }{ \partial t } = -\boldsymbol{\nabla}p_{1}  
+\end{align*}
+\item \label{etat} Equation d'etat :
+\begin{align*}
+\frac{ \partial  }{ \partial t } +(\boldsymbol{u}_{1}\boldsymbol{\nabla})\left( \frac{p_{0}m+p_{1}}{(\rho_{0}+\rho_{1})\gamma} \right) & =0 \\
+ \Rightarrow \frac{ \partial p_{1} }{ \partial t } -\frac{\gamma p_{0}}{\rho_{0}} \frac{ \partial p_{1} }{ \partial t }  & =0
+\end{align*}
+\end{enumerate}
+
+Cherchons des solutions ondes planes complexes se propageant le long de $\boldsymbol{k}$ :
+\begin{align*}
+\rho_{1} (\boldsymbol{r},t) & =\tilde{\rho}_{1}e^{i(\omega t-\boldsymbol{k}\boldsymbol{r})} \\
+\boldsymbol{u}_{1}(\boldsymbol{r},t) & =\tilde{\boldsymbol{u}}_{1}e^{i(\omega t-\boldsymbol{kr})} \\
+p_{1}(\boldsymbol{r},t) & =\tilde{p}_{1}e^{i(\omega t-\boldsymbol{kr})}
+\end{align*}
+ou $\tilde{\rho}_{1}$ et $\tilde{p}_{1}$ sont constantes dans $\mathbf{C}$ et $\boldsymbol{u}_{1}$ est constante dans $\mathbf{C}^{3}$. On va utiliser le fait que pour des equations differentielles linearises, si $f$ est une solution complexe alors $\mathrm{Re}(f)$ est une solution reele.
+
+On a pour \ref{cont} :
+\begin{align*}
+i\omega \tilde{\rho}_{1}e^{i(\omega t-\boldsymbol{kr})}+\rho_{0}(-i)\boldsymbol{k} \tilde{\boldsymbol{u}}_{1}e^{i(\omega t-\boldsymbol{kr})} & =0 \\
+\Rightarrow i\omega \tilde{\rho}_{1}-i\rho _{0}\boldsymbol{k} \tilde{\boldsymbol{u}}_{1} & =0
+\end{align*}
+Pour \ref{euler} :
+$$
+i\omega \rho_{0} \tilde{\boldsymbol{u}}_{1}-i \boldsymbol{k} \tilde{p}_{1} = 0 \Rightarrow \tilde{\boldsymbol{u}}_{1}=\frac{1}{\omega \rho_{0}}\boldsymbol{k}\tilde{p}_{1}
+$$
+donc $\tilde{\boldsymbol{u}}_{1}\parallel \boldsymbol{k}$ et on a une onde longitutidinale ! 
+Pour \ref{etat} :
+$$
+i\omega \tilde{p}_{1}-\gamma  \frac{p_{0}}{\rho_{0}} i\omega \tilde{\rho}_{1}=0 \Rightarrow \tilde{\rho}_{1}=\frac{\rho_{0}}{\gamma p_{0}}\tilde{p}_{1}
+$$
+
+Choisissons $\boldsymbol{\hat{e}}_{z} \parallel \boldsymbol{k}$ donc $\boldsymbol{k}=k\boldsymbol{\hat{e}}_{z}$ et $\tilde{\boldsymbol{u}}_{1}=\tilde{u}_{1}\boldsymbol{\hat{e}}_{z}$ donc
+\begin{align*}
+\rho_{1}(\boldsymbol{r},t) & =\frac{\rho}{\gamma p_{0}}\tilde{p}_{1}e^{i(\omega t-kz)} \\
+u_{1}(\boldsymbol{r},t) & =\frac{k}{\omega \rho_{0}}\tilde{p}_{1}e^{i(\omega t-kz)} \\
+p_{1}(\boldsymbol{r},t) & =\tilde{p}_{1}e^{i(\omega t-kz)}
+\end{align*}
+ou $\tilde{p}_{1}\in \mathbf{C}$ est une constante.
+
+\begin{remark}
+\begin{itemize}
+\item Variation de pression (et de $\rho$ et $\boldsymbol{u}$) se propageant sans forme d'une onde.
+\item $\frac{\rho}{\gamma p_{0}}$ et $\frac{k}{\omega \rho_{0}}$ appartiennent a $\mathbf{R}_{+}$ donc $\rho_{1}$, $p_{1}$ et $u_{1}$ fluctuent dans une phase. (max au meme temps, min au meme temps)
+\end{itemize}
+\end{remark}
+
+On a \ref{euler} et \ref{etat} dans \ref{cont} :
+\begin{align*}
+i\omega    \frac{\rho_{0}}{\gamma p_{0}}\tilde{p}_{1} & =i\rho_{0}  \frac{\boldsymbol{kk}}{\lVert \boldsymbol{k} \rVert ^{2}} \frac{1}{\omega rh_{0}}\tilde{p}_{1} \\
+ \Rightarrow \omega^{2} & =\gamma    \frac{p_{0}}{\rho_{0} } k^{2} \\
+\Rightarrow c  & =\frac{\omega}{k}=\sqrt{ \gamma  \frac{p_{0}}{\rho_{0}} }
+\end{align*}
+Dans un gaz parfait
+\begin{align*}
+mpV & =Nk_{B}Tm \\
+ \Rightarrow p & = \frac{Nm}{V} \frac{k_{B}T}{m} \\
+ \Rightarrow \frac{p}{\rho} & =\frac{k_{B}T}{m} \\
+\Rightarrow c & =\sqrt{ \gamma  \frac{k_{B}T}{m} }
+\end{align*}
+ou $k_{B}=1.38\cdot 10^{-23}~\mathrm{JK}^{-1}$, $m$ est la masse d'une molecule, $T$ est la temperature en Kelvin et $N$ est le nombre de molecules dans $V$.
+
+\begin{question}
+Quelle est la condition pour des petites perturbations de $\boldsymbol{u}_{1}1$ ? 
+\end{question}
+\begin{answer}
+On a suppose que $\lVert (\boldsymbol{u}_{1}\boldsymbol{\nabla})\boldsymbol{u}_{1} \rVert \ll \left\lVert  \frac{ \partial \boldsymbol{u}_{1} }{ \partial t }  \right\rVert$. Choisissons nos coordones telles que $\boldsymbol{k} \parallel \boldsymbol{\hat{e}}_{z}$, alors 
+\begin{align*}
+\boldsymbol{u}_{1}(\boldsymbol{r},t) & =\lVert \tilde{\boldsymbol{u}}_{1} \rVert \cos(\omega t-kz+\varphi )\boldsymbol{\hat{e}}_{z} \\
+ \Rightarrow \lVert (\boldsymbol{u}_{1}\boldsymbol{\nabla})\boldsymbol{u}_{1} \rVert  & =\lVert \tilde{\boldsymbol{u}}_{1} \rVert ^{2}\lvert \cos(\omega t-kz+\varphi)\sin(\omega t-kz+\varphi) \rvert \\
+ & \ll \left\lVert  \frac{ \partial \boldsymbol{u}_{1} }{ \partial t }   \right\rVert =\lVert \tilde{\boldsymbol{u}}_{1} \rVert \omega \lvert \sin(\omega t-kz+\varphi) \rvert   \\
+\Rightarrow \lVert \tilde{\boldsymbol{u}}_{1} \rVert \lvert \cos(\omega t-kz+\varphi) \rvert   & \ll \frac{\omega}{k},\quad \forall t,z \\
+\Rightarrow \lVert \tilde{\boldsymbol{u}}_{1} \rVert  & \ll c=\frac{\omega}{k}
+\end{align*}
+\end{answer}
+
+\begin{example}[Air a conditions normales]
+	On a $\gamma=\frac{7}{5}$, $T=293~\mathrm{K}$, $m=29\cdot 1.67\cdot 10^{-27}~\mathrm{kg}$ donc $c_{\mathrm{air}}=342 ~\mathrm{ms}^{-1}$ (ondes sonores !).
+\end{example}
