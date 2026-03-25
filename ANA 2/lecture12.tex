@@ -1,0 +1,89 @@
+\section{Integrales generalisees dependant des parametres}
+\todo{Lecture 12}
+Soit $f:[a,b)\times E\to \mathbf{R}$ et $g(\boldsymbol{x})=\int_{a}^{b} f(t,\boldsymbol{x}) \, dt=\lim_{ c \to b^{-} }\int_{a}^{c} f(t,\boldsymbol{x}) \, dt$, on suppose que l'integrale converge pour tout $\boldsymbol{x}\in E$.
+
+\begin{definition}
+Soit $f:[a,b)\times F\to \mathbf{R}$ continue avec $-\infty<a<b\leq\infty$ et $F\subset \mathbf{R}^{n}$ non-vide. On dit que l'integrale $\int_{a}^{b} f(t,\boldsymbol{x}) \, dt$ converge uniformement sur $F$ si elle converge pour tout $\boldsymbol{x}\in F$ et
+$$
+\forall\varepsilon>0 ~\exists  \overline{c}\in[a,b)~\forall \boldsymbol{x}\in F ~\forall c \in[\overline{c},b) : \left\lvert  \int_{c}^{b} f(t,\boldsymbol{x}) \, dt   \right\rvert <\varepsilon
+$$
+
+\end{definition}
+\begin{theorem}
+Soit $-\infty<a<b< \infty$, $E\subset \mathbf{R}^{n}$ non-vide, $f:[a,b)\times E\to \mathbf{R}$ continue, $\boldsymbol{x}_{0}\in E$. S'il existe $r>0$ tel que $\int_{a}^{b} f(t,\boldsymbol{x}) \, dt$ converge uniformement sur $E\cap B(\boldsymbol{x}_{0},r)$, alors $g(\boldsymbol{x})=\int_{a}^{b} f(t,\boldsymbol{x}) \, dt$ est continue en $\boldsymbol{x}_{0}$.
+
+En particulier, si $\int_{a}^{b} f(t,\boldsymbol{x}) \, dt$ converge uniformement sur $E$, alors $g$ est continue sur $E$.
+\end{theorem}
+\begin{proof}
+Soit $E$ ouvert, $\boldsymbol{x}_{0}\in E$ est un point interieur. Il existe $0<\eta<r$ tel que $\overline{B}(\boldsymbol{x}_{0},\eta)\subset E$. Alors
+$$
+	\forall\varepsilon>0~\exists  \overline{c}_{\varepsilon}\in[a,b)~\forall \boldsymbol{x}\in \overline{B}(\boldsymbol{x}_{0},\eta): \left\lvert  \int_{\overline{c}}^{b}f(t,\boldsymbol{x})  \, dt   \right\rvert <\varepsilon
+$$
+et $f|_{[a,\overline{c}]\times \overline{B}(\boldsymbol{x}_{0},\eta)}$ est uniformement continue donc 
+$$
+\exists\delta<\eta~\forall t\in[a,\overline{c}]~\forall \boldsymbol{x},\boldsymbol{y}\in \overline{B}(\boldsymbol{x}_{0},\delta):\lvert f(t,\boldsymbol{x})-f(t,\boldsymbol{y}) \rvert <\frac{\varepsilon}{\overline{c}_{\varepsilon}-a}
+$$
+On a $\forall \boldsymbol{x}\in B(\boldsymbol{x}_{0},\delta)$ 
+\begin{align*}
+\lvert g(\boldsymbol{x})-g(\boldsymbol{x}_{0}) \rvert  & =\left\lvert  \int_{a}^{b} f(t,\boldsymbol{x})\, dt -\int_{a}^{b} f(t,\boldsymbol{x}_{0}) \, dt    \right\rvert  \\
+ & =\left\lvert  \int_{a}^{\overline{c}} f(t,\boldsymbol{x})-f(t,\boldsymbol{x}_{0}) \, dt    +  \int_{\overline{c}}^{b} f(t,\boldsymbol{x})-f(t,\boldsymbol{x}_{0})t \, dt   \right\rvert  \\
+  & \le \int_{a}^{\overline{c}} \lvert f(t,\boldsymbol{x})-f(t,\boldsymbol{x}_{0}) \rvert  \, dt+\left\lvert  \int_{\overline{c}}^{b} f(t,\boldsymbol{x})   \, dt   \right\rvert+\left\lvert  \int_{\overline{c}}^{b} f(t,\boldsymbol{x}_{0}) \, dt   \right\rvert \\
+ & <3\varepsilon
+\end{align*}
+\end{proof}
+
+\begin{theorem}
+Soit $-\infty<a<b \le \infty$, $E\subset \mathbf{R}^{n}$ ouvert, $f\in C^{1}([a,b)\times E,\mathbf{R})$ et $\boldsymbol{x}_{0}\in E$. S'il existe $r>0$ tel que $\int_{a}^{b} f(t,\boldsymbol{x}) \, dt$ et $\int_{a}^{b} \frac{ \partial f }{ \partial x_{i} }(t,\boldsymbol{x}) \, dt$ convergent uniformement sur $\overline{B}(\boldsymbol{x}_{0},r)\cap E$. Alors $\frac{ \partial g }{ \partial x_{i} }(\boldsymbol{x})$ existe en $\boldsymbol{x}_{0}$ existe et est egal a $\frac{ \partial g }{ \partial x_{i} }(\boldsymbol{x}_{0})=\int_{a}^{b} \frac{ \partial f }{ \partial x_{i} }(t,\boldsymbol{x}_{0}) \, dt$. 
+
+Si la convergence uniforme est sure $E$, alors $\frac{ \partial g }{ \partial x_{i} }$ existe pour tout $\boldsymbol{x}\in E$ et est continue.
+\end{theorem}
+\subsection*{Condition suffisante pour la convergence uniforme}
+
+\begin{lemma}
+Soit $f:[a,b)\times F\to \mathbf{R}$ continue. S'il existe $h:[a,b)\to \mathbf{R}$ et $c\in[a,b)$ tels que 
+$$
+\lvert f(t,\boldsymbol{x}) \rvert \le h(t),\quad \forall \boldsymbol{x}\in F,~\forall t\in[c,b)
+$$
+et $\int_{c}^{b} h(t) \, dt$ converge. Alors $\int_{a}^{b} f(t,\boldsymbol{x}) \, dt$ converge uniformement.
+\end{lemma}
+
+\chapter{Diffeomorphismes locaux et fonctions implicites}
+
+\section{Fonctions \texorpdfstring{$\boldsymbol{f}:E\subset \mathbf{R}^{n}\to F=\mathrm{Im}(\boldsymbol{f})\subset\mathbf{R}^{n}$}{vectorielles} bijectives}
+
+Si $\boldsymbol{f}$ est une fonction bijective, alors il existe $\boldsymbol{g}:F\to E$ une fonction inverse telle que 
+$$
+\boldsymbol{f}(\boldsymbol{g}(\boldsymbol{x}))=\boldsymbol{x},\quad \boldsymbol{g}(\boldsymbol{f}(\boldsymbol{y}))=\boldsymbol{y},\quad \forall \boldsymbol{x}\in F,\boldsymbol{y}\in E
+$$
+
+On peut considerer un systeme non lineiare
+$$
+\begin{cases}
+f_{1}(x_{1},\dots,x_{n}) & =y_{1} \\
+ & ~\vdots \\
+f_{n}(x_{1},\dots,x_{n} ) & =y_{n}
+\end{cases}
+$$
+ou $\boldsymbol{x}=(x_{1},\dots,x_{n})$ et $\boldsymbol{y}=(y_{1},\dots,y_{n})$. On cherche $\boldsymbol{x}$ tel que $\boldsymbol{f}(\boldsymbol{x})=\boldsymbol{y}$.
+
+\subsection*{Changement de variables}
+
+Soit $\phi:E\subset \mathbf{R}^{n}\to \mathbf{R}$, $\boldsymbol{g}:F\subset \mathbf{R}^{n}\to E\subset\mathbf{R}^{n}$, $\boldsymbol{x}=\boldsymbol{g}(\boldsymbol{y})$ et $\tilde{\phi}(\boldsymbol{y})=\phi \circ \boldsymbol{g}(\boldsymbol{y})$. Si $\boldsymbol{g}$ est bijective avec inverse $\boldsymbol{f}:E\to F$ alors $\phi(\boldsymbol{x})=\tilde{\phi}(\boldsymbol{f}(\boldsymbol{x}))$
+
+\begin{definition}
+Soit $E,F\subset \mathbf{R}^{n}$ ouverts non-vides, $\boldsymbol{f}:E\to F$ est un homeomorphisme si $\boldsymbol{f}$ est continue, bijective et avec inverse $\boldsymbol{g}:F\to E$ continue
+\end{definition}
+\begin{definition}
+Soient $E,F\subset \mathbf{R}^{n}$ ouverts non-vides. Une application $\boldsymbol{f}:E\to F$ de classe $C^{1}$ est un $C^{1}$-diffeomorphisme si $\boldsymbol{f}$ est bijective et la fonction inverse $\boldsymbol{g}$ est de classe $C^{1}$.
+\end{definition}
+\begin{definition}
+Soit $E\subset \mathbf{R}^{n}$ ouvert, $\boldsymbol{x}_{0}\in E$ et $\boldsymbol{f}:E\to \mathbf{R}^{n}$ de classe $C^{1}$. On dit que $\boldsymbol{f}$ est un $C^{1}$-diffeomorphisme local s'il existe un ouvert $U\subset E$ contenant $\boldsymbol{x}_{0}$ et un ouvert $V\subset \mathrm{Im}(\boldsymbol{f})$ contenant $\boldsymbol{y}_{0}=\boldsymbol{f}(\boldsymbol{x}_{0})$ tels que $\boldsymbol{f}:U\to V$ est un diffeomorphisme.
+\end{definition}
+\begin{example}
+Soit $\boldsymbol{f}:\mathbf{R}^{n}\to \mathbf{R}^{n},\boldsymbol{x}\mapsto A\boldsymbol{x}+\boldsymbol{b}$ ou $A\in \mathbf{R}^{n\times n}$ et $\boldsymbol{b}\in \mathbf{R}^{n}$. Si $A$ est inversible alors $\boldsymbol{f}$ est un diffeomorphisme.
+\end{example}
+
+\section{Thoreme d'inversion locale}
+\begin{theorem}
+Soit $E\subset \mathbf{R}^{n}$ ouvert non-vide, $\boldsymbol{x}_{0}\in E$ et $\boldsymbol{f}\in C^{1}(E,\mathbf{R})$. Si $\det(D\boldsymbol{f}(\boldsymbol{x}_{0}))\neq 0$ alors $\boldsymbol{f}$ est un diffemorphisme local autour de $\boldsymbol{x}_{0}$. 
+\end{theorem}

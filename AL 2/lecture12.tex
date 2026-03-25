@@ -1,0 +1,90 @@
+\todo{Lecture 12}
+
+\chapter{Produits scalaires et hermitiens}
+
+\begin{definition}[Produit scalaire]
+Soit $V$ un espace vectoriel sur $\mathbf{R}$ muni d'une forme bilineaire symetrique $\langle  \rangle$. $\langle  \rangle$ est definie positive si pour tout $v\in V\setminus \{ 0 \}$ on a que $\langle v,v \rangle>0$. Dans ce cas on appelle $\langle  \rangle$ un produit scalaire.
+\end{definition}
+\begin{exercise}
+Soit $V$ un espace vectoriel sur $\mathbf{R}$ et $\langle  \rangle$ une forme bilineaire symetrique. Supposons que $u,v\in V$ et $\langle u,u \rangle>0$, $\langle v,v \rangle<0$ et $\{ u,v \}$ est libre. Trouver $x \in V\setminus \{ 0 \}$ tel que $\langle x,x \rangle=0$. 
+\end{exercise}
+\begin{definition}[Norme]
+Soit $v\in V$. On definit la norme de $v$ comme 
+$$
+\lVert v \rVert =\sqrt{ \langle v,v \rangle  }
+$$
+\end{definition}
+\begin{definition}
+On dit que $v\in V$ est unitaire si $\lVert v \rVert=1$.
+\end{definition}
+\begin{proposition}
+Soit $v\in V$ et $\alpha \in \mathbf{R}$. Alors $\lVert \alpha v \rVert=|\alpha|\lVert v \rVert$.
+\end{proposition}
+\begin{proof}
+On a 
+\begin{align*}
+\lVert \alpha v \rVert^{2} & =\langle \alpha v,\alpha v \rangle \\
+ & =\alpha^{2}\langle v,v \rangle \\
+\end{align*}
+\end{proof}
+\begin{example}
+Soit $V=\mathbf{R}^{n}$, $x,y\in \mathbf{R}^{n}$. $\langle x,y \rangle=\sum_{i=1}^{n}x_{i}y_{i}$ est le produit scalaire standard. Si $\dim(V)=n$ notre theorie (algorithme) nous qu'il existe une base $B=\{ b_{1},\dots,b_{n} \}$ tel que $A_{B}^{\langle  \rangle}=I_{n}$. Donc $\langle u,v \rangle=[u]_{B}^{\mathsf{T}}[v]_{B}$.
+\end{example}
+
+\begin{theorem}[Pythagore]
+Soit $u,v\in V$ perpendiculaires, alors $\lVert u+v \rVert^{2}=\lVert u \rVert^{2}+\lVert v \rVert^{2}$.
+\end{theorem}
+\begin{proof}
+\begin{align*}
+\lVert u+ v\rVert ^{2} & =\langle u+v,u+v \rangle   \\
+ & =\langle u,u\rangle +2\langle u,v \rangle +\langle v,v \rangle  \\
+  & =\lVert u \rVert ^{2}+\lVert v \rVert ^{2}  \\
+\end{align*}
+\end{proof}
+\begin{theorem}[Cauchy-Schwarz]
+Pour tous $u,v\in V$ :
+$$
+	|\langle u,v \rangle |\le \lVert  u \rVert\lVert v \rVert  
+$$
+\end{theorem}
+\begin{proof}
+Si $u=0$ alors $\checkmark$. Sinon on pose $\alpha=\langle v,u \rangle/\langle u,u \rangle$ donc 
+\begin{align*}
+\lVert v \rVert ^{2} & =\lVert v-\alpha u  \rVert ^{2}+\alpha^{2}\lVert u \rVert ^{2} \\
+ & \ge \alpha^{2}\lVert u \rVert ^{2}= \frac{\langle v,u  \rangle^{2} }{\langle u,u \rangle ^{2}} \lVert u \rVert ^{2} \\
+ & =\frac{\langle v,u \rangle ^{2}}{\lVert u \rVert ^{2}}
+\end{align*}
+\end{proof}
+
+\begin{theorem}
+Soient $a_{1},\dots,a_{k}\in V\setminus \{ 0 \}$ deux-a-deux orthogonaux et $v\in V$. Ils existent $\beta_{1},\dots,\beta _{k}\in \mathbf{R}$ uniques, tels que 
+$$
+\left\langle  v-\sum_{i=1}^{k}\beta _{i}a_{i},a_{j}   \right\rangle=0,\quad \forall j\in \{ 1,\dots,k \} 
+$$
+\end{theorem}
+\begin{proof}
+\begin{align*}
+\left\langle  v-\sum_{i=1}^{k}\beta _{i}a_{i},a_{j}   \right\rangle & =0 \\
+ & =\langle v,a_{j} \rangle -\sum _{i=1}^{k}\beta _{i}\left\langle  a_{i} ,a_{j} \right\rangle \\
+ & =\langle v,a_{j} \rangle -\beta _{j}\langle a_{j},a_{j} \rangle  \\
+\Leftrightarrow \beta _{j} & = \frac{\langle v,a_{j} \rangle }{\langle a_{j},a_{j} \rangle }
+\end{align*}
+on appelle $\beta _{j}$ un coefficient de Fourier relativement a $a_{j}$.
+\end{proof}
+\begin{theorem}[Procede de Gram-Schmidt]
+Soit $\{ v_{1},\dots,v_{n} \}\subset V$ un ensemble libre. Il existe un ensemble libre $\{ u_{1},\dots,u_{n} \}$ orthogonal tel que pour tout $i\in \{ 1,..,n \}$ on a que $\mathrm{span}(u_{1},\dots,u_{i})=\mathrm{span}(v_{1},\dots,v_{i})$. 
+\end{theorem}
+\begin{proof}
+On procede par recurrence. Pour le cas $i=1$ on a $u_{1}=v_{1}$.
+
+Pour le cas $i>1$, on suppose le theoreme vrai jusqu'a $i-1$ donc $\mathrm{span}(u_{1},\dots,u_{i-1})=\mathrm{span}(v_{1},\dots,v_{i-1})$. Alors
+$$
+u_{i}=v_{i}-\sum_{j=1}^{i-1} \frac{\langle v_{i},u_{j} \rangle }{\langle u_{j},u_{j} \rangle }u_{j} 
+$$
+donc par recurrence
+$$
+\mathrm{span}(v_{1},\dots,v_{i})=\mathrm{span}(u_{1},\dots,u_{i-1},v_{i})=\mathrm{span}(u_{1},\dots,u_{i-1},u_{i})
+$$
+\end{proof}
+
+
