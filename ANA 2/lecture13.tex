@@ -1,0 +1,153 @@
+\todo{Lecture 13}
+
+C-a-d, il existe $U\subset E$ ouvert contenat $\boldsymbol{x}_{0}$, $V\subset \mathrm{Im}(\boldsymbol{f})$ ouvert contenant $\boldsymbol{y}_{0}=\boldsymbol{f}(\boldsymbol{x}_{0})$ tels que $\boldsymbol{f}:U\to V$ est une bijection avec fonction inverse $\boldsymbol{g}:V\to U$ de classe $C^{1}$.
+
+De plus $D\boldsymbol{g}(\boldsymbol{y})=(D\boldsymbol{f}(\boldsymbol{x}))^{-1}$ pour tout $\boldsymbol{x}\in U$ et $\boldsymbol{y}=\boldsymbol{f}(\boldsymbol{x})$. Si $\boldsymbol{f}\in C^{k}(E,\mathbf{R}^{n})$ alors $\boldsymbol{g}\in C^{k}(V,\mathbf{R}^{n})$
+
+\begin{theorem}[Theoreme du point fixe de Banach]
+Soit $K\subset \mathbf{R}^{n}$ ferme non-vide, $\boldsymbol{\phi}:K\to \mathbf{R}^{n}$ tel que 
+\begin{itemize}
+\item $\boldsymbol{\phi}(K)\subset K$
+\item Il existe $p \in(0,1)$ tel que $\lVert \boldsymbol{\phi}(\boldsymbol{v})-\boldsymbol{\phi}(\boldsymbol{w}) \rVert\le p\lVert \boldsymbol{v}-\boldsymbol{w} \rVert$ pour tous $\boldsymbol{w},\boldsymbol{v}\in K$.
+\end{itemize}
+Alors, il existe $\boldsymbol{v}^{*}\in K$ telle que $\boldsymbol{\phi}(\boldsymbol{v}^{*})=\boldsymbol{v}^{*}$.
+\end{theorem}
+\begin{proof}
+Soit $\boldsymbol{v}^{0}\in K$ arbitraire et on construir la suite $\boldsymbol{v}^{(k+1)}=\boldsymbol{\phi}(\boldsymbol{v}^{(k)})$ pour tout $k\ge 0$.
+
+La suite $\{ \boldsymbol{v}^{(k)} \}_{k\in \mathbf{N}}$ est de Cauchy:
+$$
+\lVert \boldsymbol{v}^{(k+1)}-\boldsymbol{v}^{(k)} \rVert =\lVert \boldsymbol{\phi}(\boldsymbol{v}^{(k+1)})-\boldsymbol{\phi}(\boldsymbol{v}^{(k)}) \rVert \le p\lVert \boldsymbol{v}^{(k)}-\boldsymbol{v}^{(k-1)} \rVert \le \dots \le p^{k}\lVert \boldsymbol{v}^{(1)}-\boldsymbol{v}^{(0)} \rVert 
+$$
+pour $k \ge m \ge 0$:
+\begin{align*}
+\lVert \boldsymbol{v}^{(k)}-\boldsymbol{v}^{(m)} \rVert  & =\lVert \boldsymbol{v}^{(k)}-\boldsymbol{v}^{(k-1)}+\boldsymbol{v}^{(k-1)}+\dots -\boldsymbol{v}^{(m)} \rVert \\
+ &  \le \lVert \boldsymbol{v}^{(k)}-\boldsymbol{v}^{(k-1)} \rVert +\lVert \boldsymbol{v}^{(k-1)}-\boldsymbol{v}^{(k-2)} \rVert +\dots +\lVert \boldsymbol{v}^{(m+1)}-\boldsymbol{v}^{(m)} \rVert  \\
+ & \le p^{k-1}\lVert \boldsymbol{v}^{(1)}-\boldsymbol{v}^{(0)}  \rVert +p^{k-2}\lVert \boldsymbol{v}^{(1)}-\boldsymbol{v}^{(0)} \rVert +\dots +p^{m}\lVert \boldsymbol{v}^{(1)}-\boldsymbol{v} ^{(0)}  \rVert \\
+ &  \le \lVert \boldsymbol{v}^{(1)}-\boldsymbol{v}^{(0)}  \rVert \sum _{j=m}^{k-1}p^{i} \overset{m,k\to \infty }\longrightarrow 0
+\end{align*}
+Soit $\boldsymbol{v}^{*}=\lim_{ k \to \infty }\boldsymbol{v}^{(k)}\in \mathbf{R}^{n}$, puisque $\boldsymbol{v}^{(k)}\in K$ pour tout $k$ et $K$ est ferme, allors $\boldsymbol{v}^{*}\in K$. $\boldsymbol{v}^{*}$ est le point fixe de $\boldsymbol{\phi}$:
+\begin{align*}
+\lVert \boldsymbol{v}^{*}-\boldsymbol{\phi}(\boldsymbol{v}^{*}) \rVert  & \le \lVert \boldsymbol{v}^{*}-\boldsymbol{v}^{(k+1)} \rVert +\lVert \boldsymbol{v}^{(k+1)}-\boldsymbol{\phi}(\boldsymbol{v}^{*})  \rVert \\
+ & = \lVert \boldsymbol{v}^{*}-\boldsymbol{v}^{(k+1)} \rVert+\lVert \boldsymbol{\phi}(\boldsymbol{v}^{(k)}-\boldsymbol{\phi}(\boldsymbol{v}^{*}) ) \rVert \\
+ & \le \lVert \boldsymbol{v}^{*}-\boldsymbol{v}^{(k+1)} \rVert +p\lVert \boldsymbol{v}^{(k)}-\boldsymbol{v}^{*}  \rVert \overset{k\to \infty}\to 0    
+\end{align*}
+donc $\boldsymbol{\phi}(\boldsymbol{v}^{*})=\boldsymbol{v}^{*}$.
+
+$\boldsymbol{v}^{*}$ est l'unique point fixe. Supposons qu'il existe une deuxieme point fixe $\boldsymbol{u}^{*}$ alors
+\begin{align*}
+\lVert \boldsymbol{v}^{*}-\boldsymbol{u}^{*} \rVert   & =\lVert \boldsymbol{\phi}(\boldsymbol{v}^{*})-\boldsymbol{\phi}(\boldsymbol{u}^{*}) \rVert \\
+ & \le p\lVert \boldsymbol{v}^{*}-\boldsymbol{u}^{*} \rVert  
+\end{align*}
+ou $\lVert \boldsymbol{v}^{*}-\boldsymbol{u}^{*} \rVert=0$ donc $\boldsymbol{v}^{*}=\boldsymbol{u}^{*}$.
+\end{proof}
+
+\begin{definition}
+Soit $A\in \mathbf{R}^{m\times n}$. La norme spectrale 
+$$
+\lVert A \rVert =\sup_{\underset{\boldsymbol{x}\neq \boldsymbol{0}}{\boldsymbol{x}\in \mathbf{R}^{n}}} \frac{\lVert A\boldsymbol{x} \rVert }{\boldsymbol{x}}
+$$
+donc pout tout $\boldsymbol{x}\in \mathbf{R}^{n}$ on a $\lVert A\boldsymbol{x} \rVert\le \lVert A \rVert \lVert \boldsymbol{x} \rVert$.
+\end{definition}
+\begin{definition}
+Soit $A\in \mathbf{R}^{m\times n}$. La norme de Frobenius
+$$
+\lVert A \rVert _{F}=\left( \sum_{i=1}^{m} \sum_{j=1}^{n} A_{ij}^{2}  \right)^{1/2}
+$$
+ou $\lVert A \rVert<\lVert A \rVert_{F}$ pour toute $A\in \mathbf{R}^{m\times n}$.
+\end{definition}
+
+Soit $\boldsymbol{f}:[a,b]\to \mathbf{R}^{m}$ continue alors
+$$
+\int_{a}^{b} \boldsymbol{f}(t) \, dt=\begin{pmatrix}
+\int_{a}^{b} f_{1}(t) \, dt \\
+\vdots \\
+\int_{a}^{b} f_{m}(t) \, dt  
+\end{pmatrix} 
+$$
+et $\left\lVert  \int_{a}^{b} \boldsymbol{f}(t) \, dt  \right\rVert\le \int_{a}^{b} \lVert \boldsymbol{f}(t) \rVert \, dt$.
+\begin{proof}[Demonstration du theoreme de l'inversion local \ref{locinv}]
+Idee: Utiliser le theoreme de Banach pour montrer l'existence de la fonction inverse.
+
+Soit $\boldsymbol{y}_{0}=\boldsymbol{f}(\boldsymbol{x}_{0})$. Pour tout $\boldsymbol{y}$ proche de $\boldsymbol{y}_{0}$, il existe un unique $\boldsymbol{x}$ tel que $\boldsymbol{f}(\boldsymbol{x})=\boldsymbol{y}$. On a donc que $$\boldsymbol{f}(\boldsymbol{x})=\boldsymbol{y}\Leftrightarrow \boldsymbol{0}=\boldsymbol{f}(\boldsymbol{x})-\boldsymbol{y}\Leftrightarrow\boldsymbol{x}=\boldsymbol{f}(\boldsymbol{x})-\boldsymbol{y}+\boldsymbol{x}=\boldsymbol{\phi}(\boldsymbol{x})$$
+ou
+$$
+\boldsymbol{0}=\boldsymbol{f}(\boldsymbol{x})-\boldsymbol{y}\Leftrightarrow \boldsymbol{0}=D\boldsymbol{f}(\boldsymbol{x}_{0})^{-1}(\boldsymbol{f}(\boldsymbol{x})-\boldsymbol{y})\Leftrightarrow \boldsymbol{x}\boldsymbol{x}+D\boldsymbol{f}(\boldsymbol{x}_{0})^{-1}(\boldsymbol{f}(\boldsymbol{x})-\boldsymbol{y}).
+$$
+On a une equation de point fixe $\boldsymbol{x}=\boldsymbol{\phi}^{\boldsymbol{y}}(\boldsymbol{x})$ que pour le cas $\boldsymbol{y}=\boldsymbol{y}_{0}$ donne $\boldsymbol{\phi}^{\boldsymbol{y}_{0}}(\boldsymbol{x})=\boldsymbol{x}$. On a 
+$$
+D\boldsymbol{\phi}^{\boldsymbol{y}}(\boldsymbol{x})=I-(D\boldsymbol{f}(\boldsymbol{x}_{0}))^{-1}D\boldsymbol{f}(\boldsymbol{x})
+$$
+pour $\boldsymbol{x}\to \boldsymbol{x}_{0}$ on a que $D^{\boldsymbol{y}}(\boldsymbol{x})\to$ la matrice nulle.
+
+Contractivite de $\boldsymbol{\phi}^{\boldsymbol{y}}$: Soient $\boldsymbol{x}_{1}$ et $\boldsymbol{x}_{2}$ proches de $\boldsymbol{x}_{0}$ :
+\begin{align*}
+\lVert \boldsymbol{\phi}^{\boldsymbol{y}}(\boldsymbol{x}_{1})-\boldsymbol{\phi}^{\boldsymbol{y}}(\boldsymbol{x}_{2}) \rVert  & =\left\lVert  \int_{0}^{1} D\boldsymbol{\phi}^{\boldsymbol{y}}(\boldsymbol{x}_{1}+t(\boldsymbol{x}_{2}-\boldsymbol{x}_{1}))(\boldsymbol{x}_{2}-\boldsymbol{x}_{1}) \, dt   \right\rVert  \\
+ & \le \int_{0}^{1} \lVert D\boldsymbol{\phi}^{\boldsymbol{y}}(\boldsymbol{x}_{1}+t(\boldsymbol{x}_{2}-\boldsymbol{x}_{1})) (\boldsymbol{x}_{2}-\boldsymbol{x}_{1}) \rVert  \, dt \\
+ & \le \int_{0}^{1} \lVert D\boldsymbol{\phi}^{\boldsymbol{y}}(\boldsymbol{x}_{1}+t(\boldsymbol{x}_{2}-\boldsymbol{x}_{1})) \rVert  \lVert \boldsymbol{x}_{2}-\boldsymbol{x}_{1} \rVert \, dt   \\
+ & \le \int_{0}^{1} \lVert D\boldsymbol{\phi}^{\boldsymbol{y}}(\boldsymbol{x}_{1}+t(\boldsymbol{x}_{2}-\boldsymbol{x}_{1})) \rVert_{F} \lVert \boldsymbol{x}_{2}-\boldsymbol{x}_{1} \rVert   \, dt 
+\end{align*}
+On choisie une boule ferme $\overline{B}(\boldsymbol{x}_{0},r)$ avec $r$:
+\begin{itemize}
+\item $\overline{B}(\boldsymbol{x}_{0},r)\subset E$
+\item $\left\lvert  \frac{ \partial \boldsymbol{\phi}^{\boldsymbol{y}}_{i} }{ \partial x_{j} }(\boldsymbol{x})  \right\rvert \le \frac{1}{2n}$ pour tout $\boldsymbol{x}\in \overline{B}(\boldsymbol{x}_{0},r)$ donc 
+\begin{align*}
+\lVert D\boldsymbol{\phi}^{\boldsymbol{y}}(\boldsymbol{x}) \rVert_{F} & =\sqrt{ \sum _{i,j} \left\lvert  \frac{ \partial \boldsymbol{\phi}^{\boldsymbol{y}}_{i} }{ \partial x_{j}} (\boldsymbol{x})  \right\rvert^{2}  } \\
+ & =\sqrt{ \sum _{i,j} \frac{1}{4n^{2}}  }=\frac{1}{2}
+\end{align*}
+\item $\det(D\boldsymbol{f}(\boldsymbol{x}))\neq 0$ pour tout $\boldsymbol{x}\in \overline{B}(\boldsymbol{x}_{0},r)$
+\end{itemize}
+donc pour toutes $\boldsymbol{x}_{1}$, $\boldsymbol{x}_{2}$ dans $\overline{B}(\boldsymbol{x}_{0},r)$ on a que $\lVert \boldsymbol{\phi}^{\boldsymbol{y}}(\boldsymbol{x}_{1})-\boldsymbol{\phi}^{\boldsymbol{y}}(\boldsymbol{x}_{2}) \rVert\le \frac{1}{2}\lVert \boldsymbol{x}_{1} -\boldsymbol{x}_{2}\rVert$. $\boldsymbol{\phi}^{\boldsymbol{y}}$ est contractante sur $\overline{B}(\boldsymbol{x}_{0},r)$.
+
+Il faut encore verifier que $\boldsymbol{\phi}^{\boldsymbol{y}}(\overline{B}(\boldsymbol{x}_{0},r))\subset \overline{B}(\boldsymbol{x}_{0},r)$. Soit $\boldsymbol{x}\in \overline{B}(\boldsymbol{x}_{0},r)$ donc $\boldsymbol{\phi}^{\boldsymbol{y}}(\boldsymbol{x})\in \overline{B}(\boldsymbol{x}_{0},r)$.
+\begin{align*}
+\lVert \boldsymbol{\phi}^{\boldsymbol{y}}(\boldsymbol{x})-\boldsymbol{x}_{0} \rVert  & =\lVert \boldsymbol{\phi}^{\boldsymbol{y}}(\boldsymbol{x})-\boldsymbol{\phi}^{\boldsymbol{y}}(\boldsymbol{x}_{0})+\boldsymbol{\phi^{\boldsymbol{y}}}(\boldsymbol{x}_{0})-\boldsymbol{x}_{0} \rVert  \\
+ & \le \lVert \boldsymbol{\phi^{y}}(\boldsymbol{x})-\boldsymbol{\phi^{y}}(\boldsymbol{x}_{0}) \rVert +\lVert \boldsymbol{\phi^{y}}(\boldsymbol{x}_{0})-\boldsymbol{x}_{0} \rVert  \\
+ & \le \frac{1}{2}\lVert \boldsymbol{x}-\boldsymbol{x}_{0} \rVert +\lVert D\boldsymbol{f}(\boldsymbol{x}_{0})^{-1}(\boldsymbol{f}(\boldsymbol{x}_{0})-\boldsymbol{x}_{0}) \rVert  \\
+ & \le \frac{r}{2}+\lVert D\boldsymbol{f}(\boldsymbol{x}_{0})^{-1} \rVert  \lVert \boldsymbol{y}-\boldsymbol{y}_{0} \rVert  < r \\
+  \Rightarrow \boldsymbol{\phi^{y}}(\overline{B}(\boldsymbol{x}_{0},r)) & \subset B(\boldsymbol{x}_{0},r)
+\end{align*}
+Si on choisit $\boldsymbol{y}\in B(\boldsymbol{y}_{0},\tilde{r})$ avec $\tilde{r}\le \frac{r}{2\lVert D\boldsymbol{f}(\boldsymbol{x}_{0})^{-1} \rVert}$. Pour toute $\boldsymbol{y}\in B(\boldsymbol{y}_{0},r)$ par le theoreme du point fixe, il existe un unique $\boldsymbol{x}\in \overline{B}(\boldsymbol{x}_{0},r)$ tel que $\boldsymbol{x}=\boldsymbol{\phi^{y}}(\boldsymbol{x})$ si et seulement si $\boldsymbol{f}(\boldsymbol{x})=\boldsymbol{y}$.
+
+Soit $V=B(\boldsymbol{y}_{0},\tilde{r})$ et $U=B(\boldsymbol{x}_{0},r)\cap \boldsymbol{f}^{-1}(V)$. La fonciton $\boldsymbol{f}:U\to V$ est une bijection, donc il existe une fonction inverse $\boldsymbol{g}:V\to U$. 
+
+On veut montrer que $\boldsymbol{g}$ est continue. Soit $\boldsymbol{x}=\boldsymbol{g}(\boldsymbol{y})$ on a pour toutes $\boldsymbol{x}_{1},\boldsymbol{x}_{2}\in U$ 
+\begin{align*}
+\lVert \boldsymbol{x}_{1}-\boldsymbol{x}_{2} \rVert  & =\lVert \boldsymbol{\phi}^{\boldsymbol{y}_{1}}(\boldsymbol{x}_{1})-\boldsymbol{\phi}^{\boldsymbol{y}_{2}}(\boldsymbol{x}_{2}) \rVert  \\
+ & \le \lVert \boldsymbol{\phi}^{\boldsymbol{y}_{1}}(\boldsymbol{x}_{1})-\boldsymbol{\phi}^{\boldsymbol{y}_{1}}(\boldsymbol{x}_{2}) \rVert +\lVert \boldsymbol{\phi}^{\boldsymbol{y}_{1}}(\boldsymbol{x}_{2})-\boldsymbol{\phi}^{\boldsymbol{y}_{2}}(\boldsymbol{x}_{2}) \rVert \\
+ & \le \frac{1}{2}\lVert \boldsymbol{x}_{1}-\boldsymbol{x}_{2} \rVert  \\
+ & +\lVert \boldsymbol{x}_{2}-D\boldsymbol{f}(\boldsymbol{x}_{0})^{-1}(\boldsymbol{f}(\boldsymbol{x}_{2})-\boldsymbol{y}_{1})-\boldsymbol{x}_{2}+D\boldsymbol{f}(\boldsymbol{x}_{0})^{-1}(\boldsymbol{f}(\boldsymbol{x}_{2})-\boldsymbol{y}_{2}) \rVert   \\
+ & =\frac{1}{2}\lVert \boldsymbol{x}_{1}-\boldsymbol{x}_{2} \rVert +\lVert D\boldsymbol{f}(\boldsymbol{x}_{0})^{-1}(\boldsymbol{y}_{2}-\boldsymbol{y}_{1}) \rVert 
+\end{align*}
+et
+\begin{align*}
+\lVert \boldsymbol{x}_{1}-\boldsymbol{x}_{2} \rVert  & \le  2\lVert D\boldsymbol{f}(\boldsymbol{x}_{0})^{-1}(\boldsymbol{y}_{2}-\boldsymbol{y}_{1}) \rVert  \\
+ & \le 2\lVert D\boldsymbol{f}(\boldsymbol{x}_{0})^{-1}  \rVert\lVert \boldsymbol{y}_{2}-\boldsymbol{y}_{1} \rVert  
+\end{align*}
+si $\boldsymbol{y}_{2}\to \boldsymbol{y}_{1}$ alors $\boldsymbol{x}_{2}=\boldsymbol{g}(\boldsymbol{y}_{2})\to \boldsymbol{x}_{1}=\boldsymbol{g}(\boldsymbol{y}_{1})$ qui montre la continuite de $\boldsymbol{g}$.
+
+On veut montrer maintenant que $\boldsymbol{g}$ est differentiable sur $V$ et de classe $C^{1}$. On veut montrer que pour toutes $\boldsymbol{y}_{2},\boldsymbol{y}_{1}\in V$ on a
+$$
+\boldsymbol{g}(\boldsymbol{y}_{2})=\boldsymbol{g}(\boldsymbol{y}_{2})+D\boldsymbol{f}(\boldsymbol{g}(\boldsymbol{y}_{1}))^{-1}(\boldsymbol{y}_{2}-\boldsymbol{y}_{1})+R_{\boldsymbol{g}}(\boldsymbol{y}_{2}),\quad \lim_{ \boldsymbol{y}_{2} \to \boldsymbol{y}_{1} }  \frac{R_{\boldsymbol{g}}(\boldsymbol{y_{2}})}{\lVert \boldsymbol{y}_{2}-\boldsymbol{y}_{1} \rVert }=0
+$$
+on part du developpement de $\boldsymbol{f}$ :
+$$
+\underbrace{ \boldsymbol{f}(\boldsymbol{x}_{2}) }_{ \boldsymbol{y}_{2} }=\underbrace{ \boldsymbol{f}(\boldsymbol{x}_{1}) }_{ \boldsymbol{y}_{1} }+D\boldsymbol{f}(\boldsymbol{x}_{1})(\boldsymbol{x}_{2}-\boldsymbol{x}_{1})+R_{\boldsymbol{f}}(\boldsymbol{x}_{2})
+$$
+donc 
+$$
+D\boldsymbol{f}(\boldsymbol{x}_{1})(\boldsymbol{x}_{2}-\boldsymbol{x}_{1})=\boldsymbol{y}_{2}-\boldsymbol{y}_{1}-R_{\boldsymbol{f}}(\boldsymbol{x}_{2})
+$$
+donc
+$$
+\boldsymbol{x}_{2}-\boldsymbol{x}_{1}=\boldsymbol{g}(\boldsymbol{y}_{2})-\boldsymbol{g}(\boldsymbol{y}_{1})=D\boldsymbol{f}(\boldsymbol{x}_{1})^{-1}(\boldsymbol{y}_{2}-\boldsymbol{y}_{1})-D\boldsymbol{f}(\boldsymbol{x}_{1})^{-1}R_{\boldsymbol{f}}(\boldsymbol{x}_{2})
+$$
+ou
+\begin{align*}
+\lim_{ \boldsymbol{y}_{2} \to \boldsymbol{y}_{1} } \frac{\lVert D\boldsymbol{f}(\boldsymbol{x}_{1})^{-1}R_{\boldsymbol{f}}(\boldsymbol{x}_{2}) \rVert }{\lVert \boldsymbol{y}_{2}-\boldsymbol{y}_{1}\rVert} & \le \lim_{ \boldsymbol{y}_{2} \to \boldsymbol{y}_{1} } \lVert D\boldsymbol{f}(\boldsymbol{x}_{1})^{-1} \rVert  \frac{\lVert R_{\boldsymbol{f}}(\boldsymbol{x}_{1})\rVert}{\lVert \boldsymbol{x}_{2}-\boldsymbol{x}_{1} \rVert } \frac{\lVert \boldsymbol{x}_{2}-\boldsymbol{x}_{1} \rVert }{\lVert \boldsymbol{y}_{2}-\boldsymbol{y}_{1} \rVert } \\
+ &  \le \lim_{ \boldsymbol{y}_{2} \to \boldsymbol{y}_{1} } 2\lVert D\boldsymbol{f}(\boldsymbol{x}_{1})^{-1} \rVert\lVert D\boldsymbol{f}(\boldsymbol{x}_{0})^{-1} \rVert  \frac{\lVert R_{\boldsymbol{f}}(\boldsymbol{x}_{1}) \rVert }{\lVert \boldsymbol{x}_{2}-\boldsymbol{x}_{1} \rVert }=0
+\end{align*}
+donc $\boldsymbol{g}$ est differentiable avec matrice Jacobienne $D\boldsymbol{g}(\boldsymbol{y})=D\boldsymbol{f}(\boldsymbol{x})^{-1}$ ou $\boldsymbol{x}=\boldsymbol{g}(\boldsymbol{y})$ et $\boldsymbol{y}=\boldsymbol{g}(\boldsymbol{x})$. $\boldsymbol{g}$ est en fait de classe $C^{1}$. Si $\boldsymbol{f}$ est de classe $C^{k}$ alors $\boldsymbol{g}$ est de classe $C^{k}$.
+\end{proof}
+
+

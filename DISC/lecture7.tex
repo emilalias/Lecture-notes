@@ -1,0 +1,263 @@
+\section{Cyclic sequences}
+\todo{Lecture 7}
+\begin{definition}
+Let $A$ be a set. A linear sequence of length $n$ in alphabet $A$ is an element of $A^{n}$ :
+$$
+a=(a_{1},\dots,a_{n}),\quad a_{k}\in A,~k=1,\dots,n
+$$
+The number of linear sequences of length $n$ in an alphabet of size $r$ is $r^{n}$.
+
+Consider the following equivalence relation on the set of linear sequences 
+$$
+(a_{1},\dots,a_{n})\sim (a_{2},a_{3},\dots,a_{n},a_{1})
+$$
+Two linear sequences are equivalent if one of them can be obtained from another by a cyclic shift.
+\end{definition}
+\begin{reminder}[Equivalence relation]
+Let $X$ be a set. A binary relation on $X$ is a subset of $X\times X$. A relation $R\subset X$ is an equivalent relation if it is:
+\begin{enumerate}
+\item Reflexive: $\forall x\in X: (x,x)\in R$.
+\item Symmetric: $\forall x,y\in X:(x,y) \in R \Rightarrow(y,x)\in R$.
+\item Transitive: $\forall x,y,z\in Z:(x,y)\in R,(y,z)\in R\Rightarrow(x,z)\in R$.
+\end{enumerate}
+\end{reminder}
+\begin{definition}
+A cyclic sequence of length $n$ in alphabet $A$ is an equivalence class of linear sequences with respect to the relation $\sim$.
+\end{definition}
+\begin{example}
+There are 8 linear sequences of length 3 in alphabet $\{ a,b \}$ and only 4 cyclic sequences.
+\end{example}
+\begin{proposition}
+The number $T(n,r)$ of cyclic sequences of length $n$ on an alphabet of size $r$ is
+$$
+T(n,r)=\frac{1}{n}\sum _{d\mid n} \phi(n/d)r^{d}
+$$
+where $\phi$ is the Euler totient function.
+\end{proposition}
+\begin{proof}
+\begin{definition}
+A period of a cyclic sequences $(a_{1},\dots,a_{n})$ is a minimal number $k\in \{ 1,\dots,n \}$ such that
+$$
+(a_{1},\dots,a_{n})=(a_{1+k},\dots,a_{1},\dots,a_{k})
+$$
+are equal as linear sequences.
+\end{definition}
+Let $M(d,r)$ be the number of cyclic sequences of length $d$ and period exactly $d$. The following identity holds
+$$
+r^{n}=\sum _{d\mid n}d M(d,r).
+$$
+We have the map
+$$
+\{ \text{Linear sequences of length }n\text{ in alphabet } [r]  \}\overset{\pi}\to \{ \text{Cyclic sequences of length }n\text{ in } [r] \}
+$$
+where $\pi$ is the projection into an equivalency class. The number of preimages of a cyclic sequences under the map $\pi$ is $d$, the period of the sequence.
+
+Therefore
+$$
+|L(n,r)|=\sum _{d\mid n}d|M(d,r)|.
+$$
+
+
+Starting with the identity 
+$$
+r^{n}=\sum _{d\mid n} dM(d,r)
+$$
+we apply the Mobius inversion formula and obtain
+\begin{equation}
+nM(n,r)=\sum _{d\mid n}\mu(d/n)r^{d}. \label{mobinv}
+\end{equation}
+Each cyclic sequence has a well defined period $d$ and it corresponds to the unique cyclic sequence of length $d$ and period $d$. Thus
+\begin{equation}
+T(n,r)=\sum _{d\mid n}M(d,r).n \label{mobinvtwo}
+\end{equation}
+Now we substitute \ref{mobinv} into \ref{mobinvtwo}:
+\begin{align*}
+T(n,r) & =\sum _{d\mid n}M(d,r) \\
+ & =\sum _{d\mid n} \frac{1}{d}\sum _{d'\mid d}\mu(d/d')r^{d'} \\
+ & =\sum _{d'\mid n}\left( \sum _{d''\mid (n/d')} \frac{1}{d'd''} \mu(d'')  \right)r^{d'}
+\end{align*}
+Now it remains to compute the sum
+$$
+\sum _{d''\mid (n/d')} \frac{1}{d'd''} \mu(d'')
+$$
+\begin{exercise}
+Show that for $n\in \mathbf{Z}_{\ge 1}$, $\sum _{d\mid n} \frac{1}{d}(\mu(d))=\frac{\phi(n)}{n}$.
+\end{exercise}
+Using this exercise we compute
+$$
+T(n,r)=\sum _{d'\mid n} \frac{\phi(n/d')}{n}r^{d'}
+$$
+\end{proof}
+
+\section{Partially ordered set (posets)}
+\begin{definition}
+A binary relation on a set $A$ is a subset $R\subseteq A\times A$.
+\end{definition}
+\begin{definition}
+A relation is antisymmetric provided $(a,b)\in R$ and $(b,a)\in R$ imply $a=b$.
+\end{definition}
+\begin{definition}
+A relation is transitive if $(a,b)\in R$ and $(b,c)\in R$ imply $(a,c)\in R$.
+\end{definition}
+\begin{definition}
+A relation is reflexive if $(a,a)\in R$ for all $a\in R$.
+\end{definition}
+\begin{definition}
+A partial order on a set $A$ is an antisymmetric, reflexive and transitive relation $R\subseteq A\times A$. 
+\end{definition}
+\begin{definition}
+A partially ordered set (or poset for short) is a set together with a partial order.
+\end{definition}
+\begin{example}
+Let $A$ be a set. The set $2^{A}$ is partially ordered by inclusion $\subseteq$.
+\end{example}
+\begin{example}
+The set $\mathbf{Z}_{\ge 1}$ is partially ordered by the relation "$d$ divides $n$".
+\end{example}
+\begin{definition}
+A partially ordered set $(X,\le)$ is locally finite if for all $x,y\in X$ the interval
+$$
+[x,y]:= \{ z\in X:y\le z \le x \}
+$$
+is finite.
+
+We say that $0\in X$ is a zero element if $0\le x$ for all $x \in X$.
+\end{definition}
+
+\subsection{Mobius inversion formula for posets}
+
+Let $(X,\le )$ be a partially ordered locally finite set with 0. Suppose that $f:X\to \mathbf{C}$ is a function. We define a new function $F:X\to \mathbf{C}$ by
+$$
+F(x):= \sum _{y\le x}f(y)
+$$
+How do recover $f$ from $F$?
+\begin{theorem}[Mobius inversion for posets] \label{mobposet}
+Given a partially ordered set $X$, there is a two-variable function $M:X\times X\to \mathbf{R}$ such that
+$$
+F(x)=\sum _{y\le x}f(y)\Leftrightarrow f(x)=\sum _{y\le x}F(y)M(y,x)
+$$
+$M$ is called the Mobius function of the poset.
+\end{theorem}
+\begin{definition}
+Given a partially ordered set $X$, the incidence algebra $A(X)$ is the set of complex-valued functions $f:X^{2}\to \mathbf{C}$ satisfying $f(x,y)=0$ unless $x\le y$. 
+\end{definition}
+$A(X)$ is a vector space over $\mathbf{C}$ with respect to pointwise addition and multiplicavtion by scalars. To make it into an "algebra" we need one more operation:
+\begin{definition}
+Given $f,g\in A(X)$, their convolution $f*g$ is defined by
+$$
+f*g(x,y)=\sum _{z:x\le z \le y} f(x,z)g(z,y)
+$$
+\end{definition}
+\begin{definition}
+The delta function $\delta$ is the following element of $A(X)$:
+$$
+\delta(x,y)=\begin{cases}
+1 & \text{if }x=y  \\
+0 & \text{otherwise}.
+\end{cases}
+$$
+\end{definition}
+\begin{lemma}
+A function $f\in A(X)$ has a left and right inverse with respect to the convolution if and ony if $f(x,x)\neq0$ for all $x \in X$.
+\end{lemma}
+\begin{proof}
+Given $f\in A(X)$ we find $g\in A(X)$ such that
+$$
+f*g(x,y)=\sum _{x\le z \le y}f(x,z)g(z,y)=\delta(x,y)
+$$
+For all $x \in X$ we have that $f*g(x,x)=\delta(x,x)=1$. Therefore, the condition $f(x,x)\neq0$ for all $x \in X$ is necessary for the existence of the inverse.
+
+We define $g(x,x):=f(x,x)^{-1}$ for all $x \in X$. To define $g(x,y)$ for $x<y$, we assume by induction, that we have already found all $g(z,y)$ for all $z$ satisfying $x<z\le y$. Then
+$$
+\delta(x,y)=0=\sum _{x\le z \le y}f(x,z)g(z,y)-f(x,x)g(x,y)=\sum _{x<z \le y}f(x,z)g(z,y)
+$$
+We can find $g(x,y)$ from this identity because $f(x,x)\neq 0$ and we know all the terms of the finit sum on the right hand side.
+
+Finally, if $f*g_{1}=\delta$ and $g_{2}*f=\delta$ then
+$$
+g_{2}=g_{2}*\delta=g_{2}*f*g_{1}=(g_{2}*f)*g_{1}=\delta*g_{1}=g_{1}.
+$$
+Therefore, the left and the right inverses of $f$ coincide.
+\end{proof}
+\begin{definition}
+The zeta function $Z(x,y)$ of the poset $(X,\le)$ is the function
+$$
+Z(x,y)=\begin{cases}
+1 & \text{if }x\le y \\
+0 & \text{otherwise}.
+\end{cases}
+$$
+
+The Mobius function $M(x,y)$ is the inverse of the zeta function $Z$ with respect to convolution.
+\end{definition}
+\begin{proof}[Proof of theorem \ref{mobposet}]
+Let $f:X\to \mathbf{C}$ be a function and $F:X\to \mathbf{C}$ is defined by 
+$$
+F(x)=\sum _{y\le x}f(y)
+$$
+Then for a fixed $x \in X$:
+\begin{align*}
+\sum _{y\le x}F(y)M(y,x) & =\sum _{y\le x}M(y,x)\sum _{z\le y}f(z) \\
+ & =\sum _{z\le y \le x}f(z)M(y,x) \\
+ & =\sum _{z\le x}f(z)\sum _{y:z\le y \le x}M(y,x) \\
+ & =\sum _{z \le x}f(z)\left( \sum _{z\le y\le x} Z(z,y)M(y,x) \right) \\
+ & =\sum _{z\le x}f(z)(Z*M)(z,x) \\
+ & =\sum _{z\le x}f(z)\delta(z,x)=f(x)
+\end{align*}
+
+Now we show that the inverse is also true. Let $F:X\to \mathbf{C}$ be a function and we define $f:X\to \mathbf{C}$ by
+$$
+f(x)=\sum _{y\le x} F(y)M(y,x)
+$$
+foral $x \in X$.
+
+Then
+\begin{align*}
+\sum _{y\le x} & =\sum _{y\le x}\sum _{z \le y}F(z)M(z,y) \\
+ & =\sum _{z,y:z\le y\le x}F(z)M(z,y) \\
+ & =\sum _{z\le y\le x}F(z)M(z,y)Z(y,x) \\
+ & =\sum _{z\le x}F(z)\left( \sum _{z\le y \le x}M(z,y)Z(y,x) \right) \\
+ & =\sum _{z\le x}F(z)\delta(z,x)=F(x)
+\end{align*}
+\end{proof}
+
+\begin{lemma}
+Let $2^{A}$ be the set of subsets of a finite set $A$. $2^{A}$ is partially ordered by inclusion. The Mobius function of $2^{A}$ is given by
+$$
+M(x,y)=(-1)^{|x|-|y|}
+$$
+where $x\subseteq y\subseteq A$.
+\end{lemma}
+\begin{proof}
+We have to show that $M*Z=\delta$. Let $x,y\subseteq A$ such that $x\subseteq y$. We compute
+\begin{align*}
+M*Z(x,y)=\sum _{z:x \subseteq z \subseteq y} M(x,z)Z(z,y) \\
+ & =\sum _{x \subseteq z \subseteq y}(-1)^{|x|-|z| } \\
+ & =\sum _{w\subseteq y\setminus x} (-1)^{|w|}=\begin{cases}
+0 & \text{if }|y\setminus x| \ge 1 \\
+1 & \text{if }|y\setminus x|=\varnothing.
+\end{cases}
+\end{align*}
+\end{proof}
+\begin{lemma}
+Consider the set $\mathbf{Z}_{\ge 1}$, partially ordered by the relation "$x$ divides $y$".
+
+then the Mobius function of this poset is:
+$$
+M(x,y)=\mu(y/x).
+$$
+\end{lemma}
+\begin{proof}
+We need to show that $M*Z=\delta$.
+
+For $x,y\in \mathbf{Z}_{\ge 1}$ with $x\mid y$ we have
+\begin{align*}
+M*Z(x,y) & =\sum _{\underset{x\le z \le y}{z\in \mathbf{Z}_{\ge 1}}} M(x,z)Z(z,y)  \\
+ & =\sum _{z:x \mid z, z\mid y} \mu(z/x) \\
+ & =\sum _{d\mid (y/x)} \mu(d)=
+\begin{cases}
+1 & \text{if } \frac{y}{x}=1 \\
+0 & \text{otherwise.}
+\end{cases}
+\end{align*}
+\end{proof}
