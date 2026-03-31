@@ -1,0 +1,179 @@
+\todo{Lecture 13}
+\begin{definition}
+Une base $B=\{ b_{1},\dots,b_{n} \}$ est appellee une base orthonormale si pour tout $i\neq j$ on a $\langle b_{i},b_{j} \rangle=0$, la base est orthogonale, et $\lVert b_{i} \rVert=1$ pour tout $i$.
+\end{definition}
+\begin{remark}
+Soit $B=\{ b_{1},\dots,b_{n} \}$ une base orthogonale. On peut normaliser cette base en divisant chaque composant par sa norme $B'=\left\{  \frac{b_{1}}{\lVert b_{1} \rVert},\dots, \frac{b_{n}}{\lVert b_{n} \rVert}  \right\}$ est une base orthonormale.
+\end{remark}
+\begin{example}
+Soit $V=\mathbf{R}^{4}$, $\langle  \rangle$ un produit scalaire standard et les vecteurs libres
+$$
+b_{1}=\begin{pmatrix}
+1 \\
+1 \\
+0 \\
+1
+\end{pmatrix},\quad b_{2}=\begin{pmatrix}
+1 \\
+-2 \\
+0 \\
+0
+\end{pmatrix}, \quad b_{3}=\begin{pmatrix}
+1 \\
+0 \\
+-1 \\
+2
+\end{pmatrix}
+$$
+On a $b_{1}^{*}=b_{1}$, $b_{2}^{*}=b_{2}+\frac{1}{3}b_{1}$ et $b_{3}^{*}=b_{3}-\frac{\langle b_{3},b_{1}^{*} \rangle}{\langle b_{1}^{*},b_{1}^{*} \rangle}b_{1}^{*}-\frac{\langle b_{3},b_{2}^{*} \rangle}{\langle b_{2}^{*},b_{2}^{*} \rangle}b_{2}^{*}$. On normalise cettes composantes et on obtient
+$$
+\frac{b_{1}^{*}}{\lVert b_{1}^{*} \rVert }=\frac{b_{1}^{*}}{\sqrt{ 3 }},\quad \frac{b_{2}^{*}}{\lVert b_{2}^{*} \rVert }=\frac{b_{2}^{*}}{\sqrt{ 42 }},\quad \frac{b_{3}^{*}}{\lVert b_{3}^{*} \rVert }=\frac{b_{3}^{*}}{\sqrt{  105}}
+$$
+\end{example}
+
+\section{Factorisation}
+
+Soit $B\in \mathbf{R}^{m\times n}$ de $\mathrm{rang}(A)=n$, $A=(b_{1},\dots,b_{n})$ ou $b_{1},\dots,b_{n}\in \mathbf{R}^{m}$ sont libres. La formule de Gram-Schmidt donne
+$$
+b_{j}=b_{j}^{*}+\sum_{i=1}^{j-1} \mu _{ij}b_{i}^{*}
+$$
+ou $\mu _{ij}=\frac{\langle b_{j},b_{i}^{*} \rangle}{\langle b_{i}^{*},b_{i}^{*} \rangle}$. Donc
+\begin{align*}
+(b_{1},\dots,b_{n}) & =(b_{1}^{*},\dots,b_{n}^{*})\begin{pmatrix}
+1 &  & \mu _{ij} \\
+ & \ddots &  \\
+ &  & 1
+\end{pmatrix} \\
+	 & =\underbrace{ \left( \frac{b_{1}^{*}}{\lVert b_{1}^{*} \rVert },\dots, \frac{b_{n}^{*}}{\lVert b_{n}^{*} \rVert }  \right) }_{ \text{Colonnes orthonormales} }\underbrace{ \begin{pmatrix}
+\lVert b_{1}^{*}  \rVert &  &  \\
+ & \ddots &  \\
+ &  & \lVert b_{n}^{*} \rVert 
+\end{pmatrix}\begin{pmatrix}
+1 &  & \mu _{ij} \\
+ & \ddots &  \\
+ &  & 1
+\end{pmatrix} }_{ \text{Matrices triangulaires superieures de taille }n\times n }
+\end{align*}
+
+\begin{theorem}[Factorisation QR de $A$]
+Toute matrice $A\in \mathbf{R}^{m\times n}$ telle que $\mathrm{rang}(A)=n$ peut etre factorisee comme 
+$$
+A=A^{*}R
+$$
+ou:
+\begin{enumerate}
+\item $A^{*}\in \mathbf{R}^{m\times n}$ a des colonnes deux-a-deux orthogonales.
+\item $R\in \mathbf{R}^{n\times n}$ est triangulaire superieure de $\mathrm{rang}(R)=n$.
+\end{enumerate}
+\end{theorem}
+
+Soit $Ax=b$ ou $x \in \mathbf{R}^{n}$ et $A\in \mathbf{R}^{m\times n}$. Si ce systeme n'admet pas de solutions, on cherche
+$$
+\min_{x \in \mathbf{R}^{n}}\lVert b-Ax \rVert ^{2}
+$$
+\begin{lemma}
+Soit $H\subseteq V$ un sous-espace vectoriel et $b\in V$. Soit $h\in H$ tel que $(b-h)\in H^{\perp}$. On a pour tout $h'\in H$:
+$$
+\lVert b-h' \rVert \ge \lVert b-h \rVert 
+$$
+si $h'\neq h$ alors l'inegalite devient stricte.
+\end{lemma}
+\begin{proof}
+\begin{align*}
+\lVert b -h'  \rVert^{2} & =\lVert b + h -h -h' \rVert^{2} \\
+ & =\lVert b-h \rVert^{2}+\lVert h-h' \rVert^{2}
+\end{align*}
+\end{proof}
+
+Pour resoudre $\min_{x \in \mathbf{R}^{n}}\lVert b - Ax \rVert^{2}$, on cherche $x \in \mathbf{R}^{n}$ tel que $b-Ax\perp \mathrm{span}\{ a_{1},\dots,a_{n} \}$.
+
+\subsection*{Methode 1}
+
+On cherche une base Gram-Schmidt $a_{1}^{*},\dots,a_{n}^{*}$ de $a_{1},\dots,a_{n}$ telle que 
+$$
+b-\underbrace{ \sum_{i=1}^{n} \frac{\langle b,a_{i}^{*} \rangle }{\langle a_{i}^{*},a_{i}^{*} \rangle }a_{i}^{*} }_{ := h }
+$$
+est orthogonal a tous $a_{i}^{*}$ et alors appartient a $\mathrm{span}\{ a_{1},\dots,a_{n} \}^{\perp}$. On resoud alors $Ax=h$.
+
+\subsection*{Methode 2}
+
+Resoudre $A^{\mathsf{T}}Ax=A^{\mathsf{T}}b\Leftrightarrow A^{\mathsf{T}}(Ax-b)=0$. On cherche $h=Ax \in \mathrm{span}\{ a_{1},\dots,a_{n} \}$ tel que $(b-h)\perp \mathrm{span}\{ a_{1},\dots,a_{n} \}$. Donc par le lemme la solution existe et $h=Ax$ pour $x \in \mathbf{R}^{n}$ est solution de $Ax=b$.
+
+\begin{example}
+Soient 
+$$
+A=\begin{pmatrix}
+4 & 0 \\
+0 & 2 \\
+1 & 1
+\end{pmatrix},\quad b=\begin{pmatrix}
+2 \\
+0 \\
+1
+\end{pmatrix},\quad A^{\mathsf{T}}A=\begin{pmatrix}
+17 & 1  \\
+1 & 5
+\end{pmatrix},\quad A^{\mathsf{T}}b=\begin{pmatrix}
+19 \\
+11
+\end{pmatrix}
+$$
+La solution du systeme $A^{\mathsf{T}}Ax=A^{\mathsf{T}}b$ est $x^{\mathsf{T}}=\begin{pmatrix}1 & 2\end{pmatrix}$.
+\end{example}
+\begin{remark}
+La solution $x$ est unique si et seulement si $\mathrm{rang}(A)=n$.
+\end{remark}
+
+\section{Formes sesquilineaires et produits hermitiens}
+
+Soit $V$ un espace vectoriel sur $\mathbf{C}$ et $\langle  \rangle:V\times V\to \mathbf{C}$. 
+\begin{enumerate}
+\item On a $\langle v,w \rangle=\overline{\langle w,v \rangle}$ pour tout $v,w\in V$.
+\item Si $u,v,w\in V$ alors
+$$
+\langle u,v+w \rangle =\langle u,v \rangle +\langle u,w \rangle,\quad \langle v+w,u \rangle =\langle v,u \rangle +\langle w,u \rangle 
+$$
+\item Si $x \in \mathbf{C}$ et $u,v\in V$ 
+$$
+\langle xu,v \rangle =x\langle u,v \rangle ,\quad \langle u,xv \rangle =x\langle u,v \rangle 
+$$
+\end{enumerate}
+on dit que $\langle   \rangle$ est
+\begin{enumerate}
+\item Une forme sequilineaire si $\langle  \rangle$ satisfait 2 et 3.
+\item Une forme hermitienne si $\langle  \rangle$ satisfait 1,2 et 3.
+\item Un produit hermitien si $\langle  \rangle$ satisfait 1, 2 et 3 et
+$$
+\langle v,v \rangle >0
+$$
+pour tout $v\in V\setminus \{ 0 \}$.
+\end{enumerate}
+
+Une forme sesquilineaire est non degeneree a gauche si $v\in V$ et si $\langle v,w \rangle=0$ pour tout $w\in V$ alors $v=0$.
+
+\begin{definition}
+Si $\langle  \rangle$ est une forme hermitienne, pour tout $v\in V$, on a $\langle v,v \rangle\in \mathbf{R}$ des que $\langle v,v \rangle= \overline{\langle v,v \rangle}$ par 1. On dit que la forme hermitienne est definie positif si $\langle v,v \rangle>0$ pour tout $v\in V\setminus \{ 0 \}$. Alors un produit hermitien est une forme hermitienne positif.
+\end{definition}
+\begin{example}
+Le produit hermitien standard de $\mathbf{C}^{n}$
+$$
+\langle u,v \rangle =\sum _{i}u_{i} \overline{v}_{i}
+$$
+\end{example}
+
+Les notion d'orthogonalite, de perpendicularite, de base orthogonale et de supplementaire orthogonale sont definies comme avant. Aussi les coefficients de Fourier sont les memes. Soit $w\in V\setminus \{ 0 \}$ et $v\in V$. ON cherche $\alpha \in \mathbf{C}$ satisfaisant 
+$$
+\langle w,v-\alpha w \rangle =0
+$$
+On trouve $\bar{\alpha}=\langle w,v \rangle/\langle w,w \rangle$. 
+
+Soient $V$ un espace vectoriel sur $\mathbf{C}$ de dimension finie et $f:V\times V\to \mathbf{C}$ une forme sesquilineaire. Pour une base $B=\{ v_{1},\dots,v_{n} \}$ de $V$ et $x=\sum _{i}\alpha _{i}v_{i}$ et $y=\sum _{i}\beta _{i}v_{i}$ on a
+$$
+\langle x,y \rangle =\sum _{ij}\alpha _{i}\bar{\beta}_{j}f(v_{i},v_{j})
+$$
+\begin{definition}
+Une matrice $A\in \mathbf{C}^{n\times n}$ est hermitienne si on a
+$$
+A=\overline{A^{\mathsf{T}}}
+$$
+\end{definition}

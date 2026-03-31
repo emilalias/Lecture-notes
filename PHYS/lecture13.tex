@@ -1,0 +1,128 @@
+\todo{Lecture 13}
+
+\chapter*{Electromagnetisme}
+
+L'interaction electromagnetique est une des quatres forces fondamentales. Les autres
+\begin{enumerate}
+\item L'interaction nucleaire forte, portee $\approx 10^{-15}~\mathrm{m}$.
+\item L'interaction nucleaire faible, portee $\approx 10^{-17}~\mathrm{m}$.
+\item La gravitation, portee illimitee.
+\end{enumerate}
+
+L'interaction electromgnetique est:
+\begin{itemize}
+\item Attractive et repulsive.
+\item Responsable de la plupart des phenomenes quotidiens.
+\begin{itemize}
+\item Electricite.
+\item Lumiere.
+\item Structure des atoms et des molecules.
+\item Gouverne les reactiones chimiques et la biologie.
+\item Avec le principe d'exclusion de Pauli (mecanique quantique), la raison pourquoi la terre ne s'ecrasse pas par la gravite, et aussi pourquoi un verre ne tombe pas a travers une table.
+\end{itemize}
+\item Portee illimitee (mais en pratique les charges positives et negatives tendent a se neutraliser).
+\end{itemize}
+\chapter{Electrostatique}
+\section{Charge electrique}
+
+Il y a deux tpyes de charges appelles positive et negative. Un corps est dit:
+\begin{itemize}
+\item Neutre, si les charges positives et negatives s'annulent.
+\item Chrage, s'il y a un exces d'un type de charge.
+\end{itemize}
+\subsection{L'unite de la charge}
+
+L'unite de la charge $q$ est le Coulomb $\mathrm{C}=\mathrm{As}$. Dans le Systeme Internationale (SI), le Coulomb est une unite derivee. 
+
+Les septs unites de base du SI sont:
+\begin{itemize}
+\item $\mathrm{m}$ longueur
+\item $\mathrm{kg}$ masse
+\item $\mathrm{s}$ temps
+\item $\mathrm{A}$ ampere (courant electrique)
+\item $\mathrm{K}$ temperature
+\item $\mathrm{mol}$ quantite de matiere
+\item $\mathrm{cd}$ candela (intensite lumineuse)
+\end{itemize}
+\begin{example}[Unites derivees]
+Le newton est une unite derivee $\mathrm{N}=\mathrm{kgms}^{-2}$.
+\end{example}
+\begin{remark}
+Les definitions des unites de base ont evalue beaucoup historiquement.
+\end{remark}
+
+Il existe une charge elementaire $e$:
+\begin{itemize}
+\item proton: charge $+e$.
+\item electron: chagre $-e$.
+\end{itemize}
+Toutes charges observees sont des multiples de $e$.
+
+\subsection{Conservation de la charge}
+
+La quantite de charge totale est conservee dans toutes les experiences.
+\begin{example}[Desintegration de type $\alpha$]
+$$^{238}\mathrm{U}\to~^{234}\mathrm{Th}+~^{4}\mathrm{He}$$
+Ou $\mathrm{U}$ a 92 protons et 92 electrons, $\mathrm{Th}$ 90 protons et 90 electrons et $\mathrm{He}$ 2 protons et 2 electrons. Seulement la charge totale est conservee, pas la charge positive ou negative.
+\end{example}
+\begin{example}[Desintegration d'un neutron libre]
+$$
+n\to p+e^{-}+\bar{\nu}
+$$
+ou $\bar{\nu}$ est neutre.
+\end{example}
+\begin{example}[Creation des paires d'electron et positron par un photon $\gamma$]
+$$
+\gamma \to e^{-}+e^{ + }
+$$
+\end{example}
+
+\section{Loi de Coulomb}
+
+Soient deux charges ponctuelles $q_{1}$ et $q_{2}$ aux positions $\boldsymbol{r}_{1}$ et $\boldsymbol{r}_{2}$ respectivement et $\boldsymbol{r}_{12}$ un vecteur entre ces deux charges. La force exercee par $q_{1}$ sur $q_{2}$ est 
+$$
+\boldsymbol{F}_{1\to 2}=\frac{1}{4\pi\varepsilon _{0}} \frac{q_{1}q_{2}}{\lVert \boldsymbol{r}_{12} \rVert ^{2}} \frac{\boldsymbol{r}_{12}}{\lVert \boldsymbol{r}_{12} \rVert }
+$$
+ou de maniere equivalente
+$$
+\boldsymbol{F}_{1\to 2}=\frac{1}{4\pi\varepsilon_{0}} \frac{q_{1}q_{2}}{\lVert \boldsymbol{r}_{2}-\boldsymbol{r}_{1} \rVert ^{2}} \frac{\boldsymbol{r}_{2}-\boldsymbol{r}_{1}}{\lVert \boldsymbol{r}_{2}-\boldsymbol{r}_{1} \rVert }
+$$
+ou $\varepsilon _{0}=8.85\cdot 10^{-12}~\mathrm{Fm}^{-1}$ ou $F=\mathrm{A}^{2}\mathrm{s}^{4}\mathrm{kg}^{-1}\mathrm{m}^{-2}$ est un Farad.
+
+Par la troisieme loi de Newton on a
+$$
+\boldsymbol{F}_{1\to 2} =-\boldsymbol{F}_{2 \to 1}
+$$
+\subsection{Principe de superposition}
+
+Soient trois charges $q_{1}$, $q_{2}$ et $q_{3}$ ponctuelles. La force $\boldsymbol{F}_{1 \to 3}$ est la force de $q_{1}$ sur $q_{3}$ en abscense de $q_{2}$ et $\boldsymbol{F}_{2\to 3}$ est la force de $q_{2}$ sur $q_{3}$ en abscence de $q_{1}$. La force en presence de $q_{1}$ et $q_{2}$ est donc
+$$
+\boldsymbol{F}_{\mathrm{res}}=\boldsymbol{F}_{1\to 3} +\boldsymbol{F}_{2\to 3}
+$$
+
+Force de $n$ charges ponctuelles $q_{i}$ a $\boldsymbol{r}_{i}$ sur une charge $q$ a $\boldsymbol{r}$:
+$$
+\boldsymbol{F}_{\mathrm{res}}=\sum_{i=1}^{n} \frac{1}{4\pi\varepsilon_{0}} \frac{qq_{i}}{\lVert \boldsymbol{r} -\boldsymbol{r}_{i}\rVert^{2}} \frac{\boldsymbol{r}-\boldsymbol{r}_{i}}{\lVert \boldsymbol{r}-\boldsymbol{r}_{i} \rVert }
+$$
+\section{Champ electrique}
+
+Soit une charge $q_{1}$ en $\boldsymbol{r}_{1}$. A une position $\boldsymbol{r}$ de l'espace, une charge $q$ va subir la force
+$$
+\boldsymbol{F}_{1\to q} =\underbrace{ \frac{1}{4\pi\varepsilon_{0}} \frac{q_{1}}{\lVert \boldsymbol{r}-\boldsymbol{r}_{1} \rVert ^{2}} \frac{\boldsymbol{r}-\boldsymbol{r}_{1}}{\lVert \boldsymbol{r}-\boldsymbol{r}_{1} \rVert } }_{ \text{Champ vectoriel independent de }q } \cdot q
+$$
+On appelle ce champ le champ electrique $\boldsymbol{E}$ genere par $q_{1}$.
+
+Le principe de superposition implique que le champ electrique genere par $n$ charges $q_{i}$ a poistion $\boldsymbol{r}_{i}$ :
+$$
+\boldsymbol{E}(\boldsymbol{r})=\sum_{i=1}^{n} \frac{1}{4\pi\varepsilon_{0}} \frac{q_{i}}{\lVert \boldsymbol{r}-\boldsymbol{r}_{i} \rVert ^{2}} \frac{\boldsymbol{r}-\boldsymbol{r}_{i}}{\lVert \boldsymbol{r}-\boldsymbol{r}_{i} \rVert }
+$$
+donc 
+$$
+\boldsymbol{E}=\frac{\boldsymbol{F}}{q}
+$$
+le champ electrique est dans la direction de la force ressentie par une charge positive.
+
+Le champ electrique est mesure en volt-metre
+$$
+[\boldsymbol{E}]=\frac{\mathrm{N}}{\mathrm{C}}=\mathrm{kgms}^{-2}\mathrm{C}=\mathrm{kgms}^{-2}\mathrm{A}^{-1}\mathrm{s}^{-1}=\frac{\mathrm{V}}{\mathrm{m}}
+$$

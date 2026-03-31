@@ -518,4 +518,49 @@ $$
 puis on divise les lignes par 2 , 5 et $\frac{5}{4}$ respectivement pour obtenir l'indice de positivite 2, l'indice de negativite 1 et l'indice de nullite 0.
 \end{itemize}
 \end{proof}
+\begin{exercise}[exo 7]\label{exo7}
+Soit $g:V\to V$ diagonalisable et $W\subseteq V$ est invariant par $g$. Alors $g|_{W}:W\to W$ est diagonalisable.
+\end{exercise}
+\begin{proof}[Solution]
+Comme $g$ est diagonalisable on a $V=\bigoplus _{\lambda}E_{\lambda}$. Pour montrer que $g|_{W}$ est diagonalisable aussi, il suffit d'observer que $\bigoplus _{\lambda}(W\cap E_{\lambda})=W$, on remarque facilement que la direction / inclusion $\subseteq$ tient. 
+
+Montrons $\supseteq$, prenons $w\in W$ et observons que $w\in \bigoplus_{\lambda}(W\cap E_{\lambda})$. On ecrit $w=\sum _{i} v_{\lambda _{i}}$ ou $v_{\lambda _{i}}\in E_{\lambda _{i}}$ et pour $i\neq j$ on a $\lambda _{i}\neq\lambda _{j}$. Pour tout $i$ on considere 
+\begin{align*}
+\underbrace{ \prod _{j\neq i} \left( \frac{g-\lambda _{j}\mathrm{Id}}{\lambda _{i}-\lambda _{j}} \right) }_{ h }(w) & =\prod _{j\neq i} \left( \frac{g-\lambda _{j}\mathrm{Id}}{\lambda _{i}-\lambda _{j}} \right)\left( \sum _{k}v_{\lambda _{k}} \right) \\
+ & =v_{\lambda _{i}}\in W
+\end{align*}
+car $h(v_{\lambda _{j}})=0$ pour $j\neq i$ et $h(v_{\lambda _{j}})=v_{\lambda _{i}}$ pour $j=i$. Donc $w\in \bigoplus _{\lambda}(W\cap E_{\lambda})$.
+\end{proof}
+
+\begin{exercise}[Exo etoile]
+Monter que si $f$ et $g$ sont diagonalisables et commutent, alors $f$ et $g$ sont simultanement diagonalisables.
+\end{exercise}
+\begin{proof}[Solution]
+Comme $f$ est diagonalisable, on peut ecrire
+\begin{equation}
+V=\bigoplus_{\lambda} E_{\lambda} \label{basestar}
+\end{equation}
+ou les $\lambda$ sont les valeurs propres de $f$ et $E_{\lambda}$ les espaces propres de $f$ (c-a-d $E_{\lambda}=\ker(f-\lambda \mathrm{Id})$). Montrons que $E_{\lambda}$ est $g$-invariant. Prenons $v\in E_{\lambda}$ et montrons que $g(v)\in E_{\lambda}$:
+\begin{align*}
+(f-\lambda \mathrm{Id})(g(v)) & =(f\circ g-\lambda g )(v) \\
+ & =(g\circ f- \lambda g)(v) \\
+ & =g(f-\lambda \mathrm{Id} )(v) \\
+ & =g(0)=0
+\end{align*}
+donc $E_{\lambda}$ est $g$-invariant pour tout $\lambda$ une valeur propre de $f$.
+
+Du coup par l'exercise 7 de la serie 6 \ref{exo7} pour chaque valeur propre $\lambda$ de $f$ on trouve une base de $B_{\lambda}$ de $E_{\lambda}$ forme de vecteurs propres par rapport a $g$ (car $g$ est diagonalisable, $E_{\lambda}$ est $g$-invariant donc $g|_{E_{\lambda}}$ est diagonalisable). Finalement, 
+$$
+B=\bigcup _{\lambda}B_{\lambda}
+$$
+est une base de $V$ (a cause de \ref{basestar} et du fait que $B_{\lambda}$ est une base de $E_{\lambda}$), en plus $B$ consiste de vecteurs propres a la fois de $f$ et de $g$ (les elements de $B$ vivent dans les espaces propres de $f$ et sont par construction des vecteurs propres pour $g$). 
+\end{proof}
+\chapter{Serie 7}
+\begin{exercise}[Exo plus]
+Soit $A\in \mathbf{C}^{n\times n}$ une matrice hermitienne et soit $\lambda$ une valeur popre de $A$. Montrer que $\lambda$ est reele.
+\end{exercise}
+\begin{proof}[Solution]
+Sans preuve.
+\end{proof}
+
 \end{document}
