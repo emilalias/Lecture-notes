@@ -1,0 +1,72 @@
+\subsection{Champ \texorpdfstring{$\boldsymbol{E}$}{electrique} du a une distribution de charge quelconque}
+
+\begin{definition}[Densite de charge]
+$$
+\rho _{\mathrm{el}}(\boldsymbol{r})=\lim_{ \Delta V \to dV } \frac{\Delta q}{\Delta V}
+$$
+\end{definition}
+On peut definir le champ electrique comme
+$$
+\boldsymbol{E}(\boldsymbol{r})=\frac{1}{4\pi\varepsilon _{0}} \iiint \frac{\rho _{\mathrm{el}}(\boldsymbol{r}')(\boldsymbol{r}-\boldsymbol{r}')}{\lVert \boldsymbol{r}-\boldsymbol{r}' \rVert^{3} }~dV'
+$$
+\begin{definition}[Charge de surface]
+$$
+\sigma _{\mathrm{el}}(\boldsymbol{r})=\lim_{ \Delta S \to dS } \frac{\Delta q}{\Delta S}.
+$$
+\end{definition}
+On peut definir le champ electrique comme
+$$
+\boldsymbol{E}(\boldsymbol{r})=\frac{1}{4\pi\varepsilon_{0}}\iint _{S} \frac{\sigma _{\mathrm{el}}(\boldsymbol{r}')(\boldsymbol{r}-\boldsymbol{r}')}{\lVert \boldsymbol{r}-\boldsymbol{r}' \rVert ^{3}}~dS'
+$$
+\begin{example}[Utile pour plus tard; demarche pas demande]
+Soit un disque de rayon $R$ uniformement charge avec $\sigma _{\mathrm{el}}$ constante. Calculons $\boldsymbol{E}$ le long de l'axe $z$, donc:
+\begin{align*}
+\boldsymbol{E}(0,0,z) & =\frac{1}{4\pi \varepsilon _{0}}\iint _{\mathrm{disque}} \frac{\sigma _{\mathrm{el}}(\boldsymbol{r}-\boldsymbol{r}') }{\lVert \boldsymbol{r}-\boldsymbol{r}' \rVert ^{3}}~dS',\quad \boldsymbol{r}^{\mathsf{T}}=(0,0,z) \\
+\end{align*}
+Par symetrie $\boldsymbol{E}(0,0,z)\parallel \boldsymbol{\hat{e}}_{z}$ :
+\begin{align*}
+E_{z}(0,0,z) & =\frac{1}{4\pi\varepsilon_{0}}\iint _{S} \frac{\sigma _{\mathrm{el}}(z-z')}{\lVert \begin{pmatrix}
+0 & 0 & 2
+\end{pmatrix}^{\mathsf{T}}-\begin{pmatrix}
+x' & y' & z'
+\end{pmatrix}^{\mathsf{T}} \rVert ^{3}}~dS' \\
+ & =\frac{1}{4\pi \varepsilon_{0}}\iint _{S} \frac{\sigma _{\mathrm{el}}z}{\underbrace{ (x'^{2}+y'^{2}+z^{2})^{3/2} }_{ (r'^{2}-z^{2})^{3/2} }}~dS'
+\end{align*}
+Pour l'integration sur le disque $S$, on utilise les coordones polaires :
+$$
+r'^{2}=x'^{2}+y'^{2},\quad dS'=r'd\theta'dr'
+$$
+donc
+\begin{align*}
+E_{z}(0,0,r) & =\frac{1}{4\pi\varepsilon_{0}}\int _{0}^{R}\int_{0}^{2\pi} \frac{\sigma _{\mathrm{el}}z}{(r'^{2}+z^{2})^{3/2} }r'd\theta'dr' \\
+ & = \frac{\sigma _{\mathrm{el}}z}{4\pi\varepsilon_{0}} 2\pi \int_{0}^{R} \frac{r'}{(r'+z^{2})^{3/2}} \, dr' \\
+  & =\dots = \frac{\sigma _{\mathrm{el}}}{2\varepsilon_{0}}\left( \frac{z}{|z|}-\frac{z}{\sqrt{ z^{2}+R^{2} }} \right) 
+\end{align*}
+
+En particulier $E_{z}\to \frac{\sigma _{\mathrm{el}}}{2\varepsilon_{0}} \frac{z}{|z|}$ pour $R\to \infty$.
+\end{example}
+
+\subsection{Lignes de champ \texorpdfstring{$\boldsymbol{E}$}{electrique}}
+
+Les lignes qui sont tangentielles a $\boldsymbol{E}$ en tout point. Ces lignes sont orientees dans la direction de $\boldsymbol{E}$. 
+Les lignes de champ $\boldsymbol{\ell}(s)$ (courbe parametree par $s$) sont determinees par la condition
+$$
+\frac{d\boldsymbol{\ell}}{ds}\times \boldsymbol{E}(\boldsymbol{\ell}(s))=0,\quad \forall s
+$$
+ou de maniere plus compacte $d\boldsymbol{\ell}\times \boldsymbol{E}=0$.
+
+\section{Loi de Gauss}
+
+\begin{theorem}
+Le flux du champ electrique a travers une surface $S$ fermee est egale a la somme des charges electriques contenues dans le volume $V$ delimite par $S$, diviseer par la permitivite du vide.
+\begin{itemize}
+\item Sous forme integrale : 
+$$
+\iint _{S} \boldsymbol{E}~d\boldsymbol{S}=\frac{1}{\varepsilon_{0}}\underbrace{ \iiint _{V} \rho _{\mathrm{el}} ~dV }_{ \text{charge totale dans }V }
+$$
+\item Sous forme differentielle (par le theoreme de la divergence \ref{thmdiv}]) : 
+$$
+\boldsymbol{\nabla \cdot E}=\frac{\rho _{\mathrm{el}}}{\varepsilon _{0}}.
+$$
+\end{itemize}
+\end{theorem}
