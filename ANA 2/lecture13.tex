@@ -45,18 +45,18 @@ ou $\lVert \boldsymbol{v}^{*}-\boldsymbol{u}^{*} \rVert=0$ donc $\boldsymbol{v}^
 \begin{definition}
 Soit $A\in \mathbf{R}^{m\times n}$. La norme spectrale 
 $$
-\lVert A \rVert =\sup_{\underset{\boldsymbol{x}\neq \boldsymbol{0}}{\boldsymbol{x}\in \mathbf{R}^{n}}} \frac{\lVert A\boldsymbol{x} \rVert }{\boldsymbol{x}}
+\lVert A \rVert_{S} =\sup_{\underset{\boldsymbol{x}\neq \boldsymbol{0}}{\boldsymbol{x}\in \mathbf{R}^{n}}} \frac{\lVert A\boldsymbol{x} \rVert }{\lVert \boldsymbol{x} \rVert}
 $$
-donc pout tout $\boldsymbol{x}\in \mathbf{R}^{n}$ on a $\lVert A\boldsymbol{x} \rVert\le \lVert A \rVert \lVert \boldsymbol{x} \rVert$.
+donc pout tout $\boldsymbol{x}\in \mathbf{R}^{n}$ on a $\lVert A\boldsymbol{x} \rVert\le \lVert A \rVert_{S} \lVert \boldsymbol{x} \rVert$.
 \end{definition}
 \begin{definition}
 Soit $A\in \mathbf{R}^{m\times n}$. La norme de Frobenius
 $$
 \lVert A \rVert _{F}=\left( \sum_{i=1}^{m} \sum_{j=1}^{n} A_{ij}^{2}  \right)^{1/2}
 $$
-ou $\lVert A \rVert<\lVert A \rVert_{F}$ pour toute $A\in \mathbf{R}^{m\times n}$.
+ou $\lVert A \rVert_{S} <\lVert A \rVert_{F}$ pour toute $A\in \mathbf{R}^{m\times n}$.
 \end{definition}
-
+\begin{lemma}
 Soit $\boldsymbol{f}:[a,b]\to \mathbf{R}^{m}$ continue alors
 $$
 \int_{a}^{b} \boldsymbol{f}(t) \, dt=\begin{pmatrix}
@@ -66,6 +66,7 @@ $$
 \end{pmatrix} 
 $$
 et $\left\lVert  \int_{a}^{b} \boldsymbol{f}(t) \, dt  \right\rVert\le \int_{a}^{b} \lVert \boldsymbol{f}(t) \rVert \, dt$.
+\end{lemma}
 \begin{proof}[Demonstration du theoreme de l'inversion local \ref{locinv}]
 Idee: Utiliser le theoreme de Banach pour montrer l'existence de la fonction inverse.
 
@@ -84,7 +85,7 @@ Contractivite de $\boldsymbol{\phi}^{\boldsymbol{y}}$: Soient $\boldsymbol{x}_{1
 \begin{align*}
 \lVert \boldsymbol{\phi}^{\boldsymbol{y}}(\boldsymbol{x}_{1})-\boldsymbol{\phi}^{\boldsymbol{y}}(\boldsymbol{x}_{2}) \rVert  & =\left\lVert  \int_{0}^{1} D\boldsymbol{\phi}^{\boldsymbol{y}}(\boldsymbol{x}_{1}+t(\boldsymbol{x}_{2}-\boldsymbol{x}_{1}))(\boldsymbol{x}_{2}-\boldsymbol{x}_{1}) \, dt   \right\rVert  \\
  & \le \int_{0}^{1} \lVert D\boldsymbol{\phi}^{\boldsymbol{y}}(\boldsymbol{x}_{1}+t(\boldsymbol{x}_{2}-\boldsymbol{x}_{1})) (\boldsymbol{x}_{2}-\boldsymbol{x}_{1}) \rVert  \, dt \\
- & \le \int_{0}^{1} \lVert D\boldsymbol{\phi}^{\boldsymbol{y}}(\boldsymbol{x}_{1}+t(\boldsymbol{x}_{2}-\boldsymbol{x}_{1})) \rVert  \lVert \boldsymbol{x}_{2}-\boldsymbol{x}_{1} \rVert \, dt   \\
+ & \le \int_{0}^{1} \lVert D\boldsymbol{\phi}^{\boldsymbol{y}}(\boldsymbol{x}_{1}+t(\boldsymbol{x}_{2}-\boldsymbol{x}_{1})) \rVert_{S}  \lVert \boldsymbol{x}_{2}-\boldsymbol{x}_{1} \rVert \, dt   \\
  & \le \int_{0}^{1} \lVert D\boldsymbol{\phi}^{\boldsymbol{y}}(\boldsymbol{x}_{1}+t(\boldsymbol{x}_{2}-\boldsymbol{x}_{1})) \rVert_{F} \lVert \boldsymbol{x}_{2}-\boldsymbol{x}_{1} \rVert   \, dt 
 \end{align*}
 On choisie une boule ferme $\overline{B}(\boldsymbol{x}_{0},r)$ avec $r$:
@@ -104,7 +105,7 @@ Il faut encore verifier que $\boldsymbol{\phi}^{\boldsymbol{y}}(\overline{B}(\bo
 \lVert \boldsymbol{\phi}^{\boldsymbol{y}}(\boldsymbol{x})-\boldsymbol{x}_{0} \rVert  & =\lVert \boldsymbol{\phi}^{\boldsymbol{y}}(\boldsymbol{x})-\boldsymbol{\phi}^{\boldsymbol{y}}(\boldsymbol{x}_{0})+\boldsymbol{\phi^{\boldsymbol{y}}}(\boldsymbol{x}_{0})-\boldsymbol{x}_{0} \rVert  \\
  & \le \lVert \boldsymbol{\phi^{y}}(\boldsymbol{x})-\boldsymbol{\phi^{y}}(\boldsymbol{x}_{0}) \rVert +\lVert \boldsymbol{\phi^{y}}(\boldsymbol{x}_{0})-\boldsymbol{x}_{0} \rVert  \\
  & \le \frac{1}{2}\lVert \boldsymbol{x}-\boldsymbol{x}_{0} \rVert +\lVert D\boldsymbol{f}(\boldsymbol{x}_{0})^{-1}(\boldsymbol{f}(\boldsymbol{x}_{0})-\boldsymbol{x}_{0}) \rVert  \\
- & \le \frac{r}{2}+\lVert D\boldsymbol{f}(\boldsymbol{x}_{0})^{-1} \rVert  \lVert \boldsymbol{y}-\boldsymbol{y}_{0} \rVert  < r \\
+ & \le \frac{r}{2}+\lVert D\boldsymbol{f}(\boldsymbol{x}_{0})^{-1} \rVert_{S}  \lVert \boldsymbol{y}-\boldsymbol{y}_{0} \rVert  < r \\
   \Rightarrow \boldsymbol{\phi^{y}}(\overline{B}(\boldsymbol{x}_{0},r)) & \subset B(\boldsymbol{x}_{0},r)
 \end{align*}
 Si on choisit $\boldsymbol{y}\in B(\boldsymbol{y}_{0},\tilde{r})$ avec $\tilde{r}\le \frac{r}{2\lVert D\boldsymbol{f}(\boldsymbol{x}_{0})^{-1} \rVert}$. Pour toute $\boldsymbol{y}\in B(\boldsymbol{y}_{0},r)$ par le theoreme du point fixe, il existe un unique $\boldsymbol{x}\in \overline{B}(\boldsymbol{x}_{0},r)$ tel que $\boldsymbol{x}=\boldsymbol{\phi^{y}}(\boldsymbol{x})$ si et seulement si $\boldsymbol{f}(\boldsymbol{x})=\boldsymbol{y}$.
@@ -122,30 +123,30 @@ On veut montrer que $\boldsymbol{g}$ est continue. Soit $\boldsymbol{x}=\boldsym
 et
 \begin{align*}
 \lVert \boldsymbol{x}_{1}-\boldsymbol{x}_{2} \rVert  & \le  2\lVert D\boldsymbol{f}(\boldsymbol{x}_{0})^{-1}(\boldsymbol{y}_{2}-\boldsymbol{y}_{1}) \rVert  \\
- & \le 2\lVert D\boldsymbol{f}(\boldsymbol{x}_{0})^{-1}  \rVert\lVert \boldsymbol{y}_{2}-\boldsymbol{y}_{1} \rVert  
+ & \le 2\lVert D\boldsymbol{f}(\boldsymbol{x}_{0})^{-1}  \rVert_{S} \lVert \boldsymbol{y}_{2}-\boldsymbol{y}_{1} \rVert  
 \end{align*}
 si $\boldsymbol{y}_{2}\to \boldsymbol{y}_{1}$ alors $\boldsymbol{x}_{2}=\boldsymbol{g}(\boldsymbol{y}_{2})\to \boldsymbol{x}_{1}=\boldsymbol{g}(\boldsymbol{y}_{1})$ qui montre la continuite de $\boldsymbol{g}$.
 
 On veut montrer maintenant que $\boldsymbol{g}$ est differentiable sur $V$ et de classe $C^{1}$. On veut montrer que pour toutes $\boldsymbol{y}_{2},\boldsymbol{y}_{1}\in V$ on a
 $$
-\boldsymbol{g}(\boldsymbol{y}_{2})=\boldsymbol{g}(\boldsymbol{y}_{2})+D\boldsymbol{f}(\boldsymbol{g}(\boldsymbol{y}_{1}))^{-1}(\boldsymbol{y}_{2}-\boldsymbol{y}_{1})+R_{\boldsymbol{g}}(\boldsymbol{y}_{2}),\quad \lim_{ \boldsymbol{y}_{2} \to \boldsymbol{y}_{1} }  \frac{R_{\boldsymbol{g}}(\boldsymbol{y_{2}})}{\lVert \boldsymbol{y}_{2}-\boldsymbol{y}_{1} \rVert }=0
+\boldsymbol{g}(\boldsymbol{y}_{2})=\boldsymbol{g}(\boldsymbol{y}_{2})+D\boldsymbol{f}(\boldsymbol{g}(\boldsymbol{y}_{1}))^{-1}(\boldsymbol{y}_{2}-\boldsymbol{y}_{1})+\boldsymbol{R}_{\boldsymbol{g}}(\boldsymbol{y}_{2}),\quad \lim_{ \boldsymbol{y}_{2} \to \boldsymbol{y}_{1} }  \frac{\boldsymbol{R}_{\boldsymbol{g}}(\boldsymbol{y_{2}})}{\lVert \boldsymbol{y}_{2}-\boldsymbol{y}_{1} \rVert }=0
 $$
 on part du developpement de $\boldsymbol{f}$ :
 $$
-\underbrace{ \boldsymbol{f}(\boldsymbol{x}_{2}) }_{ \boldsymbol{y}_{2} }=\underbrace{ \boldsymbol{f}(\boldsymbol{x}_{1}) }_{ \boldsymbol{y}_{1} }+D\boldsymbol{f}(\boldsymbol{x}_{1})(\boldsymbol{x}_{2}-\boldsymbol{x}_{1})+R_{\boldsymbol{f}}(\boldsymbol{x}_{2})
+\underbrace{ \boldsymbol{f}(\boldsymbol{x}_{2}) }_{ \boldsymbol{y}_{2} }=\underbrace{ \boldsymbol{f}(\boldsymbol{x}_{1}) }_{ \boldsymbol{y}_{1} }+D\boldsymbol{f}(\boldsymbol{x}_{1})(\boldsymbol{x}_{2}-\boldsymbol{x}_{1})+\boldsymbol{R}_{\boldsymbol{f}}(\boldsymbol{x}_{2})
 $$
 donc 
 $$
-D\boldsymbol{f}(\boldsymbol{x}_{1})(\boldsymbol{x}_{2}-\boldsymbol{x}_{1})=\boldsymbol{y}_{2}-\boldsymbol{y}_{1}-R_{\boldsymbol{f}}(\boldsymbol{x}_{2})
+D\boldsymbol{f}(\boldsymbol{x}_{1})(\boldsymbol{x}_{2}-\boldsymbol{x}_{1})=\boldsymbol{y}_{2}-\boldsymbol{y}_{1}-\boldsymbol{R}_{\boldsymbol{f}}(\boldsymbol{x}_{2})
 $$
 donc
 $$
-\boldsymbol{x}_{2}-\boldsymbol{x}_{1}=\boldsymbol{g}(\boldsymbol{y}_{2})-\boldsymbol{g}(\boldsymbol{y}_{1})=D\boldsymbol{f}(\boldsymbol{x}_{1})^{-1}(\boldsymbol{y}_{2}-\boldsymbol{y}_{1})-D\boldsymbol{f}(\boldsymbol{x}_{1})^{-1}R_{\boldsymbol{f}}(\boldsymbol{x}_{2})
+\boldsymbol{x}_{2}-\boldsymbol{x}_{1}=\boldsymbol{g}(\boldsymbol{y}_{2})-\boldsymbol{g}(\boldsymbol{y}_{1})=D\boldsymbol{f}(\boldsymbol{x}_{1})^{-1}(\boldsymbol{y}_{2}-\boldsymbol{y}_{1})-D\boldsymbol{f}(\boldsymbol{x}_{1})^{-1}\boldsymbol{R}_{\boldsymbol{f}}(\boldsymbol{x}_{2})
 $$
 ou
 \begin{align*}
-\lim_{ \boldsymbol{y}_{2} \to \boldsymbol{y}_{1} } \frac{\lVert D\boldsymbol{f}(\boldsymbol{x}_{1})^{-1}R_{\boldsymbol{f}}(\boldsymbol{x}_{2}) \rVert }{\lVert \boldsymbol{y}_{2}-\boldsymbol{y}_{1}\rVert} & \le \lim_{ \boldsymbol{y}_{2} \to \boldsymbol{y}_{1} } \lVert D\boldsymbol{f}(\boldsymbol{x}_{1})^{-1} \rVert  \frac{\lVert R_{\boldsymbol{f}}(\boldsymbol{x}_{1})\rVert}{\lVert \boldsymbol{x}_{2}-\boldsymbol{x}_{1} \rVert } \frac{\lVert \boldsymbol{x}_{2}-\boldsymbol{x}_{1} \rVert }{\lVert \boldsymbol{y}_{2}-\boldsymbol{y}_{1} \rVert } \\
- &  \le \lim_{ \boldsymbol{y}_{2} \to \boldsymbol{y}_{1} } 2\lVert D\boldsymbol{f}(\boldsymbol{x}_{1})^{-1} \rVert\lVert D\boldsymbol{f}(\boldsymbol{x}_{0})^{-1} \rVert  \frac{\lVert R_{\boldsymbol{f}}(\boldsymbol{x}_{1}) \rVert }{\lVert \boldsymbol{x}_{2}-\boldsymbol{x}_{1} \rVert }=0
+\lim_{ \boldsymbol{y}_{2} \to \boldsymbol{y}_{1} } \frac{\lVert D\boldsymbol{f}(\boldsymbol{x}_{1})^{-1}\boldsymbol{R}_{\boldsymbol{f}}(\boldsymbol{x}_{2}) \rVert }{\lVert \boldsymbol{y}_{2}-\boldsymbol{y}_{1}\rVert} & \le \lim_{ \boldsymbol{y}_{2} \to \boldsymbol{y}_{1} } \lVert D\boldsymbol{f}(\boldsymbol{x}_{1})^{-1} \rVert_{S}  \frac{\lVert \boldsymbol{R}_{\boldsymbol{f}}(\boldsymbol{x}_{1})\rVert}{\lVert \boldsymbol{x}_{2}-\boldsymbol{x}_{1} \rVert } \frac{\lVert \boldsymbol{x}_{2}-\boldsymbol{x}_{1} \rVert }{\lVert \boldsymbol{y}_{2}-\boldsymbol{y}_{1} \rVert } \\
+ &  \le \lim_{ \boldsymbol{y}_{2} \to \boldsymbol{y}_{1} } 2\lVert D\boldsymbol{f}(\boldsymbol{x}_{1})^{-1} \rVert_{S} \lVert D\boldsymbol{f}(\boldsymbol{x}_{0})^{-1} \rVert_{S}  \frac{\lVert \boldsymbol{R}_{\boldsymbol{f}}(\boldsymbol{x}_{1}) \rVert }{\lVert \boldsymbol{x}_{2}-\boldsymbol{x}_{1} \rVert }=0
 \end{align*}
 donc $\boldsymbol{g}$ est differentiable avec matrice Jacobienne $D\boldsymbol{g}(\boldsymbol{y})=D\boldsymbol{f}(\boldsymbol{x})^{-1}$ ou $\boldsymbol{x}=\boldsymbol{g}(\boldsymbol{y})$ et $\boldsymbol{y}=\boldsymbol{g}(\boldsymbol{x})$. $\boldsymbol{g}$ est en fait de classe $C^{1}$. Si $\boldsymbol{f}$ est de classe $C^{k}$ alors $\boldsymbol{g}$ est de classe $C^{k}$.
 \end{proof}

@@ -1,0 +1,86 @@
+\todo{Lecture 14}
+
+\section{Fonctions implicites}
+Soit $f:\mathbf{R}^{n+1}\to \mathbf{R}$ et $\boldsymbol{z}\in \mathbf{R}^{n+1}$. On veut caracteriser l'ensemble des solutions de $f(\boldsymbol{z})=0\in \mathbf{R}$ (au moins localement).
+\begin{example}
+Soit $f(x,y)=y-x^{2}$. On a $f(x,y)=0\Leftrightarrow x=y^{2}$ donc $\Sigma=\{ (x,y)\in \mathbf{R}^{2}:y=x^{2} \}=\mathcal{G}(x^{2})$ ou $\mathcal{G}$ est un graphe. On represent ce graphe par $\phi:\mathbf{R}\to \mathbf{R},x\mapsto x^{2}$.
+
+On dit que l'equation $f(x,y)=0$ definit implicitement la fonction $y=x^{2}$.
+\end{example}
+\begin{example}
+Soit $f(x,y)=x^{2}+y^{2}-1$. On a $f(x,y)=0\Leftrightarrow x^{2}+y^{2}=1$. On peut couper le cercle pour decrire les graphes $x=\pm\sqrt{ 1-y^{2} }$ et $y=\pm \sqrt{ 1-x^{2} }$. Donc en tout point de $\Sigma$ on peut toujours decrire $\Sigma \cap V$ localement comme le graphe d'une fonction $x=\phi(y)$ ou $y=\phi(x)$.
+\end{example}
+\begin{example}
+Soit $f(x,y)=x^{2}-y^{2}$. On a $f(x,y)=0 \Leftrightarrow x^{2}=y^{2}$. On trouve un point critique / de singularite en $(0,0)$.
+\end{example}
+
+\begin{definition}
+Soit $f:E\subset \mathbf{R}^{n+1}\to \mathbf{R}$, $E$ ouvert. On dit que l'equation $f(\boldsymbol{x})=0$ definit implicitement une fonction $z_{i}=\phi(\boldsymbol{z}_{\neg i})=\phi(z_{1},\dots,z_{i-1},z_{i+1},\dots,z_{n})$  autour d'un point $\boldsymbol{z}_{0}$ tel que $f(\boldsymbol{z}_{0})=0$. S'il existe un ouvert $V\subset \mathbf{R}^{n+1}$, contenant $\boldsymbol{z}_{0}$, un ouvert $U\subset \mathbf{R}^{n}$ contenant $\boldsymbol{z}_{0,\neg i}$ tel que l'ensemble
+$$
+\mathcal{G}(\phi)=\{ \boldsymbol{z}\in V:f(\boldsymbol{z})=0 \},\quad \phi:U\to \mathbf{R}
+$$\end{definition}
+\begin{definition}[Hypersurface de $\mathbf{R}^{n+1}$]
+Soit $\Sigma \subset \mathbf{R}^{n+1}$ et $\boldsymbol{z}_{0}\in \Sigma$. On dit que $\Sigma$ est une hypersurface localement autour de $\boldsymbol{z}_{0}$ si elle est le graphe d'une fonction $\phi:U\subset \mathbf{R}^{n}\to \mathbf{R}$. Plus precisement, s'il existe un ouvert $V\subset \mathbf{R}^{n+1}$ contenant $\boldsymbol{z}_{0}$, un indice $i\in \{ 1,\dots,n+1 \}$, un ouvert $U\subset \mathbf{R}^{n}$ contenant $\boldsymbol{z}_{0,\neg i}$ et une fonction $\phi:U\to \mathbf{R}$ telle que 
+$$
+\mathcal{G}(\phi)=\Sigma \cap V.
+$$
+\begin{itemize}
+\item On dit que $\Sigma$ est de classe $C^{k}$ autour de $\boldsymbol{z}_{0}$ si $\phi$ est de classe $C^{k}$.
+\item On dit que $\Sigma$ est une hypersurface (de classe $C^{k}$) si elle est une hypersurface de chacun de ses points.
+\end{itemize}
+\end{definition}
+
+Soit $f:\mathbf{R}^{2}\to \mathbf{R}$ de classe $C^{1}$ et $\boldsymbol{z}_{0}=(x_{0},y_{0})$ tel que $f(\boldsymbol{z}_{0})=0$. Supposons qu'une fonction implicite $\phi:(x_{0}-\delta,x_{0}+\delta)\to \mathbf{R},x\mapsto y$ telle que $\mathcal{G}(\phi)=\{ \boldsymbol{z}\in V:f(\boldsymbol{z})=0 \}$ ou $V$ est un voisinage de $\boldsymbol{z}_{0}$. Soit l'ensemble de solutions $\Sigma$, si $\boldsymbol{z}_{0}\in\Sigma$ alors pour tous $(x,y)$ tels que $y=\phi (x)$ on a que $f(x,y)=f(x,\phi(x))=0$ pour tout $x \in(x_{0}-\delta,x_{0}+\delta)$.
+
+Soit $\tilde{f}:(x_{0}-\delta,x_{0}+\delta)\to \mathbf{R},x \mapsto f(x,\phi(x))$ une fonction nulle. Alors
+$$
+0=\frac{d}{dx}\tilde{f}(x)=\frac{ \partial f }{ \partial x } (x,\phi (x))+\frac{ \partial f }{ \partial y } (x,\phi(x))\phi'(x)
+$$
+donc
+$$
+\phi'(x)=- \frac{\frac{ \partial f }{ \partial x } (x,\phi(x))}{\frac{ \partial f }{ \partial y } (x,\phi (x))}
+$$
+
+En particulier 
+$$
+\phi'(x_{0})=-\frac{\frac{ \partial f }{ \partial x } (x_{0},y_{0})}{\frac{ \partial f }{ \partial y } (x_{0},y_{0})}
+$$
+si $\frac{ \partial f }{ \partial y }(x_{0},y_{0})\neq 0$.
+
+Si $\delta$ est suffisament petit et $\frac{ \partial f }{ \partial y }(x_{0},y_{0})\neq 0$ alors $\frac{ \partial f }{ \partial y }(x,\phi(x))\neq0$ pour tout $x \in (x_{0}-\delta,x_{0}+\delta)$.
+
+Si $f\in C^{2}$ alors $\tilde{f}$ aussi et donc
+\begin{align*}
+0=\frac{d^{2}}{dx^{2}}\tilde{f}(x) & =\frac{d}{dx}\left( \frac{ \partial f }{ \partial x } (x,\phi (x))+\frac{ \partial f }{ \partial y } (x,\phi(x))\phi'(x) \right) \\
+ & =\frac{ \partial^{2}f }{ \partial x^{2} }(x,\phi(x))+\frac{ \partial^{2}f }{ \partial y\partial x } (x,\phi(x))\phi'(x)+\left[ \frac{ \partial^{2}f }{ \partial x\partial y } (x,\phi(x))+\frac{ \partial^{2}f }{ \partial y^{2} } (x,\phi(x))\phi'(x) \right]\phi'(x) \\
+ & +\frac{ \partial f }{ \partial y } (x,\phi(x))\phi''(x) 
+\end{align*}
+alors
+$$
+\phi''(x)=-\frac{1}{\frac{ \partial f }{ \partial y } (x,\phi(x))}\left[ \frac{ \partial^{2}f }{ \partial x^{2} } (x,\phi(x))+2\frac{ \partial^{2}f }{ \partial x\partial y } (x,\phi(x))\phi'(x)+\frac{ \partial^{2}f }{ \partial y^{2} }(x,\phi(x))(\phi'(x))^{2}  \right]
+$$
+\begin{example}
+Soit $f(x,y)=xe^{y}+ye^{ x }$. $\boldsymbol{z}_{0}=(0,0)$ est une solution de $f(x,y)=0$. On a $\frac{ \partial f }{ \partial x }=e^{ y }+ye^{ x }$ et $\frac{ \partial f }{ \partial y }=xe^{ y }+e^{ x }$ donc $\phi'(0)=-1$ et $\phi''(0)=\dots$ . 
+\end{example}
+\begin{notation}
+$$
+\boldsymbol{z}\in \mathbf{R}^{n+1}:\boldsymbol{z}=(\underbrace{ x_{1},\dots,x_{n} }_{ \boldsymbol{x}\in \mathbf{R}^{n} },y)
+$$
+\end{notation}
+\begin{theorem}[Theoreme des fonctions implicites: cas scalaire]
+Soit $E\subset \mathbf{R}^{n+1}$ et $f:E\to \mathbf{R}$ de classe $C^{1}$. Soit $\Sigma=\{ (\boldsymbol{x},y)\in \mathbf{R}^{n+1}:f(\boldsymbol{x},y)=0 \}$ et $\boldsymbol{z}_{0}=(\boldsymbol{x}_{0},y_{0})\in\Sigma$. Si $\frac{ \partial f }{ \partial y }(\boldsymbol{z}_{0})\neq 0$, il existe un ouvert $V\subset \mathbf{R}^{n+1}$ contenant $\boldsymbol{z}_{0}$, un ouvert $U\subset \mathbf{R}^{n}$ contenant $\boldsymbol{x}_{0}$ et une fonction $\phi:U\to \mathbf{R}$ de classe $C^{1}$ telle que $\mathcal{G}(\phi)=\Sigma \cap V$. 
+
+C-a-d $f(\boldsymbol{z})=0$ definit implicitement la fonction $\phi$ autour de $\boldsymbol{z}_{0}$. De plus, 
+$$
+\frac{ \partial \phi }{ \partial x_{i} }(\boldsymbol{x})=-\frac{\frac{ \partial f }{ \partial x_{i} } (\boldsymbol{x},\phi(\boldsymbol{x}))}{\frac{ \partial f }{ \partial y } (\boldsymbol{x},\phi(\boldsymbol{x}))},\quad \forall \boldsymbol{x}\in V
+$$
+Si $f$ est de classe $C^{k}$ alors $\phi$ est aussi de classe $C^{k}$.
+
+On peut definir l'hyperplan tangent a $\Sigma$, qui coincide avec le graphe de $\phi$: 
+\begin{align*}
+\Pi_{\boldsymbol{z}_{0}}\mathcal{G}(\phi) & =\left\{  (\boldsymbol{x},y)\in \mathbf{R}^{n+1}:y=y_{0}+\sum \frac{ \partial \phi }{ \partial x_{i} } (x)(x-x_{0,i})  \right\} \\
+ & =\left\{  (\boldsymbol{x},y)\in \mathbf{R}^{n+1}:-\sum \frac{ \partial \phi }{ \partial x_{i} } (x)(x-x_{0,i})+y-y_{0,1}=0  \right\} \\
+ & =\left\{  (\boldsymbol{x},y)\in \mathbf{R}^{n+1}:\sum \frac{ \partial f }{ \partial x_{i} } (\boldsymbol{z}_{0})(x-x_{0,i})+ \frac{ \partial f }{ \partial y } (\boldsymbol{z}_{0})(y-y_{0,i})=0  \right\} \\
+ & =\{ \boldsymbol{z}\in \mathbf{R}^{n+1}: \nabla f(\boldsymbol{z}_{0})(\boldsymbol{z}-\boldsymbol{z}_{0})=0\}
+\end{align*}
+\end{theorem}

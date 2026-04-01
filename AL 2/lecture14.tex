@@ -1,0 +1,105 @@
+\todo{Lecture 14}
+\begin{lemma}
+Soit $V$ un espace vectoriel sur $\mathbf{C}$ de dimension finie et soit $B$ une base de $V$. Une forme sesquilineaire $f$ est une forme hermitienne si et seulement si $A_{B}^{f}$ est hermitienne.
+\end{lemma}
+\begin{proof}
+Sens $\Rightarrow$ : On veut montrer que $A_{B}^{f}=\overline{(A_{B}^{f})^{\mathsf{T}}}$. Soient $x,y\in V$, on a 
+\begin{align*}
+f(x,y) & =[x]_{B}^{\mathsf{T}}A_{B}^{f}\overline{[y]}_{B}\\
+ & = \overline{f(y,x)}\\
+ & =\overline{[y]_{B}^{\mathsf{T}}A_{B}^{f} \overline{[x]}_{B}} \\
+ & =\overline{[y]^{\mathsf{T}}_{B}}\overline{A_{B}^{f}}[x]_{B} \\
+ & =(\overline{[y]_{B}^{\mathsf{T}}}\overline{A_{B}^{f}}[x]_{B})^{\mathsf{T}} \\
+ & =[x]^{\mathsf{T}}(\overline{A_{B}^{f}})^{\mathsf{T}}\overline{[y]}_{B}
+\end{align*}
+ou 
+\begin{align*}
+(A_{B}^{f})_{ij} & =f(b_{i},b_{j})=e_{i}^{\mathsf{T}}A_{B}^{f}e_{j} \\
+ & =e_{i}^{\mathsf{T}}(\overline{A_{B}^{f}})^{\mathsf{T}}e_{j}=(\overline{A_{B}^{f}})^{\mathsf{T}}_{ij}
+\end{align*}
+donc $A_{B}^{f}=(\overline{A_{B}^{f}})^{\mathsf{T}}=\overline{(A_{B}^{f})^{\mathsf{T}}}$ est une matrice hermitienne.
+
+Sens $\Leftarrow$ : Analogue.
+\end{proof}
+\begin{definition}
+Deux matrices $A,B\in \mathbf{C}^{n\times n}$ sont congruentes complexes s'il existe une matrice inversible $P\in \mathbf{C}^{n\times n}$ tell que $A=P^{\mathsf{T}}B \overline{P}$. Nous ecrivons $A\cong_{\mathbf{C}}B$.
+\end{definition}
+\begin{reminder}
+Soit $f$ une forme bilineaire et $B$, $B'$ deux bases:
+$$
+f(x,y)=[x]_{B}^{\mathsf{T}}A_{B}^{f}[y]_{B}=[x]_{B'}^{\mathsf{T}}P_{B'B}^{\mathsf{T}}A_{B}^{f}P_{B'B}[y]_{B'}
+$$
+
+Pour une forme sesquilineaire:
+$$
+f(x,y)=[x]_{B}^{\mathsf{T}}A_{B}^{f}\overline{[y]}_{B}=[x]_{B'}^{\mathsf{T}}P_{B'B}^{\mathsf{T}}A_{B}^{f}\overline{P_{B'B}[y]_{B'}}
+$$
+\end{reminder}
+\begin{theorem}
+Soit $V$ un espace vectoriel sur $\mathbf{C}$ de dimension finie, muni d'une forme hermitienne. Alors $V$ possede une base orthogonale.
+\end{theorem}
+\begin{proof}
+Soit $B$ une base. $A_{B}^{f}$ peut etre transformee avec $P^{\mathsf{T}}A_{B}^{f}\overline{P}$ une matrice diagonale. La base orthogonale $B'$ ou $P=P_{B'B}$ \dots.
+\end{proof}
+
+\subsection{Espaces hermitiens}
+
+\begin{definition}
+Soit $\langle  \rangle$ un produit hermitien. La longueur ou la norme d'un element $v\in V$ est le nombre
+$$
+\lVert v \rVert =\sqrt{ \langle v,v \rangle  }.
+$$
+Un element $v\in V$ est un vecteur unitaire si $\lVert v \rVert=1$.
+\end{definition}
+On peut verifier les proprietes suivantes :
+\begin{enumerate}
+\item Pour tout $v\in V$, $\lVert v \rVert \ge 0$ et $\lVert v \rVert=0$ si et seulement si $v=0$.
+\item Pour $\alpha \in \mathbf{C}$ et $v\in V$ on a $\lVert \alpha v \rVert=|\alpha|\lVert v \rVert$. Ou $|\alpha|=\sqrt{a^{2}+b^{2}}$ et $\alpha=a+bi$.
+\item Pour chaque $u,v\in V$ on a $\lVert u+v \rVert\le \lVert u \rVert + \lVert v \rVert$.
+\end{enumerate}
+
+\begin{theorem}[Procede de Gram-Schmidt]
+Soit $V$ un espace hermitien et $\{ v_{1},\dots,v_{n} \}\subseteq V$ un ensemble libre. Il existe un ensemble libre orthogonal $\{ u_{1},\dots,u_{n} \}$ de $V$ tel que pour tout $i$, $\{ v_{1},\dots,v_{i} \}$ et $\{ u_{1},\dots,u_{i} \}$ engendrent le meme sous-espace de $V$.
+\end{theorem}
+\begin{proof}
+Soit $\{ b_{1},\dots,b_{n} \}\subset V$ libre. On a $b_{1}^{*}=b_{1}$. Pour tout $j\in \{ 2,\dots,n \}$:
+$$
+b_{j}^{*}=b_{j}-\sum_{i=1}^{j-1}  \frac{\langle b_{j},b_{i}^{*} \rangle }{\langle b_{i}^{*},b_{i}^{*} \rangle }b_{i}^{*}
+$$
+On a $B=(b_{1},\dots,b_{n})\in \mathbf{C}^{m\times n}$ de $\mathrm{rang}(B)=n$ donc $B=B^{*}\begin{pmatrix}1 &  & \mu _{ij} \\  & \ddots &  \\  &  & 1\end{pmatrix}$ ou $B^{*}=(b_{1}^{*},\dots,b_{n}^{*})$.
+\end{proof}
+\begin{corollary}
+Soit $V$ un espace hermitien de dimension finie. Alors $V$ possede une base orthonormale.
+\end{corollary}
+
+\chapter{Theoreme spectral et decomposition en valeurs singuliers}
+
+Une matrice $A\in K^{n\times n}$ se factorise (diagonalisable) comme: 
+\begin{enumerate}
+\item $A=P\mathrm{diag}(\lambda_{1},\dots,\lambda _{n})P^{-1}$ si et seulement si $K^{n}$ possede une base composee de vecteurs propres de $A$. Pas toute matrice est diagonalisable.
+\item Si $A$ est symetrique et $\mathrm{char}(K)\neq 2$ alors $A=P^{\mathsf{T}}\mathrm{diag}(d_{1},\dots,d_{n})P$ ou $P\in K^{n\times n}$ est inversible.
+\end{enumerate}
+
+Si $K=\mathbf{R}$ et $A$ est symetrique, 1 et 2 sont toujours possibles avec \emph{un} $P\in K^{n\times n}$ simultanement. C-a-d, il existe $P\in K^{n\times n}$ telle que $P^{\mathsf{T}}P=\mathrm{Id}$ et ils existent $\lambda_{1},\dots,\lambda _{n}\in \mathbf{R}$ tels que $A=P^{\mathsf{T}}\mathrm{diag}(\lambda_{1},\dots,\lambda _{n})P$. 
+
+Dans ce cas alors, $P=(p_{1},\dots,p_{n})$ ou $\{p_{1},\dots,p_{n}\}$ est une base de vecteurs propres de $A$. On a 
+$$
+Ap_{i}=P\underbrace{ \mathrm{diag}(\lambda_{1},\dots,\lambda _{n})\underbrace{ P^{\mathsf{T}}p_{i} }_{ e_{i} } }_{ \lambda _{i}e_{i} }=\lambda _{i}p_{i}.
+$$
+Comme $P^{\mathsf{T}}P=\mathrm{Id}$, les colonnes de $P$ sont deux-a-deux orthogonales et unitaires. Alors $\{ p_{1},\dots,p_{n} \}$ est une base orthonormale (relatif au produit scalaire standard) de $\mathbf{R}^{n}$ composee de vecteurs propres de $A$.
+
+\begin{lemma}
+Toute matrice $A\in \mathbf{R}^{n\times n}$ possede une valeur propre complexe $\lambda \in \mathbf{C}$. Par le theoreme fondamental d'Algebre on a que $f_{A}(x)\in \mathbf{R}[x]$ possede une racine complexe $\lambda \in \mathbf{C}$.
+\end{lemma}
+\begin{proposition}
+Toute matrice $A\in \mathbf{R}^{n\times n}$ symetrique possede une valeur propre reel.
+\end{proposition}
+\begin{proof}
+Soit $\lambda \in \mathbf{C}$, $v \in \mathbf{C}^{n}\setminus \{ 0 \}$ tels que $v$ est un vecteur propre associe au valeur propre $\lambda$. Supposons que $\lambda \not\in \mathbf{R}$, on a
+\begin{align*}
+\lambda \underbrace{ v^{\mathsf{T}} \overline{v} }_{ \in \mathbf{R}_{\ge 0} } & =v^{\mathsf{T}}A^{\mathsf{T}} \overline{v} \\
+ & =v^{\mathsf{T}} \overline{A^{\mathsf{T}}v} \\
+ & =v^{\mathsf{T}} \overline{Av}=\bar{\lambda} v^{\mathsf{T}}\overline{v}
+\end{align*}
+donc $\lambda=\bar{\lambda}$.
+\end{proof}
