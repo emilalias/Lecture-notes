@@ -1,0 +1,93 @@
+\todo{Lecture 15}
+\begin{remark}
+On a $y_{0}=\phi(\boldsymbol{x}_{0})$ et $\mathcal{G}(\phi)=\{ (\boldsymbol{x},y)\in \mathbf{R}^{n+1}:y=\phi(\boldsymbol{x}),\boldsymbol{x}\in U \}=\Sigma \cap V$. Donc :
+\begin{itemize}
+\item Pour tout $\boldsymbol{x}\in U$, on a $f(\boldsymbol{x},\phi(\boldsymbol{x}))=0$.
+\item Pour tout $\boldsymbol{x}\in U$, on a $$\frac{ \partial \phi }{ \partial x_{i} }(\boldsymbol{x})=-\frac{\frac{ \partial f }{ \partial x_{i} }(\boldsymbol{x},\phi(\boldsymbol{x}))}{\frac{ \partial f }{ \partial y }(\boldsymbol{x},\phi(\boldsymbol{x}))}$$
+\end{itemize}
+Le plan tangent a $\Sigma$ en $\boldsymbol{z}_{0}$ est le plan tangent au graphe de $\phi$ en $(\boldsymbol{x}_{0},y_{0})$:
+\begin{align*}
+\Pi_{\mathcal{G}(\phi)} & =\left\{ (\boldsymbol{x},y)\in \mathbf{R}^{n+1} : y=\underbrace{ \phi(\boldsymbol{x}_{0}) }_{ y_{0} }+\sum _{i=1}^{n}\frac{ \partial \phi }{ \partial x_{i} } (\boldsymbol{x}_{0})(x_{i}-x_{0,i} )     \right\} \\
+ & =\left\{  (\boldsymbol{x},y)\in \mathbf{R}^{n+1} : y-y_{0}-\sum_{i=1}^{n} \frac{ \partial \phi }{ \partial x_{i} } (\boldsymbol{x}_{0})(x_{i}-x_{0,i}) =0 \right\} \\
+ & = \left\{  (\boldsymbol{x},y)\in \mathbf{R}^{n+1}:\frac{ \partial f }{ \partial y } (\boldsymbol{z}_{0})(y-y_{0}) +\sum_{i=1}^{n} \frac{ \partial f }{ \partial x_{i}  }(\boldsymbol{z}_{0})(x_{i}-x_{0,i})=0 \right\} \\
+ & =\{ \boldsymbol{z}\in \mathbf{R}^{n+1}:Df(\boldsymbol{z}_{0})(\boldsymbol{z}-\boldsymbol{z}_{0}) =0 \}
+\end{align*}
+\end{remark}
+\subsection{Cas vectoriel}
+Soit $\boldsymbol{f}:E\subset \mathbf{R}^{n+m}\to \mathbf{R}^{m}$
+\begin{notation}
+$$
+\boldsymbol{z}=(\underbrace{ z_{1},\dots,z_{n} }_{ \boldsymbol{x}\in \mathbf{R}^{n} },\underbrace{ z_{n+1},\dots,z_{n+m} }_{ \boldsymbol{y}\in \mathbf{R}^{m} })\in E\subset \mathbf{R}^{n+m}.
+$$
+\end{notation}
+
+Soit $\Sigma=\{ \boldsymbol{z}\in \mathbf{R}^{n+m}:\boldsymbol{f}(\boldsymbol{z}) =\boldsymbol{0}\}$ on a le système de $m$ équations en $n+m$ inconnues :
+$$
+\begin{cases}
+f_{1}(z_{1},\dots,z_{n+m}) & =0 \\
+ &~ \vdots \\
+f_{m}(z_{1},\dots,z_{n+m}) & =0.
+\end{cases}
+$$
+
+Étant donné $\boldsymbol{z}_{0}\in\Sigma$, on souhaite caractériser l'ensemble $\Sigma$ dans un voisinage $V$ de $\boldsymbol{z}_{0}$.
+
+Dans le cas linéaire, on a $\boldsymbol{f}(\boldsymbol{z})=A\boldsymbol{z}+\boldsymbol{b}$ ou $A\in \mathbf{R}^{m\times(n+m)}$ et $\boldsymbol{b}\in \mathbf{R}^{m}$. Ou on peut couper $A$ en deux sous-matrices $A_{1}\in \mathbf{R}^{m\times n}$ et $A_{2}\in \mathbf{R}^{m\times m}$ et $\boldsymbol{z}$ en $\boldsymbol{x}\in \mathbf{R}^{n}$ et $\boldsymbol{y}\in \mathbf{R}^{m}$ pour obtenir
+$$
+\boldsymbol{f}(\boldsymbol{z})=\boldsymbol{0}=A_{1}\boldsymbol{x}+A_{2}\boldsymbol{y}+\boldsymbol{b}.
+$$
+
+Si $\det(A_{2})\neq 0$ alors 
+$$
+\sigma=\{ (\boldsymbol{x},\boldsymbol{y})\in \mathbf{R}^{n+m}:\boldsymbol{y}=-A_{2}^{-1}(A_{1}\boldsymbol{x}+\boldsymbol{b}) \}.
+$$
+
+Si $\mathrm{rang}(A)=m$, on peut choisir $m$ variables $(z_{i_{1}},\dots,z_{i_{m}})=(y_{1},\dots,y_{m})$ telles que $A(i,i_{1}),\dots,A(i,i_{m})$ sont linéairement indépendants, et on peut exprimer $\boldsymbol{y}$ en fonction des autres $n$ variables.
+
+Dans le cas non-linéaire, autour de $\boldsymbol{z}_{0}\in\Sigma$. On a si $\boldsymbol{f}(\boldsymbol{z}_{0})=\boldsymbol{0}$ :
+\begin{align*}
+\boldsymbol{f}(\boldsymbol{z}) & =\boldsymbol{f}(\boldsymbol{z}_{0})+D\boldsymbol{f}(\boldsymbol{z}_{0})(\boldsymbol{z}-\boldsymbol{z}_{0})+\boldsymbol{R}_{\boldsymbol{f}}(\boldsymbol{z}_{0}) \\
+ & =\begin{pmatrix}
+D_{\boldsymbol{x}}\boldsymbol{f} (\boldsymbol{z}_{0}) & D_{\boldsymbol{y}}\boldsymbol{f}(\boldsymbol{z}_{0})
+\end{pmatrix}\begin{pmatrix}
+\boldsymbol{x}-\boldsymbol{x}_{0} \\
+\boldsymbol{y}-\boldsymbol{y}_{0}
+\end{pmatrix}+\boldsymbol{R}_{\boldsymbol{f}}(\boldsymbol{z}) \\
+ & =D_{\boldsymbol{x}}\boldsymbol{f}(\boldsymbol{z}_{0})(\boldsymbol{x}-\boldsymbol{x}_{0})+D_{\boldsymbol{y}}\boldsymbol{f}(\boldsymbol{z}_{0})(\boldsymbol{y}-\boldsymbol{y}_{0}) +\boldsymbol{R}_{\boldsymbol{f}}(\boldsymbol{z})
+\end{align*}
+\begin{theorem}[Théorème des fonctions implicites : cas vectoriel]
+Soit $E\subset \mathbf{R}^{n+m}$ ouvert non vide, $\boldsymbol{f}:E\to \mathbf{R}^{m}$ de classe $C^{1}$, $\Sigma=\{(\boldsymbol{x},\boldsymbol{y})\in E:\boldsymbol{f}(\boldsymbol{x},\boldsymbol{y})=\boldsymbol{0} \}$, $\boldsymbol{z}_{0}=(\boldsymbol{x}_{0},\boldsymbol{y}_{0})\in\Sigma$. Si $\det(D_{\boldsymbol{y}}\boldsymbol{f}(\boldsymbol{z}_{0}))\neq 0$, alors il existe un ouvert $V\subset E$ contenant $\boldsymbol{z}_{0}$, un ouvert $U\subset \mathbf{R}^{n}$ contenant $\boldsymbol{x}_{0}$ et une unique fonction $\boldsymbol{\phi}:U\to \mathbf{R}^{m}$ telle que
+\begin{itemize}
+\item $\boldsymbol{y}_{0}=\boldsymbol{\phi}(\boldsymbol{x}_{0})$.
+\item $\mathcal{G}(\boldsymbol{\phi})=\Sigma \cap V$
+\end{itemize}
+
+Ceci implique que pour tout $\boldsymbol{x}\in U$, on a $\boldsymbol{f}(\boldsymbol{x},\boldsymbol{\phi}(\boldsymbol{x}))=\boldsymbol{0}$. De plus, pour tout $\boldsymbol{x}\in U$, le déterminant $\det(D_{\boldsymbol{y}}\boldsymbol{f}(\boldsymbol{x},\boldsymbol{\phi}(\boldsymbol{x})))\neq 0$ et $\underbrace{ D\boldsymbol{\phi}(\boldsymbol{x}) }_{ \in \mathbf{R}^{m\times n} }=-D_{\boldsymbol{y}}\boldsymbol{f}(\boldsymbol{x},\boldsymbol{\phi}(\boldsymbol{x}))^{-1}D_{\boldsymbol{x}}\boldsymbol{f}(\boldsymbol{x},\boldsymbol{\phi}(\boldsymbol{x}))$. 
+
+En fin, si $\boldsymbol{f}\in C^{k}$, alors $\boldsymbol{\phi}$ est aussi de classe $C^{k}$.
+\end{theorem}   
+\begin{proof}
+Soit $\boldsymbol{F}:E\to \mathbf{R}^{n+m},(\boldsymbol{x},\boldsymbol{y})\mapsto(\boldsymbol{x},\boldsymbol{f}(\boldsymbol{x},\boldsymbol{y}))=(\boldsymbol{v},\boldsymbol{w})$. On étudie si $\boldsymbol{F}$ est un difféomorphisme local autour de $\boldsymbol{z}_{0}$ :
+$$
+D\boldsymbol{F}(\boldsymbol{z}_{0})=\begin{pmatrix}
+\mathrm{Id}_{n} & 0 \\
+D_{\boldsymbol{x}}\boldsymbol{f}(\boldsymbol{z}_{0}) & D_{\boldsymbol{y}}\boldsymbol{f}(\boldsymbol{z}_{0})
+\end{pmatrix}
+$$
+et comme cette matrice est triangulaire par blocs, on obtient que $\det(D\boldsymbol{F}(\boldsymbol{z}_{0}))=\det(\mathrm{Id}_{n})\det(D_{\boldsymbol{y}}\boldsymbol{f}(\boldsymbol{z}_{0}))$. Donc, on a un difféomorphisme local autour de $\boldsymbol{z}_{0}$, car $\det(D_{\boldsymbol{y}}\boldsymbol{f}(\boldsymbol{z}_{0}))\neq0$ par hypothèse. Alors, il existe un ouvert $V\subset R^{n+m}$ contenant $\boldsymbol{z}_{0}$ et un ouvert $W\subset \mathbf{R}^{n+m}$ contenant $(\boldsymbol{x}_{0},\boldsymbol{0})$ tel que $\boldsymbol{F}:V\to W$ est un difféomorphisme.
+
+Soit $\boldsymbol{G}:W\to V,(\boldsymbol{v},\boldsymbol{w})\mapsto (\boldsymbol{\eta}(\boldsymbol{v},\boldsymbol{w}),\boldsymbol{\varphi}(\boldsymbol{v},\boldsymbol{w}))=(\boldsymbol{v},\boldsymbol{\varphi}(\boldsymbol{v},\boldsymbol{w}))=(\boldsymbol{x},\boldsymbol{y})$. On a
+\begin{align*}
+\Sigma \cap V & =\{ \boldsymbol{z}=(\boldsymbol{x},\boldsymbol{y}):\boldsymbol{f}(\boldsymbol{x},\boldsymbol{y})=\boldsymbol{0}  \} \\
+ & =\{ (\boldsymbol{x},\boldsymbol{y}):\boldsymbol{F}(\boldsymbol{x},\boldsymbol{y})=(\boldsymbol{x},\boldsymbol{0}) \} \\
+ & =\{ (\boldsymbol{x},\boldsymbol{y}):(\boldsymbol{x},\boldsymbol{y})=\boldsymbol{G}(\boldsymbol{x},\boldsymbol{0}) \} \\
+ & =\{ (\boldsymbol{x},\boldsymbol{y}):\boldsymbol{G}(\boldsymbol{x},\boldsymbol{0})=(\boldsymbol{x},\boldsymbol{\varphi}(\boldsymbol{x},\boldsymbol{0}),\boldsymbol{x}\in U \} \\
+ & =\{ (\boldsymbol{x},\boldsymbol{y}):\boldsymbol{y}=\underbrace{ \boldsymbol{\varphi}(\boldsymbol{x},\boldsymbol{0} ) }_{ \boldsymbol{\phi}(\boldsymbol{x}) },\boldsymbol{x}\in U \}
+\end{align*}
+
+Le theoreme d'inversion locale nous dit que $D\boldsymbol{F}(\boldsymbol{x},\boldsymbol{y})$ est inversible dans $V$, ceci implique que $\det(D_{\boldsymbol{y}}\boldsymbol{f}(\boldsymbol{x},\boldsymbol{y}))\neq 0$ pour tout $(\boldsymbol{x},\boldsymbol{y})\in V$. Pour tout $\boldsymbol{x}\in U$, on a que $\boldsymbol{f}(\boldsymbol{x},\boldsymbol{\phi}(\boldsymbol{x}))=\tilde{\boldsymbol{f}}(\boldsymbol{x})=\boldsymbol{0}$, donc
+\begin{align*}
+D \tilde{\boldsymbol{f}}(\boldsymbol{x}) & =D_{\boldsymbol{x}}\boldsymbol{f}(\boldsymbol{x},\boldsymbol{\phi}(\boldsymbol{x}))+D_{\boldsymbol{y}}\boldsymbol{f}(\boldsymbol{x},\boldsymbol{\phi}(\boldsymbol{x}))D\boldsymbol{\phi}(\boldsymbol{x})=\boldsymbol{0} \\
+\Rightarrow D\boldsymbol{\phi}(\boldsymbol{x}) & =-D_{\boldsymbol{y}}\boldsymbol{f}(\boldsymbol{x},\boldsymbol{\phi}(\boldsymbol{x}))^{-1}D_{\boldsymbol{x}}\boldsymbol{f} (\boldsymbol{x},\boldsymbol{\phi}(\boldsymbol{x})).
+\end{align*}
+\end{proof}

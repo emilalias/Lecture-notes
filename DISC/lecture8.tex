@@ -1,0 +1,163 @@
+\begin{definition} \todo{Lecture 8}
+A function $f:\mathbf{Z}_{\ge 1}\to \mathbf{C}$ is multiplicative if for all $m,n\in \mathbf{Z}_{\ge 1}$, such that $\gcd(m,n)=1$, we have 
+$$
+f(mn)=f(m)f(n).
+$$
+\end{definition}
+\begin{exercise}
+The Möbius function $\mu$ is multiplicative.
+\end{exercise}
+
+
+\chapter{Graph theory}
+
+\begin{definition}
+A graph $G$ is an ordered pair $(V,E)$ where $V$ is a set of elements called vertices and $E$ is a set of 2-element subsets of $V$, called edges.
+\end{definition}
+\begin{example}
+Let $V=\{ 1,2,3,4 \}$ and $E=\{ \{ 1,2 \},\{ 2,3 \},\{ 3,4 \},\{ 4,1 \} \}\subset \binom{ V}  {2 }$. $G=(V,E)$ forms a graph.
+\end{example}
+\begin{definition}
+Let $V$ be a finite set. A complete graph on vertices $V$ (or a clique) is the graph $G=(V,\binom{ V}  {2 })$.
+
+A complete graph with $n$ vertices is denoted $K_{n}$.
+\end{definition}
+
+\begin{definition}
+The cycle $C_{n}=(V,E)$ where $V=\{ 1,\dots,n\}$ and $E=\{ \{ 1,2 \},\{ 2,3 \},\dots,\{ n-1,n\},\{ n,1 \} \}$ forms a graph.
+\end{definition}
+
+Let $G$ be a graph.
+\begin{definition}
+Let $v_{1},v_{2}\in V$ be vertices of $G$. If $\{ v_{1},v_{2} \}\in E$, we say that $v_{1}$ and $v_{2}$ are connected by an edge or adjacent.
+\end{definition}
+\begin{definition}
+A degree of a vertex $v\in V$ is the number of edges adjacent to it.
+\end{definition}
+
+\begin{lemma}[The handshake lemma]
+The sum of degrees of all vertices in a (finite) graph $G$ is an even number.
+\end{lemma}
+\begin{proof}
+The sum of degrees of all vertices is equal to twice the number of edges.
+\end{proof}
+\begin{definition}
+A walk is a graph $G$ with a sequence of nodes $v_{0},v_{1},\dots,v_{k}$ such that $v_{0}$ is adjacent to $v_{1}$, $v_{1}$ to $v_{2}$ and so on; any two consecutive nodes in the sequence must be connected by an edge.
+\end{definition}
+\begin{definition}
+A path is a walk such that all its vertices are distinct.
+\end{definition}
+\begin{definition}
+A closed walk is a walk such that the first vertex $v_{0}$ coincides with the last one $v_{k}$.
+\end{definition}
+\begin{definition}
+	A graph $G=(V,E)$ is connected if for every two vertices $u,v\in V$, there exists a path in $G$ between them.
+\end{definition}
+\begin{definition}
+A cycle in a graph $G=(V,E)$ is a sequence of distinct vertices $v_{1},\dots,v_{r}\in V$ with $r\ge 3$ such that $v_{1}$ is adjacent to $v_{2}$, $v_{2}$ to $v_{3}$, \dots, $v_{r - 1}$ to $v_{r}$, and $v_{r}$ to $v_{1}$.
+\end{definition}
+\begin{definition}
+A tree is a connected graph without cycles.
+\end{definition}
+\begin{definition}
+A vertex of degree 1 in a tree is called a leaf.
+\end{definition}
+\begin{lemma}
+Every (finite) tree on $n\ge 2$ vertices has at least two leaves.
+\end{lemma}
+\begin{proof}
+Consider a path of maximum length, say $v_{1},\dots,v_{n}$. The tree is connected, therefore such path exists and has length of at least 2. The initial point $v_{1}$ and the final point $v_{n}$ must be leaves, otherwise the path can be extended.
+\end{proof}
+\begin{lemma}
+Every tree on $n$ vertices has exactly $n-1$ edges.
+\end{lemma}
+\begin{proof}
+We prove the lemma by induction on $n$.
+
+For $n=1$ we have that the tree has 0 edges. $\checkmark$
+
+Suppose that the lemma is true for all trees with $n$ or lesser vertices. Let $T=(V,E)$ be a tree with $n+1$ vertices. By the previous lemma, $T$ has a leave, say $v\in V$. Let $e$ be the unique edge adjacent to $v$. We define a new graph $T'=(V\setminus \{ v \},E\setminus \{ e \})$. This new graph contains no cycles and is connected therefore it is a tree. By the induction hypothesis $|E\setminus \{ e \}|=|V\setminus \{ v \}|-1=n-1$. Therefore, $|E|=|V|-1$.
+\end{proof}
+\section{Graph isomorphisms}
+
+\begin{definition}
+Two graphs $G=(V,E)$ and $G'=(V',E')$ are called isomorphic if there is a bijection $f:V\simeq V'$ such that for all $x,y\in V$:
+$$
+\{ x,y \}\in E\Leftrightarrow \{ f(x),f(y) \}\in E'
+$$
+Such an $f$ is called an isomorphism of the graphs $G$ and $G'$. We write $G\simeq G'$.
+\end{definition}
+\begin{definition}
+Let $G=(V,E)$ be a graph. A map $f:V\to V$ is an automorphism of $G$ if for all $x,y\in E$:
+$$
+\{ x,y \}\in E\Leftrightarrow \{ f(x),f(y) \}\in E
+$$
+\end{definition}
+\begin{question}
+How many different graphs on vertices $\{ 1,2,3 \}$ are there?
+\end{question}
+\begin{answer}
+$2^{\binom{ 3}  {2 }}=8$.
+\end{answer}
+\begin{question}
+How many isomorphism classes on vertices $\{ 1,2,3 \}$ are there?
+\end{question}
+\begin{answer}
+4.
+\end{answer}
+
+\begin{question}
+What is the number of isomorphism classes of graphs with vertices $\{ 1,\dots,n \}$?
+\end{question}
+\begin{answer}
+The number of different graphs is $2^{\binom{ n}  {2 }}$. Each isomorphism class contains at most $n!$ elements. Therefore,
+$$
+\frac{2^{\binom{ n}  {2 } }}{n!}\le |\text{isomorphism classes}|\le 2^{\binom{ n}  {2 } }
+$$
+\end{answer}
+\begin{notation}
+An isomorphism class is also called an unlabeled graph.
+\end{notation}
+\section{Counting labeled trees}
+\begin{theorem}[Cayley]
+The number of trees on $n$ labeled vertices is $n^{n-2}$.
+\end{theorem}
+\begin{proof}
+We will prove this theorem with the help of Prüfer codes. We will define a one-to-one correspondence between the set of all trees on $n$ labeled vertices and the set of sequences of length $n-2$ consisting of numbers in $\{ 1,\dots,n \}$. As the cardinality of the second set is $n^{n-2}$, this would imply the statement of the theorem.
+
+Consider Algorithm 1:
+\begin{itemize}
+\item Input: A tree on vertices $\{ 1,\dots,n \}$.
+\item Step 1: Find the leaf with the smallest label and write down the number of its neighbor.
+\item Step 2: Delete this leaf and the only edge adjacent to it.
+\item Step 3: Repeat until we are left with only two vertices.
+\item Output: String of labels we have written down.
+\end{itemize}
+
+We can observe that the labels of leaves do not appear in the Prüfer code and that the number of times a label appears in a Prüfer code equals its degree minus one.
+
+We have constructed a map from trees to sequences. Now we have to construct the inverse map. Consider Algorithm 2:
+\begin{itemize}
+\item Input: a sequence $(a_{1},\dots,a_{n-2})\in[n]^{n-2}$.
+\item Step 1: Draw $n$ nodes.
+\item Step 2: Make the list $(1,\dots,n)$.
+\item Step 3: If there are only two numbers left on the list, connect them with an edge and stop. Otherwise, continue to step 4.
+\item Step 4: Find the smallest number in the list which is not in the sequence. Take the first number in the sequence. Add an edge connecting the nodes whose labels correspond tho those numbers.
+\item Step 5: Delete the smallest number from the list and the first number in the sequence. This gives a smaller list and shorter sequence. Then return to step 3.
+\end{itemize}
+\end{proof}
+\begin{theorem}
+Algorithm 1 provides a map, name it $\psi _{1}$, from the set of trees on vertices $\{ 1,\dots,n \}$ to the set $\{ 1,\dots,n \}^{n-2}$.
+$$
+\psi_{1}(\text{tree})=\text{Prufer code of a tree}
+$$
+Algorithm 2 provides a map, name it $\psi_{2}$, from the set of sequences $\{ 1,\dots,n \}^{n-2}$ to the set of trees on vertices $\{ 1,\dots,n \}$.
+$$
+\psi_{2}(\text{sequence})=\text{tree}
+$$
+
+The maps $\psi_{1}$ and $\psi_{2}$ are inverse to each other.
+$$
+\psi_{1}\circ\psi_{2}=\mathrm{Id}_{\text{codes}},\quad \psi_{2}\circ\psi_{1}=\mathrm{Id}_{\text{trees}}
+$$
+\end{theorem}
