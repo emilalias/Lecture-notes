@@ -1,0 +1,53 @@
+\todo{Lecture 15}
+
+\begin{example}[Application de la loi intégrale de Gauss]
+Soit un plan $xy$ charge uniformément avec une charge surfacique $\sigma _{\mathrm{el}}>0$ constante. On a
+\begin{itemize}
+\item $E_{x}=E_{y}=0$.
+\item $E_{z}(x,y,z)=E_{z}(z)$.
+\item $E_{z}(z)=-E_{z}(-z)$
+\end{itemize}
+
+Pour trouver $E_{z}(z)$, on utilise la loi de Gauss avec $V$ un cylindre. Avec $d\boldsymbol{S}=dS~\boldsymbol{\hat{e}}_{z}$ :
+\begin{align*}
+\iint _{S}\boldsymbol{E}~d\boldsymbol{S} & =\iint _{S_{\mathrm{haut}}}E_{z}(z)~\boldsymbol{\hat{e} }_{z}~d\boldsymbol{S}+\iint _{S_{\mathrm{bas}}}E_{z}(z)~\boldsymbol{\hat{e}}_{z}~d\boldsymbol{S}+\iint _{S_{\mathrm{side}}}E_{z}(z)~\underbrace{ \boldsymbol{\hat{e}}_{z}~d\boldsymbol{S} }_{ =0 } \\
+ & =\iint _{S_{\mathrm{haut}}}E_{z}(z)~d\boldsymbol{S}+\iint _{S_{\mathrm{bas}}}E_{z}(z)(-1)~dS \\
+ &=E_{z}(z_{0})\iint _{S_{\mathrm{haut}}}dS-E_{z}(-z_{0})\iint _{S_{\mathrm{bas}}}dS \\
+ & =2E_{z}(z_{0})A
+\end{align*}
+
+Et 
+\begin{align*}
+\frac{1}{\varepsilon_{0}}\iiint _{V}\rho _{\mathrm{el}}~dV & =\frac{1}{\varepsilon_{0}}\cdot\text{charge a l'interieure de }V \\
+ & =\frac{1}{\varepsilon_{0}}\sigma _{\mathrm{el}}A
+\end{align*}
+donc par Gauss
+$$
+E_{z}(z_{0})=E=\frac{\sigma _{\mathrm{el}}}{2\varepsilon_{0}}.
+$$
+\end{example}
+\subsection{Preuve de la Loi de Gauss}
+\subsection*{Cas 1 : Charge ponctuelle $q$, $S$ une sphere de rayon $r$ autour de $q$}
+Puisque $\boldsymbol{E}\parallel d\boldsymbol{S}$ :
+\begin{align*}
+\iint _{S}\boldsymbol{E}~d\boldsymbol{S} & =\iint _{S}\lVert \boldsymbol{E} \rVert ~dS \\
+ &=\lVert \boldsymbol{E} \rVert \iint _{S}dS \\
+ & =\frac{1}{4\pi\varepsilon_{0}} \frac{q}{r^{2}} 4\pi r^{2}=\frac{q}{\varepsilon_{0}}
+\end{align*}
+donc la loi de Gauss est satisfaite dans ce cas.
+
+\subsection*{Cas 2 : Charge ponctuelle $q$ entouree d'une surface fermee $S$ arbitraire}.
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.4]{gauss2.png}
+\end{figure}
+\begin{itemize}
+\item $E'~dS'$ est le flux a travers $dS'$.
+\item $E~dS\cos \theta$ est le flux a travers $dS$.
+\item $E=E'  \frac{r'^{2}}{r^{2}}$ par la loi de Coulomb.
+\item $dS=dS'~ \frac{r^{2}}{r'^{2}} \frac{1}{\cos \theta}$ donc $E~dS=E'~dS'$. 
+\end{itemize}
+
+Ceci est valable pour chaque element $d\boldsymbol{S}$, donc le flux de $\boldsymbol{E}$ a travers $S$ est egal au flux de $\boldsymbol{E}$ a travers $S'$, egal a $q / \varepsilon_{0}$.
+
+\subsection*{Cas 3 : Charge ponctuelle $q$ a l'exterieur d'une surface $S$ arbitraire}

@@ -1,0 +1,138 @@
+\todo{Lecture 15}
+
+\begin{notation}
+$$
+(\overline{A})^{\mathsf{T}}=A^{*}, \quad A\in \mathbf{C}^{m\times n}
+$$
+\end{notation}
+\begin{remark}
+Pour $A\in \mathbf{C}^{m\times k}$, $B\in \mathbf{C}^{k\times n}$, on a $(AB)^{*}=B^{*}A^{*}$.
+\end{remark}
+\begin{definition}
+Une matrice $U\in \mathbf{C}^{n\times n}/\mathbf{R}^{n\times n}$ inversible est appelée unitaire/orthogonale si $U^{*}U=I$. 
+\end{definition}
+\begin{remark}
+Une matrice $U\in \mathbf{R}^{n\times n}$ est orthogonale si et seulement si $\{ u_{1},\dots,u_{n} \}$ est une base orthonormale (relatif au produit scalaire standard) de $\mathbf{R}^{n}$ ou $U=(u_{1},\dots,u_{n})$. 
+\end{remark}
+\begin{remark}
+Une matrice $U\in \mathbf{C}^{n\times n}$ est unitaire si et seulement si $\{ u_{1},\dots,u_{n} \}$ est une base orthonormale de $\mathbf{C}^{n}$, relatif au produit scalaire standard.
+\end{remark}
+\begin{theorem}[Théorème spectral]\label{specthm}
+Soit $A\in \{ \mathbf{C}^{n\times n},\mathbf{R}^{n\times n} \}$, {hermitienne, symétrique}. Il existe une matrice $U\in \{ \mathbf{C}^{n\times n},\mathbf{R}^{n\times n} \}$ {unitaire, orthogonale} telle que 
+$$
+A=U^{*}\mathrm{diag}(\lambda_{1},\dots,\lambda _{n})U
+$$
+ou $\lambda_{1},\dots,\lambda _{n}\in \mathbf{R}$.
+\end{theorem}
+\begin{remark}
+En d'autres mots : soit $A\in \mathbf{C}^{n\times n}$ hermitienne. Il existe une base $\{ u_{1},\dots,u_{n} \}$ de $\mathbf{C}^{n}$ composéee de vecteurs propres de $A$, et cette base est orthonormale.
+\end{remark}
+\begin{lemma}
+Soit $A\in \mathbf{C}^{n\times n}$ une matrice hermitienne. Alors, toute valeur propre de $A$ est réelle.
+\end{lemma}
+\begin{proof}
+Soit $\lambda \in \mathbf{C}$ une valeur propre de $A$ et $v\in \mathbf{C}^{n}\setminus \{ 0 \}$ un vecteur propre associe à $\lambda$. Sans perte de generalite $v$ est unitaire, car on peut diviser $v$ par sa norme. On a 
+\begin{align*}
+\lambda & =\lambda \cdot 1 \\
+ & =\lambda v^{*}v \\
+ & =v^{*}(\lambda v) \\
+ & =v^{*}Av \\
+ & =v^{*}A^{*}v  \\
+ & =(Av)^{*}v  \\
+ & =(\lambda v)^{*}v \\
+ & =\overline{\lambda}v^{*}v \\
+ &=\overline{\lambda}
+\end{align*}
+\end{proof}
+\begin{proposition}
+Soit $A\in \mathbf{C}^{n\times n}$ hermitienne. $A$ possède des valeurs propres et, par conséquence, elles sont toutes réelles
+\end{proposition}
+\begin{proof}
+$\lambda \in \mathbf{C}$ est une valeur propre de $A$ si et seulement si $\lambda$ est une racine de $f_{A}(A)=\det(A-x\mathrm{Id})\in \mathbf{C}[x]$. Par le théorème fondamental d'algèbre, cette racine $\lambda \in \mathbf{C}$ existe.
+\end{proof}
+\begin{proof}[Démonstration du cas 2D de \ref{specthm}]
+Soit $A\in \mathbf{R}^{2\times2}$ symétrique, $v\in \mathbf{R}^{2}\setminus \{ 0 \}$ un vecteur propre associe à une valeur propre $\lambda_{1} \in \mathbf{R}$ de $A$. Sans perte de generalite $v\in \ker(A-x\mathrm{Id})$ est unitaire. Soit $u\in \mathbf{R}^{2}$ tel que $v^{\mathsf{T}}u=0$, c-a-d $(u,v)\in \mathbf{R}^{2\times 2}$ forme une matrice orthogonale. On veut $\lambda_{2}\in \mathbf{R}$ telle que $u$ soit un vecteur propre associe a $\lambda_{2}$ :
+\begin{align*}
+0 & =v^{\mathsf{T}}Au \\
+ & =v^{\mathsf{T}}A^{\mathsf{T}}u \\
+ & =(Av)^{\mathsf{T}}u \\
+ & =\lambda_{1}v^{\mathsf{T}}u \\
+ & =0
+\end{align*}
+donc $Au$ est un scalaire de $u$ et $\lambda_{2}$ existe.
+\end{proof}
+\begin{lemma}
+Soit $A\in \mathbf{C}^{n\times n}$ hermitienne, $\lambda_{1}\neq\lambda_{2}$ deux valeurs propres distinctes et $u,v\in \mathbf{C}^{n}\setminus \{ 0 \}$ leurs vecteurs propres associés respectivement. Alors $u^{*}v=0$.
+\end{lemma}
+\begin{proof}
+Si $u^{*}v\neq 0$, alors $\lambda_{1}u^{*}v\neq\lambda u^{*}v$. On a
+\begin{align*}
+\lambda_{1}u^{*}v & =(\lambda_{1}u)^{*}v \\
+ & =(Au)^{*}v \\
+ & =u^{*}A^{*}v \\
+ & =u^{*}Av \\
+ & =\lambda_{2}u^{*}v
+\end{align*}
+alors $u^{*}v=0$.
+\end{proof}
+\begin{proof}[Démonstration du cas $A\in \mathbf{R}^{n\times n}$ symétrique de \ref{specthm}]
+On veut montrer qu'il existe une matrice $U\in \mathbf{R}^{n\times n}$ telle que
+\begin{enumerate}
+\item $U^{\mathsf{T}}U=\mathrm{Id}$.
+\item $A=U\mathrm{diag}(\lambda_{1},\dots,\lambda _{n})U^{\mathsf{T}}$ si et seulement si $U^{\mathsf{T}}AU=\mathrm{diag}(\lambda_{1},\dots,\lambda _{n})$.
+\end{enumerate}
+
+On procède par récurrence. Pour le cas $n=1$ on a $U=(1)$ et $\lambda_{1}=a_{11}$. Pour le cas $n>1$, soit $\lambda_{1} \in \mathbf{R}$ une valeur propre de $A$ et $v\in \mathbf{R}^{n}\setminus \{ 0 \}$ un vecteur propre unitaire associe à $\lambda_{1}$. Soient $u_{2},\dots u_{n}\in \mathbf{R}^{n}$ tels que $\{ v,u_{2},\dots,u_{n} \}$ forme une base orthonormale de $\mathbf{R}^{n}$. On pose $P=(v,u_{2},\dots,u_{n})$ alors $P^{\mathsf{T}}P=\mathrm{Id}_{n}$. On a 
+\begin{align*}
+P^{\mathsf{T}}AP & =\begin{pmatrix}
+\lambda_{1} & 0 \\
+0  & W
+\end{pmatrix}
+\end{align*}
+Ou $W\in \mathbf{R}^{(n-1)\times(n-1)}$ est symétrique. Par récurrence, il existe une matrice $Q\in \mathbf{R}^{(n-1)\times (n-1)}$ telle que
+\begin{enumerate}
+\item $Q^{\mathsf{T}}Q=\mathrm{Id}_{n-1}$.
+\item $Q^{\mathsf{T}}WQ=\mathrm{diag}(\lambda_{2},\dots,\lambda _{n})\in \mathbf{R}^{(n-1)\times(n-1)}$.
+\end{enumerate}
+On pose $U=P\begin{pmatrix}1 & 0 \\ 0 & Q\end{pmatrix}$, donc
+\begin{align*}
+U^{\mathsf{T}}AU & =\begin{pmatrix}
+1 & 0 \\
+0 & Q^{\mathsf{T}} 
+\end{pmatrix}\underbrace{ P^{\mathsf{T}}AP }_{ \begin{pmatrix}
+\lambda_{1} & 0 \\
+0 & W
+\end{pmatrix} }\begin{pmatrix}
+1 & 0 \\
+0 & Q
+\end{pmatrix} \\
+ & =\begin{pmatrix}
+1 & 0 \\
+0 & Q^{\mathsf{T}}WQ
+\end{pmatrix}=\mathrm{diag}(\lambda_{1},\dots,\lambda _{n})
+\end{align*}
+et
+\begin{align*}
+U^{\mathsf{T}}U & =\begin{pmatrix}
+1 & 0 \\
+0 & Q^{\mathsf{T}}
+\end{pmatrix}P^{\mathsf{T}}P\begin{pmatrix}1  & 0 \\
+0 & Q
+\end{pmatrix} \\
+ & =\begin{pmatrix}
+1 & 0 \\
+0 & Q^{\mathsf{T}}
+\end{pmatrix} \mathrm{Id}_{n}\begin{pmatrix}
+1 & 0 \\
+0 & Q
+\end{pmatrix}=\mathrm{Id}_{n}
+\end{align*}
+car $Q^{\mathsf{T}}Q=\mathrm{Id}_{n-1}$.
+\end{proof}
+\begin{example}[Marche à suivre pour calculer $U \in \mathbf{R}^{n \times n}$]
+\begin{enumerate}
+\item Calculer les racines $\lambda_{1},\dots,\lambda _{r}\in \mathbf{R}$ de $f_{A}(x)\in \mathbf{R}[x]$.
+\item Pour tout $i\in \{ 1,\dots,r \}$, calculer une base orthonormale $E_{\lambda _{i}}=\{ u_{i}^{i},\dots,u_{\ell _{i} }^{i} \}$. Ou $\ell_{i}=\dim(E_{\lambda_{i}})$.
+\item Construire une matrice $U=(u_{1}^{1},\dots,u_{\ell_{1}}^{1},\dots,u_{1}^{r},\dots,u_{\ell _{r}}^{r})\in \mathbf{R}^{n\times n}$ orthonormale.
+\end{enumerate}
+\end{example}

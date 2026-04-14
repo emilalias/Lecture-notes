@@ -563,4 +563,89 @@ Soit $A\in \mathbf{C}^{n\times n}$ une matrice hermitienne et soit $\lambda$ une
 Sans preuve.
 \end{proof}
 
+\begin{exercise}[Exo etoile]
+Le but de cet exercice est de montrer \emph{l'inegalite d'Hadamard}, c'est-a-dire
+$$
+|\det(A)|\le \prod_{i=1}^{n} \lVert a_{i} \rVert_{2},
+$$
+pour $A\in \mathbf{R}^{n\times n}$ dont les colonnes sont $a_{1},\dots,a_{n}$.
+
+Soit $A'$ la matrice dont les colonnes sont $a_{1}^{*},\dots,a_{n}^{*}$, les vecteurs \emph{non-normalises} issus de l'orthogonalisation de Gram-Schmidt sur les colonnes de $A$. On rappelle la décomposition $A=A'S$, ou $S$ est triangulaire supérieure de diagonale 1.
+\begin{enumerate}
+\item Montrer que $\det(S)=1$ et que $\det(A)=\det(A')=\pm \prod_{i=1}^{n}\lVert a_{i}^{*} \rVert_{2}$.
+\item Montrer que $\lVert a_{i}^{*} \rVert\le \lVert a_{i} \rVert$ pour tout $i=1,\dots,n$ et conclure.
+\end{enumerate}
+
+Supposons de surcroit que les coefficients de $A$ soient tous bornés absolument par $M\in \mathbf{R}_{+}:|A_{ij}|\le M$ pour tous $i$, $j$. Déduire de l'inégalité d'Hadamard que $|\det(A)|\le M^{n}n^{n/2}$.
+\end{exercise}
+\begin{proof}[Solution]
+\begin{enumerate}
+\item Comme $S$ est triangulaire supérieure avec des coefficients diagonaux égaux à 1, on obtient $\det(S)=1$. On s'intéresse à la matrice $A'^{\mathsf{T}}A'$ :
+\begin{align*}
+A'^{\mathsf{T}}A' & =\begin{pmatrix}
+(a_{1}^{*})^{\mathsf{T}}a_{1}^{*} & (a_{1}^{*})^{\mathsf{T}}a_{2}^{*} & \cdots & (a_{1}^{*})^{\mathsf{T}}a_{n}^{*} \\
+(a_{2}^{*})^{\mathsf{T}}a_{1}^{*} & \cdots & \cdots & \vdots \\
+\vdots &  &  & \vdots \\
+(a_{n}^{*})^{\mathsf{T}}a_{n}^{*} & \cdots & \cdots & (a_{n}^{*})^{\mathsf{T}}a_{n}^{*}
+\end{pmatrix} \\
+ & =\mathrm{diag}(\lVert a_{i}^{*} \rVert_{2}^{2},\dots,\lVert a_{n}^{*} \rVert _{2}^{2} )\footnotemark{}
+\end{align*}
+\footnotetext{Justifie par la procedee de Gram-Schmidt}
+Donc
+\begin{align*}
+\det(A')^{2} & =\det(A')\det(A') \\
+ & =\det(A'^{\mathsf{T}})\det(A') \\
+ & =\det(A'^{\mathsf{T}}A') \\
+ & =\prod_{i=1}^{n} \lVert a_{i}^{*} \rVert _{2}^{2}
+\end{align*}
+
+Comme $\det(A)=\det(A')\det(S)=\det(A')\cdot 1$ alors $$\det(A)=\det(A')=\pm \prod_{i=1}^{n}\lVert a_{i}^{*} \rVert_{2}.$$
+\item On a
+\begin{align*}
+\lVert a_{i} \rVert _{2}^{2} & =\lVert a_{i}-a_{i}^{*} +a_{i}^{*}  \rVert_{2}^{2} \\
+ & =\lVert a_{i}-a_{i}^{*} \rVert _{2}^{2} +\lVert a_{i}^{*} \rVert _{2}^{2} \\
+ & \ge \lVert a_{i}^{*} \rVert _{2}^{2} 
+\end{align*}
+
+On justifie le fait que $a_{i}^{*}\perp a_{i}-a_{i}^{*}$. Par Gram-Schmidt, on a
+\begin{align*}
+a_{i}^{*} & =a_{i}-\frac{\langle a_{i},a_{1}^{*} \rangle }{a_{1}^{*},a_{1}^{*}}a_{1}^{*}-\dots - \frac{\langle a_{i},a_{i-1}^{*} \rangle }{\langle a_{i-1}^{*},a_{i-1}^{*} \rangle }a_{i-1}^{*}
+\end{align*}
+donc $a_{i}-a_{i}^{*}\in \mathrm{span}\{ a_{1}^{*},\dots,a_{i-1}^{*} \}$ qui est perpendiculaire à $a_{i}^{*}\in \mathrm{span}\{ a_{1}^{*},\dots,a_{i-1}^{*} \}$.
+\end{enumerate}
+
+Si les coefficients sont bornées par $M\in \mathbf{R}_{+}$, on a 
+\begin{align*}
+\lVert a_{i} \rVert _{2} & =\sqrt{ (a_{i})_{1}^{2}+\dots +(a_{i})_{n}^{2} } \\
+ & \le \sqrt{ M^{2}+\dots +M^{2} } \\
+ & =\sqrt{ n }M
+\end{align*}
+
+Par l'inégalité d'Hadamard, on a 
+\begin{align*}
+|\det(A)| & \le \prod_{i=1}^{n} \lVert a_{i}\rVert_{2} \\
+ & \le \prod_{i=1}^{n} \sqrt{ n }M \\
+  & =M^{n}n^{n/2}.
+\end{align*}
+\end{proof}
+
+\chapter{Serie 8}
+
+\begin{exercise}[Exo plus]
+Soit $A\in \mathbf{C}^{n\times n}$ une matrice hermitienne et $u,v\in \mathbf{C}^{n}$ deux vecteurs propres associés a des valeurs propres différentes. Montrer que $u$ et $v$ sont orthogonaux par rapport au produit hermitien standard.
+\end{exercise}
+\begin{proof}[Solution]
+Soient $\lambda_{1}\neq\lambda_{2}$ deux valeurs propres distinctes et $u,v\in \mathbf{C}^{n}\setminus \{ 0 \}$ leurs vecteurs propres associés respectivement. Si $u^{*}v\neq 0$, alors $\lambda_{1}u^{*}v\neq\lambda u^{*}v$. On a
+\begin{align*}
+\lambda_{1}u^{*}v & =(\lambda_{1}u)^{*}v \\
+ & =(Au)^{*}v \\
+ & =u^{*}A^{*}v \\
+ & =u^{*}Av \\
+ & =\lambda_{2}u^{*}v
+\end{align*}
+alors $u^{*}v=0$.
+\end{proof}
+\begin{remark}
+Une autre definition de matrice hermitienne : soit $A\in \mathbf{C}^{n\times n}$ alors $A^{\mathsf{T}}=\overline{A}$.
+\end{remark}
 \end{document}
