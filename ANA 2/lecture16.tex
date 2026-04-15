@@ -1,0 +1,98 @@
+\chapter{Extrema de fonctions réelles}
+\todo{Lecture 16}
+\begin{definition}
+Soit $E\subset \mathbf{R}^{n}$, $f:E\to \mathbf{R}$, $\boldsymbol{x}^{*}\in E$. On dit que $f$ admet son maximum global (ou absolu) en $\boldsymbol{x}^{*}$ si $f(\boldsymbol{x})\le f(\boldsymbol{x}^{*})$ pour tout $\boldsymbol{x}\in E$. On note $f(\boldsymbol{x}^{*})=\max_{\boldsymbol{x}\in E}f(\boldsymbol{x})$. On dit que le maximum est strict si l'inégalité est stricte. On appelle $\boldsymbol{x}^{*}$ un point de maximum de $f$.
+
+On a une définition similaire pour le minimum global.
+
+On dit que $f$ admet un maximum local (ou relatif) s'il existe $\delta \in \mathbf{R}_{+}$ tel que $f(\boldsymbol{x})\le f(\boldsymbol{x}^{*})$ pour tout $\boldsymbol{x}\in E\cap B(\boldsymbol{x}^{*},\delta)$.
+
+\end{definition}
+\begin{definition}
+Un extremum global/local de $f$ est soit un maximum/minimum global/local.
+\end{definition}
+
+\begin{reminder}[D'Analyse I]
+Soit $f:I\subset \mathbf{R}\to \mathbf{R}$, $I$ un intervalle ouvert. Soit $x^{*}\in I$, les conditions nécessaires :
+\begin{enumerate}
+\item De premier ordre : Si $x^{*}$ est un extremum local, alors $f'(x^{*})=0$.
+\item De deuxième ordre : Si $x^{*}$ est un point de minimum local, alors $f''(x^{*})\ge 0$. 
+\item Condition suffisante : Si $x^{*}$ est un point stationnaire ($f'(x^{*})=0$) et $f''(x^{*})>0$, alors $x^{*}$ est un point de minimum local. 
+\end{enumerate}
+\end{reminder}
+
+Soit $f:E\subset \mathbf{R}^{n}\to \mathbf{R}$ différentiable en $\boldsymbol{x}^{*}$, $E$ ouvert. Si $\boldsymbol{x}^{*}\in E$ est un point de maximum de $f$, on peut définir une fonction $g_{\boldsymbol{v}}:(-\delta,\delta)\to \mathbf{R},t\mapsto f(\boldsymbol{x}^{*}+t\boldsymbol{v})$ ou $\boldsymbol{v}\in \mathbf{R}^{n}$ est unitaire et $\delta$ est tel que $\{ \boldsymbol{x}^{*}+t\boldsymbol{v}\in E, \forall t\in(-\delta,\delta) \}$. 
+\begin{remark}
+Si $f$ admet un max/min local en $\boldsymbol{x}^{*}$, alors $g_{\boldsymbol{v}}$ admet un max/min local en $t=0$. Alors $g'(0)=0$ est une condition nécessaire du premier ordre pour tout $\boldsymbol{v}\in \mathbf{R}^{n}$. Si $\boldsymbol{x}^{*}$ est un point de minimum local, alors $g_{\boldsymbol{v}}''(0)\ge 0$ est une condition nécessaire de deuxième ordre pour tout $\boldsymbol{v}\in \mathbf{R}^{n}$.
+
+On peut observer que $g_{\boldsymbol{v}}'(0)=D_{\boldsymbol{v}}f(\boldsymbol{x}^{*})=Df(\boldsymbol{x}^{*})\boldsymbol{v}=\nabla f(\boldsymbol{x}^{*})^{\mathsf{T}}\boldsymbol{v}=0$ pour tout $\boldsymbol{v}\in \mathbf{R}^{n}$ donc $\nabla f(\boldsymbol{x}^{*})^{\mathsf{T}}=\boldsymbol{0}^{\mathsf{T}}$.
+\end{remark}
+
+\begin{definition}[Point stationnaire]
+On a une condition nécessaire du premier ordre : Si $\boldsymbol{x}^{*}\in E$, $E$ ouvert, est un extremum de $f$ et $f$ est différentiable en $\boldsymbol{x}^{*}$, alors $\nabla f(\boldsymbol{x}^{*})^{\mathsf{T}}=\boldsymbol{0}^{\mathsf{T}}$. On dit dans ce cas que $\boldsymbol{x}^{*}$ est un point stationnaire.
+\end{definition}
+
+Condition de deuxième ordre : Soit $\boldsymbol{x}^{*}\in E$ un point de minimum local de $f$ deux fois différentiable en $\boldsymbol{x}^{*}$, alors $g''_{\boldsymbol{v}}=\boldsymbol{v}^{\mathsf{T}}H_{f}(\boldsymbol{x}^{*})\boldsymbol{v}\ge 0$ pour tout $\boldsymbol{v}\in \mathbf{R}^{n}$.
+\begin{definition}
+Soit $A\in \mathbf{R}^{n\times n}$. On dit que
+\begin{itemize}
+\item $A$ est définie positive si $\boldsymbol{v}^{\mathsf{T}}A\boldsymbol{v}>0$ pour tout $\boldsymbol{v}\in \mathbf{R}^{n}\setminus \{ \boldsymbol{0} \}$. Semi-définie positive si l'inégalité n'est pas stricte.
+\item Définition similaire pour (semi-) définie négative.
+\item $A$ est indéfinie s'il existe $\boldsymbol{v}$, $\boldsymbol{w}\in \mathbf{R}^{n}$ tels que $\boldsymbol{v}^{\mathsf{T}}A\boldsymbol{v}>0$ et $\boldsymbol{w}^{\mathsf{T}}A\boldsymbol{w}<0$. 
+\end{itemize}
+\end{definition}
+\begin{lemma}
+Soit $A\in \mathbf{R}^{n\times n}$ est symétrique. Alors $A$ est définie positive si et seulement si toutes les valeurs propres $\lambda _{i}(A)>0$ pour tout $i=1,\dots ,n$. De plus $\boldsymbol{v}^{\mathsf{T}}A\boldsymbol{v}\ge \lambda _{\mathrm{min}}(A)\lVert \boldsymbol{v} \rVert^{2}$ pour tout $\boldsymbol{v}\in \mathbf{R}^{n}$
+\end{lemma}
+\begin{proof}
+$A$ étant symétrique, il existe une base orthonormale $\{\boldsymbol{u}_{1},\dots,\boldsymbol{u}_{n} \}\in \mathbf{R}^{n}$ de valeurs propres de $A$. Soit $U=(\boldsymbol{u}_{1},\dots,\boldsymbol{u}_{n})$ et $D=\mathrm{diag}(\lambda_{1},\dots,\lambda _{n})$ alors $AU=UD$. 
+
+On montre le sens $\Rightarrow$ : Soit $A$ définie positive, si on choisit $\boldsymbol{v}=\boldsymbol{u}_{i}$, alors
+\begin{align*}
+\boldsymbol{u}_{i}^{\mathsf{T}}A\boldsymbol{u}_{i} & =\boldsymbol{u}_{i}^{\mathsf{T}}(A\boldsymbol{u}_{i}) \\
+ & =\boldsymbol{u}_{i}^{\mathsf{T}} \lambda _{i}\boldsymbol{u}_{i} \\
+ & =\lambda _{i}\lVert \boldsymbol{u}_{i} \rVert^{2}=\lambda _{i}>0 
+\end{align*}
+
+On montre le sens $\Leftarrow$ : Supposons $\lambda _{i}>0$ pour tout $i=1,\dots,n$. Puisque $\{ \boldsymbol{u}_{i} \}$ forme une base orthonormée, on peut écrire tout $\boldsymbol{v}\in \mathbf{R}^{n}$ comme $\sum _{i=1}^{n}\beta _{i}\boldsymbol{u}_{i}=\boldsymbol{v}=U\boldsymbol{\beta}$ ou $\boldsymbol{\beta}=(\beta_{1},\dots,\beta _{n})^{\mathsf{T}}$. On a 
+\begin{align*}
+\boldsymbol{v}^{\mathsf{T}} A\boldsymbol{v} & =\boldsymbol{\beta}^{\mathsf{T}}U^{\mathsf{T}} AU\boldsymbol{\beta} \\
+ & =\boldsymbol{\beta}^{\mathsf{T}}D\boldsymbol{\beta} \\
+ &=\sum_{i=1}^{n} \beta_{i}^{2}\lambda _{i} \\
+ & \ge \lambda _{\mathrm{min}}\sum_{i=1}^{n} \beta _{i}^{2}=\lambda _{\mathrm{min}}\lVert \boldsymbol{v} \rVert ^{2}>0
+\end{align*}
+\end{proof}
+\begin{theorem}[Condition suffisante pour extrema locaux]
+Soit $E\subset \mathbf{R}^{n}$ ouvert non vide, $f:E\to \mathbf{R}$ de classe $C^{2}$. Soit $\boldsymbol{x}^{*}$ un point stationnaire ($\nabla f(\boldsymbol{x}^{*})=0$). Si $H_{f}(\boldsymbol{x}^{*})$ est définie positive, alors $\boldsymbol{x}^{*}$ est un point de minimum local.
+
+$\boldsymbol{x}^{*}$ est un point de maximum local si $H_{f}(\boldsymbol{x}^{*})$ est définie négative.
+\end{theorem}
+\begin{proof}
+On a pour tout $\boldsymbol{x}\in E$ 
+$$
+f(\boldsymbol{x})=f(\boldsymbol{x}^{*})+Df(\boldsymbol{x}^{*})(\boldsymbol{x}-\boldsymbol{x}^{*})+\frac{1}{2}(\boldsymbol{x}-\boldsymbol{x}^{*})^{\mathsf{T}}H_{f}(\boldsymbol{x}^{*})(\boldsymbol{x}-\boldsymbol{x}^{*})+R_{f}(\boldsymbol{x})
+$$
+avec $\lim_{ \boldsymbol{x} \to \boldsymbol{x}^{*} } \frac{R_{f}(\boldsymbol{x})}{\lVert \boldsymbol{x}-\boldsymbol{x}^{*} \rVert}=0$. Il existe $\varepsilon>0$ et $\delta _{\varepsilon}>0$ tels que
+$$
+\frac{R_{f}(\boldsymbol{x})}{\lVert \boldsymbol{x}-\boldsymbol{x}^{*} \rVert^{2} }<\varepsilon
+$$
+si $\lVert \boldsymbol{x}-\boldsymbol{x}^{*} \rVert<\delta _{\varepsilon}$ pour tout $\boldsymbol{x}\in E$. On prend $\varepsilon= \frac{\lambda _{\mathrm{min}}(H_{f}(\boldsymbol{x}^{*}))}{4}$ donc $\forall \boldsymbol{x}\in E\cap B(\boldsymbol{x}^{*},\delta _{\varepsilon})$ :
+\begin{align*}
+f(\boldsymbol{x}) & \ge f(\boldsymbol{x}^{*})+ \underbrace{ \frac{\lambda _{\mathrm{min}}}{2}\lVert \boldsymbol{x}-\boldsymbol{x}^{*} \rVert ^{2}-\frac{\lambda _{\mathrm{min}}}{4}\lVert \boldsymbol{x}-\boldsymbol{x}^{*} \rVert^{2} }_{ =\frac{\lambda _{\mathrm{min}}}{4}\lVert \boldsymbol{x}-\boldsymbol{x}^{*} \rVert  ^{2}} \\
+	 & > f(\boldsymbol{x}^{*})
+\end{align*}
+donc $\boldsymbol{x}^{*}$ est un point de minimum local
+\end{proof}
+\begin{example}
+Soit $f(x,y)=x^{2}+y^{2}$. On a $\nabla f(x,y)=\begin{pmatrix}2x \\ 2y\end{pmatrix}=0$ si et seulement si $(x,y)=(0,0)$. On regarde la matrice hessienne $H_{f}(x,y)=\begin{pmatrix}2 & 0 \\ 0 & 2\end{pmatrix}$, qui est définie positive (car les valeurs propres sont positives). Alors $(0,0)$ est un minimum local strict et global.
+\end{example}
+\begin{example}
+Soit $f(x,y)=1-x^{2}-y^{2}$. On a $\nabla f(x,y)=\begin{pmatrix}-2x \\ -2y\end{pmatrix}=0$ si et seulement si $(x,y)=(0,0)$. On regarde la matrice hessienne $H_{f}(0,0)=\begin{pmatrix}-2 & 0 \\ 0 & -2\end{pmatrix}$, qui est définie négative. Alors $(0,0)$ est un maximum global et strict. 
+\end{example}
+\begin{example}
+Soit $f(x,y)=x^{2}-y^{2}$. On a $\nabla f(x,y)=\begin{pmatrix}2x \\ -2y\end{pmatrix}=0$ si et seulement si $(x,y)=(0,0)$. On regarde la matrice hessienne $H_{f}(0,0)=\begin{pmatrix}2 & 0 \\ 0 & -2\end{pmatrix}$ qui est indéfinie. 
+\end{example}
+
+\subsection*{Comment savoir si un minimum local est global}
+
+On regarde le comportement de la fonction à l'infinie. Si $\lim_{ \lVert \boldsymbol{x} \rVert \to \infty }f(\boldsymbol{x})=+\infty$ 

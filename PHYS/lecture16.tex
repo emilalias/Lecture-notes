@@ -1,0 +1,97 @@
+\todo{Lecture 16}
+
+Autant des lignes du champ $\boldsymbol{E}$ entrent et sortent de $S$, donc le flux est nul. Avec les deux surfaces $S_{1}$ et $S_{2}$, on trouve 
+\begin{align*}
+\iint _{S_{1}+S_{2}}\boldsymbol{E}~d\boldsymbol{S} & \overset{\mathrm{cas}~2}= \frac{q}{\varepsilon_{0}} \\
+  & = \underbrace{ \iint _{S_{1}}\boldsymbol{E}~d\boldsymbol{S} }_{\overset{d\to 0}\longrightarrow \frac{q}{\varepsilon_{0}}}+\underbrace{ \iint _{S_{2}}\boldsymbol{E}~d\boldsymbol{S} }_{ \overset{d\to 0}\longrightarrow \iint _{S}\boldsymbol{E}~d\boldsymbol{S} } \\
+\Rightarrow \iint _{S}\boldsymbol{E}~d\boldsymbol{S} & =0
+\end{align*}
+et la loi de Gauss est satisfaite dans ce cas.
+
+Le cas général pour une densité de charge arbitraire (qui est une somme des charges ponctuelles), suit du principe de superposition.
+
+\section{Le potentiel électrostatique}
+\begin{definition}
+En électrostatique, on peut définir une fonction scalaire $\phi(\boldsymbol{r})$ telle que $\boldsymbol{E}=-\boldsymbol{\nabla}\phi$. On appelle $\phi$ le potentiel électrostatique.
+\end{definition}
+
+Pour une charge ponctuelle $q_{1}$ a $\boldsymbol{r}_{1}$ on a 
+$$
+\phi(\boldsymbol{r})=\frac{1}{4\pi\varepsilon _{0}} \frac{q_{1}}{\lVert \boldsymbol{r}-\boldsymbol{r}_{1} \rVert }+C
+$$
+\begin{proof}
+On a
+\begin{align*}
+-\boldsymbol{\nabla}\phi(\boldsymbol{r}) & =\begin{pmatrix}
+-\partial _{x}\left( \frac{1}{4\pi\varepsilon_{0}} \frac{q_{1}}{\sqrt{ (x-x_{1})^{2}+(y-y_{1})^{2}+(z-z_{1})^{2} }} \right) \\
+-\partial _{y}\left( \frac{1}{4\pi\varepsilon_{0}} \frac{q_{1}}{\sqrt{ (x-x_{1})^{2}+(y-y_{1})^{2}+(z-z_{1})^{2} }} \right) \\
+-\partial _{z}\left( \frac{1}{4\pi\varepsilon_{0}} \frac{q_{1}}{\sqrt{ (x-x_{1})^{2}+(y-y_{1})^{2}+(z-z_{1})^{2} }} \right)
+\end{pmatrix} \\
+ & =\begin{pmatrix}
+-\frac{1}{4\pi\varepsilon_{0}} q_{1}\left( -\frac{1}{2} \right) \frac{1}{((x-x_{1})^{2}+(y-y_{1})^{2}+(z-z_{1})^{2} )^{3/2}}\cdot2(x-x_{1}) \\
+-\frac{1}{4\pi\varepsilon_{0}} q_{1}\left( -\frac{1}{2} \right) \frac{1}{((x-x_{1})^{2}+(y-y_{1})^{2}+(z-z_{1})^{2} )^{3/2}}\cdot 2(y-y_{1}) \\
+-\frac{1}{4\pi\varepsilon_{0}} q_{1}\left( -\frac{1}{2} \right) \frac{1}{((x-x_{1})^{2}+(y-y_{1})^{2}+(z-z_{1})^{2} )^{3/2}}\cdot 2 (z-z_{1})
+\end{pmatrix} \\
+ & =\frac{q_{1}}{4\pi\varepsilon_{0}} \frac{1}{\lVert \boldsymbol{r}-\boldsymbol{r}_{1} \rVert ^{3}} \begin{pmatrix}
+x-x_{1} \\
+y-y_{1}  \\
+z-z_{1}
+\end{pmatrix}  \\
+ & =\frac{q_{1}}{4\pi \varepsilon_{0}} \frac{\boldsymbol{r}-\boldsymbol{r}_{1}}{\lVert \boldsymbol{r}-\boldsymbol{r}_{1} \rVert^{3} }=\boldsymbol{E}(\boldsymbol{r})
+\end{align*}
+\end{proof}
+
+Pour une distribution de charge arbitraire, on a
+$$
+\phi(\boldsymbol{r})=\frac{1}{4\pi\varepsilon_{0}}\iiint _{V} \frac{\rho _{\mathrm{el}}(\boldsymbol{r}')}{\lVert \boldsymbol{r}-\boldsymbol{r}' \rVert }~dV'+C
+$$
+\begin{proof}
+On a 
+\begin{align*}
+-\boldsymbol{\nabla}\phi(\boldsymbol{r}) & =\frac{1}{4\pi\varepsilon_{0}}\iiint _{V}\rho _{\mathrm{el}} (\boldsymbol{r}')(-\boldsymbol{\nabla}) \frac{1}{\lVert \boldsymbol{r}-\boldsymbol{r}' \rVert  }~dV'  \\
+ & =\frac{1}{4\pi \varepsilon_{0} }\iiint _{V} \frac{\rho _{\mathrm{el}}(\boldsymbol{r}')(\boldsymbol{r}-\boldsymbol{r}')}{\lVert \boldsymbol{r}-\boldsymbol{r}' \rVert ^{3}}~dV'=\boldsymbol{E}(\boldsymbol{r}).
+\end{align*}
+\end{proof}
+
+Pour une densité de charge de surface :
+$$
+\phi (\boldsymbol{r})=\frac{1}{4\pi\varepsilon_{0}}\iint _{S} \frac{\sigma _{\mathrm{el}}(\boldsymbol{r}')}{\lVert \boldsymbol{r}-\boldsymbol{r}' \rVert }~dS'+C
+$$
+
+\subsection{Quelques propriétés de \texorpdfstring{$\phi$ et $\boldsymbol{E}$}{le potentiel électrostatique et le champ} en électrostatique}
+\begin{enumerate}
+\item Les unités de $\phi$ sont les volts $\mathrm{V}=\frac{\mathrm{kgm}^{2}}{\mathrm{s}^{2}}\cdot \frac{1}{\mathrm{C}}$. On l'interprète comme l'énergie par charge.
+\item $\phi$ seulement définie à une constante près $\boldsymbol{E}=-\boldsymbol{\nabla}\phi$, donc $\boldsymbol{E}=-\boldsymbol{\nabla}(\phi +C)$.
+\item Le potentiel électrostatique dû à différentes charges est additive (principe de superposition). Soient $\boldsymbol{E}_{1}=-\boldsymbol{\nabla}\phi_{1}$ et $\boldsymbol{E}_{2}=-\boldsymbol{\nabla}\phi_{2}$, alors $\boldsymbol{E}=-\boldsymbol{\nabla}(\phi_{1} +\phi_{2})$.
+\item La rotation d'un gradient est nulle : 
+$$
+\boldsymbol{\nabla}\times \boldsymbol{\nabla}\phi=\begin{pmatrix}
+\partial _{x} \\
+\partial _{y} \\
+\partial _{z}
+\end{pmatrix}\times \begin{pmatrix}
+\partial _{x}\phi \\
+\partial _{y}\phi \\
+\partial _{z}\phi 
+\end{pmatrix}=0
+$$
+donc $\boldsymbol{\nabla}\times \boldsymbol{E}=0$.
+\item L'inverse de 4 est vrai aussi : Soit un champ vectoriel $\boldsymbol{A}(\boldsymbol{r})$ avec $\boldsymbol{\nabla}\times \boldsymbol{A}=0$ pour tout $\boldsymbol{r}$. Alors, il existe $f(\boldsymbol{r})$ telle que $\boldsymbol{A}=-\boldsymbol{\nabla}f$.
+\item Le travail pour déplacer une charge $q$ dans un champ $\boldsymbol{E}$ de $A$ a $B$ ne dépend pas du chemin choisi et est égal à $q(\phi(B)-\phi(A))$.
+\begin{proof}
+Soit $\gamma$ un chemin paramétré par $\boldsymbol{\ell}(s)$ avec $s \in[0,1]$. Alors 
+\begin{align*}
+W_{\gamma} & =-\int _{_{\gamma}}\boldsymbol{F}~d\boldsymbol{\ell} \\
+ & =-\int _{\gamma}q\boldsymbol{E}~d\boldsymbol{\ell} \\
+ & =\int _{\gamma}q\boldsymbol{\nabla}\phi~d\boldsymbol{\ell} \\
+ & =\int_{0}^{1} q\boldsymbol{\nabla}\phi(\boldsymbol{\ell}(s)) \, \frac{d\boldsymbol{\ell}}{ds}ds \\
+ &  =\int_{0}^{1} q~ \frac{d}{ds}(\phi(\boldsymbol{\ell}(s))) \, ds \\
+ & = q\phi(\boldsymbol{\ell}(s))|_{0}^{1} \\
+ & =q(\phi(B)-\phi(A))
+\end{align*}
+donc $W_{\gamma}$ est independant du chemin choisi entre $A$ et $B$.
+
+Si $A=B$, il suit que le travail pour déplacer une charge $q$ le long d'une courbe fermée est nul. Ceci implique que $q\boldsymbol{E}$ est une force conservative.  
+\end{proof}
+\end{enumerate}
+

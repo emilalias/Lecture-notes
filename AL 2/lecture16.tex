@@ -1,0 +1,70 @@
+\todo{Lecture 16}
+\section{Formes quadratiques}
+\begin{definition}
+Soit $A\in \mathbf{R}^{n\times n}$ symétrique. Une forme quadratique est définie comme
+\begin{align*}
+f:\mathbf{R}^{n} & \to \mathbf{R} \\
+x & \mapsto x^{\mathsf{T}}Ax
+\end{align*}
+
+\end{definition}
+\begin{definition}[Sphère]
+$$
+S^{(n-1)}:= \{ x \in \mathbf{R}^{n}:\lVert x \rVert =1 \}.
+$$
+\end{definition}
+
+Etant donne $A\in \mathbf{R}^{n\times n}$ symétrique, on veut trouver $\max _{x \in S^{(n-1)}}x^{\mathsf{T}}Ax$.
+\begin{remark}
+Comme $f:\mathbf{R}^{n}\to \mathbf{R}$ est continue et $S^{(n-1)}$ est compacte, le maximum existe. 
+\end{remark}
+
+Soit $B=\{ u_{1},\dots,u_{n} \}\subset \mathbf{R}^{n}$ une base orthonormale de $\mathbf{R}^{n}$ composée de vecteurs propres de $A$, et soient $\lambda_{1}\ge \dots\ge \lambda _{n}$ les valeurs propres associées aux vecteurs propres $u_{1},\dots,u_{n}$. Tout $x \in \mathbf{R}^{n}$ s'écrit comme une combinaison linéaire de $B$, $x=\sum _{i=1}^{n}\alpha _{i}u_{i}$ ou $\alpha _{i}\in \mathbf{R}$ pour tout $i=1,\dots,n$. On a
+\begin{align*}
+\lVert x \rVert ^{2} &  = x^{\mathsf{T}}x \\
+ & =\left( \sum _{i=1}^{n}\alpha _{i}u_{i}^{\mathsf{T}}  \right)\left( \sum_{j=1}^{n} \alpha _{j}u_{j} \right) \\
+ & =\sum_{i=1}^{n} \alpha _{i}^{2}=\lVert[x]_{B}\rVert^{2}
+\end{align*}
+\begin{remark}
+Si $U\in \mathbf{R}^{n\times n}$ est orthogonale, pour $\alpha \in \mathbf{R}^{n}$ on a $\lVert U\alpha \rVert=\lVert \alpha \rVert$.
+\end{remark}
+\begin{remark}
+$x \in S^{(n-1)}$ si et seulement si $[x]_{B}\in S^{(n-1)}$.
+\end{remark}
+
+Soit $x \in S^{(n-1)}$ 
+\begin{align*}
+f(x) & =x^{\mathsf{T}}Ax \\
+ & =\left( \sum_{i=1}^{n} \alpha _{i}u_{i}^{\mathsf{T}} \right)A\left( \sum_{j=1}^{n} \alpha _{j} u_{j}\right) \\
+ & =\left( \sum_{i=1}^{n} \alpha _{i}u_{i}^{\mathsf{T}} \right)\left( \sum_{j=1}^{n} \alpha _{j}\underbrace{ Au_{j} }_{ \lambda _{j}u_{j} } \right) \\
+ & =\sum_{i=1}^{n}\alpha _{i}^{2}\lambda _{i}  \\
+ & \le \lambda_{1} \sum_{i=1}^{n} \alpha _{i}^{2} =\lambda_{1}
+\end{align*}
+Alors le maximum est au plus $\lambda_{1}$. Soit $x \in E_{\lambda_{1}}\setminus \{ 0 \}$, alors $\frac{x}{\lVert x \rVert}\in(S^{(n-1)}\cap E_{\lambda _{1}})$ et $f(x)=\lambda_{1}$. Alors le maximum est égal à 1 et les solutions optimales appartiennent à $S^{(n-1)}\cap E_{\lambda_{1}}$.
+\begin{remark}
+Le minimum $\min_{x \in S^{(n-1)}}x^{\mathsf{T}}Ax=\lambda _{n}$ a des solutions optimales dans $E_{\lambda _{n}}\cap S^{(n-1)}$.
+\end{remark}
+\begin{theorem}
+Soit $A\in \mathbf{R}^{n\times n}$ symétrique, alors $A$ possède une valeur propre $\lambda$ réelle.
+\end{theorem}
+\begin{proof}
+On considère $\max_{x \in S^{(n-1)}}x^{\mathsf{T}}Ax$. Grâce à l'analyse, on sait que le maximum existe. Soit $v\in S^{(n-1)}$ tel que $v^{\mathsf{T}}Av\ge x^{\mathsf{T}}Ax$ pour tout $x \in S^{(n-1)}$. Si $Av=\lambda v$ pour un $\lambda \in \mathbf{R}$, ces $v$ et $\lambda$ démontrent le théorème.
+
+Supposons que $Av\neq\lambda v$ pour tout $\lambda \in \mathbf{R}$. Il existe $w\in S^{(n-1)}$ linéairement indépendant a $v$ et $\alpha,\beta \in \mathbf{R}^{*}$ tels que $Av=\alpha v+\beta w$. On va montrer que $v$ n'est pas une solution optimale à $\max_{x \in S^{(n-1)}}x^{\mathsf{T}}Ax$. Pour $x \in[-1,1]$, on a 
+$$
+\sqrt{ 1-x^{2} }v+x w=p_{x}
+$$
+ou
+\begin{align*}
+\lVert p_{x} \rVert ^{2} & =(\sqrt{ 1-\times^{2} }v^{\mathsf{T}}+xw^{\mathsf{T}})(\sqrt{ 1-x^{2} }v+xw) \\
+ & =1-x^{2}\lVert v \rVert ^{2} +x^{2}\lVert w \rVert ^{2} \\
+ & =1.
+\end{align*}
+donc $p_{x}\in S^{(n-1)}$. Soit
+\begin{align*}
+g(x) & =p_{x}^{\mathsf{T}}Ap_{x} \\
+ & =(\sqrt{ 1-x^{2} }v^{\mathsf{T}}+xw^{\mathsf{T}})A(\sqrt{ 1-x^{2} }v+xw) \\
+ & = (1-x^{2})v^{\mathsf{T}}Av +2x\sqrt{ 1-x^{2} }w^{\mathsf{T}}Av+x^{2}w^{\mathsf{T}}Aw
+\end{align*}
+donc $g'(0)=2\beta\neq0$, car $p_{0}=v$, fait que $v$ ne soit pas une solution optimale du probleme.
+\end{proof}
