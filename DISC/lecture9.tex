@@ -1,0 +1,176 @@
+\todo{Lecture 9}
+\begin{proof}
+We prove the theorem by induction on $n$. For $n=2$, the unique tree has $\varnothing$ as its Prufer code.
+
+Let $T$ be a tree on vertices $\{ 1,\dots ,n \}$. We apply algorithm 1 to $T$. Let $\overline{a}=(a_{1},\dots,a_{n-2})$ be the Prufer code of $T$. Let $T_{1}$ be the tree obtained from $T$ after applying step 2 for the first time. We observe that $(a_{2},\dots,a_{n-2})$ is the Prufer code of tree $T_{1}$. Note that the vertices of $T_{1}$ are labelled by $\{ 1,\dots,n \}\setminus \{ n_{0} \}$ where $n_{0}$ is the smallest leaf in $T$. Also, the set $\{ 1,\dots,n \}\setminus \{ a_{1},\dots,a_{n-2} \}$ is the set of all leaves of $T$.
+
+Now we apply algorithm 2 to the sequence $\{ a_{1},\dots,a_{n-2} \}$. The smallest element of the list $\{ 1,\dots,n \}$ which is not in the sequence $(a_{1},\dots,a_{n-2})$ is the smallest leaf $n_{0}$ of $T$. The first iteration of the algorithm adds an edge between nodes $n_{0}$ and $a_{1}$. By the assumption hypothesis, the algorithm applied to the sequence $(a_{2},\dots,a_{n-2})$ will give us the tree $T_{1}$ with vertices labelled by the set $\{ 1,\dots,n \}\setminus \{ n_{0} \}$. This concludes the proof.
+\end{proof}
+
+\section{Estimating the number of unlabelled trees}
+
+\begin{theorem}
+Let $T_{n}$ be the number of unlabelled trees with $n$ vertices. Then 
+$$
+2^{n}\footnotemark{}\le \frac{n^{n-2}}{n!}\le T_{n}\le ^{n-1}
+$$
+\footnotetext{For $n>30$.}
+\end{theorem}
+\begin{proof}
+First, we prove that $T_{n}\ge \frac{n^{n-2}}{n!}$. We have
+$$
+T_{n}\ge \frac{|\text{Labelled trees}|}{\text{maximal possible trees in one equivalence class}}
+$$
+Where the denominator equals $n!$.
+
+Now we show that $T_{n}\le 4^{n-1}$. Take an unlabelled tree $T$ with $n$ vertices. Choose one vertex of $T$ and call it a root. Embed $T$ into a plane. We start from the root and go counter-clockwise around the tree and write $+$ if the distance to the root increases and $-$ if the distance to the root decreases. At the end of our journey we obtain a sequence in $\{ +,- \}^{2n-2}$. We remark that an unlabelled tree can be uniquely reconstructed from this sequence. Since each tree corresponds to at least one, if not more, sequences and each sequence correspond to only on tree, with some to none, then we find 
+$$
+T_{n}\le 4^{n-1}.
+$$
+\end{proof}
+\begin{remark}
+A difficult result of Otter (1948) says that the number of unlabelled trees with $n$ vertices is
+$$
+\approx (0.5349)n^{-5/2}(2.9557)^{n}.
+$$
+\end{remark}
+
+\section{Subgraphs and induced subgraphs}
+
+\begin{definition}
+A subgraph of a graph $G=(V,E)$ is a graph $G'=(V',E')$ such that $V'\subseteq V$ and $E'\subseteq E$.
+\end{definition}
+\begin{definition}
+A graph $G'=(V',E')$ is an induced subgraph of $G=(V,E)$ if $V'\subseteq V$ and $E'=E\cap \binom{ V'}  {2 }$.
+\end{definition}
+\begin{definition}
+Let $G=(V,E)$ be a graph. An arbitrary tree of the form $(V,E')$, where $E'\subseteq E$, is called a spanning tree of the graph $G$.
+\end{definition}
+\begin{lemma}
+Every connected graph contains a spanning tree.
+\end{lemma}
+\begin{proof}
+Let $G=(V,E)$ be a connected graph. We construct a spanning tree of $G$ by the following algorithm:
+\begin{itemize}
+\item Step 1: Start with an empty subgraph $T=\varnothing$.
+\item Step 2: Pick an edge $e\in E$ such that $e\not\in E(T)$.
+\item Step 3: Consider the new subgraph $T'$ obtained from $T$ by adding $e$.
+\item Step 4: If $T'$ does not contain cycles, set $T:=T'$.
+\item If there is no edge $e\in E$ such that steps 2 and 3 hold, then stop.
+\end{itemize}
+Now we check that the output of this algorithm is a spanning tree of $G$. $T$ contains all vertices of $G$, is connected, and contains no cycles; therefore $T$ is a spanning tree.
+\end{proof}
+\subsection{Minimal spanning tree}
+\begin{definition}
+A weighted graph is a graph in which each edge is assigned a numerical weight.
+\end{definition}
+\begin{definition}
+We define the weight of a graph as the sum of weights of all its edges.
+\end{definition}
+\begin{problem}
+Find a minimum weight spanning tree $T$ for a given weighted connected graph $G$.
+\end{problem}
+
+\subsection*{Kruskal's algorithm : a greedy algorithm}
+
+\begin{itemize}
+\item Step 1: Start with an empty graph.
+\item Step 2: Take all the edges that have not been selected and that would not create a cycle with the already selected edges. Add the one with the smallest weight.
+\item Step 3: Repeat until the graph is connected and contains all vertices.
+\end{itemize}
+\begin{proof}[Correctness of the algorithm]
+Let $T$ be the graph obtained as the output of Kruskal's algorithm to a connected weighted graph $G$. We observe that $T$ contains all vertices of $G$, is connected and contains no cycles; therefore $T$ is a spanning tree.
+
+Now we show that $T$ has minimal weight. Let $F$ be another spanning tree of $G$. We want to show that $\mathrm{wt}(F)\ge \mathrm{wt}(T)$. We number the edges of $T$ according to the order we have added them while running the algorithm. Let $e$ be the edge with the smallest number such that $e\in E(T)$ and $e\not\in E(F)$. Add $e$ to $F$, forming a new graph which contains a cycle $C$.
+
+Since $C$ is not fully contained in $T$, then $C$ has an edge $f$ that is not an edge of $T$. If we add the edge $e$ to $F$, and delete $f$, we get a third tree $H$. 
+
+We want to show that $\mathrm{wt}(H)\le\mathrm{wt}(F)$, which is equivalent to $\mathrm{wt}(f)\ge\mathrm{wt}(e)$. Suppose $\mathrm{wt}(f)<\mathrm{wt}(e)$. We have chosen $f$ instead of $e$ since we would form a cycle with the edges of $T$ otherwise. All previously selected edges of $T$ are edges of $F$, $f$ is an edge of $F$, then $F$ contains a cycle. However, this is impossible since $F$ is a tree. 
+
+This proves that $F$ can not be cheaper than $H$ and $H$ coincides with $T$ after more iterations of the algorithm.
+\end{proof}
+
+\section{Graphs and matrices}
+
+Let $G$ be a graph. Suppose $|V(G)|=n$ and $|E(G)|=m$. 
+\begin{definition}
+The adjacency matrix of $G$ is the $n\times n$ matrix $A(G)$ given by
+$$
+A_{ij}=\begin{cases}
+1 & \text{if }\{ v_{i},v_{j} \}\in E \\
+0 & \text{otherwise}.
+\end{cases}
+$$
+\end{definition}
+\begin{definition}
+The degree matrix of $G$ is the diagonal $n\times n$ matrix $D(G)$ given by
+$$
+D_{ij}=\begin{cases}
+\deg(v_{i}) & \text{if }i=j \\
+0 & \text{otherwise}.
+\end{cases}
+$$
+\end{definition}
+\begin{definition}
+The Laplace matrix of $G$ is $L(G):=D(G)-A(G)$.
+\end{definition}
+\begin{lemma}
+Let $G$ be a graph and $A=A(G)$ be its adjacency matrix. The entries of the matrix $B:=A^{n}$ have the following combinatorial interpretation: $B_{ij}$ is the number of walks of length $n$ starting at $v_{i}$ and ending at $v_{j}$.
+\end{lemma}
+\begin{proof}
+$$
+B_{ij}=\sum _{k_{1}=1}^{|V(G)|}\sum_{k_{2}=1}^{|V(G)|} \cdots \sum _{k_{n-1}=1}^{|V(G)|} A_{i,k_{1}}A_{k_{1},k_{2}}\cdots A_{k_{n-1},j}
+$$
+where
+$$
+A_{i,k_{1}}A_{k_{1},k_{2}}\cdots A_{k_{n-1},j}=\begin{cases}
+1 & \text{if }\{ i,k_{1},\dots,k_{n-1},j \} \text{ is a walk} \\
+0 & \text{otherwise.}
+\end{cases}
+$$
+\end{proof}
+
+Let $G$ be a graph. Suppose that $|V(G)|=n$ and $|E(G)|=m$. 
+\begin{definition}
+We say that a graph $G$ has an orientation $\mathcal{O}$ if for every edge $\{ v_{1},v_{2} \}$ of $G$, one of the vertices, say $v_{1}$, is the initial vertex and $v_{2}$ is the final vertex.
+\end{definition}
+\begin{definition}
+The incidence matrix $M(G,\mathcal{O})$ is the $n\times m$ matrix given by
+$$
+M_{ij}=\begin{cases}
+1 & \text{if the edge }e_{j}\text{ has initial vertex }v_{i} \\
+-1 & \text{if the edge }e_{j}\text{ has final vertex }v_{i} \\
+0 & \text{otherwise}  
+\end{cases}
+$$
+\end{definition}
+\begin{lemma}
+We have $M(G,\mathcal{O})M(G,\mathcal{O})^{\mathsf{T}}=L(G)$.
+\end{lemma}
+\begin{proof}
+$M(G,\mathcal{O})M(G,\mathcal{O})^{\mathsf{T}}$ is an $n\times n$ matrix. The $ij$-th entry of this matrix is
+\begin{align*}
+(M(G,\mathcal{O})M(G,\mathcal{O})^{\mathsf{T}})_{ij} & =\sum_{k=1}^{m} M_{i,k}M_{j,k} \\
+ & =\sum _{k:e_{k}\text{ is adjoint to }v_{i}\text{ and }v_{j}} M_{i,k}M_{j,k}
+\end{align*}
+If $i\neq j$, then
+$$
+\sum_{k=1}^{m} M_{i,k}M_{j,k}=\begin{cases}
+0 & \text{if }\{ v_{i},v_{j} \}\not\in E \\
+-1 &  \text{if }\{ v_{i},v_{j} \}\in E
+\end{cases}
+$$
+If $i=j$ then 
+$$
+\sum_{k=1}^{m} M_{i,k}M_{i,k}=\deg(v_{i}) 
+$$
+\end{proof}
+\begin{theorem}[Kirchoff]
+Let $G$ be a connected graph on $n$ vertices. Then the rank of the Laplace matrix $L(G)$ is $n-1$.
+
+Let $0,\lambda_{1},\dots,\lambda _{n-1}$ be the eigenvalues of $L(G)$. Then the number of spanning trees of $G$ is
+$$
+\frac{1}{n}\lambda_{1}\cdots\lambda _{n-1}.
+$$
+
+\end{theorem}

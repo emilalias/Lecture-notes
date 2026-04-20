@@ -1,4 +1,4 @@
-\documentclass[a4paper,11   pt,french]{report}
+\documentclass[a4paper,11pt,french]{report}
 \usepackage[tmargin=2cm,rmargin=1in,lmargin=1in,margin=0.85in,bmargin=2cm,footskip=.2in]{geometry} 
 \usepackage{tabularx}
 \usepackage{mathrsfs}
