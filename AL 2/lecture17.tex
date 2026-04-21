@@ -1,0 +1,119 @@
+\todo{Lecture 17}
+\begin{definition}
+Soit $A\in \mathbf{R}^{n\times n}$ symétrique est dite 
+\begin{itemize}
+\item Définie positive si pour tout $x \in \mathbf{R}^{n}\setminus \{ 0 \}$, on a que $x^{\mathsf{T}}Ax>0$.
+\item Définie negative si pour tout $x \in \mathbf{R}^{n}\setminus \{ 0 \}$, on a que $x^{\mathsf{T}}Ax<0$.
+\item Semi-definie positive si pour tout $x \in \mathbf{R}^{n}$, on a que $x^{\mathsf{T}}Ax\ge 0$.
+\item Semi-definie negative si pour tout $x \in \mathbf{R}^{n}$, on a que $x^{\mathsf{T}}Ax\le 0$.
+\end{itemize}
+
+On peut appliquer ces definitions a une forme quadratique $f:x\mapsto x^{\mathsf{T}}Ax$, en accordance a la matrice $A$.
+\end{definition}
+\begin{theorem}
+Soit $A\in \mathbf{R}^{n\times n}$ symétrique : 
+\begin{enumerate}
+\item $A$ est définie positive si et seulement si toutes les valeurs propres de $A$ sont strictement positives.
+\item $A$ est définie negative si et seulement si toutes les valeurs propres de $A$ sont strictement negatives.
+\item $A$ est semi-definie positive si et seulement si toutes les valeurs propres de $A$ sont positives ou nulles.
+\item $A$ est semi-definie negative si et seulement si toutes les valeurs propres de $A$ sont negatives ou nulles.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+On utilise le theorem spectral. On a $A=U\mathrm{diag}(\lambda_{1},\dots,\lambda _{n})U^{*}$, ou $U$ est une matrice orthogonale. On sait que les colonnes $u_{1},\dots,u_{n}$ de $U$ forment une base orthonormale de $\mathbf{R}^{n}$ de vecteurs propres par rapport a $A$. Prenons $x \in \mathbf{R}^{n}$, on écrit $x$ comme $x=\sum _{i=1}^{n}\alpha _{i}u_{i}$. On calcule 
+\begin{align*}
+x^{\mathsf{T}}Ax & =\left( \sum _{i=1}^{n}\alpha _{i}u_{i} \right)^{\mathsf{T}}A\left( \sum _{j=1}^{n}\alpha _{j}u_{j} \right) \\
+ & =\sum _{i}\sum _{j}\alpha _{i}\alpha _{j}u_{i}^{\mathsf{T}}Au_{j} \\
+ & =\sum _{i}\sum _{j} \alpha _{i}\alpha _{j}\lambda _{j}u_{i}^{\mathsf{T}}u_{j} \\
+ & =\sum_{i=1}^{n} \alpha _{i}^{2}\lambda _{i}
+\end{align*}
+
+Le théorème découle de ce calcul.
+\end{proof}
+\begin{definition}
+Soit $A\in \mathbf{R}^{n\times n}$ symétrique :
+\begin{itemize}
+\item Le $k$-mineur principal de $A$ est le determinant de la matrice $A_{k}\in \mathbf{R}^{k\times k}$ ou $(A_{k})_{ij}=A_{ij}$ pour tous $i,j\in \{ 1,\dots,k \}$.
+\item Prenons $K=\{ \ell_{1},\dots,\ell _{k} \}\subseteq \{ 1,\dots,n \}$. Le $K$-mineur symétrique est le determinant de $A_{K}$ ou $(A_{K})_{ij}=A_{\ell _{i}\ell _{j}}$ pour $i,j\in \{ 1,\dots,k \}$.
+\end{itemize}
+\end{definition}
+\begin{example}
+Soit $A=\begin{pmatrix}2 & -1 & 0 \\ -1 & 2 & -1 \\ 0 & -1 & 2\end{pmatrix}\in \mathbf{R}^{3\times  3}$. On a $A_{1}=(1)$, $A_{2}=\begin{pmatrix}2 & -1 \\ -1 & 2\end{pmatrix}$, $A_{3}=A$ les $k$-mineurs principaux.
+
+On a $A_{\{ 1,3 \}}=\begin{pmatrix}2 & 0 \\ 0 & 2\end{pmatrix}$ un $K$-mineur symétrique de $A$ pour $K=\{ 1,3 \}$.
+\end{example}
+\begin{theorem}[Critère de Sylvestre]
+Soit $A\in \mathbf{R}^{n\times n}$ symétrique. Alors :
+\begin{enumerate}
+\item $A$ est définie positive si et seulement si tous les mineurs principaux sont strictement positifs.
+\item $A$ est semi-definie positive si et seulement si tous les mineurs symétriques son positifs ou nuls.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+On démontre 1, la demonstration de 2 est l'exercice etoile de la série 8.
+
+Direction $\Rightarrow$: Prenons $1\le k<n$. On va montrer que $\det(A_{k})>0$, en montrant que les valeurs propres de $A_{k}$ sont strictement positives et donc $A_{k}$ est définie positive.
+
+Prenons $y\in \mathbf{R}^{k}\setminus \{ 0 \}$ et ajoutons $n-k$ zeros a $y$ pour obtenir un vecteur $x \in \mathbf{R}^{n}$. On calcule 
+\begin{align*}
+x^{\mathsf{T}}Ax & =\begin{pmatrix}
+y^{\mathsf{T}} &0  & \cdots  & 0 
+\end{pmatrix}\begin{pmatrix}
+A_{k} &  \\
+ & 
+\end{pmatrix} \begin{pmatrix}
+y \\
+0 \\
+\vdots \\
+0
+\end{pmatrix} \\
+ & =y^{\mathsf{T}}A_{k}y>0
+\end{align*}
+et comme $y\in \mathbf{R}^{k}\setminus \{ 0 \}$ est arbitraire on conclut que $A_{k}$ est définie positive.
+
+Direction $\Leftarrow$: On fait une preuve par recurrence sur $n$. Le cas $n=1$ est trivial. Supposons $n>1$ et que le critère est vrai pour toute matrice $B\in\mathbf{R}^{\ell \times \ell}$ symétrique, ou $\ell<n$. Par l'hypothese de recurrences, les matrices associées aux $k$-mineurs principaux $A_{k}$ pour $k\in \{ 1,\dots,n-1 \}$ sont définies positives. Par contradiction, supposons que $A$ n'est pas définie positive. Comme $\det(A)>0$, on sait que $A$ possède au moins deux valeurs propres strictement negatives $\mu$ et $\lambda$. 
+\begin{claim}
+Prenons $u$ et $v$ des vecteurs propres orthonormaux associes a $\mu$ et $\lambda$, alors la dernière composante de $u$ et $v$ est non-nulle.
+\end{claim}
+\begin{proof}
+Par contradiction, supposons $u=(u_{1},\dots,u_{n-1},0)$. Comme $Au=\mu u$, on conclut que $$A_{n-1}\begin{pmatrix}u_{1} \\ \vdots \\ u_{n-1}\end{pmatrix}=\mu \begin{pmatrix}u_{1} \\ \vdots \\ u_{n-1}\end{pmatrix}$$donc $A_{n-1}$ possède une valeur propre strictement negative, qui pose une contradiction.
+\end{proof}
+Il existe alors $\beta \in \mathbf{R}\setminus \{ 0 \}$ tel que la dernière composante de $u+\beta v$ est nulle. On calcule
+$$
+(u+\beta v)^{\mathsf{T}}A(u+\beta v) = \mu +\beta^{2}\lambda<0
+$$
+Alors $A_{n-1}$ n'est pas définie positive qui pose une contradiction avec l'hypothese de recurrence.
+\end{proof}
+
+\begin{example}
+Soit $A=\begin{pmatrix}2 & -1 & 0 \\ -1 & 2 & -1 \\ 0 & -1 & 2\end{pmatrix}\in \mathbf{R}^{3\times  3}$. On montre que $A$ est définie positive par le critère de Sylvester. On a $\det(A_{1})=2$, $\det(A_{2})=3$ et $\det(A_{3})=4$ qui sont tous positifs, donc $A$ est définie positive.
+
+On a le polynôme caractéristique de $A$ : $p_{A}(x)=-x^{3}+6x^{2}-10x+4$. Les valeurs propres sont $\lambda_{1}=2$, $\lambda_{2}=2+\sqrt{ 2 }$ et $\lambda_{3}=2-\sqrt{ 2 }$ qui sont tous positives donc $A$ est définie positive.
+\end{example}
+\begin{theorem}
+Soit $A\in \mathbf{R}^{n\times n}$ symétrique et $f$ la forme quadratique associée. Alors $\max_{x \in S^{(n-1)}}f(x)=\lambda_{1}$ et $\min_{x \in S^{(n-1)}}=\lambda _{n}$ ou $\lambda_{1}\ge \dots \ge\lambda _{n}$ sont les valeurs propres de $A$.
+\end{theorem}
+\begin{proof}
+Par le théorème spectral, on a que $A=U\mathrm{diag}(\lambda_{1},\dots,\lambda _{n})U^{\mathsf{T}}$ ou les colonnes $u_{1},\dots,u_{n}$ de $U$ forment une base orthonormale de vecteurs propres de $A$. 
+
+Prenons $x \in S^{(n-1)}$. On écrit $x=\sum _{i=1}^{n}\alpha _{i}u_{i}$, alors $\lVert x \rVert^{2}=1=\sum_{i=1}^{n}\alpha _{i}^{2}$. Ainsi 
+\begin{align*}
+\lambda _{n} & =\lambda _{n}\left( \sum_{i=1}^{n} \alpha _{i}^{2} \right) \\
+ & =\sum_{i=1}^{n} \lambda _{n}\alpha _{i}^{2} \\
+ & \le \sum_{i=1}^{n} \lambda _{i}\alpha _{i}^{2} \\
+ & \le \sum_{i=1}^{n} \lambda_{1}\alpha _{i}^{2} \\
+ & =\lambda _{1}\sum_{i=1}^{n} \alpha _{i}^{2} \\
+ & =\lambda_{1}
+\end{align*}
+Donc $\max_{x \in S^{(n-1)}}f(x)\le\lambda_{1}$ et $\max_{x \in S^{(n-1)}}f(x)\ge \lambda _{n}$. En particulier, $u_{1}^{\mathsf{T}}Au_{1}=\lambda_{1}$ et $u_{n}^{\mathsf{T}}Au_{n}=\lambda _{n}$.
+\end{proof}
+\begin{theorem}[Min-Max]
+Soit $A\in \mathbf{R}^{n\times n}$ symetrique avec valeurs propres $\lambda_{1}\ge \dots\ge \lambda _{n}$. Si $U$ denote un sous-espace vectoriel de $\mathbf{R}^{n}$, alors
+$$
+\lambda _{k}=\max_{\dim(U)=k}\left[\min_{x \in U\cap S^{(n-1)}}x^{\mathsf{T}}Ax\right]
+$$
+et
+$$
+\lambda _{k}=\min_{\dim(U)=n-k+1}\left[\max_{x \in U\cap S^{(n-1)}}x^{\mathsf{T}}Ax\right]
+$$
+\end{theorem}

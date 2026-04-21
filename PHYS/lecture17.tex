@@ -1,0 +1,67 @@
+\section{Le role des conducteurs en électrostatique}
+\subsection{Propriétés de base}
+En électrostatique, il n'y a pas de courant dans un conducteur. Alors :
+\begin{enumerate}
+\item $\boldsymbol{E}=\boldsymbol{0}$ a l'interieur d'un conducteur (sinon, les charges mobiles produiraient un courant)
+\item $\boldsymbol{\nabla E}=0$, donc $\rho _{\mathrm{el}}=0$ par la loi de Gauss.
+\item Le point 1 implique que un conducteur est une region avec $\phi$ constante. 
+\item $\boldsymbol{E}=-\boldsymbol{\nabla}\phi$, donc $\boldsymbol{E}$ est perpendiculaire a la surface du conducteur.
+\item Des charges peuvent se trouver seulement a la surface du conducteur, donc $\sigma _{el}\neq 0$ est possible.
+\end{enumerate}
+\begin{example}
+Soit une quantité de charge $Q>0$ placée sur une sphere pleine conductrice. Par symétrie, $\sigma _{\mathrm{el}}=\frac{Q}{4\pi R^{2}}$ est constante. A l'interieur, pour $r<R$, $\boldsymbol{E}=\boldsymbol{0}$. Pour calculer $\boldsymbol{E}$ en dehors de la sphere, on prend une surface $S_{1}$ a une distance $\Delta R$, donc
+\begin{align*}
+\iint _{S_{1}}\boldsymbol{E}~d\boldsymbol{S} & =\iint _{S_{1}}E(R+\Delta R)\boldsymbol{\hat{e}}_{r}\boldsymbol{\hat{e}}_{r}~dS \\
+ & =E(R+\Delta R)\iint _{S_{1}}dS \\
+ & =4\pi(R+\Delta R)^{2}E(R+\Delta R) \\
+ & =\frac{Q}{\varepsilon_{0}}=\frac{4\pi R^{2}\sigma _{\mathrm{el}}}{\varepsilon_{0} }
+\end{align*}
+donc 
+$$
+E(R+\Delta R)=\frac{R^{2}}{(R+\Delta R)^{2}}  \frac{\sigma _{\mathrm{el}}}{\varepsilon_{0}}
+$$
+et quand $\Delta R$ approche 0, on trouve que $E(R)=\frac{\sigma _{\mathrm{el}}}{\varepsilon_{0}}$. 
+\end{example}
+En générale, en électrostatique $\boldsymbol{E}$ est perpendiculaire a la surface du conducteur. Si le conducteur est place dans le vide, $\lVert \boldsymbol{E} \rVert=\frac{\sigma _{\mathrm{el}}}{\varepsilon_{0}}$.
+\subsection{Densité de charge de surface par influence électrostatique}
+
+Supposons $\boldsymbol{E}$ uniforme et une plaque conductrice infinie et non chargée, avec $\boldsymbol{E}$ perpendiculaire a la plaque.
+\begin{figure}[h!]
+\centering
+\includegraphics{condgauss.png}
+\end{figure}
+
+On applique Gauss sur $S_{1}$, donc $-E_{1}A=\frac{\sigma _{\mathrm{el},1}A}{\varepsilon_{0}}$ et $\sigma _{\mathrm{el},1}=-\varepsilon_{0}E_{1}$. Comme le conducteur est non-charge, alors $\sigma _{\mathrm{el},2}=-\sigma _{\mathrm{el},1}$. $\sigma _{\mathrm{el},1}$ et $\sigma _{\mathrm{el},2}$ sont générées par influence pour assurer que $\boldsymbol{E}=\boldsymbol{0}$ dans le conducteur.
+
+On veut connaitre la variation de $\boldsymbol{E}$ le long de $z$. On applique Gauss sur $S_{2}$ et on trouve
+$$
+AE_{2}-AE_{1}=\frac{(\sigma _{\mathrm{el},1}+\sigma _{\mathrm{el},2})A}{2}=0
+$$
+, donc $E_{1}=E_{2}=E_{0}$. Determinons $\phi$
+$$
+\phi(B)-\phi(A)=-\int_{A}^{B} \boldsymbol{E} \, d\boldsymbol{\ell}
+$$
+Comme $\boldsymbol{E}\parallel \boldsymbol{\hat{e}}_{z}$, $\phi(x,y,z)=z$. Choisissons $B$ a hauteur $z$ et $A$ a hauteur 0 et $\phi(z=0)=0$. Donc
+\begin{align*}
+\phi(z)-\phi(0) & =\phi(z)  \\
+ &=-\int_{0}^{z} \boldsymbol{E} \, d\boldsymbol{\ell} \\
+ & = -\int_{0}^{z} \boldsymbol{E}~\boldsymbol{\hat{e}}_{z} \, dz'  \\
+ & =-\int_{0}^{z} E_{z}(z') \, dz' 
+\end{align*}
+
+Si $z<0$, alors 
+\begin{align*}
+\phi(z) & =-\int_{0}^{z} E_{z}(z') \, dz' \\
+ & =\int_{z}^{0} E_{z}(z') \, dz' \\
+ & =E_{0}\int_{z}^{0}  \, dz' \\
+ & =-zE_{0}.   
+\end{align*}
+Si $0<z<d$, alors
+\begin{align*}
+\phi(z) & = -\int_{0}^{z} E_{z}(z') \, dz' \\
+ & =0
+\end{align*}
+Si $z>d$, alors 
+$$
+\phi(z)=-\int_{d}^{z} E_{0} \, dz'=-(z-d)E_{0} .
+$$

@@ -41,6 +41,16 @@ Il existe $x \in R\setminus R$ tel que
 \end{enumerate}
 On appele $x$ une variable ou indeterminee de $R$. 
 \end{theorem}
+\begin{theorem}[Min-Max]\label{thm69}
+Soit $A\in \mathbf{R}^{n\times n}$ symetrique avec valeurs propres $\lambda_{1}\ge \dots\ge \lambda _{n}$. Si $U$ denote un sous-espace vectoriel de $\mathbf{R}^{n}$, alors
+$$
+\lambda _{k}=\max_{\dim(U)=k}\left[\min_{x \in U\cap S^{(n-1)}}x^{\mathsf{T}}Ax\right]
+$$
+et
+$$
+\lambda _{k}=\min_{\dim(U)=n-k+1}\left[\max_{x \in U\cap S^{(n-1)}}x^{\mathsf{T}}Ax\right]
+$$
+\end{theorem}
 \chapter{Serie 1}
 \begin{exercise}[Exo plus]
 Soit $R$ un anneau et $\alpha \in Z(R)$ un element du centre de $R$. Montrer que l'application
@@ -644,5 +654,66 @@ Soient $\lambda_{1}\neq\lambda_{2}$ deux valeurs propres distinctes et $u,v\in \
  & =\lambda_{2}u^{*}v
 \end{align*}
 alors $u^{*}v=0$.
+\end{proof}
+
+\begin{exercise}[Exo etoile]
+Soit $A\in \mathbf{R}^{n\times n}$ une matrice symétrique.
+
+Montrer, a partir d'un résultat de la série 7 \footnotemark{}, que $A$ est semi-definie positive si et seulement si tous ses mineurs symétriques sont positifs ou nuls, c-est a dire $\det(A_{I})\ge0$ pour tour $I\subseteq \{ 1,\dots,n \}$.
+\footnotetext{Le coefficient $n-k$ du polynôme caractéristique de $A$ vérifie
+$$
+a_{n-k}=(-1)^{n-k}\sum _{\underset{|I|=k}{I\subseteq \{ 1,...,n \}}} \det(A_{I}),
+$$
+ou $A_{i}$ est la sous-matrice obtenue en extrayant les lignes et les colonnes de $A$ d'indice dans $I$.}
+\end{exercise}
+\begin{proof}[Solution]
+Direction $\Rightarrow$: Si $A$ est semi-definie positive, toutes les valeurs propres de $A$ sont positives ou nulles. Donc
+\begin{align*}
+\det(A) & =\prod_{i=1}^{n} \lambda _{i}\ge 0
+\end{align*}
+
+On prend $I=\{ \ell_{1},\dots,\ell _{k} \}\subseteq[n]$. On définit $f:\mathbf{R}^{|I|}\to \mathbf{R}^{n}$ tel que $f(x)_{\ell _{j}}=x_{j}$ et $f(x)_{j}=0$ sinon. Pour $y\in \mathbf{R}^{|I|}$ on a $f(y)^{\mathsf{T}}Af(y)=y^{\mathsf{T}}A_{I}y\ge 0$ donc $A_{I}$ est semi-definie positive.
+
+Direction $\Leftarrow$ : On veut montrer que $A$ est semi-definie positive, c-a-d que toutes les valeurs propres de $A$ sont positives ou nulles. Les valeurs propres de $A$ sont les racines du polynôme caractéristique $p_{A}(x)$. Soit $b>0$ et $c=-b$, alors
+\begin{align*}
+\underbrace{ p_{A}(c) }_{ \neq 0 }=p_{A}(-b) & =\sum_{i=0}^{n} \left[ (-1)^{i}\sum _{\underset{|I|=n-i}{I\subseteq[n]}} \det(A_{I}) \right] (-1)^{i}b^{i} \\
+ & =\sum_{i=0}^{n} \sum _{|I|=n-1}\underbrace{ \det(A_{I}) }_{ \ge 0 }\underbrace{ b^{i} }_{ >0 }
+\end{align*}
+\end{proof}
+
+\chapter{Serie 9}
+
+\begin{exercise}[Exo plus]
+Soit $A=(a_{ij})\in \mathbf{R}^{n\times n}$ une matrice symétrique semi-definie positive.
+\begin{enumerate}
+\item Montrer que les elements diagonaux $a_{ii}$ de $A$ sont tous positifs ou nuls.
+\item Montrer que $a_{ii}a_{jj}\ge a_{ij}^{2}$ pour tout $i$, $j$. En déduire que si $a_{ii}=0$ pour un certain indice $i$, alors la $i$-eme ligne et la $i$-eme colonne de $A$ sont nulles.
+\item Montrer que si $a_{ii}a_{jj}=a_{ij}^{2}$ pour une certaine paire d'indices $i$, $j$ distincts, alors $\det(A)=0$.
+\item Montrer que si $x^{\mathsf{T}}Ax=0$, alors $Ax=0$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}[Solution]
+\begin{enumerate}
+\item $a_{ii}=e_{i}^{\mathsf{T}}Ae_{i}\ge 0$ car $A$ est semi-definie positive.
+\item Si $i=j$ $\checkmark$. Sinon, $I=\{ i,j \}\subseteq[n]$ et $\det(A_{I})=a_{ii}a_{jj}-a_{ij}a_{ji}\ge 0$.
+\item On prend $I=\{ i,j \}$, alors $\det (A_{I})=0$. Si $A$ est semi-definie positive, mais pas définie positive, alors $\det(A)=0$. $A$ est définie positive si et seulement si toutes les mineurs symétriques sont positifs. Dans notre cas, ca implique que $A$ n'est pas définie positive donc $\det(A)=0$.
+\item Le théorème spectral donne une base orthonormale $\{ u_{i} \}$ forme des vecteurs propres de $A$. Pour $x \in \mathbf{R}^{n}$, on l'ecrit comme $x=\sum_{i=1}^{n}\alpha _{i}u_{i}$ alors
+$$
+x^{\mathsf{T}}Ax=\sum_{i=1}^{n} \alpha _{i}^{2}\lambda _{i}=0
+$$
+est vraie que si $\alpha _{i}=0$ si $\lambda _{i}>0$. Donc $x$ s'ecrit comme combinaison linéaire de vecteurs propre associes a 0 donc $Ax=0$.
+\end{enumerate}
+\end{proof}
+\begin{exercise}[Examen 2025 - Question 21]
+Soit $A\in \mathbf{R}^{n\times n}$ symétrique et $\lambda_{1}\ge\dots\ge\lambda _{n}$ les valeurs propres. Montrer que pour tout $i=1,\dots,n$,
+$$
+\lambda_{1}\ge a_{ii}\ge \lambda _{n}.
+$$
+\end{exercise}
+\begin{proof}[Solution]
+Par le théorème \ref{thm69},  on a $\max_{x \in S^{(n-1)}}x^{\mathsf{T}}Ax=\lambda_{1}$ et $\min_{x \in S^{(n-1)}}x^{\mathsf{T}}Ax=\lambda _{n}$. Alors comme $e_{i}\in S^{(n-1)}$ 
+$$
+\lambda_{1}\ge a_{ii}=e_{i}^{\mathsf{T}}Ae_{i}\ge \lambda _{n}
+$$
 \end{proof}
 \end{document}

@@ -93,5 +93,30 @@ donc $W_{\gamma}$ est independant du chemin choisi entre $A$ et $B$.
 
 Si $A=B$, il suit que le travail pour déplacer une charge $q$ le long d'une courbe fermée est nul. Ceci implique que $q\boldsymbol{E}$ est une force conservative.  
 \end{proof}
+\todo{Lecture 17}
+\item En électrostatique, pour une charge ponctuelle $(q,m)$ et gravite $g\boldsymbol{\hat{e}}_{z}$. L'énergie $E_{\mathrm{tot}}=\frac{1}{2}m\lVert \boldsymbol{v} \rVert^{2}+q\phi(\boldsymbol{x})+mgz$ est conservée le long de la trajectoire $\boldsymbol{x}(t)$ de la particule.
+\begin{proof}
+\begin{align*}
+\frac{d}{dt}E_{\mathrm{ t ot}} & =\frac{1}{2}m2\boldsymbol{v}\dot{\boldsymbol{v}}+q\boldsymbol{\nabla}\phi   \frac{d\boldsymbol{x}}{dt}+mg  \frac{dz}{dt} \\
+ & =m \dot{\boldsymbol{v}}\boldsymbol{v} +q\boldsymbol{\nabla}\phi \boldsymbol{v}+mg\boldsymbol{\hat{e}}_{z}\boldsymbol{v} \\
+ & =\boldsymbol{F}\boldsymbol{v}-(q\boldsymbol{E}-mg\boldsymbol{\hat{e}}_{z})\boldsymbol{v}=0
+\end{align*}
+Donc $\phi(B)-\phi(A)=\int _{A\to B}\boldsymbol{E}~d\boldsymbol{\ell}$ est le changement de l'énergie potentielle électrostatique par unite de charge entre $A$ et $B$.  $\phi(B)-\phi(A)$ est aussi appelle la tension entre $A$ et $B$.
+\end{proof}
+\item On définit des surfaces équipotentielles par $\phi(\boldsymbol{r})$ constante. Comme $\boldsymbol{E}=-\boldsymbol{\nabla}\phi$, les lignes du champ électrique sont partout perpendiculaires aux surfaces équipotentielles.
+\begin{proof}
+Par une expansion de Taylor 
+\begin{align*}
+\phi(\boldsymbol{r}+\boldsymbol{h}) & =\phi(\boldsymbol{r})+\boldsymbol{\nabla}\phi(\boldsymbol{r})\boldsymbol{h}+O(\lVert \boldsymbol{h} \rVert ^{2}) \\
+ & =\phi(\boldsymbol{r})-\boldsymbol{E}(\boldsymbol{r})\boldsymbol{h}+O(\lVert \boldsymbol{h} \rVert ^{2})  \\
+\end{align*}
+Si $\boldsymbol{h}$ est tangentielle a la surface équipotentielle au point $\boldsymbol{r}$ : 
+\begin{align*}
+\phi(\boldsymbol{h}+\boldsymbol{r}) & =\phi(\boldsymbol{r})+O(\lVert \boldsymbol{h} \rVert ^{2}) \\
+ & =\phi(\boldsymbol{r})-\boldsymbol{E}(\boldsymbol{r})\boldsymbol{h}+O(\lVert \boldsymbol{h} \rVert ^{2}) \\
+ \Rightarrow \boldsymbol{E}(\boldsymbol{r})\boldsymbol{h} & =0
+\end{align*}
+car $\phi$ est constante sur la surface équipotentielle. Donc $\boldsymbol{E}$ pointe dans la direction perpendiculaire aux surfaces équipotentielles. 
+\end{proof}
 \end{enumerate}
 
