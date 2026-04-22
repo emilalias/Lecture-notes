@@ -1,0 +1,46 @@
+\todo{Lecture 18}
+\begin{example}[Explication du mouvement de la canette]
+Le mouvement du centre de masse est décrit par 
+$$
+m\ddot{\boldsymbol{x}}_{\mathrm{CM}}=\sum _{i} \boldsymbol{F}^{\mathrm{ext}}_{i}
+$$
+et la rotation autour du centre de masse
+$$
+\frac{d\boldsymbol{L}}{dt}=\sum _{i}(\boldsymbol{x}_{i}-\boldsymbol{x}_{\mathrm{CM}})\times \boldsymbol{F}^{\mathrm{ext}}_{i}=\boldsymbol{\tau}_{\mathrm{CM}}^{\mathrm{ext}}
+$$
+si le corps est rigide
+$$
+I_{\mathrm{CM}} \dot{\boldsymbol{\omega}}=\boldsymbol{\tau}_{\mathrm{CM}}^{\mathrm{ext}}
+$$
+
+Ici, selon $x$ :
+\begin{align*}
+m \ddot{x}_{\mathrm{CM}} & =F_{1,x}+F_{2,x}+F_{f} \\
+ I\dot{\omega} &R\cdot F_{f} \\
+ \omega R & =\dot{x}_{\mathrm{CM}}
+\end{align*}
+ou $F_{1}$ est la force entrainée par la tige chargée.
+\end{example}
+
+\subsection{Effet de pointe}
+Autour des pointes d'un conducteur, le champ $\boldsymbol{E}$ peut être très élevé.
+\subsection{Traitement générale, equation de Laplace et de Poisson}
+En principe, la loi de Gauss $\boldsymbol{\nabla E}=\frac{\rho _{\mathrm{el}}}{\varepsilon_{0}}$, permet de calculer $\boldsymbol{E}(\boldsymbol{r})$ a partir de $\rho _{\mathrm{el}}(\boldsymbol{r})$.
+\begin{problem}
+$\rho _{\mathrm{el}}(\boldsymbol{r})$ n'est pas connu partout.
+\end{problem}
+\begin{reminder}
+$\boldsymbol{\nabla \nabla}=\Delta$.
+\end{reminder}
+\begin{example}
+Soient trois conducteurs a des potentielles différentes. On connait le potentiel a la surface de chaque conducteur, mais on ne connait pas $\sigma _{\mathrm{el}}$. Si $\rho _{\mathrm{el}}=0$ dans l'espace a l'exterieur des conducteurs, alors $\boldsymbol{\nabla E}=0$, avec $\boldsymbol{E}=-\boldsymbol{\nabla}\phi$. Donc $\Delta \phi=0$, qui est l'equation de Laplace.
+
+Si $\rho _{\mathrm{el}}\neq 0$ entres les conducteurs alors $\Delta \phi=-\frac{\rho _{\mathrm{el}}}{\varepsilon_{0}}$ est l'equation de Poisson.
+\end{example}
+
+On peut resoudre ce probleme en utilisant l'equation de Laplace (ou de Poisson) en dehors des conducteurs plus les conditions aux limites (valeurs de $\phi$ sur les conducteurs et a l'infini si le domaine est non-borne). 
+
+Pour les conditions aux limites $\phi=\phi _{i}$ sur la surface du conducteur $i$ et $\phi \to0$ pour $\lVert \boldsymbol{r} \rVert\to \infty$ (si le domaine est non-borne), la solution de Poisson (ou Laplace) est unique.
+\begin{example}[Cage de Faraday]
+Une cage de Faraday est forme par un conducteur creux au potentiel $\phi_{1}$. A l'interier du conducteur $\Delta \phi=0$ et $\phi(\boldsymbol{r})=\phi_{1}$ est constante donc $\phi_{1}$ est l'unique solution a $\Delta \phi=0$. Alors $\boldsymbol{E}=-\boldsymbol{\nabla}\phi_{1}=0$ a l'interieur et $\sigma _{\mathrm{el}}=0$ sur la surface intérieure car $\lVert \boldsymbol{E} \rVert=\frac{\sigma _{\mathrm{el}}}{\varepsilon_{0}}$ a la surface d'un conducteur en électrostatique.
+\end{example}

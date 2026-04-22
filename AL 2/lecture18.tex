@@ -1,0 +1,193 @@
+\todo{Lecture 18}
+\begin{proof}
+La preuve passe par "double inégalité". On fixe $k\in[n]$, prenons $U\subseteq \mathbf{R}^{n}$ arbitraire de $\dim(U)=k$. Par un argument dimensionnel, on voit que $U\cap \mathrm{span}\{ u_{k},\dots,u_{n} \}\neq \{ 0 \}$, ou $u_{1},\dots,u_{n}$ est une base orthonormale de vecteurs propres de $A$ ordonnées comme $\lambda_{1}\ge \dots\ge \lambda _{n}$. Alors, il existe $0\neq x=\sum_{i=k}^{n}\alpha _{i}u_{i}\in U$. Mais, on remarque aussi que $x^{\mathsf{T}}Ax=\sum_{i=k}^{n}\alpha _{i}^{2}\lambda _{i}\le \lambda _{k}$. On sait alors que 
+$$
+\min_{x \in U\cap S^{(n-1)}}x^{\mathsf{T}}Ax\le \lambda _{k}.
+$$
+
+Prenons $U=\mathrm{span}(u_{1},\dots,u_{k})$, on sait par \ref{thm619} que $\min_{x \in U\cap S^{(n-1)}}x^{\mathsf{T}}Ax=\lambda _{k}$. Alors 
+$$
+\max_{\dim(U)=k} \min_{x \in U\cap S^{(n-1)}}x^{\mathsf{T}}Ax=\lambda _{k}
+$$
+\end{proof}
+\begin{definition}
+Soit $A\in \mathbf{C}^{n\times n}$ hermitienne. $A$ est dite
+\begin{itemize}
+\item Définie positive si pour tout $x \in \mathbf{C}^{n}\setminus \{ 0 \}$, on a que $x^{*}Ax>0$.
+\item Définie negative si pour tout $x \in \mathbf{C}^{n}\setminus \{ 0 \}$, on a que $x^{*}Ax<0$.
+\item Semi-definie positive si pour tout $x \in \mathbf{C}^{n}$, on a que $x^{*}Ax\ge 0$.
+\item Semi-definie negative si pour tout $x \in \mathbf{C}^{n}$, on a que $x^{*}Ax\le 0$.
+\end{itemize}
+
+On peut appliquer ces definitions a une forme quadratique $f:x\mapsto x^{*}Ax$, en accordance a la matrice $A$.
+\end{definition}
+\begin{theorem}
+Soit $A\in \mathbf{C}^{n\times n}$ hermitienne: 
+\begin{enumerate}
+\item $A$ est définie positive si et seulement si toutes les valeurs propres de $A$ sont strictement positives.
+\item $A$ est définie negative si et seulement si toutes les valeurs propres de $A$ sont strictement negatives.
+\item $A$ est semi-definie positive si et seulement si toutes les valeurs propres de $A$ sont positives ou nulles.
+\item $A$ est semi-definie negative si et seulement si toutes les valeurs propres de $A$ sont negatives ou nulles.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+Adapter la preuve du cas reel.
+\end{proof}
+
+\section{Decomposition en valeurs singuliers}
+
+\begin{theorem}[SVD]
+Soit $A\in \mathbf{C}^{m\times n}$. On peut decomposer $A=PDQ$ ou $P\in \mathbf{C}^{m\times m}$ et $Q\in \mathbf{C}^{n\times n}$ sont unitaires et $D\in \mathbf{R}^{m\times n}_{\ge 0}$ est une matrice diagonale.
+
+Si $A\in \mathbf{R}^{m\times n}$, ceci implique que $P\in \mathbf{R}^{m\times m}$ et $Q\in \mathbf{R}^{n\times n}$.
+\end{theorem}
+\begin{remark}[Motivation]
+\begin{itemize}
+\item Rotation $\leadsto$ Etirement/compression $\leadsto$ Rotations.
+\item Le 'pseudoinverse' $A^{+}\in \mathbf{C}^{n\times m}$ généralise l'inverse.  
+\item Problème des moindres carres. On cherche $\min_{x \in \mathbf{C}^{n}}\lVert Ax-b \rVert$ ou $A\in \mathbf{C}^{m\times n}$ et $b\in \mathbf{C}^{m}$. $A^{+}b$ est une solution optimale de norme minimale.
+\end{itemize}
+\end{remark}
+\begin{proof}
+On considère la matrice hermitienne $A^{*}A\in \mathbf{C}^{n\times n}$ qui est semi-definie positive, car pour tout $x \in \mathbf{C}^{n}$, on a 
+$$
+x^{*}A^{*}Ax=(Ax)^{*}Ax=\lVert Ax \rVert ^{2}\ge 0.
+$$
+Soient $\sigma_{1}^{2}\ge\dots\ge\sigma _{n}^{2}>0$ les valeurs propres réelles de $A^{*}A$. Soient $u_{1},\dots ,u_{n}$ une base orthonormale de $\mathbf{C}^{n}$ composée de vecteurs propres de $A^{*}A$. Alors les lignes de $Q$ sont $u_{1}^{*},\dots,u_{n}^{*}$, qui implique que $Q$ est unitaire. Posons $r :=|\{ i\in[n]:\sigma _{i}>0\}|$. Pour $i\in[r]$, on définit $v_{i}:=\frac{Au_{i}}{\sigma _{i}}$. On complete $v_{1},\dots,v_{r}$ a l'aide de Gram-Schmidt en une base orthonormale de $\mathbf{C}^{m}$. On montre que $v_{1},\dots,v_{r}$ sont orthonormales :
+
+\begin{align*}
+v_{i}^{*}v_{i} & =\left( \frac{Au_{i}}{\sigma _{i}} \right)^{*}\left( \frac{Au_{i}}{\sigma _{i}} \right) \\
+ & =\frac{u_{i}^{*}A^{*}Au_{i}}{\sigma _{i}^{2}} \\
+ & =\frac{\sigma _{i}^{2}u_{i}^{*}u_{i}}{\sigma _{i}} \\
+ & =u_{i}^{*}u_{i}=1
+\end{align*}
+et pour tous $i\neq j$
+\begin{align*}
+v_{i}^{*}v_{j} & =\left( \frac{Au_{i}}{\sigma _{i}} \right)^{*}\left( \frac{Au_{j}}{\sigma _{j}} \right) \\
+ & =\frac{u_{i}^{*}A^{*}Au_{j}}{\sigma _{i}\sigma _{j}} \\
+ & =\frac{\sigma _{i}\sigma _{j}}{\sigma _{i}\sigma _{j}}u_{i}u_{j}=0
+\end{align*}
+car $u_{i}$ et $u_{j}$ sont orthogonaux.
+
+On construit $P$ en posant $v_{1},\dots,v_{m}$ comme ses colonnes. Comme les colonnes sont orthonormales, alors $P$ est unitaire.
+
+Soit $D$ la matrice diagonale avec comme premiers $r$ elements diagonaux $\sigma _{1},\dots,\sigma _{r}$ et le reste des elements sont nuls.
+
+On montre que $A=PDQ$ si et seulement si $P^{*}AQ^{*}=D$. Pour tous $i\in [m]$ et $j\in[n]$ on veut montrer que $(P^{*}AQ^{*})_{ij}=D_{ij}$. Pour $j>r$ on a 
+\begin{align*}
+(P^{*}AQ^{*})_{ij} & =v_{i}^{*}Au_{j}=0
+\end{align*}
+car $\lVert Au_{j} \rVert^{2}=u_{j}^{*}A^{*}Au_{j}=\sigma _{j}^{2}u_{j}^{*}u_{j}=0$ car comme $j>r$, $\sigma _{j}=0$.
+
+Pour $i>r$, si $(P^{*}AQ^{*})_{ij}=0$ et c'est bon. Sinon $Au_{j}\neq0$ et $j\le r$. Donc
+$$
+v_{i}^{*}Au_{j}=v_{i}^{*}\sigma _{j}v_{j}=\sigma _{j}v_{i}^{*}v_{j}=0.
+$$
+qui est une contradiction.
+
+Pour $1\le i,j\le r$, on a
+\begin{align*}
+(P^{*}AQ^{*})_{ij} & =v_{i}^{*}Au_{j} \\
+ & =\frac{u_{i}^{*}A^{*}Au_{j}}{\sigma _{i}} \\
+ & =\frac{\sigma _{j}^{2}}{\sigma _{i}}u_{i}^{*}u_{j}=\begin{cases} 
+\sigma _{i} & \text{si }i=j \\
+0 & \text{sinon}.
+\end{cases}
+\end{align*}
+\end{proof}
+
+\begin{definition}
+Les $\sigma_{1},\dots,\sigma _{r}$ (dans cet ordre) du théorème SVD sont des valeurs singulières de $A$.
+\end{definition}
+\begin{definition}
+$A=PDQ$ est appelée une decomposition en valeurs singulières.
+\end{definition}
+\begin{definition}
+La pseudo-inverse d'une matrice $D=\mathrm{diag}(\sigma_{1},\dots,\sigma _{r},0\dots,0)\in \mathbf{R}^{m\times n}$ est 
+$$
+D^{+}=\mathrm{diag}(\sigma _{1}^{-1},\dots,\sigma _{r}^{-1},0,\dots,0)\in \mathbf{R}^{n\times m}.
+$$
+
+La pseudo-inverse d'une matrice $A\in \mathbf{C}^{m\times n}$, avec $A=PDQ$, est 
+$$
+A^{+}=Q^{*}D^{+}P^{*}
+$$
+\end{definition}
+\begin{theorem}
+La pseudo-inverse est unique.
+\end{theorem}
+\begin{example}
+Soit
+$$
+A=\begin{pmatrix}
+0 & -8/5 & 3/5 \\
+0 & 6/5 & 4/5 \\
+0 & 0 & 0 \\
+0 & 0 & 0
+\end{pmatrix}\in \mathbf{R}^{4\times3}.
+$$
+On calcule $A^{\mathsf{T}}A$ :
+$$
+A^{\mathsf{T}}A=\begin{pmatrix}
+0 & 0 & 0 \\
+0 & 4 & 0 \\
+0 & 0 & 1
+\end{pmatrix}
+$$
+donc les valeurs singulieres de $A$ sont $\sigma_{1}=1$ et $\sigma_{2}=2$. Donc on a les vecteurs propres $e_{2}$ pour $\sigma_{1}^{2}$, $e_{3}$ pour $\sigma_{2}^{2}$ et $e_{1}$ pour 0. Donc
+$$
+Q=\begin{pmatrix}
+0 & 1 & 0 \\
+0 & 0 & 1 \\
+1 & 0 & 0
+\end{pmatrix}.
+$$
+On construit $P$ :
+\begin{align*}
+v_{1} & =\frac{Au_{1}}{\sigma_{1}}=\begin{pmatrix}
+-4/5 & 3/5 & 0 & 0 
+\end{pmatrix}^{\mathsf{T}} \\
+v_{2} & =\frac{Au_{2}}{\sigma _{2}}=\begin{pmatrix}
+3/5 & 4/5 & 0 & 0
+\end{pmatrix}^{\mathsf{T}}
+\end{align*}
+donc 
+$$
+P=\begin{pmatrix}
+-4/5 & 3/5 & 0 & 0 \\
+3/5 & 4/5 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1
+\end{pmatrix}
+$$
+On construit $D$ comme
+$$
+D=\begin{pmatrix}
+2 & 0 & 0  \\
+0 & 1 & 0 \\
+0 & 0 & 0 \\
+0 & 0 & 0
+\end{pmatrix}
+$$
+et 
+$$A=PDQ$$. 
+
+On calcule la pseudo-inverse 
+$$
+A^{+}=\begin{pmatrix}
+0 & 0 & 1 \\
+1 & 0 & 0 \\
+0 & 1 & 0 
+\end{pmatrix}\begin{pmatrix}
+1/2 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 0
+\end{pmatrix}\begin{pmatrix}
+-4/5 & 3/5 & 0 & 0 \\
+3/5 & 4/5 & 0 & 0 \\
+0 & 0 & 1 &0 \\
+0 & 0 & 0 & 1 
+\end{pmatrix}
+$$
+\end{example}
+

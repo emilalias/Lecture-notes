@@ -22,7 +22,7 @@ On cherche $\min_{\boldsymbol{x}\in \mathbf{R}^{2}}(x^{2}+y^{2})$ sous la contra
 On cherche $\min_{\boldsymbol{x}\in \mathbf{R}^{2}}(x+y)$ sous la contrainte $x^{2}+y^{2}-1=0$. Au point de minimum, la courbe de niveau est tangentielle à $\Sigma _{g}$ si et seulement si $\nabla f\perp\Sigma _{g}$ si et seulement si $\nabla f(\boldsymbol{x}^{*})\perp$ plan tangent a $\Sigma _{g}$ en $\boldsymbol{x}^{*}$ si et seulement si $\nabla f(\boldsymbol{x}^{*})\parallel \nabla g(\boldsymbol{x}^{*})$ si et seulement si, il existe $\lambda ^{*}$ tel que $\nabla f(\boldsymbol{x}^{*})=\lambda ^{*}\nabla g(\boldsymbol{x}^{*})$. On peut définir ce plan tangent à $\Sigma _{g}$ comme $\{ \boldsymbol{x}\in \mathbf{R}^{2}:\nabla g(\boldsymbol{x}^{*})(\boldsymbol{x}-\boldsymbol{x^{*}})=0 \}$.
 \end{example}
 \begin{theorem}[Conditions nécessaires pour extrema locaux lies]
-Soit $E\subset \mathbf{R}^{n}$ ouvert non-vide, $f,g:E\to \mathbf{R}$ de classe $C^{1}$. On considère $\Sigma=\{\boldsymbol{z}\in \mathbf{R}^{n}:g(\boldsymbol{z})=0 \}$. Soit $\boldsymbol{z}^{*}\in\Sigma _{g}$ un point d'extremum local lie de $f$ sur $\Sigma _{g}$. Si $\nabla g(\boldsymbol{x}^{*})\neq 0$, alors il existe $\lambda ^{*}\in \mathbf{R}$ tel que $\nabla f(\boldsymbol{z}^{*})=\lambda ^{*}\nabla g(\boldsymbol{z}^{*})$. 
+Soit $E\subset \mathbf{R}^{n}$ ouvert non-vide, $f,g:E\to \mathbf{R}$ de classe $C^{1}$. On considère $\Sigma=\{\boldsymbol{z}\in \mathbf{R}^{n}:g(\boldsymbol{z})=0 \}$. Soit $\boldsymbol{z}^{*}\in\Sigma _{g}$ un point d'extremum local lie de $f$ sur $\Sigma _{g}$. Si $\nabla g(\boldsymbol{z}^{*})\neq \boldsymbol{0}$, alors il existe $\lambda ^{*}\in \mathbf{R}$ tel que $\nabla f(\boldsymbol{z}^{*})=\lambda ^{*}\nabla g(\boldsymbol{z}^{*})$. 
 \end{theorem}
 \begin{proof}
 Puisque $\nabla g(\boldsymbol{z}^{*})\neq0$, il existe $i\in \{ 1,\dots,n \}$ tel que $\frac{ \partial g }{ \partial x_{i} }(\boldsymbol{z}^{*})=0$. Sans perte de généralité, $i=n$, $y=z_{n}$ et $\boldsymbol{x}=(x_{1},\dots,x_{n}-1)=(z_{1},\dots,z_{n-1})\in \mathbf{R}^{n-1}$. Grace au théorème de fonctions implicites, il existe un ouvert $V\subset \mathbf{R}^{n}$ contenant $\boldsymbol{z}^{*}$, un ouvert $U\subset \mathbf{R}^{n-1}$ contenant $\boldsymbol{x}^{*}$ et une fonction unique $\varphi:U\to \mathbf{R}$ de classe $C^{1}$ telle que $\varphi(\boldsymbol{x}^{*})=y^{*}$ et $\mathcal{G}(\varphi)=\Sigma _{g}\cap V$, donc $g(\boldsymbol{x},\varphi(\boldsymbol{x}))=0$ pour tout $\boldsymbol{x}\in U$. On a
@@ -54,7 +54,7 @@ On definie le Lagrangien
 \end{align*}
 qui a pour gradient
 $$
-\nabla \mathcal{L}(\boldsymbol{z},^{*})=\begin{pmatrix}
+\nabla \mathcal{L}(\boldsymbol{z}^{*},\lambda^{*})=\begin{pmatrix}
 \frac{ \partial \mathcal{L}}{ \partial z_{1} }  \\
 \vdots \\
 \frac{ \partial \mathcal{L} }{ \partial z_{n} }  \\

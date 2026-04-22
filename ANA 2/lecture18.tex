@@ -1,0 +1,53 @@
+\todo{Lecture 18}
+\begin{remark}
+$\boldsymbol{z}^{*}$ est un point de minimum local de $f$ sur $\Sigma _{g}$ si et seulement si $\boldsymbol{x}^{*}$ est un point de minimum local de $\tilde{f}$ sur l'ouvert $U$. Alors une condition suffisante pour que $\boldsymbol{x}^{*}$ soit un point minimum local de $\tilde{f}$ sur $U$ est que $H_{\tilde{f}}(\boldsymbol{x}^{*})$ soit définie positive.
+\end{remark}
+\begin{theorem}
+Soit $E\subset \mathbf{R}^{n}$ ouvert non-vide, $f,g:E\to \mathbf{R}$ de classe $C^{2}(E)$. Soit $\Sigma _{g}=\{ \boldsymbol{z}\in \mathbf{R}^{n}:g(\boldsymbol{z})=0 \}$ et $(\boldsymbol{z}^{*},\lambda ^{*})\in\Sigma _{g}\times \mathbf{R}$  un point stationnaire de la fonction de Lagrange $\mathcal{L}(\boldsymbol{z},\lambda)=f(\boldsymbol{z})-\lambda g(\boldsymbol{z})$, avec $\nabla g(\boldsymbol{z}^{*})\neq \boldsymbol{0}$. Si 
+$$\underbrace{ 
+\boldsymbol{v}^{\mathsf{T}}(H_{f}(\boldsymbol{z}^{*})-\lambda ^{*}H_{g}(\boldsymbol{z}^{*}))\boldsymbol{v} }_{ D^{2}_{\boldsymbol{vv}}\tilde{f}(\boldsymbol{x}^{*}) }>0,\quad \forall \boldsymbol{v}\perp \nabla g(\boldsymbol{z}^{*})
+$$
+, alors $\boldsymbol{z}^{*}$ est un point de minimum local lie.
+\end{theorem}
+
+\section{Extrema sous contraintes multiples}
+
+Soient $f,g_{1},\dots,g_{m}:E\to \mathbf{R}$ de classe $C^{1}$ (voir $C^{2}$). On cherche $\min_{\boldsymbol{z}\in E}f(\boldsymbol{z})$ sous les contraintes $g_{i}(\boldsymbol{z})=0$ pour $i=1,\dots,m$. On peut poser $\boldsymbol{g}=(g_{1},\dots,g_{m})^{\mathsf{T}}$ pour définir une fonction $\boldsymbol{g}:E\to \mathbf{R}^{m}$ et $\Sigma _{\boldsymbol{g}}=\{ \boldsymbol{z}\in E:\boldsymbol{g}(\boldsymbol{z})=\boldsymbol{0} \}$. 
+\begin{theorem}[Condition necessaire]
+Une condition necessaire pour que $\boldsymbol{z}^{*}$ soit un point d'extremum local de $f$ sur $\Sigma _{\boldsymbol{g}}$ est qu'ils existent $\lambda_{1}^{*},\dots,\lambda _{m}^{*}\in \mathbf{R}$ tels que 
+$$
+\nabla f(\boldsymbol{z}^{*})=\sum_{i=1}^{m} \lambda _{i}^{*}\nabla g_{i}(\boldsymbol{z}^{*}),
+$$
+si les gradients $\nabla g_{i}(\boldsymbol{z})^{*}$ sont linéairement indépendants.
+\end{theorem}
+\begin{theorem}[Condition suffisante]
+Une condition suffisante pour que $\boldsymbol{z}^{*}$ soit un point de minimum local de $f$ sur $\Sigma _{\boldsymbol{g}}$ est que 
+$$
+\boldsymbol{w}^{\mathsf{T}}\left( H_{f}(\boldsymbol{z}^{*})-\sum_{i=1}^{m} \lambda _{i}H_{g_{i}}(\boldsymbol{z}^{*}) \right)\boldsymbol{w}>0
+$$
+pour tout $\boldsymbol{w}\in \mathbf{R}^{n}$ tel que $\boldsymbol{w}\perp \nabla g_{i}(\boldsymbol{z}^{*})$ pour $i=1,\dots,m$.
+\end{theorem}
+
+\begin{theorem}[Condition necessaire]
+Soit $\mathcal{L}(\boldsymbol{z},\boldsymbol{\lambda})=f(\boldsymbol{z})-\lambda_{1}g_{1}(\boldsymbol{z})-\dots -\lambda _{m}g_{m}(\boldsymbol{z})=f(\boldsymbol{z})-\boldsymbol{\lambda}^{\mathsf{T}}\boldsymbol{g}(\boldsymbol{z})$ ou $\boldsymbol{\lambda}=(\lambda_{1},\dots,\lambda _{m})$. $\boldsymbol{z}=(z_{1},\dots,z_{n})\in \mathbf{R}^{n}$ et $\boldsymbol{g}=(g_{1},\dots,g_{m})$. Si $\boldsymbol{z}^{*}$ est un point d'extremum local de $f$ sur $\Sigma _{\boldsymbol{g}}$ et $\mathrm{rank}(D\boldsymbol{g}(\boldsymbol{z}^{*}))=m$, avec $m<n$, alors $(\boldsymbol{z}^{*},\boldsymbol{\lambda}^{*})$ est un point stationnaire de $\mathcal{L}$, c-a-d $\mathcal{L}(\boldsymbol{z}^{*},\boldsymbol{\lambda}^{*})=0$.
+\end{theorem}
+
+\begin{theorem}[Condition suffisante]
+Si $(\boldsymbol{z}^{*},\boldsymbol{\lambda}^{*})$ est un point stationnaire de $\mathcal{L}$, $\mathrm{rank}(D\boldsymbol{g}(\boldsymbol{z}^{*}))=m$ et $\boldsymbol{w}^{\mathsf{T}}H_{\mathcal{L}}^{(\boldsymbol{z})}(\boldsymbol{z}^{*},\boldsymbol{\lambda}^{*})>0$ pour tout $\boldsymbol{w}\perp \nabla g_{i}(\boldsymbol{z})$ pour $i=1,\dots,m$. Alors $\boldsymbol{z}^{*}$ est un point de minimum local lie.
+\end{theorem}
+\begin{example}
+Chercher les extrema lies de $f(x,y,z)=x+y+z$ sous les contraintes $g_{1}(x,y,z)=x^{2}+y^{2}-2=0$ et $g_{2}(x,y,z)=x+z-1=0$.
+
+On a $$\mathcal{L}(\boldsymbol{z},\boldsymbol{\lambda})=f(\boldsymbol{z})-\lambda_{1}g_{1}(\boldsymbol{z})-\lambda_{2}g_{2}(\boldsymbol{z})=x+y+z-\lambda_{1}(x^{2}+y^{2}-2)-\lambda_{2}(x+z-1).$$ On cherche que $\nabla \mathcal{L}(\boldsymbol{x},\boldsymbol{\lambda})=\boldsymbol{0}$. On calcule
+\begin{align*}
+\frac{ \partial \mathcal{L} }{ \partial x }  &=1-2\lambda_{1}x-\lambda_{2} =0   &  & \Rightarrow x=0\\
+\frac{ \partial \mathcal{L}}{ \partial y }  & =1-2\lambda_{1}y =0  &  & \Rightarrow \lambda_{1}=\pm \frac{1}{2\sqrt{ 2 }}\\
+\frac{ \partial \mathcal{L} }{ \partial z } & =1-\lambda_{2}=0   &  & \Rightarrow \lambda_{2}=1 \\
+-\frac{ \partial \mathcal{L} }{ \partial \lambda_{1} }  &  =x^{2}+y^{2}-2 =0 &  & \Rightarrow y=\pm \sqrt{ 2 }\\
+-\frac{ \partial \mathcal{L} }{ \partial \lambda_{2} }  & =x+z-1 =0  &  & \Rightarrow z=1
+\end{align*}
+Et comme $\Sigma _{\boldsymbol{g}}$ est compact et $f$ est continue, $f$ admet un minimum et un maximum sur $\Sigma _{\boldsymbol{g}}$.
+\end{example}
+
+
+
