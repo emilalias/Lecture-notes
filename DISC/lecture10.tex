@@ -1,0 +1,243 @@
+\todo{Lecture 10}
+\begin{example}
+Let 
+$$
+L(G)=\begin{pmatrix}
+2 & -1 & 0 & -1 \\
+-1 & 3 & -1 & -1 \\
+0 & -1 & 2 & -1 \\
+-1 & -1 & -1 & 3
+\end{pmatrix},
+$$
+the characteristic polynomial of this matrix is
+$$
+p_{L(G)}(x)=x^{4}-10x^{3}+32x^{3}-32x
+$$
+with eigenvalues
+$$
+\lambda_{1}=0,\quad  \lambda_{2}=2,\quad \lambda_{3}=\lambda_{4}=4.
+$$
+Kirchhoff theorem implies that there are 8 spanning trees for $G$.
+\end{example}
+\begin{notation}
+Let 
+\begin{itemize}
+\item $M=M(G)$ be an incidence matrix of $G$, 
+\item $M_{0}(G)$ be the matrix obtained from $M(G)$ by removing the last row, 
+\item $S\subset E$ be a subset of edges such that $|S|=|V(G)|-1$. 
+\end{itemize}
+Then $M_{0}(S)$ is the submatrix of $M_{0}(G)$ formed by columns of $M_{0}$ indexed by the edges of $S$.
+\end{notation}
+\begin{lemma}
+Let $S$ be the set of $n-1$ edges of $G$. If $S$ does not form the set of edges of a spanning tree, then $\det(M_{0}(S))=0$. If $S$ is the set of edges of a spanning tree of $G$, then $\det (M_{0}(S))=\pm 1$.
+\end{lemma}
+\begin{example}
+Let 
+$$
+M(G,\mathcal{O})=\begin{pmatrix}
+-1 & 1 & 0 & 0 & 0 \\
+0 & -1 & 1 & -1 & 0 \\
+0 & 0 & 0 & 1 & 1  \\
+1 & 0 & -1 & 0 & -1
+\end{pmatrix}
+$$
+and $S=\{ e_{1},e_{3},e_{5} \}$. Then
+$$
+M_{0}(S)=\begin{pmatrix}
+-1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{pmatrix}
+$$
+that has determinant $\det(M_{0}(S))=-1$.
+\end{example}
+\begin{proof}
+First, suppose that $S$ is not the set of edges of a spanning tree. Then, some subset $R$ of $S$ forms the edges of a cycle $C$ in $G$. Suppose that the cycle $C$ has edges $f_{1},\dots,f_{s}$ in this order. Let $\boldsymbol{w}_{1},\dots,\boldsymbol{w}_{s}$ be the corresponding column vectors of $M_{0}(S)$. Define
+$$
+k_{i}:= \begin{cases}
+1 & \text{if the orientation of }f_{i}\text{ coincides with the orientation of }C \\
+-1 & \text{otherwise.}
+\end{cases}
+$$
+We have
+$$
+\sum_{i=1}^{s} k_{i}\boldsymbol{w}_{i}=\boldsymbol{0}
+$$
+Therefore, $\mathrm{rank}(M_{0}(S))<n-1$ meaning that $\det(M_{0}(S))=0$.
+
+\begin{reminder}
+$v_{n}$ is the last vertex of $G$ which corresponds to the row removed from $M$ to obtain $M_{0}$.
+\end{reminder}
+Now suppose that $S$ is the set of edges of a spanning tree $T$. Let $e$ be an edge of $T$ which is connected to $v_{n}$. The column of $M_{0}(S)$ indexed by $e$ contains exactly one non-zero entry. Remove from $M_{0}(S)$ the row containing this non-zero entry and the column corresponding to $e$. We obtain a $(n-2)\times(n-2)$ matrix $M'_{0}$. We have that $\det(M_{0}(S))=\pm \det(M_{0}')$.
+
+Let $T'$ be the tree obtained from $T$ by contracting the edge $e$ to a single vertex $u$. Then $M_{0}'$ is the matrix obtained from the incidence matrix of $T'$ by removing the row indexed by $u$. By induction on the number $n$ of vertices we have 
+$$
+\det(M_{0}')=\pm 1
+$$
+which concludes the proof.
+\end{proof}
+\begin{definition}
+Let $A$ be a rectangular matrix of size $m\times n$. Suppose $m\le n$ and $S$ is an $m$-element subset of $\{ 1,2,\dots,n \}$. Then we denote by $A[S]$ the matrix $(A_{ij})_{i=1,\dots,m}$ consisting of columns of $A$ indexed by elements of $S$.
+\end{definition}
+\begin{theorem}[Binet-Cauchy]\label{cauchybinet}
+Let $A,B\in \mathbf{C}^{m\times n}$. If $m \le n$ then 
+$$
+\det(AB^{\mathsf{T}})=\sum _{S}(\det A[S])(\det B[S])
+$$
+where $S$ runs over all $m$-element subsets of $\{ 1,2,\dots,n \}$.
+\end{theorem}
+\begin{proof}[Proof of \ref{kirchhoff}]
+Let $L_{0}(G)$ be the matrix obtained from $L(G)$ by removing the last row and the last column.
+
+We have $L_{0}=M_{0}M_{0}^{\mathsf{T}}$. By Binet-Cauchy 
+\begin{align*}
+\det(L_{0}) & =\sum _{\underset{|S|=n-1}{S\subset E}}(\det M_{0}[S])(\det M_{0}^{\mathsf{T}}[S]) \\
+ & =\sum _{\underset{|S|=n-1}{S\subset E}}(\det M_{0}[s])^{2} \\
+ & =\sum _{S}(\pm 1)^{2}+\sum _{S}(0)^{2} \\
+ & =\text{the number of spanning trees in }G.
+\end{align*}
+\end{proof}
+\begin{lemma}
+Suppose that $A\in K^{n\times n}$ is invertible, $x \in K^{n}$ and $b\in K$. Then
+$$
+\det \begin{pmatrix}
+A & x \\
+x & b
+\end{pmatrix}=(b -x^{\mathsf{T}}A^{-1}x)\det(A).
+$$
+\end{lemma}
+\begin{proof}
+Set $\tilde{x}=A^{-1}x$ and $\tilde{b}=b-x^{\mathsf{T}}A^{-1}x$. Then	$$
+\det \begin{pmatrix}
+A & x \\
+x & b 
+\end{pmatrix}=\tilde{b}\det(A)=(b-x^{\mathsf{T}}A^{-1}x)\det(A)
+$$
+\end{proof}
+Let $L$ be a Laplace matrix of a graph $G$. We denote by $n$ the number of vertices in $V(G)$. 
+$$
+L=\begin{pmatrix}
+E_{n-1} & 0 \\
+-1\cdots-1 & 1
+\end{pmatrix}\begin{pmatrix}
+L_{0} &(0\cdots 0)^{\mathsf{T}} \\
+0\cdots0 & 0
+\end{pmatrix}\begin{pmatrix}
+E_{n-1} & (-1\cdots-1)^{\mathsf{T}} \\
+0\cdots0 & 1
+\end{pmatrix}
+$$
+\begin{exercise}
+Show that $\det(L_{0}(G))=\frac{1}{n}\lambda_{1}\cdots\lambda _{n-1}$.
+\end{exercise}
+\begin{proof}[Solution]
+Let $\lambda_{1},\dots,\lambda _{n}$ be the eigenvalues of $L$ (counted with multiplicity). Since $\mathrm{rank}(L)\le n-1$, we know that at least one of the eigenvalues of $L$ is zero. Suppose that $\lambda _{n}=0$.
+
+Let $x$ be a variable. $\det(L+E_{n}x)$ is a polynomial of degree $n$ in $x$. We calculate
+$$
+\det(L+E_{n}x)=\prod_{i=1}^{n} (x+\lambda _{i})=x^{n}+P_{n-1}x^{n-1}+\dots +P_{1}x+P_{0}
+$$
+where 
+$$
+P_{0}=\lambda_{1}\cdots\lambda _{n}=0,\quad P_{1}=\sum_{i=1}^{n} \left( \prod _{j\neq i} \lambda _{j}\right)=\lambda_{1}\cdots\lambda _{n-1}.
+$$
+
+We have 
+$$
+L+E_{n}x=\begin{pmatrix}
+L_{0}+E_{n-1}x & L_{0}(-1\cdots-1)^{\mathsf{T}} \\
+(L_{0}(-1\cdots-1)^{\mathsf{T}})^{\mathsf{T}} & (-1\cdots-1)L_{0}(-1\cdots-1)^{\mathsf{T}}+x
+\end{pmatrix}
+$$
+the lemma implies that
+\begin{align*}
+\det(L+E_{n}x) & = \det(L_{0}+E_{n-1}x)[(-1\cdots-1)L_{0}(-1\cdots-1)^{\mathsf{T}}] \\
+& \quad +x-(-1\cdots-1)L_{0}^{\mathsf{T}}(L_{0}+E_{n-1}x)^{-1}L_{0}(-1\cdots-1)^{\mathsf{T}}]
+\end{align*}
+We have 
+$$
+\det(L_{0}+E_{n-1}x)=x^{n-1}+\tilde{P}_{n-2}x^{n-2}+\dots +\tilde{P}_{1}x+\tilde{P}_{0}
+$$
+for some $\tilde{P}_{i}\in \mathbf{Q}$ and $\tilde{P}_{0}=\tilde{\lambda}_{1}\cdots\tilde{\lambda} _{n-1}=\det(L_{0})$. We also consider the Taylor expansion around $x=0$ :
+\begin{align*}
+(-1\cdots-1)L_{0}(-1\cdots-1)^{\mathsf{T}}]+x-(-1\cdots-1)L_{0}^{\mathsf{T}}(L_{0}+E_{n-1}x)^{-1}L_{0}(-1\cdots-1)^{\mathsf{T}} & = \\
+ & =A_{0}+A_{1}x+A_{2}x^{2}+o(x^{2})
+\end{align*}
+for some $A_{0},A_{1},A_{2}\in \mathbf{R}$. We have $P_{0}=\tilde{P}_{0}A_{0}=0$, $P_{1}=\tilde{P}_{0}A_{1}+\tilde{P}_{1}A_{0}=\det L_{0}A_{1}$.
+
+We compute
+\begin{align*}
+(-1\cdots-1)L_{0}(L_{0}+E_{n-1}x)^{-1}L_{0}(-1\cdots-1)^{\mathsf{T}} & =(-1\cdots-1 )L_{0}(1+xL_{0}^{-1})^{-1}(-1\cdots-1)^{\mathsf{T}} \\
+ & =(-1\cdots-1)L_{0}(1-xL_{0}^{-1}+x^{2}L_{0}^{-2}+o(x^{3}))(-1\cdots-1)^{\mathsf{T}} \\
+ & =(-1\cdots-1)L_{0}(-1\cdots-1)^{\mathsf{T}}-x(-1\cdots-1)(-1\cdots-1)^{\mathsf{T}}+o(x^{2})
+\end{align*}
+Therefore,
+$$
+A_{1}=(-1\cdots-1)(-1\cdots-1)^{\mathsf{T}}+1=n-1+1=n
+$$
+which means that $\lambda_{1}\cdots\lambda _{n-1}=n\det L_{0}$.
+\end{proof}
+\begin{proof}[Proof of \ref{cauchybinet}]
+We have
+$$
+A=(A_{ij})_{(i,j)\in[m]\times[n]},\quad B=(B_{ij})_{(i,j)\in[m]\times[n]}
+$$
+and 
+$$
+(AB^{\mathsf{T}})_{i_{1},i_{2}}=\sum _{j=1}^{n}A_{i_{1},j}B_{i_{2},j}.
+$$
+We compute 
+\begin{align*}
+\det(AB^{\mathsf{T}}) & =\sum _{\pi \in S_{m}}\mathrm{sign}(\pi)\prod_{i=1}^{m} (AB^{\mathsf{T}})_{i,\pi(i)} \\
+ & =\sum _{\pi \in S_{m}}\mathrm{sign}(\pi)\prod_{i=1}^{m} \left( \sum_{j=1}^{n} A_{i,j}B_{\pi(i),j} \right) \\
+ & =\sum _{\pi \in S_{m}}\mathrm{sign}(\pi)\sum _{(j_{1},\dots,_{m})\in[n]^{m}}\prod_{i=1}^{m} A_{i,j_{i}}B_{\pi(i),j_{i}}
+\end{align*}
+and
+$$
+\sum _{\underset{|J|=m}{J\subset[n]}}\det A[J]\det B[J]=\sum _{1\le j_{1}<\cdots<j_{m}\le n} \left( \sum _{\pi_{1}\in S_{m}}\mathrm{sign}(\pi _{1})\prod_{i=1}^{m} A_{i,j_{\pi_{1}(i)}}\right)\left( \sum _{\pi_{2}\in S_{m}}\mathrm{sign}(\pi_{2})\prod_{i=1}^{m}B_{i,j_{\pi_{2}(i)}}  \right)
+$$
+\begin{lemma}
+Let $(j_{1},\dots,j_{m})\in [n]^{m}$. Suppose that $j_{s}=j_{t}$ for some pair of indices $s\neq t$. Then
+$$
+\sum _{\pi \in S_{m}}\mathrm{sign}(\pi)\prod_{i=1}^{m} A_{i,j_{i}}B_{\pi(i),j_{i}}=0.
+$$
+\end{lemma}
+\begin{proof}
+Let $\sigma _{s,t}\in S_{m}$ be the permutation that interchanges $s$ and $t$ and fixes all other elements of $[m]$. Then for each $\pi \in S_{m}$ we have
+$$
+\mathrm{sign}(\pi \circ\sigma)=-\mathrm{sign}(\pi).
+$$
+We have
+\begin{align*}
+\prod_{i=1}^{m} (A_{i,j_{i}}B_{\pi \circ\sigma(i),j_{i}}) & =\prod _{i\in[m]\setminus \{ s,t \}} (A_{i,j_{i}}B_{\pi \circ\sigma(i),j_{i}})\prod _{i\in \{ s,t \}}(A_{i,j_{i}}B_{\pi \circ\sigma (i),j_{i}}) \\
+ & =\prod _{i\in[m]\setminus \{ s,t \}}(A_{i,j_{i}}B_{\pi(i),j_{i}})A_{s,j_{s}} B_{\pi(t),j_{s}}A_{t,j_{t} }B_{\pi(s),j_{t}} \\
+ & =\prod _{i\in[m]\setminus \{ s,t \} } (A_{i,j_{i}}B_{\pi(i),j_{i}})A_{s,j_{s}}B_{\pi(t),j_{t}}A_{t,j_{t}}B_{\pi(s),j_{s}} \\
+ & =\prod_{i=1}^{m}(A_{i,j_{i}}B_{\pi(i),j_{i}}). 
+\end{align*}
+thus
+$$
+\mathrm{sign}(\pi)\prod_{i=1}^{m} A_{i,j_{i}}B_{\pi(i),j_{i}}=-\mathrm{sign}(\pi \circ\sigma)\prod_{i=1}^{m} A_{i,j_{i}}B_{\pi \circ\sigma(i),j_{i}}
+$$
+Since the map $\pi \to \pi \circ\sigma$ is a bijection on $S_{m}$ then
+$$
+\sum _{\pi \in S_{m}}\mathrm{sign}(\pi)\prod_{i=1}^{m} A_{i,j_{i}}B_{\pi(i),j_{i}}=0.
+$$
+\end{proof}
+We use this lemma 
+\begin{align*}
+\det(AB^{\mathsf{T}}) & =\sum _{\pi \in S_{m}}\mathrm{sign}(\pi)\prod_{i=1}^{m} (AB^{\mathsf{T}})_{i,\pi(i)} \\
+ & =\sum _{\pi \in S_{m}}\mathrm{sign}(\pi)\prod_{i=1}^{m} \left( \sum_{j=1}^{n} A_{i,j}B_{\pi(i),j} \right) \\
+ & =\sum _{\pi \in S_{m}}\mathrm{sign}(\pi)\sum _{(j_{1},\dots,_{m})\in[n]^{m}}\prod_{i=1}^{m} A_{i,j_{i}}B_{\pi(i),j_{i}} \\
+ & \overset{\mathrm{lem}}=\sum _{\pi \in S_{m}}\mathrm{sign}(\pi)\sum _{(j_{1},\dots,j_{n})\in[n]^{m}}\prod_{i=1}^{m} A_{i,j_{i}}B_{\pi(i),j_{i}} \\
+ & =\sum _{\pi \in S_{m}}\mathrm{sign}(\pi)\sum _{1\le j_{1}<\cdots<j_{m}\le n }\sum _{\pi'\in S_{m}}\prod_{i=1}^{m} A_{i,j_{\pi'(i)} }B_{\pi(i),j_{\pi'(i)}} \\
+ & = \sum _{1 \le j_{1}< \cdots < j_{m}\le n}\sum _{\pi \in S_{m}}\sum _{\pi'\in S_{m}}\mathrm{sign}(\pi)\left( \prod_{i=1}^{m} A_{i,j_{\pi'(i)}} \right)\left( \prod_{i=1}^{m} B_{i,j_{'\pi'\circ\pi ^{-1}(i)}} \right)
+\end{align*}
+we make a change of variables $\pi'=p_{1}$ and $\pi'\circ\pi ^{-1}=\pi_{2}$. Then $\pi=\pi_{2}^{-1}\circ\pi_{1}$ and $\mathrm{sign}(\pi)=\mathrm{sign}(\pi_{1})\mathrm{sign}(\pi_{2})$.
+\begin{align*}
+ & =\sum _{1\le j_{1}<\cdots<j_{m}\le n}\sum _{\pi_{1}\in S_{m}}\sum _{\pi_{2}\in S_{m}}\mathrm{sign}(\pi_{1})\mathrm{sign}(\pi_{2})\left( \prod_{i=1}^{m} A_{i,j_{\pi_{1}(i)}} \right)\left( \prod_{i=1}^{m}B_{i,j_{\pi_{2}(i)}}  \right) \\
+ & =\sum _{1\le j_{1}<\cdots<j_{m}\le n}\left( \sum _{\pi_{1}\in S_{m}}\mathrm{sign}(\pi_{1})\left( \prod_{i=1}^{m} A_{i,j_{\pi_{1}(i)}} \right) \right)\left( \sum _{\pi_{2}\in S_{m}}\mathrm{sign}(\pi_{2})\left( \prod_{i=1}^{m} B_{i,j_{\pi_{2}(i)}} \right) \right) \\
+ & =\sum _{1\le j_{1}<\cdots<j_{m}\le n}\det(A[\{ j_{1},\dots,j_{m} \}])\det(B[\{ j_{1},\dots,j_{m} \}]) \\
+ & =\sum _{\underset{|J|=m}{J\subset[n]}}\det(A[J])\det(B[J]) 
+\end{align*}
+which concludes the proof.
+\end{proof}

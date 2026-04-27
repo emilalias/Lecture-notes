@@ -1,0 +1,162 @@
+\chapter{Intégrale multiple au sens de Riemann}
+\todo{Lecture 19}
+Soit $E\subset \mathbf{R}^{n}$, $f:E\to \mathbf{R}$. On souhaite définir $\int _{E}f(\boldsymbol{x})~d\boldsymbol{x}$.
+
+\begin{definition}[Pave ou hyper-rectangle]
+Un pavé $R\subset \mathbf{R}^{n}$ est un ensemble compact de la forme 
+$$
+R=[a_{1},b_{1}]\times[a_{2},b_{2}]\times \cdots\times[a_{n},b_{n}]
+$$
+ou $-\infty<a_{i}\le b_{i}<\infty$. De manière alternative
+$$
+R=\{ \boldsymbol{x}\in \mathbf{R}^{n}:a_{i}\le x_{i}\le b_{i},~i=1,\dots,n \}.
+$$
+\end{definition}
+\begin{definition}
+On définit 
+$$
+\mathrm{Vol}(R)=\prod_{i=1}^{n} (b_{i}-a_{i}).
+$$
+Si il existe $i\in [n]$ tel que $a_{i}=b_{i}$, on appelle $R$ un pave degenere et on definie $\mathrm{Vol}(R)=0$.
+\end{definition}
+\begin{definition}
+Etant donne un pave $R=[a_{1},b_{1}]\times \cdots\times[a_{n},b_{n}]$. Pour tout $j\in [n]$ on introduit $N_{j}+1$ points $\{ t_{j}^{k} \}_{k=0}^{N_{j}}$ ordonnes dans l'intervalle $[a_{j},b_{j}]$ tels que 
+$$
+a_{j}=t_{j}^{0}\le t_{j}^{1}\le \cdots \le t_{j}^{N_{j}}=b_{j}
+$$
+et la grille tensorielle
+$$
+T=\{ t_{1}^{0},\dots,t_{1}^{N_{1}} \}\times \cdots\times \{ t_{n}^{0},\dots,t_{n}^{N_{n}} \}.
+$$
+
+On appelle
+$$
+P_{T}=\{ [t_{1}^{\alpha_{1}},t_{1}^{\alpha_{1}+1}]\times[t_{2}^{\alpha_{2}},t_{2}^{\alpha_{2}+1}]\times \cdots\times[t_{n}^{\alpha _{n}},t_{n}^{\alpha _{n}+1}]: 0\le \alpha _{j}\le N_{j}-1, ~i=1,\dots, n \}
+$$
+une partition tensorielle induit par la grille tensorielle $T$.
+\end{definition}
+\begin{notation}
+$$
+P_{T}=(t_{1}^{0},\dots,t_{1}^{N_{1}})\otimes \cdots\otimes (t_{n}^{0},\dots,t_{n}^{N_{n}})
+$$
+\end{notation}
+\begin{definition}
+Soient $T$, $T'$ deux grilles tensorielles de $R$ 
+$$
+T=\{ t_{1}^{0},\dots,t_{1}^{N_{1}} \}\times \cdots\times \{ t_{n}^{0},\dots,t_{n}^{N_{n}} \}
+$$
+et
+$$
+T'=\{ p_{1}^{0},\dots,p_{1}^{M_{1}} \}\times \cdots\times \{ p_{n}^{0},\dots,p_{n}^{M_{n}} \}
+$$
+et $P$, $P'$ les partitions tensorielles induites par $T$ et $T'$. On dit que $P'$ est un raffinement de $P$ si $T\subset T'$.
+\end{definition}
+\begin{remark}
+Si $P'$ est un raffinement de $P$, alors 
+\begin{itemize}
+\item Pour tout $Q'\in P'$ il existe $Q\in P$ tel que $Q'\subset Q$.
+\item S'ils existent $Q'\in P'$ et $Q_{1},Q_{2}\in P$ tels que $Q'\subset Q_{1}$ et $Q' \subset Q_{2}$, alors $\mathrm{Vol}(Q')=0$.
+\item Pour tout $Q\in P$, on a  
+$$
+Q=\bigcup _{\underset{Q'\subset Q}{Q'\in P'}}Q'
+$$
+et
+$$
+\mathrm{Vol}(Q)=\sum _{\underset{Q'\subset Q}{Q'\in P'}}\mathrm{Vol}(Q').
+$$
+\end{itemize}
+\end{remark}
+\begin{lemma}
+Etant donnes deux partitions $P$ et $P$' de $R$, il existe toujours une partition $P''$ qui raffine a la fois $P$ et $P'$.
+\end{lemma}
+\begin{definition}[Sommes de Darboux]
+Soit $R\subset \mathbf{R}^{n}$ un pave, $f:R\to \mathbf{R}$ bornée et $P$ une partition de $R$. On définie 
+\begin{itemize}
+\item La somme supérieure
+$$
+\overline{S}(f,P)=\sum _{Q\in P} \,\sup_{\boldsymbol{x}\in Q}f(\boldsymbol{x})\mathrm{Vol}(Q).
+$$
+\item La somme inferieure
+$$
+\underline{S}(f,P)=\sum _{Q\in P}\,\inf_{\boldsymbol{x}\in Q} f(\boldsymbol{x})\mathrm{Vol}(Q)
+$$
+\end{itemize}
+\end{definition}
+\begin{lemma}
+Soit $P''$ un raffinement de $P$, alors 
+$$
+\underline{S}(f,P) \le \underline{S}(f,P'')\le \overline{S}(f,P'')\le \overline{S}(f,P).
+$$
+
+Soit $P$, $P'$ deux partitions de $R$, alors
+$$
+\underline{S}(f,P)\le \overline{S}(f,P').
+$$
+\end{lemma}
+\begin{proof}
+On a
+\begin{align*}
+\underline{S}(f,P) & =\sum _{Q\in P}\, \inf _{Q}f\,\mathrm{Vol}(Q) = \sum _{Q\in P}\, \inf_{Q}f\left( \sum _{\underset{Q''\subset Q}{Q''\in P''}} \mathrm{Vol}(Q'') \right) \\
+ & \le \sum _{Q \in P}\sum _{\underset{Q''\subset Q}{Q''\in P''}}(\inf_{Q''}f)\mathrm{Vol}(Q'') \\
+ & =\sum _{Q''\in P''}(\inf_{Q''}f )\mathrm{Vol}(Q'')=\underline{S} (f,P'')
+\end{align*}
+et on fait de manière similaire pour les autres deux inégalités.
+
+Etant donne $P$, $P'$. Il existe $P''$ qui raffine $P$ et $P'$ alors
+$$
+\underline{S}(f,P)\le \underline{S}(f,P'')\le \overline{S}(f,P'') \le \overline{S}(f,P').
+$$
+
+L'ensemble $\{ \underline{S}(f,P):P\subset R \}\subset \mathbf{R}$ est borne supérieurement, donc le supremum de cet ensemble existe. De manière similaire $\{ \overline{S}(f,P):P\subset R \}\subset \mathbf{R}$ est borne inférieurement, donc le minimum de cet ensemble existe. 
+\end{proof}
+\begin{definition}
+L'integrale de Riemann superieure 
+$$\overline{\int _{R}} f(\boldsymbol{x})\,d\boldsymbol{x}=\inf\{ \overline{S}(f,P):P\subset R \}.$$
+\end{definition}
+\begin{definition}
+L'integrale de Riemann inferieure
+$$
+\underline{\int _{R}} f(\boldsymbol{x})\, d\boldsymbol{x}=\sup \{ \underline{S}(f,P):P\subset R \}.
+$$
+\end{definition}
+
+\begin{definition}
+On dit que $f$ est integrable au sens de Riemann si 
+$$
+\overline{\int _{R}} f(\boldsymbol{x})\,d\boldsymbol{x}=\underline{\int _{R}}f(\boldsymbol{x})\,d\boldsymbol{x}.
+$$
+On note 
+$$
+\int _{R}f(\boldsymbol{x})\, d\boldsymbol{x}.
+$$
+\end{definition}
+\begin{lemma}
+$f$ est integrable si et seulement si pour tout $\varepsilon>0$, il existe $P_{\varepsilon}$ une partition de $R$ telle que $\overline{S}(f,P_{\varepsilon})-\underline{S}(f,P_{\varepsilon})<\varepsilon$.
+\end{lemma}
+\begin{proof}
+Sens $\Leftarrow$ : On a que $\overline{\int _{R}}f(\boldsymbol{x})~d\boldsymbol{x}\le \overline{S}(f,P_{\varepsilon})$ et $\underline{\int _{R}}f(\boldsymbol{x})~d\boldsymbol{x}\ge \underline{S}(f,P_{\varepsilon})$. Alors 
+$$
+\overline{\int _{R}}f(\boldsymbol{x})~d\boldsymbol{x}-\underline{\int _{R}}f(\boldsymbol{x})~d\boldsymbol{x}\le \overline{S}(f,P_{\varepsilon})-\underline{S}(f,P_{\varepsilon})<\varepsilon
+$$
+donc par arbitrarite de $\varepsilon$ on a que $\overline{\int _{R}}f(\boldsymbol{x})~d\boldsymbol{x}=\underline{\int _{R}}f(\boldsymbol{x})~d\boldsymbol{x}$ et $f$ est integrable.
+
+Sens $\Rightarrow$ : Il existe $P_{\varepsilon}'$ telle que $\overline{S}(f,P_{\varepsilon}')\le \overline{\int _{R}}f(\boldsymbol{x})~d\boldsymbol{x}+\varepsilon /2$ et $P_{\varepsilon}''$ telle que $\underline{S}(f,P_{\varepsilon}'')\ge \underline{\int _{R}}f(\boldsymbol{x})~d\boldsymbol{x}-\varepsilon /2$. Soit $P_{\varepsilon}$ un raffinement de $P_{\varepsilon}'$ et $P_{\varepsilon}''$, alors
+\begin{align*}
+\overline{S}(f,P_{\varepsilon})-\underline{S}(f,P_{\varepsilon}) & \le \overline{S}(f,P_{\varepsilon}')-\underline{S}(f,P_{\varepsilon}'') \\
+ & \le \overline{\int _{R}}f+\frac{\varepsilon}{2}-\underline{\int _{R}}f+\frac{\varepsilon}{2}<\varepsilon
+\end{align*}
+\end{proof}
+\begin{theorem}
+Soit $f:R\to \mathbf{R}$ continue sur un pave $R$. Alors, elle est integrable.
+\end{theorem}
+\begin{proof}
+Puisque $R$ est compact, $f$ est uniformément continue
+$$
+\forall\varepsilon>0 ~\exists\delta _{\varepsilon}>0~\forall \boldsymbol{x},\boldsymbol{y}\in R: \lVert \boldsymbol{x}-\boldsymbol{y} \rVert <\delta _{\varepsilon}\Rightarrow |f(\boldsymbol{x})-f(\boldsymbol{y})|<\varepsilon.
+$$
+On peut construire une partition $P_{\varepsilon}$ telle que pour tout $Q\in P_{\varepsilon}$ et pour tous $\boldsymbol{x},\boldsymbol{y}\in Q$ on a $\lVert \boldsymbol{x}-\boldsymbol{y} \rVert<\delta _{\varepsilon}$. On a 
+$$
+\overline{S}(f,P_{\varepsilon})-\underline{S}(f,P_{\varepsilon})=\sum _{Q\in P_{\varepsilon}} \underbrace{ (\sup_{Q}f - \inf_{Q}f }_{ <\varepsilon /\mathrm{Vol}(R) })\mathrm{Vol}(Q)<\varepsilon
+$$
+donc $f$ est integrable.
+\end{proof}
