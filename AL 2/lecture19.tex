@@ -1,0 +1,151 @@
+\todo{Lecture 19}
+\begin{proposition}[Conditions de Penrose]
+\begin{enumerate}
+\item
+\begin{align*}
+AA^{+}A & =PDQQ^{*}D^{+}P^{*}PDQ \\
+ & =PDD^{+}DQ \\
+ & =PDQ=A
+\end{align*}
+\item 
+\begin{align*}
+(AA^{+})^{*} & =(A^{+})^{*}A^{*} \\
+ & =P(D^{+})^{*}QQ^{*}D^{*}P^{*} \\
+ & =P(D^{+})^{*}D^{*}P^{*} \\
+ & =P(DD^{+})^{*}P^{*} \\
+ & =PDD^{+}P^{*} \\
+ & =AA^{+}
+\end{align*}
+\begin{align*}
+AA^{+} & =PDQQ^{*}D^{+}P^{*} \\
+ & =PDD^{+}P^{*}  \\
+ & =(AA^{+})^{*}
+\end{align*}
+\item
+$$
+A^{+}AA^{+}=A^{+}
+$$
+\item 
+$$
+(A^{+}A)^{^{*}}=A^{+}A
+$$
+
+\end{enumerate}
+\end{proposition}
+\begin{theorem}
+Soit $A\in \mathbf{C}^{m\times n}$. Il existe exactement une matrice $X\in \mathbf{C}^{n\times m}$ telle que les conditions de Penrose soient satisfaites :
+\begin{enumerate}
+\item $AXA=A$
+\item $(AX)^{*}=AX$
+\item $XAX=X$
+\item $(XA)^{*}=XA$.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+On a que $X=A^{+}$ satisfait ces quatre conditions. On montre l'unicite. Soient $X,Y\in \mathbf{C}^{n\times m}$ satisfaisant les conditions de Penrose. On vérifie que $X=Y$.
+\begin{enumerate}
+\item 
+\begin{align*}
+X & =XAX  \\
+ & =XAYAX \\
+ & =XAYAYAYAX \\
+ & =(XA)^{*}(YA)^{*}Y(AY)^{*}(AX)^{*} \\
+ & =A^{*}X^{*}A^{*}Y^{*}YY^{*}A^{*}X^{*}A^{*} \\
+ & =(AXA)^{*}Y^{*}YY^{*}(AXA)^{*} \\
+ & =A^{*}Y^{*}YY^{*}A^{*} \\
+ & =(YA)^{*}Y(AY)^{*} \\
+ & =YAYAY \\
+ & =YAY \\
+ & =Y
+\end{align*}
+\end{enumerate}
+\end{proof}
+\section{Systèmes d'equations}
+\subsection{Problème de moindres carres}
+Soit $A\in \mathbf{R}^{m\times n}$ et $b\in \mathbf{R}^{m}$. On cherche $\min_{x \in \mathbf{R}^{n}}\lVert Ax-b \rVert$. On veut trouver $x^{*}\in \mathbf{R}^{n}$ solution de cet problème tel que $\lVert x^{*} \rVert\le \lVert y \rVert$ pour tout $y\in \mathbf{R}^{n}$ qui est une solution. Si $y^{*}$ est une solution, l'ensemble solution $S=\{ y^{*}+z:z\in \ker(A) \}$, on cherche $p \in S$ tel que $\lVert p \rVert$ est minimale. L'ensemble $S\cap \{ x^{*}\in \mathbf{R}^{n}:\lVert x \rVert\le\lVert y^{*} \rVert \}$ est compact, donc il existe un minimum dans cet ensemble.
+
+Par une decomposition en valeurs singuliers, on a $A=PDQ$. Soit $x \in \mathbf{R}^{n}$, sa norme $\lVert x \rVert^{2}$ est egal a 
+$$
+x^{\mathsf{T}}x=x^{\mathsf{T}}Q^{\mathsf{T}}Qx=(Qx)^{\mathsf{T}}Qx=\lVert Qx \rVert^{2} 
+$$
+\begin{remark}
+Pour $Q\in \mathbf{R}^{n\times n}$ unitaire et tout $x \in \mathbf{R}^{n}$ : $\lVert x \rVert=\lVert Qx \rVert$.
+\end{remark}
+\begin{theorem}
+Une solution optimale au problème de moindres carres est donne par
+$$
+x=A^{+}b.
+$$
+\end{theorem}
+\begin{proof}
+On considère $\lVert Ax-b \rVert$ :
+\begin{align*}
+\lVert Ax-b \rVert  & =\lVert PDQx-b \rVert  \\
+ & =\lVert PDQx-PP^{*}b \rVert  \\
+ & =\lVert DQx-P^{*}b \rVert, \quad y:= Qx \\
+ & =\lVert Dy-P^{*}b \rVert \\
+ & =\lVert \mathrm{diag}(\sigma_{1},\dots,\sigma _{r},0,\dots,0)y-P^{*}b \rVert 
+\end{align*}
+Les solutions sont $y_{1}=\frac{(P^{*}b)_{1}}{b_{1}}$, \dots, $y_{r}=\frac{(P^{*}b)_{r}}{b_{r}}$. Les composantes $y_{r+1},\dots,y_{n}$ son toutes nulles. On a une norme minimale pour
+$$
+y=D^{+}P^{*}b.
+$$
+On re-substitue $y$ pour obtenir $x=Q^{*}D^{+}P^{*}b=A^{+}b$.
+\end{proof}
+\begin{example}
+Trouver la solution minimale du système 
+$$
+\underbrace{ \begin{pmatrix}
+0 & -1.6 & 0.6 \\
+0 & 1.2 & 0.8 \\
+0 & 0 & 0 \\
+0 & 0 & 0 
+\end{pmatrix} }_{ A }x=\begin{pmatrix}
+5 \\
+7 \\
+3 \\
+-2
+\end{pmatrix}
+$$
+On calcule la pseudo-inverse de $A$ :
+$$
+A^{+}=\begin{pmatrix}
+0 & 0 & 0 & 0 \\
+-0.4 & 0.3 & 0 & 0 \\
+0.6 & 0.8 & 0 & 0
+\end{pmatrix}
+$$
+donc
+$$
+A^{+}b=\begin{pmatrix}
+0 \\
+0.1 \\
+8.6
+\end{pmatrix}
+$$
+est une solution optimale a ce système.
+\end{example}
+
+\section{Le meilleur sous-espace approximatif}
+Etant donnes $k\le m\in \mathbf{N}$ et $a_{1},\dots,a_{n}\in \mathbf{R}^{m}$, on veut trouver $H\le \mathbf{R}^{n}$ de $\dim(H)\le k$ minimisant $\sum _{i=1}^{n}d(a_{i},H)^{2}$ ou $d$ est une distance.
+
+Supposons que $H=\mathrm{span}\{ u_{1},\dots,u_{k} \}$ ou les $u_{i}$ sont orthonormaux. Une projection $\pi$ de $a_{i}$ sur $H$ est définie par
+$$
+\pi(a)=\sum_{j=1}^{k} \langle a_{i},u_{j} \rangle u_{j}
+$$
+donc, la distance est donnée par
+$$
+d(a_{i},H)^{2}=\lVert a_{i}-\pi(a_{i}) \rVert ^{2}.
+$$
+Par Pythagore on a
+$$
+\lVert a_{i} \rVert ^{2}=d(a_{i},H)^{2}+\lVert \pi(a_{i}) \rVert ^{2}
+$$
+donc
+$$
+d(a_{i},H)^{2}=\lVert a_{i} \rVert ^{2}-\lVert \pi(a_{i}) \rVert ^{2}.
+$$
+On veut maximiser
+$$
+\sum_{i=1}^{n} \lVert \pi(a_{i}) \rVert ^{2}.
+$$

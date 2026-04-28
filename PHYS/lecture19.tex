@@ -1,0 +1,117 @@
+\todo{Lecture 19}
+\section{Capacite et conducteur}
+\subsection{Definition de la capacite}
+
+On a deux conducteurs initialement non-charges ($\phi _{A}=\phi _{B}=0$), une charge $-q$ enlevée de $A$ et placée sur $B$. Ceci induit une difference de potentiel
+$$
+\phi(A)-\phi(B)=-\int_{b}^{a} \boldsymbol{E} \, d\boldsymbol{\ell}>0.
+$$
+On observe aussi que $\boldsymbol{E}(\boldsymbol{r})$ est proportionnel a $q$ et donc a $\phi(A)-\phi(B)$ aussi. En particulier
+$$
+\frac{q}{\phi(A)-\phi(B)}=C.
+$$
+Souvent, on écrit $\phi(A)-\phi(B)=U$ donc 
+$$
+C=\frac{q}{U}
+$$
+ou la constante $C$ est la capacite entre deux conducteurs. On mesure $C$ en $\mathrm{CV}^{-1}=\mathrm{C}^{2}\mathrm{s}^{2}\mathrm{kg}^{-1}\mathrm{m}^{-2}=\mathrm{A}^{2}\mathrm{s}^{4}\mathrm{kg}^{-1}\mathrm{m}^{-2}=\mathrm{F}$ farads.
+
+Si les conducteurs sont entoures du vide, $C$ ne depend que de la géométrie des deux conducteurs.
+
+\subsection{Le condensateur}
+\begin{definition}
+Un condensateur est un système de deux conducteurs avec charge $\pm q$.
+\end{definition}
+Normalement, la géométrie est choisie pour maximiser le rapport capacite et volume.
+\begin{example}[Condensateur cylindrique]
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.4]{condensateur cyl.png}
+\end{figure}
+On suppose $\ell \gg R_{2}-R_{1}$, donc les effets de bord sont négligeables. On a par Gauss
+$$
+\underbrace{ \iint _{S}\boldsymbol{E}\, d\boldsymbol{S}}_{ \approx 2\pi r\ell E(r) }=\frac{q}{\varepsilon_{0}}\Rightarrow E(r)\approx \frac{q}{\varepsilon_{0}2\pi r\ell}.
+$$
+On calcule 
+\begin{align*}
+\phi(B)-\phi(A) & =\int_{R_{1}}^{R_{2}} \boldsymbol{E} \, d\boldsymbol{\ell} \\
+  & =-\int_{R_{1}}^{R_{2}} E(r)\,\boldsymbol{\hat{e}}_{r}\cdot \boldsymbol{\hat{e}}_{r} \, dr \\
+ & =-\int_{R_{1}}^{R_{2}} E(r) \, dr \\
+  & =-\frac{q}{2\pi\varepsilon_{0}\ell}\int_{R_{1}}^{R_{2}} \frac{1}{r} \, dr  \\
+ & =-\frac{q}{2\pi\varepsilon_{0}\ell}\log\left( \frac{R_{2}}{R_{1}} \right) \\
+ \Rightarrow C & =\frac{q}{\phi(A)-\phi(B)}=\frac{2\pi\varepsilon_{0}\ell}{\log(R_{2}/R_{1})}
+\end{align*}
+\end{example}
+\begin{example}[Condensateur plan]
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.6]{condensateur plan.png}
+\end{figure}
+On note l'aire de la face interieure d'une plaque par $S_{c}=ab$. On suppose $d\ll a$ et $d\ll b$, donc les effets de bord sont negligeables. Par Gauss
+$$
+\underbrace{ \iint _{S}\boldsymbol{E}~d\boldsymbol{S} }_{ \approx ES_{c} }=\frac{q}{\varepsilon}\Rightarrow E= \frac{q}{\varepsilon_{0}S_{c}}.
+$$
+On calcule
+\begin{align*}
+\phi(B)-\phi (A) & =-\int _{A}^{B}\boldsymbol{E}\,d\boldsymbol{\ell} \\
+ & =-\int_{A}^{B}E(x)\,\boldsymbol{\hat{e}}_{x}\cdot \boldsymbol{\hat{e}}_{x}  \, dx \\
+ & =-\int_{0}^{b} E \, dx =-Ed \\
+ & =-\frac{qd}{\varepsilon_{0}S_{c}} \\
+ \Rightarrow C & =\frac{q}{\phi(A)-\phi(B)}= \frac{\varepsilon_{0}S_{c}}{d} .
+\end{align*}
+\end{example}
+
+\subsection{Energie stockée dans un conducteur et densité d'énergie électrique}
+
+Soient deux condensateurs arbitraires. On définit $U=\phi(A)-\phi(B)$. Le travail pour déplacer une charge $-dq$ du conducteur $A$ au conducteur $B$ est 
+\begin{align*}
+dW & =(\phi(B)-\phi(A))(-dq) \\
+ & =(\phi(A)-\phi(B))dq \\
+ & =Udq=\frac{q}{C}dq
+\end{align*}
+
+Alors, le travail pour charger le conducteur a la charge $q$ est
+\begin{align*}
+W & =\int_{0}^{q} dW \\
+ & =\int_{0}^{q} \frac{1}{C}q' \, dq' \\
+ &  =\frac{q^{2}}{2C}=\frac{1}{2}CU^{2} 
+\end{align*}`'
+Pour un condensateur plan, on a 
+$$
+W=\frac{1}{2}CU^{2}=\frac{1}{2} \frac{\varepsilon_{0}S_{c}}{d}(Ed)^{2}=\frac{1}{2}\varepsilon_{0}E^{2}S_{c}d
+$$
+ou $S_{c}d$ est le volume entre les deux plaques (la region ou $\boldsymbol{E}\neq \boldsymbol{0}$).
+
+Ce travail est stockée dans le champ électrique $\boldsymbol{E}$. On définit
+$$
+e_{E}=\frac{1}{2}\varepsilon_{0}E^{2}
+$$
+la densité d'énergie électrique (en absence d'un diélectrique); valable en générale pour chaque champ $\boldsymbol{E}$, pas seulement dans un condensateur plan.  
+
+\subsection{Capacite avec un diélectrique}
+\begin{definition}
+Un diélectrique est un isolant, il ne contient pas de porteurs de charge libre.
+\end{definition}
+\begin{definition}
+Le moment dipolaire $\boldsymbol{p}$ pour un systeme de charges globalement neutre (ici une molecule). Dans le cas de charges ponctuelles on le definit comme
+$$
+\boldsymbol{p}=\sum _{i}\boldsymbol{r}_{i}q_{i}.
+$$
+Comme le systeme est globalement neutre, $\sum _{i}q_{i}=0$.
+\end{definition}
+\begin{example}
+Soit $\boldsymbol{p}=-\boldsymbol{r}_{1}q+\boldsymbol{r}_{2}q=q(\boldsymbol{r}_{2}-\boldsymbol{r}_{1})$. Alors $\boldsymbol{p}$ est nul si $\boldsymbol{r}_{2}=\boldsymbol{r}_{1}$, sinon il pointe de la charge negative vers la charge positive.
+\end{example}
+\paragraph{Properties}
+\begin{enumerate}
+\item $\boldsymbol{p}$ ne depend pas de l'origine du système de coordonnées. 
+\item Dans un champ $\boldsymbol{E}$ uniforme, la force sur le système de charges est nulle. Car $\boldsymbol{F}_{\mathrm{res}}=\sum _{i}q_{i}\boldsymbol{E}=\boldsymbol{E}\sum _{i}q_{i}=0$.
+\item En générale, le moment de force n'est pas nul. Soit $\boldsymbol{E}$ uniforme, 
+$$
+\boldsymbol{M}_{\mathrm{res}}=\sum _{i}\boldsymbol{r}_{i}\times \boldsymbol{F}_{i}=\sum _{i}\boldsymbol{r}_{i}\times \boldsymbol{E}q_{i}=\left( \sum _{i}\boldsymbol{r}_{i}q_{i} \right)\times \boldsymbol{E}=\boldsymbol{p}\times \boldsymbol{E}
+$$
+ce moment de force tend a orienter $\boldsymbol{p}$ le long de $\boldsymbol{E}$.
+\end{enumerate}
+
+
+

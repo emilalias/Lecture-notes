@@ -190,7 +190,7 @@ We compute
 \begin{align*}
 \det(AB^{\mathsf{T}}) & =\sum _{\pi \in S_{m}}\mathrm{sign}(\pi)\prod_{i=1}^{m} (AB^{\mathsf{T}})_{i,\pi(i)} \\
  & =\sum _{\pi \in S_{m}}\mathrm{sign}(\pi)\prod_{i=1}^{m} \left( \sum_{j=1}^{n} A_{i,j}B_{\pi(i),j} \right) \\
- & =\sum _{\pi \in S_{m}}\mathrm{sign}(\pi)\sum _{(j_{1},\dots,_{m})\in[n]^{m}}\prod_{i=1}^{m} A_{i,j_{i}}B_{\pi(i),j_{i}}
+ & =\sum _{\pi \in S_{m}}\mathrm{sign}(\pi)\sum _{(j_{1},\dots,j_{m})\in[n]^{m}}\prod_{i=1}^{m} A_{i,j_{i}}B_{\pi(i),j_{i}}
 \end{align*}
 and
 $$
@@ -227,7 +227,7 @@ We use this lemma
 \begin{align*}
 \det(AB^{\mathsf{T}}) & =\sum _{\pi \in S_{m}}\mathrm{sign}(\pi)\prod_{i=1}^{m} (AB^{\mathsf{T}})_{i,\pi(i)} \\
  & =\sum _{\pi \in S_{m}}\mathrm{sign}(\pi)\prod_{i=1}^{m} \left( \sum_{j=1}^{n} A_{i,j}B_{\pi(i),j} \right) \\
- & =\sum _{\pi \in S_{m}}\mathrm{sign}(\pi)\sum _{(j_{1},\dots,_{m})\in[n]^{m}}\prod_{i=1}^{m} A_{i,j_{i}}B_{\pi(i),j_{i}} \\
+ & =\sum _{\pi \in S_{m}}\mathrm{sign}(\pi)\sum _{(j_{1},\dots,j_{m})\in[n]^{m}}\prod_{i=1}^{m} A_{i,j_{i}}B_{\pi(i),j_{i}} \\
  & \overset{\mathrm{lem}}=\sum _{\pi \in S_{m}}\mathrm{sign}(\pi)\sum _{(j_{1},\dots,j_{n})\in[n]^{m}}\prod_{i=1}^{m} A_{i,j_{i}}B_{\pi(i),j_{i}} \\
  & =\sum _{\pi \in S_{m}}\mathrm{sign}(\pi)\sum _{1\le j_{1}<\cdots<j_{m}\le n }\sum _{\pi'\in S_{m}}\prod_{i=1}^{m} A_{i,j_{\pi'(i)} }B_{\pi(i),j_{\pi'(i)}} \\
  & = \sum _{1 \le j_{1}< \cdots < j_{m}\le n}\sum _{\pi \in S_{m}}\sum _{\pi'\in S_{m}}\mathrm{sign}(\pi)\left( \prod_{i=1}^{m} A_{i,j_{\pi'(i)}} \right)\left( \prod_{i=1}^{m} B_{i,j_{'\pi'\circ\pi ^{-1}(i)}} \right)
