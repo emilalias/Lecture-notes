@@ -127,11 +127,11 @@ est une solution optimale a ce système.
 \end{example}
 
 \section{Le meilleur sous-espace approximatif}
-Etant donnes $k\le m\in \mathbf{N}$ et $a_{1},\dots,a_{n}\in \mathbf{R}^{m}$, on veut trouver $H\le \mathbf{R}^{n}$ de $\dim(H)\le k$ minimisant $\sum _{i=1}^{n}d(a_{i},H)^{2}$ ou $d$ est une distance.
+Etant donnes $k\le n \in \mathbf{N}$ et $a_{1},\dots,a_{m}\in \mathbf{R}^{n}$, on veut trouver $H\le \mathbf{R}^{n}$ de $\dim(H)\le k$ minimisant $\sum _{i=1}^{n}d(a_{i},H)^{2}$ ou $d$ est une distance.
 
 Supposons que $H=\mathrm{span}\{ u_{1},\dots,u_{k} \}$ ou les $u_{i}$ sont orthonormaux. Une projection $\pi$ de $a_{i}$ sur $H$ est définie par
 $$
-\pi(a)=\sum_{j=1}^{k} \langle a_{i},u_{j} \rangle u_{j}
+\pi(a_{i})=\sum_{j=1}^{k} \langle a_{i},u_{j} \rangle u_{j}
 $$
 donc, la distance est donnée par
 $$
@@ -145,7 +145,7 @@ donc
 $$
 d(a_{i},H)^{2}=\lVert a_{i} \rVert ^{2}-\lVert \pi(a_{i}) \rVert ^{2}.
 $$
-On veut maximiser
+On veut trouver
 $$
-\sum_{i=1}^{n} \lVert \pi(a_{i}) \rVert ^{2}.
+\max_{u_{1},\dots,u_{k}} \sum_{i=1}^{m} \left\lVert \sum_{j=1}^{k} (a_{i}^{\mathsf{T}}u_{j})u_{j} \right\rVert ^{2}.
 $$

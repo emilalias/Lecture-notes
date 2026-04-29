@@ -1,0 +1,101 @@
+\todo{Lecture 20}
+qui est egal a 
+$$
+\max_{u_{1},\dots,u_{k}\in S^{n-1}}\sum_{j=1}^{k} \underbrace{ \sum_{i=1}^{m} (a_{i}^{\mathsf{T}}u_{j})^{2} }_{ \lVert Au_{j} \rVert ^{2} }
+$$
+ou $A=\begin{pmatrix}a_{1}^{\mathsf{T}} & \cdots & a_{m}^{\mathsf{T}}\end{pmatrix}^{\mathsf{T}}\in \mathbf{R}^{m\times n}$. Le problème devient donc
+$$
+\max_{u_{1},\dots,u_{k}\in S^{n-1}}\sum_{j=1}^{k} u_{j}^{\mathsf{T}}A^{\mathsf{T}}Au_{j}.
+$$
+\begin{remark}
+Pour $k=1$, on sait comment résoudre ce problème. Soient $\lambda_{1}\ge \dots\ge \lambda _{n}\in \mathbf{R}$ les valeurs propres de $A^{\mathsf{T}}A$ et soit $u_{1},\dots,u_{n}$ une base de vecteurs propres correspondant. Alors, $u_{1}$ est une solution optimale.
+\end{remark}
+\begin{theorem}
+Soient $a_{1},\dots,a_{m}\in \mathbf{R}^{n}$ et $A=(a_{1}^{\mathsf{T}},\dots,a_{m}^{\mathsf{T}})^{\mathsf{T}}\in \mathbf{R}^{m\times n}$ et $U=(u_{1},\dots,u_{n})\in \mathbf{R}^{n\times n}$ une base orthonormale de vecteurs propres de $A^{\mathsf{T}}A$ associes aux valeurs propres ordonnes $\lambda_{1}\ge\dots\ge\lambda _{n}$. Alors $H=\mathrm{span}\{ u_{1},\dots,u_{n} \}$ est une solution de optimale de
+\begin{equation}\label{probone}
+\min_{\underset{\dim(H)\le k}{H\le \mathbf{R}^{n}}}\sum_{i=1}^{m} d(a_{i},H)^{2}
+\end{equation}
+et $u_{1},\dots,u_{k}$ est une solution optimale de
+\begin{equation}\label{probthree}
+\max_{u_{1},\dots,u_{k}\in S^{n-1}} u_{j}^{\mathsf{T}}A^{\mathsf{T}}Au_{j}
+\end{equation}
+\end{theorem}
+\begin{proof}
+On procède par recurrence sur $k$. Pour $k=1$, le problème devient la maximisation d'une forme quadratique sur $S^{n-1}$ $\checkmark$. 
+
+Pour le cas $k>1$, on pose $W=\mathrm{span}\{ w_{1},\dots,w_{k} \}\neq \mathrm{span}\{ u_{1},\dots,u_{k} \}$ ou les $w_{i}$ forment une base orthonormale. Sans perte de généralité, on peut supposer que $w_{k}\perp u_{1},\dots,u_{k-1}$. Par recurrence, on sait que 
+$$
+\sum_{j=1}^{k-1} w_{j}^{\mathsf{T}}A^{\mathsf{T}}Aw_{j}\le \sum_{j=1}^{k-1} u_{j}^{\mathsf{T}}A^{\mathsf{T}}Au_{j}.
+$$
+On observe que
+\begin{align*}
+x^{\mathsf{T}}A^{\mathsf{T}}Ax & =\left( \sum_{i=k}^{n} \alpha _{i}u_{i}^{\mathsf{T}} \right)\left( \sum_{i=1}^{n}\lambda _{i}u_{i}  \right) \\
+ & =\sum_{i=k}^{n} \lambda _{i}\alpha _{i}^{2} \\
+ & \le \lambda _{k}\sum_{i=k}^{n} \alpha _{i}^{2} =\lambda _{k}
+\end{align*}
+alors
+$$
+\max_{\underset{x\perp u_{1},\dots,x\perp u_{k-1}}{x \in S^{n-1}}}x^{\mathsf{T}}A^{\mathsf{T}}Ax
+$$
+est atteint a $u_{k}$.  
+
+Alors
+$$
+w_{k}^{\mathsf{T}}A^{\mathsf{T}}Aw_{k}\le u_{k}^{\mathsf{T}}A^{\mathsf{T}}Au_{k}
+$$
+et 
+$$
+\sum_{j=1}^{k} w_{j}^{\mathsf{T}}A^{\mathsf{T}}Aw_{j}\le \sum_{j=1}^{k} u_{j}^{\mathsf{T}}A^{\mathsf{T}}Au_{j}
+$$
+\end{proof}
+\subsection{Rang \texorpdfstring{$k$}{k} approximation}
+\begin{problem}\label{approrank}
+Donne une matrice $A\in \mathbf{R}^{m\times n}$ et $k\in \mathbf{N}$, on veut trouver $B\in \mathbf{R}^{m\times n}$ telle que
+\begin{enumerate}
+\item $\mathrm{rank}(B)\le k$.
+\item $\lVert A-B \rVert_{F}\le\lVert A-C \rVert_{F}$ ou $C\in \mathbf{R}^{m\times n}$ et $\mathrm{rank}(C)\le k$.
+\end{enumerate}
+\end{problem}
+\begin{definition}
+Soit une matrice $A\in \mathbf{R}^{m\times n}$. La norme Frobenius de $A$ est 
+$$
+\lVert A \rVert _{F}=\sqrt{ \sum _{ij}a_{ij}^{2} }.
+$$
+\end{definition}
+\begin{definition}
+La matrice $A_{k}$ de $A\in \mathbf{R}^{m\times n}$ pour $k\in \mathbf{N}$ ou $A=P\mathrm{diag}(\sigma_{1},\dots,\sigma^{r},0,\dots,0)D$ est
+$$
+A_{k}=P\mathrm{diag}(\sigma_{1},\dots,\sigma _{k},0,\dots,0)D.
+$$
+On observe que $\mathrm{rank}(A_{k})\le k$.
+\end{definition}
+\begin{theorem}
+$A_{k}$ est une solution optimale a \ref{approrank}.
+\end{theorem}
+\begin{proof}
+On veut démontrer que 
+$$
+\lVert A-A_{k} \rVert _{F}^{2}\le \lVert A-C \rVert _{F}^{2} ,\quad \forall C\in \mathbf{R}^{m\times n}, ~\mathrm{rank}(C)\le k.
+$$
+Soit $\tilde{H}\unlhd\mathbf{R}^{n}$ le sous-espace engendre par les lignes de $C$ de $\dim(\tilde{H})\le k$. On a
+\begin{align*}
+\lVert A-C \rVert ^{2}_{F} & =\sum_{i=1}^{m} \lVert a_{i}-c_{i} \rVert ^{2} \\
+ & \ge \sum_{i=1}^{m} d(a_{i},\tilde{H})^{2} \\
+ & \ge \sum_{i=1}^{m} d(a_{i},H)^{2}  \\
+ & =\sum_{i=1}^{m} \lVert a_{i}-\hat{a}_{i} \rVert \\
+ & =\lVert A-A_{k} \rVert _{F}^{2} 
+\end{align*}
+\end{proof}
+\begin{lemma}
+Soit $U\mathrm{diag}(\lambda_{1},\dots,\lambda _{n})U^{\mathsf{T}}=A^{\mathsf{T}}A$ une factorisation selon le théorème spectral ou $\lambda_{1}\ge \dots\ge \lambda _{n}$. Les lignes de $A_{k}$ sont les projections des lignes $a_{i}$ de $A$ en $H=\mathrm{span}\{ u_{1},\dots,u_{k} \}$
+\end{lemma}
+\begin{remark}
+$H$ est le meilleur sous-espace approximatif pour $a_{1},\dots,a_{m}\in \mathbf{R}^{n}$.
+\end{remark}
+\begin{proof}
+Soit $a^{\mathsf{T}}\in \mathbf{R}^{n}$ une ligne de $A$, leur projection $\pi(a)=\sum_{j=1}^{k}a^{\mathsf{T}}u_{j}u_{j}$. En projetant les lignes de $A$, on a sous forme matricielle, avec $k\le \mathrm{rank}(A)$,  
+$$
+\sum_{i=1}^{k}Au_{i}u_{i}^{\mathsf{T}}=\sum_{i=1}^{k} \sigma _{i}v_{i}u_{i}^{\mathsf{T}} =P\mathrm{diag}(\sigma_{1},\dots,\sigma _{k},\boldsymbol{0})Q=A_{k}.
+$$
+
+\end{proof}

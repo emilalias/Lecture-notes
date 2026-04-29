@@ -1,0 +1,58 @@
+\todo{Lecture 20}
+
+Dans un diélectrique, les électrons ne peuvent pas bouger librement. Mais un champ $\boldsymbol{E}$ a quand même des effets :
+\begin{enumerate}
+\item Très faible déplacement des électrons par rapport au noyau des molécules du diélectrique.
+\item En présence des moments dipolaires permanents, orientation le long du champ $\boldsymbol{E}$.
+\end{enumerate}
+
+La nature d'un diélectrique peut être distingue en deux cas :
+\begin{enumerate}
+\item Si $\boldsymbol{p}_{\text{permanente}}=\boldsymbol{0}$, une polarisation de la matière est entraînée. Si le diélectrique est homogène, l'effet macroscopique est l'occurrence d'une densité de charge de surface $\sigma _{p}$.
+\item Si $\boldsymbol{p}_{\text{permanente}}\neq \boldsymbol{0}$, l'effet net est le même. L'orientation des molécules dépende de la compétition du moment de force $\boldsymbol{M}_{\mathrm{res}}=\boldsymbol{p}\times \boldsymbol{E}$ et l'agitation thermique.
+\end{enumerate}
+Dans les deux cas, si le diélectrique est homogène (et isotrope) et $\boldsymbol{E}$ n'est pas trop fort, alors
+$$
+\sigma _{p}\propto E. 
+$$
+On définit $\mathcal{X}$ tel que $\sigma _{p}=\mathcal{X}\varepsilon_{0}E$, ou $\mathcal{X}$ est la susceptibilité électrique.
+
+On revient au condensateur plan. Par Gauss
+\begin{align*}
+ES_{c} & =\frac{1}{\varepsilon_{0}}(1-\sigma _{p}S_{c}) \\
+ & =\frac{1}{\varepsilon_{0}}(q-S_{c}\mathcal{X}\varepsilon_{0}E)  \\
+ \Rightarrow E(\varepsilon_{0}S_{c}+\varepsilon_{0}\mathcal{X}S_{c} ) & =q \\
+\Rightarrow E & =\frac{q}{S_{c}\varepsilon_{0}(1+\mathcal{X})}
+\end{align*}
+donc on observe que $E$ décroît a cause du diélectrique. En particulier
+$$
+U=Ed=\frac{qd}{S_{c}\varepsilon_{0}(1+\mathcal{X})}
+$$
+et 
+$$
+C=\frac{q}{U}=\frac{\varepsilon_{0}(1+\mathcal{X})S_{c}}{d}=\frac{\varepsilon_{0}\varepsilon _{r}S_{c}}{d}
+$$
+donc la capacite augmente par le facteur $\varepsilon _{r}=(1+\mathcal{X})$ (la permittivité relative).
+
+En general, la capacite d'un conducteur dépende de la géométrie et du diélectrique.  En presence d'un dielectrique $C$ devient $\varepsilon _{r}C$.
+
+\paragraph{Quelques valeures de $\varepsilon _{r}$}
+\begin{itemize}
+\item Vide : $\varepsilon _{r}=1$
+\item Air : $\varepsilon _{r}=1.0006$
+\item NaCl : $\varepsilon _{r}=5.6$
+\item Eau : $\varepsilon _{r}=8.1$
+\item Quelques ceramiques avec $\mathrm{TiO}_{2}$ : $\varepsilon _{r} \underset{\sim}< 5000$
+\end{itemize}
+
+\chapter{Circuits electriques}
+
+En electrostatique, pas de courants. Donc $\boldsymbol{E}=\boldsymbol{0}$ a l'interieur des conducteurs. Un appareil a force electromotrice entre ses deux bornes (p.ex une pile) peut mantenir un champ $\boldsymbol{E}$ dans un conducteur. Ceci implique un mouvement des porteurs mobiles de charges (induit un courant)
+\subsection{Definition de courant}
+\begin{definition}
+Le courant $I$ est le flux de charge par unite de temps a travers une surface $S$. Le courant est mesure en amperes $\mathrm{A}=\frac{\mathrm{C}}{\mathrm{s}}$. 
+$$
+I=n^{+}q^{+}u^{+}S+n^{-}q^{-}u^{-}S
+$$
+ou $n^{+}$ est la densite des porteurs de charge libres, $q^{+}$ est la charge par particule et $u^{+}$ est la vitesse moyenne des charges.
+\end{definition}

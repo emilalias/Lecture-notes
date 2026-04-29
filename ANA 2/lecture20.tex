@@ -1,0 +1,140 @@
+\todo{Lecture 20}
+\begin{notation}
+Soit $R\subset \mathbf{R}^{n}$ un pave. On note $\mathcal{R}(R)$ l'ensemble de fonctions $f:R\to \mathbf{R}$ bornées intégrables au sens de Riemann.
+\end{notation}
+\begin{remark}
+$C^{0}(R)\subset \mathcal{R}(R)$.
+\end{remark}
+\section{Intégrales itérées sur un pave et théorème de Fubini}
+\begin{theorem}[Théorème de Fubini]
+Soit $R\subset \mathbf{R}^{n+m}$ un pave. Pour tout $\boldsymbol{z}\in \mathbf{R}^{n+m}$ on note $\boldsymbol{z}=(\boldsymbol{x},\boldsymbol{y})$ ou $\boldsymbol{x}\in \mathbf{R}^{n}$ et $\boldsymbol{y}\in \mathbf{R}^{m}$. On introduit $R^{(1)}=\prod_{i=1}^{n}[a_{i},b_{i}]\subset \mathbf{R}^{n}$ et $R^{(2)}=\prod_{i=n+1}^{n+m}[a_{i},b_{i}]\subset \mathbf{R}^{m}$, alors $R=R^{(1)}\times R^{(2)}$.  Soit $f:R\to\mathbf{R}$ integrable.
+
+Si pour tout $\boldsymbol{y}$, $\boldsymbol{x}\mapsto f(\boldsymbol{x},\boldsymbol{y})$ est integrable sur $R^{(1)}$, alors 
+$$
+G(\boldsymbol{y})=\int _{R^{(1)}}f(\boldsymbol{x},\boldsymbol{y})\,d\boldsymbol{x}
+$$
+est integrable sur $R^{(2)}$ et 
+$$
+\int _{R^{(2)}}G(\boldsymbol{y})\,d\boldsymbol{y}=\int _{R}f(\boldsymbol{z})\,d\boldsymbol{z}=\int _{R^{(2)}}\left( \int _{R^{(1)}}f(\boldsymbol{x},\boldsymbol{y})\,d\boldsymbol{x} \right)\,d\boldsymbol{y}.
+$$
+
+Si pour tout $\boldsymbol{x}$, $\boldsymbol{y}\mapsto f(\boldsymbol{x},\boldsymbol{y})$ est integrable sur $R^{(2)}$, alors
+$$
+F(\boldsymbol{x})=\int _{R^{(2)}}f(\boldsymbol{x},\boldsymbol{y})\,d\boldsymbol{y}
+$$
+est integrable sur $R^{(1)}$ et
+$$
+\int _{R^{(1)}}F(\boldsymbol{x})\,d\boldsymbol{x}=\int _{R}f(\boldsymbol{z})\,d\boldsymbol{z}=\int _{R^{(1)}}\left( \int _{R^{(2)}}f(\boldsymbol{x},\boldsymbol{y})\,d\boldsymbol{y} \right)\,d\boldsymbol{x}
+$$
+\end{theorem}
+\begin{corollary}
+Soit $f\in C^{0}(R)$, alors
+\begin{itemize}
+\item $G(\boldsymbol{y})=\int _{R^{(1)}}f(\boldsymbol{x},\boldsymbol{y})\,d\boldsymbol{x}$ existe pour tout $\boldsymbol{y}\in R^{(2)}$.
+\item $F(\boldsymbol{x})=\int _{R^{(2)}}f(\boldsymbol{x},\boldsymbol{y})\,d\boldsymbol{y}$ existe pour tout $\boldsymbol{x}\in R^{(1)}$.
+\end{itemize}
+et 
+$$
+\int _{R}f=\int _{R^{(2)}}\left( \int _{R^{(1)}}f(\boldsymbol{x},\boldsymbol{y})\,d\boldsymbol{x} \right)\,d\boldsymbol{y}=\int _{R^{(1)}}\left( \int _{R^{(2)}}f(\boldsymbol{x},\boldsymbol{y})\,d\boldsymbol{y} \right)\,d\boldsymbol{x}
+$$
+\end{corollary}
+\begin{example}
+Soit $R=[1,2]\times[0,1]$ et $f(x,y)=\frac{1}{x^{3}}e^{ y/x }$. Alors
+\begin{align*}
+\int _{R}f(x,y)\,dx\,dy & =\int _{0}^{1}\left( \int_{1}^{2} f(x,y) \, dx  \right)\,dy  \\
+ & =\int_{1}^{2} \left( \int_{0}^{1} f(x,y) \, dy  \right) \, dx  \\
+ & =\int_{1}^{2} \left( \int_{0}^{1} \frac{1}{x^{3}}e^{ y/x } \, dy  \right) \, dx \\
+  & =\int_{1}^{2} \left[ \frac{1}{x^{3}} xe^{ y/x } \right]_{0}^{1} \, dx \\
+  & =\int_{1}^{2} \frac{1}{x^{2}}(e^{ 1/x }-1) \, dx\\
+  &= \dots = e-\sqrt{ e }-\frac{1}{2}.
+\end{align*}
+\end{example}
+\section{Intégrale sur un domaine quelconque}
+
+Soit $E\subset \mathbf{R}^{n}$ borne et $f:E\to \mathbf{R}$ bornée. Soit $R\subset \mathbf{R}^{n}$ un pave qui contient $E$, on note $\tilde{f}:R\to \mathbf{R}$ le prolongement par zero de $f$ sur $R$ :
+$$
+\tilde{f}(\boldsymbol{x})=\begin{cases}
+f(\boldsymbol{x}) & \text{si }\boldsymbol{x}\in E ,\\
+0 & \text{si }\boldsymbol{x}\in R\setminus E.
+\end{cases}
+$$
+\begin{definition}
+On dit que $f$ est integrable sur $E$ si $\tilde{f}$ est integrable sur $R$ et on note 
+$$
+\int _{E}f(\boldsymbol{x})\,d\boldsymbol{x}=\int _{R}\tilde{f}(\boldsymbol{x})\,d\boldsymbol{x}.
+$$
+\end{definition}
+\begin{remark}
+Cette definition ne dépende pas du choix de $R$.
+\end{remark}
+\paragraph{Propriétés de l'integrale de Riemann}
+Soit $E\subset \mathbf{R}^{n}$ borne et $f,g\in \mathcal{R}(E)$.
+\begin{enumerate}
+\item Linéarité : Pour tous $\alpha,\beta \in \mathbf{R}$ on a $h=\alpha f+\beta g\in \mathcal{R}(E)$. Et $\int _{E}h=\alpha \int _{E}f+\beta \int _{E}g$.
+\item Monotonie : Si $f(\boldsymbol{x})\le g(\boldsymbol{x})$ pour tout $\boldsymbol{x}\in E$. Alors $\int _{E}f\le \int _{E}g$.
+\item Si $f\in \mathcal{R}(E)$, alors $|f|$, $f_{+}:=\max\{ f,0 \}$ et $f_{-}:=\min\{ f,0 \}$ sont intégrables sur $E$ et $\left\lvert  \int _{E}f  \right\rvert\le \int _{E}|f|$.
+\begin{proof}
+Si $f\in \mathcal{R}(E)$, alors $f_{+}\in \mathcal{R}(E)$. Il existe $R$ tel que $E\subset \mathring{R}$ et $\tilde{f}\in \mathcal{R}(R)$. On a $(\tilde{f})_{+}=\max\{ \tilde{f},0 \}=\widetilde{(f_{+})}$. Si on montre $(\tilde{f})_{+}\in \mathcal{R}(R)$, on aura que $f_{+}\in \mathcal{R}(E)$. Par hypothèse $f\in \mathcal{R}(E)$, donc $\tilde{f}\in \mathcal{R}(R)$. On a
+$$
+\forall\varepsilon>0\,\exists P_{\varepsilon}:\overline{S}(\tilde{f},P_{\varepsilon})-\underline{S}(\tilde{f},P_{\varepsilon})< \varepsilon.
+$$
+On souhaite montrer que $\overline{S}(\tilde{f}_{+},P_{\varepsilon})-\underline{S}(\tilde{f}_{+},P_{\varepsilon})<\varepsilon$.  On a
+$$
+\overline{S}(\tilde{f}_{+},P_{\varepsilon})-\underline{S}(\tilde{f}_{+},P_{\varepsilon}) =\sum _{Q\in P_{\varepsilon}}\underbrace{ (\sup_{Q}\tilde{f}_{+}- \inf_{Q}\tilde{f}_{+} ) }_{ \star }\mathrm{Vol}(Q)
+$$
+Pour tout $Q\in P_{\varepsilon}$, on veut montrer que $\star$ est borne supérieurement par $\sup_{Q}\tilde{f}-\inf_{Q}\tilde{f}$.
+\begin{itemize}
+\item Si $\tilde{f}\ge 0$ sur $Q$, évidente.
+\item Si $\tilde{f}\le 0$ sur $Q$, évidente.
+\item Si $\inf_{Q}\tilde{f}\le 0 \le \sup_{Q}\tilde{f}$, alors $\star$ devient $\sup_{Q}\tilde{f}_{+}$ car $\inf_{Q}\tilde{f}=0$. Mais $\sup_{Q}\tilde{f}_{+}=\sup_{Q}\tilde{f}$ qui est plus petit que $\sup_{Q}\tilde{f}-\inf_{Q}\tilde{f}$. Alors
+$$
+\overline{S}(\tilde{f}_{+},P_{\varepsilon})-\underline{S}(\tilde{f}_{+},P_{\varepsilon})\le \overline{S}(\tilde{f},P_{\varepsilon})-\underline{S}(\tilde{f},P_{\varepsilon})<\varepsilon
+$$
+donc $\tilde{f}_{+}\in \mathcal{R}(R)$ et $f_{+}\in \mathcal{R}(E)$.
+
+La demonstration pour $f_{-}$ est similaire et comme $|f|=f_{+}+f_{-}$ et la somme de fonctions est integrable, alors $|f|\in \mathcal{R}(E)$.
+
+Puisque $-|f|\le f \le |f|$, par la propriété de monotonie alors $-\int |f|\le\int f\le\int |f|$, donc $|\int f|\le\int |f|$.
+\end{itemize}
+\end{proof}
+\item Si $f,g\in \mathcal{R}(E)$, alors $fg\in \mathcal{R}(E)$.
+\end{enumerate}
+
+\section{Ensembles mesurables au sens de Jordan}
+Soit $E\subset \mathbf{R}^{n}$ borne.
+\begin{definition}
+On dit que $E$ est mesurable au sens de Jordan si la fonction caractéristique de $E$ 
+$$
+\mathbb{1}_{E}=\begin{cases}
+1 & \text{si }\boldsymbol{x}\in E \\
+0 & \text{si }\boldsymbol{x}\in \mathbf{R}^{n}\setminus E.
+\end{cases}
+$$
+est integrable. On note
+$$
+\mathrm{Vol}(E)=\int _{E}\mathbb{1}_{E}.
+$$\end{definition}
+
+On a la somme superieure de $\mathbb{1}_{E}$ :
+$$
+\overline{S}(\mathbb{1}_{E},P)=\sum _{Q\in P}\sup_{Q}\mathbb{1}_{E}\mathrm{Vol}Q=\sum _{\underset{Q\cap E\neq \varnothing}{Q\in P}} \mathrm{Vol}Q
+$$
+et la somme inferieure
+$$
+\underline{S}(\mathbb{1}_{E},P)=\sum _{Q\in P}\inf_{Q}\mathbb{1}_{E}\mathrm{Vol}Q=\sum _{\underset{Q\cap E^{\complement}=\varnothing}{Q\in P}}\mathrm{Vol}Q.
+$$
+\begin{lemma}[Caractérisation équivalente]
+Un ensemble $E\subset \mathbf{R}^{n}$ borne est mesurable au sens de Jordan si et seulement si pour tout $\varepsilon>0$, il existe une partition $P_{\varepsilon}$ telle que 
+$$
+\sum _{\underset{Q\cap E\neq \varnothing,Q\cap E^{\complement}= \varnothing}{Q\in P_{\varepsilon}}}\mathrm{Vol}(Q)<\varepsilon.
+$$
+\end{lemma}
+\begin{definition}
+On dit qu'un ensemble $E\subset \mathbf{R}^{n}$ borne est negligeable si $\mathbb{1}_{E}$ est integrable et $\mathrm{Vol}(E)=0$.
+\end{definition}
+\begin{lemma}[Caracterisation equivalente]
+Un ensemble $E\subset \mathbf{R}^{n}$ borne est negligeable si et seulement si pour tout $\varepsilon>0$, il existe un nombre fini de paves $R_{1},\dots,R_{k_{\varepsilon}}$ de $\mathbf{R}^{n}$ tels que 
+$$
+E\subset \bigcup _{i=1}^{k_{\varepsilon}}R_{i}\quad\text{et}\quad\sum_{i=1}^{k_{\varepsilon}} \mathrm{Vol}(R_{i})<\varepsilon.
+$$
+\end{lemma}
