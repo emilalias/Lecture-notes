@@ -1,0 +1,184 @@
+\todo{Lecture 21}
+\begin{theorem}
+Un ensemble $E\subset \mathbf{R}^{n}$ est mesurable si et seulement si $\partial E$ est negligeable.
+\end{theorem}
+\begin{proof}
+Soit $R$ un pave qui contient $E$. 
+\begin{itemize}
+\item Direction $\Rightarrow$ : Supposons $E$ mesurable, alors pour tout $\varepsilon>0$, il existe $P_{\varepsilon}$ telle que 
+$$
+\overline{S}(\mathbb{1}_{E},P_{\varepsilon})-\underline{S}(\mathbb{1}_{E},P_{\varepsilon})<\varepsilon
+$$
+si et seulement si
+$$
+\sum _{Q\cap E\neq \varnothing, Q\cap E^{\complement}\neq\varnothing} \mathrm{Vol}(Q)<\varepsilon.
+$$
+On a 
+$$
+\partial E\subset \bigcup _{Q\subset \mathcal{E}}Q\cup \underbrace{ \bigcup _{Q\subset P_{\varepsilon}}\partial Q }_{ \text{negligeable} }
+$$
+ou
+$$
+\mathcal{E}=\{ Q:Q\cap E\neq \varnothing, Q\cap E^{\complement}\neq \varnothing \}.
+$$
+Soit 
+$$
+\mathcal{E}'=\{ Q\subset E:\partial Q,Q\subset P_{\varepsilon} \}
+$$
+donc
+$$
+\sum _{\tilde{Q}\in \mathcal{E}'}\mathrm{Vol}(\tilde{Q})<\varepsilon
+$$
+et comme $\partial E\subset \bigcup _{\tilde{Q}\in \mathcal{E}'}\tilde{Q}$ alors $\partial E$ est negligeable par \ref{lem811}.
+\item Direction $\Leftarrow$ : Supposons $\partial E$ negligeable (c-a-d $\mathbb{1}_{\partial E}$ est integrable et $\int \mathbb{1}_{\partial E}=0$) , alors pour tout $\varepsilon>0$, il existe $P_{\varepsilon}$ telle que
+$$
+\overline{S}(\mathbb{1}_{\partial E},P_{\varepsilon})-\underline{S}(\mathbb{1}_{\partial E},P_{\varepsilon})<\varepsilon
+$$
+et donc
+$$
+\sum _{Q\in P_{\varepsilon},Q\cap \partial E\neq \varnothing} \mathrm{Vol}(Q)<\varepsilon.
+$$
+On a
+$$
+\overline{S}(\mathbb{1}_{E},P_{\varepsilon})-\underline{S}(\mathbb{1}_{E},P_{\varepsilon})=\sum _{\underset{Q\cap E^{\complement}\neq \varnothing}{Q\cap E\neq \varnothing }}\mathrm{Vol}(Q)\le \sum _{Q\cap \partial E\neq \varnothing}\mathrm{Vol}(Q)<\varepsilon
+$$
+et donc $\mathbb{1}_{E}$ est integrable et $E$ est mesurable. 
+\end{itemize}
+\end{proof}
+\begin{remark}
+Soient $E,F\subset \mathbf{R}^{n}$ mesurables. 
+\begin{itemize}
+\item $E\cap F$ est mesurable.
+\begin{proof}
+On a que $\mathbb{1}_{E\cap F}=\mathbb{1}_{E}\mathbb{1}_{F}\in \mathcal{R}(\mathbf{R}^{n})$.
+\end{proof}
+\item $E\cup F$ est mesurable.
+\begin{proof}
+On a que $\mathbb{1}_{E\cup F}=\mathbb{1}_{E}+\mathbb{1}_{F}-\mathbb{1}_{E\cap F}\in \mathcal{R}(\mathbf{R}^{n})$.
+\end{proof}
+\item $E\setminus F$ est mesurable.
+\item $\mathring{E}$ est mesurable.
+\item $\overline{E}$ est mesurable.
+\end{itemize}
+\end{remark}
+\begin{notation}
+On note $\mathcal{J}(\mathbf{R}^{n})$ l'ensemble des sous-ensembles mesurables et compacts de $\mathbf{R}^{n}$.
+\end{notation}
+\section{Caractérisation des fonctions intégrables}
+\begin{theorem}
+Soit $R\subset \mathbf{R}^{n}$ un pave et $f:R\to \mathbf{R}$ bornée. Si l'ensemble des points de discontinuité de $f$ est negligeable, alors $f$ est integrable.
+\end{theorem}
+\begin{proof}
+Soit $N$ l'ensemble des points de discontinuité de $f$ et $M:=\sup_{\boldsymbol{x}\in R}|f(\boldsymbol{x})|$. Puisque $N$ est negligeable, on sait que 
+$$
+\forall\varepsilon>0\,\exists \tilde{P}_{\varepsilon}:\overline{S}(\mathbb{1}_{N},\tilde{P}_{\varepsilon})-\underbrace{ \underline{S}(\mathbb{1}_{N},\tilde{P}_{\varepsilon}) }_{ =0 }<\frac{\varepsilon}{1+4M},
+$$
+ou 
+$$
+\overline{S}(\mathbb{1}_{N},\tilde{P}_{\varepsilon})=\sum _{Q\cap N\neq \varnothing}\mathrm{Vol}(Q)<\frac{\varepsilon}{1+4M}.
+$$
+
+Soit 
+$$
+K=\bigcup _{\underset{Q\cap N=\varnothing}{Q\in P_{\varepsilon}}}Q.
+$$
+$K$ est compact, donc $f$ est uniformément continue sur $K$ :
+$$
+\exists\delta _{\varepsilon}>0\,\forall \boldsymbol{x},\boldsymbol{y}\in K:\lVert \boldsymbol{x}-\boldsymbol{y} \rVert <\delta _{\varepsilon}\Rightarrow |f(\boldsymbol{x})-f(\boldsymbol{y})|< \frac{\varepsilon}{1+2\mathrm{Vol}(R)}.
+$$
+Soit $P_{\varepsilon}$ un raffinement de $\tilde{P}_{\varepsilon}$, alors
+$$
+\mathrm{diam}(Q)=\sup_{\boldsymbol{x},\boldsymbol{y}\in Q}\lVert \boldsymbol{x}-\boldsymbol{y} \rVert \le \delta _{\varepsilon}.
+$$
+On a 
+\begin{align*}
+\overline{S}(f,P_{\varepsilon})-\underline{S}(f,P_{\varepsilon}) & =\sum _{Q\in P_{\varepsilon}}(\sup_{Q}f-\inf_{Q}f )\mathrm{Vol}(Q) \\
+ & =\sum _{Q\subset K}\underbrace{ (\sup_{Q}f-\inf_{Q}f) }_{ < \frac{\varepsilon}{1+2\mathrm{Vol}(R)} }\mathrm{Vol}(Q)+\sum _{Q\cap N\neq \varnothing}\underbrace{ (\sup_{Q}f-\inf_{Q}f) }_{ \le 2M }\mathrm{Vol}(Q) \\
+ & \le \frac{\varepsilon}{1+2\mathrm{Vol}(R)}\mathrm{Vol}(R)+2M \frac{\varepsilon}{1+4M}<\varepsilon
+\end{align*}
+donc $f$ est integrable.
+\end{proof}
+\begin{corollary}
+Soit $E\subset \mathbf{R}^{n}$ negligeable et $f:E\to \mathbf{R}$ bornée. Alors $f\in \mathcal{R}(E)$ et $\int f=0$. 
+\end{corollary}
+\begin{proof}
+Soit $R$ un pave contenant $E$ et $\tilde{f}$ le prolongement par zero. Alors l'ensemble de discontinuités de $\tilde{f}$ est negligeable et $\tilde{f}\in \mathcal{R}(R)$, donc $f\in \mathcal{R}(E)$ et $\int f=0$.
+\end{proof}
+\begin{theorem}
+Soit $E\subset \mathbf{R}^{n}$ mesurable. Si $f:E\to \mathbf{R}$ est bornée et continue sur ${\mathring{ E }}$, alors $f$ est integrable.
+\end{theorem}
+\paragraph{Propriétés de l'integrale de Riemann}
+\begin{enumerate}[5]
+\item Soit $E\subset \mathbf{R}^{n}$ et $f\in \mathcal{R}(E)$. Alors 
+$$
+(\inf_{E}f)\mathrm{Vol}(E)\le \int _{E}f(\boldsymbol{x})\,d\boldsymbol{x}\le (\sup_{\boldsymbol{x}\in E}f(\boldsymbol{x}))\mathrm{Vol}(E).
+$$
+\item Si $E\in \mathcal{J}(\mathbf{R}^{n})$ (mesurable et compact) est connexe par arcs et $f:E\to \mathbf{R}$ est continue, alors il existe $\boldsymbol{x}_{0}\in E$ tel que
+$$
+\frac{1}{\mathrm{Vol}(E)}\int _{E}f(\boldsymbol{x})\,d\boldsymbol{x}=f(\boldsymbol{x}_{0}).
+$$
+\item Soit $E\subset \mathbf{R}^{n}$ mesurable et $f\in \mathcal{R}(E)$. Si $E=E_{1}\cup E_{2}$ tels que $E_{1}$, $E_{2}$ sont mesurables et $E_{1}\cap E_{2}$ est negligeable, alors $f|_{E_{1}}\in \mathcal{R}(E_{1})$, $f|_{E_{2}}\in \mathcal{R}(E_{2})$ et $$\int _{E}f(\boldsymbol{x})\,d\boldsymbol{x}=\int _{E_{1}}f(\boldsymbol{x})\,d\boldsymbol{x}+\int _{E_{2}}f(\boldsymbol{x})\,d\boldsymbol{x}.$$
+\end{enumerate}
+\begin{remark}
+Supposons $E$ ferme, alors ${\mathring{ E }\cup \partial E}$ qui est l'union de deux ensemble mesurables. Alors 
+$$
+\int _{E}f(\boldsymbol{x})\,d\boldsymbol{x}=\int _{{\mathring{ E }}}f(\boldsymbol{x}) \, d\boldsymbol{x}+\int _{\partial E}f(\boldsymbol{x}) \, d\boldsymbol{x}  
+$$
+ou $\int _{\partial E}f(\boldsymbol{x}) \, d\boldsymbol{x}=0$ car $\partial E$ est negligeable.
+\end{remark}
+\section{Généralisation de la formule des intégrales itérées}
+Soit $R=[a_{1},b_{1}]\times[a_{2},b_{2}]$ et $f:R\to \mathbf{R}$ continue. Alors
+\begin{align*}
+\int _{R}f(x,y)\,dx\,dy & =\int_{a_{2}}^{b_{2}} \left( \int_{a_{1}}^{b_{1}} f(x,y) \, dx  \right) \, dy \\
+ &  =\int_{a_{1}}^{b_{1}} \left( \int_{a_{2}}^{b_{2}} f(x,y) \, dy  \right) \, dx .
+\end{align*}
+\begin{notation}
+$$
+\boldsymbol{z}=(\underbrace{ z_{1},\dots,z_{n} }_{ \boldsymbol{x}\in \mathbf{R}^{n} },\underbrace{ z_{n+1} }_{ y\in \mathbf{R} })\in \mathbf{R}^{n+1}
+$$
+\end{notation}
+\begin{definition}
+On dit que $E\subset \mathbf{R}^{n+1}$ est un domaine simple par rapport a la variable $y$ s'il existe un compact $K\in \mathcal{J}(\mathbf{R}^{n})$ et deux fonctions continues $g,h:K\to \mathbf{R}$ tels que $g(\boldsymbol{x})\le h(\boldsymbol{x})$ pour tout $\boldsymbol{x}\in K$ et 
+$$
+E=\{ (\boldsymbol{x},y)\in \mathbf{R}^{n+1}:\boldsymbol{x}\in K, g(\boldsymbol{x})\le y \le h(\boldsymbol{x}) \}.
+$$
+\end{definition}
+\begin{theorem}
+Un domaine simple $E=\{ (\boldsymbol{x},y)\in \mathbf{R}^{n+1}:\boldsymbol{x}\in K,\, g(\boldsymbol{x})\le y \le h(\boldsymbol{x}) \}$ avec $K\in \mathcal{J}(\mathbf{R}^{n})$ et $g,h\in C^{0}(K)$ est mesurable et 
+$$
+\mathrm{Vol}(E)=\int _{K}(h(\boldsymbol{x})-g(\boldsymbol{x}))\,d\boldsymbol{x}.
+$$
+\end{theorem}
+\begin{theorem}
+Soit $E=\{ (\boldsymbol{x},y)\in \mathbf{R}^{n+1}:\boldsymbol{x}\in K,\,g(\boldsymbol{x})\le y \le h(\boldsymbol{x}) \}$ un domaine simple et $f:E\to \mathbf{R}$ continue. Alors $f\in \mathcal{R}(E)$ et 
+$$
+\int _{E}f(\boldsymbol{x},y)\,d\boldsymbol{x}\,dy=\int _{K}\left( \int_{g(\boldsymbol{x})}^{h(\boldsymbol{x})} f(\boldsymbol{x},y) \, dy  \right) \, d\boldsymbol{x} 
+$$
+\end{theorem}
+\begin{example}
+Soit $E=\{ (x,y)\in \mathbf{R}^{2}:x^{2}+y^{2} \le 1 \}$. On souhaite calculer 
+$$
+\mathrm{Vol}(E)=\int _{E}\mathbb{1}_{E}(x,y)\,dx\,dy=\pi
+$$
+et
+$$
+I=\int _{E}(x^{2}+y^{2})\,dx\,dy.
+$$
+On a 
+$$
+E=\{ (x,y)\in \mathbf{R}^{2}:-1\le x\le 1, \, -\sqrt{ 1-x^{2} }\le y \le \sqrt{ 1-x^{2} } \},
+$$
+donc on applique le théorème
+\begin{align*}
+\mathrm{Vol}(E) & =\int _{E}\mathbb{1}_{E}(x,y)\,dx\,dy \\
+ & =\int_{-1}^{1} \left( \int_{-\sqrt{ 1-x^{2} }}^{\sqrt{ 1-x^{2} }} 1 \, dy  \right) \, dx \\
+  & =\int_{-1}^{1} 2\sqrt{ 1-x^{2} } \, dx =\dots=\pi
+\end{align*}
+et
+\begin{align*}
+I & =\int _{E}(x^{2}+y^{2})\,dx\,dy \\
+ & =\int_{-1}^{1} \left( \int_{-\sqrt{ 1-x^{2} }}^{\sqrt{ 1-x^{2} }} x^{2}+y^{2} \, dy  \right) \, dx \\
+ & =\int_{-1}^{1} 2x^{2}\sqrt{ 1-x^{2} }+ \frac{2(1-x^{2})^{3/2}}{3}  \, dx \\
+ & =\dots  
+\end{align*}
+\end{example}

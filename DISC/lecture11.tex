@@ -1,0 +1,225 @@
+\section{Combinatorial probability}
+\todo{Lecture 11}
+\begin{definition}
+A finite probability space is a pair $(\Omega,P)$ where $\Omega$ is a finite set and $P:2^{\Omega}\to[0,1]$ is a function assigning a number from the interval $[0,1]$ to every subset of $\Omega$ such that :
+\begin{enumerate}
+\item $P(\varnothing)=0$,
+\item $P(\Omega)=1$,
+\item $P(A\cup B)=P(A)+P(B)$ for any two disjoint set $A,B\subseteq \Omega$.
+\end{enumerate}
+\end{definition}
+\paragraph{Probability theory to set theory dictionary} The set $\Omega$ can be thought as the set of all possible outcomes of some random experiment. 
+\begin{itemize}
+\item Elements of $\Omega$ are called elementary events.
+\item Subsets of $\Omega$ are called events.
+\end{itemize}
+
+Let $w\in \Omega$, $A,B\subseteq \Omega$ : 
+\begin{itemize}
+\item $w\in A$ means that $A$ occurred.
+\item $w\in A\cap B$ means that both events $A$ and $B$ occurred.
+\item $A\cap B=\varnothing$ if events $A$ and $B$ are incompatible.
+\item $P(A)$ denotes the probability of event $A$.
+\end{itemize}
+\begin{example}[A random sequence of 0s and 1s]
+Let $\Omega=\{ 0,1 \}^{n}=$ all $n$-term sequences of 0s and 1s, $|\Omega|=2^{n}$. For $A\subseteq \Omega$, $P(A):=|A|/|\Omega|$.
+
+Consider a set $A\subseteq \Omega$ defined by $A:=\{ (w_{1},\dots,w_{n}):w_{1}=1 \}$. $A$ is the event: "the first element of a random sequence is 1".
+\end{example}
+\begin{example}[A random permutation]
+$\Omega=S_{n}$ is the set of all permutations of the set $\{ 1,\dots,n \}$. For $A\subset \Omega$, $P(A)=\frac{|A|}{n!}$.
+\begin{reminder}
+Hatcheck lady problem.
+\end{reminder}
+\end{example}
+\begin{example}[A random graph]
+Let $\Omega=\mathcal{G}_{n}$ be the set of all possible labelled graphs on vertex set $V=\{ 1,\dots,n \}$. For $A\subset \mathcal{G}_{n}$, $P(A)=|A|2^{-\binom{ n}  {2}}$.
+\end{example}
+\begin{proposition}
+A random graph is almost neve a tree, i.e.
+$$
+\lim_{ n \to \infty } P(\text{"a graph in }\mathcal{G}\text{ is a tree"})=0
+$$
+\end{proposition}
+\begin{proof}
+We have $P(T_{n})=\frac{|T_{n}|}{\mathcal{|G}_{n}|}$. By Cayley's theorem, $|T_{n}|=n^{n-2}$, therefore 
+$$
+\lim_{ n \to \infty } \frac{n^{n-2}}{2^{n(n-1)/2}}=\lim_{ n \to \infty } e^{-\ln(2) n(n-1)/2+(n-2)\ln(n)}=0.
+$$
+\end{proof}
+\begin{definition}
+Two events $A$, $B$ in probability space $(\Omega ,P)$ are called independent if 
+$$
+P(A\cap B)=P(A)P(B).
+$$
+\end{definition}
+\begin{example}
+Let $\Omega=\{ 0,1 \}^{n}$ be the probability space of random sequences. Consider 2 events :
+\begin{itemize}
+\item Event $A$ is defined as "the first element of a sequence is 1".
+\item Event $B$ is defined as "the second element of a sequence is 1".
+\end{itemize}
+Events $A$ and $B$ are independent.
+\end{example}
+\begin{example}[Non-example]
+Let $\Omega=\{ 0,1 \}^{n}$ be the probability space of random sequences. 
+\begin{itemize}
+\item Event $A$ is defined as "all elements of the sequence are 1".
+\item Event $B$ is defined as "all elements of the sequence are 0".
+\end{itemize}
+We have that $P(A)>0$ and $P(B)>0$, however $P(A\cap B)=P(\varnothing)=0$. Therefore, these events are not independent.
+\end{example}
+\begin{definition}
+Events $A_{1},\dots,A_{n}\subseteq \Omega$ are independent if and only if for each subset of indices $I\subseteq \{ 1,\dots,n \}$ we have
+$$
+P\left( \bigcap _{i\in I}A_{i} \right)=\prod _{i\in I}P(A_{i}).
+$$
+\end{definition}
+\subsection{Random variables and their expectations}
+\begin{definition}
+Let $(\Omega,P)$ be a finite probability space. A random variable on $\Omega$ is any map $f:\Omega \to \mathbf{R}$.
+\end{definition}
+\begin{example}
+Let $(\{ 0,1 \}^{n},|A|/|\Omega|)$ be the probability space of $n$-term random sequences of 1s and 0s. $f_{1}(w)$ that returns the number of 1s in a random sequence $w$ is a variable
+\end{example}
+\begin{example}
+The number of fixed points in a random sequence.
+\end{example}
+\begin{example}
+The number of triangles in a random graph.
+\end{example}
+\begin{definition}
+Let $(\Omega,P)$ be a finite probability space, and let $f$ be a random variable on it. The expectation of $f$ is a real number $\mathbb{E}(f)$ defined by the formula
+$$
+\mathbb{E}(f)=\sum _{w\in \Omega}P(\{w \})f(w).
+$$
+\end{definition}
+\begin{example}\label{noones}
+Let $f_{1}$ be the number of 1s in a random $n$-term sequence of 1s and 0s. Then
+\begin{align*}
+\mathbb{E}(f_{1}) & =\sum _{w\in \{ 0,1 \}^{n}}f_{1}(w)2^{-n} \\
+ & =2^{-n}\sum_{k=0}^{n} k\binom{ n}  {k }   \\
+ & =2^{-n} \frac{d}{dx}(1+x)^{n}|_{x=1} \\
+ &=2^{-n}n 2^{n-1}=\frac{n}{2}.
+\end{align*}
+\end{example}
+\begin{question}
+Can we find an easier way to compute $\mathbb{E}(f_{1})$?
+\end{question}
+\begin{definition}
+Let $A\subseteq \Omega$ be an event in a probability space $(\Omega,P)$. The indicator of event $A$ is the random variable $I_{A}:\Omega \to \{ 0,1 \}$ defined as
+$$
+I_{A}(w)=\begin{cases}
+1 & \text{for }w\in A, \\
+0 & \text{for }w\not\in A.
+\end{cases}
+$$
+\end{definition}
+\begin{lemma}
+For any event $A$, we have $\mathbb{E}(I_{A})=P(A)$.
+\end{lemma}
+\begin{proof}
+$$
+\mathbb{E}(I_{A})=\sum _{w\in \Omega}I_{A}(w)P(\{ w\})=\sum _{w\in A}P(\{ w \})=P(A).
+$$
+\end{proof}
+\begin{theorem}[Linearity of expectation]
+Let $f,g$ be arbitrary random variables on a finite probability space $(\Omega,P)$ and let $\alpha \in \mathbf{R}$. Then:
+$$
+\mathbb{E}(\alpha f)=\alpha \mathbb{E}(f)\quad\text{and}\quad \mathbb{E}(f+g)=\mathbb{E}(f)+\mathbb{E}(g).
+$$
+\end{theorem}
+\begin{example}[Reprise of \ref{noones}: an alternative method]
+For $i=1,\dots,n$, let $A_{i}$ be the event "the $i$-th element of the random sequence is 1". Then $P(A_{i})=\frac{1}{2}$. For each $w\in \{ 0,1 \}^{n}$, we have
+$$
+f_{1}(w)=I_{A_{1}}(w)+I_{A_{2}}(w)+\dots +I_{A_{n}}(w).
+$$
+Therefore
+\begin{align*}
+\mathbb{E}(f_{1}) & =\mathbb{E}(I_{A_{1}})+\dots +\mathbb{E}(I_{A_{n}}) \\
+ & =P(A_{1})+\dots +P(A_{n}) \\
+ & =\frac{n}{2}.
+\end{align*}
+\end{example}
+\subsection{Probabilistic method}
+\begin{theorem}\label{thm111}
+Let $(\Omega,P)$ be a finite probability space and let $f:\Omega \to \mathbf{R}$ be a random variable. If $\mathbb{E}(f)=m$, then there exists at least one elementary event $w_{1}$ such that $f(w_{1})\ge m$. 
+
+Analogously, there exists at least one elementary event $w_{2}$ such that $f(w_{2})\le m$.
+\end{theorem}
+\subsubsection{Application : Existence of large bipartite subgraphs}
+\begin{theorem}
+Let $G$ be a graph with an even number $2n$ of vertices and with $m>0$ edges. Then the set $V=V(G)$ can be divided into two disjoint $n$-element subsets $A$ and $B$ in such a way that more than $m/2$ edges go between $A$ and $B$.
+\end{theorem}
+\begin{proof}
+Consider the probability space $(\Omega,P)$ where $\Omega=\binom{ V}  {n }$ with the probability measure $P(S)=|S|/|\Omega|$ for $S\subseteq \Omega$. 
+
+Let $A\in \Omega$ be a random $n$-element subset of $V(G)$. Define $B:=V(G)P\{ A \}$. Consider the following random variable
+$$
+X(A):= |\text{edges between }A\text{ and }B |=|\{ \{ a,b \}:a\in A,b\in B,\{ a,b \}\in E(G) \}|.
+$$
+Let us compute $\mathbb{E}(X)$. For $e=\{ u,v \}\in E(G)$ we define the event $C_{e}:=\{ A\in \Omega:|A\cap e|=1 \}$. We have 
+$$
+X=\sum _{e\in E(G)}I_{C_{e}}
+$$
+and therefore
+$$
+\mathbb{E}(X)=\sum _{e\in E(G)}\mathbb{E}(I_{C_{e}})=\sum _{e\in E(G)}P(C_{e}).
+$$
+We compute
+$$
+P(C_{e})=\frac{2\binom{ 2n-2}  {n-1}}{\binom{ 2n}  {n } }=\frac{\frac{n}{2n-1}>1}{2}.
+$$
+Thus $\mathbb{E}(X)> \frac{m}{2}$. By theorem \ref{thm111} then $X(A)> \frac{m}{2}$ for some $A\in \Omega$.
+\end{proof}
+\subsubsection{Application: Turan's theorem}
+\begin{definition}
+Let $G$ be a graph. A set $S\subseteq V(G)$ is an independent set if no two vertices of $S$ are connected by an edge. $\alpha(G)$ represents the size of the largest independent set of vertices in the graph $G$.
+\end{definition}
+\begin{theorem}[Turan]\label{thm112}
+For every graph $G$ we have
+$$
+\alpha(G)\ge \frac{|V(G)|^{2}}{2|E(G)|+V(G)}.
+$$
+\end{theorem}
+\begin{lemma}
+For any graph $G$ we have
+$$
+\alpha(G)\ge \sum _{v\in V(G)} \frac{1}{\deg(v)+1}.
+$$
+\end{lemma}
+\begin{proof}
+Suppose that the vertices of $G$ are numbered $1,\dots,n$. Pick a random permutation $\pi$ of the vertices. Define the set $M(\pi)\subset V(G)$ by
+$$
+M(\pi):= \{ v\in V:\text{all neighbours }u\text{ of }v\text{ satisfy }\pi(u)>\pi(v) \}.
+$$
+$M(\pi)$ is an independent set of $G$. Therefore, $|M(\pi)|\le \alpha(G)$ for any permutation $\pi$ and $\mathbb{E}(|M(\pi)|)\le \alpha(G)$.
+
+Now, we calculate the expected size of $M$. Let $v\in V$, $A_{v}$ is the event "$v\in M(\pi)$". Then
+$$
+P(A_{v})=\frac{1}{\deg(v)+1}
+$$
+and
+$$
+|M(\pi)|=\sum _{v\in V} I_{A_{v}}(\pi).
+$$
+Now 
+$$
+\boldsymbol{E}(|M|)=\sum _{v\in V}\mathbb{E}(I_{A_{v}})=\sum _{v\in V}P(A_{v})=\sum _{v\in V} \frac{1}{\deg(v)+1}.
+$$
+Since $\alpha(G)\ge \mathbb{E}(|M|)$ this finishes the proof.
+\end{proof}
+\begin{proof}[Proof of \ref{thm112}]
+Let $|V(G)|=n$ and $d_{1},\dots,d_{n}$ be the degrees of vertices of $G$. Then 
+$$
+\sum_{i=1}^{n} d_{i}=2|E(G)|
+$$
+and
+$$
+\sum_{i=1}^{n} \frac{1}{d_{i}+1}\ge \frac{n^{2}}{d_{1}+\dots +d_{n}+n}=\frac{n^{2}}{2|E|+n}
+$$
+due to the inequality between the arithmetic mean and harmonic mean.
+\end{proof}
+%\section*{Random graphs - not exam material}
+
+

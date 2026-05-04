@@ -41,7 +41,7 @@ On a les equations :
 \begin{enumerate}
 \item Equation de continuite : $\frac{ \partial \rho }{ \partial t }+\boldsymbol{\nabla}(\rho \boldsymbol{u})=0$
 \item Equation d'Euler : $\rho\left( \frac{ \partial \boldsymbol{u} }{ \partial t }+(\boldsymbol{u\nabla})\boldsymbol{u} \right)=-\boldsymbol{\nabla}p$
-\item Equation d'etat : $\frac{D}{Dt}\left( \frac{p}{\rho\gamma} \right)=0$
+\item Equation d'etat : $\frac{D}{Dt}\left( \frac{p}{\rho^{\gamma}} \right)=0$
 \end{enumerate}
 
 En equilibre $\rho =\rho_{0}$ est constante, $\boldsymbol{u}=\boldsymbol{0}$ et $p=p_{0}$ est constante. On considere des "petites" perturbations $\rho_{1}$, $\boldsymbol{u}_{1}$ et $p_{1}$ avec $\rho_{1}\ll \rho_{0}$, $p_{1}\ll p_{0}$ et $\lVert \boldsymbol{u}_{1} \rVert< ~?$ (a voir plus tard pour $\boldsymbol{u}_{1}$). Cettes petites perturbations impliquent qu'on peut negliger les termes quadratiques (et d'ordre superieur) en $\rho_{1}$, $\boldsymbol{u}_{1}$ et $p_{1}$ et en ses derivees. On a $\rho=\rho_{0}+\rho_{1}$, $p=p_{0}+p_{1}$ et $\boldsymbol{u}=\boldsymbol{u}$. On linearise les equations :
@@ -57,7 +57,7 @@ $$
 \end{align*}
 \item \label{etat} Equation d'etat :
 \begin{align*}
-\frac{ \partial  }{ \partial t } +(\boldsymbol{u}_{1}\boldsymbol{\nabla})\left( \frac{p_{0}m+p_{1}}{(\rho_{0}+\rho_{1})\gamma} \right) & =0 \\
+\left( \frac{ \partial  }{ \partial t } +(\boldsymbol{u}_{1}\boldsymbol{\nabla}) \right)\left( \frac{p_{0}+p_{1}}{(\rho_{0}+\rho_{1})^{\gamma}} \right) & =0 \\
  \Rightarrow \frac{ \partial p_{1} }{ \partial t } -\frac{\gamma p_{0}}{\rho_{0}} \frac{ \partial p_{1} }{ \partial t }  & =0
 \end{align*}
 \end{enumerate}
