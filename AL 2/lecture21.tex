@@ -1,0 +1,226 @@
+\todo{Lecture 21}
+\chapter{Systèmes différentielles linéaires}
+On veut résoudre un système
+\begin{align*}
+x_{1}'(t) & =a_{11}x_{1}(t)+\dots +a_{1n}x_{n}(t) \\
+ & ~~\vdots \\
+x'_{n}(t)  & =a_{n_{1}}x_{1}(t)+\dots +a_{nn}x_{n}(t)
+\end{align*}
+ou $A=(a_{ij})^{n}_{i,j=1}\in \mathbf{R}^{n\times n}$. On cherche $x_{i}:\mathbf{R}\to \mathbf{R},t\mapsto x_{i}(t)$ derivable telle que le système est satisfait. Etant données des conditions initiales 
+$$
+x(0)=\begin{pmatrix}
+x_{1}(0) \\
+\vdots \\
+x_{n}(0)
+\end{pmatrix}
+$$
+on veut que 
+$$
+x(t)=\begin{pmatrix}
+x_{1}(t) \\
+\vdots \\
+x_{n}(t)
+\end{pmatrix}
+$$
+respecte ces condition initiales.
+\begin{remark}
+On sait (c.f. cours d'analyse) qu'il existe une telle solution $x(t)$ du système telle que les conditions initiales sont satisfaites.
+\end{remark}
+\begin{example}\label{exe2101}
+Soit
+$$
+A=\begin{pmatrix}
+0 & -1  \\
+1 & 0
+\end{pmatrix},
+$$
+on cherche
+$$
+x(t)=\begin{pmatrix}
+x_{1}(t) \\
+x_{2}(t)
+\end{pmatrix}
+$$
+telle que 
+$$
+\begin{pmatrix}
+x_{1}'(t) \\
+x_{2}'(t)
+\end{pmatrix}=Ax(t)=\begin{pmatrix}
+-x_{2}(t) \\
+x_{1}(t)
+\end{pmatrix}.
+$$
+On a une solution
+$$
+\hat{x}_{1}(t)=\cos t(t),\quad \hat{x}_{2}(t)=\sin (t)
+$$
+et une autre solution
+$$
+\overline{x}_{1}(t)=-\sin (t),\quad \overline{x}_{2}(t)=\cos(t).
+$$
+On observe que ces deux solution sont différentes ($\hat{x}(t)\neq\alpha \overline{x}(t),~ \alpha \in \mathbf{R}$) et que pour tous $\alpha,\beta \in \mathbf{R}$ leur combinaison linéaire $\alpha \hat{x}(t)+\beta \,\overline{x}(t)$ est aussi une solution. 
+
+On suppose les conditions initiales $x(0)=(1/2,5)$, alors 
+$$
+x(t)=\frac{1}{2}\hat{x}(t)+5\, \overline{x}(t)
+$$
+est une solution du système respectant les conditions initiales.
+\end{example}
+\begin{reminder}
+On a l'exponentiel 
+\begin{align*}
+e^{x}:\mathbf{C} & \to \mathbf{C} \\
+x & \mapsto \sum_{i=0}^{\infty} \frac{x^{i}}{i!} 
+\end{align*}
+qui est holomorphe et $(e^{x})'=e^{x}$.
+
+Pour $x=a+ib\in \mathbf{C}$. On a 
+$$
+e^{x}=e^{ a+ib }=e^{a}(e^{ ib })=e^{ a }(\cos(b)+i\sin(b)).
+$$
+\end{reminder}
+
+Soit $A\in \mathbf{C}^{n\times n}$. On a
+\begin{align*}
+e^{A} & =I + \frac{A}{1!}+\frac{A^{2}}{2!}+\dots \\
+ & =\sum_{i=0}^{\infty} \frac{A^{i}}{i!}
+\end{align*}
+\begin{question}
+Est-ce que cette série converge ?
+\end{question}
+\begin{answer}
+On a que cette série converge si pour tout $\varepsilon>0$, il existe $N\in \mathbf{N}$ tel que $\forall m\ge N$ :
+$$
+b(m):= \sum_{i=0}^{m} \frac{A^{i}}{i!}\in \mathrm{Voisinage}_{\varepsilon}(e^{A})
+$$
+ou le voisinage est relatif a $\lVert \cdot \rVert_{F}\sim \lVert \cdot \rVert_{2}$ en $\mathbf{R}^{n^{2}}$. On veut montrer que $b(m)$ est une suite de Cauchy c-a-d
+$$
+\forall\varepsilon>0\,\exists N\in \mathbf{N}\,\forall m>n\ge N: \underbrace{ \left\lVert  \sum_{i=n+1}^{m} \frac{A^{i}}{i!}  \right\rVert _{F}}_{ =\left\lVert  b(m)-b(n)\right\rVert _{F} }<\varepsilon.
+$$
+On a 
+$$
+\left\lVert  \sum_{i=n+1}^{m} \frac{A^{i}}{i!}  \right\rVert _{F} \le \sum_{i=n+1}^{m} \frac{\lVert A^{i} \rVert _{F}}{i!}
+$$
+\begin{lemma}
+Pour $A,B\in \mathbf{C}^{n\times n}$ on a 
+$$
+\lVert AB \rVert _{F}\le\lVert A \rVert_{F}\lVert B\rVert _{F}.
+$$
+\end{lemma}
+\begin{proof}
+Soient
+$$
+A=\begin{pmatrix}
+a_{1}^{\mathsf{T}} \\
+\vdots \\
+a_{n}^{\mathsf{T}}
+\end{pmatrix},\quad B=(\overline{b}_{1},\dots,\overline{b}_{n}).
+$$
+On a $(a_{1}^{\mathsf{T}}\overline{b}_{1})(\overline{a}_{1}^{\mathsf{T}}b_{1})=|a_{1}^{\mathsf{T}}\overline{b}_{1}|^{2}$. Donc
+\begin{align*}
+\lVert AB \rVert _{F}^{2} & =\sum _{i,j=1}^{n}(a_{i}^{\mathsf{T}}\overline{b}_{j})(\overline{a}_{i}^{\mathsf{T}}b_{j}) \\
+ & \le \sum_{i,j=1}^{n} \lVert a_{i} \rVert ^{2}\lVert b_{j} \rVert ^{2} \\
+ & =\left( \sum_{i=1}^{n} \lVert a_{i} \rVert ^{2} \right) \left( \sum_{j=1}^{n} \lVert b_{i} \rVert ^{2} \right) \\
+ & =\lVert A \rVert^{2} _{F}\lVert B \rVert ^{2}_{F}.
+\end{align*}
+\end{proof}
+
+On sait que 
+$$
+c(n)=\sum_{i=0}^{n} \frac{\lVert A \rVert _{F}^{i}}{i!}
+$$
+est de Cauchy dans le sens de la suite $c:\mathbf{N}_{0}\to \mathbf{R}_{\ge 0}$. Alors
+$$
+\forall\varepsilon>0\,\exists N_{\varepsilon}\in \mathbf{N}\,\forall m,n\ge N_{\varepsilon}:|c(n)-c(m)|<\varepsilon.
+$$
+Avec cet $N_{\varepsilon}$ on a
+$$
+\left\lVert  \sum_{i=n+1}^{m} \frac{A^{i}}{i!}  \right\rVert _{F}<\varepsilon
+$$
+donc la série intégrale converge.
+\end{answer}
+\begin{remark}
+Soit $A\in \mathbf{C}^{m\times n}$. La norme Frobenius de $A$ est définie comme
+$$
+\lVert A \rVert _{F}=\left( \sum _{i,j=1}^{n}a_{ij}\overline{a}_{ij} \right)^{1/2}
+$$
+qui est équivalente a somme de normes euclidiennes des colonnes de $A$.
+\end{remark}
+
+Soit $A\in \mathbf{R}^{n\times n}$ une matrice. On a pour tout $t\in \mathbf{R}$ :
+$$
+e^{ tA }=\sum_{i=0}^{\infty} t^{i} \frac{A^{i}}{i!}.
+$$
+Toutes composantes de $e^{ tA }$ sont des fonctions en $t$ et sont representes comme une serie integrale
+$$
+f(t)=\sum_{i=0}^{\infty} t^{i} \frac{(A^{i})_{kj}}{i!} 
+$$
+avec derivee
+$$
+f'(t)=\sum_{i=0}^{\infty} t^{i}  \frac{(A(A^{i}))_{ij}}{i!}.  
+$$
+Toutes fonctions dans $e^{ tA }$ dérivée par rapport a $t$
+$$
+\frac{d}{dt}(e^{ tA })=Ae^{ tA }.
+$$
+\begin{theorem}
+La solution d'un système différentiel linéaire qui respecte les conditions initiales $x(0)\in \mathbf{R}^{n}$ est 
+$$
+x(t)=e^{ tA }x(0).
+$$
+\end{theorem}
+\begin{proof}
+On a 
+$$
+e^{0A}x_{0}=I_{n}x_{0}
+$$
+et 
+$$
+x'(t)=Ae^{ tA }x(0)=Ax(t).
+$$
+\end{proof}
+\begin{example}[Continuation du exemple \ref{exe2101}]
+On calcule
+$$
+e^{ tA }=\sum_{i=0}^{\infty}t^{i} \frac{A^{i}}{i!}. 
+$$
+On a 
+$$
+A^{0}=I, A^{1}=A, A^{2}=-I,A^{3}=-A,A^{4}=I,\dots
+$$
+donc
+$$
+A^{2k}=(-1)^{k}I,\quad A^{2k+1}=\begin{pmatrix}
+0 & (-1)^{k+1} \\
+(-1)^{k} & 0
+\end{pmatrix}.
+$$
+Alors on a 
+$$
+e^{ tA }=\begin{pmatrix}
+\sum_{k=0}^{\infty} \frac{(-1)^{k}t^{2k}}{(2k)!} & \sum_{k=0}^{\infty} \frac{(-1)^{k+1}t^{2k+1}}{(2k+1)!}  \\
+\sum_{k=0}^{\infty} \frac{(-1)^{k}t^{2k+1}}{(2k+1)!} & \sum_{k=0}^{\infty}  \frac{(-1)^{k}t^{2k}}{(2k)!}
+\end{pmatrix}
+$$
+ou on reconnait les power series de $\cos(t)$ et $\sin(t)$, donc
+$$
+e^{ tA }=\begin{pmatrix}
+\cos(t) & -\sin(t) \\
+\sin(t) & \cos(t)
+\end{pmatrix}
+$$
+qui verifie
+$$
+e^{ tA }\begin{pmatrix}
+\frac{1}{2} \\
+5
+\end{pmatrix}=\frac{1}{2}\begin{pmatrix}
+\cos(t) \\
+\sin(t)
+\end{pmatrix}+5\begin{pmatrix}
+-\sin (t) \\
+\cos(t)
+\end{pmatrix}.
+$$
+\end{example}

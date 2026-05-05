@@ -7,6 +7,7 @@
 
 \usepackage[default]{fontsetup}
 \usepackage{fontawesome}
+\usepackage{cancel}
 \renewcommand{\qedsymbol}{\faSmileO}
 \theoremstyle{plain}
 \newtheorem{theorem}{Théorème}[chapter]
@@ -772,5 +773,103 @@ Si $x$ est un minimum de $f$ (une solution au problème de moindres carres), on 
 $$
 2A^{\mathsf{T}}Ax-2A^{\mathsf{T}}b \Leftrightarrow A^{\mathsf{T}}Ax=A^{\mathsf{T}}b.
 $$
+\end{proof}
+
+
+\begin{exercise}[Exo etoile]
+Soient $a_{1},\dots,a_{m}\in \mathbf{R}^{n}$. Pour $z\in \mathbf{R}^{n}$ et $v\in S^{n-1}$, on considère la droite $L_{z,v}$ définie par
+$$
+L_{z,v}=\{ z+\lambda v:\lambda \in \mathbf{R} \}=z+\mathrm{span}\{ v \}.
+$$
+Soit $d(a_{i},L_{z,v})$ la distance de $a_{i}$ a $L_{z,v}$ pour $i=1,\dots,m$.
+\begin{enumerate}
+\item Supposons que $\sum_{i=1}^{m}a_{i}=0$. Montrer que $\sum_{i=1}^{m}d(a_{i},L_{z,v})^{2}\ge \sum_{i=1}^{m}d(a_{i},L_{0,v}^{2})$ pour tout $z\in \mathbf{R}^{n}$.
+\item Conclure que, étant donnes des points $a_{1},\dots,a_{m},$ on peut trouver un $z\in \mathbf{R}^{n}$ et $v\in S^{n-1}$ tels que
+$$
+\sum_{i=1}^{m} d(a_{i},L_{z,v})^{2}\le \sum_{i=1}^{m} d(a_{i},L_{z',v'})^{2},
+$$
+pour tout $z'\in \mathbf{R}^{n}$ et $v'\in S^{n-1}$. En particulier :
+\begin{enumerate}
+\item Donner une formule pour $z$.
+\item Décrire la matrice $A$ telle qu'un vecteur propre normalise de $A^{\mathsf{T}}A$ associe a la valeur propre la plus grande est une solution pour $v$.
+\end{enumerate}
+\end{enumerate}
+\end{exercise}
+\begin{proof}[Solution]
+\begin{enumerate}
+\item On a 
+\begin{align*}
+\sum _{i}d(a_{i},L_{z,v})^{2} & =\sum _{i}d(a_{i}-z,\mathrm{span}\{ v \})^{2} \\
+ & =\sum _{i}\lVert a_{i}-z \rVert ^{2}-\langle a_{i}-z,v  \rangle^{2} \\
+ & =\sum _{i}\langle a_{i}-z,a_{i}-z \rangle-(\langle a_{i},v \rangle -\langle z,v \rangle )^{2} \\
+ & =\sum _{i}\lVert a_{i} \rVert ^{2}-2\langle a_{i},z \rangle +\lVert z \rVert ^{2} -\langle a_{i},v \rangle ^{2}+2\langle a_{i},v \rangle \langle z,v \rangle -\langle z,v \rangle ^{2} \\
+ & =\left( \sum _{i}d(a_{i},\mathrm{span}\{ v \})^{2} \right)-\cancel{ 2\left\langle  \sum _{i}a_{i},z  \right\rangle }+\cancel{ 2\left\langle  \sum _{i}a_{i},v  \right\rangle\langle z,v \rangle }      \\
+ & ~~~~~+\left( \sum _{i} \lVert z \rVert ^{2} -\langle z,v \rangle ^{2} \right) \\
+ & \ge\sum _{i}d(a_{i},L_{0,v} )^{2}+\sum _{i}(\lVert z \rVert ^{2}-\lVert z \rVert ^{2}\underbrace{ \lVert v \rVert ^{2} }_{ =0 }) \\
+ & =\sum _{i}d(a_{i},L_{0,v})^{2}.
+\end{align*}
+\item Sans supposition sur $\sum _{i}a_{i}$, posons $z:=\frac{1}{m}\sum _{i}a_{i}$. Avec ce $z$, le points $a_{i}-z$ satisfont l'hypothese de 1 (car $\sum _{i}(a_{i}-z)=0$). Pour $v'\in S^{n-1}$ et pour tout $z'\in \mathbf{R}^{n}$, on écrit $z'=z+z''$ avec $z''\in \mathbf{R}^{n}$. On calcule
+\begin{align*}
+\sum _{i}d(a_{i},L_{z,v'})^{2} & =\sum _{i}d(a_{i}-z,L_{0,v'})^{2} \\
+ & \overset{1}\le d(a_{i}-z,L_{z'',v'})^{2} \\
+ & =\sum _{i}d(a_{i},L_{z+z''},v')^{2} \\
+ & =\sum _{i}d(a_{i},L_{z',v'})^{2}.
+\end{align*}
+Ceci montre que pour un certain $v'\in S^{n-1}$ donne, $z=\frac{1}{m}\sum _{i}a_{i}$ est la choix optimale. Minimiser donc $\sum _{i}d(a_{i},L_{z,v})^{2}$ s'agit d'un problème du meilleur sous-espace approximatif de dimension 1.
+
+Par le cours, on pose $A=(a_{1}-z, \dots , a_{m}-z)^{\mathsf{T}}\in \mathbf{R}^{m\times n}$. Avec ce setup, par le cours on sait que $v$ est donne par un vecteur propre normalise associe a la plus grande valeur propre de $A^{\mathsf{T}}A$.  Pour tout $z'\in \mathbf{R}^{n}$ et pour tout $v'\in S^{n-1}$ on a
+\begin{align*}
+\sum _{i}d(a_{i},L_{z,v})^{2} & =\sum _{i}d(a_{i}-z,\mathrm{span}\{ v \})^{2}  \\
+ & \le \sum _{i}d(a_{i}-z,\mathrm{span}\{ v' \})^{2} \\
+ & =\sum _{i}d(a_{i},L_{z,v'}) \\
+ & \le \sum _{i}d(a_{i},L_{z',v'})^{2}
+\end{align*}
+ou $v'$ est solution au problème du meilleur sous-espace approximatif.
+\end{enumerate}
+\end{proof}
+\chapter{Serie 11}
+\begin{exercise}[Exo plus]
+Trouver $e^{ tA }$ pour chacune des matrices suivantes :
+\begin{enumerate}
+\item $A=\begin{pmatrix}x & 0 \\ 0 & y\end{pmatrix}$ ou $x,y\in \mathbf{C}$.
+\item Une matrice $A\in \mathbf{C}^{n\times n}$ qui satisfait $A^{2}=A$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}[Solution]
+\begin{enumerate}
+\item Par definition, on a
+$$
+e^{ tA}=\sum _{i=0}^{\infty} t^{i} \frac{A^{i}}{i!}
+$$
+ou
+$$
+t^{i}A^{i}=\begin{pmatrix}
+t^{i}x^{i} & 0 \\
+0 & t^{i}y^{i}
+\end{pmatrix}
+$$
+donc
+\begin{align*}
+e^{ tA } & =\sum_{i=0}^{\infty}  \frac{1}{i!}\begin{pmatrix}
+t^{i}x^{i} & 0 \\
+0 & t^{i}y^{i}
+\end{pmatrix} \\
+ & =\begin{pmatrix}
+\sum _{i=0}^{\infty} \frac{t^{i}x^{i}}{i!} & 0 \\
+0 & \sum_{i=0}^{\infty}  \frac{t^{i}y^{i}}{i!}
+\end{pmatrix} \\
+ & =\begin{pmatrix}
+e^{ tx } & 0 \\
+0 & e^{ ty }
+\end{pmatrix}.
+\end{align*}
+\item On calcule
+\begin{align*}
+e^{ tA } & =\sum_{j=0}^{\infty}  t^{j} \frac{A^{j}}{j!} \\
+ & =I + \sum_{j=1}^{\infty} t^{j} \frac{A^{j}}{j!} \\
+ & =I +A\sum _{j=1}^{\infty} \frac{t^{j}}{j!} \\
+ & =I + A(e^{t}-1) \\
+\end{align*}
+\end{enumerate}
 \end{proof}
 \end{document}

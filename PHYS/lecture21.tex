@@ -1,0 +1,151 @@
+\todo{Lecture 21}
+\paragraph{Exemples de conducteurs}
+\begin{itemize}
+\item Métaux : $e^{-}$ libres, $n^{-}\neq 0$ et $n^{+}=0$.
+\item Electrolytes : Presence des ions positives et negatives mobiles : $n^{+}\neq 0$ et $n^{-}\neq 0$. P.ex. de $\mathrm{Na}^{+}\mathrm{Cl}^{-}$ dans l'eau.
+\item Plasma : $e^{-}$ et ions mobiles : $n^{-}\neq 0$ et $n^{+}\neq 0$.
+\end{itemize}
+\begin{remark}
+Par simplicité, on va typiquement on va supposer une espèce de porteurs mobiles de charges qui est positive. 
+\end{remark}
+\begin{definition}
+La densité de courant $\boldsymbol{j}$ donnée par
+$$
+\boldsymbol{j}(\boldsymbol{r},t)=\rho _{\mathrm{el}}^{\mathrm{mobile}}(\boldsymbol{r},t)\boldsymbol{u}(\boldsymbol{r},t)=qn(\boldsymbol{r},t)\boldsymbol{u}(\boldsymbol{r},t)
+$$
+mesure en $\mathrm{A}\mathrm{m}^{-2}$. $\boldsymbol{j}$ est le courant par unite de surface perpendiculaire a $\boldsymbol{j}$, en analogie avec la densité de flux de masse $\rho \boldsymbol{u}$ par un fluide.
+\end{definition}
+
+Soit $S$ une surface, on peut exprimer le courant a travers $S$ 
+$$
+I(t)=\iint _{S}\boldsymbol{j}\,d\boldsymbol{S}
+$$
+\section{La résistance, la loi d'Ohm et l'effet Joule}
+\begin{definition}
+La resistance d'un objet caractérise le courant qui le traverse en fonction de la tension appliquée.
+$$
+R(U)=\frac{\text{voltage appliquee}}{\text{courant}}=\frac{U}{I}
+$$
+La resistance se mesure en Ohms : $\mathrm{VA}^{-1}=\Omega$.
+\end{definition}
+\begin{remark}
+Différents elements ont des comportements différents.
+\end{remark}
+Dans certains cas (p.ex. les métaux et electrolytes a temperature constante) le courant est proportionnel a la tension. Donc $R$ est indépendante de $U$, on parle de la loi d'Ohm.
+\begin{theorem}[Loi d'Ohm]
+$$
+R=\frac{U}{I}=\mathrm{constante}
+$$
+De manière plus générale, la loi d'Ohm s'ecrit comme
+$$
+\boldsymbol{j}=\sigma _{\mathrm{c}}\boldsymbol{E}=\frac{1}{\rho _{\mathrm{c}}}\boldsymbol{E},
+$$
+avec $\sigma _{\mathrm{c}}$ est la conductibilité électrique mesure en $\Omega ^{-1}\mathrm{m}^{-1}$ et $\rho _{\mathrm{c}}$ est la résistivité électrique mesure en $\Omega \mathrm{m}$. Ces constantes dependent du material.
+\end{theorem}
+\begin{remark}
+On peut deriver $U=RI$ a partir de $\boldsymbol{j}=\sigma _{\mathrm{c}}\boldsymbol{E}$ : 
+\begin{align*}
+U & =\phi(A)-\phi(B) \\
+ & =E\ell \\
+ & =\frac{j}{\sigma _{\mathrm{c}}}\ell \\
+ & =\frac{jS}{\sigma _{\mathrm{c}}S }\ell \\
+ & =\frac{I}{\sigma _{\mathrm{c}}S }\ell=RI
+\end{align*}
+donc $U=RI$ avec $R=\frac{\ell}{\sigma _{\mathrm{c}}S}=\frac{\rho _{\mathrm{c}}\ell}{S}$ constante.
+
+La resistance depend de la géométrie ($S,\ell$) et du type de conducteur ($\sigma _{\mathrm{c}}, \rho _{\mathrm{c}}$). En particulier, si la section est constante le long de $I$, n'importe sa forme, on a
+$$
+R=\frac{\ell}{\sigma _{\mathrm{c}}S}.
+$$
+\end{remark}
+\begin{theorem}[Effet Joule]
+Si une charge $q$ se déplace de $A$ a $B$, sa énergie potentielle est réduite par 
+$$
+(\phi(B)-\phi (A))q.
+$$
+Dans une resistance, cette énergie est transformée en chaleur (collisions avec reseau cristallin dans le cas d'un metal). La puissance $P$ associée est donc 
+$$
+P=\frac{dq}{dt}(\phi(A)-\phi(B))=\frac{dq}{dt}U=IU=\frac{U^{2}}{R}.
+$$
+Cette puissance est fourni par l'appareil a force électromotrice.
+\end{theorem}
+\paragraph{Manifestations de l'effet Joule}
+\begin{itemize}
+\item Eclairs chauffe l'air $\leadsto$ onde de choc $\leadsto$ tonnerre.
+\item Lampe a incandescence $\leadsto$ fil chauffe par effet Joule $\leadsto$ emission de lumière et chaleur.
+\end{itemize}
+\section{Conservation de charge, equation de continuité}
+La charge est conservée (voir \ref{section512}), donc 
+\begin{align*}
+\frac{d}{dt}\iiint _{V}\rho _{\mathrm{el}}(\boldsymbol{r},t)\,dV & =\iint _{S}\boldsymbol{j}(\boldsymbol{r},t)\,d\boldsymbol{S} \\
+ \iiint _{V}\frac{ \partial \rho _{\mathrm{el}} }{ \partial t } (\boldsymbol{r},t)\,dV & =\iiint _{V}\boldsymbol{\nabla j}(\boldsymbol{r},t)\,dV
+\end{align*} 
+qui est valable pour tout $V$, donc on a l'equation de continuité 
+$$
+\frac{ \partial \rho _{\mathrm{el}} }{ \partial t } +\boldsymbol{\nabla j}=0.
+$$
+\section{Modèle de Drude de la résistivité électrique d'un metal (facultatif)}
+Polycopie page 5.
+\section{Circuits électrique et lois de Kirchhoff}
+On considère ici les elements suivantes :
+\begin{itemize}
+\item Source de tension  $U$ continue (appareil a f.é.m.).
+\item Resistance. $U=R/I$.
+\item Capacite. $U=q/C$ et $I=dq/dt$.
+\item Fil : element de résistance negligeable, donc la tension est constante le long du fil.
+\end{itemize}
+\begin{theorem}[Loi des nœuds]
+La somme de tous les courants qui arrivent a un nœud d'un circuit est egal a la somme de tous les courants qui le quittent. Donc il n'y a pas d'accumulation de charges dans les nœuds.
+\end{theorem}
+\begin{theorem}[Loi des mailles]
+La somme algébrique des variations du potentiel le long de toutes mailles fermées d'un circuit est nulle.
+\end{theorem}
+\begin{proof}
+$$
+\oint _{\gamma}\boldsymbol{E}\,d\boldsymbol{\ell}=0
+$$
+en électrostatique ou si les variations temporelles de courant sont très faibles.
+\end{proof}
+\begin{example}[Application sur un circuit]
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.25]{circuit.png}
+\end{figure}
+On peut résumer le calcul des courants dans un circuit comme :
+\begin{enumerate}
+\item Définir le sens des courants (on peut choisir !).
+\item Indiquer la direction de l'augmentation du potentiel.
+
+Dans cette situation on a trois inconnues $I_{1},I_{2},I_{3}$ et cinq equations (deux nœuds et trois mailles). On remarque que ces equations ne sont pas toujours indépendantes.
+\item Ecrire les equations pour tous les nœuds sauf 1 et pour les mailles indépendantes.
+
+On a dans ce circuit
+$$
+\begin{cases}
+n_{1}: & 0=-I_{1}+I_{2}+I_{3} \\
+m_{1}: & 0  =U_{1}-R_{1}I_{1}-R_{2}I_{1}-R_{4}I_{3} \\
+m_{2}: & 0  =-U_{2}-R_{3}I_{3}+R_{4}I_{3}
+\end{cases}
+$$
+L'equation $m_{1}$ nous donne 
+$$
+I_{1}=\frac{U_{1}-R_{4}I_{3}}{R_{3}+R_{2}}
+$$
+et l'equation $m_{2}$ donne
+$$
+I_{2}=\frac{R_{4}I_{3}-U_{2}}{R_{3}}
+$$
+qu'on peut remplacer dans $n_{1}$ :
+$$
+I_{3}=\frac{(R_{1}+R_{2})U_{2}+R_{3}U_{1}}{R_{3}R_{4}+(R_{1} +R_{2})(R_{3}+R_{4})}
+$$
+et on peut utiliser $I_{3}$ pour trouver les autres courants.
+\item Si on trouve $I_{i}<0$, la direction de $I$ est dans le sens oppose. Le calcul reste juste.
+\end{enumerate}
+\end{example}
+\begin{example}
+Deux resistances $R_{1}$ et $R_{2}$ en série sont équivalentes a $R_{\mathrm{equiv}}=R_{1}+R_{2}$.
+\end{example}
+\begin{example}
+Deux resistances $R_{1}$ et $R_{2}$ en parallèle sont équivalentes a $R_{\mathrm{equiv}}=\left( \frac{1}{R_{1}}+\frac{1}{R_{2}} \right)^{-1}$.
+\end{example}
