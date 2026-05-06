@@ -1,0 +1,117 @@
+\todo{Lecture 22}
+\section{Changement de variables dans les intégrales}
+\begin{reminder}
+Dans $\mathbf{R}^{n}$ ou $n=1$. Soit $\int_{\alpha}^{\beta} f(x) \, dx$, $F=[\alpha,\beta]$ et $E=[a,b]$. On peut effectuer un changement de variable $x=\psi(u)$, ou $\psi:[a,b]\to[\alpha,\beta]$ est une fonction de classe $C^{1}$. Donc
+$$
+	\int_{\alpha=\psi(a)}^{\beta=\psi(b)}f(x)  \, dx=\int_{a}^{b} f(\psi(u))\psi'(u) \, du  
+$$
+\begin{itemize}
+\item Si $\psi'>0$, alors
+$$
+\int _{F}f(x)\,dx=\int_{\alpha}^{\beta} f(x) \, dx =\int_{a}^{b} f(\psi(u))\psi'(u) \, du= \int _{E}f(\psi(u))|\psi'(u)| \, du. 
+$$
+\item Si $\psi'<0$, alors
+$$
+	\int _{F}f(x) \, dx =\int_{\alpha}^{\beta} f(x) \, dx  =-\int_{a}^{b} f(\psi(u))\psi'(u)   \, du=\int _{E}f(\psi(u))|\psi'(u)|\, du.  
+$$
+\end{itemize}
+\end{reminder}
+\begin{remark}
+Pour $\mathbf{R}^{n}$ ou $n>1$, on se restreint a des bijections (difféomorphismes).
+\end{remark}
+\paragraph{Généralisation a $n>1$}
+Soit $\psi:E\to F$ un difféomorphisme dans $\mathbf{R}^{n}$, alors
+$$
+\int _{F}f(\boldsymbol{x}) \, d\boldsymbol{x}=\int _{E}f(\boldsymbol{\psi}(\boldsymbol{u}))\rho(\boldsymbol{u}) \, d\boldsymbol{u} 
+$$
+ou $\rho(\boldsymbol{u})$ est "le rapport entre le volume de $d\boldsymbol{x}$ et $d\boldsymbol{u}$".
+
+Dans le cas $n=2$. Soit $\boldsymbol{\psi}:E\to F,\boldsymbol{u}\mapsto A\boldsymbol{u}+\boldsymbol{b}$, avec $A\in \mathbf{R}^{2\times 2}$ et $\boldsymbol{b}\in \mathbf{R}^{2}$. On considère un rectangle de sommets $\boldsymbol{A}$ et $\boldsymbol{B}=\boldsymbol{A}+\boldsymbol{\hat{e}}_{1}d\boldsymbol{u}$, $\boldsymbol{C}$ et $\boldsymbol{D}$. Si on applique $\boldsymbol{\psi}$ au rectangle, on obtient un parallélépipède ou $\boldsymbol{A}\to \boldsymbol{A}'$ ,$\boldsymbol{B}\to\boldsymbol{A}'+(A\boldsymbol{\hat{e}}_{1})du_{1}$, etc. On a
+$$
+\boldsymbol{B}'-\boldsymbol{A}'=\begin{pmatrix}
+a_{11}du_{1} \\
+a_{21}du_{1}
+\end{pmatrix},\quad \boldsymbol{D}'-\boldsymbol{A}'=\begin{pmatrix}
+a_{12}du_{2} \\
+a_{22}du_{2}
+\end{pmatrix}
+$$
+donc l'aire du parallelograme est 
+$$
+(\boldsymbol{B}'-\boldsymbol{A}')(\boldsymbol{D}'-\boldsymbol{A}')=|\det \begin{pmatrix}
+a_{11}du_{1}  & a_{12}du_{2} \\
+a_{21}du_{1} & a_{22}du_{2}
+\end{pmatrix}|=|\det(A)|du_{1}du_{2}.
+$$
+
+Pour $n>1$, on a un hyper-rectangle $Q$ defini par les sommets $\boldsymbol{u}, \boldsymbol{u}+\boldsymbol{\hat{e}}_{1}du_{1},\dots$ et $\boldsymbol{\psi}(\boldsymbol{u})=A\boldsymbol{u}+\boldsymbol{b}$. L'hyper-parallelepipede $Q'$ determine par les vecteurs $\boldsymbol{u}'=A\boldsymbol{u}+\boldsymbol{b},\boldsymbol{u'}+(A\boldsymbol{\hat{e}}_{1})du_{1},\boldsymbol{u}'+(A\boldsymbol{\hat{e}}_{2})du_{2}$,... a pour volume $\mathrm{Vol}(Q')=|\det(A)|\mathrm{Vol}(Q)$ ou $\mathrm{Vol}(Q)=\prod_{i=1}^{n}du_{i}$. On a
+\begin{align*}
+\boldsymbol{\psi}(\boldsymbol{u}) & =\boldsymbol{\psi}(\boldsymbol{u}')+D\boldsymbol{\psi}(\boldsymbol{u}')(\boldsymbol{u}-\boldsymbol{u}')+\boldsymbol{R}(\boldsymbol{u}) \\
+ & =\underbrace{ D\boldsymbol{\psi}(\boldsymbol{u}') }_{ A }\boldsymbol{u}+\underbrace{ \boldsymbol{\psi}(\boldsymbol{u}')-D\boldsymbol{\psi}(\boldsymbol{u}') }_{ \boldsymbol{b} }\boldsymbol{u}' +\boldsymbol{R}(\boldsymbol{u})
+\end{align*}
+et on peut interpreter
+$$
+\frac{\mathrm{Vol}(Q')}{\mathrm{Vol}(Q)}=\frac{dx_{1}\,\dots\,dx_{n}}{du_{1}\,\dots\,du_{n}}=|\det(D\boldsymbol{\psi}(\boldsymbol{u}'))|.
+$$
+
+Soit $\boldsymbol{\psi}:E\to F$ un difféomorphisme. On a la formule de changement de variables
+\begin{align*}
+\int _{F}f(\boldsymbol{x}) \, d\boldsymbol{x}  & =\int _{F}f(x_{1},\dots,x_{n} ) \, dx_{1}\,\dots\,dx_{n} \\
+ & =\int _{E}f(\boldsymbol{\psi}(\boldsymbol{u}))|\det(D\boldsymbol{\psi}(\boldsymbol{u}))| \, d\boldsymbol{u}  
+\end{align*}
+
+\begin{theorem}[Changement de variables d'integration]
+Soient $U,V\subset \mathbf{R}^{n}$ deux ouverts et $\boldsymbol{\psi}:U\to V$ un difféomorphisme. Pour tout $r>0$, on définit $U_{r}=U\cap B(\boldsymbol{0},r)$ et $V_{r}=V\cap B(\boldsymbol{0},r)$. On suppose que pour tout $r>0$ :
+\begin{itemize}
+\item Les composantes de $\boldsymbol{\psi}$ et $D\boldsymbol{\psi}$ sont bornées sur $U_{r}$.
+\item $U_{r}$ et $V_{r}$ sont mesurables.
+\end{itemize}
+Soit $E\subset U$ borne et $F=\boldsymbol{\psi}(\boldsymbol{E})\subset V$. Alors
+\begin{itemize}
+\item $E$ est mesurable si et seulement si $F$ est mesurable.
+\item Si $F$ est mesurable et $f:F\to \mathbf{R}$ est continue et borne (donc $f\in \mathcal{R}(F)$).
+\end{itemize}
+Alors $\boldsymbol{u}\mapsto f(\boldsymbol{\psi}(\boldsymbol{u}))|\det D\boldsymbol{\psi}(\boldsymbol{u})|\in \mathcal{R}(E)$ et 
+$$
+\int _{F}f(\boldsymbol{x}) \, d\boldsymbol{x}=\int _{E}f(\boldsymbol{\psi}(\boldsymbol{u}))|\det D(\boldsymbol{\psi}(\boldsymbol{u}))| \, d\boldsymbol{u}.  
+$$
+
+\end{theorem}
+\subsection{Changement en variables polaires, cylindriques et sphériques}
+
+\subsubsection*{Changement en coordonnés polaires en $\mathbf{R}^{2}$}
+
+On a 
+$$
+\begin{pmatrix}
+x \\
+y
+\end{pmatrix}=\boldsymbol{\psi}(\rho,\theta)=\begin{pmatrix}
+\rho \cos \theta \\
+\rho \sin \theta
+\end{pmatrix}.
+$$
+On a que $\boldsymbol{\psi}$ est un difféomorphisme global sur les ouverts $U=(0,+\infty)\times(-\pi,\pi)$ et $V=\mathbf{R}^{2}\setminus \{ (x,y):x\le 0, y=0 \}$. On a 
+$$
+\det \boldsymbol{\psi}(\rho,\theta)=\det \begin{pmatrix}
+\cos \theta & -\rho \sin \theta \\
+\sin \theta & \rho \cos \theta
+\end{pmatrix}=\rho>0.
+$$
+
+\begin{example}
+Soit $F=\{ (x,y):1\le x^{2}+y^{2}\le 4, x \ge 0 , y \ge 0 \}$ et $f(x,y)=\frac{1}{1+x^{2}+y^{2}}$. On calcule
+\begin{align*}
+\int _{F}f(x,y)\,dx\,dy & =\int _{0}^{\pi /2}\left( \int _{1}^{2}  \frac{1}{1+\rho^{2}}\rho\,d\rho \right)\,d\theta \\
+ & =\int_{0}^{\pi/2} \left[ \frac{1}{2}\log(1+\rho^{2}) \right]_{1}^{2}  \, d\theta \\
+ & =\int_{0}^{\pi /2} \frac{1}{2}\log\left( \frac{5}{2} \right) \, d\theta \\
+  & =\frac{\pi}{4}\log\left( \frac{5}{2} \right).
+\end{align*}
+\end{example}
+\begin{example}
+Soit $F=\{ (x,y):x^{2}+y^{2}\le 1 \}$ et $f(x,y)=\frac{1}{1+x^{2}+y^{2}}$. On pose $\tilde{F}=F\setminus \{ (x,y):x\le 0, y=0\}\subset V$ qui est un ensemble negligeable, donc $\int _{F}f=\int _{\tilde{F}}f$. On calcule
+\begin{align*}
+\int _{\tilde{F}}f(x,y)\,dx\,dy & =\int_{-\pi}^{\pi} \int_{0}^{1} \frac{1}{1+\rho^{2}}\rho \, d\rho  \, d\theta \\
+  & =\dots
+\end{align*}
+\end{example}
