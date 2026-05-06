@@ -1,0 +1,51 @@
+\todo{Lecture 22}
+\chapter{Magnétostatique}
+Situations avec courants constants dans le temps ("écoulement stationnaire des charges").
+\paragraph{Observations expérimentales}
+\begin{itemize}
+\item Boussole (aiguille aimantée) est déviée par un aimant.
+\item Boussole est déviée par un fil portant un courant.
+\item Aimant exerce force sur fil portant un courant.
+\item Fil portant un courant exerce force sur un autre fil portant un courant. N'est pas une interaction électrostatique !
+\item Aimant pas charge : pas d'effet sur un diélectrique (p.ex. bouts de papier)
+\item Aimant influence boussole a travers une cage de Faraday.
+\item Les fils portant un courant ne sont pas charges.
+\end{itemize}
+
+\begin{definition}
+Le champ magnétique $\boldsymbol{B}$ est génère par un aimant ou courant, et exerce une force sur un aimant ou courant. La direction de $\boldsymbol{B}$ est défini par l'orientation d'une boussole.
+\end{definition}
+\section{Definition du champ magnétique et force de Lorentz}
+
+Le champ magnétique $\boldsymbol{B}$ exerce une force sur un fil portant un courant. La force est exercée sur les porteurs de charge en mouvement.
+
+Des experiences montrent que la force exercee sur une charge $q$ de vitesse $\boldsymbol{v}$ est
+\begin{itemize}
+\item perpendiculaire a $\boldsymbol{v}$ et $\boldsymbol{B}$,
+\item proportionel a $\lVert \boldsymbol{v} \rVert$ et $q$.
+\end{itemize}
+donc 
+$$
+\boldsymbol{F}=q(\boldsymbol{x}\land \boldsymbol{B}).
+$$
+Le champ magnétique $\boldsymbol{B}$ se mesure en tesla $\mathrm{T}=\mathrm{NC}^{-1}=\mathrm{Sm}^{-1}=\mathrm{kgA}^{-1}\mathrm{s}^{-2}$.
+\begin{definition}[Force de Lorentz]
+En presence de $\boldsymbol{E}$ la force est
+$$
+\boldsymbol{F}=q(\boldsymbol{E}+\boldsymbol{v}\land \boldsymbol{B}).
+$$
+\end{definition}
+\paragraph{Quelques valeurs typiques de $\boldsymbol{B}$}
+\begin{itemize}
+\item Le champ terrestre $\approx 0.5\cdot10^{-4}\,\mathrm{T}$
+\item Le champ maximale dans un supraconducteur $\le 30\,\mathrm{T}$.
+\end{itemize}
+
+La force d'un champ $\boldsymbol{B}$ externe sur un element de fil $d\boldsymbol{\ell }$ portant un courant $I$ :
+$$
+d\boldsymbol{F}=nS\,d \ell\, q(\boldsymbol{v}\land \boldsymbol{B}).
+$$
+Comme $\boldsymbol{v}\parallel d\boldsymbol{\ell}$, alors $d \ell\,\boldsymbol{v}=\boldsymbol{v}\,d\boldsymbol{\ell}$ et
+$$
+d\boldsymbol{F}=nSvq(d\boldsymbol{\ell}\land \boldsymbol{B})=I\,d\boldsymbol{\ell}\land \boldsymbol{B}.
+$$
