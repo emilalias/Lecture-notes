@@ -1,0 +1,187 @@
+\todo{Lecture 12}
+\section{Ramsey numbers}
+\begin{definition}
+The Ramsey number $R(k,\ell)$ is 
+$$
+R(k,\ell)=\min\{ n:\text{any graph on }n \text{ vertices contains a clique of size }k\text{ or an independent set of size }\ell \}
+$$
+\end{definition}
+\begin{theorem}[Ramsey]
+The Ramsey number $R(k,\ell)$ is always finite.
+\end{theorem}
+\begin{proof}
+We will prove this statement by induction on $k+\ell$. The base of induction is the case $R(2,m)=R(m,2)=m$. For the step of induction we use the following lemma.
+\begin{lemma}
+$$
+R(k,\ell)\le R(k-1,\ell)+R(k,\ell -1).
+$$
+\end{lemma}
+\begin{proof}
+Suppose that $R(k,\ell -1)$ and $R(k-1,\ell)$ are finite. Let $G$ be a graph on $R(k,\ell -1)+R(k-1,\ell)$ vertices. Let $v$ be a vertex of $G$. The degree of $v$ is either greater or equal than $R(k-1,\ell)$ or less than $R(k-1,\ell)$.
+
+If $\deg(v)\ge R(k-1,\ell)$ we consider the subgraph $G'$ of $G$ induced on the neighborhood of $v$. $G'$ has at least $R(k-1,\ell)$ vertices. Therefore $G'$ contains either a clique of size $k-1$ or an independent set of size $\ell$. Therefore $G$ contains either a clique of size $k$ or an independent set of size $\ell$.
+
+If $\deg(v)<R(k-1,\ell)$, then $v$ is not connected to at least $R(k,\ell -1)$ points. We consider the subgraph $G''$ of $G$ induced on the vertices not connected to $v$. $G''$ contains either a clique of size $k$ or an independent set of size $\ell -1$. Therefore, $G$ contains either a clique of size $k$ or an independent set of size $\ell$.
+\end{proof}
+\begin{definition}
+Let $G$ be a graph and $v$ a vertex of $G$. The neighborhood of $v$ in $G$ is the set of all vertices of $G$ adjacent to $v$.
+\end{definition}
+The conclusion of the proof is left as an exercise.
+\end{proof}
+\begin{corollary}
+$$
+R(k,\ell)\le \binom{ k+\ell -2}{k-1 }.
+$$
+\end{corollary}
+\begin{theorem}
+For any $k\ge 3$, 
+$$
+R(k,k) > 2^{k/2-1}.
+$$
+\end{theorem}
+\begin{proof}
+It suffices to prove that there exists a graph $G(V,E)$ such that $V\ge 2^{k/2-1}$ and $G$ contains no cliques and no independent sets of size $k$. 
+
+Consider the finite probability space $\mathcal{G}\left( n, \frac{1}{2} \right)$ of graphs on $n$ vertices where the probability of each edge is $\frac{1}{2}$. For any fixed $k$ vertices, the probability that they form either a clique or an independent set is of $2^{-\binom{ k}{2}}$. Let $Q$ be the event "A random graph in $\mathcal{G}\left( n, \frac{1}{2} \right)$ contains a clique or an independent set", we have
+\begin{align*}
+P(Q) & =P\left( \bigcup _{S\text{ is a subset of size }k\text{ in }[n]} \{ S\text{ forms a clique} \}\cup \{ S\text{ forms an independent set} \} \right) \\
+ & \le 2\binom{ n}{k } 2^{-\binom{ k}{2 } }.
+\end{align*}
+
+Suppose that $n\le 2^{k/2-1}$. Then 
+\begin{align*}
+2\binom{ n}{k } 2^{-k(k-1)/2} & \le 2n^{k}2^{-k(k-1)/2} \\
+ & \le 2\cdot2^{(k/2-1)k}\cdot 2^{-k(k-1)/2} \\
+ & =2^{1+k^{2}/2-k-k^{2}/2+k/2} \\
+ & =2^{1-k/2}<1. \end{align*}
+Therefore, there exists a graph with $n$ vertices and containing neither a clique nor an independent set of size $k$.
+\end{proof}
+\section{Erdos-Ko-Rado or Sunflower Theorem}
+\begin{definition}
+A family $\mathcal{F}$ of sets is intersecting if for all $A,B\in \mathcal{F}$, we have that $A\cap B\neq \varnothing$.
+\end{definition}
+\begin{theorem}[Erdos-Ko-Rado]\label{thm121}
+If $|X|=n\ge 2k$ and $\mathcal{F}$ is an intersecting family of $k$-element subsets of $X$, then
+$$
+|\mathcal{F}|\le \binom{ n-1}{k-1 }.
+$$
+\end{theorem}
+\begin{example}[Construction of $\mathcal{F}$]
+Suppose $X=\{ 1,\dots,n \}$, we construct
+$$
+\mathcal{F}_{k}=\{ A\subseteq X:1\in A\land |A|=k\}.
+$$
+Then $\mathcal{F}_{k}$ is an intersecting family where each set has size $k$ and $|\mathcal{F}_{k}|=\binom{ n-1}{k-1 }$.
+\end{example}
+\begin{lemma}
+Consider $X=\{ 0,1,\dots,n-1 \}$ with addition modulo $n$ and define 
+$$
+A_{s}=\{ s,s+1,\dots,s+k-1 \}\subseteq X
+$$
+for $0\le s<n$. Then for $n\ge 2k$, any intersecting family $\mathcal{F}\subseteq \binom{ X}{k }$ contains at most $k$ of the sets $A_{s}$.
+\end{lemma}
+\begin{proof}
+Without loss of generality, we may assume that $A_{0}\in \mathcal{F}$. A set $A_{s}$ intersects with $A_{0}$ only for $s=0$ or $s \in \{ 1,\dots,k-1,-1,\dots,-k+1 \}\mod n$. We can divide these numbers into two pairs $(j,j-k)$ for $j=1,\dots,k-1$. Note that $A_{j}\cap A_{j-k}=\varnothing$. Therefore, only one of these two sets can be contained in $\mathcal{F}$. 
+\end{proof}
+\begin{proof}[Proof of theorem \ref{thm121}]
+We assume that $X=\{ 0,1,\dots,n-1 \}$ and $\mathcal{F}\subseteq \binom{ X}{k }$ is an intersecting family. For a permutation $\sigma:X\to X$, we define
+$$
+\sigma(A_{s})=\{ \sigma(s),\sigma(s+1),\dots,\sigma(s+k-1) \}
+$$
+with addition modulo $n$. 
+
+The lemma implies that if we choose randoms $s$ and $\sigma$ independently and uniformly, then 
+$$
+P[\sigma(A_{s})\in \mathcal{F}]\le \frac{k}{n}.
+$$
+This choice of $\sigma(A_{s})$ is equivalent to a random choice of $k$-element subset of $X$. Therefore
+$$
+P(\sigma(A_{s})\in \mathcal{F})=\frac{|\mathcal{F}|}{\binom{ n}{k } }.
+$$
+Now we estimate
+$$
+|\mathcal{F}|=\binom{ n}{k } P(\sigma(A_{s})\in \mathcal{F})\le \binom{ n}{k } \frac{k}{n}=\binom{ n-1}{k-1 } .
+$$
+\end{proof}
+
+\section{Bipartite graphs and matchings}
+\begin{definition}
+A bipartite graph is a graph $G$ such that the set of its vertices can be partitioned into two disjoint parts $V(G)=A\sqcup B$ such that every edge of $G$ connects a vertex in $A$ with a vertex in $B$. 
+\end{definition}
+\begin{lemma}
+A graph $G$ is bipartite if and only if it does not contain a cycle of odd length.
+\end{lemma}
+\begin{proof}
+$\Rightarrow$ direction: Suppose that $G$ contains a cycle $C$ of odd length. Then two subsequent vertices of $C$ belong to the same part. A contradiction.
+
+$\Leftarrow$ direction: Suppose that $G$ contains no odd cycles. We will show that $G$ is bipartite. Let $v,w\in V(G)$ be two vertices. 
+\begin{claim}
+If $G$ has no odd cycles, then all paths between $v$ and $w$ have the same length modulo 2. 
+\end{claim}
+We fix $v_{0}\in V(G)$. We define $A,B\subset V(G)$ as follows:
+\begin{itemize}
+\item $A$ is the set of vertices with even distance from $v_{0}$.
+\item $B$ is the set of vertices with odd distance from $v_{0}$.
+\end{itemize}
+No edges of $G$ go between $A$ and $A$ or between $B$ and $B$. Is it true that $V(G)=A\sqcup B$? No. So we repeat the same procedure for all connected components of $G$. 
+\end{proof}
+\begin{definition}
+Let $G=(V,E)$ be a graph. A subset $E_{0}\subseteq E$ of edges such that $e\cap f=\varnothing$ for all $e$, $f\in E_{0}$ is called a matching in $G$.
+\end{definition}
+\begin{definition}
+A perfect matching is a matching that covers all the vertices of a graph. That is, each vertex is adjoint to exactly one edge of the matching.
+\end{definition}
+
+\subsubsection*{Matchings in bipartite graphs}
+Let $G$ be a bipartite graph such that $V(G)=A\sqcup B$ is a partition. Does $G$ have a perfect matching? We stablish the necessary conditions:
+\begin{itemize}
+\item $|A|=|B|$.
+\item Let $X\subseteq A$ be a subset. We define
+$$
+Y(X):= \{ y\in B:y\text{ is connected to some vertex in }X \}.
+$$
+A necessary condition for the existence of a perfect matching is that $|Y(X)|\ge|X|$.
+\end{itemize}
+\begin{theorem}[Konig-Hall]
+Let $G$ be a bipartite graph with two parts $A$ and $B$. Suppose that the following two conditions hold:
+\begin{itemize}
+\item $|A|=|B|$.
+\item For each set $X\subseteq A$ the subset
+$$
+Y(X):= \{ y\in B:y\text{ is connected to some vertex in }X \},
+$$
+satisfies $|Y(X)|\ge|X|$.
+\end{itemize}
+Then $G$ has a perfect matching.
+\end{theorem}
+\begin{proof}
+We say that a bipartite graph is "good" if it satisfies both conditions. 
+
+Suppose that a bipartite graph $G$ is good. Is it true that every subset $Y\subseteq B$ is connected to at least $|Y|$ vertices in $A$? We claim that yes.
+
+Indeed, suppose that $G$ is good and there exists a subset $Y\subseteq B$ which is connected to less than $|Y|$ vertices in $A$. We denote by $X(Y)$ the set of all vertices connected to $Y$. Note that the set $A\setminus X(Y)$ is connected only to the vertices in the set $B\setminus Y$. By out assumption, $|Y|>|X(Y)|$ and therefore
+$$
+|B\setminus Y|<|A\setminus X(Y)|.
+$$
+This contradicts our assumption that $G$ is good.
+
+We have to prove that every good bipartite graph $G$ has a perfect matching. We will prove this y induction on the number of vertices. For a bipartite graph with two vertices, the statement is obvious. We will prove the following claim:
+\begin{claim}\label{claim121}
+If a good graph has more than two vertices it can be divided into two good graphs.
+\end{claim}
+\paragraph{First attempt}
+Let $a\in A$ and $b\in B$ be two vertices connected by an edge. Set $A_{1}:=\{ a \}$ and $B_{1}:=\{ b \}$ and $A_{2}:=A\setminus \{ a \}$ and $B_{2}:=B\setminus \{ b \}$. Then $G_{1}$ is defined as the subgraph of $G$ induced by $A_{1}\cup B_{1}$ and $G_{2}$ the subgraph of $G$ induced by $A_{2}\cup B_{2}$. 
+
+The subgraph $G_{1}$ is obviously good. Is $G_{2}$ also good?
+
+Suppose that the graph $G_{2}$ is not good and the set $A_{2}$ contains a subset $X$ such that the set $Y$ of all vertices in $B_{2}$ connected to $X$ contains less than $|X|$ elements. Since $G$ is good, we know that the number of vertices in $B$ connected to $X$ is exactly $|X|$. This is possible if and only if $Y(X)=Y\cup \{ b \}$.
+
+\paragraph{Second attempt}
+We define $\tilde{A}_{1}:=X$ and $\tilde{B}_{1}:=Y\cup \{ b \}$. $X$ is the smallest subset such that the set $Y$ of all vertices in $B_{2}$ connected to $X$ contains less than $|X|$ elements. Therefore, the bipartite graph induced of $\tilde{A}_{1}\sqcup \tilde{B}_{1}$ is good. Is the graph induced by $\tilde{A}_{2}=A\setminus X$ and $\tilde{B}_{2}=B\setminus Y\setminus \{ b \}$ good? 
+
+The vertices of $\tilde{B}_{2}$ are connected only to the vertices of $\tilde{A}_{2}$. Since the graph $G$ is good, every subset $\tilde{Y}\subseteq \tilde{B}_{2}$ is connected to at least $|\tilde{Y}|$ vertices. Also 
+$$
+|\tilde{B}_{2}|=|B|-|Y(X)|=|A|-|X|=|\tilde{A}_{2}|.
+$$
+Therefore, the graph $\tilde{G}_{2}$ is also good. Note that $X\subsetneq A$. This finishes the proof of claim \ref{claim121} and also the proof of the theorem by induction on the number of vertices.
+\end{proof}

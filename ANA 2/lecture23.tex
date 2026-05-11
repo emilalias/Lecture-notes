@@ -1,0 +1,161 @@
+\todo{Lecture 23}
+\section{Intégrale de Riemann généralisée}
+\begin{reminder}
+Dans $\mathbf{R}$, on définit l'intervalle $I=[a,b)$ et la fonction $f:I\to \mathbf{R}$ pas forcement bornée. Pour évaluer $\int_{a}^{b} f(t) \, dt$, on définit un nouveau intervalle $I_{\varepsilon}=[a,b-\varepsilon]$ et on dit que l'integrale converge si 
+$$
+	\lim_{ \varepsilon \to 0 } \int_{a}^{b-\varepsilon}f(t)  \, dt 
+$$
+existe. On dit que l'integrale converge absolument si
+$$
+	\lim_{ \varepsilon \to 0 } \int_{a}^{b-\varepsilon}f(t)  \, dt 
+$$
+existe. La convergence absolue implique la convergence.
+\end{reminder}
+
+Pour $\mathbf{R}^{n}$ ou $n>1$, on a $E\subset \mathbf{R}^{n}$ ouvert et $f:E\to \mathbf{R}$ pas forcement bornée, mais $f$ est integrable sur tout $K\subset E$ compact.
+\begin{definition}[Fonction absolument integrable]
+Soit $E\subset \mathbf{R}^{n}$ ouvert non-vide et $f:E\to \mathbf{R}$. Soit $\{ K_{j}\}_{j\in \mathbf{N}}$ une suite de sous-ensembles tels que
+\begin{enumerate}[a]
+\item \label{p231} $K_{j}\subset E$ est mesurable et compact. ($K_{j}\in \mathcal{J}(E)$)
+\item \label{p232} $K_{j}\subset {\mathring{ K }_{j+1}}$.
+\item \label{p233} $\bigcup _{j\in \mathbf{N}}K_{j}=E$.
+\end{enumerate}
+Supposons $f$ bornée et integrable sur chaque $K_{j}$. On dit que $f$ est absolument integrable sur $E$ si 
+$$
+\lim_{ j \to \infty } \int _{K_{j}}|f(\boldsymbol{x})|\,d\boldsymbol{x}
+$$
+existe. Dans ce cas, on note 
+$$
+\int _{E}f(\boldsymbol{x})\,d\boldsymbol{x}=\lim_{ j \to \infty } \int _{K_{j}}f(\boldsymbol{x})\,d\boldsymbol{x}.
+$$
+\end{definition}
+\begin{remark}
+Si $\lim_{ j \to \infty }\int _{K_{j}}|f(\boldsymbol{x})| \, d\boldsymbol{x}=J$ existe, alors $$\underbrace{ \int _{K_{j}}f_{+}(\boldsymbol{x})\,d\boldsymbol{x} }_{ I_{j} } \le \int _{K_{j}}|f(\boldsymbol{x})|\,d\boldsymbol{x}\le J.$$
+La suite $\{ I_{j} \}_{j\in \mathbf{N}}$ est croissante et bornée supérieurement donc la limite $\lim_{ j \to \infty }I_{j}$ existe. Par le meme argument $\lim_{ j \to \infty }\int _{K_{j}}f_{-}(\boldsymbol{x}) \, d\boldsymbol{x}$ existe aussi.
+\end{remark}
+\begin{theorem}
+Soit $f:E\to \mathbf{R}$ integrable absolument par rapport a une suite $\{ K_{j} \}_{j\in \mathbf{N}}$ qui satisfait les propriétés \ref{p231}, \ref{p232}, \ref{p233}. Soit $\{ K'_{j} \}_{j\in \mathbf{N}}$ une autre suite qui satisfait ces propriétés. Alors $f$ est integrable sur chaque $K_{j}'$ et
+$$
+\lim_{ j \to \infty } \int _{K_{j}'}f(\boldsymbol{x})\,d\boldsymbol{x}=\lim_{ j \to \infty } \int _{K_{j}}f(\boldsymbol{x}) \, d\boldsymbol{x} .
+$$
+\end{theorem}
+\begin{proof}
+On fixe $j\in \mathbf{N}$ et $K_{j}'$ tel que 
+$$K_{j}'\subset E=\bigcup _{m\in \mathbf{N}}K_{m}\subset \bigcup _{m\in \mathbf{N}}{\mathring{ K }_{m+1}}.$$
+$K_{j}'$ est compact et $\{ {\mathring{ K }_{m}} \}_{m\in \mathbf{N}}$ est un recouvrement ouvert de $K_{j}'$. Alors ils existent des indices $m_{1},\dots,m_{N_{j}}$ tels que
+$$
+K_{j}'\subset {\mathring{ K }}_{m_{1}}\cup {\mathring{ K }}_{m_{2}}or\dots \cup {\mathring{ K }_{m_{N_{j}}}}={\mathring{ K }}_{M_{N_{j}}}.
+$$
+On sait que $f$ est integrable sur $K_{m_{N_{j}}}$ (qui est mesurable et compact) et $K_{j}'\subset \mathring{ K }_{m_{N_{j}}}$ est un sous-ensemble mesurable et compact de $K_{m_{N_{j}}}$. Donc $f$ est integrable sur $K_{j}'$, ainsi que $|f|, f_{+}$ et $f_{-}$. On a
+$$
+\int _{K_{j}'}f_{+}(\boldsymbol{x}) \, d\boldsymbol{x}\le\int _{K_{m_{N_{j}}}}f_{+}(\boldsymbol{x}) \, d\boldsymbol{x} \le \lim_{ m \to \infty } \int _{K_{m}}f_{+}(\boldsymbol{x}) \, d\boldsymbol{x}
+$$
+et
+$$
+\int _{K'_{j}}f_{-}(\boldsymbol{x}) \, d\boldsymbol{x}\le \int _{K_{m_{N_{j}}}}f_{-}(\boldsymbol{x}) \, d\boldsymbol{x}\le \lim_{ m \to \infty } \int _{K_{m}}f_{-}(\boldsymbol{x}) \, d\boldsymbol{x} .  
+$$
+Donc
+$$
+\mathbf{R} \ni\lim_{ j \to \infty } \int _{K_{j}'}f_{+}(\boldsymbol{x})\,d\boldsymbol{x}\le \lim_{ m \to \infty } \int _{K_{m}}f_{+}(\boldsymbol{x}) \, d\boldsymbol{x}
+$$
+et de meme pour $f_{-}$.
+
+Si on renverse les roles de $K_{j}$ et $K_{j}'$, on a
+$$
+\lim_{ m \to \infty } \int K_{m}f_{+}(\boldsymbol{x}) \, d\boldsymbol{x} \le \lim_{ j \to \infty } \int _{K_{j}'}f_{+}(\boldsymbol{x}) \, d\boldsymbol{x}
+$$
+et de meme pour $f_{-}$. Donc
+$$
+\lim_{ j \to \infty } \int _{K_{j}'}f_{+}(\boldsymbol{x}) \, d\boldsymbol{x}=\lim_{ m \to \infty } \int _{K_{m}}f_{+}(\boldsymbol{x})\,d\boldsymbol{x}
+$$
+et pareil pour $f_{-}$. On combine les parties positive et negative 
+$$
+\lim_{ j \to \infty } \int _{K_{j}'}f(\boldsymbol{x}) \, d\boldsymbol{x}=\lim_{ j \to \infty } \int _{K_{j}'}f_{+}(\boldsymbol{x})+f_{-}(\boldsymbol{x})\,d\boldsymbol{x} =\lim_{ m \to \infty } \int _{K_{m}}f(\boldsymbol{x}) \, d\boldsymbol{x}. 
+$$
+\end{proof}
+\begin{example}[Important !]
+Soit $E=B(\boldsymbol{0},1)\setminus \{ \boldsymbol{0}\}$ et $f(\boldsymbol{x})=\frac{1}{\lVert \boldsymbol{x} \rVert^{\alpha}}$.
+
+Dans $\mathbf{R}^{2}$, on définit $K_{j}=\left\{  (x,y): \frac{1}{j}\le x^{2}+y^{2}\le 1-\frac{1}{j}  \right\}$. On calcule
+\begin{align*}
+\int _{K_{j}}  \frac{1}{(\sqrt{ x^{2}+y^{2} })^{\alpha}} \, dx \,dy & =\int_{0}^{2\pi} \int_{\frac{1}{j}}^{1-1/j} \frac{\rho}{\rho^{\alpha}} \, d\rho  \, d\theta \\
+ & =2\pi \int_{\frac{1}{j}}^{1-1/j} \rho^{1-\alpha} \, d\rho \\
+  & =2\pi\left[ \frac{\rho^{2-\alpha}}{2-\alpha} \right]^{1-1/j} _{1/j} 
+\end{align*}
+qui converge si et seulement si $\alpha<2$ quand $j$ approche $\infty$.
+
+Dans $\mathbf{R}^{3}$, on a 
+$$
+	\int _{K_{j}}f(\boldsymbol{x})\,d\boldsymbol{x}=\int_{-\pi}^{\pi} \int_{0}^{\pi} \int_{1/j}^{1-1/j} \frac{1}{\rho^{\alpha -2}}  \, d\rho  \, d\varphi  \, d\theta 
+$$
+qui converge si et seulement si $\alpha < 3$ quand $j$ approche $\infty$.
+\end{example}
+
+\chapter{Equations différentielles ordinaires}
+Soit $I=(a,b)$ un intervalle ouvert, $E\subset \mathbf{R}$ ouvert et $f=f(t,x)$ continue avec $t\in I$ et $\boldsymbol{x}\in E$. On cherche une fonction $u:I\to \mathbf{R}$ de classe $C^{1}$ telle que 
+$$
+u'(t)=f(t,u(t)),\quad \forall t\in I.
+$$
+\begin{example}
+Soit $u'(t)=\lambda u(t)$, $I=\mathbf{R}$ et $f(t,x):\mathbf{R}\times \mathbf{R}\to \mathbf{R},(t,x)\mapsto\lambda x$ continue. On a une solution $u(t)=\beta e^{\lambda t}$ qui vérifie bien $u'(t)=\beta\lambda e^{ \lambda t }=\lambda u(t)$.
+\end{example}
+\begin{remark}
+En générale une EDO scalaire a une infinite de solutions paramétrées par une constante arbitraire.
+\end{remark}
+\begin{definition}
+On appelle "intégrale générale" d'une EDO l'ensemble des solutions
+\end{definition}
+\begin{definition}[EDO vectorielle]
+Soit $I=(a,b)$ un intervalle ouvert, $E\subset \mathbf{R}^{n}$ ouvert et $\boldsymbol{f}:I\times E\to \mathbf{R}^{n}$. On cherche $\boldsymbol{u}:I\to \mathbf{R}^{n}$ telle que $\boldsymbol{u}'(t)=\boldsymbol{f}(t,\boldsymbol{u}(t))$ pour tous  $t\in I$. On a
+$$
+\boldsymbol{f}(t,\boldsymbol{x})=\begin{pmatrix}
+f_{1}(t,\boldsymbol{x}) \\
+ \vdots \\
+f_{n}(t,\boldsymbol{x})
+\end{pmatrix},\quad \boldsymbol{u}(t)=\begin{pmatrix}
+u_{1}(t) \\
+\vdots \\
+u_{n}(t)
+\end{pmatrix}.
+$$
+Alors on a le système de $n$ EDO couplées:
+\begin{align*}
+u_{1}'(t) & =f_{1}(t,u_{1}(t),u_{2}(t),\dots,u_{n}(t)) \\
+ & ~~\vdots \\
+u_{n}'(t) & =f_{n}(t,u_{1}(t),\dots,u_{n}(t)).
+\end{align*}
+\end{definition}
+\begin{remark}
+En générale, l'integrale générale d'une EDO vectorielle est paramétré par $n$ constantes réelles.
+\end{remark}
+\begin{definition}[EDO d'ordre $n$ scalaire]
+Soit $I=(a,b)$ ouvert, $E\subset \mathbf{R}^{n}$ et $f:I\times E\to \mathbf{R}$. On cherche $u:I\to \mathbf{R}$ de classe $C^{n}$ telle que
+$$
+u^{(n)}(t)=f(t,u(t),u'(t),\dots,u^{(n-1)}(t)).
+$$
+\end{definition}
+\begin{example}
+On a $f=ma$ ou $a$ est l'acceleration egal a $u''(t)$. $u(t)$ est le déplacement d'un mobile qui satisfait l'EDO 
+$$
+u''(t)=\frac{1}{m}f(u(t)).
+$$
+\end{example}
+
+On peut toujours réécrire une EDO scalaire d'ordre $n$ comme un système de $n$ EDO d'ordre 1. On définit $u_{1}(t)=u(t)$, $u_{2}(t)=u'(t)$, \dots, $u_{n}(t)=u^{(n-1)}(t)$. On a donc
+\begin{align*}
+u_{1}'(t) & =u_{2}(t) \\
+u_{2}'(t) & =u_{3}(t) \\
+ & ~~\vdots \\
+u_{n}'(t) & =f(t,u_{1}(t),\dots,u_{n}(t)). 
+\end{align*}
+On pose
+$$
+\boldsymbol{f}(t,\boldsymbol{x})=\begin{pmatrix}
+x_{2} \\
+x_{3} \\
+\vdots \\
+x_{n} \\
+f(t,x_{1},\dots,x_{n})
+\end{pmatrix}
+$$
+donc $\boldsymbol{u}'(t)=\boldsymbol{f}(t,\boldsymbol{u}(t))$.
