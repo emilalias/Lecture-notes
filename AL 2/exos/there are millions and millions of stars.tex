@@ -1,11 +1,11 @@
-\documentclass[a4paper,11pt,french]{report} 
+\documentclass[a4paper,12pt,french]{report} 
 \usepackage{mathrsfs}
 \usepackage{amsmath}% includes amsmath
 \usepackage{amsthm}
 \usepackage{hyperref}
 \usepackage[tmargin=2cm,rmargin=1in,lmargin=1in,margin=0.85in,bmargin=2cm,footskip=.2in]{geometry}
 
-\usepackage[default]{fontsetup}
+\usepackage[concrete]{fontsetup}
 \usepackage{fontawesome}
 \usepackage{cancel}
 \renewcommand{\qedsymbol}{\faSmileO}
@@ -44,6 +44,16 @@ On appele $x$ une variable ou indeterminee de $R$.
 \end{theorem}
 \begin{theorem}\label{thm69}
 Soit $A\in \mathbf{R}^{n\times n}$ symétrique et $f$ la forme quadratique associée. Alors $\max_{x \in S^{(n-1)}}f(x)=\lambda_{1}$ et $\min_{x \in S^{(n-1)}}=\lambda _{n}$ ou $\lambda_{1}\ge \dots \ge\lambda _{n}$ sont les valeurs propres de $A$.
+\end{theorem}
+\begin{theorem}[Cayley-Hamilton]\label{cayley}
+Soit $f(x)\in K[x]$ un polynome et $A\in K^{n\times n}$ une matrice. On peut ecrire le polynome evalue en $A$ comme 
+$$
+f_{A}(x)=\det(A-xI)\in K[x]
+$$
+donc 
+$$
+f_{A}(A)=0\in K^{n\times n}
+$$
 \end{theorem}
 \chapter{Serie 1}
 \begin{exercise}[Exo plus]
@@ -308,22 +318,22 @@ Soit $V$ un espace vectoriel sur un corps $K$ de dimension finie et $f:V\to V$ u
 \end{exercise}
 \begin{proof}[Solution]
 \begin{itemize}
-\item $\Rightarrow$: Supposons que $\lambda \in K$ est une valeur propre de $f$ avec $\boldsymbol{v}\in V\setminus \{ \boldsymbol{0} \}$ un vectuer propre associe. Posons $\boldsymbol{w}:=p ^{-1}(\boldsymbol{v})\neq \boldsymbol{0}$ (non nul car $p$ est un automorphisme). Si on applique la composition
+\item $\Rightarrow$: Supposons que $\lambda \in K$ est une valeur propre de $f$ avec $\mathbf{v}\in V\setminus \{ \mathbf{0} \}$ un vectuer propre associe. Posons $\mathbf{w}:=p ^{-1}(\mathbf{v})\neq \mathbf{0}$ (non nul car $p$ est un automorphisme). Si on applique la composition
 \begin{align*}
-(p ^{-1} \circ f \circ p)(\boldsymbol{w}) & =(p ^{-1} \circ f \circ p)(p ^{-1}(\boldsymbol{v})) \\
- & =p ^{-1} (f(\boldsymbol{v})) \\
- & = p ^{-1} (\lambda \boldsymbol{v}) \\
- & =\lambda p ^{-1} (\boldsymbol{v}) \\
- & =\lambda \boldsymbol{w}
+(p ^{-1} \circ f \circ p)(\mathbf{w}) & =(p ^{-1} \circ f \circ p)(p ^{-1}(\mathbf{v})) \\
+ & =p ^{-1} (f(\mathbf{v})) \\
+ & = p ^{-1} (\lambda \mathbf{v}) \\
+ & =\lambda p ^{-1} (\mathbf{v}) \\
+ & =\lambda \mathbf{w}
 \end{align*}
 
-\item $\Leftarrow$: Supposons que $\lambda \in K$ est un valeur propre de $p ^{-1} \circ f \circ p$ et $\boldsymbol{w}\in V\setminus \{ \boldsymbol{0} \}$ est un vecteur propre associe. Posons $\boldsymbol{v}=p(\boldsymbol{w})\neq 0$ donc
+\item $\Leftarrow$: Supposons que $\lambda \in K$ est un valeur propre de $p ^{-1} \circ f \circ p$ et $\mathbf{w}\in V\setminus \{ \mathbf{0} \}$ est un vecteur propre associe. Posons $\mathbf{v}=p(\mathbf{w})\neq 0$ donc
 \begin{align*}
-f(\boldsymbol{v}) & =f(p(\boldsymbol{w})) \\
- & =(p \circ p ^{-1})(f(p(\boldsymbol{w}))) \\
- & =p(p ^{-1} \circ f \circ p)(\boldsymbol{w}) \\
- & = p(\lambda \boldsymbol{w}) \\  & =\lambda p(\boldsymbol{w})\\
- & = \lambda \boldsymbol{v}
+f(\mathbf{v}) & =f(p(\mathbf{w})) \\
+ & =(p \circ p ^{-1})(f(p(\mathbf{w}))) \\
+ & =p(p ^{-1} \circ f \circ p)(\mathbf{w}) \\
+ & = p(\lambda \mathbf{w}) \\  & =\lambda p(\mathbf{w})\\
+ & = \lambda \mathbf{v}
 \end{align*}
 \end{itemize}
 \end{proof}
@@ -870,6 +880,59 @@ e^{ tA } & =\sum_{j=0}^{\infty}  t^{j} \frac{A^{j}}{j!} \\
  & =I +A\sum _{j=1}^{\infty} \frac{t^{j}}{j!} \\
  & =I + A(e^{t}-1) \\
 \end{align*}
+\end{enumerate}
+\end{proof}
+\begin{exercise}[Exo etoile]
+Soit $A\in \mathbf{C}^{n\times n}$ inversible. Montrer que $A$ est diagonalisable si et seulement si $A^{m}$ est diagonalisable pour un certain $m\in \mathbf{N}^{*}$.
+
+Donner un contre-exemple lorsque $A$ n'est pas inversible.
+
+\emph{Pour la resolution de cet exercice, vous pouvez admettre le résultat suivant : une matrice $A\in \mathbf{C}^{n\times n}$ est diagonalisable si et seulement si son polynôme minimal ne possède que des racines simples (c-a-d de multiplicité 1). Ce résultat sera démontré a partir du théorème de Jordan, qui constitue l'objectif des deux semaines a venir.}
+\end{exercise}
+\begin{proof}[Solution]
+\begin{description}
+\item[Direction $\Rightarrow$ :] Si $A$ est diagonalisable alors $m=1$. 
+
+\item[Direction $\Leftarrow$ :] Soit $m$ tel que $A^{m}$ est diagonalisable. Alors
+$$
+m_{A^{m}}(x)=\prod_{i=1}^{k} (x-\lambda _{i})
+$$
+n'admet que des racines simples (les $\lambda _{i}$ sont les valeurs propres de $A^{m}$). On considère $f(x):=m_{A^{m}}(x^{m})$ et on remarque que $f(A)=0$. Alors $m_{A}(x) \mid f(x)$ (car le polynôme minimal divise tout polynôme s'annulant en $A$). Donc, il suffit de montrer que $f(x)$ n'admet que des racines simples. On a
+$$
+f(x)=\prod_{i=1}^{k} (x^{m}-\lambda _{i})=\prod_{i=1}^{k}\prod_{j=1}^{m}(x-\mu _{i,j}). 
+$$
+Comparons $\mu _{a,b}$ et $\mu _{c,d}$. Si $\mu _{a,b}=\mu _{c,d}$, alors $\mu _{a,b}^{m}=\mu _{c,d}^{m}$ et $\mu _{a,b}^{m}=\lambda _{a}$ et $\mu _{c,d}^{m}=\lambda _{c}$. Donc $\lambda _{a}=\lambda _{c}$ et $a=c$. Les facteurs $(x^{m}-\lambda _{i})$ ne partagent de racines entre eux.
+\begin{question}
+Est-ce que $(x^{m}-\lambda _{i})$ n'admet que des racines simples ?
+\end{question}
+On considère \footnote{Preuve alternative possible dans $\mathbf{C}$ en considerant les rotation autour du cercle des racines} $\gcd(x^{m}-\lambda _{i},mx^{m-1})=1$ ($\lambda _{i}\neq0$ car $A$ est inversible et $A^{m}$ est inversible). Alors $(x^{m}-\lambda _{i})$ n'admet que des racines simples et du coup $f(x)$ n'admet que des racines simples. Ceci implique que $m_{A}(x)$ n'admet que des racines simples et par le résultat suggéré on sait que $A$ est diagonalisable.
+\end{description}
+Comme contre-exemple on a la matrice
+$$
+A=\begin{pmatrix}
+0 & 1 \\
+0 & 0
+\end{pmatrix}
+$$
+qui n'est pas diagonalisable car la multiplicité géométrique de 0 est 1 qui est diffèrent de sa multiplicité algébrique egal a 2. De plus $A^{2}=0$. 
+\end{proof}
+
+\chapter{Serie 12}
+\begin{exercise}[Exo plus]
+Soit $A\in \mathbf{C}^{n\times n}$. Le \emph{polynôme minimal} de $A$ est le polynôme de degré minimal unitaire dans $\mathbf{C}[x]\setminus \{ 0 \}$ qui annule $A$.
+\begin{enumerate}
+\item Montrer qu'il existe et qu'il est bien unique.
+\item Montrer qu'il divise tout polynôme annulant $A$ et donc, en particulier, le polynôme caractéristique de $A$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}[Solution]
+\begin{enumerate}
+\item L'existence est garantie par le théorème de Cayley-Hamilton \ref{cayley}. Supposons que $q$ satisfait les memes propriétés que $m_{A}(x)$. Alors si $q(x)\neq m_{A}(x)$, le polynôme $q-m_{A}$ est de degré strictement inferieure a $\deg m_{A}$ et s'annule en $A$. Contradiction.
+\item Soit $p(x)\in \mathbf{C}[x]$ tel que $p(A)=0$. Alors $p(x)=q(x)m_{A}(x)+r(x)$ avec $\deg r <\deg m_{A}$ (division euclidienne). On a
+$$
+r(A)=p(A)-q(A)m_{A}(A)=0
+$$
+donc $r(x)=0$ et $m_{A}(x)\mid p(x)$.
 \end{enumerate}
 \end{proof}
 \end{document}

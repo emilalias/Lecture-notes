@@ -1,0 +1,136 @@
+\todo{Lecture 23}
+\section{Loi d'Ampere}
+La loi d'Ampere établit une relation entre l'integrale du champ magnétique $\boldsymbol{B}$ le long d'un chemin ferme et le courant traversant la surface délimitée par le chemin.
+\subsection{Champ magnétique d'un courant rectiligne}
+On considère un fil rectiligne infini portant un courant $I$. On peut montrer expérimentalement que $\boldsymbol{B}$ généré par le courant est 
+\begin{itemize}
+\item Dans la direction $\boldsymbol{\hat{e}}_{\theta}$.
+\item Oriente selon la règle du vis / règle de la main droite.
+\item La norme de $\boldsymbol{B}$ est proportionnelle a $\frac{I}{r}$. 
+\end{itemize}
+En SI on a
+$$
+\boldsymbol{B}(\boldsymbol{r})=\frac{\mu_{0}I}{2\pi r}\boldsymbol{\hat{e}}_{\theta}.
+$$
+Ou $\mu_{0}\approx 4\pi\cdot 10^{-7}\,\mathrm{NA}^{-2}$ est la perméabilité du vide. 
+\subsection{Vers la loi d'Ampere}
+
+Calculons $\oint _{\gamma}\boldsymbol{B}\,d\boldsymbol{\ell}$ pour un fil rectiligne infini.
+\begin{reminder}
+En électrostatique $\oint _{\gamma}\boldsymbol{E}\,d\boldsymbol{\ell}\equiv0$ (c.f. \ref{ch551}).
+\end{reminder}
+\paragraph{Cas 1 : $\gamma$ est un cercle de rayon $r$ autour $I$}
+On calcule
+\begin{align*}
+\oint _{\gamma}\boldsymbol{B}\,d\boldsymbol{\ell} & =\int_{0}^{2\pi} B(r)r\,\underbrace{ \boldsymbol{\hat{e}}_{\theta}\cdot \boldsymbol{\hat{e}}_{\theta} }_{ =1 } \, d\theta \\
+ & =B(r)r \int_{0}^{2\pi} d\theta \\
+  & =\frac{\mu_{0}I}{2\pi r}2\pi r=\mu_{0}I
+\end{align*}
+qui est independent de $r$. 
+\paragraph{Cas 2 : Chemin pas autour de $I$}
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.25]{23cas2.png}
+\end{figure}
+On calcule
+\begin{align*}
+\oint _{\gamma}\boldsymbol{B}\,d\boldsymbol{\ell} & =\oint _{\gamma_{1}}\boldsymbol{B}\,d\boldsymbol{\ell}+\oint _{\gamma_{2}}\boldsymbol{B}\,d\boldsymbol{\ell}+\oint _{\gamma_{3}}\boldsymbol{B}\,d\boldsymbol{\ell}+\oint _{\gamma_{4}}\boldsymbol{B}\,d\boldsymbol{\ell} \\
+ & =-\frac{\mu_{0}I}{2\pi r_{1}}r_{1}\theta _{\gamma}+0+\frac{\mu_{0}I}{2\pi r_{2}}r_{2}\theta _{\gamma}+0 \\
+ & =0.
+\end{align*}
+
+De manière plus générale, on peut montrer que pour des chemins fermes arbitraires (pas nécessairement dans le plan perpendiculaire a $I$)  que
+\begin{equation}\label{regle231}
+\oint _{\gamma}\boldsymbol{B}\,d\boldsymbol{\ell}=\begin{cases}
+\pm \mu_{0}I & \text{si }\gamma\text{ entoure le fil une fois,} \\
+0 & \text{s'il ne l'entoure pas.}
+\end{cases}
+\end{equation}
+Le signe de $\mu_{0}I$ est determine par la règle de la main droite/ du vis.
+
+De plus, comme pour $\boldsymbol{E}$, le principe de superposition s'applique pour $\boldsymbol{B}$ (fait experimental).
+\subsection{Généralisation, loi d'Ampere intégrale et différentielle/locale}
+
+Les règles \ref{regle231} restent valable pour des courants non-rectilignes (on prend ce résultat 
+comme fait experimental). 
+\begin{theorem}[Loi d'Ampere : forme integrale]
+Soit $I_{\mathrm{tot}}$ la somme des courant entoures par $\gamma$. De manière générale on a
+$$
+\oint _{\gamma}\boldsymbol{B}\,d\boldsymbol{\ell}=\mu_{0}I_{\mathrm{tot}}.
+$$
+
+Dans le cas d'une densité de courant $\boldsymbol{j}(\boldsymbol{r})$ on a
+$$
+\oint _{\gamma}\boldsymbol{B}\,d\boldsymbol{\ell}=\mu_{0}\iint _{S}\boldsymbol{j}\,d\boldsymbol{S}.
+$$
+Ou $S$ est la surface du bord $\gamma$ et l'orientation relative de $d\boldsymbol{\ell}$ et $d\boldsymbol{S}$ est donne par la règle du vis (c.f. \ref{thmstokes}).
+\end{theorem}
+
+La loi d'Ampere permet de calculer $\boldsymbol{B}$ dans les cas simples (comme $\int \boldsymbol{E}\,d\boldsymbol{S}$ permet de trouver $\boldsymbol{E}$ dans certains cas).
+
+\begin{example}[Champ magnétique a l'interieur d'un solénoïde idéale (bobine)]
+$$
+\oint _{\gamma}\boldsymbol{B}\,d\boldsymbol{\ell}\approx B\ell=\mu_{0}n\ell I\Rightarrow B\approx\mu_{0}nI.
+$$
+Ou $n$ est le nombre de tours de la bobine par mètre. Le limite de $B$ est atteint dans le cas $\ell\gg R$, on a donc un fil mince ou les enroulements son serres les uns contre les autres.
+\end{example}
+\begin{remark}
+Le champ magnétique d'une bobine est très semblable a celui d'un aimant permanent cylindrique. On peut interpreter un aimant permanent comme un materiel avec "boucles de courant moleculaires" orientes dans la meme direction qu'une bobine.
+\end{remark}
+
+En utilisant le théorème de Stokes \ref{thmstokes}, on a 
+\begin{align*}
+\oint _{\gamma}\boldsymbol{B}\,d\boldsymbol{\ell} & =\mu_{0} \iint _{S}\boldsymbol{j}\,d\boldsymbol{S} \\
+ & =\iint _{S}\boldsymbol{\nabla}\times \boldsymbol{B}\,d\boldsymbol{S} \\
+ \Rightarrow \iint _{S}\boldsymbol{\nabla}\times \boldsymbol{B}-\mu_{0}\boldsymbol{j}\,d\boldsymbol{S} & =0\quad \forall S.
+\end{align*}
+\begin{theorem}[Loi d'Ampere : forme différentielle]
+$$
+\boldsymbol{\nabla}\times \boldsymbol{B}=\mu_{0}\boldsymbol{j}.
+$$
+\end{theorem}
+\section{Loi de Gauss pour un champ magnétique}
+\begin{reminder}
+En électrostatique, les lignes du champ $\boldsymbol{E}$ vont des charges positives ou de l'infini vers les charges negatives ou vers l'infini. Elles sont interrompues par les charges.
+\end{reminder}
+
+Les lignes du champ $\boldsymbol{B}$ ne sont jamais interrompues. Elles se ferment typiquement sur elles-memes ou vont de l'infini vers l'infini.
+
+\begin{theorem}[Loi de Gauss]
+On a la forme intégrale pour toute surface $S$ fermée
+$$
+\iint _{S}\boldsymbol{B}\,d\boldsymbol{S}\equiv0.
+$$
+Et la forme différentielle, obtenu par le théorème de la divergence \ref{thmdiv} pour tout volume $V$
+$$
+\boldsymbol{\nabla}\cdot \boldsymbol{B}=0.
+$$
+\end{theorem}
+\begin{remark}
+La forme différentielle $\boldsymbol{\nabla B}=0$ peut être interprétée comme "il n'existe pas de charges magnétiques" ou "il n'est monopoles magnétiques".
+\end{remark}
+\section{Loi de Biot-Savart}
+\begin{question}
+Quel est le champ $\boldsymbol{B}$ créé par un fil mince de forme arbitraire parcouru par un courant $I$ ?
+\end{question}
+On a, sans preuve :
+$$
+d\boldsymbol{B}(\boldsymbol{p})=\frac{\mu_{0}I}{4\pi} \frac{d\boldsymbol{\ell}\times \boldsymbol{r}}{\lVert \boldsymbol{r} \rVert ^{3}}
+$$
+donc
+$$
+\boldsymbol{B}(\boldsymbol{p})=\frac{\mu_{0}I}{4\pi} \int _{\mathrm{fil}} \frac{d\boldsymbol{\ell}\times \boldsymbol{r}}{\lVert \boldsymbol{r} \rVert ^{3}}
+$$
+
+\section{Recapitulation des lois de l'electrostatique et de la magnetostatique}
+Statique donc $\frac{ \partial  }{ \partial t }=0$.
+\begin{itemize}
+\item Loi de Gauss : $\boldsymbol{\nabla E}=\frac{\rho _{\mathrm{el}}}{\varepsilon_{0}}$.
+\item $q\boldsymbol{E}$ est une force conservative : $\boldsymbol{\nabla E}=0$ si et seulement si $\boldsymbol{E}=-\boldsymbol{\nabla}\phi$.
+\item Loi de Gauss pour $\boldsymbol{B}$ ("pas de charges magnetiques") : m$\boldsymbol{\nabla B}=0$.
+\item Loi d'Ampere : $\boldsymbol{\nabla }\times \boldsymbol{B}=\mu_{0}\boldsymbol{j}$.
+\item Force de Lorentz : $\boldsymbol{F}=q(\boldsymbol{E}+\boldsymbol{v}\times \boldsymbol{B})$.
+\end{itemize}
+\begin{question}
+Qu'est-ce que reste valable si $\frac{ \partial  }{ \partial t }\neq 0$ ?
+\end{question}

@@ -1,0 +1,161 @@
+\todo{Lecture 23}
+\begin{theorem}
+Soit $A\in \mathbf{C}^{n\times n}$. Ils existent $P\in \mathbf{C}^{n\times n}$ inversible et $J\in \mathbf{C}^{n\times n}$ en forme normale de Jordan telles que 
+$$
+A=PJP^{-1}.
+$$
+\end{theorem}
+\begin{lemma}
+Soit $J\in \mathbf{C}^{n\times n}$ en forme normale de Jordan. Alors 
+$$
+J=\underbrace{ \begin{pmatrix}
+\lambda_{1}I_{n_{1}} &  &  \\
+ & \ddots &  \\
+ &  & \lambda _{k}I_{n_{k}}
+\end{pmatrix} }_{ D }+\underbrace{ \begin{pmatrix}
+J(0,n_{1}) &  &  \\
+ & \ddots &  \\
+ &  & J(0,n_{k})
+\end{pmatrix} }_{ N }.
+$$
+\end{lemma}
+\begin{proof}
+On a
+$$
+N^{i}=\begin{pmatrix}
+J(0,n_{1}) &  &  \\
+ & \ddots &  \\
+ &  & J(0,n_{k})
+\end{pmatrix}^{i}=\begin{pmatrix}
+J(0,n_{1})^{i} &   &  \\
+ & \ddots &  \\
+ &  & J(0,n_{k})^{i}
+\end{pmatrix}.
+$$
+Soit $j=\max\{n_{1},\dots,n_{k}\}$, alors $N^{j}=0$. On a que $D$ et $N$ commutent 
+$$
+\lambda _{i}I_{n_{i}}J(0,n_{i})=J(0,n_{i})\lambda _{i}I_{n_{i}} \Rightarrow DN=ND.
+$$
+\end{proof}
+\begin{reminder}
+$$
+A=P(D+N)P^{-1}\Rightarrow e^{A}=Pe^{ D }e^{ N }P^{-1}
+$$
+ou $e^{ N }$ est une somme fini car $N$ est nilpotente.
+\end{reminder}
+
+\question{Quel est le lien entre $J$ et $m_{A}(x)$ de $A$ ?}
+
+\begin{reminder}
+$m_{A}(x)\in \mathbf{C}[x]$ est le polynôme minimal de $A$ (un polynome unitaire et de degre minimale tel que $m_{A}(A)=0\in \mathbf{C}^{n\times n}$).
+\end{reminder}
+
+Soit $p(x)\in \mathbf{C}[x]$. On a 
+\begin{align*}
+p(A) & =p(PJP^{-1}) \\
+ & =Pp(J)P^{-1}
+\end{align*}
+alors $p(A)=0$ si et seulement si $p(J)=0$. 
+
+\begin{example}
+On a avec $\lambda_{1}\neq\lambda_{2}$ :
+$$
+A \sim \underbrace{ \begin{pmatrix}
+\lambda_{1} & 1 \\
+ & \lambda _{1} & 1 \\
+ &  & \lambda _{1} &  \\
+ &  &  & \lambda _{2} \\
+ &  &  &  & \lambda _{2}
+\end{pmatrix} }_{ J }.
+$$
+Le polynôme caractéristique de $J$ est 
+$$
+f_{J}(x)=(-1)^{5}(x-\lambda _{1})^{3}(x-\lambda_{2})^{2},
+$$
+donc le polynôme minimal est
+$$
+m_{J}(x)=(x-\lambda_{1})^{e_{1}}(x-\lambda_{2})^{e_{2}}.
+$$
+On a 
+$$
+(J-\lambda_{1}I)^{e_{1}}=\begin{pmatrix}
+0 & 1 \\
+ & 0 & 1 \\
+ &  & 0 \\
+ &  &  & \lambda_{2}-\lambda_{1} \\
+ &  &  &  & \lambda_{2}-\lambda_{1}
+\end{pmatrix}^{e_{1}}.
+$$
+L'exponent $e_{1}$ est tel que
+$$
+\begin{pmatrix}
+0 & 1 \\
+ & 0 & 1 \\
+ &  & 0
+\end{pmatrix}^{e_{1}}=0\in \mathbf{C}^{3\times3}.
+$$
+Donc $e_{1}=3$ et $e_{2}=1$.
+\end{example}
+\begin{lemma}
+Soit $J\in \mathbf{C}^{n\times n}$ en forme normale de Jordan et soient $\lambda_{1},\dots,\lambda _{j}\in \mathbf{C}$ des valeurs propres distincts de $A\in \mathbf{C}^{n\times n}$. Alors le polynôme minimal de $J$ est
+$$
+m_{J}(x)=(x-\lambda_{1})^{e_{1}}\cdots(x-\lambda _{k})^{e_{k}}
+$$
+ou $e_{i}=\max\{ n_{i}:J(\lambda _{i},n_{i})\text{ est un bloc de }J \}$. 
+\end{lemma}
+\begin{proof}
+Soit 
+$$
+J=\begin{pmatrix}
+J(\lambda_{1},n_{1}) \\
+ & J(\lambda_{1},n_{2}) \\
+ &  & \ddots  \\
+ &  &  & J(\lambda_{1},n_{k}) \\
+ &  &  &  &  J(\lambda_{2},n_{k+1}) \\
+ &  &  &  &  &
+\end{pmatrix}
+$$
+Alors $e_{1}$ est tel que
+$$
+\begin{pmatrix}
+J(0,n_{1})^{e_{1}} \\
+ &  \ddots \\
+ &  &  J(0,n_{k})^{e_{1}}
+\end{pmatrix}=0
+$$
+et pareil pours les autres blocs.
+\end{proof}
+\begin{example}
+Soit $A\in \mathbf{C}^{5\times5}$ et $f_{A}(x)=(-1)(x-2)^{4}(x-5)$. Alors
+$$
+J=\begin{pmatrix}
+2 & * \\
+ & 2  & *\\
+ &  & 2  & *\\
+ &  &  & 2 \\
+ &  &  &  & 5
+\end{pmatrix}.
+$$
+Ici on a quelques possibilités de former les blocs selon si les $*$ sont 1 ou 0. 
+\end{example}
+\begin{reminder}
+Si $A\sim J$, alors
+$$
+\mathrm{rank}(A^{i})=\mathrm{rank}(J^{i})\Leftrightarrow \dim(\ker(A^{i}))=\dim(\ker(J^{i})).
+$$
+\end{reminder}
+\begin{theorem}
+Soit $A\in \mathbf{C}^{n\times n}$ et $\lambda_{1},\dots,\lambda _{k}\in \mathbf{C}$ les valeurs propres distinctes de $A$. Soit $d_{i}=\dim(\ker(A-\lambda_{1}I)^{i})$ pour $i=1,\dots,n$. Alors $d_{i}-d_{i-1}$ est le nombre de blocs de $J$ dont $\lambda _{1}$ est sur la diagonale et de longueur au moins $i$.
+\end{theorem}
+\begin{proof}
+On a
+$$
+d_{i}=d_{i-1}+\text{\# de blocs de longueur }\ge i.
+$$
+Alors le nombre de blocs de longueur au moins $i$ est egal a $d_{i}-d_{i-1}$. Le nombre de blocs de longueur exactement $i$ est donc 
+$$
+(d_{i}-d_{i-1})-(d_{i+1}-d_{i})=2d_{i}-d_{i-1}-d_{i+1}.
+$$
+\end{proof}
+
+	

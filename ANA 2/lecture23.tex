@@ -15,7 +15,7 @@ existe. La convergence absolue implique la convergence.
 Pour $\mathbf{R}^{n}$ ou $n>1$, on a $E\subset \mathbf{R}^{n}$ ouvert et $f:E\to \mathbf{R}$ pas forcement bornée, mais $f$ est integrable sur tout $K\subset E$ compact.
 \begin{definition}[Fonction absolument integrable]
 Soit $E\subset \mathbf{R}^{n}$ ouvert non-vide et $f:E\to \mathbf{R}$. Soit $\{ K_{j}\}_{j\in \mathbf{N}}$ une suite de sous-ensembles tels que
-\begin{enumerate}[a]
+\begin{enumerate}[(a)]
 \item \label{p231} $K_{j}\subset E$ est mesurable et compact. ($K_{j}\in \mathcal{J}(E)$)
 \item \label{p232} $K_{j}\subset {\mathring{ K }_{j+1}}$.
 \item \label{p233} $\bigcup _{j\in \mathbf{N}}K_{j}=E$.
@@ -44,7 +44,7 @@ On fixe $j\in \mathbf{N}$ et $K_{j}'$ tel que
 $$K_{j}'\subset E=\bigcup _{m\in \mathbf{N}}K_{m}\subset \bigcup _{m\in \mathbf{N}}{\mathring{ K }_{m+1}}.$$
 $K_{j}'$ est compact et $\{ {\mathring{ K }_{m}} \}_{m\in \mathbf{N}}$ est un recouvrement ouvert de $K_{j}'$. Alors ils existent des indices $m_{1},\dots,m_{N_{j}}$ tels que
 $$
-K_{j}'\subset {\mathring{ K }}_{m_{1}}\cup {\mathring{ K }}_{m_{2}}or\dots \cup {\mathring{ K }_{m_{N_{j}}}}={\mathring{ K }}_{M_{N_{j}}}.
+K_{j}'\subset {\mathring{ K }}_{m_{1}}\cup {\mathring{ K }}_{m_{2}}\cup\dots \cup {\mathring{ K }_{m_{N_{j}}}}={\mathring{ K }}_{M_{N_{j}}}.
 $$
 On sait que $f$ est integrable sur $K_{m_{N_{j}}}$ (qui est mesurable et compact) et $K_{j}'\subset \mathring{ K }_{m_{N_{j}}}$ est un sous-ensemble mesurable et compact de $K_{m_{N_{j}}}$. Donc $f$ est integrable sur $K_{j}'$, ainsi que $|f|, f_{+}$ et $f_{-}$. On a
 $$
@@ -92,7 +92,7 @@ qui converge si et seulement si $\alpha < 3$ quand $j$ approche $\infty$.
 \end{example}
 
 \chapter{Equations différentielles ordinaires}
-Soit $I=(a,b)$ un intervalle ouvert, $E\subset \mathbf{R}$ ouvert et $f=f(t,x)$ continue avec $t\in I$ et $\boldsymbol{x}\in E$. On cherche une fonction $u:I\to \mathbf{R}$ de classe $C^{1}$ telle que 
+Soit $I=(a,b)$ un intervalle ouvert, $E\subset \mathbf{R}$ ouvert et $f=f(t,x)$ continue avec $t\in I$ et $x \in E$. On cherche une fonction $u:I\to \mathbf{R}$ de classe $C^{1}$ telle que 
 $$
 u'(t)=f(t,u(t)),\quad \forall t\in I.
 $$
