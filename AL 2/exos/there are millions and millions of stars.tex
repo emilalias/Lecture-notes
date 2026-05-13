@@ -43,7 +43,7 @@ Il existe $x \in R\setminus R$ tel que
 On appele $x$ une variable ou indeterminee de $R$. 
 \end{theorem}
 \begin{theorem}\label{thm69}
-Soit $A\in \mathbf{R}^{n\times n}$ symétrique et $f$ la forme quadratique associée. Alors $\max_{x \in S^{(n-1)}}f(x)=\lambda_{1}$ et $\min_{x \in S^{(n-1)}}=\lambda _{n}$ ou $\lambda_{1}\ge \dots \ge\lambda _{n}$ sont les valeurs propres de $A$.
+Soit $A\in \mathbb{R}^{n\times n}$ symétrique et $f$ la forme quadratique associée. Alors $\max_{x \in S^{(n-1)}}f(x)=\lambda_{1}$ et $\min_{x \in S^{(n-1)}}=\lambda _{n}$ ou $\lambda_{1}\ge \dots \ge\lambda _{n}$ sont les valeurs propres de $A$.
 \end{theorem}
 \begin{theorem}[Cayley-Hamilton]\label{cayley}
 Soit $f(x)\in K[x]$ un polynome et $A\in K^{n\times n}$ une matrice. On peut ecrire le polynome evalue en $A$ comme 
@@ -571,7 +571,7 @@ est une base de $V$ (a cause de \ref{basestar} et du fait que $B_{\lambda}$ est 
 \end{proof}
 \chapter{Serie 7}
 \begin{exercise}[Exo plus]
-Soit $A\in \mathbf{C}^{n\times n}$ une matrice hermitienne et soit $\lambda$ une valeur popre de $A$. Montrer que $\lambda$ est reele.
+Soit $A\in \mathbb{C}^{n\times n}$ une matrice hermitienne et soit $\lambda$ une valeur popre de $A$. Montrer que $\lambda$ est reele.
 \end{exercise}
 \begin{proof}[Solution]
 Sans preuve.
@@ -582,7 +582,7 @@ Le but de cet exercice est de montrer \emph{l'inegalite d'Hadamard}, c'est-a-dir
 $$
 |\det(A)|\le \prod_{i=1}^{n} \lVert a_{i} \rVert_{2},
 $$
-pour $A\in \mathbf{R}^{n\times n}$ dont les colonnes sont $a_{1},\dots,a_{n}$.
+pour $A\in \mathbb{R}^{n\times n}$ dont les colonnes sont $a_{1},\dots,a_{n}$.
 
 Soit $A'$ la matrice dont les colonnes sont $a_{1}^{*},\dots,a_{n}^{*}$, les vecteurs \emph{non-normalises} issus de l'orthogonalisation de Gram-Schmidt sur les colonnes de $A$. On rappelle la décomposition $A=A'S$, ou $S$ est triangulaire supérieure de diagonale 1.
 \begin{enumerate}
@@ -590,7 +590,7 @@ Soit $A'$ la matrice dont les colonnes sont $a_{1}^{*},\dots,a_{n}^{*}$, les vec
 \item Montrer que $\lVert a_{i}^{*} \rVert\le \lVert a_{i} \rVert$ pour tout $i=1,\dots,n$ et conclure.
 \end{enumerate}
 
-Supposons de surcroit que les coefficients de $A$ soient tous bornés absolument par $M\in \mathbf{R}_{+}:|A_{ij}|\le M$ pour tous $i$, $j$. Déduire de l'inégalité d'Hadamard que $|\det(A)|\le M^{n}n^{n/2}$.
+Supposons de surcroit que les coefficients de $A$ soient tous bornés absolument par $M\in \mathbb{R}_{+}:|A_{ij}|\le M$ pour tous $i$, $j$. Déduire de l'inégalité d'Hadamard que $|\det(A)|\le M^{n}n^{n/2}$.
 \end{exercise}
 \begin{proof}[Solution]
 \begin{enumerate}
@@ -628,7 +628,7 @@ a_{i}^{*} & =a_{i}-\frac{\langle a_{i},a_{1}^{*} \rangle }{a_{1}^{*},a_{1}^{*}}a
 donc $a_{i}-a_{i}^{*}\in \mathrm{span}\{ a_{1}^{*},\dots,a_{i-1}^{*} \}$ qui est perpendiculaire à $a_{i}^{*}\in \mathrm{span}\{ a_{1}^{*},\dots,a_{i-1}^{*} \}$.
 \end{enumerate}
 
-Si les coefficients sont bornées par $M\in \mathbf{R}_{+}$, on a 
+Si les coefficients sont bornées par $M\in \mathbb{R}_{+}$, on a 
 \begin{align*}
 \lVert a_{i} \rVert _{2} & =\sqrt{ (a_{i})_{1}^{2}+\dots +(a_{i})_{n}^{2} } \\
  & \le \sqrt{ M^{2}+\dots +M^{2} } \\
@@ -646,10 +646,10 @@ Par l'inégalité d'Hadamard, on a
 \chapter{Serie 8}
 
 \begin{exercise}[Exo plus]
-Soit $A\in \mathbf{C}^{n\times n}$ une matrice hermitienne et $u,v\in \mathbf{C}^{n}$ deux vecteurs propres associés a des valeurs propres différentes. Montrer que $u$ et $v$ sont orthogonaux par rapport au produit hermitien standard.
+Soit $A\in \mathbb{C}^{n\times n}$ une matrice hermitienne et $u,v\in \mathbb{C}^{n}$ deux vecteurs propres associés a des valeurs propres différentes. Montrer que $u$ et $v$ sont orthogonaux par rapport au produit hermitien standard.
 \end{exercise}
 \begin{proof}[Solution]
-Soient $\lambda_{1}\neq\lambda_{2}$ deux valeurs propres distinctes et $u,v\in \mathbf{C}^{n}\setminus \{ 0 \}$ leurs vecteurs propres associés respectivement. Si $u^{*}v\neq 0$, alors $\lambda_{1}u^{*}v\neq\lambda u^{*}v$. On a
+Soient $\lambda_{1}\neq\lambda_{2}$ deux valeurs propres distinctes et $u,v\in \mathbb{C}^{n}\setminus \{ 0 \}$ leurs vecteurs propres associés respectivement. Si $u^{*}v\neq 0$, alors $\lambda_{1}u^{*}v\neq\lambda u^{*}v$. On a
 \begin{align*}
 \lambda_{1}u^{*}v & =(\lambda_{1}u)^{*}v \\
  & =(Au)^{*}v \\
@@ -661,7 +661,7 @@ alors $u^{*}v=0$.
 \end{proof}
 
 \begin{exercise}[Exo etoile]
-Soit $A\in \mathbf{R}^{n\times n}$ une matrice symétrique.
+Soit $A\in \mathbb{R}^{n\times n}$ une matrice symétrique.
 
 Montrer, a partir d'un résultat de la série 7 \footnotemark{}, que $A$ est semi-definie positive si et seulement si tous ses mineurs symétriques sont positifs ou nuls, c-est a dire $\det(A_{I})\ge0$ pour tour $I\subseteq \{ 1,\dots,n \}$.
 \footnotetext{Le coefficient $n-k$ du polynôme caractéristique de $A$ vérifie
@@ -676,7 +676,7 @@ Direction $\Rightarrow$: Si $A$ est semi-definie positive, toutes les valeurs pr
 \det(A) & =\prod_{i=1}^{n} \lambda _{i}\ge 0
 \end{align*}
 
-On prend $I=\{ \ell_{1},\dots,\ell _{k} \}\subseteq[n]$. On définit $f:\mathbf{R}^{|I|}\to \mathbf{R}^{n}$ tel que $f(x)_{\ell _{j}}=x_{j}$ et $f(x)_{j}=0$ sinon. Pour $y\in \mathbf{R}^{|I|}$ on a $f(y)^{\mathsf{T}}Af(y)=y^{\mathsf{T}}A_{I}y\ge 0$ donc $A_{I}$ est semi-definie positive.
+On prend $I=\{ \ell_{1},\dots,\ell _{k} \}\subseteq[n]$. On définit $f:\mathbb{R}^{|I|}\to \mathbb{R}^{n}$ tel que $f(x)_{\ell _{j}}=x_{j}$ et $f(x)_{j}=0$ sinon. Pour $y\in \mathbb{R}^{|I|}$ on a $f(y)^{\mathsf{T}}Af(y)=y^{\mathsf{T}}A_{I}y\ge 0$ donc $A_{I}$ est semi-definie positive.
 
 Direction $\Leftarrow$ : On veut montrer que $A$ est semi-definie positive, c-a-d que toutes les valeurs propres de $A$ sont positives ou nulles. Les valeurs propres de $A$ sont les racines du polynôme caractéristique $p_{A}(x)$. Soit $b>0$ et $c=-b$, alors
 \begin{align*}
@@ -688,7 +688,7 @@ Direction $\Leftarrow$ : On veut montrer que $A$ est semi-definie positive, c-a-
 \chapter{Serie 9}
 
 \begin{exercise}[Exo plus]
-Soit $A=(a_{ij})\in \mathbf{R}^{n\times n}$ une matrice symétrique semi-definie positive.
+Soit $A=(a_{ij})\in \mathbb{R}^{n\times n}$ une matrice symétrique semi-definie positive.
 \begin{enumerate}
 \item Montrer que les elements diagonaux $a_{ii}$ de $A$ sont tous positifs ou nuls.
 \item Montrer que $a_{ii}a_{jj}\ge a_{ij}^{2}$ pour tout $i$, $j$. En déduire que si $a_{ii}=0$ pour un certain indice $i$, alors la $i$-eme ligne et la $i$-eme colonne de $A$ sont nulles.
@@ -701,7 +701,7 @@ Soit $A=(a_{ij})\in \mathbf{R}^{n\times n}$ une matrice symétrique semi-definie
 \item $a_{ii}=e_{i}^{\mathsf{T}}Ae_{i}\ge 0$ car $A$ est semi-definie positive.
 \item Si $i=j$ $\checkmark$. Sinon, $I=\{ i,j \}\subseteq[n]$ et $\det(A_{I})=a_{ii}a_{jj}-a_{ij}a_{ji}\ge 0$.
 \item On prend $I=\{ i,j \}$, alors $\det (A_{I})=0$. Si $A$ est semi-definie positive, mais pas définie positive, alors $\det(A)=0$. $A$ est définie positive si et seulement si toutes les mineurs symétriques sont positifs. Dans notre cas, ca implique que $A$ n'est pas définie positive donc $\det(A)=0$.
-\item Le théorème spectral donne une base orthonormale $\{ u_{i} \}$ forme des vecteurs propres de $A$. Pour $x \in \mathbf{R}^{n}$, on l'ecrit comme $x=\sum_{i=1}^{n}\alpha _{i}u_{i}$ alors
+\item Le théorème spectral donne une base orthonormale $\{ u_{i} \}$ forme des vecteurs propres de $A$. Pour $x \in \mathbb{R}^{n}$, on l'ecrit comme $x=\sum_{i=1}^{n}\alpha _{i}u_{i}$ alors
 $$
 x^{\mathsf{T}}Ax=\sum_{i=1}^{n} \alpha _{i}^{2}\lambda _{i}=0
 $$
@@ -709,7 +709,7 @@ est vraie que si $\alpha _{i}=0$ si $\lambda _{i}>0$. Donc $x$ s'ecrit comme com
 \end{enumerate}
 \end{proof}
 \begin{exercise}[Examen 2025 - Question 21]
-Soit $A\in \mathbf{R}^{n\times n}$ symétrique et $\lambda_{1}\ge\dots\ge\lambda _{n}$ les valeurs propres. Montrer que pour tout $i=1,\dots,n$,
+Soit $A\in \mathbb{R}^{n\times n}$ symétrique et $\lambda_{1}\ge\dots\ge\lambda _{n}$ les valeurs propres. Montrer que pour tout $i=1,\dots,n$,
 $$
 \lambda_{1}\ge a_{ii}\ge \lambda _{n}.
 $$
@@ -721,7 +721,7 @@ $$
 $$
 \end{proof}
 \begin{exercise}[Exo etoile]
-Soit $A\in \mathbf{R}^{n\times n}$ une matrice symétrique et soit
+Soit $A\in \mathbb{R}^{n\times n}$ une matrice symétrique et soit
 $$
 A=U\begin{pmatrix}
 \lambda_{1} &  &  \\
@@ -729,14 +729,14 @@ A=U\begin{pmatrix}
  &  & \lambda _{n} 
 \end{pmatrix}U^{\mathsf{T}}
 $$
-une factorisation de $A$ telle que $U=(u_{1},\dots,u_{n})\in \mathbf{R}^{n\times n}$ est orthogonale et $\lambda_{1}\ge\cdots\ge\lambda _{n}$. Pour $1\le\ell<n$, montrer qu'on a 
+une factorisation de $A$ telle que $U=(u_{1},\dots,u_{n})\in \mathbb{R}^{n\times n}$ est orthogonale et $\lambda_{1}\ge\cdots\ge\lambda _{n}$. Pour $1\le\ell<n$, montrer qu'on a 
 \begin{equation}
 \max_{\underset{x\perp u_{1},\dots,x\perp u_{\ell}}{x \in S^{n-1}}}x^{\mathsf{T}}Ax=\lambda _{\ell +1} \label{ninestar}
 \end{equation}
 et $u_{\ell +1}$ est une solution optimale.
 \end{exercise}
 \begin{proof}[Solution]
-On procède par double inégalité. Prenons $x \in S^{n-1}$, on écrit $x=\sum _{i=1}^{n}\alpha _{i}u_{i}$ ou $\alpha _{i}\in \mathbf{R}$. Si $x\perp u_{1},\dots,x\perp u_{\ell}$, alors comme $\{ u_{1},\dots,u_{n} \}$ forme une base orthonormale de $\mathbf{R}^{n}$, on observe que $\alpha_{1}=\dots=\alpha _{\ell}=0$. Alors $x=\sum_{i=\ell +1}^{n}\alpha _{i}u_{i}$. Comme $\lVert x \rVert=1$, on a que $\sum_{i=\ell +1}^{n}\alpha _{i}^{2}=1$. On calcule
+On procède par double inégalité. Prenons $x \in S^{n-1}$, on écrit $x=\sum _{i=1}^{n}\alpha _{i}u_{i}$ ou $\alpha _{i}\in \mathbb{R}$. Si $x\perp u_{1},\dots,x\perp u_{\ell}$, alors comme $\{ u_{1},\dots,u_{n} \}$ forme une base orthonormale de $\mathbb{R}^{n}$, on observe que $\alpha_{1}=\dots=\alpha _{\ell}=0$. Alors $x=\sum_{i=\ell +1}^{n}\alpha _{i}u_{i}$. Comme $\lVert x \rVert=1$, on a que $\sum_{i=\ell +1}^{n}\alpha _{i}^{2}=1$. On calcule
 \begin{align*}
 x^{\mathsf{T}}Ax & =\left( \sum_{i=\ell +1}^{n} \alpha _{i}u_{i} \right)^{\mathsf{T}}A\left( \sum_{j=\ell +1}^{n} \alpha _{j}u_{j} \right) \\
  & =\sum _{i,j=\ell +1}^{n}\alpha _{i}\alpha _{j}u_{i}^{\mathsf{T}}Au_{j} \\
@@ -753,9 +753,9 @@ donc \ref{ninestar} est borne inférieurement par $\lambda _{\ell +1}$. Alors le
 \end{proof}
 \chapter{Serie 10}
 \begin{exercise}[Exo plus]
-Soient $A\in \mathbf{R}^{m\times n}$ et $b\in \mathbf{R}^{m}$. On considère l'application
+Soient $A\in \mathbb{R}^{m\times n}$ et $b\in \mathbb{R}^{m}$. On considère l'application
 $$
-f:\mathbf{R}^{n}\to \mathbf{R}:x\mapsto f(x)=\lVert Ax- b\rVert^{2} .
+f:\mathbb{R}^{n}\to \mathbb{R}:x\mapsto f(x)=\lVert Ax- b\rVert^{2} .
 $$
 Calculer le gradient de $f$ et en déduire qu'une solution optimale du problème des moindres carres est aussi solution de l'equation $A^{\mathsf{T}}Ax=A^{\mathsf{T}}b$.
 \end{exercise}
@@ -766,7 +766,7 @@ f(x) & =\lVert Ax-b \rVert ^{2} \\
  & =(Ax-b)^{\mathsf{T}}(Ax-b) \\
  & =x^{\mathsf{T}}A^{\mathsf{T}}Ax-b^{\mathsf{T}}Ax-x^{\mathsf{T}}A^{\mathsf{T}}b +b^{\mathsf{T}}b
 \end{align*}
-Prenons $h\in \mathbf{R}^{n}$ et calculons la différentielle $D_{f,x}(h)$ :
+Prenons $h\in \mathbb{R}^{n}$ et calculons la différentielle $D_{f,x}(h)$ :
 \begin{align*}
 D_{f,x}(h) &=\lim_{ t \to 0 } \frac{f(x+th)-f(x)}{t} \\
  & =\lim_{ t \to 0 } \frac{1}{t}((x+th)^{\mathsf{T}}A^{\mathsf{T}}A(x+th)-b^{\mathsf{T}}A(x+th)-(x+th)^{\mathsf{T}}A^{\mathsf{T}}b+b^{\mathsf{T}}b \\
@@ -777,7 +777,7 @@ D_{f,x}(h) &=\lim_{ t \to 0 } \frac{f(x+th)-f(x)}{t} \\
 \end{align*}
 Alors 
 $$
-\mathrm{grad}(f)=2A^{\mathsf{T}}Ax-2A^{\mathsf{T}}b\in \mathbf{R}^{n}.
+\mathrm{grad}(f)=2A^{\mathsf{T}}Ax-2A^{\mathsf{T}}b\in \mathbb{R}^{n}.
 $$
 Si $x$ est un minimum de $f$ (une solution au problème de moindres carres), on a que $\mathrm{grad}(f)=0$. Donc
 $$
@@ -787,18 +787,18 @@ $$
 
 
 \begin{exercise}[Exo etoile]
-Soient $a_{1},\dots,a_{m}\in \mathbf{R}^{n}$. Pour $z\in \mathbf{R}^{n}$ et $v\in S^{n-1}$, on considère la droite $L_{z,v}$ définie par
+Soient $a_{1},\dots,a_{m}\in \mathbb{R}^{n}$. Pour $z\in \mathbb{R}^{n}$ et $v\in S^{n-1}$, on considère la droite $L_{z,v}$ définie par
 $$
-L_{z,v}=\{ z+\lambda v:\lambda \in \mathbf{R} \}=z+\mathrm{span}\{ v \}.
+L_{z,v}=\{ z+\lambda v:\lambda \in \mathbb{R} \}=z+\mathrm{span}\{ v \}.
 $$
 Soit $d(a_{i},L_{z,v})$ la distance de $a_{i}$ a $L_{z,v}$ pour $i=1,\dots,m$.
 \begin{enumerate}
-\item Supposons que $\sum_{i=1}^{m}a_{i}=0$. Montrer que $\sum_{i=1}^{m}d(a_{i},L_{z,v})^{2}\ge \sum_{i=1}^{m}d(a_{i},L_{0,v}^{2})$ pour tout $z\in \mathbf{R}^{n}$.
-\item Conclure que, étant donnes des points $a_{1},\dots,a_{m},$ on peut trouver un $z\in \mathbf{R}^{n}$ et $v\in S^{n-1}$ tels que
+\item Supposons que $\sum_{i=1}^{m}a_{i}=0$. Montrer que $\sum_{i=1}^{m}d(a_{i},L_{z,v})^{2}\ge \sum_{i=1}^{m}d(a_{i},L_{0,v}^{2})$ pour tout $z\in \mathbb{R}^{n}$.
+\item Conclure que, étant donnes des points $a_{1},\dots,a_{m},$ on peut trouver un $z\in \mathbb{R}^{n}$ et $v\in S^{n-1}$ tels que
 $$
 \sum_{i=1}^{m} d(a_{i},L_{z,v})^{2}\le \sum_{i=1}^{m} d(a_{i},L_{z',v'})^{2},
 $$
-pour tout $z'\in \mathbf{R}^{n}$ et $v'\in S^{n-1}$. En particulier :
+pour tout $z'\in \mathbb{R}^{n}$ et $v'\in S^{n-1}$. En particulier :
 \begin{enumerate}
 \item Donner une formule pour $z$.
 \item Décrire la matrice $A$ telle qu'un vecteur propre normalise de $A^{\mathsf{T}}A$ associe a la valeur propre la plus grande est une solution pour $v$.
@@ -818,7 +818,7 @@ pour tout $z'\in \mathbf{R}^{n}$ et $v'\in S^{n-1}$. En particulier :
  & \ge\sum _{i}d(a_{i},L_{0,v} )^{2}+\sum _{i}(\lVert z \rVert ^{2}-\lVert z \rVert ^{2}\underbrace{ \lVert v \rVert ^{2} }_{ =0 }) \\
  & =\sum _{i}d(a_{i},L_{0,v})^{2}.
 \end{align*}
-\item Sans supposition sur $\sum _{i}a_{i}$, posons $z:=\frac{1}{m}\sum _{i}a_{i}$. Avec ce $z$, le points $a_{i}-z$ satisfont l'hypothese de 1 (car $\sum _{i}(a_{i}-z)=0$). Pour $v'\in S^{n-1}$ et pour tout $z'\in \mathbf{R}^{n}$, on écrit $z'=z+z''$ avec $z''\in \mathbf{R}^{n}$. On calcule
+\item Sans supposition sur $\sum _{i}a_{i}$, posons $z:=\frac{1}{m}\sum _{i}a_{i}$. Avec ce $z$, le points $a_{i}-z$ satisfont l'hypothese de 1 (car $\sum _{i}(a_{i}-z)=0$). Pour $v'\in S^{n-1}$ et pour tout $z'\in \mathbb{R}^{n}$, on écrit $z'=z+z''$ avec $z''\in \mathbb{R}^{n}$. On calcule
 \begin{align*}
 \sum _{i}d(a_{i},L_{z,v'})^{2} & =\sum _{i}d(a_{i}-z,L_{0,v'})^{2} \\
  & \overset{1}\le d(a_{i}-z,L_{z'',v'})^{2} \\
@@ -827,7 +827,7 @@ pour tout $z'\in \mathbf{R}^{n}$ et $v'\in S^{n-1}$. En particulier :
 \end{align*}
 Ceci montre que pour un certain $v'\in S^{n-1}$ donne, $z=\frac{1}{m}\sum _{i}a_{i}$ est la choix optimale. Minimiser donc $\sum _{i}d(a_{i},L_{z,v})^{2}$ s'agit d'un problème du meilleur sous-espace approximatif de dimension 1.
 
-Par le cours, on pose $A=(a_{1}-z, \dots , a_{m}-z)^{\mathsf{T}}\in \mathbf{R}^{m\times n}$. Avec ce setup, par le cours on sait que $v$ est donne par un vecteur propre normalise associe a la plus grande valeur propre de $A^{\mathsf{T}}A$.  Pour tout $z'\in \mathbf{R}^{n}$ et pour tout $v'\in S^{n-1}$ on a
+Par le cours, on pose $A=(a_{1}-z, \dots , a_{m}-z)^{\mathsf{T}}\in \mathbb{R}^{m\times n}$. Avec ce setup, par le cours on sait que $v$ est donne par un vecteur propre normalise associe a la plus grande valeur propre de $A^{\mathsf{T}}A$.  Pour tout $z'\in \mathbb{R}^{n}$ et pour tout $v'\in S^{n-1}$ on a
 \begin{align*}
 \sum _{i}d(a_{i},L_{z,v})^{2} & =\sum _{i}d(a_{i}-z,\mathrm{span}\{ v \})^{2}  \\
  & \le \sum _{i}d(a_{i}-z,\mathrm{span}\{ v' \})^{2} \\
@@ -841,8 +841,8 @@ ou $v'$ est solution au problème du meilleur sous-espace approximatif.
 \begin{exercise}[Exo plus]
 Trouver $e^{ tA }$ pour chacune des matrices suivantes :
 \begin{enumerate}
-\item $A=\begin{pmatrix}x & 0 \\ 0 & y\end{pmatrix}$ ou $x,y\in \mathbf{C}$.
-\item Une matrice $A\in \mathbf{C}^{n\times n}$ qui satisfait $A^{2}=A$.
+\item $A=\begin{pmatrix}x & 0 \\ 0 & y\end{pmatrix}$ ou $x,y\in \mathbb{C}$.
+\item Une matrice $A\in \mathbb{C}^{n\times n}$ qui satisfait $A^{2}=A$.
 \end{enumerate}
 \end{exercise}
 \begin{proof}[Solution]
@@ -883,11 +883,11 @@ e^{ tA } & =\sum_{j=0}^{\infty}  t^{j} \frac{A^{j}}{j!} \\
 \end{enumerate}
 \end{proof}
 \begin{exercise}[Exo etoile]
-Soit $A\in \mathbf{C}^{n\times n}$ inversible. Montrer que $A$ est diagonalisable si et seulement si $A^{m}$ est diagonalisable pour un certain $m\in \mathbf{N}^{*}$.
+Soit $A\in \mathbb{C}^{n\times n}$ inversible. Montrer que $A$ est diagonalisable si et seulement si $A^{m}$ est diagonalisable pour un certain $m\in \mathbf{N}^{*}$.
 
 Donner un contre-exemple lorsque $A$ n'est pas inversible.
 
-\emph{Pour la resolution de cet exercice, vous pouvez admettre le résultat suivant : une matrice $A\in \mathbf{C}^{n\times n}$ est diagonalisable si et seulement si son polynôme minimal ne possède que des racines simples (c-a-d de multiplicité 1). Ce résultat sera démontré a partir du théorème de Jordan, qui constitue l'objectif des deux semaines a venir.}
+\emph{Pour la resolution de cet exercice, vous pouvez admettre le résultat suivant : une matrice $A\in \mathbb{C}^{n\times n}$ est diagonalisable si et seulement si son polynôme minimal ne possède que des racines simples (c-a-d de multiplicité 1). Ce résultat sera démontré a partir du théorème de Jordan, qui constitue l'objectif des deux semaines a venir.}
 \end{exercise}
 \begin{proof}[Solution]
 \begin{description}
@@ -905,7 +905,7 @@ Comparons $\mu _{a,b}$ et $\mu _{c,d}$. Si $\mu _{a,b}=\mu _{c,d}$, alors $\mu _
 \begin{question}
 Est-ce que $(x^{m}-\lambda _{i})$ n'admet que des racines simples ?
 \end{question}
-On considère \footnote{Preuve alternative possible dans $\mathbf{C}$ en considerant les rotation autour du cercle des racines} $\gcd(x^{m}-\lambda _{i},mx^{m-1})=1$ ($\lambda _{i}\neq0$ car $A$ est inversible et $A^{m}$ est inversible). Alors $(x^{m}-\lambda _{i})$ n'admet que des racines simples et du coup $f(x)$ n'admet que des racines simples. Ceci implique que $m_{A}(x)$ n'admet que des racines simples et par le résultat suggéré on sait que $A$ est diagonalisable.
+On considère \footnote{Preuve alternative possible dans $\mathbb{C}$ en considerant les rotation autour du cercle des racines} $\gcd(x^{m}-\lambda _{i},mx^{m-1})=1$ ($\lambda _{i}\neq0$ car $A$ est inversible et $A^{m}$ est inversible). Alors $(x^{m}-\lambda _{i})$ n'admet que des racines simples et du coup $f(x)$ n'admet que des racines simples. Ceci implique que $m_{A}(x)$ n'admet que des racines simples et par le résultat suggéré on sait que $A$ est diagonalisable.
 \end{description}
 Comme contre-exemple on a la matrice
 $$
@@ -919,7 +919,7 @@ qui n'est pas diagonalisable car la multiplicité géométrique de 0 est 1 qui e
 
 \chapter{Serie 12}
 \begin{exercise}[Exo plus]
-Soit $A\in \mathbf{C}^{n\times n}$. Le \emph{polynôme minimal} de $A$ est le polynôme de degré minimal unitaire dans $\mathbf{C}[x]\setminus \{ 0 \}$ qui annule $A$.
+Soit $A\in \mathbb{C}^{n\times n}$. Le \emph{polynôme minimal} de $A$ est le polynôme de degré minimal unitaire dans $\mathbb{C}[x]\setminus \{ 0 \}$ qui annule $A$.
 \begin{enumerate}
 \item Montrer qu'il existe et qu'il est bien unique.
 \item Montrer qu'il divise tout polynôme annulant $A$ et donc, en particulier, le polynôme caractéristique de $A$.
@@ -928,7 +928,7 @@ Soit $A\in \mathbf{C}^{n\times n}$. Le \emph{polynôme minimal} de $A$ est le po
 \begin{proof}[Solution]
 \begin{enumerate}
 \item L'existence est garantie par le théorème de Cayley-Hamilton \ref{cayley}. Supposons que $q$ satisfait les memes propriétés que $m_{A}(x)$. Alors si $q(x)\neq m_{A}(x)$, le polynôme $q-m_{A}$ est de degré strictement inferieure a $\deg m_{A}$ et s'annule en $A$. Contradiction.
-\item Soit $p(x)\in \mathbf{C}[x]$ tel que $p(A)=0$. Alors $p(x)=q(x)m_{A}(x)+r(x)$ avec $\deg r <\deg m_{A}$ (division euclidienne). On a
+\item Soit $p(x)\in \mathbb{C}[x]$ tel que $p(A)=0$. Alors $p(x)=q(x)m_{A}(x)+r(x)$ avec $\deg r <\deg m_{A}$ (division euclidienne). On a
 $$
 r(A)=p(A)-q(A)m_{A}(A)=0
 $$

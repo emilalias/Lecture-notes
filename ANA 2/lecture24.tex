@@ -1,0 +1,184 @@
+\todo{Lecture 24}
+
+\section{Problème de Cauchy}
+\begin{problem}[De Cauchy]
+Soit $\boldsymbol{f}:I\times E\to \mathbf{R}^{n}$, $E\subset \mathbf{R}^{n}$ ouvert, $I\subset \mathbf{R}$ ouvert. On cherche $\boldsymbol{u}:I\to \mathbf{R}^{n}$ de classe $C^{1}$ telle que 
+$$
+\begin{cases}
+\boldsymbol{u}'(t)=\boldsymbol{f}(t,\boldsymbol{u}(t)) &  \forall t\in I, \\
+\boldsymbol{u}(t_{0})=\boldsymbol{u}_{0} & t_{0}\in I.
+\end{cases}
+$$
+\end{problem}
+\begin{problem}[A la valeur initiale]
+Soit $\boldsymbol{f}:I\times E\to \mathbf{R}^{n}$, $E\subset \mathbf{R}^{n}$ ouvert, $I\subset \mathbf{R}$ ouvert. Soit $I_{+}=I\cap[t_{0},+\infty)$, on cherche $\boldsymbol{u}_{+}(t):I_{+}\to \mathbf{R}$ de classes $C^{0}(I_{+})$ et $\boldsymbol{u}_{+}'\in C^{0}(\mathring{ I }_{+})$ telle que
+$$
+\begin{cases}
+\boldsymbol{u}_{+}'(t)=\boldsymbol{f}(r,\boldsymbol{u}_{+}(t)) & t\in \mathring{ I }_{+} \\
+\boldsymbol{u}_{+}(t_{0})=\boldsymbol{u}_{0} & t_{0}\in I_{+}.
+\end{cases}
+$$
+\end{problem}
+\begin{problem}[A la valeur finale]
+Soit $I_{-}=I\cap (-\infty,t_{0}]$. On cherche $\boldsymbol{u}_{-}:I_{-}\to \mathbf{R}^{n}\in C(I_{-})$ et $\boldsymbol{u}'_{-}\in C^{0}(\mathring{ I }_{-})$ telle que
+$$
+\begin{cases}
+\boldsymbol{u}_{-}'(t)=\boldsymbol{f}(t,\boldsymbol{u}_{-}(t)) & \forall t\in \mathring{ I }_{-} \\
+\boldsymbol{u}_{-}(t_{0})=\boldsymbol{u}_{0}.
+\end{cases}
+$$
+\end{problem}
+\begin{remark}
+Si $\boldsymbol{u}$ est solution du problème de Cauchy, alors $\boldsymbol{u}|_{I_{+}}$ est solution du problème a valeur initiale et $\boldsymbol{u}_{-}$ est solution du problème a valeur finale.
+
+Si $\boldsymbol{u}_{+}$ est solution du problème a valeur initiale et $\boldsymbol{u}_{-}$ est solution du problème a valeur finale (et $\boldsymbol{f}$ est continue sur $I\times E$), alors 
+$$
+\boldsymbol{u}(t)=\begin{cases}
+\boldsymbol{u}_{+}(t) & t \ge t_{0}, t\in I \\
+\boldsymbol{u}_{-}(t) & t <t_{0} ,t\in I
+\end{cases}
+$$
+est de classe $C^{1}(I)$ et est solution du problème de Cauchy.
+\end{remark}
+\begin{example}
+On a le problème de Cauchy
+$$
+\begin{cases}
+u'(t)=u(t)^{2} & t\in \mathbf{R}, \\
+u(0)=1.
+\end{cases}
+$$
+$I=\mathbf{R}$ et $f(t,x)=x^{2}$. Une solution locale maximale quand $t<1$ est $u(t)=\frac{1}{1-t}$. 
+\end{example}
+\begin{definition}
+On dit qu'un couple $(J,\boldsymbol{u})$, $J\subset I$ ouvert contenant $t_{0}$ et $\boldsymbol{u}\in C^{1}(J)$ est une solution locale du problème de Cauchy si $\boldsymbol{u}'(t)=\boldsymbol{f}(t,\boldsymbol{u}(t))$ est satisfaite pour tout $t\in J$ et $\boldsymbol{u}(t_{0})=\boldsymbol{u}_{0}$. 
+\begin{itemize}
+\item Soit $(K,\boldsymbol{w})$ une autre solution locale du problème de Cauchy. On dit que $(K,\boldsymbol{w})$ prolonge strictement $(J,\boldsymbol{u})$ si $J\subsetneq K$ et $\boldsymbol{u}(t)=\boldsymbol{w}(t)$ pour tout $t\in J$.
+\item On dit que $(J,\boldsymbol{u})$ est une solution maximale s'ils n'existent pas d'autres solutions locales qui la prolonge.
+\item On dit que $(J,\boldsymbol{u})$ est une solution globale du problème de Cauchy si $J=I$.
+\end{itemize}
+\end{definition}
+\section{Méthodes de resolution d'EDO scalaires}
+\subsection{Méthode de separation de variables}
+Soit $f:I\times E \to \mathbf{R}, (t,x)\mapsto g(t)k(x)$ avec $g:I\to \mathbf{R}$ et $k:E\to \mathbf{R}$ continues sur $I$ et $E$ respectivement. On considère le problème de Cauchy
+$$
+\begin{cases}
+u'(t)=g(t)k(u(t)) & \forall t\in I \\
+u(t_{0})=u_{0} & t_{0}\in I.
+\end{cases}
+$$
+Si $k(u_{0})=0$ et $u(t)=u_{0}$ pour tout $t$, alors $u(t)$ est une solution globale. Sinon, soit $k(u_{0})\neq 0$, par exemple $k(u_{0})>0$. Si $(J,u)$ est une solution locale ($u\in C^{1}(J)$). On a $$\int _{t_{0}}^{t}\frac{u'(\tilde{t})}{k(u(\tilde{t}))}\, d\tilde{t}=\int _{t_{0}}^{t}g(\tilde{t})\,d\tilde{t}$$ pour tout $\tilde{t}\in(t_{0}-\delta,t_{0}+\delta)$ tel que $k(u(\tilde{t}))>0$. Soit
+$$
+G(t)=\int_{t_{0}t}^{t} g(\tilde{t}) \, d\tilde{t}, \quad F(u)=\int_{u_{0}}^{u} \frac{1}{k(v)} \, dv, \quad \forall u:k(u)>0. 
+$$
+On remarque que $u\mapsto F(u)$ est strictement croissante. Soit $\tilde{E}$ le plus grand sous-intervalle de $E$, contenant $u_{0}$, tel que $k(v)$ pour tout $v\in \tilde{E}$. Alors $F:\tilde{E}\to \mathbf{R}$ existe et est inversible. On a
+\begin{align*}
+\int_{t_{0}}^{t} \frac{u'(\tilde{t})}{k(u(\tilde{t}))} \, d\tilde{t} & =\int_{t_{0}}^{t}\underbrace{ \frac{d}{dt} F(u(\tilde{t}))  }_{ =\frac{u'(\tilde{t})}{k(u(\tilde{t}))} } \, d\tilde{t} \\
+ & =F(u(t))-F(u(t_{0}))
+\end{align*}
+et
+$$
+\int_{t_{0}}^{t} g(\tilde{t}) \, d\tilde{t}=G(t)-G(t_{0}) =F(u(t))-F(u(t_{0}))
+$$
+donc
+$$
+F(u(t))=F(u(t_{0}))+G(t)-G(t_{0})
+$$
+et
+$$
+u(t)=F^{-1}(F(u_{0})+G(t)-G(t_{0})).
+$$
+\begin{example}
+On considere le probleme de Cauchy
+$$
+\begin{cases}
+u'(t)=u(t)^{2} & t\in \mathbf{R} \\
+u(0)=1 .
+\end{cases}
+$$
+On a $I=\mathbf{R}$ et $f(t,x)=x^{2}$. On pose $g(t)=1$ et $k(x)=x^{2}$. Donc
+$$
+G(t)=\int _{0} ^{t}1\,d\tilde{t}=t
+$$
+et
+$$
+F(u)=\int_{u_{0}}^{u} \frac{1}{x^{2}} \, dx=\left[ -\frac{1}{x} \right]_{u_{0}}^{u}=\frac{1}{u_{0}}-\frac{1}{u}. 
+$$
+Donc
+\begin{align*}
+F(u(t))-F(u(t_{0})) & =G(t)-G(t_{0}) \\
+\frac{1}{u_{0}}-\frac{1}{u} & =t \\
+\Rightarrow \frac{1}{u}=\frac{1-u_{0}t}{u_{0}}
+\end{align*}
+et
+$$
+u=\frac{u_{0}}{1-u_{0}t}\Rightarrow u(t)=\frac{1}{1/u_{0}-t}, \quad t\in\left( -\infty, \frac{1}{u_{0}} \right).
+$$
+\end{example}
+\begin{example}
+On considère
+$$
+\begin{cases}
+u'(t)=-\sqrt{ |u(t)| } & t\in \mathbf{R} \\
+u(t_{0})=u_{0}>0.
+\end{cases}
+$$
+On a $f(t,x)=-\sqrt{ |x| }$, donc $g(t)=-1$ et $k(x)=\sqrt{ |x| }=\sqrt{ x }$ si $x>0$. On a
+$$
+G(t)=\int_{t_{0}}^{t} -1 \, d\tilde{t}=t_{0}-t, 
+$$
+et
+$$
+F(t)=\int_{u_{0}}^{u} \frac{1}{\sqrt{ x }} \, dx=[2\sqrt{ x }]^{u}_{u_{0}}=2\sqrt{ u }-2\sqrt{ u_{0}}. 
+$$
+Donc
+\begin{align*}
+2\sqrt{ u(t) } -2\sqrt{ u_{0} } & =t_{0}-t  \\
+\Rightarrow \sqrt{ u(t) } & =\frac{1}{2}(t_{0}-t-2\sqrt{ u_{0} }) \\
+\Rightarrow u(t) & =\frac{1}{4}(t_{0}-t)^{2}-u_{0}.
+\end{align*}
+Si $t_{0}=0$ et $u_{0}=1$, alors
+$$
+u(t)=\left( 1-\frac{t}{2} \right)^{2}.
+$$Mais, il faut respecter la condition $k(u(t))>0$, donc on a la solution globale
+$$
+u(t)=\begin{cases}
+\left( 1-\frac{t}{2} \right)^{2} & t\le 2 ,\\
+-\left( 1-\frac{t}{2} \right)^{2} & t>2.
+\end{cases}
+$$
+\end{example}
+\begin{example}[Equations lineaire]
+On considere
+$$
+\begin{cases}
+u'(t)=g(t)-p(t)u(t), \quad  & t \in \mathbf{R} \\
+u(t_{0})=u_{0}>0.
+\end{cases}
+$$
+$g$ et $p$ sont continues. Quand $g=0$, on a une equation homogène $u'(t)=-p(t)u(t)$. Donc on pose par la méthode de variables séparées $g(t)=p(t)$ et $k(x)=-x$.  On a
+$$
+F(u)=\int_{u_{0}}^{u} -\frac{1}{x}  \, dx=\log u_{0}-\log u
+$$
+et
+$$
+	G(t)=\int^{t}p(s)  \, ds=P(t). 
+$$
+Donc
+$$
+-\log\left( \frac{u(t)}{u_{0}} \right)=P(t)\Rightarrow u(t)=u_{0}e^{-P(t)}.
+$$
+
+On a
+$$
+\frac{d}{dt} (e^{ P(t) }u(t))=e^{ P(t) }g(t)
+$$
+qu'on integre
+$$
+\int_{t_{0}}^{t} e^{ P(s) }g(s) \, ds=e^{ P(t) }u(t)-u_{0} 
+$$
+donc
+$$
+u(t)=e^{ -P(t) }\left( u_{0}+\int_{t_{0}}^{t} e^{ P(s) }g(s) \, ds  \right)
+$$
+\end{example}

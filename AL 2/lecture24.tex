@@ -1,0 +1,191 @@
+\todo{Lecture 24}
+
+\begin{theorem}
+Soit $A\in \mathbf{C}^{n\times n}$. Il existe une matrice $P\in \mathbf{C}^{n\times n}$ inversible telle que
+$$
+P^{-1}AP=\begin{pmatrix}
+B_{1} \\
+ & \ddots \\
+ &  & B_{k}
+\end{pmatrix}
+$$
+ou $B_{i}\in \mathbf{C}^{n_{i}\times n_{i}}$ sont des matrices blocs de la forme
+$$
+B_{i}=\lambda _{i}I_{n_{i}}+N_{i},
+$$
+ou $\lambda _{i}\in \mathbf{C}$ sont les valeurs propres de $A$ et $N\in \mathbf{C}^{n_{i}\times n_{i}}$ est une matrice nilpotente.
+\end{theorem}
+
+Pour démontrer que $A$ est similaire a une forme normale de Jordan, il manque que tout $N_{i}$ soit similaire a une forme normale de Jordan.
+\begin{definition}
+Soit $W\subseteq \mathbf{C}^{n}$ un sous-espace vectoriel et $A\in \mathbf{C}^{n\times n}$. $W$ est invariant sous $A$ si pour tout $x \in W$ on a que $Ax \in W$.
+\end{definition}
+\begin{remark}
+Soit $\{ w_{1},\dots,w_{k} \}\subseteq \mathbf{C}^{n}$ une base de $W$ invariant sous $A$ et $\{ w_{1},\dots,w_{k},v_{1},\dots,v_{n-k} \}$ une base de $\mathbf{C}^{n}$.  Soit $P=(w_{1},\dots,w_{k},v_{1},\dots,v_{n-k})\in \mathbf{C}^{n\times n}$. Alors
+$$
+P^{-1}AP=\begin{pmatrix}
+B & \begin{pmatrix}
+C
+\end{pmatrix}
+ \\0
+\end{pmatrix}
+$$
+ou $B\in \mathbf{C}^{k\times k}$ et $C\in \mathbf{C}^{(n-k)\times n}$. La premiere colonne de $P^{-1}AP$ est 
+$$
+\begin{pmatrix}
+\alpha_{1} \\
+\vdots \\
+\alpha _{k} \\
+0 \\
+\vdots \\
+0
+\end{pmatrix}.
+$$
+\end{remark}
+\begin{remark}
+Soit $\mathbf{C}^{n}=W_{1}\oplus W_{2}\oplus \cdots\oplus W_{k}$ ou :
+\begin{enumerate}
+\item chaque $W_{i}$ est invariant sous $A$.
+\item $W_{i}=\mathrm{span}\{ w_{1}^{i},\dots,w_{n_{k}}^{i} \}$.
+\end{enumerate}
+Alors avec $P=(w_{1}^{1},\dots,w_{n_{k}}^{k})\in \mathbf{C}^{n\times n}$ on a que
+$$
+P^{-1}AP=\begin{pmatrix}
+B_{1} \\
+ & \ddots \\
+ &  & B_{k}
+\end{pmatrix}
+$$
+est une matrice bloc avec $B_{i}\in \mathbf{C}^{n_{i}\times n_{i}}$.
+\end{remark}
+
+On veut trouver $W_{1},\dots,W_{k}\subseteq \mathbf{C}^{n}$ tels que 
+\begin{enumerate}
+\item $\mathbf{C}^{n}=W_{1}\oplus\dots \oplus W_{k}$.
+\item $W_{i}$ est invariant sous $A$ pour tout $i$.
+\item $B_{i}=\lambda _{i}I_{n_{i}}+N_{i}$, ou $N_{i}\in \mathbf{C}^{n_{i}\times n_{i}}$ est une matrice nilpotente.
+\end{enumerate}
+\begin{lemma}
+Soit $f(x)\in K[x]$ et $A\in K^{n\times n}$. Alors $\ker(f(A))$ est invariant sous $A$.
+\end{lemma}
+\begin{proof}
+Soit $v\in \ker(f(A))$. On veut montrer que $Av\in \ker(f(A))$. On a
+$$
+f(A)Av=A\underbrace{ f(A)v }_{ =0 }=0.
+$$
+\end{proof}
+\begin{lemma}\label{lem241}
+Soit $f(x)=g(x)h(x)\in K[x]$ tel que
+\begin{enumerate}
+\item $\deg(g)\ge 1$, $\deg(g)\ge 1$.
+\item $\gcd(g,h)=1$.
+\end{enumerate}
+Soit $A\in K^{n\times n}$. Alors
+$$
+\ker(f(A))=\ker(g(A))\oplus \ker(h(A)).
+$$
+\end{lemma}
+\begin{proof}
+Ils existent $u(x),v(x)\in K[x]$ tels que 
+$$
+1=u(x)g(x)+v(x)h(x)
+$$
+donc
+$$
+I=u(A)g(A)+v(A)h(A).
+$$
+Soit $w\in \ker(f(A))$. Alors
+$$w=\underbrace{ u(A)g(A)w }_{ \in \ker(h(A)) }+\underbrace{ v(A)h(A)w }_{ \in \ker(g(A)) }.$$
+Supposons $x \in \ker(g(A))\cap \ker(h(A))$, alors $x=0$.
+\end{proof}
+\begin{corollary}
+Soit $f(x)=g_{1}(x)\circ\cdots\circ g_{k}(x)$ ou
+\begin{enumerate}
+\item $\deg(g_{i}(x))\ge 1$ pour tout $i$.
+\item $\gcd(g_{i},g_{j})=1$ pour tous $i\neq j$.
+\end{enumerate}
+Soit $A\in \mathbf{C}^{n\times n}$. Alors
+$$
+\ker(f(A))=\ker(g_{1}(A))\oplus \cdots\oplus \ker(g_{k}(A)).
+$$
+\end{corollary}
+\begin{example}
+Soit
+$$
+A=\begin{pmatrix}
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 \\
+-6 & 0 & 5 & 0
+\end{pmatrix}.
+$$
+On a le polynôme caractéristique de $A$
+$$
+f_{A}(x)=x^{4}-5x^{2}+6=(x^{2}-3)(x^{2}-2).
+$$
+Par le théorème de Cayley-Hamilton \ref{cayley} on a que $\ker(f_{A}(A))=\mathbf{C}^{4}$. Par le lemme \ref{lem241} on a que
+\begin{align*}
+\mathbf{C}^{4} & =\ker[(x^{2}-3)(A)]\oplus \ker[(x^{2}-2)(A)] \\
+ & =\mathrm{span}\{ \begin{pmatrix}
+1/2 \\
+0 \\
+1 \\
+0
+\end{pmatrix} ,\begin{pmatrix}
+0 \\
+1/2 \\
+0 \\
+1
+\end{pmatrix}\}\oplus \mathrm{span}\{ \begin{pmatrix}
+1/3 \\
+0 \\
+1 \\
+0
+\end{pmatrix},\begin{pmatrix}
+0 \\
+1/3 \\
+0 \\
+1
+\end{pmatrix} \}
+\end{align*}
+Soit 
+$$
+P=\begin{pmatrix}
+1/2  & 0 & 1/3 & 0 \\
+0 & 1/2 & 0 & 1/3 \\
+1 & 0 & 1 & 0 \\
+0 & 1 & 0 & 1
+\end{pmatrix}.
+$$
+Alors
+$$
+P^{-1}AP=\begin{pmatrix}
+0 & 1 \\
+2 & 0 \\
+ &  & 0 & 1 \\
+ &  & 3 & 0
+\end{pmatrix}.
+$$
+
+\end{example}
+\begin{theorem}
+Soit $A\in \mathbf{C}^{n\times n}$ et
+$$
+f_{A}(x)=(-1)^{n}(x-\lambda_{1})^{n_{1}}\cdots(x-\lambda _{k})^{n_{k}}.
+$$
+Alors $$\mathbf{C}^{n}=\ker(f_{A}(A))=\bigoplus _{i\in[k]} W_{i}$$ ou $W_{i}=\ker((x-\lambda _{i})^{n_{i}}(A))$ est invariant sous $A$ et avec $P=(w_{1}^{1},\dots,w_{\ell_{1}}^{1},\dots,w_{1}^{k},\dots,w_{\ell_{k}}^{k})\in \mathbf{C}^{n\times n}$ telle que
+$$
+P^{-1}AP=\mathrm{diag}(B_{1},\dots,B_{k})
+$$
+ou pour tout $i$ on a que $B_{i}=\lambda _{i}I_{n_{i}}+N_{i}$ et $N_{i}\in \mathbf{C}^{n_{i}\times n_{i}}$ est nilpotente.
+\end{theorem}
+\begin{proof}
+On démontre que restreint sur $W_{i}$, l'endomorphisme $\phi:x\mapsto Ax$ est de la forme $\lambda _{i}I+N_{i}$ ou $N_{i}$ est un endomorphisme nilpotent. On a pour $W_{i}=\ker(A-\lambda _{i}\mathrm{Id})^{n_{i}}$
+$$
+\phi|_{W_{i}} =\lambda _{i}\mathrm{Id}+\phi|_{W_{i}}-\lambda _{i}\mathrm{Id}.
+$$
+Ou $\phi|_{W_{i}}+\lambda _{i}\mathrm{Id}$ est nilpotent car
+$$
+(\phi|_{W_{i}}+\lambda _{i}\mathrm{Id})^{n_{i}}(v)=0,\quad \forall v\in \ker(A-\lambda _{i}\mathrm{Id})^{n_{i}}.
+$$
+\end{proof}

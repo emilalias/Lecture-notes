@@ -1,0 +1,76 @@
+\todo{Lecture 24}
+\paragraph{Lois des matériaux}
+\begin{itemize}
+\item Conducteur : $\boldsymbol{j}=\sigma _{\mathrm{c}}\boldsymbol{E}$
+\item Diélectrique : $\sigma _{p}=\mathcal{X}\varepsilon_{0}E$ (si le diélectrique est un bloc homogène et isotrope; $\boldsymbol{E}$ est uniforme)
+\end{itemize}
+\paragraph{Lois / formules dérivées}
+\begin{itemize}
+\item Loi de Coulomb.
+\item Champ $\boldsymbol{E}$ / potentiel électrostatique généré par :
+\begin{itemize}
+\item Charges ponctuelles.
+\item $\sigma _{\mathrm{el}}(\boldsymbol{r})$.
+\item $\rho _{\mathrm{el}}(\boldsymbol{r})$.
+\end{itemize}
+\item $\phi$ a partir de $\boldsymbol{E}$. 
+\begin{itemize}
+\item $\phi(B)-\phi(A)=-\int_{A}^{B}\boldsymbol{E}  \, d\boldsymbol{\ell}$.
+\item $\boldsymbol{E}=-\boldsymbol{\nabla}\phi$.
+\end{itemize}
+\item Equation de Laplace et Poisson.
+\item Capacite : $C=\frac{Q}{U}$.
+\item $C$ pour un condensateur cylindrique et plain.
+\item Energie stockée dans un condensateur.
+\item Densité d'énergie électrique.
+\item $\boldsymbol{j}=\rho _{\mathrm{el}}^{\mathrm{mobile}}\boldsymbol{u}$.
+\item Loi de Kirchhoff,  résistances/condensateurs en série et parallèle, $U=RI$ et $P=UI$.
+\item Loi de Gauss et d'Ampere en forme intégrale.
+\item $\boldsymbol{B}$ générée par un courant rectiligne infini.
+\item Force de Lorentz sur un courant : $d\boldsymbol{F}=I\,d\boldsymbol{\ell}\times \boldsymbol{B}$.
+\item $\boldsymbol{B}$ dans une bobine.
+\item $\boldsymbol{B}$ généré par un courant (Biot-Savard) : $d\boldsymbol{B}(\boldsymbol{r})=\frac{\mu_{0}I}{4\pi} \frac{d\boldsymbol{\ell}\times \boldsymbol{r}}{\lVert \boldsymbol{r} \rVert^{3}}$.
+\end{itemize}
+
+\chapter{Phénomènes d'induction magnétique}
+\section{Loi d'induction de Faraday}
+\begin{question}
+Quelle est la relation entre le champ $\boldsymbol{E}$ induit et le courant induit ?
+\end{question}
+On suppose un fil de section $S$, de longueur $\ell$, de conductibilité $\sigma _{\mathrm{c}}$. La loi d'Ohm nous dit que $\boldsymbol{j}=\sigma _{\mathrm{c}}\boldsymbol{E}$. De plus $\boldsymbol{j}=\frac{I}{S}\, \frac{d\boldsymbol{\ell}}{d \ell}$. Donc
+$$
+\boldsymbol{E}=\frac{I}{S\sigma _{\mathrm{c}}}\, \frac{d\boldsymbol{\ell}}{d \ell}
+$$
+et
+\begin{align*}
+\oint _{\mathrm{fil}}\boldsymbol{E}\,d\boldsymbol{\ell} & =\frac{I}{S\sigma _{\mathrm{c}}}\oint _{\mathrm{fil}} \frac{d\boldsymbol{\ell}}{d\ell}\,d\boldsymbol{\ell} \\
+ & =\frac{I}{S\sigma _{\mathrm{c}}}\oint _{\mathrm{fil}}d\ell \\
+ & =\frac{I\ell}{S\sigma _{\mathrm{c}}} \\
+ & =IR\neq 0 \\
+ & =\varepsilon _{\mathrm{ind}}.
+\end{align*}
+En générale $\oint \boldsymbol{E}\,d\boldsymbol{\ell}\neq0$. On ne peux plus écrire $\boldsymbol{E}=-\boldsymbol{\nabla}\phi$, si $\boldsymbol{E}=-\boldsymbol{\nabla}\phi$, alors 
+$$
+\oint _{\gamma}\boldsymbol{E}\,d\boldsymbol{\ell}=\iint _{S}\boldsymbol{\nabla}\times \boldsymbol{E}\,d\boldsymbol{S}=-\iint _{S}\boldsymbol{\nabla}\times \boldsymbol{\nabla}\phi\,d\boldsymbol{S}=0
+$$
+qui serait une contradiction. 
+
+On appelle $\varepsilon _{\mathrm{ind}}$ la tension induite ou force électromotrice induite. Cette f.é.m.. est induite dans le fil par le mouvement de l'aimant. Rien se passe si $v=0$.
+
+Ce phénomène est observe si :
+\begin{itemize}
+\item On prend un champ $\boldsymbol{B}$ généré par une bobine au lieu de l'aimant. 
+\item On garde un aimant (ou une bobine) fixe et on bouge le fil (translation, rotation, \dots).
+\item On varie $\boldsymbol{B}$ au cours du temps sans rien bouger.
+\end{itemize}
+\begin{theorem}[Loi d'induction de Faraday]
+L'experience quantitative montre que dans toutes ces situations on a
+$$
+\varepsilon _{\mathrm{ind}}=\oint _{\mathrm{fil}}\boldsymbol{E}\,d\boldsymbol{\ell}=-\frac{d}{dt}\iint _{S}\boldsymbol{B}\,d\boldsymbol{S}=-\frac{d}{dt} \Phi
+$$
+ou $S$ est la surface délimitée par le fil. Donc
+$$
+\Phi=\iint _{S}\boldsymbol{B}\,d\boldsymbol{S}.
+$$
+est le flux du champ $\boldsymbol{B}$ a travers $S$.
+\end{theorem}
