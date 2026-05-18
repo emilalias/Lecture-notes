@@ -1,0 +1,185 @@
+\section{Equation scalaire linéaire}
+
+\todo{Lecture 25}
+Soit $I\subset \mathbf{R}$ ouvert, $p,g:I\to \mathbf{R}$ continues et $f(t,x)=-p(t)x+g(t)$ affine en $x$. On a le problème de Cauchy:
+$$
+\begin{cases}
+u'(t) =-p(t)u(t)+g(t) & \forall t\in I  \\
+u(t_{0})=u_{0}.
+\end{cases}
+$$
+
+On dit que $u'(t)=-p(t)u(t)+g(t)$ est homogène si $g=0$ et non-homogene sinon. On a la formule générale
+$$
+P(t)=\int ^{t}p(s)\,ds.
+$$
+\subsubsection*{Méthode du facteur integrant}
+
+On a 
+\begin{align*}
+\frac{d}{dt} (e^{P(t)}u(t)) & =e^{ P(t) }p(t)u(t)+e^{ P(t)}u'(t) \\
+ & =e^{ P(t) }p(t)u(t)+e^{ P(t) }(-p(t)u(t)+g(t)) \\
+ & =e^{ P(t) }g(t).
+\end{align*}
+Alors
+\begin{align*}
+e^{ P(t) }u(t) -e^{ P(t_{0}) }u(t_{0}) & =\int_{t_{0}}^{t} e^{ P(s) }g(s) \, ds \\
+\Rightarrow u(t) & =u_{0}e^{ -(P(t)-P(t_{0})) }+\int_{t_{0}}^{t} e^{ -P(t)-P(s) }g(s) \, ds. 
+\end{align*}
+\subsubsection{Equation homogène}
+
+Si $g=0$, alors
+$$
+\frac{d}{dt} (e^{ P(t) }u(t))=0.
+$$
+Donc la solution générale est
+$$
+u(t)=Ce^{ -P(t) },\quad C\in \mathbf{R}.
+$$
+
+\subsubsection{Equation non-homogene}
+
+\begin{proposition}
+Soit $w(t)$ une solution particulière d'une equation non-homogene (qui ne satisfait pas la condition initiale $u(t_{0})=u_{0}$). Alors l'integrale générale de l'equation non-homogene est
+$$
+u(t)=Ce^{ -P(t) }+w(t). 
+$$
+\end{proposition}
+\begin{proof}
+Par l'absurde, supposons qu'il existe une solution $\tilde{u}(t)$ qui n'est pas de la forme $Ce^{ -P(t) }+w(t)$. Soit $v(t)=\tilde{u}(t)-w(t)$. Alors 
+\begin{align*}
+v'(t) & =-p(t)\tilde{u}(t)+g(t)-(-p(t)w(t)+g(t)) \\
+ & =-p(t)(\tilde{u}(t)-w(t)) \\
+ & =-p(t)v(t) \\
+\Rightarrow v(t) & =Ce^{ -P(t) },\quad C\in \mathbf{R}.
+\end{align*}
+Donc
+$$
+\tilde{u}(t)=w(t)+Ce^{ -P(t) }.
+$$
+\end{proof}
+\begin{question}
+Comment construire une solution particulière $w(t)$ ?
+\end{question}
+\subsubsection*{Méthode de variation de la constante}\
+
+On peut toujours construire une solution particulière $w(t)$ en partant d'une solution de l'equation homogène, sous la forme $w(t)=C(t)z(t)$ pour $C\in C^{1}(I)$. On a
+\begin{align*}
+w'(t) & =C'(t)z(t)+C(t)z'(t) \\
+ & =C'(t)z(t)-C(t)p(t)z(t) \\
+ & =-p(t)w(t)+g(t) \\
+ & =-p(t)C(t)z(t)+g(t).
+\end{align*}
+Donc
+$$
+C'(t)=\frac{g(t)}{z(t)}.
+$$
+\subsubsection*{Equations a coefficient constant}
+Soit $p(t)=\alpha \in \mathbf{R}$. Alors, on a le problème de Cauchy
+$$
+\begin{cases}
+u'(t) =-\alpha u(t)+g(t) \\
+u(t_{0})=u_{0} .
+\end{cases}
+$$
+On peut rendre le problème homogène pour obtenir une solution générale
+$$
+u(t)=Ce^{ -\alpha t }.
+$$
+\paragraph{Cas non-homogene : $g$ est un polynôme de degré $p$}
+On a 
+$$
+g(t)=\sum_{i=0}^{p} g_{i}t^{i}.
+$$
+On peut chercher $w(t)$ sous la meme forme. 
+\begin{example}
+Soit $g(t)=t^{2}$ et $w(t)=w_{0}+w_{1}t+w_{2}t^{2}$. Alors
+\begin{align*}
+w'(t) & =w_{1}+2w_{2}t \\
+ & =-\alpha w(t)+g(t) \\
+ & =-\alpha w_{0}-\alpha w_{1}t-\alpha w_{2}t^{2}+t^{2}.
+\end{align*}
+Donc on veut résoudre
+$$
+\begin{cases}
+w_{1}+\alpha w_{0}  & =0 \\
+2w_{2} & =-\alpha w_{1} \\
+-\alpha w_{2}+1 & =0.
+\end{cases}
+$$
+\end{example}
+\paragraph{$g(t)$ est un polynôme multiplie par une fonction exponentielle}
+Soit
+$$
+g(t)=e^{\delta t}\sum_{i=0}^{p} g_{i}t^{i}.
+$$
+Si $\delta\neq -\alpha$, alors on cherche une solution de la forme
+$$
+w(t)=e^{ \delta t }(w_{0}+w_{1}t+\dots +w_{p}t^{p}).
+$$
+si $\delta=-\alpha$, alors on cherche une solution de la forme
+$$
+w(t)=e^{ \delta t }(w_{0}+\dots +w_{p+1}t^{p+1}).
+$$
+\paragraph{$g(t)$ est un polynôme multiplie par des fonctions trigonométriques exponentielles}
+Soit
+$$
+g(t)=e^{ \delta t }\sin(\omega t)\sum_{i=0}^{p} g_{i}t^{i}+e^{ \delta t }\cos(\omega t)\sum_{i=0}^{p} \tilde{g}_{i}t^{i}.
+$$
+Alors, on cherche une solution de la meme forme. 
+\section{Existence et unicité de solutions}
+On considere le probleme de Cauchy
+\begin{equation}\label{pb251}
+\begin{cases}
+\boldsymbol{u}'(t)=\boldsymbol{f}(t,\boldsymbol{u}(t)) & t\in I \\
+\boldsymbol{u}(t_{0})=\boldsymbol{u}_{0}.
+\end{cases}
+\end{equation}
+
+Soit $I\subset \mathbf{R}$ ouvert, $E\subset \mathbf{R}^{n}$ ouvert et $\boldsymbol{f}:I\times E\to \mathbf{R}^{n}$.
+\begin{theorem}[Cauchy-Peano]\label{thm251}
+Si $\boldsymbol{f}$ est continue sur $I\times E$, alors il existe au moins une solution locale $(J,\boldsymbol{u})$ ou $J\subset I$ et $\boldsymbol{u}\in C^{1}(J)$. 
+\end{theorem}
+\begin{definition}
+On dit que $\boldsymbol{f}:I\times E\to \mathbf{R}^{n}$ est localement Lipschitzienne par rapport au deuxième argument si pour tous $(t_{0},u_{0})\in I\times E$, il existe $a,b>0$  et $L_{t_{0},u_{0}}>0$ tels que
+$$
+\lVert \boldsymbol{f}(t,\boldsymbol{x})-\boldsymbol{f}(t,\boldsymbol{y}) \rVert \le L_{t_{0},u_{0}}\lVert \boldsymbol{x}-\boldsymbol{y} \rVert,
+$$
+pour tous $t\in[t_{0}-a,t_{0}+a]$ et $\boldsymbol{x},\boldsymbol{y}\in B(\boldsymbol{u}_{0},b)$.
+\end{definition}
+\begin{remark}
+Si $\frac{ \partial \boldsymbol{f} }{ \partial x_{i} }$ existent et sont bornées sur $[t_{0}-a,t_{0}+a]\times B(\boldsymbol{u}_{0},b)$, alors $\boldsymbol{f}$ est localement Lipschitzienne. 
+\end{remark}
+\begin{theorem}[Cauchy-Lipschitz]\label{thm252}
+Si $\boldsymbol{f}$ est continue et localement lipschitzienne (par rapport au deuxième argument) sur $I\times E$, alors pour tout $(t_{0},\boldsymbol{u}_{0})\in I\times E$, le problème de Cauchy \ref{pb251} a une unique solution locale $(J,\boldsymbol{u})$ avec $J=[t_{0}-\delta,t_{0}+\delta]$ et $\boldsymbol{u}\in C^{0}(J)\cap C^{1}(\mathring{ J })$
+\end{theorem}
+\begin{example}
+Soit une equation linéaire
+$$
+u'(t)=-p(t)u(t)+g(t),
+$$
+avec $p,g\in C^{0}(I)$ et $f:I\times \mathbf{R}\to \mathbf{R},(t,x)\mapsto -p(t)x+g(t)$ continue sur $I\times \mathbf{R}$. On a que $\frac{ \partial f }{ \partial x }=-p(t)$ qui est bornée sur tout voisinage de $(t_{0},u_{0})$, donc il existe une unique solution locale par le théorème \ref{thm252}.
+\end{example}
+\begin{example}
+Soit $u'(t)=u^{2}(t)$ avec $t\in \mathbf{R}$ et $f:\mathbf{R}\times \mathbf{R}\to \mathbf{R},(t,x)\mapsto x^{2}$ continue sur $\mathbf{R}\times \mathbf{R}$. On a que $\frac{ \partial f }{ \partial x }=2x$ est bornée sur $B(u_{0},b)$ pour tout $b$, donc il existe une unique solution locale :
+$$
+u(t)=\frac{1}{\frac{1}{u_{0}}-(t-t_{0})}.
+$$
+\end{example}
+\begin{example}
+On considère
+$$
+\begin{cases}
+u'(t)=-\sqrt{ |u(t)| } & t\in \mathbf{R} \\
+u(t_{0})=u_{0}.
+\end{cases}
+$$
+Soit $f:\mathbf{R}\times \mathbf{R}\to \mathbf{R},(t,x)\mapsto -\sqrt{ |x| }$ continue. On a par \ref{thm251} qu'il existe une solution locale $(J,u)$. $f$ n'est pas localement lipschitzienne autour de 0 car $|\sqrt{ x }-\sqrt{ 0 }|\nleq K|x|$. 
+
+Par contre pour $f:\mathbf{R}\times \mathbf{R}_{>0}\to \mathbf{R}$, $f$ est localement lipchitzienne, donc il existe une unique solution locale:
+$$
+u(t)=\left( \sqrt{ u_{0} }-\frac{t-t_{0}}{2} \right)^{2},\quad t< 2\sqrt{ u_{0} }+t_{0}.
+$$
+\end{example}
+
+Le théorème \ref{thm252} donne l'existence locale et unicité d'une solution locale sur un intervalle ferme $J=[t_{0}-\delta,t_{0}+\delta]\subset I$.
