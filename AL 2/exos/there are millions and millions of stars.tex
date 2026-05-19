@@ -935,4 +935,83 @@ $$
 donc $r(x)=0$ et $m_{A}(x)\mid p(x)$.
 \end{enumerate}
 \end{proof}
+\begin{exercise}[Exo etoile]\label{12star}
+Soit $A\in \mathbf{C}^{n\times n}$ et soient $J$ une forme normale de Jordan de $A$, $P$ la matrice de passage associée ($A=PJP^{-1}$).
+\begin{enumerate}
+\item Soient $B_{1},\dots,B_{k}$ l'ensemble des blocs de $J$ associes a une meme valeur propre $\lambda$. Montrer que $\dim \mathrm{Im}(J-\lambda I)=n-k$.
+\item En déduire que le nombre de blocs de $J$ associes a une valeur propre $\lambda$ est egal a sa multiplicité géométrique $\dim\ker(A-\lambda I)$.
+\item Montrer que si $A$ est diagonalisable, chaque bloc de Jordan est de taille 1 et la decomposition $A=PJP^{-1}$ est exactement sa diagonalisation.
+\end{enumerate}
+\end{exercise}
+\begin{proof}[Solution]
+\begin{enumerate}
+\item Comme $J$ est une matrice construite a partir des blocs. On voit que
+$$
+\mathrm{rank}(J-\lambda I)=\sum _{B_{i}}\mathrm{rank}(B_{i}-\lambda I).
+$$
+Si $B_{i}$ est un bloc de Jordan associe a $\lambda$, alors $B_{i}-\lambda I=J(0,n_{i})$ et $\mathrm{rank}(B_{i}-\lambda I)=n_{i}-1$. Si $B_{i}$ est associe a $\mu\neq\lambda$, alors $B_{i}-\lambda I=J(\mu -\lambda,n_{i})$ et $\mathrm{rank}(B_{i}-\lambda I)=n_{i}$. Alors
+\begin{align*}
+\mathrm{rank}(J-\lambda I) & =\sum _{B_{i}}\mathrm{rank}(B_{i}-\lambda I) \\
+ & =\sum _{B_{i}=J(\lambda,n_{i})}(n_{i}-i)+\sum _{B_{i}=J(\mu,n_{i})}n_{i}. \\
+ & =n-k.
+\end{align*}
+Car il y a $k$ blocs associes a $\lambda$.
+\item On a
+\begin{align*}
+\dim\ker(A-\lambda I ) & =\dim\ker(P^{-1}JP-\lambda P^{-1}P ) \\
+ & =\dim\ker(J-\lambda I) \\
+ & =n-\dim\mathrm{Im}(J-\lambda I) \\
+ & =k.
+\end{align*}
+\item Si $A$ est diagonalisable, alors on a $m_{\mathrm{alg}}(\lambda)=m_{\mathrm{geo}}(\lambda)$ pour toute valeur propre $\lambda$. Alors
+\begin{align*}
+\sum _{B_{i}=J(\lambda,n_{i})}n_{i} & =m_{\mathrm{alg}}(\lambda) \\
+ & =m_{\mathrm{geo}}(\lambda) \\
+ & =\sum _{B_{i}=J(\lambda,n_{i})}1.
+\end{align*}
+Donc $n_{i}=1$ pour tout bloc $B_{i}$ associe a $\lambda$. Comme $\lambda$ est arbitraire, tout bloc de $J$ est de taille 1. Alors $J$ est une matrice diagonale et donc $P^{-1}AP=J$ est une diagonalisation de $A$.
+\end{enumerate}
+\end{proof}
+\chapter{Serie 13}
+\begin{exercise}[Exo plus]
+Synthèse des résultats sur la forme normale de Jordan.
+
+Soit $A\in \mathbf{C}^{n\times n}$ une matrice et $J\in \mathbf{C}^{n\times n}$ sa forme normale de Jordan. Appelons un bloc de Jordan ayant $\lambda$ sur sa diagonale un bloc \emph{associe} a $\lambda$. Alors
+\begin{enumerate}
+\item Les blocs de $J$ sont associes aux valeurs propres de $A$.
+\item La somme des tailles des blocs associes a la meme valeur propre $\lambda$ est egal a la multiplicité algébrique de $\lambda$.
+\item Le nombre de blocs associes a la meme valeur $\lambda$ est egal a la multiplicité géométrique de $\lambda$.
+\item La taille du plus gros bloc de Jordan associe a $\lambda$ est égale a la multiplicité de $\lambda$ dans le polynôme minimal de $A$.
+\item La forme normale de Jordan est unique a ordre des blocs pres.
+\end{enumerate}
+\end{exercise}
+\begin{proof}[Solution]
+\begin{enumerate}
+\item On a
+$$
+p_{A}(x)=(-1)^{n}\prod _{\lambda(A)}(x-\lambda)^{m_{\mathrm{alg}}(\lambda)}=\det(A-xI).
+$$
+On a aussi que
+$$
+p_{J}(x)=\det(J-xI)=\det(PJP^{-1}-xI)=\det(A-xI)=p_{A}(x).
+$$
+Comme $J$ est construite a partir des blocs, alors
+\begin{align*}
+p_{J}(x) & =\det(J-xI) \\
+ & =\prod _{B_{i}}\det(B_{i}-xI) \\
+ & =(-1)^{n}\prod _{B_{i}}(x-\tilde{\lambda}_{i})^{n_{i}}.
+\end{align*}
+\item On a que 
+$$
+m_{\mathrm{alg}}(\lambda)=\sum _{B_{i}}n_{i}.
+$$
+Ca découle de la comparaison entre $p_{A}(x)$ et $p_{J}(x)$.
+\item
+$$
+m_{\mathrm{geo}}(\lambda)=\text{nombre de blocs de }J\text{ associes a }\lambda.
+$$
+c.f. \ref{12star}.
+\item On remarque que $m_{A}(x)=m_{J}(x)$. Donc $m_{J}(x)=\prod _{\lambda(A)}(x-\lambda)^{m_{\mathrm{alg}_{A}}(x)}$
+\end{enumerate}
+\end{proof}
 \end{document}
