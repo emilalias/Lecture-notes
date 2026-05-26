@@ -1,0 +1,80 @@
+\todo{Lecture 26}
+\begin{proof}[Idee de demonstration de \ref{thm252}]
+On a que $\boldsymbol{u}\in C^{0}(J_{\delta})$ est une solution au problème de Cauchy si
+$$
+\boldsymbol{u}(t)=\boldsymbol{u}_{0}+\underbrace{ \int_{t_{0}}^{t} \boldsymbol{f}(s,\boldsymbol{u}(s)) \, ds  }_{ \phi(\boldsymbol{u})(t) },\quad \forall t \in J_{\delta}
+$$
+qui est equivalent a $\boldsymbol{u}\in C^{1}(J_{\delta})$.
+
+On a la fonction $$\phi:C^{0}(J_{\delta})\to C^{0}(J_{\delta}), \boldsymbol{w}\mapsto \boldsymbol{u}_{0}+\int_{t_{0}}^{t} \boldsymbol{f}(s,\boldsymbol{w}(s)) \, ds.$$
+On cherche $\boldsymbol{u}\in C^{0}(J_{\delta})$ telle que $\boldsymbol{u}(t)=\phi(\boldsymbol{u})(t)$ pour tout $t\in J_{\delta}$. Sur $J_{\delta}$ on considère la norme
+$$
+\lVert \boldsymbol{u} \rVert _{C^{0}}=\max_{t\in J_{\delta}}\lVert \boldsymbol{u}(t) \rVert, 
+$$
+alors $(C^{0}(J_{\delta}),\lVert _{C^{0}} \rVert)$ est un espace vectoriel norme qu'on dit complet (c-a-d toute suite de Cauchy a une limite). On cherche alors $K\subset C^{0}(J_{\delta})$ tel que $\phi(K)\subseteq K$, $\phi$ soit contractante sur $K$. Comme $\boldsymbol{f}$ est localement lipschitzienne on a 
+$$
+K=\{ \boldsymbol{u}\in C^{0}(J_{\delta}):\max_{t\in J_{\delta}}\lVert \boldsymbol{u}(t)-\boldsymbol{u}_{0} \rVert \le b \}.
+$$
+
+Donne $\boldsymbol{w}\in K$, on veut montrer que pour tout $t\in J_{\delta}$ on a $\lVert \phi(\boldsymbol{w})(t)-\boldsymbol{u}_{0} \rVert\le b$. On a que $\delta<a$, donc $J_{\delta}\subset[t_{0}-a,t_{0}+a]$. On définit
+$$
+M> \max_{\underset{\boldsymbol{x}\in \overline{B}(\boldsymbol{u}_{0},b)}{t\in[t_{0}-a,t_{0}+a]}}\lVert \boldsymbol{f}(t,\boldsymbol{x}) \rVert .
+$$
+Alors
+\begin{align*}
+\left\lVert  \int_{t_{0}}^{t} \boldsymbol{f}(s,\boldsymbol{w}(s)) \, ds   \right\rVert  & \le \left\lvert  \int_{t_{0}}^{t} \underbrace{ \lVert \boldsymbol{f}(s,\boldsymbol{w}(s)) \rVert }_{ <M }  \, ds   \right\rvert \\
+ & \le M|t-t_{0}|  \\
+ & \le M\delta<b. 
+\end{align*}
+Donc $\delta\le \frac{M}{b}$.
+
+On veut montrer que pour toutes $\boldsymbol{w}_{1},\boldsymbol{w}_{2}\in K$, il existe $\rho<1$ tel que
+$$
+\underbrace{ \lVert \phi(\boldsymbol{w}_{1})-\phi(\boldsymbol{w}_{2}) \rVert _{C^{0}(J_{\delta})} }_{ \lVert \phi(\boldsymbol{w}_{1})(t)-\phi(\boldsymbol{w}_{2})(t) \rVert  }\le \rho \lVert \boldsymbol{w}_{1}-\boldsymbol{w}_{2} \rVert _{C^{0}(J_{\delta})}.
+$$
+On a
+\begin{align*}
+\left\lVert  \int_{t_{0}}^{t} \boldsymbol{f}(s,\boldsymbol{w}_{1}(s))-\boldsymbol{f}(s,\boldsymbol{w}_{2}(s)) \, ds   \right\rVert  & \le \left\lvert  \int_{t_{0}}^{t}\underbrace{  \lVert \boldsymbol{f}(s,\boldsymbol{w}_{1}(s))-\boldsymbol{f}(s,\boldsymbol{w}_{2}(s)) \rVert }_{ \le L\lVert \boldsymbol{w}_{1}(s)-\boldsymbol{w}_{2}(s) \rVert  }  \, ds   \right\rvert  \\
+ & \le \max_{s \in J_{\delta}}\lVert \boldsymbol{w}_{1}(s)-\boldsymbol{w}_{2}(s) \rVert \cdot L|t-t_{0}| \\
+ &  \le \lVert \boldsymbol{w}_{1}-\boldsymbol{w}_{2} \rVert _{C^{0}(J_{\delta})}L\delta<1.
+\end{align*}
+Donc $\delta< \frac{1}{L}$. 
+
+Alors on considère toutes les conditions sur $\delta$ pour trouver
+$$
+\delta =\min \left\{  \frac{1}{L},a, \frac{M}{b}  \right\}.
+$$
+Il existe alors une unique solution $\boldsymbol{u}\in K\subset C^{0}(J_{\delta})$ telle que $\phi(\boldsymbol{u})=\boldsymbol{u}$.
+\end{proof}
+
+\begin{definition}
+On dit que $\boldsymbol{f}:I\times \mathbf{R}^{n}\to \mathbf{R}^{n}$ est globalement lipschitzienne par rapport au deuxième argument s'il existe une fonction continue $L:I\to \mathbf{R}$ telle que pour tous $\boldsymbol{x},\boldsymbol{y}\in \mathbf{R}^{n}$ on a
+$$
+\lVert \boldsymbol{f}(t,\boldsymbol{x})-\boldsymbol{f}(t,\boldsymbol{y}) \rVert \le L(t) \lVert \boldsymbol{x}-\boldsymbol{y} \rVert 
+$$
+\end{definition}
+\begin{theorem}[Cauchy-Lipschitz - version globale]
+Si $\boldsymbol{f}$ est globalement lipschitzienne par rapport au deuxième argument, alors il existe une solution globale au problème de Cauchy pour tout $(t_{0},\boldsymbol{u}_{0})\in I\times \mathbf{R}^{n}$.
+\end{theorem}
+\begin{proof}[Idee de demonstration]
+Supposons $I$ borne et $L=\sup_{t\in I}L(t)<\infty$. On cherche $\boldsymbol{u}\in C^{0}(J_{\delta})$ telle que $\boldsymbol{u}=\phi(\boldsymbol{u})$. On prend $K=C^{0}(J_{\delta})$ et $\delta=\frac{1}{2L}$. Il existe une unique solution locale sur $\left[ t_{0}-\frac{1}{2L},t_{0}+\frac{1}{2L} \right]$. Comme $L$ reste constante, on peut étendre cette solution dans un nombre fini de pas en considérant des intervalles de la forme $t_{0}\pm \frac{n}{2L}$.
+\end{proof}
+\section{Equations linéaire du deuxième ordre}
+
+Soit $I\subset \mathbf{R}$ ouvert et $a,b,g\in C^{0}(I)$. On considère le problème de Cauchy
+$$
+\begin{cases}
+u''(t)+a(t)u'(t)+b(t)u(t)=g(t) & \forall t\in I \\
+u(t_{0})=u_{0}, u'(t_{0})=v_{0}.
+\end{cases}
+$$
+On a
+$$
+\boldsymbol{u}(t)=\begin{pmatrix}
+u(t) \\
+u'(t)
+\end{pmatrix}\Rightarrow \boldsymbol{u}'(t)=\begin{pmatrix}
+u'(t) \\
+g(t)-a(t)u'(t)-b(t)u(t)
+\end{pmatrix}=\boldsymbol{f}(t,\boldsymbol{u}(t)).
+$$

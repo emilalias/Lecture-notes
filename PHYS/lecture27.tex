@@ -1,0 +1,158 @@
+\todo{Lecture 27}
+\section{Ondes électromagnétiques dans le vide}
+
+Dans le vide $\rho _{\mathrm{el}}=0$ et $\boldsymbol{j}=\boldsymbol{0}$, alors 
+\begin{enumerate}
+\item $\boldsymbol{\nabla E}=0$
+\item \label{eq271} $\boldsymbol{\nabla}\times \boldsymbol{E}=-\frac{ \partial \boldsymbol{B} }{ \partial t}$
+\item $\boldsymbol{\nabla B}=0$
+\item \label{eq272} $\boldsymbol{\nabla}\times \boldsymbol{B}=\varepsilon_{0}\mu_{0}\frac{ \partial \boldsymbol{E} }{ \partial t }$.
+\end{enumerate}
+On utilise cette identité utile : 
+\begin{proposition}
+Soit $\boldsymbol{A}$ un champ vectoriel. Alors
+$$
+\boldsymbol{\nabla}\times (\boldsymbol{\nabla}\times \boldsymbol{A})=\boldsymbol{\nabla}(\boldsymbol{\nabla A})-\boldsymbol{\nabla}^{2}\boldsymbol{A}.
+$$
+\end{proposition}
+
+Prenons le rotationnel de \ref{eq271} :
+\begin{align*}
+\boldsymbol{\nabla}\times(\boldsymbol{\nabla}\times \boldsymbol{E}) & =- -\boldsymbol{\nabla}\times \frac{ \partial \boldsymbol{B} }{ \partial t }  \\
+ & =-\frac{ \partial  }{ \partial t } \boldsymbol{\nabla}\times \boldsymbol{B} \\
+ & =-\frac{ \partial  }{ \partial t } \left( \varepsilon_{0}\mu_{0}\frac{ \partial \boldsymbol{E} }{ \partial t}  \right) \\
+ & =-\varepsilon_{0}\mu_{0}\frac{ \partial^{2}\boldsymbol{E} }{ \partial t^{2} }  \\
+ & =-\Delta \boldsymbol{E}.
+\end{align*}
+Donc
+$$
+\frac{ \partial^{2}\boldsymbol{E} }{ \partial t^{2} }=\frac{1}{\varepsilon_{0}\mu_{0}}\Delta \boldsymbol{E}. 
+$$
+Le champ électrique satisfait une equation d'onde.
+
+De manière similaire pour $\boldsymbol{B}$, en prenant le rotationnel de \ref{eq271} plus \ref{eq272}, on a
+$$
+\frac{ \partial^{2}\boldsymbol{B} }{ \partial t^{2} } =\frac{1}{\varepsilon_{0}\mu_{0}}\Delta \boldsymbol{B}.
+$$
+
+On a la vitesse d'onde 
+$$
+c=\frac{1}{\sqrt{ \varepsilon_{0}\mu_{0} }}\approx 3\cdot 10^{8}\,\mathrm{ms}^{-1}.
+$$
+\begin{remark}
+Maxwell a conclue correctement que la lumière est une onde électromagnétique. C'est vraie pour d'autres types de radiation. 
+\end{remark}
+\begin{remark}
+Contrairement aux ondes sonores, p.ex., les ondes électromagnétiques n'ont pas besoin d'un medium pour se propager.
+\end{remark}
+\subsection{Ondes planes dans le vide}
+
+Cherchons solutions de type onde sinusoïdale plane.
+\begin{notation}
+$$\boldsymbol{\tilde{E}}(\boldsymbol{r},t)=\boldsymbol{\tilde{E}}_{0}e^{i(\omega t-\boldsymbol{kr})}, \quad \boldsymbol{\tilde{B}}(\boldsymbol{r},t)=\boldsymbol{\tilde{B}}_{0}e^{ i(\omega't-\boldsymbol{k}'\boldsymbol{r}) }.$$
+Les vecteurs $\boldsymbol{\tilde{E}}_{0}$ et $\boldsymbol{\tilde{B}}_{0}$ sont constantes. Les vecteurs $\boldsymbol{k}$ et $\boldsymbol{k}'$ sont vecteurs d'onde, leur direction de propagation est donne par $\frac{\boldsymbol{k}}{\lVert \boldsymbol{k} \rVert}$. 
+\end{notation}
+Pour satisfaire l'equation d'onde, il faut que 
+$$
+\omega=\frac{1}{\sqrt{ \varepsilon_{0}\mu_{0} }}\lVert \boldsymbol{k} \rVert =c\lVert k \rVert .
+$$
+On choisit l'axe $\boldsymbol{\hat{e}}_{z}$ parallèle a $\boldsymbol{k}$. Alors 
+$$
+\boldsymbol{k}=\begin{pmatrix}
+0 \\
+0 \\
+k
+\end{pmatrix}, \quad \boldsymbol{\tilde{E}}(\boldsymbol{r},t)=\boldsymbol{\tilde{E}}_{0}e^{ i(\omega t-kz) }.
+$$
+On a par Gauss
+$$
+\begin{pmatrix}
+\partial _{x} \\
+\partial _{y} \\
+\partial _{z}
+\end{pmatrix}\begin{pmatrix}
+\tilde{E}_{0,x}e^{ i(\omega t-kz) } \\
+\tilde{E}_{0,y}e^{ i(\omega t-kz ) } \\
+\tilde{E}_{0,z}e^{ i(\omega t-kz) }
+\end{pmatrix}=\tilde{E}_{0,z}e^{ i(\omega t-kz) }(-ik)=0
+$$
+donc
+$$
+\tilde{E}_{0,z}=0\Rightarrow \boldsymbol{\tilde{E}}_{0}\perp \boldsymbol{k}.
+$$
+On prend le cas $\boldsymbol{\tilde{E}}_{0}$ parallèle a $\boldsymbol{\hat{e}}_{x}$. Alors
+$$
+\boldsymbol{\tilde{E}}(\boldsymbol{r},t)=\tilde{E}_{0,x}e^{ i(\omega t-kz) }\boldsymbol{\hat{e}}_{x}.
+$$
+On a par Faraday
+\begin{align*}
+\begin{pmatrix}
+\partial _{x} \\
+\partial _{y} \\
+\partial _{z}
+\end{pmatrix}\times \begin{pmatrix}
+\tilde{E}_{0,x}e^{ i(\omega t-kz) } \\
+0 \\
+0
+\end{pmatrix} & =\begin{pmatrix}
+0 \\
+\tilde{E}_{0,x}e^{ i(\omega t-kx) }(-ik)
+\end{pmatrix} \\
+ & =-\frac{ \partial \boldsymbol{B} }{ \partial t } \\
+ & =\begin{pmatrix}
+-\tilde{B}_{0,x}i\omega'e^{ i(\omega t-\boldsymbol{k}'\boldsymbol{r}) } \\
+-\tilde{B}_{0,y}i\omega'e^{ i(\omega t-\boldsymbol{k}'\boldsymbol{r})} \\
+-\tilde{B}_{0,z}i\omega'e^{ i(\omega t-\boldsymbol{k}'\boldsymbol{r}) } 
+\end{pmatrix} 
+\end{align*}
+Donc 
+$$
+\tilde{B}_{0,x}=0=\tilde{B}_{0,z}.
+$$
+Il reste 
+$$
+(-ik)\tilde{E}_{0,x}e^{ i(\omega t-kz) }=-i\omega'\tilde{B}_{0,y}e^{ i(\omega't-k'_{x}x-k'_{y}y-k'_{z}z) }.
+$$
+Donc
+$$
+\omega=\omega',\quad k'_{x}=0=k'_{y},\quad k_{z}'=k,
+$$
+et
+$$
+\tilde{B}_{0,y}=\frac{k}{\omega}\tilde{E}_{0,x}=\frac{1}{c}\tilde{E}_{0,x}.
+$$
+
+Ecrivons $\tilde{E}_{0,x}=E_{0,x}e^{ i\varphi}$ avec $E_{0,x}=|\tilde{E}_{0,x}|>0$ et $\varphi \in \mathbf{R}$. Alors
+$$
+\tilde{B}_{0,y}=\frac{1}{c}\tilde{E}_{0,x}=\underbrace{ \frac{1}{c}E_{0,x} }_{ B_{0,y} }e^{ i\varphi }.
+$$
+Finalement
+$$
+\boldsymbol{\tilde{E}}(\boldsymbol{r},t)=E_{0,x}e^{ i(\omega t-kz+\varphi) }\,\boldsymbol{\hat{e}}_{x}, \quad \boldsymbol{B}(\boldsymbol{r},t)=B_{0,y}e^{ i(\omega t-kz+\varphi) }\,\boldsymbol{\hat{e}}_{y}.
+$$
+\begin{itemize}
+\item On vérifie facilement que les equations $\boldsymbol{\nabla B}=0$ et $\boldsymbol{\nabla}\times \boldsymbol{B}=\frac{1}{c^{2}}\frac{ \partial \boldsymbol{E} }{ \partial x }$ sont satisfaites aussi. 
+\item La partie physique est la partie réelle
+$$
+\boldsymbol{E}=\mathrm{Re}\{ \boldsymbol{\tilde{E}} \}=E_{0,x}\cos(\omega t-kz+\varphi)\,\boldsymbol{\hat{e}}_{x}
+$$
+et
+$$
+\boldsymbol{B}=\mathrm{Re}\{ \boldsymbol{\tilde{B}} \}=B_{0,y}\cos(\omega t-kz+\varphi)\,\boldsymbol{\hat{e}}_{y}.
+$$
+\item $\boldsymbol{E}\perp \boldsymbol{k}$ et $\boldsymbol{B}\perp \boldsymbol{k}$. Les ondes sont transverses.
+\item $(\boldsymbol{E},\boldsymbol{B},\boldsymbol{k})$ forment un trièdre orthogonal oriente droit. 
+\item $\boldsymbol{E}$ et $\boldsymbol{B}$ en phase $\lVert B \rVert=\frac{1}{c}\lVert \boldsymbol{E} \rVert$. Donc
+$$
+\boldsymbol{B}=\frac{\boldsymbol{k}\times \boldsymbol{E}}{\omega}.
+$$
+\item Dans un medium, la vitesse de phase des ondes électromagnétiques peut être different
+$$
+c \to \frac{c}{n} \Rightarrow \omega=\frac{c}{n}\lVert \boldsymbol{k} \rVert .
+$$
+Ou $n=\sqrt{ \varepsilon _{r} }$ est l'indice de refraction. On a que $\boldsymbol{B}=\frac{\boldsymbol{k}\times \boldsymbol{E}}{\omega}$ reste valable. Donc pour le cas precedent on a 
+$$
+B_{0,y}=\frac{k}{\omega}E_{0,x}=\frac{n}{c}E_{0,x}.
+$$
+\item Une onde électromagnétique transporte de l'énergie. Soit une onde électromagnétique qui impacte une surface $A$. On veut trouver $S$ l'énergie transportee le long de $\boldsymbol{k}$ par unite de surface et temps. 
+\end{itemize}

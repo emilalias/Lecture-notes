@@ -1014,4 +1014,46 @@ c.f. \ref{12star}.
 \item On remarque que $m_{A}(x)=m_{J}(x)$. Donc $m_{J}(x)=\prod _{\lambda(A)}(x-\lambda)^{m_{\mathrm{alg}_{A}}(x)}$
 \end{enumerate}
 \end{proof}
+\begin{exercise}[Exo etoile]
+En utilisant la forme normale de Jordan montrer que toute matrice $A\in \mathbf{C}^{n\times n}$ est semblable a sa transposée $A^{\mathsf{T}}$.
+\end{exercise}
+\begin{proof}[Solution]
+Par le théorème de Jordan, il existe $P\in \mathrm{GL}_{n}(\mathbf{C})$ telle que $A=P^{-1}JP$ ou $J$ est la forme normale de Jordan de $A$. Alors 
+$$
+A^{\mathsf{T}}=P^{\mathsf{T}}J^{\mathsf{T}}(P^{-1})^{\mathsf{T}}.
+$$
+On remarque la transposée de la forme normale de Jordan est de la forme
+$$
+J(\lambda,k)^{\mathsf{T}}=\begin{pmatrix}
+\lambda \\
+1 & \ddots \\
+ & \ddots  & \ddots\\
+ &  & 1 & \lambda \\
+\end{pmatrix}.
+$$
+On définit $C(k):=\begin{pmatrix} &  & 1 \\  & \ddots \\ 1 \\ \end{pmatrix}\in \mathbf{C}^{k\times k}$ et par un calcul, on voit que
+$$
+J(\lambda,k)=C(k)J(\lambda,k)^{\mathsf{T}}C(k).
+$$
+En plus $C(k)^{-1}=C(k)$. Donc on construit la matrice $\tilde{C}\in \mathbf{C}^{n\times n}$ en prenant $J$ et en remplaçant chaque bloc $(J(\lambda,k))$ de Jordan par un bloc $C(k)$. On a
+$$
+\tilde{C}=\begin{pmatrix}
+C(k_{1,1}) \\
+ & \ddots \\
+ &  & C(k_{\ell},m)
+\end{pmatrix}.
+$$
+Donc 
+\begin{align*}
+A^{\mathsf{T}} & =P^{\mathsf{T}}J^{\mathsf{T}}(P^{-1})^{\mathsf{T}} \\
+ & =P^{\mathsf{T}}\tilde{C}J\tilde{C}(P^{-1})^{\mathsf{T}} \\
+ & =P^{\mathsf{T}}\tilde{C}PAP^{-1}\tilde{C}(P^{-1})^{\mathsf{T}}
+\end{align*}
+donc comme
+$$
+(P^{\mathsf{T}}\tilde{C}P)^{-1}=P^{-1}\tilde{C}^{-1}(P^{-1})^{\mathsf{T}}=P^{-1}\tilde{C}(P^{-1})^{\mathsf{T}}
+$$
+on a montre que $A^{\mathsf{T}}\sim A$. 
+\end{proof}
+
 \end{document}

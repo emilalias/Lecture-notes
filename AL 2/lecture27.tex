@@ -1,0 +1,58 @@
+\todo{Lecture 27}
+Soit $f(x)=a_{0}+a_{1}x+\dots +a_{n-1}x^{n-1}+x^{n}$. Alors la matrice compagnon associée est donnee par 
+$$
+C_{f}=\begin{pmatrix}
+0 &   &  & -a_{0} \\
+1 & 0  &  & \vdots \\
+ & \ddots &   &  \vdots\\
+ &  & 1 & -a_{n-1} 
+\end{pmatrix}.
+$$
+On a que
+$$
+\det(C_{f}-xI)=f(x)(-1)^{n}=\det(xI - C_{f})(-1)^{n}
+$$
+et
+$$
+XI -C_{f}=\begin{pmatrix}
+x & 0  &  &  &a_{0} \\
+-1 & x &  &  & \vdots  \\
+ & \ddots & \ddots  &  & \vdots\\
+   &  & \ddots  & x & \vdots\\
+ &  &  &  -1 & x+a_{n-1}
+\end{pmatrix}.
+$$
+On veut verifier que $\det(xI - C_{f})=f(x)$. On observe que ceci est vraie pour des matrices de taille $1\times 1$ et $2 \times 2$. Pour des matrices de taille $n\times n$ pour $n> 2$ on a
+\begin{align*} 
+\det(xI -C_{f}) & =x\det \begin{pmatrix}
+x  &  &  &  & a_{1}\\
+-1 & \ddots \\
+ & \ddots & \ddots\\
+ &  &  & x \\
+ &  &  & 1 & a_{n-1}
+\end{pmatrix}+1\cdot \det \begin{pmatrix}0  & \cdots &\cdots  & a_{0} \\
+ -1 &  \\
+   & \ddots  \\
+   &  & -1 &x+a_{n-1} 
+\end{pmatrix} \\
+ & =x(x^{n-1}+a_{n-1}x^{n-2}+\dots +a_{1})+a_{0} \\
+ & =f(x).
+\end{align*}
+
+On a pour une matrice $A\in \mathbf{C}^{n\times n}$, en appliquant par récurrence cette decomposition en blocs, 
+$$
+A \sim \begin{pmatrix}
+C_{m_{A}(x)} \\
+ & C_{f_{1}(x)}  \\
+ &  & \ddots \\
+ &  &  & C_{f_{k}(x)} 
+\end{pmatrix}.
+$$
+On a 
+$$
+f_{k}(x)\mid f_{k-1}(x)\mid \cdots \mid m_{A}(x)
+$$
+et
+$$
+m_{A}(x)f_{1}(x)\cdots f_{k}(x)=f_{A}(x)(-1)^{n}.
+$$

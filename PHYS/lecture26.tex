@@ -1,0 +1,76 @@
+\chapter{Equations de Maxwell}
+
+\section{Critique de l'equation \texorpdfstring{$\boldsymbol{\nabla}\times \boldsymbol{B}=\mu _{0}\boldsymbol{j}$}{d'Ampere}}.
+
+En general ($\frac{ \partial  }{ \partial t }\neq 0$), la loi d'Ampere $\boldsymbol{\nabla}\times \boldsymbol{B}=\mu_{0}\boldsymbol{j}$ de la magnétostatique n'est pas valable. En effet, puisque
+$$
+\boldsymbol{\nabla}\cdot(\boldsymbol{\nabla}\times \boldsymbol{B})=0.
+$$
+On constate qu'en prenant la divergence de la loi d'Ampere, on obtient que $\boldsymbol{\nabla}\boldsymbol{j}=0$. Injectant ceci dans l'equation de la continuité de la charge électrique 
+$$
+\frac{ \partial \rho _{\mathrm{el}} }{ \partial t } +\boldsymbol{\nabla j}=0
+$$
+on obtient
+$$
+\frac{ \partial \rho _{\mathrm{el}} }{ \partial t } =0.
+$$
+\begin{example}[Enclenchement d'un circuit RC]
+Ici $I(t)=\frac{U}{R}e^{ -t/RC }$. $S_{1}$ et $S_{2}$ sont les deux des surfaces de bord $\gamma$. La loi d'Ampere intégrale nous dit que la valeur de l'integrale $\oint _{\gamma}\boldsymbol{B}\,d\boldsymbol{\ell}$ est indépendante de la surface $S$, tant qu'elle est de bord $\gamma$. Cependant
+$$
+\oint _{\gamma}\boldsymbol{B}\,d\boldsymbol{\ell}=\mu_{0}\iint _{S}\boldsymbol{j}\,d\boldsymbol{S}=\begin{cases}
+\mu_{0}I(t) & \text{pour }S=S_{1}, \\
+0 & \text{pour }S=S_{2}.
+\end{cases}
+$$
+Ceci signifie que la loi d'Ampere n'est pas valable dans le cas non-statique.
+\end{example}
+\section{Courant de déplacement de Maxwell}
+
+\begin{theorem}[Loi d'Ampere-Maxwell différentielle]
+$$
+\boldsymbol{\nabla}\times \boldsymbol{B}=\mu_{0}\boldsymbol{j}+\mu_{0}\varepsilon_{0}\frac{ \partial \boldsymbol{E} }{ \partial t } .
+$$
+Ou $\varepsilon_{0}\frac{ \partial \boldsymbol{E} }{ \partial t }$ a les unites d'une densité de courant. Il est appelle "densité de courant de déplacement".
+\end{theorem}
+\begin{theorem}[Loi d'Ampere-Maxwell intégrale]
+On peut obtenir une version intégrale par le théorème de Stokes.
+$$
+\oint _{\gamma}\boldsymbol{B}\,d\boldsymbol{\ell}=\iint _{S}\left( \mu_{0}\boldsymbol{j}+\mu_{0}\varepsilon _{0}\frac{ \partial \boldsymbol{E} }{ \partial t }  \right)\,d\boldsymbol{S}'.
+$$
+\end{theorem}
+\paragraph{Verifications}
+\begin{enumerate}
+\item On vérifie l'equation de continuité. 
+\begin{align*}
+0 & =\boldsymbol{\nabla}(\boldsymbol{\nabla}\times \boldsymbol{B}) \\
+ & =\mu_{0}\boldsymbol{\nabla j}+\varepsilon_{0}\mu_{0}\boldsymbol{\nabla}\frac{ \partial \boldsymbol{E} }{ \partial t }  \\
+ & =\mu_{0}\boldsymbol{\nabla j}+\varepsilon_{0}\mu_{0}\frac{ \partial  }{ \partial t } (\boldsymbol{\nabla E}) \\
+\Leftrightarrow \frac{ \partial \rho _{\mathrm{el}} }{ \partial t } +\boldsymbol{\nabla j} & =0.
+\end{align*}
+\item On vérifie également si l'exemple du circuit RC est désormais coherent. Notons que sur $S=S_{2}$, $\boldsymbol{j}=\boldsymbol{0}$, mais $\frac{ \partial \boldsymbol{E} }{ \partial t }\neq 0$. De plus, pour un condensateur plan, on rappelle que 
+$$
+\lVert \boldsymbol{E} \rVert =\frac{q}{\varepsilon_{0}S_{c}}.
+$$
+Ou $S_{c}$ est l'aire d'une plaque et $\boldsymbol{E}\parallel d\boldsymbol{S}$ sur la partie de $S_{2}$ se situant entre les plaques dun condensateur. En particulier 
+$$
+\frac{ \partial \lVert \boldsymbol{E} \rVert  }{ \partial t } =\frac{1}{\varepsilon_{0}S_{c}} \frac{dq}{dt}=\frac{1}{\varepsilon_{0}S_{c}}I(t).
+$$
+Par la forme integral de la loi d'Ampere-Maxwell et du fait que $\boldsymbol{E}=\boldsymbol{0}$ pour la portion de $S_{2}$ pas comprise entre les deux plaques conductrices on a
+$$
+\mu_{0}\iint _{S=S_{2}}\left( \boldsymbol{j}+\varepsilon_{0}\frac{ \partial \boldsymbol{E} }{ \partial t }  \right)\,d\boldsymbol{S}=\mu_{0}\varepsilon_{0} \frac{I}{\varepsilon_{0}S_{c}}I(t)S_{c}=\mu_{0}I(t).
+$$
+\end{enumerate}
+\section{Les equations de Maxwell}
+Le système d'equations suivante est valable en general dans le cadre de la dynamique :
+\begin{enumerate}
+\item Gauss : $\boldsymbol{\nabla E}=\frac{\rho _{\mathrm{el}}}{\varepsilon_{0}}$
+\item Faraday : $\boldsymbol{\nabla}\times \boldsymbol{E}=-\frac{ \partial \boldsymbol{B} }{ \partial t }$
+\item Gauss pour $\boldsymbol{B}$ : $\boldsymbol{\nabla B}=0$
+\item Ampere-Maxwell : $\boldsymbol{\nabla}\times \boldsymbol{B}=\mu_{0}\boldsymbol{j}+\varepsilon_{0}\mu_{0}\frac{ \partial \boldsymbol{E} }{ \partial t }$
+\end{enumerate}
+\begin{remark}
+Ces equation décrivent que les charges et les courants sont sources des champs électromagnétiques ($\boldsymbol{E}$ et $\boldsymbol{B}$). En revanche, la force exercee par $\boldsymbol{E}$ et $\boldsymbol{B}$ sur une charge est donne par
+$$
+\boldsymbol{F}=q(\boldsymbol{E}+\boldsymbol{v}\times \boldsymbol{B}).
+$$
+\end{remark}

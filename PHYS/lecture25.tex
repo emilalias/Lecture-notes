@@ -1,0 +1,116 @@
+\todo{Lecture 25}
+\paragraph{Remarques}
+\begin{itemize}
+\item On a choisi l'orientation de $d\boldsymbol{\ell}$ et $d\boldsymbol{S}$ selon la règle du vis.
+\item La loi de Faraday est aussi valable si l'orientation et la forme du fil (et donc de $S$) varie au cours du temps.
+\item La tension induite dans un fil qui forme deux boucles est celle si l'on mettait les deux boucles en série dans le meme sens : 
+$$
+\varepsilon _{\mathrm{ind}}=\varepsilon _{\mathrm{ind},1} +\varepsilon _{\mathrm{ind},2}=-\frac{d}{dt} \Phi _{1}-\frac{d}{dt} \Phi_{2}=-\frac{d}{dt} (\Phi_{1}+\Phi_{2})=-\frac{d}{dt}\Phi _{\mathrm{t o t}}.
+$$
+Qu'on peut généraliser pour $n$-boucles identiques
+$$
+\varepsilon _{\mathrm{ind}}=\frac{d}{dt} \Phi _{\mathrm{ t o t}}.
+$$
+Ou $\Phi _{\mathrm{ t o t }}=N\Phi$ avec $\Phi$ le flux a travers d'un boucle.
+\end{itemize}
+\section{Loi de Faraday différentielle}
+Prenons un chemin $\gamma$ fixe dans le temps. Un champ $\boldsymbol{E}$ est induit meme si il n'y a pas de fil conducteur (le fil conducteur et son courant servaient juste a démonter l'exsiste du champ $\boldsymbol{E}$ induit) : 
+$$
+\oint _{\gamma}\boldsymbol{E}\,d\boldsymbol{\ell}=-\frac{d}{dt} \iint _{S}\boldsymbol{B}\,d\boldsymbol{S},
+$$
+ou $\gamma$ est un chemin fixe mais sinon arbitraire. On peut choisir $S$ fixe aussi. Dans ce cas :
+$$
+-\frac{d}{dt} \iint _{S}\boldsymbol{B}\, d\boldsymbol{S}=-\iint _{S}\frac{ \partial \boldsymbol{B} }{ \partial t } \,d\boldsymbol{S}.
+$$
+En plus, le théorème de Stokes nous donne :
+$$
+\int _{\gamma}\boldsymbol{E}\,d\boldsymbol{\ell}=\iint _{S}\boldsymbol{\nabla}\times \boldsymbol{E}\,d\boldsymbol{S}.
+$$
+\begin{theorem}[Loi de Faraday différentielle / locale]
+On a pour tout $S$ fixe : 
+$$
+\iint _{S}\left( \boldsymbol{\nabla}\times \boldsymbol{E}+\frac{ \partial \boldsymbol{B} }{ \partial t }  \right)\,d\boldsymbol{S}=0
+$$
+donc
+$$
+\boldsymbol{\nabla}\times \boldsymbol{E}=-\frac{ \partial \boldsymbol{B} }{ \partial t} 
+$$
+\end{theorem}
+\begin{remark}
+Ceci generalise le resultat de l'electrostatique $\boldsymbol{\nabla}\times \boldsymbol{E}=0$. Meme en presence d'un champ magenitique constant, la circulation de $\boldsymbol{E}$ reste nulle. Il est crucial de comprendre que l'induction ne provient pas de la seule presence du champ magnétique, mais de sa variation temporelle.
+\end{remark}
+\section{Regle de Lenz}
+Il est important de determiner quel est la direction du courant (et du champ $\boldsymbol{E}$) induit. La reponse a ceci est donne par la regle de Lenz.
+\begin{theorem}[Regle de Lenz]
+Le courant induit $I$ dans la boucle est oriente tel que le champ $\boldsymbol{B}$ qu'il cree lui meme s'oppose au changement du flux magnetique.
+\end{theorem}
+\section{Circuit electriques en presence de phenomenes d'induction}
+\subsection{Self-induction}
+
+Pour une bobine / solenoide, on a que $B\approx \mu_{0}In$ a l'interieur de la bobine, ou $n$ est le nombre de tours par metre. Ce $B$ produit un flux $\Phi$ a travers la bobine elle-meme. Par boucle, 
+$$
+\Phi=BS=\mu_{0}InS
+$$
+ou $S$ est la section de la bobine. Une bobine de longueur $\ell$ a $n\ell$ boucles a donc
+$$
+\Phi _{\mathrm{ t o t}}=\Phi n\ell=\mu_{0}n^{2}\ell sI=LI
+$$
+ou $L:=\mu_{0}n^{2}\ell S$ est l'auto-inductance ou "self" de la bobine. L'unite est
+$$
+[L]=\mathrm{Tm}^{2}\mathrm{A}^{-1}=H
+$$
+de Henry. 
+
+Si $\frac{dI}{dt}\neq0$, alors $\frac{d}{dt}\Phi _{\mathrm{t ot}}\neq 0$, i.e. une bobine induit une tension dans elle meme. Ainsi 
+$$
+\varepsilon _{\mathrm{ind}}=-\frac{d}{dt}\Phi _{\mathrm{tot}}=-L\frac{d}{dt} I.
+$$
+On appelle ce phenomene \emph{self-inductance}.
+\subsection{Circuit electrique avec une self}
+voir poly page 122
+\subsection{Signe de la tension induite dans la loi des mailles}
+Si l'on choisit une orientation pour $d\boldsymbol{S}$ tel que $I$ circule dans le sens respectant la règle du vis, une application de la loi des mailles dans le sens de $I$ donnera un signe positif $+$ a $\varepsilon _{\mathrm{ind}}$.
+\subsection{Energie magnétique}
+Considérons la loi des mailles pour un circuit RL, en particulier :
+$$
+\varepsilon=RI + L \frac{d}{dt}I.
+$$
+Cela nous permet d'obtenir une nouvelle equation :
+\begin{theorem}[Equation de conservation d'energieu du circuit]
+$$
+\varepsilon I=RI^{2}+IL\frac{d}{dt} I
+$$
+\end{theorem}
+\paragraph{Remarques}
+\begin{itemize}
+\item $\varepsilon I$ est la puissance fourni par l'appareil a f.é.m..
+\item $RI^{2}=U_{R}I$ (ou $U_{R}$ est la chute de tension a travers $R$) est égale a la puissance dissipée par effet Joule.
+\item $IL\frac{d}{dt}I$ est la puissance necessaire pour que les charges puissent surmonter la tension induite $\varepsilon _{\mathrm{ind}}=-L\frac{d}{dt}I$.
+\end{itemize}
+
+Notez que la puissance $IL\frac{d}{dt}I$ est stockee dans le champ $B$ de la bobine en forme d'energie magnetique ! Cette énergie, on la calcule au moyen de l'integrale de la puissance lorsque l'on passe de $I=0$ a $I=I_{0}$ dans le temps $[0,t_{0}]$ :
+$$
+W_{\mathrm{self}}=\int_{0}^{t_{0}} P \, dt=\int_{0}^{t_{0}} IL\frac{d}{dt} I \, dt=\int_{0}^{t_{0}} \frac{d}{dt} \left( \frac{I}{2}LI^{2} \right) \, dt=\frac{1}{2}L(I^{2}(t_{0})-I^{2}(0))=\frac{1}{2}LI_{0}^{2}.
+$$
+\begin{example}[Bobine ideale]
+Pour une bobine idéale, on a que $L=\mu_{0}n^{2}\ell S$ et $I=\frac{B}{\mu_{0}n}$. Alors
+$$
+W_{\mathrm{self}}=\frac{1}{2}LI^{2}=\frac{1}{2}\mu_{0}n^{2}\ell S \frac{B^{2}}{\mu^{2}_{0}n^{2}}=\frac{B^{2}}{2\mu_0}\underbrace{ \ell S }_{ V }.
+$$
+Ou $V$ est le volume entourée par la bobine. Alors la densité d'énergie magnétique vaut 
+$$
+e_{B}=\frac{1}{2} \frac{B^{2}}{\mu_{0}}.
+$$
+
+Ceci permet de trouver la densité d'Energie électrique et magnétique dans le vide. Par exemple, sans diélectrique :
+$$
+e_{EB}=\frac{\varepsilon_{0}E^{2}}{2}+\frac{B^{2}}{2\mu_{0}}.
+$$\end{example}
+\begin{example}[Tokomak]
+Le Tokamak a configuration variable TCV a l'EPFL utilise un champ $B$ pour confiner des plasma d'environ 10 million de degre celsius. Dans cette installation, on a $B\approx 1.5\,\mathrm{T}$ sur un volume d'environ $17~\mathrm{m}^{3}$. L'energie stockee dans $B$ est donc
+\begin{align*}
+E_{B} & =\iiint _{V}e_{B}\,dV' \\
+ & \approx \frac{B^{2}}{2\mu_{0}}V  \\
+ & \approx 15~\mathrm{MJ}.
+\end{align*}
+\end{example}
