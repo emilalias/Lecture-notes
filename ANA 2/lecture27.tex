@@ -1,0 +1,191 @@
+\todo{Lecture 27}
+
+On peut construire une intégrale générale du problème de Cauchy de la forme : "solution générale de l'equation homogène" plus "solution particulière de l'equation non homogène".
+\subsection{Solution générale de l'equation homogène}
+\begin{definition}
+Soit $z_{1}$ et $z_{2}$ des solutions de l'equation homogène. On dit que $z_{1}$ et $z_{2}$ sont linéairement indépendantes si pour $\alpha,\beta \in \mathbf{R}$ et pour tout $t\in I$ on a
+$$
+\alpha z_{1}(t)+\beta z_{2}(t)=0\Rightarrow \alpha=\beta=0.
+$$
+\end{definition}
+\begin{definition}
+Soient $z_{1}$ et $z_{2}$ des solutions de l'equation homogène. On appelle le Wronskien de $z_{1}$ et $z_{2}$ note $W[z_{1},z_{2}]$ la fonction 
+$$
+W[z_{1},z_{2}](t)=\det \begin{pmatrix}
+z_{1}(t) & z_{2}(t) \\
+z_{1}'(t) & z_{2}'(t)
+\end{pmatrix}.
+$$
+\end{definition}
+\begin{theorem}
+Les fonctions $z_{1}$ et $z_{2}$ sont linéairement indépendantes si et seulement si $W[z_{1},z_{2}](t)\neq 0$ pour tout $t\in I$.
+\end{theorem}
+\begin{proof}
+\begin{itemize}
+\item Direction $\Rightarrow$ : Par l'absurde, supposons qu'il existe $t_{0}\in I$ tel que $W[z_{1},z_{2}](t_{0})=0$. Alors les vecteurs
+$(z_{1}(t_{0}),z_{1}'(t_{0}))^{\mathsf{T}}$ et $(z_{2}(t_{0}),z_{2}'(t_{0}))^{\mathsf{T}}$ sont linéairement dependents. Ils existent alors $\alpha$ et $\beta$ dans $\mathbf{R}^{*}$ tels que
+$$
+\alpha \begin{pmatrix}
+z_{1}(t_{0}) \\
+z_{1}'(t_{0}) 
+\end{pmatrix}+\beta \begin{pmatrix}
+z_{2}(t_{0}) \\
+z_{2}'(t_{0})
+\end{pmatrix}=\boldsymbol{0}.$$
+
+Soit $v(t)=\alpha z_{1}(t)+\beta z_{2}(t)$ et 
+$$
+\begin{cases}
+v''(t)+a(t)v'(t)+b(t)v(t)=\alpha[z_{1}''(t)+a(t)z_{1}'(t)+b(t)z_{1}(t)] + \beta[z_{2}''(t)+a(t)z_{2}'(t)+b(t)z_{2}(t)]=0 \\
+v(t_{0})=0, \,\, v'(t_{0})=0.
+\end{cases}
+$$
+Donc $v(t)=0$ pour tout $t$ et $\alpha z_{1}(t)+\beta z_{2}(t)=0$ pour tout $t$ qui est une contradiction avec l'hypothese que $z_{1}$ et $z_{2}$ sont linéairement indépendantes.
+\item Direction $\Leftarrow$ : Par l'absurde, supposons que $z_{1}$ et $z_{2}$ sont linéairement dépendantes, alors ils existent $\alpha$ et $\beta$ dans $\mathbf{R}$ tels que $\alpha z_{1}(t)+\beta z_{2}(t)=0$ pour tout $t\in I$. La dérivée est aussi nulle. Alors
+$$
+\alpha \begin{pmatrix}
+z_{1}(t_{0}) \\
+z_{1}'(t_{0}) 
+\end{pmatrix}+\beta \begin{pmatrix}
+z_{2}(t_{0}) \\
+z_{2}'(t_{0})
+\end{pmatrix}=\boldsymbol{0}.
+$$
+Mais ceci pose une contradiction avec l'hypothese que $W[z_{1},z_{2}](t)\neq 0$. 
+\end{itemize}
+\end{proof}
+
+Soit $S=\{ u\in C^{2}(I):u''(t)+a(t)u'(t)+b(t)u(t)=0 \}$. Soit $$\varphi:S\to \mathbf{R}^{2}, u\mapsto \begin{pmatrix}
+u(t_{0}) \\
+u'(t_{0})
+\end{pmatrix}$$
+pour un $t_{0}\in I$ fixe. $\varphi$ est une application linéaire et une bijection. On a la fonction inverse $\varphi ^{-1}:\mathbf{R}^{2}\to S$. Soit $\boldsymbol{x}\in \mathbf{R}^{2}$ et $u=\varphi ^{-1}(\boldsymbol{x})$ une solution du problème de Cauchy
+$$
+\begin{cases}
+u''(t)+a(t)u'(t)+b(t)u(t)=0 \\
+ u(t_{0})=x_{1}, \, \, u'(t_{0})=x_{2}.
+\end{cases}
+$$
+Alors $\varphi \circ \varphi ^{-1}=\mathrm{Id}$ et $\varphi ^{-1} \circ \varphi = \mathrm{Id}$. Comme $S$ est un espace vectoriel de dimension 2, on a que toute couple $z_{1},z_{2}\in S$ linéairement indépendante est une base de $S$. Soit $z_{1},z_{2}$ solutions de l'equation homogène linéairement indépendantes, alors tout autre solution est de la forme
+$$
+u(t)=C_{1}z_{1}(t)+C_{2}z_{2}(t), \quad C_{1},C_{2}\in \mathbf{R}.
+$$
+
+L'integrale générale de $u''(t)+a(t)u'(t)+b(t)u(t)=g(t)$ est de la forme
+$$
+u(t)=C_{1}z_{1}(t)+C_{2}z_{2}(t)+w(t). 
+$$
+
+\paragraph{Méthode de variation de constantes} Soit $z_{1}$ une solution de l'equation homogène. On peut construire une deuxième solution $z_{2}$ de l'equation homogène linéairement indépendante de $z_{1}$ sous la forme 
+$$
+z_{2}(t)=C(t)z_{1}(t)
+$$
+avec $C\in C^{2}(I)$. On a 
+\begin{align*}
+0=z_{2}''+az_{2}'+bz_{2} & =(Cz_{1})''+a(Cz_{1})'+bCz_{1} \\
+ & =(C'z_{1}+Cz_{1}' )'+aC'z_{1}+aCz_{1}'+bCz_{1}  \\
+ & =C''z_{1}+C'z_{1}' +C'z_{1}'+Cz_{1}''+a(C'z_{1}+Cz_{1}')+bCz_{1}  \\
+ & =C''z_{1}+C'(2z_{1}'+az_{1}) 
+\end{align*}
+On pose $K=C'$. Alors
+$$
+K'z_{1}+K(2z_{1}'+az_{1})=0
+$$
+et
+$$
+K'(t)=- \frac{2z_{1}'(t)+a(t)z_{1}(t)}{z_{1}(t)}K(t).
+$$
+Donc
+$$
+K(t)=\mu e^{ -\int ^{t} \frac{2z_{1}'(s)+a(s)z_{1}(s)}{z_{1}(s)}\,ds }\Rightarrow C(t)=\int ^{t}K(s)\,ds+v.
+$$
+
+
+Etant donne $z_{1},z_{2}$ des solutions de l'equation homogène linéairement indépendantes, on veut trouver une solution particulière sous la forme 
+$$
+w(t)=C_{1}(t)z_{1}(t)+C_{2}(t)z_{2}(t)=\sum_{i=1}^{2} C_{i}z_{i}(t).
+$$
+On a
+\begin{align*}
+g=w''+aw'+w & =\left( \sum _{i}C_{i}z_{i} \right)''+a\left( \sum _{i}C_{i}z_{i} \right)'+b\sum _{i}C_{i}z_{i} \\
+ & =\sum _{i}(C_{i}''z_{i}+2C_{i}'z_{i}'+C_{i}z_{i}''+aC_{i}'z_{i}+aC_{i}z_{i}'+bC_{i}z_{i}) \\
+ & =\sum _{i}(C_{i}''z_{i}+C_{i}'z_{i}' +C_{i}'z_{i}'+aC_{i}'z_{i}) \\
+ & =\frac{d}{dt} \left( \sum _{i}C_{i}'z_{i} \right)+\sum _{i}C_{i}'z_{i}'+a\sum _{i}C_{i}'z_{i}.
+\end{align*}
+On impose les conditions
+\begin{enumerate}
+\item $\sum _{i}C_{i}'z_{i}=0$
+\item $\sum _{i}C_{i}'z_{i}'=g$.
+\end{enumerate}
+Alors, on a le système 
+$$
+\begin{cases}
+C_{1}'(t)z_{1}(t)+C_{2}'(t)z_{2}(t)=0 \\
+C_{1}'(t)z_{1}'(t)+C_{2}'(t)z_{2}'(t)=g(t).
+\end{cases}
+$$
+Qu'on peut réinterpréter comme
+$$
+\begin{pmatrix}
+z_{1}(t) & z_{2}(t) \\
+z_{1}'(t) & z_{2}'(t)
+\end{pmatrix}\begin{pmatrix}
+C_{1}'(t) \\
+C_{2}'(t)
+\end{pmatrix}=\begin{pmatrix}
+0 \\
+g(t)
+\end{pmatrix}
+$$
+donc
+$$
+\begin{pmatrix}
+C_{1}'(t) \\
+C_{2}'(t)
+\end{pmatrix}=\begin{pmatrix}
+z_{1}(t) & z_{2}(t) \\
+z_{1}'(t) & z_{2}'(t)
+\end{pmatrix}^{-1}\begin{pmatrix}
+0 \\
+g(t)
+\end{pmatrix}.
+$$
+
+\subsection{Equations a coefficients constants}
+
+Soit $a(t)=\alpha \in \mathbf{R}$ et $b(t)=\beta \in \mathbf{R}$ pour tout $t\in I$. Alors
+$$
+u''(t)+\alpha u'(t)+\beta u(t)=g(t).
+$$
+Pour l'equation homogene, on cherche une solution de la forme $z_{1}=e^{ \lambda t }$.
+\begin{align*}
+0=z_{1}''+\alpha z_{1}'+\beta z_{1} & =\lambda^{2}e^{ \lambda t }+\lambda \alpha e^{ \lambda t }+\beta e^{ \lambda t } \\
+ & = (\lambda^{2}+\alpha\lambda +\beta )e^{ \lambda t }
+\end{align*}
+\begin{description}
+\item[Cas 1 : Le discriminant $\Delta=\alpha^{2}-4\beta> 0$.]  Soit $\lambda_{1},\lambda_{2}$ les deux zeros reels du polynôme. Alors
+$$
+z_{1}(t)=e^{ \lambda_{1}t },\quad z_{2}(t)=e^{ \lambda_{2}t }.
+$$
+Ces solutions sont linéairement indépendantes
+$$
+W[z_{1},z_{2}](t)=(\lambda_{2}-\lambda_{1})e^{ (\lambda_{1}+\lambda_{2})t }\neq  0.
+$$
+\item[Cas 2 : $\Delta < 0$] Les deux zeros du polynôme $\lambda_{1}$ et $\lambda_{2}$ seront des complexes conjuguées.
+$$
+\lambda _{1,2}=-\frac{\alpha}{2}\pm \frac{i\sqrt{ |\Delta| }}{2}.
+$$
+Alors
+$$
+\tilde{z}_{1}(t)=\exp\left( -\frac{\alpha}{2}t-i \frac{\sqrt{ \Delta }}{2}t \right)=e^{ -\alpha t/2 }e^{ -i\omega t },\quad \tilde{z}_{2}(t)=e^{ -\alpha t/2 }e^{ iwt }.
+$$
+Qu'on peut combiner pour obtenir des solutions réelles
+$$
+z_{1}(t)=\frac{\tilde{z}_{1}(t)+\tilde{z}_{2}(t)}{2}=e^{ -\alpha t/2 }\cos(\omega t)
+$$
+et
+$$
+z_{2}(t)=\frac{\tilde{z}_{2}-\tilde{z}_{1(t)}}{2i}=e^{ -\alpha t/2 }\sin(\omega t).
+$$
+\item[Cas 3 : $\Delta =0$] On a $\lambda_{1}=\lambda_{2}=-\frac{\alpha}{2}$. Donc $z_{1}(t)=e^{ -\alpha t/2 }$. Par variation de constantes on trouve que $z_{2}(t)=te^{ -\alpha t/2 }$.
+\end{description}

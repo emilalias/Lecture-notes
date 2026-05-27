@@ -155,4 +155,33 @@ $$
 B_{0,y}=\frac{k}{\omega}E_{0,x}=\frac{n}{c}E_{0,x}.
 $$
 \item Une onde électromagnétique transporte de l'énergie. Soit une onde électromagnétique qui impacte une surface $A$. On veut trouver $S$ l'énergie transportee le long de $\boldsymbol{k}$ par unite de surface et temps. 
+\todo{Lecture 28}
+Dans le temps $dt$, la partie de l'onde dans les volumes $Ac\,dt$ travers la surface $A$ perpendiculairement. L'énergie électrique et magnétique dans ce volume est
+$$
+E_{\mathrm{EM}}=\iiint _{V}e_{\mathrm{EM}}\,dV=\iiint _{V} \frac{1}{2}\left( \varepsilon_{0}\boldsymbol{E}^{2}+\frac{1}{\mu_{0}}\boldsymbol{B}^{2} \right)\,dV \approx \frac{1}{2}\left( \varepsilon_{0}\boldsymbol{E}^{2}+\frac{1}{\mu_{0}}\boldsymbol{B}^{2} \right)Ac\,dt.
+$$
+Alors
+$$
+S=\frac{E_{\mathrm{EM}}}{A\,dt}=\frac{1}{2}\left( \varepsilon_{0}\boldsymbol{E}^{2}+\frac{1}{\mu_{0}}\boldsymbol{B} \right)c.
+$$
+\begin{example}
+On peut calculer $S$ pour les champs
+$$
+\boldsymbol{E}=E_{0,x}\cos(\omega t-kz+\varphi)\,\boldsymbol{\hat{e}}_{x},\quad \boldsymbol{B}=\frac{1}{2}E_{0,x}\cos(\omega t-kz+\varphi)\,\boldsymbol{\hat{e}}_{y}.
+$$
+Alors 
+$$
+S=\frac{1}{2}\left( \varepsilon_{0}E_{0,x}^{2}c+\frac{1}{\mu_{0}} \frac{1}{c^{2}}E_{0,x}^{2}c \right)\cos ^{2}(\omega t-kz+\varphi)
+$$.
+\end{example}
+\begin{theorem}[Vecteur de Poynting]
+De manière générale on a
+$$
+\boldsymbol{S}= \frac{\boldsymbol{E}\times \boldsymbol{B}}{\mu_{0}}.
+$$
+\end{theorem}
 \end{itemize}
+
+\begin{remark}
+L'énergie de l'onde électromagnétique ne peut varier que par des multiples de $E=h\nu$. Ou $h=6.626\cdot 10^{-34}\,\mathrm{JHz}^{-1}$ est la constante de Planck et $\nu=\frac{\omega}{2\pi}$ est la fréquence de l'onde électromagnétique. 
+\end{remark}
