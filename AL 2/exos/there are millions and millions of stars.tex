@@ -8,6 +8,7 @@
 \usepackage[concrete]{fontsetup}
 \usepackage{fontawesome}
 \usepackage{cancel}
+\usepackage{mathdots}
 \renewcommand{\qedsymbol}{\faSmileO}
 \theoremstyle{plain}
 \newtheorem{theorem}{Théorème}[chapter]
@@ -66,7 +67,7 @@ f(x) & \mapsto f(\alpha)
 
 est un morphisme d'anneuax surjectif.
 
-Soit $R=\mathbf{Z}^{2\times 2}$, trouver $\alpha \in R$ (qui n'appartient donc pas a $Z(R)$) et deux polynomes $g,h\in R[x]$ tel que
+Soit $R=\mathbb{Z}^{2\times 2}$, trouver $\alpha \in R$ (qui n'appartient donc pas a $Z(R)$) et deux polynomes $g,h\in R[x]$ tel que
 $$
 g(\alpha)h(\alpha)\neq (gh)(\alpha)
 $$
@@ -100,7 +101,7 @@ on verifie:
 \end{enumerate}
 ou \ref{exo2} est obtenu car $\alpha \in Z(R)$. Donc $\phi$ est un morphisme d'anneaux qui est surjectif a cause de \ref{exo1}.
 
-Soit $R=\mathbf{Z}^{2\times2}$, on prend $\alpha=\begin{pmatrix}1 & 1 \\ 0 & 1\end{pmatrix}$, $g(x)=\begin{pmatrix}1 & 1  \\ 0 & 1 \end{pmatrix}x$ et $h(x)=\begin{pmatrix} 1 & 0 \\ 1 & 1\end{pmatrix}x$ on a
+Soit $R=\mathbb{Z}^{2\times2}$, on prend $\alpha=\begin{pmatrix}1 & 1 \\ 0 & 1\end{pmatrix}$, $g(x)=\begin{pmatrix}1 & 1  \\ 0 & 1 \end{pmatrix}x$ et $h(x)=\begin{pmatrix} 1 & 0 \\ 1 & 1\end{pmatrix}x$ on a
 $$
 \begin{pmatrix}
 1 & 1 \\
@@ -225,7 +226,7 @@ Soit $K$ un corps et $A\in K^{n\times n}$ une matrice inversible. Posons $\tilde
 \begin{enumerate}
 \item Montrer que $\det(A)\neq 0$.
 \item Montrer que $A^{-1}=\det(A)^{-1}\tilde{A}$.
-\item Montrer que pour toute matrice $A\in \mathbf{Z}^{n\times n}$, il existe $B\in \mathbf{Z}^{n\times n}$ telle que $AB=I$ si et seulement si $\det(A)=\pm1$.
+\item Montrer que pour toute matrice $A\in \mathbb{Z}^{n\times n}$, il existe $B\in \mathbb{Z}^{n\times n}$ telle que $AB=I$ si et seulement si $\det(A)=\pm1$.
 \end{enumerate}
 \begin{reminder}
 $\mathrm{com}(A)_{ij}=(-1)^{i+j}\det(A_{ij})$ ou $A_{ij}$ est la matrice dont on a enlevee la $i$-eme ligne et $j$-eme colonne.
@@ -253,9 +254,9 @@ Considerons les coefficients hors diagonal. Pour $i\neq j\in \{ 1,\dots,n \}$ on
  & =0
 \end{align*}
 car $\det$ est une forme alternee.
-\item Pour montrer le sens $\Rightarrow$, on suppose qu'il existe $B\in \mathbf{Z}^{n\times n}$ tel que $AB=I_{n}$ donc $\det(AB)=1$ et comme dans $\mathbf{Z}$ les seuls diviseurs de 1 sont 1 et $-1$ alors on observe que $\det(A)=\pm1$.
+\item Pour montrer le sens $\Rightarrow$, on suppose qu'il existe $B\in \mathbb{Z}^{n\times n}$ tel que $AB=I_{n}$ donc $\det(AB)=1$ et comme dans $\mathbb{Z}$ les seuls diviseurs de 1 sont 1 et $-1$ alors on observe que $\det(A)=\pm1$.
 
-On montre l'autre sens $\Leftarrow$, on suppose que $\det(A)=\pm1$. Par les memes techniques que dans 2 on voit que $A\tilde{A}=\det(A)I_{n}$ avec $\tilde{A}=(\mathrm{com}A)^{\mathsf{T}}\in \mathbf{Z}^{n\times n}$. Comme $\det(A)=\pm 1$ on conclut que $B=\det(A)^{-1}\tilde{A}\in \mathbf{Z}^{n\times n}$.
+On montre l'autre sens $\Leftarrow$, on suppose que $\det(A)=\pm1$. Par les memes techniques que dans 2 on voit que $A\tilde{A}=\det(A)I_{n}$ avec $\tilde{A}=(\mathrm{com}A)^{\mathsf{T}}\in \mathbb{Z}^{n\times n}$. Comme $\det(A)=\pm 1$ on conclut que $B=\det(A)^{-1}\tilde{A}\in \mathbb{Z}^{n\times n}$.
 \end{enumerate}
 \end{proof}
 
@@ -383,7 +384,7 @@ $$
 \end{proof}
 
 \begin{exercise}[Examen 2022]
-Quel est le polynome caracteristique de $A\in \mathbf{Q}^{5\times5}$ avec 
+Quel est le polynome caracteristique de $A\in \mathbb{Q}^{5\times5}$ avec 
 $$
 A=\begin{pmatrix}
 3 & 1 & 2 & 2 & 0 \\
@@ -936,7 +937,7 @@ donc $r(x)=0$ et $m_{A}(x)\mid p(x)$.
 \end{enumerate}
 \end{proof}
 \begin{exercise}[Exo etoile]\label{12star}
-Soit $A\in \mathbf{C}^{n\times n}$ et soient $J$ une forme normale de Jordan de $A$, $P$ la matrice de passage associée ($A=PJP^{-1}$).
+Soit $A\in \mathbb{C}^{n\times n}$ et soient $J$ une forme normale de Jordan de $A$, $P$ la matrice de passage associée ($A=PJP^{-1}$).
 \begin{enumerate}
 \item Soient $B_{1},\dots,B_{k}$ l'ensemble des blocs de $J$ associes a une meme valeur propre $\lambda$. Montrer que $\dim \mathrm{Im}(J-\lambda I)=n-k$.
 \item En déduire que le nombre de blocs de $J$ associes a une valeur propre $\lambda$ est egal a sa multiplicité géométrique $\dim\ker(A-\lambda I)$.
@@ -976,7 +977,7 @@ Donc $n_{i}=1$ pour tout bloc $B_{i}$ associe a $\lambda$. Comme $\lambda$ est a
 \begin{exercise}[Exo plus]
 Synthèse des résultats sur la forme normale de Jordan.
 
-Soit $A\in \mathbf{C}^{n\times n}$ une matrice et $J\in \mathbf{C}^{n\times n}$ sa forme normale de Jordan. Appelons un bloc de Jordan ayant $\lambda$ sur sa diagonale un bloc \emph{associe} a $\lambda$. Alors
+Soit $A\in \mathbb{C}^{n\times n}$ une matrice et $J\in \mathbb{C}^{n\times n}$ sa forme normale de Jordan. Appelons un bloc de Jordan ayant $\lambda$ sur sa diagonale un bloc \emph{associe} a $\lambda$. Alors
 \begin{enumerate}
 \item Les blocs de $J$ sont associes aux valeurs propres de $A$.
 \item La somme des tailles des blocs associes a la meme valeur propre $\lambda$ est egal a la multiplicité algébrique de $\lambda$.
@@ -1015,10 +1016,10 @@ c.f. \ref{12star}.
 \end{enumerate}
 \end{proof}
 \begin{exercise}[Exo etoile]
-En utilisant la forme normale de Jordan montrer que toute matrice $A\in \mathbf{C}^{n\times n}$ est semblable a sa transposée $A^{\mathsf{T}}$.
+En utilisant la forme normale de Jordan montrer que toute matrice $A\in \mathbb{C}^{n\times n}$ est semblable a sa transposée $A^{\mathsf{T}}$.
 \end{exercise}
 \begin{proof}[Solution]
-Par le théorème de Jordan, il existe $P\in \mathrm{GL}_{n}(\mathbf{C})$ telle que $A=P^{-1}JP$ ou $J$ est la forme normale de Jordan de $A$. Alors 
+Par le théorème de Jordan, il existe $P\in \mathrm{GL}_{n}(\mathbb{C})$ telle que $A=P^{-1}JP$ ou $J$ est la forme normale de Jordan de $A$. Alors 
 $$
 A^{\mathsf{T}}=P^{\mathsf{T}}J^{\mathsf{T}}(P^{-1})^{\mathsf{T}}.
 $$
@@ -1031,16 +1032,16 @@ J(\lambda,k)^{\mathsf{T}}=\begin{pmatrix}
  &  & 1 & \lambda \\
 \end{pmatrix}.
 $$
-On définit $C(k):=\begin{pmatrix} &  & 1 \\  & \ddots \\ 1 \\ \end{pmatrix}\in \mathbf{C}^{k\times k}$ et par un calcul, on voit que
+On définit $C(k):=\begin{pmatrix} &  & 1 \\  & \iddots \\ 1 \\ \end{pmatrix}\in \mathbb{C}^{k\times k}$ et par un calcul, on voit que
 $$
 J(\lambda,k)=C(k)J(\lambda,k)^{\mathsf{T}}C(k).
 $$
-En plus $C(k)^{-1}=C(k)$. Donc on construit la matrice $\tilde{C}\in \mathbf{C}^{n\times n}$ en prenant $J$ et en remplaçant chaque bloc $(J(\lambda,k))$ de Jordan par un bloc $C(k)$. On a
+En plus $C(k)^{-1}=C(k)$. Donc on construit la matrice $\tilde{C}\in \mathbb{C}^{n\times n}$ en prenant $J$ et en remplaçant chaque bloc $(J(\lambda,k))$ de Jordan par un bloc $C(k)$. On a
 $$
 \tilde{C}=\begin{pmatrix}
 C(k_{1,1}) \\
  & \ddots \\
- &  & C(k_{\ell},m)
+ &  & C(k_{\ell,m})
 \end{pmatrix}.
 $$
 Donc 

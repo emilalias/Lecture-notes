@@ -72,7 +72,7 @@ On dit que $\boldsymbol{x}\in \mathbf{R}^{n}$ est:
 \item Un point adherant de $E$ si $\forall\delta>0$ on a que $B(\boldsymbol{x},\delta)\cap E\neq \varnothing$. Un point adherent est soit un point interieur, soit un point frontiere. On appelle adherence (ou fermeture) de $E$, note par $\overline{E}$ l'esnemble des points adherents de $E$. On a que $\overline{E}=\mathring{E}\cup \partial E=E\cup \partial E$. Un point adherent peut etre de deux types
 \begin{itemize}
 \item Un point isole si $\exists\delta>0$ tel que $B(\boldsymbol{x},\delta)\cap E=\{ \boldsymbol{x}\}$.
-\item Un point d'accumulation si $\forall\delta>0$ on a $B(\boldsymbol{x},\delta)\cap E\setminus \{ x \}\neq \varnothing$
+\item Un point d'accumulation si $\forall\delta>0$ on a $B(\boldsymbol{x},\delta)\cap E\setminus \{ \boldsymbol{x} \}\neq \varnothing$
 \end{itemize}
 \end{itemize}
 
@@ -90,7 +90,7 @@ Il faut demontrer que $\forall \boldsymbol{x}\in\mathring{E}$ il existe $\delta>
 \item L'union infinie denombrable d'ouverts est ouverte. On a $\{ E_{i} \}_{i\in \mathbf{N}}$ des $E_{i}$ ouverts alors $\bigcup _{i=1}^{\infty}E_{i}$ est ouverte.
 \item L'intersection finie d'ouverts est ouverte.
 \begin{proof}
-Soient $\{ E_{i} \}_{i\in \mathbf{N}}$ ouverts et $F=\bigcap _{i=1}^{k}E_{i}$ et $\boldsymbol{x }\in F$ alors $\boldsymbol{x}\in E_{i}$ pour tous $i$ donc il existe $\delta _{i}>0$ tel que $B(\boldsymbol{x},\delta _{i})\subset E_{i}$ et $B(\boldsymbol{x},\min_{i=1,\dots,k})\subset F$ alors $F$ est ouvert.
+Soient $\{ E_{i} \}_{i\in \mathbf{N}}$ ouverts et $F=\bigcap _{i=1}^{k}E_{i}$ et $\boldsymbol{x }\in F$ alors $\boldsymbol{x}\in E_{i}$ pour tous $i$ donc il existe $\delta _{i}>0$ tel que $B(\boldsymbol{x},\delta _{i})\subset E_{i}$ et $B(\boldsymbol{x},\min_{i=1,\dots,k} \delta_{i})\subset F$ alors $F$ est ouvert.
 \end{proof}
 \begin{remark}
 L'intersection infinie denombrable des $E_{i}$ ouverts n'est pas un ensemble ouvert. Comme contre-exemple on a $F=[0,1]$ et $E_{i}=(-1/i,1+1/i)$ dont l'intersection $\bigcap _{i=1}^{\infty}E_{i}=F$ qui est ferme.

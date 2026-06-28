@@ -2,32 +2,32 @@
 
 Calculons la force exercee sur un volume de fluide infinitessimal due a la pression. On suppose que $p=p(\boldsymbol{r})$ est arbitraire:
 
-On note $\boldsymbol{F}_{1}=p\left( -\frac{dx}{2},0,0\right)dydz~\boldsymbol{e}_{x}$ et $\boldsymbol{F}_{2}=-p\left( \frac{dx}{2},0,0 \right)dydz~\boldsymbol{e}_{x}$ donc on a 
+On note $\boldsymbol{F}_{1}=p\left( -\frac{dx}{2},0,0\right)dydz\,\boldsymbol{e}_{x}$ et $\boldsymbol{F}_{2}=-p\left( \frac{dx}{2},0,0 \right)dydz\,\boldsymbol{e}_{x}$ donc on a 
 \begin{align*}
-\sum \boldsymbol{F}_{i} & =\left( p\left( -\frac{dx}{2},0,0 \right)dydz-p\left( \frac{dx}{2},0,0 \right)dydz \right)~\boldsymbol{e}_{x} +\dots\\
- & =-\frac{p\left( \frac{dx}{2},0,0 \right)-p\left( -\frac{dx}{2},0,0 \right) }{dx}dxdydz~\boldsymbol{e}_{x}+\dots \\
- & =-\frac{ \partial p }{ \partial x } dV~\boldsymbol{e}_{x}+\dots \\
- & =-\boldsymbol{\nabla}_{p}dV
+\sum \boldsymbol{F}_{i} & =\left( p\left( -\frac{dx}{2},0,0 \right)dydz-p\left( \frac{dx}{2},0,0 \right)dydz \right)\,\boldsymbol{e}_{x} +\dots\\
+ & =-\frac{p\left( \frac{dx}{2},0,0 \right)-p\left( -\frac{dx}{2},0,0 \right) }{dx}dxdydz\,\boldsymbol{e}_{x}+\dots \\
+ & =-\frac{ \partial p }{ \partial x } dV\,\boldsymbol{e}_{x}+\dots \\
+ & =-\boldsymbol{\nabla} pdV
 \end{align*}
 
-alors la densite est forme associe a la pression $-\boldsymbol{\nabla}_{p}$.
+alors la densite est forme associe a la pression $-\boldsymbol{\nabla} p$.
 
 \begin{example}
 Sur un volume $V$ de surface $S$ on peut calculer la force de pression sur $V$:
 $$
-\boldsymbol{F}_{p}=\underset{n\to \infty}{\lim_{ |\Delta \boldsymbol{S}_{i}| \to 0 } }\sum_{i=1}^{n} -p(\boldsymbol{r}_{i})\Delta \boldsymbol{S}_{i}=-\iint _{S}p~d\boldsymbol{S}
+\boldsymbol{F}_{p}=\underset{n\to \infty}{\lim_{ |\Delta \boldsymbol{S}_{i}| \to 0 } }\sum_{i=1}^{n} -p(\boldsymbol{r}_{i})\Delta \boldsymbol{S}_{i}=-\iint _{S}p\,d\boldsymbol{S}
 $$
-ou de maniere alternative en utilisant $-\boldsymbol{\nabla}_{p}$:
+ou de maniere alternative en utilisant $-\boldsymbol{\nabla} p$:
 $$
-\boldsymbol{F}_{p}=\iiint _{V}-\boldsymbol{\nabla}_{p}~dV
+\boldsymbol{F}_{p}=\iiint _{V}-\boldsymbol{\nabla} p\,dV
 $$
 
 Maintenant soit $p=p_{0}-\rho gz$ pour $z\le 0$, on voit que :
 \begin{align*}
-\boldsymbol{F}_{p} & =-\iint p~d\boldsymbol{S}=\iiint-\boldsymbol{\nabla}_{p}~dV \\
- & =\iint _{V}-\boldsymbol{\nabla}(p_{0}-\rho gz)~dV \\
- & =\iint _{V}\rho g~\boldsymbol{e}_{z}~dV \\
- & =\rho g\iint _{V}dV~\boldsymbol{e}_{z}=\rho gV~\boldsymbol{e}_{z}=mg~\boldsymbol{e}_{z} 
+\boldsymbol{F}_{p} & =-\iint p\,d\boldsymbol{S}=\iiint-\boldsymbol{\nabla} p\,dV \\
+ & =\iint _{V}-\boldsymbol{\nabla}(p_{0}-\rho gz)\,dV \\
+ & =\iint _{V}\rho g\,\boldsymbol{e}_{z}\,dV \\
+ & =\rho g\iint _{V}dV\,\boldsymbol{e}_{z}=\rho gV\,\boldsymbol{e}_{z}=mg\,\boldsymbol{e}_{z} 
 \end{align*}
 \end{example}
 
@@ -46,10 +46,10 @@ Ou $h_{1}=34\mathrm{mm}$, $h_{2}=17\mathrm{mm}$, $h_{3}=13\mathrm{mm}$ et $h_{4}
 \end{example}
 
 \begin{question}
-Contradiction avec $p(h)=\rho p_{0}gh$?
+Contradiction avec $p(h)=p_{0}+\rho gh$?
 \end{question}
 \begin{answer}
-Non, on verra que ce phenomene du a la tension superficielle et $p=p_{0}\rho gh$ reste valable a l'interieur du fluide.
+Non, on verra que ce phenomene du a la tension superficielle et $p=p_{0}+\rho gh$ reste valable a l'interieur du fluide.
 \end{answer}
 \subsection{Definition et origine de la tension superficielle}
 \begin{example}

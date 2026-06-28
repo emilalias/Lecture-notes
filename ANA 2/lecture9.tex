@@ -72,16 +72,16 @@ $$
 $$
 Si la limite existe on note
 $$
-\frac{ \partial  }{ \partial x_{j} } \left( \frac{ \partial f }{ \partial x_{i} } (\boldsymbol{x}) \right)=\frac{ \partial^{2}f }{ \partial x_{j}~\partial x_{i} }(\boldsymbol{x}) 
+\frac{ \partial  }{ \partial x_{j} } \left( \frac{ \partial f }{ \partial x_{i} } (\boldsymbol{x}) \right)=\frac{ \partial^{2}f }{ \partial x_{j}\partial x_{i} }(\boldsymbol{x}) 
 $$
-la derivee seconde partielle en $x_{i}$ et $x_{j}$. Si $j=1$ on note $$\frac{ \partial^{2}f }{ \partial x_{i}^{2} }(\boldsymbol{x}).$$
+la derivee seconde partielle en $x_{i}$ et $x_{j}$. Si $j=i$ on note $$\frac{ \partial^{2}f }{ \partial x_{i}^{2} }(\boldsymbol{x}).$$
 
 Si toutes les derivees secondes existent, on definie la matrice Hessiene:
 $$
 H_{f}(\boldsymbol{x})=\begin{pmatrix}
-\frac{ \partial^{2}f }{ \partial x_{1}^{2} }(\boldsymbol{x}) &\dots & \frac{ \partial^{2}f }{ \partial x_{1}~\partial x_{n} }(\boldsymbol{x})  \\
+\frac{ \partial^{2}f }{ \partial x_{1}^{2} }(\boldsymbol{x}) &\dots & \frac{ \partial^{2}f }{ \partial x_{1}\partial x_{n} }(\boldsymbol{x})  \\
 \vdots & \ddots & \vdots \\
-\frac{ \partial^{2}f }{ \partial x_{n}~\partial x_{1} }(\boldsymbol{x}) &\dots & \frac{ \partial^{2}f }{ \partial x_{n}^{2} } (\boldsymbol{x})    
+\frac{ \partial^{2}f }{ \partial x_{n}\partial x_{1} }(\boldsymbol{x}) &\dots & \frac{ \partial^{2}f }{ \partial x_{n}^{2} } (\boldsymbol{x})    
 \end{pmatrix}
 $$
 
@@ -94,7 +94,7 @@ Soient $\boldsymbol{v},\boldsymbol{w}\in \mathbf{R}^{n}$ deux directions. Si $f\
 D_{\boldsymbol{w}}(D_{\boldsymbol{v}}f)(\boldsymbol{x}) & =\boldsymbol{\nabla}(D_{\boldsymbol{v}}f)^{\mathsf{T}}\boldsymbol{w} \\
  & =\sum_{j=1}^{n}  \frac{ \partial D_{\boldsymbol{v}}f }{ \partial x_{j} } (\boldsymbol{x})w_{j} \\
  & =\sum_{j=1}^{n} \frac{ \partial  }{ \partial x_{j} } \left( \sum_{i=1}^{n} \frac{ \partial f }{ \partial x_{i} } (\boldsymbol{x})v_{i} \right)w_{j} \\
- & =\sum_{j=1}^{n} \sum_{i=1}^{n}  \frac{ \partial^{2}f }{ \partial x_{j}~\partial x_{i} }w_{j}v_{i}  \\
+ & =\sum_{j=1}^{n} \sum_{i=1}^{n}  \frac{ \partial^{2}f }{ \partial x_{j}\partial x_{i} }w_{j}v_{i}  \\
  & = \boldsymbol{w}^{\mathsf{T}}H_{f}(\boldsymbol{x})\boldsymbol{v}
 \end{align*}
 \end{definition}
@@ -113,16 +113,16 @@ $$
 \end{example}
 
 \begin{theorem}[Theoreme de Schwarz]
-Soit $E\subset \mathbf{R}^{n}$ ouvert non-vide et $f:E\to \mathbf{R}$. Pour $i,j\in \{ 1,\dots,n \}$ fixes, supposons que $\frac{ \partial f }{ \partial x_{i} },\frac{ \partial f }{ \partial x_{j} },\frac{ \partial^{2}f }{ \partial x_{i}~\partial x_{j} }$ et $\frac{ \partial^{2}f }{ \partial x_{j}~\partial x_{i} }$ existent sur $B(\boldsymbol{x},\delta)\subset E$ pour $\delta>0$ et continues en $\boldsymbol{x}$. Alors
+Soit $E\subset \mathbf{R}^{n}$ ouvert non-vide et $f:E\to \mathbf{R}$. Pour $i,j\in \{ 1,\dots,n \}$ fixes, supposons que $\frac{ \partial f }{ \partial x_{i} },\frac{ \partial f }{ \partial x_{j} },\frac{ \partial^{2}f }{ \partial x_{i}\partial x_{j} }$ et $\frac{ \partial^{2}f }{ \partial x_{j}\partial x_{i} }$ existent sur $B(\boldsymbol{x},\delta)\subset E$ pour $\delta>0$ et continues en $\boldsymbol{x}$. Alors
 $$
-\frac{ \partial^{2}f }{ \partial x_{i}~\partial x_{j} }(\boldsymbol{x}) = \frac{ \partial^{2}f }{ \partial x_{j}~\partial x_{i} } (\boldsymbol{x})
+\frac{ \partial^{2}f }{ \partial x_{i}\partial x_{j} }(\boldsymbol{x}) = \frac{ \partial^{2}f }{ \partial x_{j}\partial x_{i} } (\boldsymbol{x})
 $$
 \end{theorem}
 \begin{proof}
 On pose
 \begin{align*}
-\Delta(s,t) & =\overbrace{\underbrace{  f(\boldsymbol{x}+s\boldsymbol{e}_{i}+t\boldsymbol{e}_{j})-f(\boldsymbol{x}+s\boldsymbol{e}_{i}) }_{ g(s) }-\underbrace{ (f(\boldsymbol{x}+t\boldsymbol{e}_{j})-f(\boldsymbol{x})) }_{ g(0) }  }^{ \frac{ \partial^{2}f }{ \partial x_{i}~\partial x_{j} }  }\\
- & =\underbrace{ f(\boldsymbol{x}+s\boldsymbol{e}_{i}+t\boldsymbol{e}_{j})-f(\boldsymbol{x}+t\boldsymbol{e}_{j})-(f(\boldsymbol{x}+s\boldsymbol{e}_{i})-f(\boldsymbol{x})) }_{ \frac{ \partial^{2}f }{ \partial x_{j}~\partial x_{i} } st }
+\Delta(s,t) & =\overbrace{\underbrace{  f(\boldsymbol{x}+s\boldsymbol{e}_{i}+t\boldsymbol{e}_{j})-f(\boldsymbol{x}+s\boldsymbol{e}_{i}) }_{ g(s) }-\underbrace{ (f(\boldsymbol{x}+t\boldsymbol{e}_{j})-f(\boldsymbol{x})) }_{ g(0) }  }^{ \frac{ \partial^{2}f }{ \partial x_{i}\partial x_{j} }  }\\
+ & =\underbrace{ f(\boldsymbol{x}+s\boldsymbol{e}_{i}+t\boldsymbol{e}_{j})-f(\boldsymbol{x}+t\boldsymbol{e}_{j})-(f(\boldsymbol{x}+s\boldsymbol{e}_{i})-f(\boldsymbol{x})) }_{ \frac{ \partial^{2}f }{ \partial x_{j}\partial x_{i} } st }
 \end{align*}
 Il existe $\tilde{s}\in(0,s)$ tel que 
 $$
@@ -134,11 +134,11 @@ g'(\tilde{s})s=\varphi '(\tilde{t})ts=\frac{ \partial^{2}f }{ \partial x_{j}\par
 $$
 soit $t=s$ alors
 $$
-\lim_{ s \to 0 } \frac{\Delta(s,t)}{s^{2}}=\lim_{ s \to 0 } \frac{ \partial^{2}f }{ \partial x_{j}~\partial x_{i} }(\boldsymbol{x}+\tilde{s}\boldsymbol{e}_{i}+\tilde{t}\boldsymbol{e}_{j})=\frac{ \partial^{2}f }{ \partial x_{j}~\partial x_{i} } (\boldsymbol{x}).
+\lim_{ s \to 0 } \frac{\Delta(s,t)}{s^{2}}=\lim_{ s \to 0 } \frac{ \partial^{2}f }{ \partial x_{j}\partial x_{i} }(\boldsymbol{x}+\tilde{s}\boldsymbol{e}_{i}+\tilde{t}\boldsymbol{e}_{j})=\frac{ \partial^{2}f }{ \partial x_{j}\partial x_{i} } (\boldsymbol{x}).
 $$
 Le cote droite se demontre de maniere similaire par symetrie et on obtient
 $$
-\frac{ \partial^{2}f }{ \partial x_{i}~\partial x_{j} }(\boldsymbol{x}+\hat{s}\boldsymbol{e}_{i}+\hat{t}\boldsymbol{e}_{j})st 
+\frac{ \partial^{2}f }{ \partial x_{i}\partial x_{j} }(\boldsymbol{x}+\hat{s}\boldsymbol{e}_{i}+\hat{t}\boldsymbol{e}_{j})st 
 $$
 \end{proof}
 \begin{corollary}
