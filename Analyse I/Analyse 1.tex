@@ -1,0 +1,73 @@
+\documentclass[a4paper,11pt,french]{report}
+\usepackage[tmargin=2cm,rmargin=1in,lmargin=1in,margin=0.85in,bmargin=2cm,footskip=.2in]{geometry} 
+\usepackage{tabularx}
+\usepackage{mathrsfs}
+\usepackage{nicematrix} %
+\usepackage{amsmath}% includes amsmath
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{svg}
+\usepackage{amscd}
+\usepackage{todonotes}
+\usepackage{hyperref}
+\usepackage{enumerate}
+\usepackage{tikz}
+
+\usepackage[default]{fontsetup}
+
+
+% %%%%%%%%%%%%% Margin Notes
+\usepackage{fontawesome}
+\usepackage{marginnote}
+\renewcommand{\qedsymbol}{\faSmileO}
+\theoremstyle{plain}
+\newtheorem{theorem}{Théorème}[chapter]
+\newtheorem{lemma}[theorem]{Lemme}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{corollary}[theorem]{Corollaire}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Définition}[chapter]
+\newtheorem*{notation}{Notation}
+\newtheorem*{question}{Question}
+\newtheorem*{answer}{Answer}
+\newtheorem*{reminder}{Rappel}  
+\newtheorem{example}{Exemple}[chapter]
+\newtheorem{remark}[theorem]{Remarque}
+\newtheorem{problem}{Problème}[chapter]
+\newtheorem{exercise}{Exercice}[chapter]
+
+
+\title{Analyse 1}
+\author{Agnes Varda}
+\setuptodonotes{noline, color=green!20, size=\tiny}
+\makeatletter
+\@todonotes@SetTodoListName{Lecture index}
+\makeatother
+% \newif\ifhideproofs
+% \hideproofstrue %uncomment to hide proofs
+
+% \ifhideproofs
+% \usepackage{environ}
+% \NewEnviron{hide}{}
+% \let\proof\hide
+% \let\endproof\endhide
+% \fi
+% \newif\ifhideexamples
+% \hideexamplestrue %uncomment to hide proofs
+
+% \ifhideexamples
+% \let\example\hide
+% \let\endexample\endhide
+% \fi
+\begin{document}
+
+\maketitle
+
+\tableofcontents  
+\listoftodos
+\todototoc
+\input{Lecture 1.tex}
+\input{Lecture 2.tex}
+\end{document}

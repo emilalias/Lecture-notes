@@ -1,0 +1,67 @@
+\chapter{Ensemble des nombres reels}
+\begin{reminder}
+\begin{itemize}
+\item Ensemble des entiers naturels : $\mathbf{N}:=\{ 0,1,2,\dots \}$.
+\item Ensemble des entiers relatifs : $\mathbf{Z}:=\{ \dots,-2,-1,0,1,2,\dots \}$.
+\item Ensemble des nombres rationnnels : $\mathbf{Q}:=\left\{  \frac{p}{q} :p \in \mathbf{Z},q\in \mathbf{N}^{*} \right\}$. Tout rationnnel $x \in \mathbf{Q}$ admet une unique forme irreductible c-a-d, $x=\frac{p}{q}$ avec $p$ et $q$ premiers entre eux. 
+\end{itemize}
+\end{reminder}
+\begin{proposition}
+Pour tout $x \in \mathbf{Q}$, on a que $x^{2}\neq2$.
+\end{proposition}
+\begin{proof}
+On suppose par l'absurde qu'il existe $p \in \mathbf{Z}$ et $q\in \mathbf{N}^{*}$ premiers entre eux telles que $x=\frac{p}{q}$ et $x^{2}=2$. Donc,
+$$
+2=x^{2}=\frac{p^{2}}{q^{2}}\Rightarrow p^{2}=2q^{2}.
+$$
+On veut montrer que $p$ est pair. En procedant par contradicition, on pose que $p=2n+1$ pour un certain $n\in \mathbf{Z}$. Alors,
+\begin{align*}
+p^{2} & =(2n+1)^{2} \\
+ & =4n^{2}+4n+1 \\
+ & =2(2n^{2}+2n)+1
+\end{align*}
+qui est impair. Par contre, comme $p^{2}$ est pair, $p$ ne peut pas être impair. Donc, $p$ est pair.
+
+Alors, il existe $k\in \mathbf{Z}$ tel que $p=2k$. On substitue alors dans l'expression precedente pour obtenir 
+$$
+2q^{2}=4k^{2}\Rightarrow q^{2}=2k^{2}.
+$$
+Donc $q$ est pair aussi, mais on avait que $x$ etait un rationnel irreductible. Par l'absurde on conclut donc que $x\not\in \mathbf{Q}$.
+\end{proof}
+On peut interpreter de maniere intuitive l'ensemble $\mathbf{R}$ comme contenant $\mathbf{Q}$ et toutes les grandeurs mesurables. De manière visuelle on a
+$$
+\mathbf{N}\subset \mathbf{Z}\subset \mathbf{Q}\subset \mathbf{R}.
+$$
+\begin{remark}
+\begin{itemize}
+\item $\mathbf{Q}$ est exactement le sous-ensemble des ecritures decimales periodiques a partir d'un certain rang.
+\item Le choix de base 10 est arbitraire.
+\end{itemize}
+\end{remark}
+\section{Structure de \texorpdfstring{$\mathbf{R}$}{R}}
+L'ensemble $\mathbf{R}$ est muni de
+\begin{itemize}
+\item l'addition : $(x,y)\mapsto x+y$;
+\item la multiplication : $(x,y)\mapsto x\cdot y$;
+\item une relation d'ordre : $x\le y$ ou $y\ge x$.
+\end{itemize}
+Muni de ces operations et relation, $\mathbf{R}$ satisfait trois axiomes.
+\paragraph{Axiome 1 : Structure de corps}~\\
+Un corps est muni de deux operations : l'addition et la multiplication. 
+
+L'addition admet ces proprietes :
+\begin{itemize}
+\item est associative : $(x+y)+z=x+(y+z)=x+y+z$;
+\item est commutative : $x+y=y+x$;
+\item admet un neutre : $x+0=0+x=x$;
+\item admet des opposes : $\forall x \in \mathbf{R}\,\exists(-x)\in \mathbf{R}:x+(-x)=0$.
+\end{itemize}
+
+La multiplication admet ces proprietes :
+\begin{itemize}
+\item est associative : $(xy)z=x(yz)=xyz$;
+\item est commutative : $xy=yx$;
+\item admet un neutre : $x\cdot 1=1\cdot x=x$;
+\item admet des inverses : $\forall x \in \mathbf{R}^{*}\,\exists x ^{-1}\in \mathbf{R}:x\cdot x^{-1}=1$;
+\item est distributive sur l'addition : $x(y+z)=xy+xz$.
+\end{itemize}

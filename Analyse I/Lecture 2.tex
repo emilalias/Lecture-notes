@@ -1,0 +1,91 @@
+\todo{Lecture 2}
+\paragraph{Axiome 2 : Structure de corps ordonne}~\\
+La relation de ordre est :
+\begin{itemize}
+\item Transitive : $x\le y$ et $y\le z$, alors $x\le z$;
+\item reflexive : $x\le x$;
+\item antisymetrique : $x\le y$ et $y\le x$ alors $x=y$;
+\item un ordre total : pour tous $x,y\in \mathbf{R}$, on a soit $x\le y$, soit $x=y$, soit $y\le x$;
+\item compatible avec l'addition : pour tous $x,y,z\in \mathbf{R}$ tels que $x\le y$, on a $x+z\le y+z$;
+\item compatible avec la multiplication : pour tous $x,y\in \mathbf{R}$ tels que $x\ge 0$ et $y\ge 0$, on a $xy\ge 0$.
+\end{itemize}
+
+\begin{remark}
+\begin{itemize}
+\item On ecrit $x<y$ pour signifier que $x\le y$ et $x\neq y$.
+\item On ecrit $x\ge y$ pour signifier $y\le x$.
+\end{itemize}
+\end{remark}
+
+\paragraph{Axiome 3 : Axiome de la borne superieure}~\\
+Tout ensemble non-vide et majore de $\mathbf{R}$ admet un plus petit majorant.
+
+\subsection{Sous-ensembles de \texorpdfstring{$\mathbf{R}$}{R}}
+\begin{definition}
+Un intervalle est un sous-ensemble $I\subseteq \mathbf{R}$ tel que pour tous $x,y\in I$ et $z\in \mathbf{R}$ tel que $x<z<y$, on a $z\in I$.
+\end{definition}
+\begin{definition}[Intervalles bornes]
+Soient $a,b\in \mathbf{R}$ tels que $a\le b$.
+\begin{itemize}
+\item Intervalle ferme : $[a,b]=\{ x \in \mathbf{R}:a\le x\le b \}$.
+\item Intervalle ouvert : $(a,b)=\{x \in \mathbf{R}:a<x<b \}$.
+\item Intervalle semi-ouvert : $[a,b)=\{x \in \mathbf{R}:a\le x <b \}$.
+\end{itemize}
+Si l'intervalle est non-vide, on appelle $a$ et $b$ ses bornes ou extrémités.
+\end{definition}
+\begin{example}
+$\{ x \}$ est un intervalle ferme. 
+\end{example}
+\begin{example}
+$\varnothing=\{  \}$ est un intervalle ouvert.
+\end{example}
+\begin{notation}
+\begin{itemize}
+\item $\mathbf{R}_{+}=[0,+\infty)=\{  x \in \mathbf{R}:0\le x \}$.
+\item $\mathbf{R}_{-}=(-\infty,0]=\{ x\in \mathbf{R}:x\le 0 \}$.
+\item $\mathbf{R}^{*}=\mathbf{R}\setminus \{ 0 \}=\{ x\in \mathbf{R}:x\neq0 \}$.
+\end{itemize}
+\end{notation}
+Soit $A\subseteq \mathbf{R}$ non-vide.
+\begin{definition}[Majorant et minorant]
+On dit que $b\in \mathbf{R}$ est un majorant de $A$ si pour tous $x \in A$ on a $b\ge x$.
+
+De meme, on dit que $a\in \mathbf{R}$ est un minorant de $A$ si pour tous $x \in A$, on a $a\le x$.
+\end{definition}
+\begin{definition}
+On dit que $A$ est majore, minore ou borne s'il admet un majorant, minorant ou les deux respectivement.
+\end{definition}
+\begin{example}
+$A=\left\{  \frac{1}{n}:n\in \mathbf{N}^{*}  \right\}$ est un ensemble majore par 1 et minore par 0, alors $A$ est borne.
+\end{example}
+
+\begin{definition}[Maximum et minimum]
+S'il existe $M\in A$ tel que pour tous $x \in A$ on a $M\ge x$, on dit que $M$ est le maximum de $A$ et on note $M=\max(A)$.
+
+De meme, s'il existe $m\in A$ tel que pour tous $x \in A$ on a $m\le x$, on dit que $m$ est le minimum de $A$ et on note $m=\min(A)$.
+\end{definition}
+\begin{definition}[Supremum]
+S'il existe $b\in \mathbf{R}$ tel que pour tous $x \in A$ on a $b\ge x$ et pour tout $b'\in \mathbf{R}$ majorant de $A$ on a $b\le b'$, alors on dit que $b$ est le supremum de $A$. On note $b=\sup(A)$.
+\end{definition}
+\begin{proposition}
+Tout sous-ensemble non-vide et minore de $\mathbf{R}$ admet un infinum.
+\end{proposition}
+\begin{proposition}[Caracterisation analytique du supremum]
+Soit $A\subset \mathbf{R}$ non-vide et majore. Alors $\alpha=\sup(A)$ si et seulement si :
+\begin{enumerate}
+\item $\alpha$ est un majorant de $A$;
+\item pour tout $\varepsilon>0$, il existe $x \in A$ tel que $\alpha -\varepsilon<x$.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+Direction $\Rightarrow$ : Si $\alpha=\sup(A)$, alors 1 est vrai par definition. Par l'absurde, supposons qu'il existe $\varepsilon>0$ tel que pour tous $x \in A$, on a $\alpha -\varepsilon \ge x$. Alors $\alpha -\varepsilon$ serait un majorant de $A$ strictement plus petit que $\alpha$. Ceci pose une contradiction avec le fait que $\alpha$ est un supremum de $A$.
+
+Direction $\Leftarrow$ : Supposons que $\alpha \in \mathbf{R}$ satisfait 1 et 2. Soit $\alpha'\in \mathbf{R}$ un majorant de $A$. Par contradiction, supposons que $\alpha'<\alpha$. Comme $\varepsilon=\alpha -\alpha'>0$, par 2 il existe $x \in A$ tel que $\alpha-(\alpha -\alpha')<x$. Donc il existe que $x \in A$ tel que $x>\alpha'$, mais ceci contredit le fait que $\alpha'$ est un majorant.
+\end{proof}
+
+\begin{theorem}
+Le corps ordonne $\mathbf{R}$ est archimedien. C-a-d, pour tous $x,y\in \mathbf{R}_{+}^{*}$, il existe $n\in \mathbf{N}^{*}$ tel que $nx>y$.
+\end{theorem}
+\begin{proof}
+Soient $x,y\in \mathbf{R}_{+}^{*}$. Soit $A=\{ nx:n\in \mathbf{N}^{*} \}$. Par contradiction, supposons qu'il existe pas de $n\in \mathbf{N}^{*}$ tel que $nx>y$. Alors, $A$ serait majore par $y$ et non-vide. On peut ensuite appliquer l'axiome 3, on note $\alpha$ le supremum de $A$. On sait que pour tout $\varepsilon>0$, il existe $nx \in A$ tel que $\alpha-\varepsilon<nx$. Avec $\varepsilon=x$, on a $\alpha<(n+1)x$. Or $(n+1)x \in A$, ceci contredit le fait que $\alpha$ est un supremum de $A$.
+\end{proof}
