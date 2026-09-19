@@ -1,0 +1,103 @@
+\todo{Lecture 4}
+\begin{definition}[Limite infinie]
+Soit $(u_{n})_{n\in \mathbf{N}}$ une suite reelle. On dit que $(u_{n})$ tend vers $+\infty$ si 
+$$
+\forall A\in \mathbf{R}\,\exists N\in \mathbf{N}\,\forall n\in \mathbf{N}\,n\ge N:u_{n}\ge A.
+$$
+On dit que $(u_{n})$ tend vers $-\infty$ si
+$$
+\forall A\in \mathbf{R}\,\exists N\in \mathbf{N}\,\forall n\ge N:u_{n}\le A.
+$$
+\end{definition}
+\begin{notation}
+Si $(u_{n})$ tend vers $+\infty$, on note cela
+$$
+\lim_{ n \to \infty } u_{n}=+\infty.
+$$
+\end{notation}
+\begin{example}
+Soit $(a_{n})_{n\in \mathbf{N}}$ la suite definie par $a_{n}=n^{2}$. Soit $A\in \mathbf{R}$. Si $A<0$, prenons $N=1$. Alors, $\forall n\in \mathbf{N}$ tel que $n>N=1$, on a que $a_{n}>A$. Si $A\ge 0$, prenons $N=\lfloor A \rfloor +1$. Alors, pour tout $n\in \mathbf{N}$ tel que $n\ge N$, on a que $a_{n}>A$.
+\end{example}
+\begin{proposition}
+Pour toute suite reelle $(u_{n})$. 
+\begin{enumerate}
+\item Si $(u_{n})$ converge, alors $(u_{n})$ est bornee.
+\item Si $\lim_{ n \to \infty }u_{n}=+\infty$, alors $(u_{n})$ est minoree.
+\item Si $\lim_{ n \to \infty }u_{n}=-\infty$, alors $(u_{n})$ est majoree.
+\end{enumerate}
+\end{proposition}
+
+\begin{proposition}
+Soient $(u_{n})$ et $(v_{n})$ deux suites reellles convergentes, avec limites $\ell _{u}$ et $\ell _{v}$ respectivement. S'il existe $N_{0}\in \mathbf{N}$ tel que pour tout $n\in \mathbf{N}$, avec $n\ge N_{0}$, on a que $u_{n}\le v_{n}$, alors $\ell _{u}\le \ell _{v}$.
+\end{proposition}
+\begin{proof}
+	Par l'absurde, supposons que $\ell _{u} >\ell _{v}$. Soit $\varepsilon=\frac{\ell _{u}-\ell _{v} }{2}>0$. En appliquant la definition du limite a $u_{n}$ et $v_{n}$, on obtient $N_{1}$ et $N_{2}$. On pose $n=\max\{ N_{0},N_{1},N_{2} \}$. Donc 
+	$$
+\ell _{u}<u_{n}+\varepsilon\le v_{n}+\varepsilon<\ell _{v}+2\varepsilon=\ell _{u}.
+$$
+Contradiction !
+\end{proof}
+\begin{theorem}[Theoreme des gendarmes]
+Soient $(u_{n})$, $(x_{n})$ et $(v_{n})$ trois suites reelles telles que :
+\begin{enumerate}
+\item il existe $N\in \mathbf{N}$ tel que pour tout $n\ge N\in \mathbf{N}$ on a que $u_{n}\le x_{n}\le v_n$;
+\item et $\lim_{ n \to \infty }u_{n}=\lim_{ n \to \infty }v_{n}=\ell \in \mathbf{R}$.
+\end{enumerate}
+Alors, la suite $(x_{n})$ converge et $\lim_{ n \to \infty }x_{n}=\ell$.
+\end{theorem}
+\begin{proof}
+Soit $\varepsilon>0$. Comme $u_{n}\to \ell$, il existe $N_{1}\in \mathbf{N}$ tel que pour tout $n\ge N_{1}$, $|u_{n}-\ell|<\varepsilon$. De meme pour $v_{n}$, il existe $N_{2}\in \mathbf{N}$. On pose $N_{0}=\max\{N,N_{1},N_{2}\}$. Alors, pour tout $n>N_{0}$, on a 
+$$
+-\varepsilon<u_{n}-\ell\le x_{n}-\ell\le v_{n}-\ell<\varepsilon.
+$$
+Donc, $|x_{n}-\ell|<\varepsilon$.
+\end{proof}
+\begin{proposition}
+Soient $(u_{n})$ et $(v_{n})$ deux suites reelles convergentes de limites respectives $\ell _{u}$ et $\ell _{v}$. Alors :
+\begin{enumerate}
+\item $\lim_{ n \to \infty }|u_{n}|=|\lim_{ n \to \infty }u_{n}|=|\ell _{u}|$.
+	\item pour tout $\alpha \in \mathbf{R}$, $\lim_{ n \to \infty }(\alpha u_{n})=\alpha \lim_{ n \to \infty }u_{n}=\alpha \ell _{u}$.
+\item $\lim_{ n \to \infty }(u_{n}+v_{n})=\lim_{ n \to \infty }u_{n}+\lim_{ n \to \infty }v_{n}=\ell _{u}+\ell _{v}$.
+\item $\lim_{ n \to \infty }(u_{n}v_{n})=\lim_{ n \to \infty }u_{n}\lim_{ n \to \infty }v_{n}=\ell _{u}\ell _{v}$.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+\begin{enumerate}
+\item Il faut montrer que $||u_{n}|-|\ell _{u}||$ devient arbitrairement petit. 
+\item Exercise.
+\item
+\begin{align*}
+|(u_{n}+v_{n})-(\ell _{u}+\ell _{v})| & =|(u_{n}-\ell _{u})+(v_{n}-\ell _{v})| \\
+ & \le |u_{n}-\ell _{u}|+|v_{n}-\ell _{v}|<2\varepsilon. \\
+\end{align*}
+\item Considerons
+\begin{align*}
+u_{n}v_{n}-\ell _{u}\ell _{v} & =(u_{n}-\ell _{u}+\ell _{u})(v_{n}-\ell _{v}+\ell _{v})-\ell _{u}\ell _{v} \\
+ & =(u_{n}-\ell _{u})(v_{n}-\ell _{v})+(u_{n}-\ell _{u})\ell _{v}+(v_{n}-\ell _{v})\ell _{u}.
+\end{align*}
+En prenant la valeur absolue et la definition du limite, on a donc
+$$
+|u_{n}v_{n}-\ell _{u}\ell _{v}|< \varepsilon^{2}+\varepsilon |\ell _{u}|+\varepsilon |\ell _{v}|.
+$$
+\end{enumerate}
+\end{proof}
+\begin{proposition}
+Soit $(u_{n})$ une suite reelle telle que $u_{n}$ converge vers $\ell _{u}\in \mathbf{R}$. Si $u_{n}\neq 0$ pour tout $n\in \mathbf{N}$ et si $\ell _{u}\neq 0$, alors
+$$
+\lim_{ n \to \infty } \frac{1}{u_{n}}=\frac{1}{\ell _{u}}.
+$$
+\end{proposition}
+\begin{proof}
+Par la definition du limite
+$$
+\forall\varepsilon>0\,\exists N\in \mathbf{N}\,\forall n\ge N:|u_{n}-\ell _{u}|<\varepsilon.
+$$
+Considerons 
+$$
+\frac{1}{u_{n}}-\frac{1}{\ell _{u}}=\frac{\ell _{u}-u_{n}}{u_{n}\ell _{u}}.
+$$
+Il existe $N_{1}\in \mathbf{N}$ tel que pour tout $n\ge N_{1}$, on a $|u_{n}-\ell _{u}|<|\ell _{u}|/2$. Donc $|u_{n}|>|\ell _{u}|/2$. Donc pour tout $\varepsilon>0$, il existe $N\in \mathbf{N}$ tel que $|u_{n}-\ell _{u}|<\varepsilon$ et $|u_{n}|> |\ell _{u}|/2$. Alors
+$$
+\left\lvert  \frac{1}{u_{n}}-\frac{1}{\ell _{u}}  \right\rvert =\frac{|\ell _{n}-u_{n}|}{\ell _{u}u_{n}}\le \frac{\varepsilon}{|\ell_{u}^{2}|/2}=\frac{2\varepsilon}{|\ell _{u}|^{2}}.
+$$
+\end{proof}

@@ -1,0 +1,129 @@
+\todo{Lecture 3}
+\begin{proposition}
+Pour tout $y\in \mathbf{R}$, il existe un unique $n\in \mathbf{Z}$ tel que 
+$$
+n\le y <n+1.
+$$
+On note $n=\lfloor y \rfloor$ ou $n=E(y)$, et on l'appelle la partie entiere de $y$.
+\end{proposition}
+\begin{proof}
+Supposons que $y>0$. Comme $\mathbf{R}$ est archimedien, avec $x=1$, il existe $m\in \mathbf{N}^{*}$ tel que $m>y$. Soit $F=\{ k\in \{ 0,\dots,m \}:k\le y \}$. Le maximum de $F$ est bien defini $n=\max (F)$, car $F$ est non-vide et il est fini. Par definition $n\le y$. Aussi, $n+1>y$ parce que si $n+1\le y$, alors comme $y<m$ on aura que $n+1\in F$, or $n+1>n$ qui est le maximum de $F$. Contradiction !
+\end{proof}
+
+\subsection{Densite}
+\begin{definition}[Densite]
+Soit $A\subset \mathbf{R}$. On dit que $A$ est dense dans $\mathbf{R}$ si pour tous $x,y\in \mathbf{R}$ avec $x<y$, il existe $a\in A$ tel que $x<a<y$.
+\end{definition}
+\begin{theorem}
+$\mathbf{Q}$ est dense dans $\mathbf{R}$.
+\end{theorem}
+\begin{proof}
+Soient $x,y\in \mathbf{R}$ avec $x<y$. On cherche un nombre $r=\frac{m}{n}$ ou $m\in \mathbf{Z}$ et $n\in \mathbf{N}^{*}$ tel que $x<r<y$. Prenons $n\in \mathbf{N}^{*}$ tel que $\frac{1}{n}<y-x$. Autrement dit, on veut $n\in \mathbf{N}^{*}$ tel que $n(y-x)>1$. Comme $\mathbf{R}$ est archimedien, on affirme l'existence d'un tel $n$. On veut $m\in \mathbf{Z}$ tel que $m>nx$. Prenons $m=\lfloor nx \rfloor +1$. Donc
+$$
+x<r\le \frac{nx+1}{n}<y.
+$$
+\end{proof}
+\begin{remark}
+$\mathbf{Q}^{*}$ est aussi dense dans $\mathbf{R}$.
+\end{remark}
+\begin{remark}
+L'ensemble $\mathbf{R}\setminus \mathbf{Q}$ des irrationnels est aussi dense dans $\mathbf{R}$.
+\end{remark}
+\subsection{Valeur absolue}
+\begin{definition}
+Pour $x \in \mathbf{R}$, on definit
+$$
+|x|=\begin{cases}
+x & \text{si }x\ge 0 \\
+-x  & \text{si }x<0 .
+\end{cases}
+$$
+Le nombre $|x|$ est appelle la valeur absolue de $x$.
+\end{definition}
+\paragraph{Proprietes de la valeur absolue}~\\
+Soient $x,y\in \mathbf{R}$ et $a\in \mathbf{R}_{+}$:
+\begin{enumerate}
+\item $|x|\ge 0$, avec egalite si et seulement si $x=0$.
+\item $-|x|\le x\le |x|$.
+\item $|-x|=|x|$.
+\item $|xy|=|x||y|$.
+\item Si $y\neq 0$, alors $\left\lvert  \frac{x}{y}  \right\rvert=\frac{|x|}{|y|}$.
+\item $|x|\le a$ si et seulement si $-a\le x\le a$.
+\item Inégalité triangulaire : $|x+y|\le |x|+|y|$.
+\item Inégalité triangulaire inverse : $|x-y|\ge ||x|-|y||$.
+\end{enumerate}
+\begin{proposition}
+Soit $A\subset \mathbf{R}$ un ensemble non-vide. Alors $A$ est borne si et seulement si il existe $C\in \mathbf{R}$ tel que pour tout $a\in A$, $|a|\le C$.
+\end{proposition}
+\begin{proof}
+Supposons $A$ borne. Soit $x$ un majorant de $A$ et soit $y$ un minorant de $A$. Par les propriétés du valeur absolue on a pour tout $a\in A$ que $|a|\le \max\{ |x|,|y| \}=:C$. Réciproquement, supposons qu'il existe $C\in \mathbf{R}$ tel que pour tout $a\in A$, $|a|\le C$. En particulier, $C\ge 0$. On peut déduire que $-C\le a\le C$. Donc $A$ est borne.
+\end{proof}
+
+\chapter{Suites réelles}
+
+\begin{example}
+\begin{itemize}
+\item Suites arithmetiques de raison $r\in \mathbf{R}$, initialisee a $u_{0}\in \mathbf{R}$ de la forme
+$$
+u_{n}=u_{0}+nr,\quad \forall n\in \mathbf{N}.
+$$
+\item Suites geometriques de raision $r\in \mathbf{R}^{*}$, initialisee a $u_{0}\in \mathbf{R}$ de la forme
+$$
+u_{n}=u_{0}r^{n},\quad \forall n\in \mathbf{N}.
+$$
+\end{itemize}
+\end{example}
+\begin{definition}
+Une suite reelle est une foonction $f:\mathbf{N}\to \mathbf{R}$. Plus generalement, une suite est une fonction de $\mathbf{N}$ vers un ensemble $E$.
+\end{definition}
+\begin{notation}
+\begin{itemize}
+\item On denote une suite par $(u_{0},u_{1},\dots), \,(u_{n})_{n\ge0},\, (u_{n})_{n\in \mathbf{N}}$ ou meme $(u_{n})$.
+\item Dans ce cas, le terme d'indice $n$ de la suite est $u_{n}=f(n)$.
+\item Si on numerote a partir de $k$, on ecrit $(u_{n})_{n\ge k}=(u_{k},u_{k+1},\dots)$.
+\end{itemize}
+\end{notation}
+\begin{definition}
+On dit qu'une suite $(u_{n})_{n\in \mathbf{N}}$ est majoree, minoree ou bornee si l'ensemble $\{ u_{n}:n\in \mathbf{N} \}$ l'est.
+\end{definition}
+\begin{definition}
+On dit qu'une suite $(u_{n})_{n\in \mathbf{N}}$ est :
+\begin{itemize}
+\item croissante si pour tout $n\in \mathbf{N}$, on a $u_{n+1}\ge u_{n}$;
+\item strictement croissante si pour tout $n\in \mathbf{N}$, on a $u_{n+1}>u_{n}$;
+\item pareil pour (strictement) decroissante.
+\end{itemize}
+On dit qu'elle est monotone si elle est croissante ou decroissante. On dit qu'ele est strictement monotone si elle est strictement (de)croissante. 
+\end{definition}
+\subsection{Convergence et divergence}
+\begin{definition}
+Soit $(u_{n})$ une suite réelle. On dit que $(u_{n})$ converge vers $\ell \in \mathbf{R}$ si
+$$
+\forall\varepsilon>0,\,\exists N\in \mathbf{N},\,\forall n\in \mathbf{N},\,n\ge N:|u_{n}-\ell|<\varepsilon.
+$$
+On dit que $(u_{n})$ converge s'il existe $\ell \in \mathbf{R}$ tel que $(u_{n})$ converge vers $\ell$. Sinon, on dit que $(u_{n})$ diverge.
+\end{definition}
+\begin{notation}
+Si $(u_{n})$ tend vers $\ell \in \mathbf{R}$, on note
+$$
+\lim_{ n \to \infty } u_{n}=\ell.
+$$
+\end{notation}
+\begin{proposition}
+Si une suite $(u_{n})$ converge, alors sa limite est unique.
+\end{proposition}
+\begin{proof}
+Par contradiction, supposons que $(u_{n})$ a deux limites distinctes $\ell_{1}<\ell_2$. Soit $\varepsilon=\frac{\ell_{2}-\ell_{1}}{3}$. Par definition de $\ell_1$, 
+$$
+\exists N_{1}\in \mathbf{N}\,\forall n>N_{1}:|u_{n}-\ell_{1}|<\varepsilon.
+$$
+Et pour $\ell_{2}$,
+$$
+\exists N_{2}\in \mathbf{N}\,\forall n>N_{2}:|u_{n}-\ell_{2}|<\varepsilon.
+$$
+On pose donc $n=\max\{ N_{1},N_{2} \}$. On a 
+$$
+\ell_{2}-\varepsilon <u_{n}<\ell_{1}+\varepsilon \Rightarrow \underbrace{ \ell_{2}-\ell_{1} }_{ =3\varepsilon }<2\varepsilon.
+$$
+Contradiction !
+\end{proof}
