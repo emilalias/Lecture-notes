@@ -1,0 +1,91 @@
+\todo{Lecture 6}
+\section{Sous-suites}
+\begin{definition}[Sous-suite]
+Soit $(u_{n})_{n\in \mathbf{N}}$ une suite. Soit $(n_{k})_{k\in \mathbf{N}}$ une suite strictement croissante d'entiers naturels. La suite $(v_{k})_{k\in \mathbf{N}}$ definie par 
+$$
+v_{k}=u_{n_{k}}
+$$
+est une sous-suite de $(u_{n})$. La suite $(n_{k})$ est appelle extractrice.
+\end{definition}
+\begin{proposition}
+Si une suite reelle $(u_{n})_{n\ge 0}$ tend vers $\ell \in \mathbf{R}\cup \{ -\infty,+\infty \}$, alors toute sous-suite $(u_{n_{k}})_{k\ge 0}$ tend vers $\ell$.
+\end{proposition}
+\begin{theorem}[Bolzano-Weierstrass]
+De toute suite reelle bornee, on peut extraire une sous-suite convergente.
+\end{theorem}
+\begin{proof}
+On veut construire une suite extractrice $(n_{k})$. Soit $y_{n}=\sup \{ u_{m}:m\ge n \}$. Par definition, 
+$$
+\lim_{ n \to \infty } y_{n}=\limsup_{ n \to \infty } u_{n}=\ell.
+$$
+On pose $n_{0}=0$. Par induction, supposons qu'on a deja choisi $n_{0}< n_{1}<\dots<n_{k-1}$. Considerons $\sup \{ u_{n}>n_{k-1} \}$. Par la caracterisation analytique du supremum, on a 
+$$
+\forall\varepsilon>0\,\exists n>n_{k-1}:u_{n}>\sup \{ u_{m}:m>n_{k-1} \}-\varepsilon \ge \ell -\varepsilon.
+$$
+Fixons $\varepsilon=\frac{1}{k}$ et posons $n_{k}$ comme etant un de ces $n$ dont on vient d'affirmer l'existence. Alors $n_{k}>n_{k-1}$ et $u_{n_{k}}\ge \ell -\frac{1}{k}$. 
+
+Par ailleurs, $u_{n_{k}}\le \sup \{ u_{n}:n\ge n_{k}=y_{n_{k}}$. Donc, pour $k\in \mathbf{N}$, on a 
+$$
+\ell -\frac{1}{k}\le u_{n_{k}}\le y_{n_{k}}.
+$$
+On remarque que $(y_{n_{k}})_{k\in \mathbf{N}}$ est une sous-suite de $(y_{n})_{n}$. Or $y_{n}\to \ell$. Donc, comme si une suite converge vers $\ell$, ses sous-suites aussi, on a que $y_{n_{k}}\to \ell$. Et aussi, $\ell -\frac{1}{k}\to \ell$. Par encadrement, on a donc que $u_{n_{k}}\to \ell$.
+\end{proof}
+\begin{definition}
+	Soit $(u_{n})$ une suite reelle. Un reel $\ell$ est un point d'accumulation, ou une valeur d'adherence, de la suite s'il existe une sous-suite qui converge vers $\ell$.
+\end{definition}
+\begin{proposition}
+Toute suite reelle bornee $(u_{n})$ admet au moins une valeur d'adherence. De plus
+\begin{itemize}
+\item $\limsup_{ n \to \infty }u_{n}$ est sa plus grande valeur d'adherence;
+\item $\liminf_{ n \to \infty }u_{n}$ est sa plus petite valeur d'adherence.
+\end{itemize}
+\end{proposition}
+\begin{corollary}
+Soit $(u_{n})$ une suite reelle bornee. Si toutes ses sous-suites convergentes ont la meme limite $\ell \in \mathbf{R}$, alors
+$$
+\lim_{ n \to \infty } u_{n}=\ell.
+$$
+\end{corollary}
+\begin{proof}
+Si $(u_{n})$ converge, comme $(u_{n})$ est une sous-suite convergente d'elle meme, elle converge vers $\ell$.
+
+Par l'absurde, supposons que $(u_{n})$ ne converge pas vers $\ell$. 
+$$
+\exists\varepsilon>0\,\forall N\in \mathbf{N}\,\exists n\ge N:|u_{n}-\ell|\ge \varepsilon.
+$$
+On fixe ce $\varepsilon$. On construit par recurrence $(n_{k})_{k\ge 0}$ telle que pour chaque $n_{i}$, il existe $n_{i+1}\ge n_{i}+1$ tel que $|u_{n_{i}}-\ell|\ge \varepsilon$.  Comme $(u_{n})$ est bornee, la sous-suite $(u_{n_{k}})$ l'est aussi. Donc, par Bolzano-Weierstrass appliquee a $(u_{n_{k}})$, il existe une sous-suite de la sous-suite qui converge. Or, la sous-suite de la sous-suite est une sous-suite de $(u_{n})$, donc elle converge vers $\ell$. Ceci contredit le fait que tous ses termes sont a distance au moins $\varepsilon$ de $\ell$.
+\end{proof}
+
+\subsection*{Suites de Cauchy}
+\begin{definition}
+Une suite reelle $(u_{n})_{n\in \mathbf{N}}$ est de Cauchy si
+$$
+\forall\varepsilon>0\,\exists N\in \mathbf{N}\,\forall m,n\ge N: |u_{m}-u_{n}|<\varepsilon.
+$$
+
+En particulier, pour un tel $N$, on a $\{ u_{n}:n\ge N \}\subset(u_{N}-\varepsilon,u_{N}+\varepsilon)$.
+\end{definition}
+\begin{theorem}[Theoreme de Cauchy]
+Une suite reelle converge si et seulement si elle est de Cauchy.
+\end{theorem}
+\begin{proof}
+\begin{itemize}
+\item Direction $\Rightarrow$ : Si $(u_{n})$ converge vers $\ell \in \mathbf{R}$, alors
+$$
+\forall\varepsilon\,\exists N\in \mathbf{N}\,\forall n\ge N:|u_{n}-\ell |<\varepsilon /2.
+$$
+En particulier, pour tous $m,n\ge N$, on a que 
+\begin{align*}
+|u_{m}-u_{n}| & = |u_{m}-\ell +\ell -u_{n} | \\
+ & \le |u_{m}-\ell|+|\ell -u_{n}| \\
+ & < \varepsilon.
+\end{align*}
+\item Direction $\Leftarrow$ : On veut montrer qu'une suite de Cauchy est bornee. Fixons $\varepsilon=1$. Il existe $N\in \mathbf{N}$ tel que pour tous $m,n\ge N$, on a que $|u_{m}-u_{n}|<1$. Des lors, pour tout $n\ge 0$, on a que $|u_{n}|\le \max \{ |u_{0}|,\dots,|u_{N-1}|,|u_{N}|+1 \}$. Donc $(u_{n})$ est bornee.
+
+Comme $(u_{n})$ est bornee, on peut extraire une sous-suite $(u_{n_{k}})_{k\ge 0}$ convergente par Bolzano-Weierstrass. Soit $\ell=\lim_{ k \to \infty }u_{n_{k}}$ et $\varepsilon>0$. La propriete de Cauchy nous donne $N$ tel que pour tous $p,q\ge N$, on a que $|u_{p}-u_{q}|<\varepsilon /2$. Par ailleurs, $(u_{n_{k}})$ tend vers $\ell$, donc on peut choisir $N$ assez grand tel que $|u_{n_{k}}-\ell|<\varepsilon /2$. Des lors, pour tout $n\ge N$ :
+$$
+|u_{n}-\ell|\le |u_{n}-u_{n_{k}}| +|u_{n_{k}}-\ell|<\varepsilon.
+$$
+Donc $u_{n}\to \ell$.
+\end{itemize}
+\end{proof}

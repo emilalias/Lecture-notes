@@ -1,0 +1,117 @@
+\todo{Lecture 7}
+\chapter{Series reelles}
+\begin{definition}
+Soit $(u_{k})_{k\ge 0}$ une suite reelle. Pour $n\in \mathbf{N}$, on appelle
+$$
+S_{n}=\sum_{k=0}^{n} u_{k}
+$$
+la $(n+1)$-ieme somme partielle de la serie de terme general $u_{k}$, notee
+$$
+\sum_{k=0}^{\infty} u_{k}.
+$$
+Si la suite des sommes partielles converge, on dit que la serie converge et on appelle $\lim_{ n \to \infty }S_{n}$ la somme de la serie. Sinon, on dit que la serie diverge.
+\end{definition}
+\begin{remark}
+La definition demande qu'on somme les termes dans l'ordre donne.
+\end{remark}
+\section{Premieres criteres de convergence}
+\begin{definition}
+On dit que la serie $\sum_{k=0}^{\infty}u_{k}$ converge absolument si la serie $\sum_{k=0}^{\infty}|u_{k}|$ converge.
+\end{definition}
+\begin{theorem}
+Si une serie converge absolument, alors elle converge.
+\end{theorem}
+\begin{proof}
+Par hypothese, $\sum_{k=0}^{\infty}|u_k|$ converge, c-a-d, avec $A_{n}=\sum_{k=0}^{n}|u_{k}|$, on a que $(A_{n})$ converge. De facon equivalente, $(A_{n})$ est de Cauchy :
+$$
+\forall\varepsilon>0\,\exists N\in \mathbf{N}\,\forall m>n\ge N:|A_{m}-A_{n}|<\varepsilon.
+$$
+On veut montrer que $\sum_{k=0}^{\infty}$ converge, c-a-d, que la suite des sommes partielles $S_{n}=\sum_{k=0}^{n}u_{k}$ est de Cauchy. En effet, pour tout $\varepsilon>0$, avec $N$ comme ci-dessus, on a pour tous $m>n\ge N$ :
+\begin{align*}
+|S_{m}-S_{n}| & =|u_{n+1}+\dots +u_{m}| \\
+ & \le |u_{n+1}|+\dots +|u_{m}| \\
+ & = A_{m}-A_{n} \\
+  & < \varepsilon.
+\end{align*}
+\end{proof}
+\begin{theorem}[Condition necessaire de convergence]
+Si $\sum_{k=0}^{\infty}u_{k}$ converge, alors $u_{k}\to 0$.
+\end{theorem}
+\begin{proof}
+On peut ecrire $u_{n}=S_{n}-S_{n-1}$. Comme $\sum_{k=0}^{\infty}u_{k}$ converge, on a que $(S_{n})$ converge vers $\ell$. Aussi $(S_{n-1})$ converge vers $\ell$. Donc $(S_{n}-S_{n-1})$ converge et 
+$$
+\lim_{ n \to \infty } u_{n}=\lim_{ n \to \infty } S_{n}-S_{n-1}=\ell -\ell=0.
+$$
+\end{proof}
+\begin{proposition}
+La serie harmonique diverge
+$$
+\sum_{k=1}^{\infty}  \frac{1}{k}=\infty.
+$$
+\end{proposition}
+\begin{proof}
+On note $S_{n}$ la somme partielle de la somme harmonique. On remarque $(S_{n})$ est croissante, on veut montrer qu'elle n'est pas majoree. Considerons
+$$
+S_{2n}-S_{n}=\frac{1}{n+1}+\dots +\frac{1}{2n}\ge n \cdot\frac{1}{2n}=\frac{1}{2}.
+$$
+Donc,
+$$
+S_{2^{k}}\ge 1+ \frac{k}{2}
+$$
+qui tend vers $+\infty$ quand $k\to \infty$. Ainsi, $S_{n}$ n'est pas majoree.
+\end{proof}
+\begin{theorem}
+Soient $(u_{k})$ et $(v_{k})$ telles que $0\le u_{k}\le v_{k}$ pour tout $k\in \mathbf{N}$. 
+\begin{itemize}
+\item Si $\sum_{k=0}^{\infty}v_{k}$ converge, alors $\sum_{k=0}^{\infty}u_{k}$ converge.
+\item Si $\sum_{k=0}^{\infty}u_{k}=\infty$ , alors $\sum_{k=0}^{\infty}v_{k}=\infty$.
+\end{itemize}
+\end{theorem}
+\begin{corollary}
+Pour $\alpha \in \mathbf{R}$, la serie de Riemann 
+$$
+\sum_{k=1}^{\infty}  \frac{1}{k^{\alpha}}
+$$
+converge si et seulement si $\alpha>1$.
+\end{corollary}
+\begin{proof}
+\begin{itemize}
+\item Si $\alpha\le 1$ : Observons que pour tout $k\ge 1$, on a $\frac{1}{k^{\alpha}}\ge \frac{1}{k}$. Donc, 
+$$
+\sum_{k=1}^{n}  \frac{1}{k^{\alpha}}\ge \sum_{k=1}^{n} \frac{1}{k} \to \infty.
+$$
+\item Si $\alpha>1$ : On veut montrer que la suite des sommes partielles est majoree. 
+\begin{align*}
+S_{n} \le S_{2n+1}  & =\sum_{k=1}^{2n+1} \frac{1}{k^{\alpha}} \\
+ & = 1+ \sum_{k=1}^{n}  \frac{1}{(2k)^{\alpha}}+\sum_{k=1}^{n} \frac{1}{(2k+1)^{\alpha}} \\
+ & \le 1+ 2\sum_{k=1}^{n}  \frac{1}{(2k)^{\alpha}} \\
+ & = 1+ \frac{2}{2^{\alpha}} \sum_{k=1}^{n}  \frac{1}{k^{\alpha}}=1+2^{1-\alpha}S_{n}.
+\end{align*}
+Donc $(1-2^{1-\alpha})S_{n}\le 1$ et $S_{n}\le \frac{1}{1-2^{1-\alpha}}$.
+\end{itemize}
+\end{proof}
+\begin{theorem}[Regle d'Alembert]
+Soit $(x_{k})$ une suite reelle dont les termes sont non-nuls a partir d'un certain rang. Supposons que 
+$$
+\left\lvert  \frac{x_{k+1}}{x_{k}}  \right\rvert \to  \rho \in[0,\infty].
+$$
+\begin{itemize}
+\item Si $\rho<1$, la serie $\sum_{k=0}^{\infty}x_{k}$ converge absolument
+\item Si $\rho>1$, la serie diverge. 
+\item Le cas $\rho=1$ est inconclusif.
+\end{itemize}
+\end{theorem}
+\begin{proof}
+Supposons $\rho <1$. Posons $q=\frac{\rho +1}{2}\in (\rho,1)$. Par hypothese, il existe $N\in \mathbf{N}$ tel que pour tout $k\ge N$, on a $x_{k}\neq0$ et $\left\lvert  \frac{x_{k+1}}{x_{k}}  \right\rvert<q$. Donc, par induction on a que $|x_{N+m}|<q^{m}|x_{N}|$ pour tout $m\ge 0$. Alors
+$$
+\sum_{k=0}^{N+m} |x_{k}|=\sum_{k=0}^{N} |x_{k}|+\sum_{k=N+1}^{N+m}|x_{k}|\le \sum_{k=0}^{N} |x_{k}|+ \sum_{k=N+1}^{N+m}q^{k-N}|x_{N}|\le \sum_{k=0}^{N} |x_{k}|+ \frac{q}{1-q}|x_{N}|.  
+$$
+Indépendamment de $m$, donc les sommes partielles sont majorees et croissantes et, alors, convergentes.
+
+On a utilise le fait que 
+$$
+q+q^{2}+\dots +q^{m}\le \frac{q}{1-q}.
+$$
+
+Supposons $\rho>1$. On choisi $q>1$ tel que $q<\rho$. Par hypothese, il existe $N\in \mathbf{N}$ tel que pour tout $k\ge N$, on a que $\left\lvert  \frac{x_{k+1}}{x_{k}}  \right\rvert>q$. Donc, par induction, on a que $|x_{N+m}|>q^{m}|x_{N}|\to \infty$. Le terme general $x_{k}$ ne tend pas vers zero, donc la serie diverge. 
+\end{proof}
