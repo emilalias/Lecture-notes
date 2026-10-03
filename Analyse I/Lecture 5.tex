@@ -1,0 +1,113 @@
+\todo{Lecture 5}
+
+\begin{corollary}
+Soient $(u_{n})$ et $(v_{n})$ deux suites réelles telles que $u_{n}\to \ell _{u}\in \mathbf{R}$ et $v_{n}\to \ell _{v}\in \mathbf{R}$.
+\begin{itemize}
+\item Pour tous $\alpha,\beta \in \mathbf{R}$
+$$
+\lim_{ n \to \infty } (\alpha u_{n}+\beta v_{n})=\alpha \ell _{u}+\beta \ell _{v}.
+$$
+\item Si $v_{n}\neq 0$ pour tout $n$ et $\ell _{v}\neq 0$, alors
+$$
+\lim_{ n \to \infty } \frac{u_{n}}{v_{n}}=\frac{\ell_{u}}{\ell _{v}}.
+$$
+\end{itemize}
+\end{corollary}
+
+De manière générale, soient $p,q\in \mathbf{N}^{*}$ et $a_{0},\dots,a_{p}\in \mathbf{R}$ avec $a_{p}\neq 0$ et $b_{0},\dots,b_{q}\in \mathbf{R}$ avec $b_{q}\neq 0$. On peut calculer la limite de fractions de polynômes comme
+$$
+\lim_{ n \to \infty } \frac{a_{p}n^{p}+\dots +a_{1}n+a_{0}}{b_{q}n^{q}+\dots +b_{1}n+b_{0}}=\begin{cases} \frac{a_{p}}{b_{q}} & \text{si }p=q \\
+\pm \infty &  \text{si }p>q  \\
+0 & \text{si }p<q
+\end{cases}
+$$
+\subsection{Critères de convergence}
+
+\begin{theorem}[Convergence monotone]
+Soit $(u_{n})$ une suite réelle croissante.
+\begin{itemize}
+\item Si $(u_{n})$ est majorée, elle converge vers $\sup \{ u_{n}:n\in \mathbf{N} \}$.
+\item Si $(u_{n})$ n'est pas majorée, elle tend vers $+\infty$.
+\end{itemize}
+Soit $(u_{n})$ une suite réelle décroissante.
+\begin{itemize}
+\item Si $(u_{n})$ est minoree, elle converge vers $\min \{ u_{n}:n\in \mathbf{N} \}$.
+\item Si $(u_{n})$ n'est pas minorée, elle tend vers $-\infty$.
+\end{itemize}
+\end{theorem}
+\begin{proof}
+\begin{itemize}
+\item Supposons $(u_{n})$ croissante et majorée. Soit $\alpha=\sup \{ u_{n}:n\in \mathbf{N} \}$. Par la caractérisation analytique du supremum : pour tout $\varepsilon \in \mathbf{R}_{+}$, il existe $n_{0}\in \mathbf{N}$ tel que $\alpha -\varepsilon<u_{n_{0}}\le \alpha$. Comme $(u_{n})$ est croissante, il suit que pour tout $\varepsilon \in \mathbf{R}_{+}$, il existe $n\in \mathbf{N}$ avec $n\ge n_{0}$, tell que $\alpha -\varepsilon<u_{n}\le \alpha$. Alors,
+$$
+\forall\varepsilon \in \mathbf{R}_{+}\,\exists n_{0}\in \mathbf{N}\,\forall n>n_{0}:|u_{n}-\alpha|<\varepsilon.
+$$
+\item Supposons $(u_{n})$ est croissante et non-majoree. Alors, pour tout $A\in \mathbf{R}$, il existe $n_{0}\in \mathbf{N}$ tel que $u_{n_{0}}>A$, car $(u_{n})$ est non-majoree, et il existe aussi $n\ge n_{0}$ tel que $u_{n}\ge A$ car $(u_{n})$ est croissante. Alors, $(u_{n})$ tend vers $+\infty$.
+\end{itemize}
+\end{proof}
+
+\paragraph{Suites définies par recurrence}~\\
+Certaines suites sont définies par application répétée d'une fonction $g:A\to \mathbf{R}$ :
+$$
+u_{0}\in A,\quad u_{n+1}=g(u_{n})~\text{pour }n\ge0.
+$$
+\begin{theorem}[Regle d'Alembert]
+Soit $(u_{n})_{n\in \mathbf{N}}$ une suite reelle dont tous les termes sont non-nuls. Supposons que 
+$$
+\lim_{ n \to \infty } \left\lvert  \frac{u_{n+1}}{u_{n}}  \right\rvert =\rho \in \mathbf{R}.
+$$
+\begin{itemize}
+\item Si $\rho<1$, alors $u_{n}\to 0$.
+\item Si $\rho>1$, alors $u_{n}$ diverge.
+\end{itemize}
+\end{theorem}
+\begin{proof}
+\begin{itemize}
+\item Si $0\le \rho \le 1$, alors prenons $q=\frac{\rho +1}{2}\in (\rho,1)$. Comme $\left\lvert  \frac{u_{n+1}}{u_{n}}  \right\rvert\to \rho$, il existe $N\in \mathbf{N}$ tel que pour tout $n\ge N$, on a $\left\lvert  \frac{u_{n+1}}{u_{n}}  \right\rvert<q$, avec $\varepsilon=q-\rho$. Donc pour tout $n \ge N$, on a $\lvert u_{n+1} \rvert<q|u_{n}|$. En procedant par induction on a que 
+$$
+0\le |u_{N+m}|<q^{m}|u_{N}|
+$$
+pour tout $m\in \mathbf{N}$. Comme $q^{m}|u_{N}|\to 0$ (serie geometrique) et $0\to 0$, on a par le theorem des gendarmes que $|u_{N+m}|\to 0$. Et donc aussi : $(u_{n})\to 0$.
+\item Si $\rho>1$, posons $q=\frac{1+\rho}{2}>1$. Il existe $N\in \mathbf{N}$ tel que pour tout $n\ge N$, on a $\left\lvert  \frac{u_{n+1}}{u_{n}}  \right\rvert\ge q$. Donc, $|u_{n+1}|\ge q|u_{n}|$, pour tout $n\ge N$. Par induction, on a que $|u_{N+m}|\ge q^{m}|u_{N}|$ pour tout $m\in \mathbf{N}$. Comme $q^{m}|u_{n}|\to \infty$, alors $(u_{n})\to \infty$ aussi.  
+\end{itemize}
+\end{proof}
+\begin{remark}
+Cette règle est inconclusive si $\rho=1$.
+\end{remark}
+
+\section{Limite superieure et inferieure}
+\begin{definition}
+Soit $(u_{n})$ une suite reelle bornee.
+\begin{itemize}
+\item Sa limite superieure est 
+$$
+\limsup_{ n \to \infty } u_{n}=\lim_{ n \to \infty } \sup \{ u_{k}:k\ge n \}.
+$$
+\item Sa limite inferieure est
+$$
+\liminf_{ n \to \infty } u_{n}=\lim_{ n \to \infty } \inf\{ u_{k}:k\ge n \}.
+$$
+\end{itemize}
+\end{definition}
+\begin{remark}
+Ces deux limites existent dans $\mathbf{R}$ (par convergence monotone) et 
+$$
+\liminf_{ n \to \infty } u_{n}\le \limsup_{ n \to \infty } u_{n}.
+$$
+\end{remark}
+\begin{theorem}
+Soit $(u_{n})$ une suite reelle bornee. Alors $(u_{n})$ converge si et seulement si $$\limsup_{ n \to \infty }u_{n}=\liminf_{ n \to \infty }u_{n}.$$
+Dans ce cas, leur valeur commune est $\lim_{ n \to \infty }u_{n}.$
+\end{theorem}
+\begin{proof}
+Posons $y_{n}=\sup \{ u_{n},u_{n+1},\dots \}$ et $z_{n}=\inf \{ u_{n},u_{n+1},\dots \}$.
+\begin{itemize}
+\item Si $\lim_{ n \to \infty } y_{n}=\lim_{ n \to \infty }z_{n}$, comme $z_{n}\le u_{n}\le y_{n}$, on a que $(u_{n})$ converge par le théorème des gendarmes. 
+\item Si $u_{n} \to \ell$, notons $y=\lim_{ n \to \infty } y_{n}$. Pour $\varepsilon>0$, on peut choisir $N$ tel que pour tout $n\ge N$, on a que $|u_{n}-\ell|<\varepsilon /3$ et $|y_{n}-y|<\varepsilon /3$. Par la caractérisation analytique du supremum applique a $y_{N}$, il existe $n\ge N$ tel que $y_{N}-\varepsilon /3<u_{n}\le y_{N}$. Donc 
+$$
+	|\ell -y|\le |\ell -u_{n}| + |u_{n}-y_{N}|+|y_{N}-y|<\varepsilon
+$$
+Donc $\ell=y$.
+\end{itemize}
+\end{proof}
+
+
