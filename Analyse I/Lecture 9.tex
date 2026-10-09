@@ -1,0 +1,176 @@
+\todo{Lecture 9}
+\begin{theorem}
+Si $\sum_{n=0}^{\infty}x_{n}$ est absolument convergente, alors toute bijection $\sigma:\mathbf{N}\to \mathbf{N}$ verifie
+$$
+\sum_{n=0}^{\infty} x_{\sigma(n)}=\sum_{n=0}^{\infty} x_{n}.
+$$
+\end{theorem}
+\begin{proof}
+Pour $x \in \mathbf{R}$, on definit 
+$$
+x^{+}=\max \{ 0,x \},\quad x^{-}=\max \{ 0,-x \}.
+$$
+On a que $x^{+}+x^{-}=|x|$, et en particulier $0\le x^{+}\le |x|$ et $0\le x^{-}\le |x|$. 
+
+Pour toute bijection $\sigma:\mathbf{N}\to \mathbf{N}$, on a 
+\begin{align*}
+\sum_{k=0}^{\infty} x_{k} & =\sum_{k=0}^{\infty} (x_{k}^{+}-x_{k}^{-}) \\
+ & =\sum_{k=0}^{\infty} x_{k}^{+}-\sum_{k=0}^{\infty} x_{k}^{-} \\
+ & =\sum_{k=0}^{\infty} x_{\sigma(k)}^{+}-\sum_{k=0}^{\infty} x_{\sigma(k)}^{-} \\
+ &  =\sum _{k=0}^{\infty}(x_{\sigma(k)}^{+}-x_{\sigma(k)}^{-}) \\
+ &   =\sum_{k=0}^{\infty} x_{\sigma(k)}.
+\end{align*}
+\end{proof}
+\begin{definition}
+Une serie est semi-convergente si elle converge mais ne converge pas absolument.
+\end{definition}
+\begin{theorem}[Rearrangement de Riemann]
+Soit $\sum_{n=0}^{\infty}x_{n}$ une serie semi-convergente. Pour $\alpha \in \mathbf{R}\cup \{ \pm \infty \}$, il existe une bijection $\sigma:\mathbf{N}\to \mathbf{N}$ telle que
+$$
+\sum_{n=0}^{\infty}  x_{\sigma(n)}=\alpha.
+$$
+\end{theorem}
+
+\chapter{Fonctions, limites et continuite}
+
+\begin{definition}
+Soit $D\subseteq \mathbf{R}$ non-vide. A chaque $x \in D$, une fonction $f:D\to \mathbf{R}$ associe un reel appele $f(x)$.
+
+On appelle $D$ le domaine de $f$, on le note $\mathrm{dom}(f)$. On appelle $\{ f(x):x \in D \}$ l'image de $f$, on la note $f(D)$.
+\end{definition}
+\begin{remark}
+Formellement, $f$ est definie par son graphe $F$, un sous-ensemble de $D\times \mathbf{R}$, tel que pour chaque $x \in D$, il existe un unique $y\in \mathbf{R}$ avec $(x,y)\in F$.
+\end{remark}
+\begin{notation}
+Pour specifier la fonction, on peut ecrire par exemple :
+\begin{itemize}
+\item $f:D\to \mathbf{R},\,x\mapsto f(x)=x^{2}$.
+\item $f:D\to \mathbf{R}$ et $f(x)=x^{2}$ (pour tout $x$)
+\item $x\mapsto x^{2}$.
+\end{itemize}
+\end{notation}
+\begin{definition}
+On peut restreindre le domaine de $f:D\to \mathbf{R}$ a son sous-ensemble $A\subset D$. On appelle $f|_{A}$ la restriction de $f$ a $A$, definie par
+$$
+f|_{A}(x)=f(x)\text{ pour tout }x \in A.
+$$
+\end{definition}
+
+\paragraph{Proprietes heritee des reels}~\\
+Soient $f,g:D\to \mathbf{R}$ deux fonctions sur le meme domaine et $\alpha \in \mathbf{R}$. On peut definir d'autres fonctions par operations, ainsi qu'un ordre partiel.
+\begin{itemize}
+\item $\alpha:D\to \mathbf{R},\, x\mapsto(\alpha f)(x)=\alpha f(x).$
+\item $f+g:D\to \mathbf{R},\,x\mapsto(f+g)(x)=f(x)+g(x)$.
+\item $fg:D\to \mathbf{R},\,x\mapsto(fg)(x)=f(x)g(x)$.
+\item $f\le g$ si et seulement si $f(x)\le g(x)$ pour tout $x \in D$.
+\item 
+\end{itemize}
+
+\paragraph{Composition}~\\
+Soient $f_{1}:D_{1}\to \mathbf{R}$ et $f_{2}:D_{2}\to \mathbf{R}$. SI $\inf f_{1}\subseteq D_{2}$, alors
+$$
+f_{2}\circ f_{1}:D_{1}\to \mathbf{R}\, x\mapsto(f_{2}\circ f_{1})(x)=f_{2}(f_{1}(x)).
+$$
+
+\begin{definition}
+L'image de $A\subseteq D$ par $f$ est notee $f(A)=\{ f(x):x \in A \}$. On dit que $f$ est majoree, minoree our bornee sur $A$ si l'ensemble $f(A)$ est respectivement majore, minore ou borne.
+\end{definition}
+\begin{definition}
+Le supremum et l'infinum de $f$ sur $A\subseteq D$ sont
+$$
+\sup _{x \in A}f(x)=\sup f(A),\quad \inf_{x \in A}f(x)=\inf f(A).
+$$
+Le supremum vaut $+\infty$ si $f(A)$ n'est pas majore. L'infinum vaut $-\infty$ si $f(A)$ n'est pas minore.
+\end{definition}
+\begin{notation}
+On ecrit aussi $\sup_{A}f$ et $\sup f|_{A}$ ou meme $\sup f$ si $A=D$.
+\end{notation}
+\begin{definition}
+S'il existe $\overline{x}\in D$ tel que $f(\overline{x})=\sup f$, on dit que $f$ atteint son maximum en $\overline{x}$. Alors, on ecrira librement 
+$$
+f(\overline{x})=\max_{x \in D}f(x)=\max_{D}f=\max f=\sup f.
+$$
+L'ensemble des maximiseurs $\overline{x}$ est
+$$
+\arg\max_{x \in D}f(x)=\arg\max_{D}f=\arg\max f=\{ x \in D:f(x)=\max f \}.
+$$
+De facon equivalente, $x \in\arg\max f$ si et seulement si $f(x)\ge f(y)$ pour tout $y\in D$.
+
+On a une definition similaire pour $\inf f$.
+\end{definition}
+\begin{definition}
+On dit que $f$ admet un maximum local en $\overline{x}\in D$ si 
+$$
+\exists\delta>0\,\forall x \in D\:|x-\overline{x}|<\delta \Rightarrow f(\overline{x})\ge f(x).
+$$
+La definition est analogue pour un minimum local. Un extremum (local) est un minimum (local) ou un maximum (local).
+\end{definition}
+\begin{definition}
+Pour $f:D\to \mathbf{R}$ et $A\subset D$.
+\begin{itemize}
+\item $f$ est croissante sur $A$ si : pour toux $x_{1},x_{2}\in A$, avec $x_{1}<x_{2}$, alors $f(x_{1})\le f(x_{2})$.
+\item Elle est strictement croissante si on aussi $f(x_{1})<f(x_{2})$.
+\item Definition analogue pour (strictement) decroissante.
+\item $f$ est monotone sur $A$ si elle est croissante ou decroissante sur $A$. Et de meme pour strictement monotone.
+\end{itemize}
+\end{definition}
+\begin{definition}
+Un ensemble $D\subseteq \mathbf{R}$ est symetrique par rapport a 0 si $x \in D$ et $-x \in D$.
+\end{definition}
+\begin{definition}
+Si $D$ est symetrique par rapport a 0, on dit que $f:D\to \mathbf{R}$ :
+\begin{itemize}
+\item est paire si $f(x)=f(-x)$ pour tout $x \in D$.
+\item est impaire si $f(-x)=-f(x)$ pour tout $x \in D$.
+\end{itemize}
+\end{definition}
+\begin{proposition}
+Si $D$ est symetrique par rapport a 9, alors toute fonction $f:D\to \mathbf{R}$ se decompose de maniere unique en la somme d'une fonction paire et d'une fonction impaire.
+\end{proposition}
+\begin{proof}
+Supposons qu'il existe $f_{p}:D\to \mathbf{R}$ et $f_{i}:D\to \mathbf{R}$ telles que $f=f_{p}+f_{i}$. Alors 
+$$
+f(-x)=f_{p}(-x)+f_{i}(-x)=f_{p}(x)-f_{i}(x).
+$$
+Donc
+$$
+f(x)+f(-x)=2f_{p}(x)\Rightarrow f_{p}(x)=\frac{f(x)+f(-x)}{2}.
+$$
+Aussi
+$$
+f(x)-f(-x)=2f_{i}(x)\Rightarrow f_{i}(x)=\frac{f(x)-f(-x)}{2}.
+$$
+Et on a bien $f=f_{p}+f_{i}$ et $f_{p}$ est paire et $f_{i}$ impaire.
+\end{proof}
+\begin{definition}
+On dit que $f:\mathbf{R}\to \mathbf{R}$ est periodique s'il existe $P\neq 0$, tel que pour tout $x \in \mathbf{R}$, on a que $f(x+P)=f(X)$.
+
+Dans ce cas, $P$ est appele une periode de $f$ et on dit que $f$ est $P$-periodique.
+\end{definition}
+\begin{definition}
+La partie positive et la partie negative de $f:D\to \mathbf{R}$ sont les fonctions $f^{+}:D\to \mathbf{R}$ et $f^{-}:D\to \mathbf{R}$ definies par
+$$
+f^{+}(x)=\max \{ 0,f(x) \},\quad f^{-}(x)=\max \{ 0,-f(x) \}=-\min \{ 0,f(x) \}.
+$$
+On a $f=f^{+}-f^{-}$ et $|f|=f^{+}+f^{-}$.
+\end{definition}
+\section{Limites de fonctions reelles}
+\begin{definition}
+On dit que $f:D\to \mathbf{R}$ est definie au voisinage de $x_{0}\in \mathbf{R}$ s'il existe $\delta>0$ tel que
+$$
+\forall x \in R: 0<|x-x_{0}|<\delta \Rightarrow x \in D.
+$$
+\end{definition}
+\begin{definition}[Limite epointee]
+Soit $f:D\to \mathbf{R}$ definie au voisinage de $x_{0}\in \mathbf{R}$ et $\ell \in \mathbf{R}$. On dit que $f$ admet $\ell$ pour limite en $x_{0}$ si
+$$
+\forall\varepsilon>0\, \exists\delta>0\,\forall x \in D:0<|x-x_{0}|<\delta \Rightarrow |f(x)-\ell|<\varepsilon.
+$$
+\end{definition}
+\begin{notation}
+Le corollaire ci-dessous affirme que si $f$ admet $\ell$ pour limite en $x_{0}$, alors ce $\ell$ est unique. Des lors, on ecrira
+$$
+\lim_{ x \to x_{0} } f(x)=\ell\quad \text{ou}\quad \lim_{ x \to x_{0},x\neq x_{0} } f(x)=\ell.
+$$
+La seconde notation permet d'insister sur le fait que, meme si $f$ est definie en $x_{0}$, cette limite peut etre differente de $f(x_{0})$.
+\end{notation}
