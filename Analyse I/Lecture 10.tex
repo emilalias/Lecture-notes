@@ -1,0 +1,111 @@
+\todo{Lecture 10}
+\begin{definition}[Point adherent]
+Soient $E\subseteq \mathbf{R}$ et $x_{0}\in \mathbf{R}$. On dit que $x_{0}$ est adherent a $E$ si
+$$
+\forall\delta>0\,\exists x \in E:|x-x_{0}|<\delta.
+$$
+\end{definition}
+\begin{definition}[Limite le long d'un ensemble]
+Soient $f:D\to \mathbf{R},\, E\subseteq D,x_{0}\in \mathbf{R}$ adherent a $E$, et $\ell \in \mathbf{R}$. On dit que $f$ admet $\ell$ pour limite en $x_{0}$ le long de $E$ si
+$$
+\forall\varepsilon>0\,\exists\delta>0\,\forall x \in E:|x-x_{0}|<\delta \Rightarrow |f(x)-\ell|<\varepsilon.
+$$
+\end{definition}
+\begin{notation}
+On ecrit
+$$
+\lim_{ x \to x_{0},x \in E } f(x)=\ell.
+$$
+Par convention, si on ne precise pas l'ensemble, alors la limite est prise le long du domaine entier $D$ :
+$$
+\lim_{ x \to x_{0} } f(x)=\lim_{ x \to x_{0},x \in D } f(x).
+$$
+\end{notation}
+
+\begin{theorem}[Caracterisation a l'aide de suites]
+Soient $f:D\to \mathbf{R},\,E\subseteq D$ et $x_{0}\in \mathbf{R}$ adherent a $E$, et $\ell \in \mathbf{R}$. Alors $f$ admet $\ell$ pour limite en $x_{0}$ le long de $E$ si et seulement si, pour toute suite $(a_{n})$ dans $E$.
+$$
+a_{n}\to x_{0} \Rightarrow f(a_{n})\to \ell.
+$$
+\end{theorem}
+\begin{proof}
+\begin{itemize}
+\item $\Rightarrow$ : On suppose que $\lim_{ x \to x_{0},x \in E }f(x)=\ell$. Soit $\varepsilon>0$. Il existe $\delta>0$ tel que pour tous $x \in E$, $|x-x_{0}|<\delta$, donc $|f(x)-\ell|<\varepsilon$. Soit $(a_{n})$ une suite dans $E$ telle que $a_{n}\to x_{0}$. Comme $(a_{n})\to x_{0}$, alors
+$$
+\forall \delta>0\, \exists N\in \mathbf{N}\, \forall n\ge N:|a_{n}-x_{0}|<\delta.
+$$
+Donc :
+$$
+		\forall\varepsilon>0\,\exists N\in \mathbf{N}\,\forall n\ge N:|f(a_{n})-\ell|<\varepsilon.
+$$
+Alors $f(a_{n})\to \ell$.
+\item $\Leftarrow$ :On pose par contraposee que $\lim_{ x \to x_{0},x \in E }f(x)\neq \ell$, alors
+$$
+\exists\varepsilon>0\,\forall\delta>0\,\exists x \in E:|x-x_{0}|<\delta \land |f(x)-\ell|\ge \varepsilon.
+$$
+Donc
+$$
+\forall n\in \mathbf{N}^{*}\,\exists a_{n}\in E:|a_{n}-x_{0}|< \frac{1}{n}\land |f(a_{n})-\ell|\ge \varepsilon.
+$$
+Alors, $(a_{n})$ est une suite dans $E$ et $a_{n}\to x_{0}$, mais $f(a_{n})\not \to \ell$ car $|f(a_{n})-\ell|\ge \varepsilon>0$ pour tout $n$.
+\end{itemize}
+\end{proof}
+\begin{corollary}
+Pour un ensemble $E\subseteq D$ fixe et $x_{0}$ adherent a $E$, si $f$ admet une limite en $x_{0}$ le long de $E$, cette limite est unique.
+\end{corollary}
+\begin{proof}
+Comme $x_{0}$ est adherent a $E$, il existe une suite $(a_{n})$ dans $E$ telle que $a_{n}\to x_{0}$. Par le theoreme de caracterisation de suites, alors $f(a_{n})\to \ell$. Donc, si aussi $\lim_{ x \to x_{0},x \in E }f(x)=\ell'$, alors $f(a_{n})\to \ell'$. Des lors, $\ell=\ell'$ et on a bien l'unicite.
+\end{proof}
+\begin{notation}
+\begin{itemize}
+\item Limite épointée : $E=D\setminus \{ x_{0} \}$.
+\item Limite a droite : $E_{+}=D\cap(x_{0},+\infty)$. On note $\lim_{ x \to x_{0}^{+} }$
+\item Limite a gauche : $E_{-}=D\cap(-\infty,x_{0})$. On note $\lim_{ x \to x_{0}^{-} }$.
+\end{itemize}
+\end{notation}
+\begin{remark}
+A partir de ce theoreme de caracterisation de suites, on peut deduire des proprietes pour la manipulation des suites : addition, produit, etc; la conversation de l'ordre et le theoreme des gendarmes / d'encandrement.
+\end{remark}
+
+\begin{definition}
+Soit $E\subseteq \mathbf{R}$. On dit que $+\infty$ est adherent a $E$ si $E$ n'est pas majore, c-a-d si 
+$$
+\forall b\in \mathbf{R}\,\exists x \in E: x>b.
+$$
+De meme pour $-\infty$.
+\end{definition}
+\begin{definition}
+Soient $f:D\to \mathbf{R}$ et $E\subseteq D$ non majore. On dit que $f$ admet $\ell \in \mathbf{R}$ pour limite quand $x$ tend vers $+\infty$ le long de $E$ si
+$$
+\forall\varepsilon>0\,\exists b\in \mathbf{R}\,\forall x \in E:x>b \Rightarrow |f(x)-\ell|<\varepsilon.
+$$
+Dans ca cas, on note
+$$
+\lim_{ x \to \infty,x \in E }f(x)=\ell.
+$$
+\end{definition}
+\begin{theorem}
+Soit $f:D\to \mathbf{R}$ croissante, avec $D$ non majore. 
+\begin{itemize}
+\item Si $f$ est majoree, alors $\lim_{ x \to \infty }f(x)=\sup_{x \in D}f(x)$.
+\item Si $f$ n'est pas majoree, alors $\lim_{ x \to \infty }f(x)=\infty$.
+\end{itemize}
+\end{theorem}
+\begin{proof}
+\begin{itemize}
+\item Supposons $f$ majoree. Alors, il existe $M\in \mathbf{R}$ tel que pour tous $x \in D$, $f(x)\le M$. Le domaine de $f$ est non-vide, donc $\{ f(x):x \in D \}$ est non-vide et majoree, donc il a un supremum qu'on note $\alpha=\sup_{x \in D}f(x)$.
+
+Soit $\varepsilon>0$. Par la caracterisation analytique du supremum :
+$$
+\exists z\in D:\alpha -\varepsilon<f(z)\le \alpha.
+$$
+Comme  $f$ est croissante, pour tous $x\ge z$, on a que $f(x)\ge f(z)$. Mais aussi, $f(x)\le \alpha$. Donc 
+$$
+\forall x \in D\,x\ge z:\alpha -\varepsilon<f(z)\le f(x)\le f(\alpha).
+$$
+On a donc montre que pour tous $\varepsilon>0$, il existe $z\in \mathbf{R}$ tel que 
+$$
+\forall x \in D\, x\ge z \Rightarrow |f(x)-\alpha|<\varepsilon.
+$$
+\end{itemize}
+\end{proof}
