@@ -1,0 +1,78 @@
+\todo{Lecture 11}
+\section{Fonctions continues}
+\begin{definition}
+On dit que $f:D\to \mathbb{R}$ est continue en $x_{0}\in D$ si 
+$$
+\lim_{ x \to x_{0},x \in D } f(x)=f(x_{0}).
+$$
+Sinon, on dit que $f$ est discontinue en $x_{0}$.
+\end{definition}
+\begin{theorem}[Caracterisations equivalentes]
+Soient $f:D\to \mathbb{R}$ et $x_{0}\in D$. Les trois enonces suivants sont equivalents :
+\begin{itemize}
+\item $f$ est continue en $x_{0}$.
+\item 
+$$
+\forall\varepsilon>0\,\exists\delta>0\,\forall x \in D:|x-x_{0}|<\delta \Rightarrow |f(x)-f(x_{0})|<\varepsilon.
+$$
+\item Pour toute suite $(a_{n})$ dans $D$, si $a_{n}\to x_{0}$, alors $f(a_{n})\to f(x_{0})$.
+\end{itemize}
+\end{theorem}
+\begin{definition}
+Une fonction $f:D\to \mathbb{R}$ est continue, sur $D$, si elle est continue en tout $x_{0}\in D$. On note $C^{0}(D)$ l'ensemble de ces fonctions. 
+\end{definition}
+\begin{remark}
+Soient $f,g:D\to \mathbb{R}$ continues. Alors :
+\begin{itemize}
+\item $f+g$ et $fg$ sont continues sur $D$.
+\item $\alpha f$ est continue sur $D$ pour tout $\alpha \in \mathbb{R}$.
+\item $f/g$ est continue sur $D$ si $g(x)\neq 0$ pour tout $x \in D$.
+\item $\max (f,g)$, $\min (f,g)$ et $|f|$ sont aussi continues sur $D$.
+\end{itemize}
+\end{remark}
+
+\subsection*{Prolongement par continuite}
+En general, soit $f:D\to \mathbb{R}$ et un reel $x_{0}\not\in D$ adherent a $D$. S'il existe un $\ell \in \mathbb{R}$ tel que 
+$$
+\lim_{ x \to x_{0} } f(x)=\ell,
+$$
+on peut choisir de prolonger $f$ en $x_{0}$ comme suit :
+\begin{definition}
+Soit $\tilde{f}:D\cup \{ x_{0} \}\to \mathbb{R}$ definie par 
+$$
+\tilde{f}(x)=\begin{cases}
+f(x) & \text{si }x\neq x_{0}, \\
+\ell & \text{si }x=x_{0}.
+\end{cases}
+$$
+Par construction :
+\begin{itemize}
+\item $\tilde{f}$ est continue en $x_{0}$.
+\item $\tilde{f}$ est l'unique prolongement de $f$ a $D\cup \{ x_{0} \}$ qui soit continu en $x_0$.
+\end{itemize}
+On appelle $\tilde{f}$ le prolongement par continuite de $f$ au point $x_{0}$.
+\end{definition}
+
+
+\begin{theorem}[Theoreme des valeurs intermediares TVI]
+Soient $a,b\in \mathbb{R}$ avec $a\le b$. 
+
+Si $f:[a,b]\to \mathbb{R}$ est continue, alors pour tout $y$ entre $f(a)$ et $f(b)$, il existe un $c\in[a,b]$ tel que $f(c)=y$.
+\end{theorem}
+\begin{proof}
+\begin{itemize}
+\item Si $f(a)=f(b)$, alors $y=f(a)$ et $c=a$.
+\item Si $f(a)>f(b)$, alors on applique le TVI a $-f$ avec $-y$.
+\item Supposons $f(a)<f(b)$. Si $y=f(a)$, alors $c=a$. Si $y=f(b)$, alors $c=b$.
+\end{itemize}
+Supposons $f(a)<y<f(b)$. Soit $E=\{ x \in[a,b]:f(x)\le y\}$. On sait que $E$ est non-vide car $a\in E$ et que $E$ est majore par $b$. Donc, $E$ admet un supremum. On le note $c=\sup E\in[a,b]$.
+
+Montrons que $c<b$. Par l'absurde, supposons que $c=b$. Comme $c=\sup E$, il existe $(a_{n})$ dans $E$ telle que $a_{n}\to c$. Comme $f$ est continue, alors $f(a_{n})\to f(c)$. Aussi, $f(a_{n})\le y$ pour tout $n$ car $a_{n}\in E$. Donc, $f(c)=\lim_{ n \to \infty }f(a_{n})\le y<f(b)$. Contradiction !
+
+Creons deux suite pour chaque $n\in \mathbb{N}$ :
+\begin{itemize}
+\item On choisit un $x_{n}\in E$ tel que $c-1/n\le x_{n}\le c$. On a que $x_{n}\to c$ et par continuite $f(x_{n})\to f(c)$. Or $x_{n}\in E$, donc $f(x_{n})\le y$. donc $f(c)\le y$.
+\item On choisit un $z_{n}\in[a,b]$ telle que $c<z_{n}<c+1/n$. On a que $z_{n}\to c$ et $f(z_{n})\to f(c)$. Or, $z_{n}\not\in E$, donc $f(z_{n})>y$. Donc, $f(c)\ge y$.
+\end{itemize}
+Finalement, on a donc que $f(c)=y$.
+\end{proof}
