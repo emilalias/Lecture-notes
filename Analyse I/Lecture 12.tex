@@ -1,0 +1,106 @@
+\todo{Lecture 12}
+\begin{theorem}[Weierstrass]
+Soient $a,b\in \mathbf{R}$ avec $a\le b$. Si $f:[a,b]\to \mathbf{R}$ est continue, alors
+\begin{enumerate}
+\item $f$ est bornee, et
+\item elle atteint ses bornes.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+\begin{enumerate}
+\item Par l'absurde, supposons que $f$ est non-majoree. Alors, pour tout $n\in \mathbf{N}$, il existe $x_{n}\in[a,b]$ tel que $f(x_{n})\ge n$. Par Bolzano-Weierstrass, on peut extraire une sous-suite convergente de $(x_{n})$ telle que $x_{n_{k}}\to \overline{x}\in[a,b]$.
+
+Comme $f$ est continue, alors $f(x_{n_{k}})\to f(\overline{x})\in \mathbf{R}$. Mais $f(x_{n_{k}})\ge n_{k}\to \infty$. Contradicition !
+
+Donc $f$ est majoree. En appliquant ceci a $-f$, on voit que $f$ est aussi minoree. Donc $f$ est bornee.
+\item Montrons que $f$ atteint son supremum. Soit $M=\sup_{x \in[a,b]}f(x)\in \mathbf{R}$. Pour tout $n\in \mathbf{N}^{*}$, par caracterisation analytique du supremum, il existe $x_{n}\in [a,b]$ tel que $M-\frac{1}{n}\le f(x_{n})\le M$. Par BW, on peut extraire une sous-suite convergente $(x_{n_{k}})$ de $(x_{n})$ telle que $x_{n_{k}}\to \overline{x}\in[a,b]$. 
+
+On a que $f(x_{n_{k}})\to M$ par encadrement car $M-\frac{1}{n_{k}}\to M$ et comme $f$ est continue, alors $f(\overline{x})=\lim_{ k \to \infty }f(x_{n_{k}})=M$. Donc $f$ atteint son supremum. On procede similairement pour l'infinum.
+\end{enumerate}
+\end{proof}
+\begin{definition}
+Un segment est un intervalle ferme borne non-vide.
+\end{definition}
+\begin{corollary}
+Soit $f:D\to \mathbf{R}$, continue. Si $[a,b]\subseteq D$ avec $a\le b$, alors
+$$
+f([a,b])=[c,d],
+$$
+ou $c=\min_{x \in[a,b]}f(x)$ et $d=\max_{x \in[a,b]}f(x)$.
+\end{corollary}
+\begin{proof}
+Par Weierstrass, ils existent $x,y\in[a,b]$ tels que $c=f(x)$ et $d=f(y)$. Par definition du maximum et minimum, l'image $f([a,b])$ est incluse dans $[c,d]$. Par le TVI, pour tout $t\in[c,d]$, il existe $z\in(x,y)$ tel que $f(z)=t$. Donc $[c,d]$ est inclus dans $f([a,b])$.
+\end{proof}
+
+\section{Continuite et monotonie}
+\begin{theorem}
+Soit $I$ un intervalle et $f:I\to \mathbf{R}$ continue. Alors $f$ est injective si et seulement si elle est strictement monotone. 
+\end{theorem}
+\begin{proof}
+\begin{itemize}
+\item Direction $\Leftarrow$ : Si $f$ est strictement monotone, alors $x_{1}\neq x_{2}$ implique que $f(x_{1})<f(x_{2})$ et donc $f(x_{1})\neq f(x_{2})$. Donc $f$ est injective. 
+\item Direction $\Rightarrow$ : Supposons $f$ injective. Fixons deux points $a<b$ dans $I$. Soient $u<v$ dans $I$ quelconques. On definit les fonctions $\alpha,\beta:[0,1]\to I$ comme
+$$
+\alpha(t)=(1-t)a+tu\quad \text{et}\quad \beta(t)=(1-t)b + tv.
+$$
+Pour tout $t\in[0,1]$, on a $\beta(t)\neq\alpha(t)$. Des lors, par injectivite, la fonction continue $g:[0,1]\to \mathbf{R}$ definie par
+$$
+g(t)=f(\beta (t))-f(\alpha(t))
+$$
+ne s'annule jamais. Donc, par le TVI, $g(0)$ et $g(1)$ ont le meme signe. Comme $u<v$ sont quelconques, $f$ est strictement croissante si $f(a)<f(b)$ et strictement decroissante sinon.
+\end{itemize}
+\end{proof}
+\begin{theorem}
+Soient $I,J\subset \mathbf{R}$ deux intervallles non-vides et $f:I\to J$ surjective et strictement monotone. Alors :
+\begin{enumerate}
+\item $f$ est continue;
+\item $f$ admet une fonction reciproque $f^{-1}:J\to I$;
+\item $f^{-1}$ est continue et strictement monotone dans le meme sens que $f$.
+\end{enumerate}
+\end{theorem}
+\section{Continuite uniforme}
+\begin{definition}
+On dit que $f:D\to \mathbf{R}$ est uniformement continue si
+$$
+\forall\varepsilon>0\,\exists\delta>0\,\forall x,y\in D:|x-y|<\delta \Rightarrow |f(x)-f(y)|<\varepsilon.
+$$
+Le choix de $\delta$ est independant de $x$ et $y$.
+\end{definition}
+\begin{proposition}
+Une fonction $f:D\to \mathbf{R}$ est uniformement continue si et seulement si pour toutes suites $(x_{n})$ et $(y_{n})$ dans $D$, on a
+$$
+x_{n}-y_{n}\to 0 \quad \Rightarrow \quad f(x_{n})-f(y_{n})\to0.
+$$
+\end{proposition}
+\begin{proof}
+\begin{itemize}
+\item Direction $\Leftarrow$ : Par contraposee, fixons un $\varepsilon>0$. Pour tout $n\in \mathbf{N}^{*}$, avec $\delta _{n}:=\frac{1}{n}$ on voit qu'il existe $x_{n},y_{n}\in D$ tels que $|x_{n}-y_{n}|< \frac{1}{n}$ et $|f(x_{n})-f(y_{n})|\ge \varepsilon$ (c-a-d la negation de la definition d'etre uniformement continue). Donc ils existent deux suites $(x_{n})$ et $(y_{n})$ tels que $x_{n}-y_{n}\to 0$ mais $|f(x_{n})-f(y_{n})|\ge \varepsilon$. Contradiction !
+\item Direction $\Rightarrow$ : Supposons $f$ uniformement continue :
+$$
+\forall\varepsilon>0\,\exists\delta _{\varepsilon}>0\,\forall x,y\in D:|x-y|<\delta _{\varepsilon}\Rightarrow |f(x)-f(y)|<\varepsilon.
+$$
+Soient $(x_{n})$ et $(y_{n})$ deux suites dans $D$ telles que $x_{n}-y_{n}\to 0$. Alors 
+$$
+\forall\delta>0\,\exists N_{\delta}\,\forall n>N_{\delta}:|x_{n}-y_{n}|<\delta.
+$$
+En combinant, pour tout $\varepsilon>0$, avec $N:=N_{\delta _{\varepsilon}}$ on a 
+$$
+n\ge N\Rightarrow |x_{n}-y_{n}|<\delta _{\varepsilon} \Rightarrow |f(x_{n})-f(y_{n})|<\varepsilon.
+$$
+\end{itemize}
+\end{proof}
+\begin{theorem}[Heine]
+Une fonction continue sur un intervalle ferme et borne est uniformement continue.
+\end{theorem}
+\begin{proof}
+Soit $f:[a,b]\to \mathbf{R}$ continue. Par l'absurde, supposons que $f$ n'est pas uniformement continue. Donc, il existe $\varepsilon>0$ et $(x_{n}),(y_{n})$ dans $[a,b]$ tels que $x_{n}-y_{n}\to0$ et $|f(x_{n})-f(y_{n})|\ge \varepsilon$. Par BW, comme $(x_{n})$ est une suite dans $[a,b]$, on peut extraire une sous-suite convergent $x_{n_{k}}\to \overline{x}\in [a,b]$. On a 
+\begin{align*}
+|y_{n_{k}}-\overline{x}| & =|y_{n_{k}}-x_{n_{k}}+x_{n_{k}}-\overline{x}| \\
+ & =|y_{n_{k}}-x_{n_{k}}|+|x_{n_{k}}-\overline{x}|\to0
+\end{align*}
+Donc $y_{n_{ks}}\to \overline{x}$. Des lors, par continuite 
+$$
+f(x_{n_{k}})\to f(\overline{x}),\quad f(y_{n_{k}})\to f(\overline{x}).
+$$
+Donc, $f(x_{n_{k}})-f(y_{n_{k}})\to 0$. Contradiction !
+\end{proof}

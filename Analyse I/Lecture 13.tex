@@ -1,0 +1,87 @@
+\todo{Lecture 13}
+
+\subsection{Fonctions lipschitziennes}
+\begin{definition}
+On dit que $f:D\to \mathbf{R}$ est $L$-lipschitzienne pour $L\ge 0$ si 
+$$
+\forall x,y\in D:|f(x)-f(y)|\le L|x-y|.
+$$
+On appelle $L$ une constante de Lipschitz pour $f$. On dit que $f$ est lipschitzienne s'il existe un tel $L$.
+\end{definition}
+\begin{remark}
+Etre lipschitzienne implique uniformement continue implique continue. Mais pas dans le sens inverse !
+\end{remark}
+\begin{definition}
+$f$ est contractante si elle est $L$-lipschitzienne avec $L<1$. 
+\end{definition}
+\begin{theorem}[Point fixe de Banach]
+Si $f:\mathbf{R}\to \mathbf{R}$ est contractante, alors il existe un unique $x \in \mathbf{R}$ tel que $f(x)=x$.
+\end{theorem}
+\begin{proof}
+\begin{itemize}
+\item Unicite : Soient $u,v\in \mathbf{R}$ tels que $f(u)=u$ et $f(v)=v$. Alors
+$$
+|u-v|=|f(u)-f(v)|\le L|u-v|.
+$$
+Donc $(1-L)|u-v|\le 0$ mais $(1-L)>0$ donc $|u-v|=0$.
+\item Existence : Fixons $x_{0}\in \mathbf{R}$. On definie $x_{n+1}=f(x_{n})$ pour $n\in \mathbf{N}$. Regardons la distance entre les points de $(x_{n})$. 
+\begin{align*}
+|x_{2}-x_{1}| & =|f(x_{1})-f(x_{0})|\le L|x_{1}-x_{0}| \\
+|x_{3}-x_{2}| & =|f(x_{2})-f(x_{1})|\le L|x_{2}-x_{1}|\le L^{2}|x_{1}-x_{0}| \\
+ & ~\vdots \\
+ |x_{n+1}-x_{n}| &\le L^{n}|x_{1}-x_{0}| 
+\end{align*}
+donc 
+\begin{align*}
+|x_{n+m}-x_{n} | & \le |x_{n+m}-x_{n+m-1}|+|x_{n+m-1}-x_{n+m-2}|+\dots +|x_{n+1}-x_{n}| \\
+&\le(L^{n+m-1}+L^{n+m-2}+\dots +L^{n})|x_{1}-x_{0}| \\
+&\le \frac{L^{n}}{1-L}|x_{1}-x_{0}|.
+\end{align*}
+Donc $(x_{n})$ est de Cauchy et converge donc vers un $\overline{x}\in \mathbf{R}$. Donc
+$$
+\overline{x}=\lim_{ n \to \infty } x_{n}=\lim_{ n \to \infty }x_{n+1}=\lim_{ n \to \infty } f(x_{n})=f(\overline{x}).
+$$
+\end{itemize}
+\end{proof}
+\chapter{Suites de fonctions}
+\begin{definition}
+Soit $f:D\to \mathbf{R}$ et $(f_{n})$ une suite de fonctions sur $D$. On dit que $(f_{n})$ converge simplement (ou ponctuellement) vers $f$ si 
+$$
+\forall x \in D:\lim_{ n \to \infty } f_{n}(x)=f(x).
+$$
+Pour chaque $x$ fixe, il s'agit de la limite d'une suite reelle.
+\end{definition}
+\begin{notation}
+Si $(f_{n})$ converge simplement vers $f$, on note
+$$
+f_{n}\overset{\mathrm{ponct}}\longrightarrow f.
+$$
+\end{notation}
+\begin{definition}
+On dit que $(f_{n})$ converge uniformement vers $f$ si
+$$
+\forall\varepsilon>0\,\exists N\in \mathbf{N}\,\forall n\ge N,\,\forall x \in D:|f_{n}(x)-f(x)|<\varepsilon.
+$$
+\end{definition}
+\begin{notation}
+Si $(f_{n})$ converge uniformement vers $f$, on ecrit
+$$
+f_{n}\overset{\mathrm{unif}}\to f.
+$$
+\end{notation}
+\begin{theorem}
+Soient $f:D\to \mathbf{R}$ et $(f_{n})$ une suite dans $C^{0}(D)$. Si $(f_{n})$ converge uniformememnt vers $f$, alors $f\in C^{0}(D)$.
+\end{theorem}
+\begin{proof}
+Fixons $x_{0}\in D$ et $\varepsilon>0$. Par convergence uniforme,
+$$
+\exists N\,\forall n\ge N\,\forall x \in D:|f_{n}(x)-f(x)|<\varepsilon /3.
+$$
+Donc
+\begin{align*}
+|f(x)-f(x_{0})| & =|f(x)-f_{n}(x)+f_{n}(x)-f_{n}(x_{0})+f_{n}(x_{0})-f(x_{0})| \\
+ & \le \underbrace{ |f(x)-f_{n}(x)| }_{ <\varepsilon /3 }+|f_{n}(x)-f_{n}(x_{0})|+\underbrace{ |f_{n}(x_{0})-f(x_{0})| }_{ <\varepsilon /3 }.
+\end{align*}
+Comme $f_{n}$ est continue, alors il existe $\delta>0$ tel que $|x-x_{0}|<\delta$ et donc $|f_{n}(x)-f_{n}(x_{0})|<\varepsilon /3$.
+En combinant, on a donc montrer que pour tout $x_{0}\in D$ et pour tout $\varepsilon>0$ on a que $f$ et continue sur $D$.
+\end{proof}
