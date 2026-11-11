@@ -1,1 +1,143 @@
-\[A^{\complement}\quad \quad A^{\mathsf{c}}\quad \quad A^{\mathsf{C}}\]
+\todo{Lecture 14}
+\begin{theorem}[Théorème de Dini]
+Soient $a,b\in \mathbf{R}$ avec $a<b$, et $(f_{n})$ une suite de fonctions continues sur $[a,b]$. Si
+\begin{itemize}
+\item $f_{n}$ converge simplement vers une fonction $f$ continue sur $[a,b]$; et
+\item la suite $(f_{n})$ est croissante pour tout $n\in \mathbf{N}$ et tout $x \in[a,b]$; 
+\end{itemize}
+alors $f_{n}$ converge uniformément vers $f$.
+\end{theorem}
+\begin{proof}
+Par l'absurde, supposons que $(f_{n})$ ne converge pas uniformement vers $f$. Alors,
+$$
+\exists\varepsilon>0\,\forall N\in \mathbf{N}\,\exists n\ge N\,\exists x \in D:|f_{n}(x)-f(x)|\ge \varepsilon.
+$$
+On fixe un $\varepsilon$. On cherche a construire deux suites.
+\begin{itemize}
+\item $N=0$ : On choisit $n_{0}\ge N$ et $x_{0}\in D$ tels que $|f_{n_{0}}(x_{0})-f(x_{0})|\ge \varepsilon$.
+\item $N=n_{0}+1$ : On choisit $n_{1}\ge N>n_{0}$ et $x_{1}\in D$ tels que $|f_{n_{1}}(x_{1})-f(x_{1})|\ge \varepsilon$.
+\item Et ainsi de suite.
+\end{itemize}
+On a donc $(n_{k})$ qui tend vers $\infty$ et $(x_{k})\subset[a,b]$. Par BW, on peut extraire $(x_{k_{\ell}})$ qui appartient a $[a,b]$ et tend vers $\overline{x}\in[a,b]$ quand $\ell$ tend vers l'infini.
+
+On note $y_{\ell}:=x_{k_{\ell}}$ et $m_{\ell}:=n_{k_{\ell}}$, donc
+$$
+|f_{m_{\ell}}(y_{\ell})-f(y_{\ell})|\ge \varepsilon.
+$$
+Comme $f_{n}$ converge simplement ves $f$ pour tout $x \in[a,b]$, alors $f_{n}\to f(x)$ et comme $(f_{n})$ est croissante alors
+$$
+f_{0}(x)\le f_{1}(x)\le \dots\le f(x).
+$$
+Donc, pour tout $\ell$ on a
+\begin{align*}
+\varepsilon & \le |f_{m_{\ell}}(y_{\ell})-f(y_{\ell})| \\
+ & =f(y_{\ell})-f_{m_{\ell}}(y_{\ell}) \\
+ & \le f(y_{\ell})-f_{N}(y_{\ell}) \\
+ & = f(y_{\ell})-f(\overline{x})+f(\overline{x})-f_{N}(y_{\ell}) \\
+ & = f(y_{\ell})-f(\overline{x})+f(\overline{x})-f_{N}(\overline{x})+f_{N}(\overline{x})-f_{N}(y_{\ell}) \\
+ & < \frac{\varepsilon}{3}+\frac{\varepsilon}{3}+\frac{\varepsilon}{3}=\varepsilon.
+\end{align*}
+Contradiction !
+\end{proof}
+
+\chapter{Calcul differentiel}
+
+\begin{definition}
+Une fonction $f:D\to \mathbf{R}$ est derivable en $x_{0}\in D$ si
+$$
+\lim_{ x \to x_{0},x\neq x_{0} } \frac{f(x)-f(x_{0})}{x-x_{0}} 
+$$
+existe et est finie.
+\end{definition}
+\begin{notation}
+Si $f$ est derivable en $x_{0}$, on note cette limite $f'(x_{0})$ et on l'appelle la dérivée de $f$ en $x_{0}$.
+\end{notation}
+\begin{remark}
+On a de facon equivalente avec $h=x-x_{0}$ :
+$$
+f'(x_{0})=\lim_{ h \to 0,h\neq 0 } \frac{f(x_{0}+h)-f(x_{0})}{h}. 
+$$
+\end{remark}
+\begin{proposition}
+Soit $f:D\to \mathbf{R}$. $f$ est derivable en $x_{0}\in D$ si et seulement si
+\begin{enumerate}
+\item $x_{0}$ est adherent a $D\setminus \{ x_{0} \}$ et
+\item il existe $\ell \in \mathbf{R}$ et $\varepsilon:D\to \mathbf{R}$ tels que
+$$
+f(x)=f(x_{0})+\ell(x-x_{0})+\varepsilon(x)(x-x_{0})
+$$
+et $\varepsilon(x_{0})=0$ avec
+$$
+\lim_{ x \to x_{0} } \varepsilon(x)=0.
+$$
+\end{enumerate}
+Dans ce cas, $f'(x_{0})=\ell$.
+\end{proposition}
+\begin{proof}
+\item Direction $\Rightarrow$ : Si $f:D\to \mathbf{R}$ est derivable en $x_{0}$, on peut decrire $f$ comme
+$$
+f(x)=f(x_{0})+f'(x_{0})(x-x_{0})+\varepsilon(x)(x-x_{0})\quad \forall x \in D.
+$$
+Avec
+$$
+\varepsilon(x):= \frac{f(x)-f(x_{0})}{x-x_{0}}-f'(x_{0})\quad \forall x \in D\setminus \{ x_{0} \}.
+$$
+\item Direction $\Leftarrow$ : exercise.
+\end{proof}
+
+\begin{corollary}
+Si $f:D\to \mathbf{R}$ est derivable en $x_{0}$, elle est continue en $x_{0}$. 
+\end{corollary}
+\begin{proof}
+Comme $f$ est derivable en $x_{0}$, alors
+$$
+f(x)=f(x_{0})+f'(x_{0})(x-x_{0})+\varepsilon(x)(x-x_{0})
+$$
+avec $\varepsilon:D\to \mathbf{R}$ tel que $\lim_{ x \to x_{0} }\varepsilon(x)=0$. Donc
+$$
+\lim_{ x \to x_{0} } f(x)=\lim_{ x \to x_{0} } [f(x_{0})+f'(x_{0})(x-x_{0})+\varepsilon(x)(x-x_{0})]=f(x_{0}).
+$$
+\end{proof}
+
+\begin{definition}
+$f:D\to \mathbf{R}$ est derivable a droite en $x_{0}\in D$ si
+$$
+\lim_{ x \to x_{0}^{+} } \frac{f(x)-f(x_{0})}{x-x_{0}}
+$$
+existe et est finie. En particulier, cela requiert $x_{0}$ adherent a $D\cap(x_{0},+\infty)$.
+\end{definition}
+\begin{notation}
+On note la derive a droite de $f$ en $x_{0}$ par $f_{\mathrm{d}}'(x_{0})$. De meme avec $f'_{\mathrm{g}}(x_{0})$ pour la derive a gauche.
+\end{notation}
+\begin{proposition}
+Soient $f:D\to \mathbf{R}$ et $x_{0}\in D$ adherent a $D\cap(x_{0},+\infty)$ et a $D\cap(-\infty,x_{0})$. Pour $\ell \in \mathbf{R}$, 
+$$
+f'(x_{0})=\ell \Leftrightarrow f_{\mathrm{d}}'(x_{0})=f_{\mathrm{g}}'(x_{0})=\ell.
+$$
+\end{proposition}
+\begin{reminder}
+Pour $f:[a,b]\to \mathbf{R}$ avec $a<b$, nos definitions donnent deja
+$$
+f'(a)=f_{\mathrm{d}}'(a),\quad f'(b)=f_{\mathrm{g}}'(b),
+$$
+lorsque les limites correspondantes sont finies.
+\end{reminder}
+
+\begin{definition}
+Soit $f:D\to \mathbf{R}$. Notons $D(f')$ l'ensemble des points de $D$ ou $f$ est derivable. La fonction derivee de $f$ est
+$$
+f':D(f')\to \mathbf{R},\quad x\mapsto f'(x).
+$$
+On dit que $f$ est derivable sur $A\subseteq D$ si elle est derivable en tout point de $A$. On dit que $f$ est derivable si elle est derivable sur $D$.
+\end{definition}
+\begin{definition}
+La derivee seconde de $f$ est la derivee de $f'$ :
+$$
+f''=(f')'.
+$$
+Plus generalement, on pose $f^{(0)}=f$ et, pour $n\in \mathbf{N}^{*}$, 
+$$
+f^{(n)}=(f^{(n-1)})',
+$$
+aux points ou cette derivee existe. On l'appelle la derivee $n$-ieme de $f$. On dit que $f$ est $n$ fois derivable en $x_{0}$ si $f^{(n)}(x_{0})$ existe.
+\end{definition}

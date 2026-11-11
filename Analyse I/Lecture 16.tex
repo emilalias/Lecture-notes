@@ -1,0 +1,115 @@
+\todo{Lecture 16}
+\section{Extrema}
+\begin{theorem}[Fermat]
+Soient $I\subseteq \mathbb{R}$ un intervalle ouvert et $f:I\to \mathbb{R}$ derivable en $x_{0}\in I$. Si $f$ admet un extremum local en $x_{0}$, alors
+$$
+f'(x_{0})=0.
+$$
+\end{theorem}
+\begin{proof}
+Supposons que $x_{0}$ est un maximum local pour $f$. On peut choisir $\delta>0$ tel que :
+\begin{itemize}
+\item $(x_{0}-\delta,x_{0}+\delta)\subseteq I$ et
+\item $|x-x_{0}|<\delta \Rightarrow f(x)\le f(x_{0})$.
+\end{itemize}
+Puisque $f$ est derivable en $x_{0}$, on a que
+$$
+f'(x_{0})=\lim_{ x \to x_{0} } \frac{f(x)-f(x_{0})}{x-x_{0}}.
+$$
+Posons $x_{n}=x_{0}-\frac{\delta}{n+1}$ et $y_{n}=x_{0}+\frac{\delta}{n+1}$, donc on a que $x_{n}\to x_{0}^{-}$ et $y_{n}\to x_{0}^{+}$. Donc
+$$
+f'(x_{0})=\lim_{ n\to \infty}  \frac{f(x_{n})-f(x_{0})}{x_{n}-x_{0}} \ge0
+$$
+et
+$$
+f'(x_{0})=\lim_{ n \to \infty } \frac{f(y_{n})-f(x_{0})}{y_{n}-x_{0}} \le 0.
+$$
+Donc $f'(x_{0})=0$.
+\end{proof}
+\begin{theorem}[Rolle]
+Soient $a<b$ et $f:[a,b]\to \mathbb{R}$. Si
+\begin{itemize}
+\item $f$ est continue sur $[a,b]$;
+\item $f$ est derivable sur $(a,b)$ et
+\item $f(a)=f(b)$,
+\end{itemize}
+alors il existe $c\in(a,b)$ tel que $f'(c)=0$.
+\end{theorem}
+\begin{proof}
+Par le theoreme de Weierstrass, $f$ atteint son minimum et son maximum sur $[a,b]$. Posons
+$$
+m=\min_{x \in [a,b]}f(x),\quad M=\max_{x \in [a,b]} f(x).
+$$
+Si $m=M$, alors $f$ est constante sur $[a,b]$, donc $f'(c)=0$ pour tout $c\in(a,b)$. Sinon, vu que $f(a)=f(b)$, on a que $m$ ou $M$ est atteint en un point $c\in(a,b)$ et donc par Fermat on conclut. 
+\end{proof}
+\begin{theorem}[Theoreme des accroisements tinis : TAF]
+Soient $a<b$ et $f:[a,b]\to \mathbb{R}$. Si $f$ est continue sur $[a,b]$ et derivable sur $(a,b)$, alors il existe $c\in(a,b)$ tel que
+$$
+f'(c)= \frac{f(b)-f(a)}{b - a}. 
+$$
+\end{theorem}
+\begin{proof}
+On soustrait a $f$ l'equation de la droite qui passe par $(a,f(a))$ et $(b,f(b))$ :
+$$
+g(x):= f(x)-f(a)-\frac{f(b)-f(a)}{b - a}(x-a).
+$$
+On a $g(a)=g(b)=0$ et $g$ est continue sur $[a,b]$ et derivable sur $(a,b)$. On a donc par Rolle, qu'il existe $c\in(a,b)$ tel que $g'(c)=0$. Donc
+$$
+0=g'(c)=f'(c)-\frac{f(b)-f(a)}{b - a}.
+$$
+\end{proof}
+
+\begin{definition}
+L'interieur d'un intervalle $I$ est l'intervalle $\mathrm{int}(I)=I\setminus \{ \inf I, \sup I \}$. Par exemple, $\mathrm{int}([a,b])=(a,b)$, $\mathrm{int}((a,b))=(a,b)$ et $\mathrm{int}(\mathbb{R})=\mathbb{R}$.
+\end{definition}
+\begin{corollary}
+Soient $I$ un intervalle non-reduit a un point et $f:I\to \mathbb{R}$ continue sur $I$ et derivable sur son interieur $\mathrm{int}(I)$. Alors, $f$ est :
+\begin{itemize}
+\item croissante sur $I$ si et seulement si $f'(x)=0$ pour tout $x \in \mathrm{int}(I)$;
+\item croissante sur $I$ si et seulement si $f'(x)\ge 0$ pour tout $x \in \mathrm{int}(I)$;
+\item decroissante sur $I$ si et seulement si $f'(x)\le 0$ pour tout $x \in \mathrm{int}(I)$;
+\item strictement croissante sur $I$ si $f'(x)> 0$ pour tout $x \in \mathrm{int}(I)$.
+\end{itemize}
+\end{corollary}
+\begin{proposition}
+Soient $I$ un intervalle ouvert et $f:I\to \mathbb{R}$ une fonction derivable. Supposons que $f'$ est derivable en $x_{0}\in I$.
+\begin{itemize}
+\item Si $f'(x_{0})=0$ et $f''(x_{0})>0$, alors $x_{0}$ est un minimum local.
+\item Si $f'(x_{0})=0$ et $f''(x_{0})<0$, alors $x_{0}$ est un maximum local.
+\end{itemize}
+\end{proposition}
+\begin{proof}
+Supposons que $f'(x_{0})=0$ et $f''(x_{0})>0$. Il faut montrer que $f$ est decroissante a gauche de $x_{0}$ et croissante a droite de $x_{0}$. Par definition
+$$
+0<f''(x_{0})=\lim_{ x \to x_{0} }  \frac{f'(x)-f'(x_{0})}{x-x_{0}}.
+$$
+Donc, il existe $\delta>0$ tel que $(x_{0}-\delta,x_{0}+\delta)\subset I$ et 
+$$
+\frac{f'(x)}{x-x_{0}}> \frac{f''(x_{0})}{2}>0,\quad \forall x:0<|x-x_{0}|<\delta.
+$$
+Pour $x \in(x_{0},x_{0}+\delta)$, cela implique que $f'(x)>0$, donc $f$ est croissante sur $(x_{0},x_{0}+\delta)$. Pour $x \in(x_{0}-\delta,x_{0})$, on a $f'(x)<0$, donc $f$ est décroissante sur ce intervalle.
+\end{proof}
+\begin{theorem}
+Soit $f:I\to \mathbb{R}$ une fonction derivable sur un intervalle $I$, et soit $L\ge 0$. Les deux proprietes suivantes sont equivalentes :
+\begin{enumerate}
+\item $f$ est $L$-lipschitzienne sur $I$;
+\item $|f'(x)|\le L$ pour tout $x \in I$.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+\begin{itemize}
+\item $2\Rightarrow 1$ : Soient $x,y\in I$ avec $x\neq y$. Par le TAF, il existe $c\in(x,y)$ tel que 
+$$
+f(x)-f(y)=f'(c)(x-y)
+$$
+et donc
+$$
+|f(x)-f(y)|=|f'(c)||x-y|\le L|x-y|.
+$$
+\item $1\Rightarrow 2$ : Soit $x_{0}\in I$. On a
+$$
+\left\lvert  \frac{f(x)-f(x_{0})}{x-x_{0}}  \right\rvert \le \frac{L|x-x_{0}|}{|x-x_{0}|}=L.
+$$
+Donc $|f'(x_{0})\le L|$.
+\end{itemize}
+\end{proof}

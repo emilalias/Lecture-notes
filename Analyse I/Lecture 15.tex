@@ -1,0 +1,93 @@
+\todo{Lecture 15}
+\section{Regles de derivation}
+
+
+\begin{theorem}[Linearite et produit]
+Soient $f,g:D\to \mathbf{R}$ derivables en $x_{0}\in D$ et $\alpha,\beta \in \mathbf{R}$. Alors $\alpha f+\beta g$ et $fg$ sont derivables en $x_{0}$ et 
+$$
+(\alpha f+\beta g)'(x_{0})=\alpha f'(x_{0})+\beta g(x_{0}),
+$$
+$$
+(fg)'(x_{0})=f'(x_{0})g(x_{0})+f(x_{0})g'(x_{0}).
+$$
+\end{theorem}
+\begin{proof}
+Pour $fg$, on a
+\begin{align*}
+\frac{f(x)g(x)-f(x_{0})g(x_{0})}{x-x_{0}} & =\frac{f(x)g(x)-f(x_{0})g(x)+f(x_{0})g(x)-f(x_{0})g(x_{0})}{x-x_{0}} \\
+ & =g(x) \frac{f(x)-f(x_{0})}{x-x_{0}}+f(x_{0}) \frac{g(x)-g(x_{0})}{x-x_{0}}.
+\end{align*}
+Que donne le resultat quand $x$ tend vers $x_{0}$, car $g$ est derivable, et donc continue, en $x_{0}$.
+\end{proof}
+\begin{theorem}[Quotients]
+Soient $f,g:D\to \mathbb{R}$ derivables en $x_{0}\in D$, avec $g(x_{0})\neq 0$. Alors $1/g$ et $f/g$ sont definies sur $\{ x \in D:g(x)\neq 0 \}$, sont derivables en $x_{0}$, et 
+$$
+\left( \frac{1}{g} \right)'(x_{0})=-\frac{g'(x_{0})}{g(x_{0})^{2}},
+$$
+$$
+\left( \frac{f}{g} \right)'(x_{0})=\frac{f'(x_{0})g(x_{0})-f(x_{0})g'(x_{0})}{g(x_{0})^{2}}.
+$$
+\end{theorem}
+\begin{proof}
+Pour $1/g$, on a
+\begin{align*}
+\frac{\frac{1}{g(x)}-\frac{1}{g(x_{0})}}{x-x_{0}} & = \frac{g(x)g(x_{0})}{g(x)g(x_{0})} \frac{\frac{1}{g(x)}-\frac{1}{g(x_{0})}}{x-x_{0}} \\
+ & =-\frac{1}{g(x)g(x_{0})} \frac{g(x)-g(x_{0})}{x-x_{0}}.
+\end{align*}
+On a donc le resultat desire quand $x$ tend vers $x_{0}$ car $g(x_{0})\neq 0$ et $g'(x_{0})$ existe. 
+\end{proof}
+\begin{theorem}[Chain rule]
+Soient $D,E\subseteq \mathbb{R}$, $f:D\to E$ et $g:E\to \mathbb{R}$. Si $f$ est derivable en $x_{0}\in D$ et $g$ est derivable en $f(x_{0})$, alors $g \circ f$ est derivable en $x_{0}$ et 
+$$
+(g\circ f)'(x_{0})=g'(f(x_{0}))f'(x_{0}).
+$$
+\end{theorem}
+\begin{theorem}[Fonction reciproque]
+Soit $f:I\to J$ une fonction continue et bijective, ou $I$ et $J$ sont deux intervalles. Supposons $f$ derivable en $x_{0}\in I$. Si $f'(x_{0})\neq 0$, alors $f^{-1}:J\to I$ est derivable en $y_{0}:=f(x_{0})$ et
+$$
+(f^{-1})'(y_{0})=\frac{1}{f'(x_{0})}=\frac{1}{f'(f^{-1}(y_{0}))}.
+$$
+\end{theorem}
+\begin{proof}
+Soit $(y_{n})_{n\ge 1}$ une suite quelconque dans $J$ telle que $y_{n}\to y_{0}$ et $y_{n}\neq y_{0}$ pour tout $n\ge 1$. Soit $x_{n}=f^{-1}(y_{n})$ pour tout $n$. On a que $x_{n}\to x_{0}$ car $f^{-1}$ est continue 
+$$
+\lim_{ n \to \infty } x_{n}=\lim_{ n \to \infty } f^{-1}(y_{n})=f^{-1}(\lim_{ n \to \infty } y_{n})=f^{-1}(y_{0})=x_{0}
+$$
+,et $x_{n}\neq x_{0}$ pour tout $n\ge 1$. Donc
+$$
+\lim_{ n \to \infty } \frac{f^{-1}(y_{n}-f^{-1})(y_{0})}{y_{n}-y_{0}}=\lim_{ n \to \infty } \frac{x_{n}-x_{0}}{f(x_{n})-f(x_{0})}=\lim_{ n \to \infty } \left[ \frac{f(x_{n})-f(x_{0})}{x_{n}-x_{0}} \right]^{-1}=(f'(x_{0}))^{-1}.
+$$
+\end{proof}
+\paragraph{Derivees des fonctions usuelles}
+\begin{center}
+\begin{tabular}{ |c|c|c| }
+\hline 
+Fonction $f(x)$ & Derivee $f'(x)$ & Domaine de $f'$ \\
+constante & 0 & $\mathbb{R}$ \\
+$x^{n},n\in \mathbb{N}^{*}$ & $nx^{n-1}$ & $\mathbb{R}$ \\
+$x^{-n},n\in \mathbb{N}^{*}$ & $-nx^{-n-1}$ & $\mathbb{R}\setminus \{ 0 \}$ \\
+$x^{\alpha},\alpha \in \mathbb{R}$ & $\alpha x^{\alpha -1}$ & $(0,+\infty)$ \\
+$\sqrt{ x }$ & $\frac{1}{2\sqrt{ x }}$ & $\mathbb{R}$ \\
+$\ln(x)$ & $\frac{1}{x}$ & $(0,+\infty)$ \\ 
+$e^{x}$ & $e^{x}$ & $\mathbb{R}$ \\
+$\sin(x)$ & $\cos(x)$ & $\mathbb{R}$ \\
+$\cos(x)$ & $-\sin(x)$ & $\mathbb{R}$ \\
+$\tan(x)$ & $\frac{1}{\cos ^{2}(x)}=1+\tan ^{2}(x)$ & $\{ x \in \mathbb{R}:\cos(x)\neq 0 \}$ \\
+$\arcsin(x)$ & $\frac{1}{\sqrt{ 1-x^{2} }}$ & $(-1,1)$ \\
+$\arccos(x)$ & $-\frac{1}{\sqrt{ 1-x^{2} }}$ & $(-1,1)$ \\
+$\arctan(x)$ & $\frac{1}{1+x^{2}}$ & $\mathbb{R}$ \\
+\hline
+\end{tabular}
+\end{center}
+
+\paragraph{Classes $C^{0}(D)$, \dots, $C^{\infty}(D)$}
+\begin{definition}
+Soit $D\subseteq \mathbb{R}$. On definit les classes $C^{k}(D)$ pour $k\in \mathbb{N}$ :
+\begin{itemize}
+\item On note $C^{k+1}(D)$ l'ensemble des fonctions $f:D\to \mathbb{R}$ derivables sur $D$ et telles que $f'\in C^{k}(D)$.
+\item De plus, on pose
+$$
+C^{\infty}(D)=\bigcap _{k=0}^{\infty} C^{k}(D).
+$$
+\end{itemize}
+\end{definition}
