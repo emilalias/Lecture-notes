@@ -1,0 +1,103 @@
+\todo{Lecture 17}
+\chapter{Développements Limites}
+\begin{definition}
+Soit $f:D\to \mathbb{R}$ une fonction $n$ fois derivable en $x_{0}$. Le polynome de Taylor de $f$ en $x_{0}$ a l'ordre $n$ est
+$$
+p_{n}(x)=\sum_{k=0}^{n}  \frac{f^{(k)}(x_{0})}{k!}(x-x_{0})^{k},
+$$
+avec les conventions $f^{(0)}=f$, $0! =1$ et $(x-x_{0})^{0}=1$.
+\end{definition}
+\begin{remark}
+Par construction, $p_{n}$ est l'unique polynome de degre au plus $n$ tel que $f^{(n)}(x_{0})=p_{n}^{(n)}(x_{0})$.
+\end{remark}
+\begin{theorem}[Formule de Taylor-Lagrange]
+Soient $n\in \mathbb{N}$, $I$ un intervalle ouvert et $f:I\to \mathbb{R}$ une fonction $n+1$ fois derivable sur $I$. Fixons $x_{0}\in I$. Pour tout $x \in I\setminus \{ x_{0} \}$, il existe $c_{x}$ strictement entre $x_{0}$ et $x$ tel que
+$$
+f(x)=p_{n}(x)+\frac{f^{(n+1)}(c_{x})}{(n+1)!}(x-x_{0})^{n+1}.
+$$
+\end{theorem}
+\begin{remark}
+La difference $r_{n}(x):=f(x)-p_{n}(x)$ s'appelle le reste a l'ordre $n$.
+\end{remark}
+\begin{proof}
+Fixons $x\neq x_{0}$. Considerons
+$$
+s(t)=\sum_{k=0}^{n}  \frac{f^{(k)}(t)}{k!}(x-t)^{k}.
+$$
+On a donc $s(x)=f(x)$ et $s(x_{0})=p_{n}(x)$. Definissons
+$$
+h(t)=s(t)+\lambda(x-t)^{n+1}
+$$
+avec $\lambda \in \mathbb{R}$ a choisir tel que $h(x)=h(x_{0})$. Donc
+$$
+\lambda= \frac{f(x)-p_{n}(x)}{(x-x_{0})^{n+1}}.
+$$
+On peut appliquer Rolle a $h$ en $x$ et $x_{0}$ car $h$ est derivable sur $I$ et $h(x)=h(x_{0})$. Donc, il existe $c_{x}$ strictement entre $x$ et $x_{0}$ tel que $0=h'(c_{x})$. On a
+\begin{align*}
+s'(t) & =f'(t)+\sum_{k=1}^{n} \left[ \frac{f^{(k+1)}(t)}{k!}(x-t)^{k}-\frac{f^{(k)}(t)}{k!}k(x-t)^{k} \right] \\
+ & =f'(t)+\sum_{k=1}^{n} \frac{f^{(k+1)}(t)}{k!}(x-t)^{k}-\sum_{k=1}^{n} \frac{f^{k}(t)}{(k-1)!}(x-t)^{k-1} \\
+ &  = f'(t)+\sum_{k=1}^{n}  \frac{f^{(k+1)}(t)}{k!}(x-t)^{k}-\sum_{k=0}^{n-1} \frac{f^{(k+1)}(t)}{k!}(x-t)^{k} \\
+ &   =f'(t)+\frac{f^{n+1}(t)}{n!}(x-t)^{n}-f'(t) \\
+ &   = \frac{f^{(n+1)}(t)}{n!}(x-t)^{n}.
+\end{align*}
+Donc
+\begin{align*}
+0 & =h'(c_{x}) \\
+ & =s'(c_{x})-\lambda(n+1)(x-c_{x})^{n} \\
+ &  = \frac{f^{(n+1)}(c_{x})}{n!}(x-c_{x})^{n}-\lambda(n+1)(x-c_{x})^{n}.
+\end{align*}`'
+Comme $c_{x}\neq x$, on a
+$$
+\frac{f(x)-p_{n}(x)}{(x-x_{0})^{n+1}}=\lambda=\frac{f^{(n+1)}(c_{x})}{(n+1)!}.
+$$
+En reorganisant, on trouve
+$$
+f(x)-p_{n}(x)=\frac{f^{(n+1)}(c_{x})}{(n+1)!}(x-x_{0})^{n+1}.
+$$
+\end{proof}
+\begin{corollary}
+Dans le contexte de Taylor-Lagrange, s'il existe $M\ge 0$ tel que
+$$
+	|f^{(n+1)}(t)|\le M,\quad \forall t\in I,
+$$
+alors, pour tout $x \in I$, 
+$$
+|f(x)-p_{n}(x)|\le \frac{M}{(n+1)!}|x-x_{0}|^{n+1}.
+$$
+\end{corollary}
+\begin{theorem}[Formule de Taylor-Young]
+Soient $n\in \mathbb{N}^{*}$, $I$ un intervalle ouvert et $f:I\to \mathbb{R}$ une fonction $n-1$ fois derivable sur $I$. Fixons $x_{0}\in I$ et supposons que $f^{(n-1)}$ est derivable en $x_{0}$.
+
+Alors, il existe $\varepsilon:I\to \mathbb{R}$ telle que, pour tout $x \in I$,
+$$
+f(x)=p_{n}(x)+\varepsilon(x)(x-x_{0})^{n},
+$$
+avec $\varepsilon(x_{0})=0$ et
+$$
+\lim_{ x \to x_{0} } \varepsilon(x)=0.
+$$
+\end{theorem}
+\begin{proof}[Preuve d'une version simplifiee de Taylor-Young]
+Supposons que $f$ est $n$ fois derivable sur $I$ et que $f^{(n)}$ est continue en $x_{0}$. C'est notamment le cas si $f\in C^{n}(I)$.
+
+Fixons $x \in I$ avec $x\neq x_{0}$. Par Taylor-Lagrange a l'ordre $n-1$, il existe $c_{x}$ strictement entre $x$ et $x_{0}$ tel que
+$$
+f(x)=p_{n-1}(x)+\frac{f^{(n)}(c_{x})}{n!}(x-x_{0})^{n}.
+$$
+Par ailleurs,
+$$
+p_{n}(x)=p_{n-1}(x)+\frac{f^{(n)}(x_{0})}{n!}(x-x_{0})^{n},
+$$
+la difference donne
+$$
+f(x)-p_{n}(x)=[f^{(n)}(c_{x})-f^{(n)}(x_{0})] \frac{(x-x_{0})^{n}}{n!}.
+$$
+On a,
+$$
+\frac{f(x)-p_{n}(x)}{(x-x_{0})^{n}}=\frac{1}{n!}(f^{(n)}(c_{x})-f^{(n)}(x_{0})).
+$$
+Comme $c_{x}$ est entre $x$ et $x_{0}$, on a que $c_{x}\to x_{0}$ quand $x\to x_{0}$. Ainis, $f^{(n)}$ est continue et donc
+$$
+\lim_{ x \to x_{0} } \frac{f(x)-p_{n}(x)}{(x-x_{0})^{n}}=\frac{1}{n!}(f^{(n)}(\lim_{ x \to x_{0} } c_{x})-f^{(n)(x_{0})})=0 
+$$
+\end{proof}

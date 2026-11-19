@@ -1,0 +1,36 @@
+\todo{Lecture 18}
+\begin{definition}
+Soient $r,g:D\to \mathbb{R}$ et $x_{0}$ adherent a $D\setminus \{ x_{0} \}$. Supposons que $g(x)\neq 0$ pour $x \in D$ suffisament proche de $x_0$, avec $x\neq x_{0}$. On ecrit
+$$
+r(x)=o(g(x)),\quad x\to x_{0},
+$$
+si $|r(x)|$ est negligeable compare a $|g(x)|$ pour $x$ proche de $x_{0}$, c-a-d
+$$
+\lim_{ x \to x_{0},x\neq x_{0} } \frac{r(x)}{g(x)}=0. 
+$$
+\end{definition}
+\begin{definition}
+Soient $r,g:D\to \mathbb{R}$ et $x_{0}$ adherent a $D\setminus \{ x_{0} \}$. On ecrit 
+$$
+r(x)=O(g(x)),\quad x\to x_{0},
+$$
+s'il existe $C>0$ et $\delta>0$ tels que, pour tout $x \in D$,
+$$
+0<|x-x_{0}|<\delta \Rightarrow |r(x)|\le C|g(x)|.
+$$
+\end{definition}
+
+\begin{definition}
+Soient $f:D\to \mathbb{R}$, $n\in \mathbb{N}$ et $x_{0}$ adherent a $D\setminus \{ x_{0} \}$. On dit que $f$ admet un developpement limite a l'ordre $n$ en $x_{0}$, ou $\mathrm{DL_{n}}(x_{0})$, s'il existe un polynome $p$ de degre au plus $n$ tel que
+$$
+f(x)=p(x)+o((x-x_{0})^{n}),\quad x\to x_{0}.
+$$
+Le polynome $p$ est appele la partie principale du DL.
+\end{definition}
+\begin{remark}
+\begin{itemize}
+\item Si $f$ admet un $\mathrm{DL}_{n}(x_{0})$, sa partie principale est unique.
+\item Taylor-Young, sous certaines hypotheses, fournit l'existence du $\mathrm{DL}_{n}(x_{0})$ et dit que sa partie principale est le polynome de Taylor a l'ordre $n$.
+\item Cela dit, la definition dur $\mathrm{DL}_{n}(x_{0})$ ne requiert pas de derivabilite.
+\end{itemize}
+\end{remark}
